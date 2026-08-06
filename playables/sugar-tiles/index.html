@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Sugar Tiles</title>
+
+  <!-- MUST come before any game code: the SDK builds the sandbox the game runs in, and several
+       ytgame functions have to be callable from the very first line the game executes. -->
+  <script src="https://www.youtube.com/game_api/v1"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: #1c1116;
+      /* Playables forbids locking orientation, so the page must simply survive any shape. */
+      touch-action: none;
+      -webkit-text-size-adjust: 100%;
+      overscroll-behavior: none;
+    }
+
+    #unity-container {
+      position: fixed;
+      inset: 0;
+    }
+
+    #unity-canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+      background: #1c1116;
+      /* Keeps the browser from offering text selection / callouts on long press. */
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      outline: none;
+    }
+
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      background: #1c1116;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      color: #ffe9c9;
+      transition: opacity 220ms ease-out;
+    }
+
+    #loading.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #loading-track {
+      width: min(58vw, 260px);
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255, 233, 201, 0.18);
+      overflow: hidden;
+    }
+
+    #loading-fill {
+      width: 0%;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #ff9dc4, #ffd166);
+      transition: width 120ms linear;
+    }
+
+    #loading-label {
+      font-size: 15px;
+      letter-spacing: 0.02em;
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="unity-container">
+    <canvas id="unity-canvas" tabindex="-1"></canvas>
+  </div>
+
+  <div id="loading">
+    <div id="loading-label">Sugar Tiles</div>
+    <div id="loading-track"><div id="loading-fill"></div></div>
+  </div>
+
+  <script>
+    var canvas = document.querySelector("#unity-canvas");
+    var loading = document.querySelector("#loading");
+    var loadingFill = document.querySelector("#loading-fill");
+
+    /* Banners are suppressed on purpose: Playables wants engine warnings in the console, not as
+       overlay chrome the player has to read. */
+    function unityShowBanner(message, type) {
+      if (type === "error") {
+        console.error(message);
+      } else {
+        console.warn(message);
+      }
+    }
+
+    var buildUrl = "Build";
+    var config = {
+      dataUrl: buildUrl + "/playables.data.unityweb",
+      frameworkUrl: buildUrl + "/playables.framework.js.unityweb",
+      codeUrl: buildUrl + "/playables.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      // PlayerPrefs is the local mirror of the YouTube save; let the engine flush it on write
+      // instead of the deprecated manual JS_FileSystem_Sync path it warns about otherwise.
+      autoSyncPersistentDataPath: true,
+      companyName: "Sugar Tiles",
+      productName: "Sugar Tiles",
+      productVersion: "1.0",
+      showBanner: unityShowBanner
+    };
+
+    /* The jslib bridge reaches Unity through this global; it must exist (as null) before the
+       engine starts so an early SDK callback cannot throw on an undefined reference. */
+    var unityGameInstance = null;
+
+    var script = document.createElement("script");
+    script.src = buildUrl + "/playables.loader.js";
+    script.onload = function () {
+      createUnityInstance(canvas, config, function (progress) {
+        loadingFill.style.width = (100 * progress) + "%";
+      }).then(function (instance) {
+        unityGameInstance = instance;
+
+        /* Unity samples the canvas size once while starting up. If the surrounding page settles on
+           a different size afterwards — routine in a frame that is still laying out, which is
+           exactly how a Playable is embedded — the engine keeps drawing into a sub-rectangle of a
+           larger buffer and the game sits in a corner. Nudge it now, again after a frame, and from
+           then on whenever the container genuinely changes size. */
+        var resync = function () { window.dispatchEvent(new Event("resize")); };
+        resync();
+        requestAnimationFrame(resync);
+        setTimeout(resync, 250);
+        if (window.ResizeObserver) {
+          new ResizeObserver(resync).observe(document.querySelector("#unity-container"));
+        }
+
+        loading.classList.add("hidden");
+        // Leave the node in the DOM only as long as the fade needs it.
+        setTimeout(function () { loading.style.display = "none"; }, 260);
+      }).catch(function (message) {
+        console.error(message);
+        if (typeof ytgame !== "undefined" && ytgame && ytgame.health) {
+          ytgame.health.logError();
+        }
+      });
+    };
+    document.body.appendChild(script);
+  </script>
+</body>
+
+</html>

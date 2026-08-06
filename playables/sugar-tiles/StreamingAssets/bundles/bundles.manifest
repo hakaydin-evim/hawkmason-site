@@ -1,0 +1,36 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 1309186534
+HashAppended: 0
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: resultui
+      Dependencies: {}
+    Info_1:
+      Name: eventui
+      Dependencies: {}
+    Info_2:
+      Name: journeyui
+      Dependencies: {}
+    Info_3:
+      Name: screens
+      Dependencies: {}
+    Info_4:
+      Name: dailyui
+      Dependencies: {}
+    Info_5:
+      Name: worldthumbs
+      Dependencies: {}
+    Info_6:
+      Name: journeyworldbackgrounds
+      Dependencies: {}
+    Info_7:
+      Name: journeymapsegments
+      Dependencies: {}
+    Info_8:
+      Name: journeytransitionui
+      Dependencies: {}
+    Info_9:
+      Name: resultui-generated
+      Dependencies: {}

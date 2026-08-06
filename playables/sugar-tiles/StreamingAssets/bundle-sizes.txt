@@ -1,0 +1,10 @@
+     1828330  dailyui
+     8628796  eventui
+      442877  journeymapsegments
+      413662  journeytransitionui
+     8331877  journeyui
+     2036127  journeyworldbackgrounds
+     8514215  resultui
+     3797926  resultui-generated
+     3573395  screens
+     2991348  worldthumbs

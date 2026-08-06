@@ -1,0 +1,24 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 4199968278
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: a1407bcc9087a22d5cb909620101184f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bc9f87c7e64ff656997db0f2b2a91703
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: b6c64dd35995a8fa0ed0b5050ac106fa
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/dailyui/daily-mockup-backdrop.png
+- Assets/SugarTilesDeferred/dailyui/weekly-mockup-backdrop.png
+Dependencies: []

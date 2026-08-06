@@ -1,0 +1,84 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 2510502073
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: def4e83a5affd573729fed06bc3fc9b5
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1cfddeea06ce0ec573e0d0ec81ebe20e
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: e11863dd3e98e5ea018de414fd739bbf
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-25-sprinkle-skyline-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-60-rainbow-rock-candy-ridge-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-61-mocha-meteor-mine-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-42-cocoa-comet-crossing-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-56-sundae-switchyard-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-14-soda-pop-springs-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-48-stardust-sugarworks-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-17-lemonade-lagoon-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-53-cookie-compass-coast-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-36-molasses-mill-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-16-nougat-night-market-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-01-sweet-shop-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-24-cocoa-clocktower-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-40-cherry-cream-circus-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-39-churro-canyon-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-15-peppermint-pier-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-37-praline-palace-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-52-peach-pop-pavilion-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-63-sugar-star-station-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-03-chocolate-lane-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-47-gingerbread-gables-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-22-vanilla-velvet-valley-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-07-caramel-carnival-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-34-ribbon-candy-road-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-33-fudge-foundry-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-30-jellybean-jungle-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-43-pancake-parade-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-18-berry-biscuit-bay-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-51-maple-meringue-mesa-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-32-sugarplum-observatory-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-49-almond-arcade-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-54-frosted-fireworks-fair-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-11-licorice-library-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-13-toffee-tunnels-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-46-raspberry-reef-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-31-biscuit-bakery-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-28-sherbet-summit-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-26-pudding-plaza-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-45-truffle-terrace-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-64-candy-cosmos-castle-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-19-waffle-workshop-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-35-sorbet-safari-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-50-jelly-rocket-range-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-12-bubblegum-boardwalk-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-55-blueberry-bungalow-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-08-crystal-candy-castle-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-58-velvet-vanilla-vault-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-10-marshmallow-meadow-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-21-taffy-trainyard-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-62-crystal-creme-citadel-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-04-frosty-pops-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-44-candy-corn-cove-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-06-sugar-factory-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-02-jelly-garden-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-41-mint-moon-docks-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-59-lollipop-lighthouse-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-38-lemon-zest-lab-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-57-pistachio-planetarium-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-09-honeycomb-harbor-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-27-bonbon-bazaar-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-20-cotton-candy-clouds-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-23-gumdrop-greenhouse-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-05-macaron-market-background.png
+- Assets/SugarTilesDeferred/journeyworldbackgrounds/world-29-caramel-quarry-background.png
+Dependencies: []

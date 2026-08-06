@@ -1,0 +1,45 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 4128192000
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 29e5bf2f6ae7ce6c2b6eddce91a47240
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1cfddeea06ce0ec573e0d0ec81ebe20e
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: f32560084b3e9e714705c2a8e7ee7949
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/screens/settings-chip-about.png
+- Assets/SugarTilesDeferred/screens/onboarding-final-art.png
+- Assets/SugarTilesDeferred/screens/splash-final-art.png
+- Assets/SugarTilesDeferred/screens/journey-map-vertical-adventure-v2.png
+- Assets/SugarTilesDeferred/screens/home-logo-wordmark.png
+- Assets/SugarTilesDeferred/screens/info-generic-plate.png
+- Assets/SugarTilesDeferred/screens/home-final-art.png
+- Assets/SugarTilesDeferred/screens/restore-info-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/remove-ads-final-imagegen.png
+- Assets/SugarTilesDeferred/screens/settings-chip-howtoplay.png
+- Assets/SugarTilesDeferred/screens/settings-row-chevron.png
+- Assets/SugarTilesDeferred/screens/support-info-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/consent-plate.png
+- Assets/SugarTilesDeferred/screens/home-background-art.png
+- Assets/SugarTilesDeferred/screens/home-hero-dessert-art.png
+- Assets/SugarTilesDeferred/screens/restore-failed-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/sugar-club-weekly-pass-final-imagegen.png
+- Assets/SugarTilesDeferred/screens/home-clean-slate-concept-01.png
+- Assets/SugarTilesDeferred/screens/privacy-ads-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/helper-packs-final-imagegen.png
+- Assets/SugarTilesDeferred/screens/settings-chip-privacy.png
+- Assets/SugarTilesDeferred/screens/settings-clean-slate-concept-05.png
+- Assets/SugarTilesDeferred/screens/privacy-info-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/terms-info-concept-03-imagegen.png
+- Assets/SugarTilesDeferred/screens/shop-final-imagegen.png
+Dependencies: []

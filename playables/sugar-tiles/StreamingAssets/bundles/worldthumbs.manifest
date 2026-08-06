@@ -1,0 +1,84 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 3246080883
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 181136c4c0a4cc7a0f10d675cd6b24ac
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1cfddeea06ce0ec573e0d0ec81ebe20e
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 9d49d9a28a98c863b5210e7593955a43
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/worldthumbs/world-15-peppermint-pier-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-62-crystal-creme-citadel-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-34-ribbon-candy-road-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-33-fudge-foundry-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-37-praline-palace-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-20-cotton-candy-clouds-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-19-waffle-workshop-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-52-peach-pop-pavilion-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-38-lemon-zest-lab-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-39-churro-canyon-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-56-sundae-switchyard-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-28-sherbet-summit-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-46-raspberry-reef-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-43-pancake-parade-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-64-candy-cosmos-castle-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-09-honeycomb-harbor-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-25-sprinkle-skyline-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-32-sugarplum-observatory-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-29-caramel-quarry-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-05-macaron-market-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-27-bonbon-bazaar-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-23-gumdrop-greenhouse-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-59-lollipop-lighthouse-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-24-cocoa-clocktower-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-06-sugar-factory-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-36-molasses-mill-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-55-blueberry-bungalow-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-48-stardust-sugarworks-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-30-jellybean-jungle-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-11-licorice-library-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-45-truffle-terrace-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-03-chocolate-lane-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-17-lemonade-lagoon-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-02-jelly-garden-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-35-sorbet-safari-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-60-rainbow-rock-candy-ridge-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-22-vanilla-velvet-valley-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-51-maple-meringue-mesa-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-21-taffy-trainyard-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-44-candy-corn-cove-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-54-frosted-fireworks-fair-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-08-crystal-candy-castle-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-50-jelly-rocket-range-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-26-pudding-plaza-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-42-cocoa-comet-crossing-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-31-biscuit-bakery-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-47-gingerbread-gables-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-40-cherry-cream-circus-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-16-nougat-night-market-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-13-toffee-tunnels-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-01-sweet-shop-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-41-mint-moon-docks-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-58-velvet-vanilla-vault-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-49-almond-arcade-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-14-soda-pop-springs-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-63-sugar-star-station-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-18-berry-biscuit-bay-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-53-cookie-compass-coast-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-10-marshmallow-meadow-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-57-pistachio-planetarium-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-61-mocha-meteor-mine-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-07-caramel-carnival-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-12-bubblegum-boardwalk-thumbnail.png
+- Assets/SugarTilesDeferred/worldthumbs/world-04-frosty-pops-thumbnail.png
+Dependencies: []

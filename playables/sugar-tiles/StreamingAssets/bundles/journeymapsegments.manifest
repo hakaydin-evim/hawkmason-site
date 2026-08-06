@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 3655853797
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 21dadf1fc8302fa05290e1e534e57c50
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1cfddeea06ce0ec573e0d0ec81ebe20e
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: ad210c252afb93ebd72dc4a4ba416370
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/journeymapsegments/world-04-frosty-pops.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-09-coming-soon.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-01-sweet-shop.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-05-macaron-market.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-08-crystal-candy-castle.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-03-chocolate-lane.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-02-jelly-garden.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-07-caramel-carnival.png
+- Assets/SugarTilesDeferred/journeymapsegments/world-06-sugar-factory.png
+Dependencies: []

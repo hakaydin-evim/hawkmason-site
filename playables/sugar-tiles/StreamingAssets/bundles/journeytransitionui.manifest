@@ -1,0 +1,23 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 4087615086
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: f3ddc52f4d0d367c1643e6ac2ea62a64
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 1cfddeea06ce0ec573e0d0ec81ebe20e
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: c999363003f2dbb4d9f1de21e74e784c
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/journeytransitionui/journey-transition-portal.png
+- Assets/SugarTilesDeferred/journeytransitionui/journey-transition-card-frame.png
+- Assets/SugarTilesDeferred/journeytransitionui/journey-transition-burst.png
+Dependencies: []

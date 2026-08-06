@@ -1,0 +1,35 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 3077513524
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c32e74a683d51e96d947e31a1ee30d88
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bc9f87c7e64ff656997db0f2b2a91703
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 6f8e20015b3bfd54b848e05300ba4185
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/resultui/buton-yesil.png
+- Assets/SugarTilesDeferred/resultui/yildiz-sonuk.png
+- Assets/SugarTilesDeferred/resultui/result-baslik-world.png
+- Assets/SugarTilesDeferred/resultui/result-baslik-win.png
+- Assets/SugarTilesDeferred/resultui/result-plaket.png
+- Assets/SugarTilesDeferred/resultui/result-baslik-lose.png
+- Assets/SugarTilesDeferred/resultui/sticker-new-best.png
+- Assets/SugarTilesDeferred/resultui/fx-isin.png
+- Assets/SugarTilesDeferred/resultui/sticker-kilit.png
+- Assets/SugarTilesDeferred/resultui/buton-pembe.png
+- Assets/SugarTilesDeferred/resultui/buton-krem.png
+- Assets/SugarTilesDeferred/resultui/maskot-mutlu.png
+- Assets/SugarTilesDeferred/resultui/maskot-uzgun.png
+Dependencies: []

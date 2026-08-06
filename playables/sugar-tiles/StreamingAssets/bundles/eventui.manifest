@@ -1,0 +1,49 @@
+ManifestFileVersion: 0
+UnityVersion: 6000.3.19f1
+CRC: 2915915040
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: b155f86491f682f5c59e4597f30d9348
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: bc9f87c7e64ff656997db0f2b2a91703
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 90cbd2e0d111a12a0654e8a155bf88f3
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/SugarTilesDeferred/eventui/sticker-gummy.png
+- Assets/SugarTilesDeferred/eventui/hakan-plate-green.png
+- Assets/SugarTilesDeferred/eventui/ikon-elmas.png
+- Assets/SugarTilesDeferred/eventui/sticker-peppermint.png
+- Assets/SugarTilesDeferred/eventui/sticker-chocobomb.png
+- Assets/SugarTilesDeferred/eventui/sticker-yildiz.png
+- Assets/SugarTilesDeferred/eventui/event2-slat-red.png
+- Assets/SugarTilesDeferred/eventui/hakan-plate-pink.png
+- Assets/SugarTilesDeferred/eventui/hakan-plate-cream.png
+- Assets/SugarTilesDeferred/eventui/hakan-plate-red.png
+- Assets/SugarTilesDeferred/eventui/event2-slat-pink.png
+- Assets/SugarTilesDeferred/eventui/event-logo-daily.png
+- Assets/SugarTilesDeferred/eventui/ikon-kasa.png
+- Assets/SugarTilesDeferred/eventui/event-play-weekly.png
+- Assets/SugarTilesDeferred/eventui/ikon-blok.png
+- Assets/SugarTilesDeferred/eventui/sticker-calendar.png
+- Assets/SugarTilesDeferred/eventui/event2-slat-blue.png
+- Assets/SugarTilesDeferred/eventui/event2-slat-green.png
+- Assets/SugarTilesDeferred/eventui/event2-board-backing.png
+- Assets/SugarTilesDeferred/eventui/sticker-gift.png
+- Assets/SugarTilesDeferred/eventui/sticker-chest.png
+- Assets/SugarTilesDeferred/eventui/event-play-daily.png
+- Assets/SugarTilesDeferred/eventui/event2-slat-gold.png
+- Assets/SugarTilesDeferred/eventui/event-logo-weekly.png
+- Assets/SugarTilesDeferred/eventui/hakan-plate-blue.png
+- Assets/SugarTilesDeferred/eventui/sticker-hediye.png
+- Assets/SugarTilesDeferred/eventui/sticker-cikolata.png
+Dependencies: []
