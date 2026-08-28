@@ -1,231 +1,169 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hawk & Mason - Mobile puzzle games</title>
-    <meta
-      name="description"
-      content="Hawk & Mason is an independent mobile game studio creating polished puzzle games, starting with Sugar Tiles."
-    >
-    <meta property="og:title" content="Hawk & Mason">
-    <meta property="og:description" content="Small worlds. Big play. Polished puzzle games for everyday moments.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/hero-dessert.png">
-    <link rel="icon" href="assets/hawk-mason-mark.png" type="image/png">
-    <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hawk &amp; Mason Studios — Mobile games &amp; apps</title>
+    <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, a sweet daily block puzzle, Ittako, a one-finger night climb, and EliteLoop, a private social discovery app." />
+    <meta property="og:title" content="Hawk & Mason Studios" />
+    <meta property="og:description" content="Mobile games & apps, crafted to keep. Makers of Sugar Tiles, Ittako and EliteLoop." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-studio.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-studio.png" />
+    <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css?v=19" />
+    <script src="app.js?v=19" defer></script>
   </head>
-  <body>
-    <header class="site-header" data-site-header>
-      <a class="brand" href="#top" aria-label="Hawk & Mason home">
-        <span class="brand-logo-container" aria-hidden="true">
-          <img src="assets/hawk-mason-mark.png" alt="" class="brand-logo-img">
-        </span>
-        <span class="brand-name">Hawk & Mason</span>
+  <body class="umbrella" data-page="home">
+    <div class="veil" data-veil aria-hidden="true"></div>
+
+    <header class="nav" data-nav>
+      <a class="brand" href="index.html" aria-label="Hawk & Mason Studios home">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason<span class="brand-suffix">Studios</span></span>
       </a>
-      <nav class="main-nav" aria-label="Primary navigation">
-        <a href="#games">Games</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#games">Games &amp; apps</a>
         <a href="#studio">Studio</a>
-        <a href="#updates">Updates</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="header-action" href="#games">See Sugar Tiles</a>
+      <a class="nav-cta" href="#games">Our work</a>
+      <button class="nav-burger" data-burger aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </header>
 
-    <main id="top">
-      <section class="hero section-shell" aria-labelledby="hero-title">
-        <div class="hero-copy reveal">
-          <h1 id="hero-title">Small worlds. Big play.</h1>
-          <p>
-            We make polished puzzle games that feel instantly clear, colorful,
-            and worth coming back to.
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Hawk &amp; Mason Studios</p>
+          <h1>Mobile games &amp; apps,<br />crafted to keep.</h1>
+          <p class="lede">
+            An independent studio building small, polished worlds for your
+            phone — from <strong>Sugar Tiles</strong>, a sweet daily block
+            puzzle, to <strong>Ittako</strong>, a toy climbing a bedroom at
+            night, to <strong>EliteLoop</strong>, a private social discovery app,
+            and <strong>AeroPulse</strong>, a live 3D aviation flight radar.
           </p>
-          <div class="action-row" aria-label="Hero actions">
-            <a class="button button-primary" href="#games">See Sugar Tiles</a>
-            <a class="button button-secondary" href="#contact">Contact</a>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#games">See our work <span aria-hidden="true">→</span></a>
+            <a class="btn btn-ghost" href="#studio">About the studio</a>
           </div>
+          <ul class="hero-meta">
+            <li><strong>3</strong> live · <strong>1</strong> in the works</li>
+            <li><strong>iOS</strong> &amp; Android</li>
+            <li><strong>100%</strong> independent</li>
+          </ul>
         </div>
-
-        <div class="hero-stage reveal" aria-label="Sugar Tiles preview">
-          <img class="hero-dessert" src="assets/hero-dessert.png" alt="">
-          <img class="burst burst-one" src="assets/candy-burst.png" alt="">
-          <div class="phone phone-main">
-            <img src="assets/sugar-classic.png" alt="Sugar Tiles classic gameplay screen">
-          </div>
-          <div class="phone phone-side">
-            <img src="assets/sugar-home.png" alt="Sugar Tiles home screen">
-          </div>
-          <div class="floating-board" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
+        <div class="hero-art" aria-hidden="true">
+          <img class="hero-mark" src="assets/hawk-mason-mark.png" alt="" />
         </div>
       </section>
 
-      <section class="section-preview" aria-hidden="true">
-        <span>Our First Game</span>
-      </section>
-
-      <section class="game-section section-shell" id="games" aria-labelledby="game-title">
-        <div class="game-media reveal">
-          <div class="phone phone-showcase">
-            <img data-showcase-image src="assets/sugar-classic.png" alt="Sugar Tiles gameplay preview">
-          </div>
-          <div class="mode-switcher" aria-label="Sugar Tiles preview modes">
-            <button class="mode-button is-active" type="button" data-mode="classic">Classic</button>
-            <button class="mode-button" type="button" data-mode="journey">Journey</button>
-            <button class="mode-button" type="button" data-mode="daily">Daily</button>
-          </div>
+      <!-- GAMES & APPS (PIVOT) -->
+      <section class="games" id="games">
+        <div class="section-head">
+          <p class="eyebrow">What we make</p>
+          <h2>Games &amp; apps</h2>
+          <p class="section-sub">Four little worlds, each its own. Tap in.</p>
         </div>
 
-        <div class="game-copy reveal">
-          <h2 id="game-title">Our First Game</h2>
-          <h3>Sugar Tiles</h3>
-          <p>
-            A sweet daily block puzzle built around clear boards, satisfying
-            line clears, and calm progression.
-          </p>
-          <p class="small-copy">
-            Place three pieces, clear rows and columns, keep the board breathing.
-          </p>
-          <div class="store-row" aria-label="Store links">
-            <a class="store-button" href="#contact" aria-label="App Store link is being prepared">App Store</a>
-            <a class="store-button" href="#contact" aria-label="Google Play link is being prepared">Google Play</a>
-          </div>
-        </div>
-
-        <div class="feature-strip reveal" aria-label="Sugar Tiles features">
-          <article class="feature-tile tile-mint">
-            <span class="feature-icon board-icon" aria-hidden="true"></span>
-            <h4>8x8 clarity</h4>
-            <p>Readable boards and calm placement decisions.</p>
-          </article>
-          <article class="feature-tile tile-lemon">
-            <span class="feature-icon path-icon" aria-hidden="true"></span>
-            <h4>Journey levels</h4>
-            <p>Progression built for short, satisfying sessions.</p>
-          </article>
-          <article class="feature-tile tile-strawberry">
-            <span class="feature-icon sun-icon" aria-hidden="true"></span>
-            <h4>Daily puzzles</h4>
-            <p>Fresh reasons to return without pressure.</p>
-          </article>
-          <article class="feature-tile tile-lime">
-            <span class="feature-icon calendar-icon" aria-hidden="true"></span>
-            <h4>Weekly events</h4>
-            <p>Light goals and playful variety over time.</p>
-          </article>
-        </div>
-      </section>
-
-      <section class="studio-section section-shell" id="studio" aria-labelledby="studio-title">
-        <div class="studio-copy reveal">
-          <h2 id="studio-title">Built for tiny moments</h2>
-          <p>
-            Hawk & Mason is a small independent studio focused on friendly
-            puzzle games, clean design, and respectful player loops.
-          </p>
-          <div class="principle-list">
-            <article class="principle-row">
-              <span class="principle-dot dot-blue" aria-hidden="true"></span>
-              <div>
-                <h3>Clear first</h3>
-                <p>A board should make sense at a glance.</p>
-              </div>
-            </article>
-            <article class="principle-row">
-              <span class="principle-dot dot-red" aria-hidden="true"></span>
-              <div>
-                <h3>Polished feel</h3>
-                <p>Every tap should feel soft, bright, and responsive.</p>
-              </div>
-            </article>
-            <article class="principle-row">
-              <span class="principle-dot dot-green" aria-hidden="true"></span>
-              <div>
-                <h3>Respectful play</h3>
-                <p>No coins, no energy, no pressure loops.</p>
-              </div>
-            </article>
-          </div>
-          <p class="location-line">From Istanbul, building for players everywhere.</p>
-        </div>
-
-        <div class="workbench reveal" aria-label="Hawk & Mason studio workbench">
-          <img src="assets/hero-dessert.png" alt="">
-          <div class="sketch-board" aria-hidden="true">
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-            <span></span><span></span><span></span><span></span>
-          </div>
-          <div class="swatch-row" aria-hidden="true">
-            <span class="swatch swatch-red"></span>
-            <span class="swatch swatch-mint"></span>
-            <span class="swatch swatch-yellow"></span>
-            <span class="swatch swatch-blue"></span>
-          </div>
-          <div class="mini-phone">
-            <img src="assets/sugar-journey.png" alt="">
-          </div>
-        </div>
-      </section>
-
-      <section class="updates-section section-shell" id="updates" aria-labelledby="updates-title">
-        <div class="updates-list reveal">
-          <h2 id="updates-title">Fresh from the workshop</h2>
-          <article class="update-row">
-            <span class="update-marker marker-red" aria-hidden="true"></span>
-            <div>
-              <h3>Sugar Tiles is taking shape</h3>
-              <p>Classic, Journey, Daily, and Weekly modes are being polished for launch.</p>
+        <div class="game-grid">
+          <!-- Sugar Tiles portal -->
+          <a class="game-card game-card--sugar" href="sugar-tiles.html"
+             data-portal data-veil="#fdeece" data-enter="sugar">
+            <div class="card-media">
+              <img src="assets/st-home.webp" alt="Sugar Tiles home screen" />
             </div>
-          </article>
-          <article class="update-row">
-            <span class="update-marker marker-blue" aria-hidden="true"></span>
-            <div>
-              <h3>A calm puzzle loop</h3>
-              <p>Place three pieces, clear lines, and keep the board open.</p>
+            <div class="card-body">
+              <span class="pill pill--game">Game · Live now</span>
+              <h3>Sugar Tiles</h3>
+              <p>A sweet daily block puzzle — 768 levels across 64 candy worlds, daily puzzles and calm, satisfying line clears.</p>
+              <span class="card-go">Enter the game <span aria-hidden="true">→</span></span>
             </div>
-          </article>
-          <article class="update-row">
-            <span class="update-marker marker-green" aria-hidden="true"></span>
-            <div>
-              <h3>Built with player trust</h3>
-              <p>Simple helpers, clear purchases, and no coin or energy economy.</p>
-            </div>
-          </article>
-        </div>
+          </a>
 
-        <div class="contact-panel reveal" id="contact">
-          <img class="contact-burst" src="assets/candy-burst.png" alt="">
-          <h2>Let&apos;s talk</h2>
-          <p>
-            For press, partnerships, or support, reach Hawk & Mason directly.
+          <!-- Ittako portal -->
+          <a class="game-card game-card--ittako" href="ittako.html"
+             data-portal data-veil="#141225" data-enter="ittako">
+            <div class="card-media">
+              <img src="assets/ittako/zirve.webp" alt="Ittako — a toy reaching the bed at dawn" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--soon">Game · In the works</span>
+              <h3>Ittako</h3>
+              <p class="card-sub">Ittako: Toy Night Climb</p>
+              <p>A small toy fell off the bed and has all night to climb back — one finger, one room, five worlds stacked on top of each other.</p>
+              <span class="card-go card-go--cream">Enter the game <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <!-- EliteLoop portal -->
+          <a class="game-card game-card--elite" href="eliteloop.html"
+             data-portal data-veil="#141317" data-enter="eliteloop">
+            <div class="card-media card-media--elite">
+              <img class="elite-shot" src="assets/eliteloop/nearby.webp" alt="EliteLoop nearby discovery screen" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--app">App · Live now</span>
+              <h3>EliteLoop</h3>
+              <p>A private social discovery app for premium events and nearby plans — badge-based access, map discovery, less noise.</p>
+              <span class="card-go card-go--gold">Enter the app <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <!-- AeroPulse portal -->
+          <a class="game-card game-card--aero" href="aeropulse.html"
+             data-portal data-veil="#060b14" data-enter="aeropulse">
+            <div class="card-media card-media--aero">
+              <img class="aero-shot" src="assets/aeropulse/radar.png" alt="AeroPulse live 3D flight radar screen" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--app" style="background: rgba(0, 229, 255, 0.15); color: #00b4d8;">App · Live now</span>
+              <h3>AeroPulse</h3>
+              <p>Real-time 3D flight radar and aviation intelligence — live ADS-B map, 3D cockpit HUD, gate-to-gate tracking, and AI turbulence forecasts.</p>
+              <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+        </div>
+        <p class="games-foot">More in the workshop — new small worlds are always in the making.</p>
+      </section>
+
+      <!-- STUDIO -->
+      <section class="studio" id="studio">
+        <div class="studio-inner">
+          <p class="eyebrow">The studio</p>
+          <h2>Hawk &amp; Mason Studios</h2>
+          <p class="studio-lede">
+            We’re an independent studio with a simple belief: the best
+            mobile products are calm, colorful and respect your time. We design
+            in-engine, test on real devices, and ship when it feels right —
+            whether that’s a daily puzzle or an aviation radar.
           </p>
-          <a class="button button-primary" href="mailto:hello@hawkmason.com">Email us</a>
-          <a class="email-link" href="mailto:hello@hawkmason.com">hello@hawkmason.com</a>
+          <a class="btn btn-primary" href="mailto:contact@hawkmason.com">Get in touch</a>
         </div>
       </section>
     </main>
 
-    <footer class="site-footer">
-      <a class="brand footer-brand" href="#top" aria-label="Hawk & Mason home">
-        <span class="brand-logo-container" aria-hidden="true">
-          <img src="assets/hawk-mason-mark.png" alt="" class="brand-logo-img">
-        </span>
-        <span class="brand-name">Hawk & Mason</span>
-      </a>
-      <nav aria-label="Footer navigation">
-        <a href="#games">Games</a>
+    <footer class="foot" id="contact">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="sugar-tiles.html">Sugar Tiles</a>
+        <a href="ittako.html">Ittako</a>
+        <a href="eliteloop.html">EliteLoop</a>
+        <a href="aeropulse.html">AeroPulse</a>
         <a href="#studio">Studio</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="#contact">Contact</a>
+        <a href="mailto:contact@hawkmason.com">Contact</a>
       </nav>
-      <p>&copy; 2026 Hawk & Mason</p>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
     </footer>
   </body>
 </html>

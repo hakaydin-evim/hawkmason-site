@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AeroPulse — Live 3D Flight Radar &amp; Aviation Intelligence · Hawk &amp; Mason Studios</title>
+    <meta name="description" content="AeroPulse brings real-time 3D flight radar, pilot cockpit HUD, gate-to-gate journey tracking, AI turbulence prediction, and live ATC tower audio directly to your phone." />
+    <meta property="og:title" content="AeroPulse — Live Flight Radar &amp; Aviation Intelligence" />
+    <meta property="og:description" content="Track global flights in real-time with 3D cockpit views, gate-to-gate milestones, AI turbulence forecasting, and live ATC tower radio." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/aeropulse.html" />
+    <meta property="og:image" content="assets/aeropulse/radar.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="assets/aeropulse/radar.png" />
+    <link rel="icon" href="assets/aeropulse/icon.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="assets/aeropulse/icon.png" />
+    <link rel="stylesheet" href="styles.css?v=20" />
+    <script src="app.js?v=20" defer></script>
+  </head>
+  <body class="aero" data-page="aeropulse">
+    <div class="veil veil--dark" data-veil aria-hidden="true"></div>
+
+    <header class="nav nav--aero" data-nav>
+      <a class="brand" href="index.html" data-back data-veil="#060b14" aria-label="Back to Hawk & Mason Studios">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--cyan" href="#download">Get AeroPulse</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="a-hero">
+        <div class="a-hero-copy">
+          <span class="a-badge">Aviation &amp; Travel App</span>
+          <h1 class="a-title">AeroPulse</h1>
+          <p class="a-lede">Next-generation real-time 3D flight radar &amp; aviation intelligence.</p>
+          <p class="a-sub">Step into 3D pilot cockpits, track flights across 7 gate-to-gate journey milestones, predict turbulence with AI, and listen to live airport control tower audio.</p>
+          <div class="store-row" id="download">
+            <a class="store-pill store-pill--ios" href="https://apps.apple.com/app/aeropulse/id6805063471" target="_blank" rel="noopener">
+              <span class="store-kicker">Download on the</span><span class="store-name">App Store</span>
+            </a>
+            <a class="store-pill store-pill--play store-pill--soon" href="#contact">
+              <span class="store-kicker">Coming soon to</span><span class="store-name">Google Play</span>
+            </a>
+          </div>
+          <p class="g-hero-meta" style="color: var(--a-muted);">iOS · 7-day free trial on PRO · <a href="mailto:support@aeropulse.app" style="color: var(--a-cyan);">support@aeropulse.app</a></p>
+        </div>
+        <div class="a-hero-art">
+          <div class="a-phone a-phone-back"><img src="assets/aeropulse/cockpit.png" alt="AeroPulse 3D Pilot Cockpit HUD" /></div>
+          <div class="a-phone a-phone-front"><img src="assets/aeropulse/radar.png" alt="AeroPulse Live Global Flight Radar" /></div>
+        </div>
+      </section>
+
+      <!-- FEATURES -->
+      <section class="a-feat">
+        <div class="section-head section-head--center">
+          <span class="a-badge">Pro Aviation Capabilities</span>
+          <h2>Everything in the sky, at your fingertips</h2>
+        </div>
+        <div class="a-feat-grid">
+          <article class="a-card">
+            <span class="a-ic">📡</span>
+            <h3>Global ADS-B Radar</h3>
+            <p>Live real-time aircraft tracking with smooth 60fps animations, altitude-coded 3D icons, and great-circle route arcs.</p>
+          </article>
+          <article class="a-card">
+            <span class="a-ic">👨‍✈️</span>
+            <h3>3D Pilot Cockpit HUD</h3>
+            <p>Experience flights from the cockpit with artificial horizon, digital speed/altitude tapes, compass heading, and 4 camera angles.</p>
+          </article>
+          <article class="a-card">
+            <span class="a-ic">⏱️</span>
+            <h3>Gate-to-Gate Timeline</h3>
+            <p>Follow journeys through 7 precise milestones: Taxi-out, Takeoff, Climb, Cruise, Descent, Touchdown, and Baggage Carousel.</p>
+          </article>
+          <article class="a-card">
+            <span class="a-ic">🌪️</span>
+            <h3>AI Turbulence &amp; Delays</h3>
+            <p>Clear-Air Turbulence (CAT) risk scoring, FL360 Jetstream tailwind calculations, and precise machine-learning arrival predictions.</p>
+          </article>
+          <article class="a-card">
+            <span class="a-ic">📱</span>
+            <h3>AR Sky Scanner</h3>
+            <p>Point your camera at the sky to lock onto overhead planes in augmented reality with live telemetry HUDs and FLIR vision.</p>
+          </article>
+          <article class="a-card">
+            <span class="a-ic">📻</span>
+            <h3>Live ATC Tower Audio</h3>
+            <p>Listen directly to live air traffic control tower frequencies, pilot communications, and audio waveform spectrums.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- LEGAL & SUPPORT -->
+      <section class="studio" style="border-top: 1px solid var(--a-line);">
+        <div class="studio-inner">
+          <span class="a-badge">Support &amp; Trust</span>
+          <h2>Privacy &amp; Contact</h2>
+          <p class="studio-lede" style="color: var(--a-muted);">
+            AeroPulse is crafted by Hawk &amp; Mason Studios. We believe in privacy by design — no intrusive trackers, guest access by default, and full account control.
+          </p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-primary" href="mailto:support@aeropulse.app">Contact Support</a>
+            <a class="btn btn-ghost" href="privacy.html" style="color: var(--a-cyan); border-color: var(--a-line);">Privacy Policy</a>
+            <a class="btn btn-ghost" href="terms.html" style="color: var(--a-cyan); border-color: var(--a-line);">Terms of Service</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot" id="contact" style="border-top: 1px solid var(--a-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="sugar-tiles.html">Sugar Tiles</a>
+        <a href="ittako.html">Ittako</a>
+        <a href="eliteloop.html">EliteLoop</a>
+        <a href="aeropulse.html">AeroPulse</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:support@aeropulse.app">Support</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
