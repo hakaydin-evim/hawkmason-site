@@ -89,7 +89,7 @@
   }
 
   /* ---- 2. Reveal on arrival (veil retracts in the product colour) ---- */
-  if ((page === 'sugar' || page === 'eliteloop' || page === 'ittako') && veil) {
+  if ((page === 'sugar' || page === 'eliteloop' || page === 'ittako' || page === 'aeropulse') && veil) {
     if (sessionStorage.getItem('hm-enter') === page && !reduce) {
       veil.classList.add('is-shown');
       requestAnimationFrame(() =>
