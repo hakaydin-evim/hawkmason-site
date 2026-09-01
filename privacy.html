@@ -31,7 +31,7 @@
     <main class="legal-main" style="max-width: 800px; margin: 40px auto 80px; padding: 0 24px; color: var(--ink);">
       <p class="eyebrow" style="color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; font-size: 0.85rem; font-weight: 700; margin-bottom: 8px;">Hawk &amp; Mason Studios</p>
       <h1 style="font-size: clamp(2.2rem, 4vw, 3.2rem); margin-bottom: 12px; line-height: 1.15;">Privacy Policy</h1>
-      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 32px;">Effective date: August 28, 2026</p>
+      <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 32px;">Effective date: September 1, 2026</p>
 
       <div style="background: var(--paper); border: 1px solid var(--line); border-radius: 20px; padding: clamp(20px, 4vw, 36px); box-shadow: var(--shadow-sm); line-height: 1.7; font-size: 1.02rem;">
         <p>
@@ -51,7 +51,7 @@
         <ul style="margin: 8px 0 16px 20px;">
           <li><strong>Flight &amp; Telemetry Data (AeroPulse):</strong> Publicly broadcasted ADS-B flight information, route waypoints, airport schedules, and turbulence models. No personal flight booking or passenger identification records are tracked.</li>
           <li><strong>Location Data:</strong> Used strictly on-device to show aircraft overhead (AeroPulse AR Scanner) or nearby venues (EliteLoop). Location is never shared with unauthorized third parties or sold to data brokers.</li>
-          <li><strong>Account &amp; Authentication:</strong> Sign in with Apple or email authentication. We support guest access and allow complete, permanent account deletion directly within the apps.</li>
+          <li><strong>Account &amp; Authentication:</strong> Sign in with Apple or email authentication. We support guest access and allow complete, permanent account deletion directly within the apps. In <strong>AeroPulse</strong>, email profiles are stored locally on your device only — there is no AeroPulse account server, so nothing syncs across devices.</li>
           <li><strong>Diagnostics &amp; Analytics:</strong> Anonymous crash reports and performance metrics to fix bugs and maintain high framerates.</li>
           <li><strong>Purchases &amp; Subscriptions:</strong> In-app purchases and subscriptions are handled securely through Apple App Store In-App Purchases (StoreKit). We never receive or store credit card details.</li>
         </ul>
@@ -60,6 +60,11 @@
         <p>
           Our apps may integrate trusted platform services including Apple StoreKit, Apple MapKit, and privacy-compliant analytics. These providers operate under strict data protection agreements.
         </p>
+        <p><strong>AeroPulse</strong> additionally uses:</p>
+        <ul style="margin: 8px 0 16px 20px;">
+          <li><strong>RevenueCat:</strong> manages PRO subscription entitlements. It processes an anonymous App User ID and your purchase/subscription status. Billing itself is handled entirely by Apple's StoreKit — RevenueCat and Hawk &amp; Mason Studios never see your card details.</li>
+          <li><strong>Google AdMob (Google Mobile Ads SDK):</strong> shows advertising to free-tier users. On iOS, AeroPulse requests App Tracking Transparency permission before showing any personalized ad; declining limits ads to non-personalized delivery. You can report an inappropriate ad directly from the app's Profile screen.</li>
+        </ul>
 
         <h2 style="font-size: 1.4rem; margin: 28px 0 12px; color: var(--ink);">4. Account &amp; Data Deletion</h2>
         <p>
