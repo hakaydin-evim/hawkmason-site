@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops — Roster, duty limits &amp; fatigue for airline crew · Hawk &amp; Mason Studios</title>
+    <meta name="description" content="Crewops reads the roster your airline already sends you and shows what it leaves you: FDP ceilings, legal rest, a fatigue indicator, a logbook with CSV export and a document wallet. Everything stays on your phone." />
+    <meta property="og:title" content="Crewops — Roster, duty limits &amp; fatigue for airline crew" />
+    <meta property="og:description" content="Import your roster, see the margin the month leaves you, and keep your own logbook. For line pilots and cabin crew. Nothing leaves the device." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/crewops.html" />
+    <meta property="og:image" content="assets/crewops/bugun.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="assets/crewops/bugun.png" />
+    <link rel="icon" href="assets/crewops/icon.png" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="assets/crewops/icon.png" />
+    <link rel="stylesheet" href="styles.css?v=22" />
+    <script src="app.js?v=22" defer></script>
+  </head>
+  <body class="crew" data-page="crewops">
+    <div class="veil veil--dark" data-veil aria-hidden="true"></div>
+
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="index.html" data-back data-veil="#070c15" aria-label="Back to Hawk &amp; Mason Studios">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--azure" href="#download">Get Crewops</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">For airline crew</span>
+          <h1 class="w-title">Crewops</h1>
+          <p class="w-lede">Your roster, read properly.</p>
+          <p class="w-sub">
+            Import the roster your airline already sends you, then see what it
+            actually leaves you: the flight duty period ceiling, the rest you are
+            owed, how the month is stacking up, and where the fatigue is coming
+            from. Built for line pilots and cabin crew, by someone who flies the
+            line.
+          </p>
+          <div class="store-row" id="download">
+            <span class="store-pill store-pill--ios store-pill--soon">
+              <span class="store-kicker">Coming soon to the</span><span class="store-name">App Store</span>
+            </span>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            iOS · 7 languages · 3-day free trial on Pro ·
+            <a href="mailto:contact@hawkmason.com" style="color: var(--w-azure);">contact@hawkmason.com</a>
+          </p>
+        </div>
+        <div class="w-hero-art" aria-hidden="true">
+          <div class="w-phone w-phone-back"><img src="assets/crewops/ritim.png" alt="" /></div>
+          <div class="w-phone w-phone-front"><img src="assets/crewops/bugun.png" alt="" /></div>
+        </div>
+      </section>
+
+      <!-- WHAT IT DOES -->
+      <section class="w-feat">
+        <div class="section-head section-head--center">
+          <span class="w-badge">What it does</span>
+          <h2 style="color: #fff;">Everything your roster does not tell you</h2>
+        </div>
+        <div class="w-grid">
+          <article class="w-card">
+            <span class="w-ic">📥</span>
+            <h3>Three ways in</h3>
+            <p>Sign in to your airline's crew portal, subscribe to an ICS calendar, or drop in the roster PDF. The PDF is read on the device, straight from its text layer, with OCR as the fallback. 273 operators are preconfigured.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">⏱️</span>
+            <h3>Limits that match your rule set</h3>
+            <p>EASA, UK CAA, FAA Part 117 and Turkish SHGM. FDP ceilings, minimum rest, cumulative duty, and the earliest they can call you again — with the margin the roster leaves, not just the numbers on it.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🌙</span>
+            <h3>Fatigue you can point at</h3>
+            <p>An indicator built from the schedule itself: WOCL encroachment, early starts, short rest, consecutive days, time-zone displacement. Never a fitness-to-fly verdict. That call stays yours.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📗</span>
+            <h3>A logbook you own</h3>
+            <p>Sectors you confirm become logbook rows. EASA and FAA CSV export whenever you want them. Cabin crew get their own flight-and-duty record with block time, duty time and night stops.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🩺</span>
+            <h3>Coaching, with sources</h3>
+            <p>Sleep, body clock, light and caffeine windows, cosmic radiation against the Euratom reference levels. Seventy-eight cards that fire off your own numbers, each naming the study or regulation behind it.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🗂️</span>
+            <h3>Documents that warn you early</h3>
+            <p>Licence, medical, passport and visa expiry dates, with reminders before they bite, and a note of which destinations need which visa.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- PRIVACY LINE -->
+      <section class="w-quote">
+        <p>Your roster, your hours and your health are on your phone, not on our server. We do not have an account system, because we do not want your data.</p>
+        <span>Crewops computes everything on the device. The only things it fetches are public weather and space-weather feeds, and your own airline's portal when you ask it to.</span>
+      </section>
+
+      <!-- SPECS -->
+      <section class="w-strip">
+        <div class="w-strip-inner">
+          <div style="text-align: center;">
+            <img src="assets/crewops/icon.png" alt="Crewops app icon" style="width: 116px; height: 116px; border-radius: 26px; box-shadow: 0 16px 36px rgba(63, 182, 245, 0.28); display: block; margin: 0 auto 10px;" />
+            <span style="font-size: 0.85rem; color: var(--w-azure); font-weight: 700; letter-spacing: 0.05em;">CREWOPS</span>
+          </div>
+          <div>
+            <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">App information</h3>
+            <ul class="w-spec">
+              <li><b>Platform:</b> iOS (iPhone)</li>
+              <li><b>Category:</b> Productivity · Travel</li>
+              <li><b>Age rating:</b> 4+</li>
+              <li><b>Developer:</b> Hawk &amp; Mason Studios</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">Compatibility &amp; languages</h3>
+            <ul class="w-spec">
+              <li><b>Requires:</b> iOS 15.1 or later</li>
+              <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR</li>
+              <li><b>Privacy:</b> No account, no server, nothing uploaded</li>
+              <li><b>Pricing:</b> Free to use, Crewops Pro subscription optional</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCREENS -->
+      <section class="w-feat">
+        <div class="section-head section-head--center">
+          <span class="w-badge">A look inside</span>
+          <h2 style="color: #fff;">Four screens crew actually open</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <figure style="margin: 0;">
+            <img src="assets/crewops/bugun.png" alt="The Today screen: next duty, report time, duty limits and the fatigue meter" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Today — the next duty, the margin, the fatigue meter.</figcaption>
+          </figure>
+          <figure style="margin: 0;">
+            <img src="assets/crewops/ritim.png" alt="The Rhythm screen: a month of duties as day lanes" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Rhythm — a month, day by day, rest and WOCL drawn in.</figcaption>
+          </figure>
+          <figure style="margin: 0;">
+            <img src="assets/crewops/saglik.png" alt="The Health screen: sleep, fatigue, radiation and body clock scores with coaching cards" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Health — sourced coaching from your own numbers.</figcaption>
+          </figure>
+          <figure style="margin: 0;">
+            <img src="assets/crewops/roster.png" alt="The Roster screen: imported duties with report, release, FDP and sectors" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Roster — every duty as imported, nothing rewritten.</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- SUPPORT -->
+      <section class="studio">
+        <div class="studio-inner">
+          <span class="w-badge">Support &amp; trust</span>
+          <h2 style="color: #fff;">Questions, bugs, or a rule set we got wrong</h2>
+          <p class="studio-lede" style="color: var(--w-muted);">
+            Crewops is not an operator's system of record and it does not replace
+            your company's crew portal or your official logbook. If a limit looks
+            wrong for your operation, tell us which rule and which duty — that is
+            the feedback that improves it fastest.
+          </p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-primary" href="crewops-support.html">Support</a>
+            <a class="btn btn-ghost" href="crewops-privacy.html" style="color: var(--w-azure); border-color: var(--w-line);">Privacy Policy</a>
+            <a class="btn btn-ghost" href="crewops-terms.html" style="color: var(--w-azure); border-color: var(--w-line);">Terms of Use</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot" id="contact" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="sugar-tiles.html">Sugar Tiles</a>
+        <a href="ittako.html">Ittako</a>
+        <a href="eliteloop.html">EliteLoop</a>
+        <a href="aeropulse.html">AeroPulse</a>
+        <a href="crewops.html">Crewops</a>
+        <a href="crewops-privacy.html">Privacy</a>
+        <a href="crewops-terms.html">Terms</a>
+        <a href="crewops-support.html">Support</a>
+        <a href="mailto:contact@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
