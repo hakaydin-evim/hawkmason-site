@@ -148,6 +148,16 @@ h1, h2, h3 { font-family: var(--display); font-weight: 800; letter-spacing: -0.0
    STUDIO
    ============================================================ */
 .studio { background: var(--paper); border-block: 1px solid var(--line); }
+/* The crew page is dark: the studio panel inherited the light studio ground
+   and the heading inside it is set to #fff, so it was white on white. */
+body.crew .studio { background: rgba(11, 22, 38, 0.55); border-block-color: var(--w-line); }
+
+/* The legal and support pages carry two short links and no burger button, so
+   the 860px rule that hides .nav-links left them with no navigation at all on
+   a phone. Two links fit at 320px. */
+@media (max-width: 860px) {
+  body.legal .nav-links { display: flex; gap: 1rem; font-size: 0.9rem; }
+}
 .studio-inner {
   max-width: 820px; margin: 0 auto; text-align: center;
   padding: clamp(3rem, 7vw, 5.5rem) clamp(1.1rem, 4vw, 3.5rem);
@@ -948,7 +958,12 @@ body.crew {
 .w-title { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; margin: 14px 0 10px; color: #fff; }
 .w-lede { font-size: clamp(1.08rem, 1.6vw, 1.3rem); color: var(--w-azure-soft); line-height: 1.6; max-width: 44ch; margin: 0 0 0.9rem; }
 .w-sub { color: var(--w-muted); line-height: 1.7; max-width: 52ch; margin: 0 0 1.6rem; }
-.w-hero-art { position: relative; min-height: 420px; }
+/* The phones are positioned absolutely and sized as a percentage of this
+   box, so their height tracks its WIDTH while a pixel min-height does not.
+   At 375px the front phone ran 62px past the hero and landed on the
+   "What it does" heading. An aspect ratio keeps the box tall enough at
+   every width: front phone = top 14% + 58% x 2.174, so 1.47 is the floor. */
+.w-hero-art { position: relative; aspect-ratio: 1 / 1.5; }
 .w-phone { position: absolute; border-radius: 30px; overflow: hidden; box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8); border: 1px solid var(--w-line); }
 .w-phone img { display: block; width: 100%; }
 .w-phone-back { width: 52%; top: 6%; left: 4%; opacity: 0.82; transform: rotate(-4deg); }
@@ -977,6 +992,7 @@ body.crew {
 
 @media (max-width: 900px) {
   .w-hero { grid-template-columns: 1fr; padding-top: 76px; }
-  .w-hero-art { min-height: 330px; }
+  /* aspect-ratio already scales this down with the column; a fixed
+     min-height here is what created the overlap. */
   .w-strip-inner { grid-template-columns: 1fr; gap: 22px; text-align: left; }
 }
