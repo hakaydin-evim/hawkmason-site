@@ -1,0 +1,6 @@
+# The sample roster is meant to be saved and handed to Crewops, not opened by
+# the Calendar app. Without this, iOS Safari treats text/calendar as something
+# to subscribe to and the file never reaches Files.
+/crewops-sample-roster.ics
+  Content-Disposition: attachment; filename="crewops-sample-roster.ics"
+  Cache-Control: public, max-age=300
