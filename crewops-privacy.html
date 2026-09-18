@@ -26,7 +26,7 @@
 
     <main class="legal-main">
       <h1>Crewops — Privacy Policy</h1>
-      <p class="legal-updated">Last updated: 14 September 2026</p>
+      <p class="legal-updated">Last updated: 18 September 2026</p>
 
       <p class="legal-lede">
         Crewops is a personal planning tool for airline crew, published by Hawk
@@ -43,6 +43,7 @@
         <a href="#portal">Your airline's crew portal</a>
         <a href="#health">Health information</a>
         <a href="#purchases">Purchases</a>
+        <a href="#icloud">iCloud sync</a>
         <a href="#basis">Legal basis &amp; transfers</a>
         <a href="#retention">Keeping &amp; deleting</a>
         <a href="#rights">Your rights</a>
@@ -69,6 +70,13 @@
         there is no server of ours. If your phone is included in an Apple device
         backup, that backup belongs to Apple and to you.
       </p>
+      <p>
+        One option changes where some of this sits, and only if you switch it on
+        yourself: <a href="#icloud">iCloud sync</a> puts an encrypted copy of part
+        of it in <em>your own</em> iCloud account so your second device can read
+        it. It is off unless you turn it on, and your sleep entries, fatigue
+        self-ratings and IMSAFE answers are never included.
+      </p>
 
       <h2 id="leaves">What leaves your device</h2>
       <p>Only these, and only for the purpose named:</p>
@@ -77,6 +85,7 @@
         <li><strong>Space weather</strong> — the app reads NOAA's public space-weather scales. The request carries nothing about you.</li>
         <li><strong>Purchase state</strong> — if you subscribe, RevenueCat, Inc. processes your subscription status on our behalf so the app knows whether Crewops Pro is active and can restore it. RevenueCat receives an app-generated identifier and the purchase information the App Store returns. It does not receive your roster, your logbook, your documents or your health entries.</li>
         <li><strong>Your airline's crew portal</strong> — only when you choose that import method. See the next section.</li>
+        <li><strong>Your own iCloud account</strong> — only if you switch iCloud sync on. See the section below for exactly what goes and what does not.</li>
         <li><strong>Anything you export yourself</strong> — a CSV logbook or a JSON copy of your data goes wherever you send it, through your own share sheet.</li>
       </ul>
       <p>
@@ -140,6 +149,55 @@
         sign into with the same Apple Account.
       </p>
 
+      <h2 id="icloud">iCloud sync</h2>
+      <p>
+        Crewops can keep your devices in step through <strong>your own iCloud
+        account</strong>. It is off when you install the app and stays off until
+        you turn it on in <strong>Me → iCloud sync</strong>, where the app tells
+        you what travels before you agree. You can turn it off again at any time,
+        which also deletes that device's copy.
+      </p>
+      <p><strong>What is copied to your iCloud:</strong></p>
+      <ul>
+        <li>Your roster — duties, flights, report and release times, and the crew named on each sector.</li>
+        <li>Your logbook confirmations and the times you attested a duty as flown.</li>
+        <li>Your document records — kind, title, number, issuer, issue and expiry dates, countries and notes.</li>
+        <li>Your crew notes and airport notes.</li>
+        <li>Your profile and display settings — name, crew code, home base, rule set, language, theme.</li>
+      </ul>
+      <p><strong>What is never copied, whatever your settings:</strong></p>
+      <ul>
+        <li><strong>Your sleep entries, fatigue self-ratings and IMSAFE answers.</strong> These are health data, and Apple does not permit personal health information to be stored in iCloud. They stay on the device that recorded them. If you want them on another phone, the JSON export is the way.</li>
+        <li><strong>Document scans and photographs.</strong> The record travels; the image does not.</li>
+        <li><strong>Your crew-portal password.</strong> It is held in your device Keychain, bound to that device, and you enter it once on the new phone.</li>
+        <li>Per-device settings such as the portal address, the last sync time and cached weather.</li>
+      </ul>
+      <p>
+        <strong>How it is protected.</strong> Each device writes a single file into
+        a private area of the app's iCloud container, and the file is encrypted by
+        the app before it is written, with AES-256-GCM. The key is generated on
+        your device and kept in your iCloud Keychain, which Apple encrypts
+        end-to-end. We never hold the key and never hold the file. Apple stores
+        the encrypted file but cannot read its contents.
+      </p>
+      <p>
+        <strong>How long it lasts, and how to remove it.</strong> The copy belongs
+        to your iCloud account, not to the app, so <em>deleting Crewops from your
+        iPhone does not delete it</em> — that is what lets your data come back on
+        a new phone. To remove it, either turn iCloud sync off in the app, which
+        deletes that device's copy, or delete the app's iCloud data from
+        <strong>Settings → your name → iCloud → Manage Account Storage</strong>.
+        The copy counts against your iCloud storage. Deleting it removes it from
+        every device signed into that account.
+      </p>
+      <p>
+        If iCloud Keychain is switched off on a device, that device cannot hold the
+        key and Crewops will not start syncing there rather than write anything
+        unencrypted. If you lose access to your iCloud Keychain, the encrypted
+        copy cannot be decrypted by anyone, including us; your own JSON export is
+        the safeguard against that.
+      </p>
+
       <h2 id="basis">Legal basis and international transfers</h2>
       <p>
         Almost everything Crewops does with your data happens on your own
@@ -173,13 +231,14 @@
 
       <h2 id="retention">How long data is kept, and how to delete it</h2>
       <p>
-        Everything Crewops holds about you stays on your device until you remove
-        it. We keep nothing, so there is nothing for us to delete on our side.
+        Everything Crewops holds about you stays on your device, or with iCloud
+        sync on in your own iCloud account, until you remove it. We keep nothing,
+        so there is nothing for us to delete on our side.
       </p>
       <ul>
         <li><strong>Delete everything in the app</strong> — <strong>Me → Data &amp; privacy → Delete everything</strong> (Turkish build: Ben → Veri ve gizlilik → Her şeyi sil) wipes the roster, logbook, documents and attachments, health entries, saved portal credentials and scheduled reminders, and returns the app to its first-launch state.</li>
         <li><strong>Export first if you want a copy</strong> — the same screen writes a full JSON copy of your data, and the logbook exports as CSV.</li>
-        <li><strong>Delete the app</strong> — removing Crewops from your iPhone deletes its storage with it.</li>
+        <li><strong>Delete the app</strong> — removing Crewops from your iPhone deletes its storage with it. If you turned iCloud sync on, the encrypted copy in <em>your</em> iCloud account is not deleted with the app; remove it as described under <a href="#icloud">iCloud sync</a>.</li>
         <li><strong>Subscription</strong> — deleting your data does not cancel a subscription. Cancel it in your Apple Account settings.</li>
       </ul>
 
