@@ -4,16 +4,16 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crewops — Roster, duty limits &amp; fatigue for airline crew · Hawk &amp; Mason Studios</title>
-    <meta name="description" content="Crewops reads the roster your airline already sends you and shows what it leaves you: FDP ceilings, legal rest, a fatigue indicator, a logbook with CSV export and a document wallet. Everything stays on your phone." />
+    <meta name="description" content="Crewops reads the roster your airline already sends you and shows what it leaves you: FDP ceilings, legal rest, a fatigue indicator, a logbook with CSV export and a document wallet. Everything is computed on the device; iPad support and optional iCloud sync arrive in the 1.1 update." />
     <meta property="og:title" content="Crewops — Roster, duty limits &amp; fatigue for airline crew" />
-    <meta property="og:description" content="Import your roster, see the margin the month leaves you, and keep your own logbook. For line pilots and cabin crew. Nothing leaves the device." />
+    <meta property="og:description" content="Import your roster, see the margin the month leaves you, and keep your own logbook. For line pilots and cabin crew. Nothing reaches us." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/crewops.html" />
-    <meta property="og:image" content="assets/crewops/bugun.png" />
+    <meta property="og:image" content="assets/crewops/bugun.png?v=2" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="assets/crewops/bugun.png" />
-    <link rel="icon" href="assets/crewops/icon.png" type="image/png" sizes="64x64" />
-    <link rel="apple-touch-icon" href="assets/crewops/icon.png" />
+    <meta name="twitter:image" content="assets/crewops/bugun.png?v=2" />
+    <link rel="icon" href="assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="assets/crewops/icon.png?v=2" />
     <link rel="stylesheet" href="styles.css?v=22" />
     <script src="app.js?v=22" defer></script>
   </head>
@@ -46,18 +46,22 @@
             line.
           </p>
           <div class="store-row" id="download">
-            <span class="store-pill store-pill--ios store-pill--soon">
-              <span class="store-kicker">Coming soon to the</span><span class="store-name">App Store</span>
-            </span>
+            <a class="store-pill store-pill--ios" href="https://apps.apple.com/app/id6811512361" target="_blank" rel="noopener">
+              <span class="store-kicker">Download on the</span><span class="store-name">App Store</span>
+            </a>
           </div>
+          <p class="g-hero-meta" style="color: var(--w-muted); margin-bottom: 4px;">
+            Version 1.1 — iPad layout, iCloud sync between your own devices, calendar
+            mirroring and report reminders — is with Apple for review.
+          </p>
           <p class="g-hero-meta" style="color: var(--w-muted);">
-            iOS · 7 languages · 7-day free trial on Pro ·
+            iPhone · 7 languages · free, with a 7-day trial on Pro ·
             <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
           </p>
         </div>
         <div class="w-hero-art" aria-hidden="true">
-          <div class="w-phone w-phone-back"><img src="assets/crewops/ritim.png" alt="" /></div>
-          <div class="w-phone w-phone-front"><img src="assets/crewops/bugun.png" alt="" /></div>
+          <div class="w-phone w-phone-back"><img src="assets/crewops/ritim.png?v=2" alt="" /></div>
+          <div class="w-phone w-phone-front"><img src="assets/crewops/bugun.png?v=2" alt="" /></div>
         </div>
       </section>
 
@@ -71,12 +75,12 @@
           <article class="w-card">
             <span class="w-ic">📥</span>
             <h3>Three ways in</h3>
-            <p>Drop in the .ics file your airline publishes, add the roster PDF, or open your airline's crew portal. The PDF is read on the device, straight from its text layer, with OCR as the fallback. 273 operators are preconfigured — they set your portal family and rule set. On NetLine/CrewLink the app signs in and pulls the roster itself; on the other systems it opens your airline's own portal and catches the file you export.</p>
+            <p>Drop in the .ics file your airline publishes, add the roster PDF, or open your airline's crew portal. The PDF is read on the device, straight from its text layer, with OCR as the fallback. 273 operators are preconfigured with their crew system and rule set, and 67 portal addresses are verified. On NetLine/CrewLink the app signs in, pulls the roster itself, and lets you acknowledge a change notice without leaving the app; on the other systems it opens your airline's own portal and catches the file you export.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">⏱️</span>
             <h3>Limits that match your rule set</h3>
-            <p>EASA, UK CAA, FAA Part 117 and Turkish SHGM. FDP ceilings, minimum rest, cumulative duty, and the earliest they can call you again — with the margin the roster leaves, not just the numbers on it.</p>
+            <p>EASA, UK CAA, FAA Part 117 and Turkish SHGM. FDP ceilings, minimum rest, cumulative duty, the 900-hour year, and the earliest they can call you again — with the margin the roster leaves, not just the numbers on it. Standby is airport, home or reserve, and each counts the way the rules say.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">🌙</span>
@@ -91,33 +95,43 @@
           <article class="w-card">
             <span class="w-ic">🩺</span>
             <h3>Coaching, with sources</h3>
-            <p>Sleep, body clock, light and caffeine windows, cosmic radiation against the Euratom reference levels. Seventy-eight cards that fire off your own numbers, each naming the study or regulation behind it.</p>
+            <p>Sleep, body clock, light and caffeine windows, cosmic radiation against the Euratom reference levels, month by month. Seventy-six cards that fire off your own numbers — 27 on fatigue, 22 on sleep, 15 on the body clock, 12 on radiation — each naming the study or regulation behind it.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">🗂️</span>
             <h3>Documents that warn you early</h3>
             <p>Licence, medical, passport and visa expiry dates, with reminders before they bite, and a note of which destinations need which visa.</p>
           </article>
+          <article class="w-card">
+            <span class="w-ic">☁️</span>
+            <h3>Your devices, in step<span style="display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid var(--w-line);border-radius:999px;font-size:0.68rem;letter-spacing:0.06em;color:var(--w-azure);vertical-align:middle;">IN 1.1</span></h3>
+            <p>Optional iCloud sync keeps your roster, logbook, documents and settings the same on every device you own, through your own iCloud account. Off by default, encrypted on the device with a key that never leaves your devices. Sleep, fatigue and IMSAFE entries never go to iCloud.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📅</span>
+            <h3>In your calendar, on time<span style="display:inline-block;margin-left:8px;padding:2px 8px;border:1px solid var(--w-line);border-radius:999px;font-size:0.68rem;letter-spacing:0.06em;color:var(--w-azure);vertical-align:middle;">IN 1.1</span></h3>
+            <p>Mirror the roster into a calendar of your choosing on the device, and get a reminder before each report time. Both are local: no server, no push, nothing leaves the phone to make them work.</p>
+          </article>
         </div>
       </section>
 
       <!-- PRIVACY LINE -->
       <section class="w-quote">
-        <p>Your roster, your hours and your health are on your phone, not on our server. We do not have an account system, because we do not want your data.</p>
-        <span>Crewops computes everything on the device. The only things it fetches are public weather and space-weather feeds, and your own airline's portal when you ask it to.</span>
+        <p>Your roster, your hours and your health are on your device, not on our server. We do not have an account system, because we do not want your data.</p>
+        <span>Crewops computes everything on the device. The only things it fetches are public weather and space-weather feeds, and your own airline's portal when you ask it to. If you switch iCloud sync on, an encrypted copy goes to your own iCloud account and nowhere else.</span>
       </section>
 
       <!-- SPECS -->
       <section class="w-strip">
         <div class="w-strip-inner">
           <div style="text-align: center;">
-            <img src="assets/crewops/icon.png" alt="Crewops app icon" style="width: 116px; height: 116px; border-radius: 26px; box-shadow: 0 16px 36px rgba(63, 182, 245, 0.28); display: block; margin: 0 auto 10px;" />
+            <img src="assets/crewops/icon.png?v=2" alt="Crewops app icon" style="width: 116px; height: 116px; border-radius: 26px; box-shadow: 0 16px 36px rgba(63, 182, 245, 0.28); display: block; margin: 0 auto 10px;" />
             <span style="font-size: 0.85rem; color: var(--w-azure); font-weight: 700; letter-spacing: 0.05em;">CREWOPS</span>
           </div>
           <div>
             <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">App information</h3>
             <ul class="w-spec">
-              <li><b>Platform:</b> iOS (iPhone)</li>
+              <li><b>Platform:</b> iPhone · iPad in the 1.1 update</li>
               <li><b>Category:</b> Business · Health &amp; Fitness</li>
               <li><b>Age rating:</b> 12+</li>
               <li><b>Developer:</b> Hawk &amp; Mason Studios</li>
@@ -128,8 +142,8 @@
             <ul class="w-spec">
               <li><b>Requires:</b> iOS 16.4 or later</li>
               <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR</li>
-              <li><b>Privacy:</b> No account, no server, nothing uploaded</li>
-              <li><b>Pricing:</b> Free to use, Crewops Pro subscription optional</li>
+              <li><b>Privacy:</b> No account, no server; iCloud sync only if you turn it on</li>
+              <li><b>Pricing:</b> Free to use · Crewops Pro $6.99/month or $49.99/year (USD), 7-day free trial</li>
             </ul>
           </div>
         </div>
@@ -143,19 +157,19 @@
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
           <figure style="margin: 0;">
-            <img src="assets/crewops/bugun.png" alt="The Today screen: next duty, report time, duty limits and the fatigue meter" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <img src="assets/crewops/bugun.png?v=2" alt="The Today screen: next duty, report time, duty limits and the fatigue meter" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
             <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Today — the next duty, the margin, the fatigue meter.</figcaption>
           </figure>
           <figure style="margin: 0;">
-            <img src="assets/crewops/ritim.png" alt="The Rhythm screen: a month of duties as day lanes" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <img src="assets/crewops/ritim.png?v=2" alt="The Rhythm screen: a month of duties as day lanes" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
             <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Rhythm — a month, day by day, rest and WOCL drawn in.</figcaption>
           </figure>
           <figure style="margin: 0;">
-            <img src="assets/crewops/saglik.png" alt="The Health screen: sleep, fatigue, radiation and body clock scores with coaching cards" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Health — sourced coaching from your own numbers.</figcaption>
+            <img src="assets/crewops/saglik.png?v=2" alt="The Health screen: sleep, fatigue, radiation and body clock scores with coaching cards" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Health — sleep, fatigue and dose scores, then sourced coaching from your own numbers.</figcaption>
           </figure>
           <figure style="margin: 0;">
-            <img src="assets/crewops/roster.png" alt="The Roster screen: imported duties with report, release, FDP and sectors" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
+            <img src="assets/crewops/roster.png?v=2" alt="The Roster screen: imported duties with report, release, FDP and sectors" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
             <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Roster — every duty as imported, nothing rewritten.</figcaption>
           </figure>
         </div>

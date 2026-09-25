@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crewops — Support · Hawk &amp; Mason Studios</title>
-    <meta name="description" content="Help with Crewops: roster import, duty limits, subscription and moving to a new phone." />
+    <meta name="description" content="Help with Crewops: roster import, duty limits, standby, calendar and reminders, iCloud sync, subscription and moving to a new device." />
     <meta name="robots" content="index,follow" />
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
@@ -45,7 +45,7 @@
       <h2>Help us help you faster</h2>
       <p>When you write about a problem, please include:</p>
       <ul>
-        <li>your device and iOS version (for example iPhone 15, iOS 18);</li>
+        <li>your device and iOS version (for example iPhone 15, iOS 18, or an iPad);</li>
         <li>the rule set you selected (EASA, UK CAA, FAA 117, SHGM);</li>
         <li>how the roster was imported — crew portal, .ics file or PDF;</li>
         <li>the duty in question, with its date and report time;</li>
@@ -54,7 +54,7 @@
       <p>
         No roster to hand? Open the
         <a href="crewops-sample-roster.ics">sample roster</a> and import it as a
-        calendar file — fourteen duties across seven weeks, a fortnight of flown sectors and five weeks ahead, enough to see every screen.
+        calendar file — fourteen duties across seven weeks, a dozen days of flown sectors and five weeks ahead, enough to see every screen.
       </p>
       <p>
         Please do not email us your crew portal password, and please remove or
@@ -64,7 +64,7 @@
       <h2>Importing a roster</h2>
       <p>There are three ways in, and they all end up in the same place:</p>
       <ul>
-        <li><strong>Crew portal</strong> — on NetLine/CrewLink the app signs in with the credentials your airline issued you and pulls the roster itself; on other systems it opens your airline's own portal and reads the file you export. The app asks your airline's system directly; we never see the password. Some airlines publish rosters only for a fixed window, and the app will not request dates beyond the period your airline has published.</li>
+        <li><strong>Crew portal</strong> — on NetLine/CrewLink the app signs in with the credentials your airline issued you and pulls the roster itself; on other systems it opens your airline's own portal and reads the file you export. The app asks your airline's system directly; we never see the password. Some airlines publish rosters only for a fixed window, and the app will not request dates beyond the period your airline has published. When NetLine holds the roster behind a change notice, the app shows you the notice and you acknowledge it inside Crewops — the same acknowledgement you would give on the portal.</li>
         <li><strong>Calendar file (.ics)</strong> — save the .ics your airline or crewing system publishes, then pick it in Crewops. It is a one-off import of that file, not a live subscription: re-import when a new one is published.</li>
         <li><strong>PDF</strong> — save the roster PDF to Files, then pick it in Crewops. It is read on your device, from the text inside the PDF where there is one, with text recognition as the fallback for scanned pages.</li>
       </ul>
@@ -72,6 +72,26 @@
         After an import, review the duties before trusting the numbers. Anything
         the parser was unsure about is flagged, and nothing reaches a calculation
         until it is confirmed.
+      </p>
+
+      <h2>Standby: airport, home or reserve</h2>
+      <p>
+        The roster says "standby" and nothing more, but the three kinds count
+        differently against your cumulative limits, so Crewops asks you which one
+        it was. Airport standby counts in full, standby elsewhere counts a
+        quarter, and reserve counts nothing. Your answer is kept across roster
+        updates. Open the duty and change it if you got it wrong.
+      </p>
+
+      <h2>Calendar and reminders</h2>
+      <p class="legal-updated">In the 1.1 update.</p>
+      <p>
+        <strong>Me → Write to calendar</strong> mirrors your duties into a
+        calendar on the device; it asks for calendar access the first time you
+        switch it on, writes only the events it created, and removes them when
+        you switch it off. <strong>Me → Report reminder</strong> schedules a local
+        notification before each report time. There is no push server: both work
+        entirely on the device, so nothing about your roster leaves it.
       </p>
 
       <h2>Why a limit might look wrong</h2>
@@ -106,16 +126,31 @@
         records behind a subscription.
       </p>
 
-      <h2>Moving to a new phone</h2>
+      <h2>iCloud sync, and moving to a new device</h2>
+      <p class="legal-updated">iCloud sync, calendar mirroring and report reminders arrive in the 1.1 update.</p>
       <p>
-        Crewops keeps everything on the device and nothing on a server, which is
-        the point of it — and it means a lost phone is a real risk. Restoring a
-        new iPhone from an Apple backup brings Crewops and its data with it. If
-        you set the new phone up as new, the data does not come back.
+        Crewops keeps everything on the device and nothing on a server of ours.
+        To keep two devices in step, or to bring your data to a new phone,
+        switch on <strong>Me → iCloud sync</strong> (Turkish build: Ben →
+        iCloud eşitleme). It is off until you turn it on. Your roster, logbook,
+        document records and settings are then copied through your own iCloud
+        account, encrypted on the device with a key kept in your iCloud Keychain;
+        we cannot read them. It needs iCloud Drive and iCloud Keychain to be on
+        for that Apple Account.
       </p>
       <p>
-        Before changing phones, open <strong>Me → Data &amp; privacy</strong>
-        (Turkish build: Ben → Veri ve gizlilik) and export a copy, and export the logbook as CSV.
+        Your sleep entries, fatigue ratings and I'M SAFE answers never go to
+        iCloud — Apple does not allow personal health information there. To move
+        them, use <strong>Export health data</strong> on the iCloud screen and
+        import the file on the other device; importing the same file twice does
+        no harm. Document scans and your portal password stay on the device they
+        were entered on.
+      </p>
+      <p>
+        Without iCloud sync, restoring a new iPhone from an Apple backup brings
+        Crewops and its data with it; setting the phone up as new does not.
+        Either way, <strong>Me → Data &amp; privacy</strong> (Turkish build: Ben →
+        Veri ve gizlilik) exports a full copy, and the logbook exports as CSV.
         Keep both somewhere you control.
       </p>
 
@@ -124,8 +159,11 @@
         <strong>Me → Data &amp; privacy → Delete everything</strong> (Turkish build:
         Ben → Veri ve gizlilik → Her şeyi sil) wipes everything the
         app holds: roster, logbook, documents and attachments, health entries,
-        saved portal credentials and reminders. Deleting the app from your iPhone
-        removes its storage too. Neither cancels a subscription.
+        saved portal credentials and reminders. Deleting the app from your device
+        removes its storage too. Neither cancels a subscription. An iCloud copy
+        belongs to your iCloud account, not to the app: turn iCloud sync off in
+        Crewops to delete that device's copy, or remove the app's data under
+        Settings → your name → iCloud → Manage Account Storage.
       </p>
 
       <h2>Reporting something serious</h2>
