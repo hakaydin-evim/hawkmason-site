@@ -396,14 +396,6 @@ body.game {
 .game-card--elite .card-body p { color: #b9b3c4; }
 .card-go--gold { color: #e6b84f; }
 
-/* ---- AeroPulse card on the umbrella grid ---- */
-.game-card--aero { cursor: pointer; background: linear-gradient(165deg, #0b1526, #060b14); border-color: #162a45; }
-.game-card--aero:hover { transform: translateY(-8px); box-shadow: 0 26px 60px -26px rgba(0, 229, 255, 0.35); }
-.card-media--aero { position: relative; padding-top: 2rem; }
-.card-media--aero .aero-shot { width: 56%; border-radius: 22px; box-shadow: 0 26px 44px -18px rgba(0, 229, 255, 0.25); transition: transform 0.3s ease; }
-.game-card--aero:hover .aero-shot { transform: translateY(-6px) scale(1.02); }
-.game-card--aero .card-body h3 { color: #fff; }
-.game-card--aero .card-body p { color: #8b9bb4; }
 .card-go--cyan { color: #00e5ff; }
 
 /* ============================================================
@@ -836,74 +828,3 @@ body.ittako h1, body.ittako h2, body.ittako h3 { color: var(--i-text); }
   display: block;
 }
 
-/* ============================================================
-   AEROPULSE PAGE — dark aviation / cyan world
-   ============================================================ */
-:root {
-  --a-bg: #060b14;
-  --a-bg2: #0b1526;
-  --a-panel: #101f38;
-  --a-cyan: #00e5ff;
-  --a-cyan-soft: #80f2ff;
-  --a-text: #f0f6fc;
-  --a-muted: #8b9bb4;
-  --a-line: rgba(0, 229, 255, 0.2);
-}
-body.aero {
-  background:
-    radial-gradient(1100px 700px at 82% -8%, #0b2447 0%, transparent 60%),
-    radial-gradient(900px 600px at -5% 100%, #06182e 0%, transparent 55%),
-    var(--a-bg);
-  color: var(--a-text);
-}
-.nav--aero { background: rgba(6, 11, 20, 0.85); backdrop-filter: blur(16px); }
-.nav--aero.is-scrolled { border-bottom: 1px solid var(--a-line); }
-.nav--aero .brand-name { color: #fff; }
-.store-btn--cyan { background: linear-gradient(135deg, #00e5ff, #0099ff); color: #060b14; font-weight: 700; }
-.store-btn--cyan:hover { box-shadow: 0 0 20px rgba(0, 229, 255, 0.4); transform: translateY(-2px); }
-
-.a-hero {
-  display: grid; grid-template-columns: 1.1fr 0.9fr; align-items: center; gap: 3rem;
-  max-width: 1180px; margin: 0 auto;
-  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.1rem, 4vw, 3.5rem);
-}
-.a-badge {
-  display: inline-block; padding: 0.35rem 0.9rem; border-radius: 999px;
-  background: rgba(0, 229, 255, 0.12); color: var(--a-cyan); font: 700 0.75rem/1 var(--text);
-  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.2rem;
-  border: 1px solid rgba(0, 229, 255, 0.3);
-}
-.a-title { font-size: clamp(2.8rem, 6vw, 4.5rem); color: #fff; margin-bottom: 1rem; line-height: 1.1; }
-.a-lede { font-size: clamp(1.1rem, 1.6vw, 1.3rem); color: var(--a-cyan-soft); line-height: 1.6; max-width: 42ch; margin: 0 0 1rem; }
-.a-sub { font-size: 1rem; color: var(--a-muted); line-height: 1.6; max-width: 46ch; margin: 0 0 2rem; }
-.a-hero-art { display: flex; justify-content: center; gap: 1.5rem; }
-.a-phone {
-  width: 240px; border-radius: 36px; overflow: hidden;
-  box-shadow: 0 28px 60px -20px rgba(0, 229, 255, 0.25), 0 0 0 8px rgba(255, 255, 255, 0.05);
-}
-.a-phone img { width: 100%; display: block; }
-.a-phone-back { transform: translateY(20px) rotate(-3deg); opacity: 0.85; }
-.a-phone-front { transform: translateY(-10px) rotate(2deg); z-index: 2; }
-
-.a-feat { max-width: 1180px; margin: 0 auto; padding: 3rem clamp(1.1rem, 4vw, 3.5rem); }
-.a-feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-.a-card {
-  background: var(--a-panel); border: 1px solid var(--a-line); border-radius: 20px;
-  padding: 1.8rem; transition: transform 0.2s ease, border-color 0.2s ease;
-}
-.a-card:hover { transform: translateY(-4px); border-color: var(--a-cyan); }
-.a-ic { font-size: 2rem; display: block; margin-bottom: 0.8rem; }
-.a-card h3 { font-size: 1.25rem; color: #fff; margin-bottom: 0.5rem; }
-.a-card p { color: var(--a-muted); font-size: 0.95rem; line-height: 1.55; margin: 0; }
-
-@media (max-width: 900px) {
-  .a-hero { grid-template-columns: 1fr; text-align: center; }
-  .a-hero-art { margin-top: 2rem; }
-  .a-lede, .a-sub { margin-inline: auto; }
-  .store-row { justify-content: center; }
-  .a-feat-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  .a-feat-grid { grid-template-columns: 1fr; }
-  .a-phone-back { display: none; }
-}
