@@ -1044,3 +1044,20 @@ body.pondr .w-strip { background: rgba(29, 32, 39, 0.5); }
 .p-distance .d-row:last-child { border-bottom: 1px solid var(--w-line); }
 .p-distance .d-day { color: var(--w-azure); font: 700 0.78rem/1.6 var(--text); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 4px; }
 .p-distance .d-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: #F3EFE7; }
+
+.p-tape { overflow: hidden; max-width: 1160px; margin: 8px auto 28px; padding: 0 24px; display: grid; gap: 10px; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.p-tape-row { overflow: hidden; }
+.p-tape-track { display: inline-flex; gap: 10px; white-space: nowrap; animation: p-slide 46s linear infinite; }
+.p-tape-row--reverse .p-tape-track { animation-direction: reverse; animation-duration: 58s; }
+@keyframes p-slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .p-tape-track { animation: none; flex-wrap: wrap; white-space: normal; } }
+.p-chip { display: inline-flex; align-items: baseline; gap: 8px; padding: 10px 16px; border-radius: 999px; border: 1px solid var(--w-line); background: rgba(29, 32, 39, 0.8); color: #F3EFE7; font: 500 0.92rem/1 var(--text); }
+.p-chip i { font-style: normal; color: var(--w-muted); font-size: 0.8rem; }
+.p-chip--core { border-color: rgba(224, 166, 90, 0.5); color: #fff; }
+.p-chip--core::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #E0A65A; align-self: center; }
+.p-chip:not(.p-chip--core)::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #8FB39E; align-self: center; }
+.p-methods { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; max-width: 1160px; margin: 0 auto; padding: 0 24px 56px; }
+.p-method { background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 22px; padding: 24px; }
+.p-method h3 { color: #fff; font-size: 1.05rem; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.p-method h3 span { color: var(--w-azure); font: 700 0.72rem/1.4 var(--text); letter-spacing: 0.06em; text-transform: uppercase; }
+.p-method p { color: var(--w-muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
