@@ -996,3 +996,51 @@ body.crew {
      min-height here is what created the overlap. */
   .w-strip-inner { grid-template-columns: 1fr; gap: 22px; text-align: left; }
 }
+
+
+/* ── Pondr ───────────────────────────────────────────────────────────────
+   The app's own palette: ink, paper and one amber. The generic w-* product
+   classes read their colours from the --w-* variables, so the page only has
+   to re-point them. */
+body.pondr {
+  --w-bg: #14161B;
+  --w-panel: rgba(29, 32, 39, 0.78);
+  --w-azure: #E0A65A;
+  --w-azure-soft: #F3EFE7;
+  --w-ink: #F3EFE7;
+  --w-muted: #9A948A;
+  --w-line: rgba(224, 166, 90, 0.22);
+  background:
+    radial-gradient(1100px 700px at 80% -10%, #2a2419 0%, transparent 62%),
+    radial-gradient(900px 640px at -8% 100%, #1a2a24 0%, transparent 58%),
+    var(--w-bg);
+  color: var(--w-ink);
+  font-family: var(--text);
+}
+body.pondr .w-badge { background: rgba(224, 166, 90, 0.14); color: var(--w-azure); }
+body.pondr .w-title, body.pondr h2 { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 600; letter-spacing: -0.01em; }
+body.pondr .w-title { font-size: clamp(3rem, 7vw, 5rem); }
+body.pondr .w-lede { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: clamp(1.3rem, 2vw, 1.7rem); }
+body.pondr .studio { background: rgba(29, 32, 39, 0.55); border-block-color: var(--w-line); }
+body.pondr .w-strip { background: rgba(29, 32, 39, 0.5); }
+.nav--pondr { background: rgba(20, 22, 27, 0.86); backdrop-filter: blur(16px); }
+.nav--pondr.is-scrolled { border-bottom: 1px solid var(--w-line); }
+.nav--pondr .brand-name { color: #fff; }
+.store-btn--amber { background: linear-gradient(135deg, #E0A65A, #C98B3E); color: #14161B; font-weight: 700; }
+.game-card--pondr { cursor: pointer; background: linear-gradient(165deg, #1D2027, #14161B); border-color: rgba(224, 166, 90, 0.22); }
+.game-card--pondr h3, .game-card--pondr p { color: #F3EFE7; }
+.game-card--pondr .card-sub { color: #9A948A; }
+.card-media--pondr { position: relative; padding-top: 2rem; }
+.card-media--pondr img { width: 62%; border-radius: 22px; border: 1px solid rgba(224, 166, 90, 0.22); box-shadow: 0 24px 50px -20px rgba(0,0,0,.8); }
+.card-go--amber { color: #E0A65A; }
+.pill--amber { background: rgba(224, 166, 90, 0.15); color: #E0A65A; }
+.p-loop { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 18px; max-width: 1160px; margin: 0 auto; padding: 0 24px 64px; counter-reset: step; }
+.p-step { background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 22px; padding: 26px 24px 24px; position: relative; }
+.p-step::before { counter-increment: step; content: counter(step); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2.6rem; line-height: 1; color: var(--w-azure); display: block; margin-bottom: 10px; }
+.p-step h3 { color: #fff; font-size: 1.05rem; margin: 0 0 8px; }
+.p-step p { color: var(--w-muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
+.p-distance { max-width: 720px; margin: 0 auto; padding: 0 24px 72px; }
+.p-distance .d-row { display: grid; grid-template-columns: 96px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--w-line); }
+.p-distance .d-row:last-child { border-bottom: 1px solid var(--w-line); }
+.p-distance .d-day { color: var(--w-azure); font: 700 0.78rem/1.6 var(--text); letter-spacing: 0.08em; text-transform: uppercase; padding-top: 4px; }
+.p-distance .d-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 1.35rem; line-height: 1.45; color: #F3EFE7; }
