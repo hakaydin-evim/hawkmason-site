@@ -95,6 +95,7 @@
         <li><strong>Space weather</strong> — the app reads NOAA's public space-weather scales. The request carries nothing about you.</li>
         <li><strong>Purchase state</strong> — if you subscribe, RevenueCat, Inc. processes your subscription status on our behalf so the app knows whether Crewops Pro is active and can restore it. RevenueCat receives an app-generated identifier and the purchase information the App Store returns. It does not receive your roster, your logbook, your documents or your health entries.</li>
         <li><strong>Your airline's crew portal</strong> — only when you choose that import method. See the next section.</li>
+        <li><strong>A calendar link you paste</strong> — if your crew system publishes your roster as a calendar link and you paste it into the app, the app downloads the calendar from that address when you refresh. The request goes only to the address you gave and carries nothing else about you; the link stays on your device.</li>
         <li><strong>Your own iCloud account</strong> — only if you switch iCloud sync on. See the section below for exactly what goes and what does not.</li>
         <li><strong>Anything you export yourself</strong> — a CSV logbook or a JSON copy of your data goes wherever you send it, through your own share sheet.</li>
         <li><strong>App updates</strong> — when it opens, the app asks updates.hawkmason.com, our own server, whether a newer version of its code is available. The request carries the app's runtime version and platform, nothing about you; updates are signed and the app refuses anything we did not sign.</li>
@@ -108,7 +109,7 @@
 
       <h2 id="portal">Your airline's crew portal</h2>
       <p>
-        One of the three ways to import a roster is to sign in to the crew portal
+        One of the ways to import a roster is to sign in to the crew portal
         your airline operates. If you use it, the username and password you enter
         are sent to <strong>your airline's own system</strong> so it can return
         your roster. They are never sent to us and we never see them.
