@@ -158,4 +158,16 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  /* ---- 7. Onizleme videosu: gorunur olunca sessiz oynar, cikinca durur; azaltilmis hareket tercihinde otomatik oynamaz ---- */
+  const watchVideo = document.querySelector('[data-watch]');
+  if (watchVideo && 'IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { watchVideo.play().catch(() => {}); }
+        else if (!watchVideo.paused) { watchVideo.pause(); }
+      });
+    }, { threshold: 0.45 });
+    io.observe(watchVideo);
+  }
 })();

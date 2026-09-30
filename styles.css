@@ -267,6 +267,23 @@ body.game {
 .phone-back { transform: translate(48px, -18px) rotate(6deg); opacity: 0.96; }
 .phone-front { transform: translate(-44px, 22px) rotate(-4deg); z-index: 2; }
 
+/* watch: onizleme videosu */
+.watch { max-width: 1180px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.1rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+.watch-copy h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin: 0.6rem 0 0.8rem; }
+.watch-copy p { color: var(--g-muted); line-height: 1.6; font-size: 1.05rem; max-width: 34rem; margin: 0 0 1.2rem; }
+.watch-points { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+.watch-points li { position: relative; padding-left: 1.4rem; color: var(--g-ink); font-weight: 600; }
+.watch-points li::before { content: ""; position: absolute; left: 0; top: 0.5em; width: 0.62rem; height: 0.62rem; border-radius: 3px; background: linear-gradient(135deg, #ff7aa8, #ffb347); transform: rotate(12deg); }
+.watch-media { display: grid; place-items: center; }
+.watch-phone { width: min(300px, 78vw); border-radius: 36px; overflow: hidden; border: 5px solid #fff; box-shadow: 0 40px 70px -30px rgba(69, 40, 63, 0.55); background: #fdeece; }
+.watch-phone video { display: block; width: 100%; height: auto; aspect-ratio: 590 / 1278; }
+@media (max-width: 860px) {
+  .watch { grid-template-columns: 1fr; text-align: center; }
+  .watch-copy p { margin-inline: auto; }
+  .watch-points { justify-items: center; }
+  .watch-points li { padding-left: 1.2rem; }
+}
+
 /* how it plays */
 .how { max-width: 1180px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.1rem, 4vw, 3.5rem); }
 .how-steps { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
