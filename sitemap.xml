@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  <url>
+    <loc>https://hawkmason.com/</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/sugar-tiles</loc>
+    <lastmod>2026-09-30</lastmod>
+    <video:video>
+      <video:thumbnail_loc>https://hawkmason.com/assets/st-preview-poster.webp</video:thumbnail_loc>
+      <video:title>Sugar Tiles gameplay preview</video:title>
+      <video:description>Thirty seconds of Sugar Tiles, a free block puzzle game: placing blocks, clearing lines, cracking crates and wiping up jam.</video:description>
+      <video:content_loc>https://hawkmason.com/assets/st-preview.mp4</video:content_loc>
+      <video:duration>29</video:duration>
+      <video:publication_date>2026-09-25</video:publication_date>
+      <video:family_friendly>yes</video:family_friendly>
+    </video:video>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/ittako</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/crewops</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/eliteloop</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/pondr/</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/sugar-tiles-privacy</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/sugar-tiles-terms</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/sugar-tiles-support</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/crewops-privacy</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/crewops-terms</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/crewops-support</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/privacy</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/terms</loc>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/support</loc>
+  </url>
+</urlset>
