@@ -284,6 +284,16 @@ body.game {
   .watch-points li { padding-left: 1.2rem; }
 }
 
+/* faq */
+.faq { max-width: 860px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.1rem, 4vw, 3.5rem); }
+.faq-list { margin-top: 2rem; display: grid; gap: 0.8rem; }
+.faq-item { background: rgba(255, 255, 255, 0.72); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 0 1.4rem; }
+.faq-item summary { cursor: pointer; list-style: none; padding: 1.15rem 2rem 1.15rem 0; position: relative; font-weight: 700; color: var(--g-ink); font-size: 1.05rem; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; position: absolute; right: 0; top: 50%; transform: translateY(-50%); font-size: 1.4rem; color: #ff7aa8; }
+.faq-item[open] summary::after { content: "–"; }
+.faq-item p { margin: 0 0 1.2rem; color: var(--g-muted); line-height: 1.6; }
+
 /* how it plays */
 .how { max-width: 1180px; margin: 0 auto; padding: clamp(2.5rem, 6vw, 4.5rem) clamp(1.1rem, 4vw, 3.5rem); }
 .how-steps { list-style: none; margin: 2.4rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
