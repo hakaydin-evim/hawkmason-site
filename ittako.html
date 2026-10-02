@@ -6,7 +6,7 @@
     <title>Ittako — A toy climbing a room at night · Hawk &amp; Mason Studios</title>
     <meta name="description" content="Ittako is a one-finger climbing game. A small toy fell off the bed and has all night to climb back — through a carpet forest, a desk the size of a cliff, and the plastic stars on the ceiling. One-time purchase, no ads, no tracking." />
     <meta property="og:title" content="Ittako — A toy climbing a room at night" />
-    <meta property="og:description" content="A small toy fell off the bed. It has all night to climb back. One finger, one room, five worlds. By Hawk & Mason Studios." />
+    <meta property="og:description" content="A small toy fell off the bed. It has all night to climb back. One finger. No ads. No tracking. By Hawk & Mason Studios." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/ittako.html" />
     <meta property="og:image" content="https://hawkmason.com/assets/og/og-ittako.png" />
@@ -15,8 +15,16 @@
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/ittako/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=19" />
-    <script src="app.js?v=19" defer></script>
+    <link rel="stylesheet" href="styles.css?v=24" />
+    <script src="app.js?v=23" defer></script>
+    <style>
+      .i-watch { max-width: 1080px; margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) clamp(1.1rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
+      .i-watch-copy h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0.6rem 0 0.8rem; }
+      .i-watch-copy p { color: var(--i-muted); line-height: 1.6; max-width: 34rem; margin: 0; }
+      .i-watch-phone { justify-self: center; width: min(300px, 78vw); border-radius: 34px; overflow: hidden; border: 4px solid #2a2540; box-shadow: 0 40px 70px -30px rgba(0, 0, 0, 0.7); background: var(--i-bg2); }
+      .i-watch-phone video { display: block; width: 100%; height: auto; aspect-ratio: 590 / 1278; }
+      @media (max-width: 820px) { .i-watch { grid-template-columns: 1fr; text-align: center; } .i-watch-copy p { margin-inline: auto; } }
+    </style>
   </head>
   <body class="ittako" data-page="ittako">
     <div class="veil" data-veil aria-hidden="true"></div>
@@ -56,11 +64,11 @@
               <span class="store-kicker">Coming soon to the</span><span class="store-name">App Store</span>
             </a>
           </div>
-          <p class="i-hero-meta">One-time purchase · No ads · No tracking · Works offline</p>
+          <p class="i-hero-meta">One-time purchase · No ads · No tracking · Optional Game Center leaderboards</p>
         </div>
         <div class="i-hero-art">
-          <div class="i-phone i-phone-back"><img src="assets/ittako/kat3.webp" alt="Ittako — climbing past the curtain, 181 metres up" /></div>
-          <div class="i-phone i-phone-front"><img src="assets/ittako/zirve.webp" alt="Ittako — reaching the bed as dawn breaks" /></div>
+          <div class="i-phone i-phone-back"><img src="assets/ittako/kat3.webp?v=2" alt="Ittako — climbing past the curtain and the moon, 150 metres up" /></div>
+          <div class="i-phone i-phone-front"><img src="assets/ittako/zirve.webp?v=2" alt="Ittako — reaching the bed at 450 metres" /></div>
         </div>
       </section>
 
@@ -69,6 +77,18 @@
         <p>It fell in the dark and nobody saw.</p>
         <p>Now the room is a mountain and the night is short.</p>
         <p>Above the bed the room ends. The climb doesn’t.</p>
+      </section>
+
+      <!-- İZLE: App Store önizleme videosunun web kopyası (aynı video, 590 px) -->
+      <section class="i-watch" id="watch">
+        <div class="i-watch-copy">
+          <span class="i-badge">See it move</span>
+          <h2>Twenty-nine seconds of night</h2>
+          <p>Every shot is the real game: the carpet, the shelves, the bed at 450 metres, and the dream above it.</p>
+        </div>
+        <div class="i-watch-phone">
+          <video data-watch src="assets/ittako/preview.mp4" poster="assets/ittako/preview-poster.webp" width="590" height="1278" muted loop playsinline controls preload="metadata" aria-label="Ittako gameplay preview video"></video>
+        </div>
       </section>
 
       <!-- NASIL OYNANIR -->
@@ -96,11 +116,11 @@
         </div>
       </section>
 
-      <!-- BEŞ DÜNYA -->
+      <!-- ODANIN BEŞ KATMANI + YATAĞIN ÜSTÜ -->
       <section class="i-worlds">
         <div class="section-head section-head--center">
           <span class="i-badge">One room</span>
-          <h2>Five worlds, stacked on top of each other</h2>
+          <h2>Five layers of one room — and the night above it</h2>
           <p class="i-worlds-sub">
             A child’s bedroom is enormous when you are the size of a toy. Every
             layer has its own light — a nightlight, a desk lamp, an aquarium,
@@ -109,38 +129,38 @@
           </p>
         </div>
         <div class="i-strip">
-          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat0.webp" alt="The Carpet Forest" /><figcaption><span class="i-n">Layer 1</span>The Carpet Forest</figcaption></figure>
-          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat1.webp" alt="The Desk" /><figcaption><span class="i-n">Layer 2</span>The Desk</figcaption></figure>
-          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat2.webp" alt="The Shelves" /><figcaption><span class="i-n">Layer 3</span>The Shelves</figcaption></figure>
-          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat3.webp" alt="The Curtain" /><figcaption><span class="i-n">Layer 4</span>The Curtain</figcaption></figure>
-          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat4.webp" alt="The Ceiling Stars" /><figcaption><span class="i-n">Layer 5</span>The Ceiling Stars</figcaption></figure>
+          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat0.webp?v=2" alt="The Carpet Forest" /><figcaption><span class="i-n">Layer 1</span>The Carpet Forest</figcaption></figure>
+          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat1.webp?v=2" alt="The Desk" /><figcaption><span class="i-n">Layer 2</span>The Desk</figcaption></figure>
+          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat2.webp?v=2" alt="The Shelves" /><figcaption><span class="i-n">Layer 3</span>The Shelves</figcaption></figure>
+          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat3.webp?v=2" alt="The Curtain &amp; Window" /><figcaption><span class="i-n">Layer 4</span>The Curtain &amp; Window</figcaption></figure>
+          <figure class="i-tile"><img loading="lazy" src="assets/ittako/kat4.webp?v=2" alt="The Ceiling Stars" /><figcaption><span class="i-n">Layer 5</span>The Ceiling Stars</figcaption></figure>
         </div>
-        <p class="i-worlds-note">And above the ceiling — where the room runs out — the Star Floor keeps going.</p>
+        <p class="i-worlds-note">The bed waits at 450 m. Above it the room runs out and the climb doesn’t: the Dream Sea, the Moon City, the Dawn Garden — and round again, as far as you can go.</p>
       </section>
 
       <!-- MODLAR -->
       <section class="i-modes">
         <div class="section-head section-head--center">
-          <span class="i-badge">Three ways to climb</span>
+          <span class="i-badge">Ways to climb</span>
           <h2>A mode for every kind of night</h2>
         </div>
         <div class="i-mode-grid">
           <article class="i-mode">
-            <img loading="lazy" src="assets/ittako/yildiz.webp" alt="The Star Floor, above the ceiling" />
+            <img loading="lazy" src="assets/ittako/yildiz.webp?v=2" alt="Above the bed, where the room runs out" />
             <div class="i-mode-info">
               <h3>The climb</h3>
-              <p>Reach the bed and the night is yours. Come back and the bed becomes a doorway — above it, the Star Floor goes on as far as you can.</p>
+              <p>Reach the bed and it throws you back up — the climb goes on as far as you can. Once you have made it, the Star Floor lets you start from the bed.</p>
             </div>
           </article>
           <article class="i-mode">
-            <img loading="lazy" src="assets/ittako/kat2.webp" alt="Daily mode — the same room for everyone" />
+            <img loading="lazy" src="assets/ittako/kat2.webp?v=2" alt="Daily mode — the same room for everyone" />
             <div class="i-mode-info">
               <h3>Daily</h3>
-              <p>The same room for everyone, once a day. The night is generated from the date, so the level you climb is the level everyone else climbs.</p>
+              <p>The same room for everyone, one try a day. The night is generated from the date, so the level you climb is the level everyone else climbs.</p>
             </div>
           </article>
           <article class="i-mode">
-            <img loading="lazy" src="assets/ittako/ruya.webp" alt="Dream mode — no falling, no counter" />
+            <img loading="lazy" src="assets/ittako/ruya.webp?v=2" alt="Dream mode — no falling, no counter" />
             <div class="i-mode-info">
               <h3>Dream</h3>
               <p>No falling. No counter. No record. Just the room. Some nights you don’t want to be measured.</p>
@@ -160,16 +180,19 @@
           <ul class="i-nots">
             <li><strong>0</strong><span>ads</span></li>
             <li><strong>0</strong><span>in-app purchases</span></li>
-            <li><strong>0</strong><span>accounts</span></li>
-            <li><strong>0</strong><span>network requests</span></li>
+            <li><strong>0</strong><span>trackers</span></li>
+            <li><strong>0</strong><span>accounts to make</span></li>
           </ul>
           <p class="i-honest-foot">
-            The last one is literal: the game contains no networking code at
-            all, so it works in airplane mode and collects nothing. Progress
-            lives in one file on your device.<br />
-            Accessibility options — longer glide, softer gravity, reduced shake
-            — are settings, not rewards. Nothing is locked behind them, and runs
-            made with them are quietly kept in a separate record.
+            No ads. No tracking. Optional Game Center leaderboards. We collect
+            nothing, and the game plays fully in airplane mode. The one thing
+            that can leave your device is your height in metres — and only if
+            you sign in to Apple’s Game Center. Progress lives in one file on
+            your device.<br />
+            Accessibility options — longer glide, softer gravity, reduced
+            shake, an energy bar — are settings, not rewards. Nothing is locked
+            behind them, and runs made with longer glide or softer gravity are
+            quietly kept in a separate record.
             <a href="ittako-privacy.html">Read the privacy policy</a>.
           </p>
         </div>
@@ -186,21 +209,22 @@
       <section class="i-specs">
         <div class="i-specs-inner">
           <div class="i-spec-col">
-            <h3>Four verbs. That’s the control scheme.</h3>
+            <h3>Tap, hold, slide. That’s the control scheme.</h3>
             <ul class="i-spec-list">
-              <li><b>Tap</b> — jump</li>
-              <li><b>Tap on a spinning arm</b> — let go and get slung</li>
+              <li><b>Tap</b> — jump; tap again in the air to flap</li>
+              <li><b>Land on a spinning arm</b> — you grip it by yourself</li>
+              <li><b>Tap on the arm</b> — let go and get slung</li>
               <li><b>Hold</b> — the propeller winds up, you glide</li>
-              <li><b>Drag while holding</b> — steer the glide</li>
+              <li><b>Slide</b> — walk on the ground, steer the glide</li>
             </ul>
           </div>
           <div class="i-spec-col">
             <h3>Good to know</h3>
             <ul class="i-spec-list">
-              <li><b>iPhone</b>, iOS 14 or later</li>
+              <li><b>iPhone and iPad</b>, iOS 15 or later, A12 chip or newer</li>
               <li><b>Portrait</b>, one hand</li>
-              <li><b>English</b></li>
-              <li><b>Works offline</b> — the game has no network code</li>
+              <li><b>49 languages</b></li>
+              <li><b>Works offline</b> — Game Center leaderboards are optional</li>
               <li><b>One-time purchase</b> — no ads, no in-app purchases</li>
             </ul>
           </div>
@@ -213,7 +237,7 @@
           <img class="i-appicon" src="assets/ittako/ikon.webp" width="132" height="132"
                alt="Ittako app icon" loading="lazy" />
           <h2>All night to climb back</h2>
-          <p>Coming to iPhone. One-time purchase, no ads, no strings.</p>
+          <p>Coming to iPhone and iPad. One-time purchase, no ads, no strings.</p>
           <div class="store-row store-row--center">
             <a class="store-pill store-pill--ios" href="#"><span class="store-kicker">Coming soon to the</span><span class="store-name">App Store</span></a>
           </div>

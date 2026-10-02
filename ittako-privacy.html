@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Ittako — Privacy Policy · Hawk &amp; Mason Studios</title>
+    <meta name="description" content="Privacy Policy for Ittako by Hawk & Mason Studios. We collect no data: no analytics, no advertising, no tracking, no account. Game Center leaderboards are optional and run by Apple." />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css?v=24" />
+    <script src="app.js?v=23" defer></script>
+  </head>
+  <body class="umbrella legal" data-page="legal">
+    <header class="nav" data-nav>
+      <a class="brand" href="index.html" aria-label="Hawk &amp; Mason Studios home">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason<span class="brand-suffix">Studios</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="ittako.html">Ittako</a>
+        <a href="ittako-support.html">Support</a>
+      </nav>
+    </header>
+
+    <main class="legal-main">
+      <h1>Ittako — Privacy Policy</h1>
+      <p class="legal-updated">Effective date: 3 October 2026</p>
+
+      <p class="legal-lede">
+        We collect nothing about you. Ittako has no analytics, no advertising,
+        no tracking, no account and no server of ours. Your save file never
+        leaves your device. The one exception is optional and belongs to
+        Apple: if you choose to sign in to Game Center, your height in metres
+        goes to the Game Center leaderboards. That number is the only thing
+        the game ever sends.
+      </p>
+      <p class="legal-identity">Hawk &amp; Mason Studios is a trading name of Hakan Aydın, an independent developer based in Türkiye. Contact: <!--email_off--><a href="mailto:hello@hawkmason.com?subject=Ittako%20Privacy">hello@hawkmason.com</a><!--email_on-->.</p>
+
+      <nav class="legal-toc" aria-label="Sections">
+        <a href="#stores">What the app stores</a>
+        <a href="#gamecenter">Game Center</a>
+        <a href="#not">What it does not do</a>
+        <a href="#apis">Required-reason APIs</a>
+        <a href="#apple">What Apple handles</a>
+        <a href="#children">Children</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <h2 id="stores">What the app stores</h2>
+      <p>
+        The game writes one file on your device, inside the app’s own private
+        storage (<code>save.json</code>, plus a backup copy). It contains only
+        game state:
+      </p>
+      <ul>
+        <li>your best height, per-layer best heights, and daily-run results;</li>
+        <li>totals: runs played, falls, metres climbed;</li>
+        <li>a short log of your last ten runs (time, height, falls);</li>
+        <li>which cosmetics you have unlocked and which are selected;</li>
+        <li>your goal level and which goals you have completed;</li>
+        <li>your settings (sound, haptics, reduced shake, accessibility options);</li>
+        <li>which tutorial hints you have already seen, and your night streak.</li>
+      </ul>
+      <p>
+        This file never leaves your device. It contains no name, no email, no
+        identifier, no device ID, no advertising ID and no location. Deleting
+        the app deletes it; <em>Settings → erase save</em> resets your
+        progress. There is no cloud save and no sync — a device backup that
+        includes app data will restore it.
+      </p>
+
+      <h2 id="gamecenter">Game Center (optional)</h2>
+      <p>
+        Game Center is Apple’s service, not ours. Signing in, your Game Center
+        nickname and the scores held on the leaderboards are governed by
+        <a href="https://www.apple.com/legal/privacy/">Apple’s Privacy Policy</a>.
+      </p>
+      <ul>
+        <li><strong>It is optional.</strong> When the game opens, iOS may show Apple’s Game Center sign-in. You can close it: every mode, goal and colour works the same, and the game plays fully offline.</li>
+        <li><strong>One number, nothing else.</strong> If you are signed in, the game sends your height in whole metres when a run ends — to an all-time leaderboard, and daily runs to a daily one. Game Center keeps your best. Your save file, settings and run log are never sent.</li>
+        <li><strong>Nothing comes to us.</strong> The game does not store your Game Center name or ID, and we have no server to send it to. Your score appears on the leaderboard under your Game Center nickname, as Game Center allows.</li>
+      </ul>
+
+      <h2 id="not">What the app does not do</h2>
+      <ul>
+        <li><strong>No connections of our own.</strong> We run no server, and the game contains no analytics, crash-reporting or advertising code. The only network path is Apple’s GameKit, used for Game Center leaderboards when you are signed in. Without it, the game is fully playable in airplane mode.</li>
+        <li><strong>No tracking.</strong> <code>NSPrivacyTracking</code> is <code>false</code>; there are no tracking domains and no data types are declared as collected.</li>
+        <li><strong>No third-party SDKs.</strong> No analytics, attribution, crash-reporting or advertising libraries are linked. The only add-on is a small open-source bridge that lets the game talk to Apple’s GameKit.</li>
+        <li><strong>No account.</strong> There is nothing to sign up for. The Game Center sign-in is Apple’s, and optional.</li>
+        <li><strong>No purchases inside the app.</strong> Ittako is a one-time paid app with no in-app purchases and no subscriptions.</li>
+      </ul>
+
+      <h2 id="apis">Required-reason APIs</h2>
+      <p>
+        Apple requires a declared reason for certain system APIs. The game
+        declares three categories and uses them only to read and write its own
+        files and to keep time — never to identify you or your device:
+      </p>
+      <ul>
+        <li>File timestamp — <code>DDA9.1</code>, <code>C617.1</code></li>
+        <li>System boot time — <code>35F9.1</code></li>
+        <li>Disk space — <code>E174.1</code>, <code>85F4.1</code></li>
+      </ul>
+
+      <h2 id="apple">What Apple handles, not us</h2>
+      <p>
+        Your purchase of the app is a transaction between you and Apple, and
+        Apple’s own privacy policy applies to it. We receive only aggregate
+        sales reports from Apple and never see who bought the game. Game
+        Center, described above, is Apple’s too.
+      </p>
+
+      <h2 id="children">Children</h2>
+      <p>
+        Ittako is rated 4+ and is safe for children: we collect nothing, there
+        is no chat, no user-generated content, no advertising and no way to
+        spend money inside the game. Game Center is optional and follows
+        Apple’s own parental controls; a child who never signs in plays the
+        whole game unchanged.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <div class="legal-callout">
+        <p>
+          Questions about this policy? Email
+          <!--email_off--><a href="mailto:hello@hawkmason.com?subject=Ittako%20Privacy">hello@hawkmason.com</a><!--email_on-->
+        </p>
+      </div>
+      <p>
+        If this policy ever changes, the effective date above changes with it.
+      </p>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="ittako.html">Ittako</a>
+        <a href="ittako-support.html">Support</a>
+        <a href="index.html">Studio</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
