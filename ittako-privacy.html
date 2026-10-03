@@ -57,7 +57,7 @@
       <ul>
         <li>your best height, per-layer best heights, and daily-run results;</li>
         <li>totals: runs played, falls, metres climbed;</li>
-        <li>a short log of your last ten runs (time, height, falls);</li>
+        <li>a short log of your last 40 runs (time, height, falls, whether a shortcut was used, whether the bed was reached);</li>
         <li>which cosmetics you have unlocked and which are selected;</li>
         <li>your goal level and which goals you have completed;</li>
         <li>your settings (sound, haptics, reduced shake, accessibility options);</li>
@@ -81,13 +81,14 @@
         <li><strong>It is optional.</strong> When the game opens, iOS may show Apple’s Game Center sign-in. You can close it: every mode, goal and colour works the same, and the game plays fully offline.</li>
         <li><strong>One number, nothing else.</strong> If you are signed in, the game sends your height in whole metres when a run ends — to an all-time leaderboard, and daily runs to a daily one. Game Center keeps your best. Your save file, settings and run log are never sent.</li>
         <li><strong>Nothing comes to us.</strong> The game does not store your Game Center name or ID, and we have no server to send it to. Your score appears on the leaderboard under your Game Center nickname, as Game Center allows.</li>
+        <li><strong>Stopping it.</strong> To stop sending your height, sign out of Game Center in your device’s Settings &gt; Game Center. Scores already on a leaderboard are held by Apple and managed under Apple’s own privacy controls.</li>
       </ul>
 
       <h2 id="not">What the app does not do</h2>
       <ul>
         <li><strong>No connections of our own.</strong> We run no server, and the game contains no analytics, crash-reporting or advertising code. The only network path is Apple’s GameKit, used for Game Center leaderboards when you are signed in. Without it, the game is fully playable in airplane mode.</li>
         <li><strong>No tracking.</strong> <code>NSPrivacyTracking</code> is <code>false</code>; there are no tracking domains and no data types are declared as collected.</li>
-        <li><strong>No third-party SDKs.</strong> No analytics, attribution, crash-reporting or advertising libraries are linked. The only add-on is a small open-source bridge that lets the game talk to Apple’s GameKit.</li>
+        <li><strong>No third-party ad or analytics SDKs.</strong> No analytics, attribution, crash-reporting or advertising libraries are linked. The only add-on is a small open-source bridge that lets the game talk to Apple’s GameKit.</li>
         <li><strong>No account.</strong> There is nothing to sign up for. The Game Center sign-in is Apple’s, and optional.</li>
         <li><strong>No purchases inside the app.</strong> Ittako is a one-time paid app with no in-app purchases and no subscriptions.</li>
       </ul>
