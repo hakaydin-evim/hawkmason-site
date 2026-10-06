@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pondr · Kendi seçtiğin bir konuya günde 15 dakika</title>
+    <meta name="description" content="Pondr, seçtiğin bir konu üzerine günde 15 dakika düşünüp yazman için bir iPhone uygulaması. Düşün, yaz, Ayna’yı oku. Terapi değil. İlk 4 seferin ücretsiz." />
+    <link rel="canonical" href="https://hawkmason.com/pondr/tr" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/pondr/" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/pondr/tr" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/pondr/" />
+    <meta property="og:title" content="Pondr · Kendi seçtiğin bir konuya günde 15 dakika" />
+    <meta property="og:description" content="Her gün tek bir soru, 15 dakika düşünmek ve birkaç satır yazı. Sonra yazdığını dışarıdan okuyan kısa bir not. 4. gün her günden kendi yazdığın bir cümle yan yana gelir." />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:url" content="https://hawkmason.com/pondr/tr" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-pondr-tr.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="iPhone’da Pondr: tek bir soru ve 15 dakikayı başlatma düğmesi olan Bugün ekranı" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-pondr-tr.png" />
+    <meta name="twitter:image:alt" content="iPhone’da Pondr: tek bir soru ve 15 dakikayı başlatma düğmesi olan Bugün ekranı" />
+    <link rel="icon" href="../assets/pondr/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="../assets/pondr/icon.png?v=2" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" />
+    <link rel="stylesheet" href="../styles.css?v=27" />
+    <style>
+      /* Page-only additions for the Pondr catalog (index.html and tr.html carry
+         the same block). Everything else comes from styles.css: body.pondr,
+         the w-* product classes and the p-* Pondr classes. */
+      body.pondr .nav-store { display: flex; align-items: center; gap: 6px; }
+      body.pondr .p-lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 8px; color: var(--w-muted); font: 700 0.8rem/1 var(--text); letter-spacing: 0.06em; border-radius: 8px; }
+      body.pondr .p-lang:hover, body.pondr .p-lang:focus-visible { color: var(--w-ink); }
+      body.pondr .w-sub + .w-sub { margin-top: -0.6rem; }
+      body.pondr .p-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
+      /* Plain rows: a name on the left, one or two short lines on the right. */
+      body.pondr .p-rows { max-width: 860px; margin: 30px auto 0; }
+      body.pondr .p-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      body.pondr .p-row:last-child { border-bottom: 1px solid var(--w-line); }
+      body.pondr .p-row dt { color: #fff; font: 600 1.12rem/1.45 'Newsreader', Georgia, serif; }
+      body.pondr .p-row dd { margin: 0; }
+      body.pondr .p-row p { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      body.pondr .p-row p + p { margin-top: 4px; color: var(--w-muted); }
+      body.pondr .p-row b { color: var(--w-azure); font-weight: 600; }
+      body.pondr .p-row .p-src { font-size: 0.85rem; }
+      body.pondr .p-src a, body.pondr .w-card a { color: var(--w-azure); text-decoration: underline; text-underline-offset: 2px; }
+      body.pondr .p-after { color: var(--w-muted); line-height: 1.65; max-width: 860px; margin: 18px auto 0; font-size: 0.95rem; }
+      /* Subjects, parts and pages: one line each, under a short group label. */
+      body.pondr .p-group, body.pondr .p-example { color: var(--w-azure); font: 700 0.75rem/1.4 var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
+      body.pondr .p-group { margin: 34px 0 0; }
+      /* A group label over plain rows sits on the rows' own edge. */
+      body.pondr .p-group--rows { max-width: 860px; margin: 34px auto 0; }
+      body.pondr .p-group--rows + .p-rows { margin-top: 10px; }
+      body.pondr .p-mods { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); column-gap: 32px; }
+      body.pondr .p-mods li { padding: 14px 0; border-top: 1px solid var(--w-line); color: var(--w-muted); line-height: 1.6; font-size: 0.96rem; }
+      body.pondr .p-mods b { display: block; color: #fff; font: 600 1.08rem/1.4 'Newsreader', Georgia, serif; margin-bottom: 2px; }
+      /* The day-4 example: a label, the two days and the step, one note. */
+      body.pondr .p-example { max-width: 720px; margin: 0 auto; padding: 0 24px 6px; text-align: center; }
+      body.pondr .p-distance { padding-bottom: 18px; }
+      body.pondr .p-note { color: var(--w-muted); font-size: 0.9rem; line-height: 1.6; max-width: 62ch; margin: 0 auto; padding: 0 24px 56px; text-align: center; }
+      body.pondr .p-list { margin: 0; padding-left: 1.1rem; color: var(--w-muted); line-height: 1.65; font-size: 0.95rem; }
+      body.pondr .p-list li + li { margin-top: 6px; }
+      body.pondr .w-card .p-list + p { margin-top: 12px; }
+      body.pondr .p-toc { max-width: 1160px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      body.pondr .p-toc a { padding: 10px 14px; border-radius: 6px; border: 1px solid var(--w-line); background: rgba(29, 32, 39, 0.8); color: var(--w-ink); font: 500 0.88rem/1 var(--text); }
+      body.pondr .p-toc a:hover, body.pondr .p-toc a:focus-visible { border-color: var(--w-azure); }
+      /* Section heads sit on the same edge as the cards at every width. */
+      body.pondr .w-feat .section-head { padding-left: 0; padding-right: 0; }
+      /* The studio --muted grey is 3.6:1 on this ground. The page's own muted is above 4.5:1. */
+      body.pondr .foot-links a { color: var(--w-muted); }
+      body.pondr .foot-links a:hover, body.pondr .foot-links a:focus-visible { color: var(--w-ink); }
+      body.pondr .brand-name { white-space: nowrap; }
+      /* Arrow, mark, studio name, language and button do not fit one line on a phone. The mark stays and still leads back. */
+      @media (max-width: 420px) { body.pondr .nav .brand-name { display: none; } }
+      @media (max-width: 560px) {
+        body.pondr .nav { padding-left: 16px; padding-right: 16px; }
+        body.pondr .w-hero, body.pondr .w-feat, body.pondr .p-distance, body.pondr .p-example,
+        body.pondr .p-note, body.pondr .p-toc, body.pondr .studio-inner, body.pondr .foot { padding-left: 16px; padding-right: 16px; }
+        body.pondr .w-grid, body.pondr .p-mods { grid-template-columns: 1fr; }
+        body.pondr .w-card { padding: 20px; }
+        body.pondr .p-row, body.pondr .p-distance .d-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+    </style>
+    <script src="../app.js?v=25" defer></script>
+  </head>
+  <body class="pondr" data-page="pondr">
+    <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#131211"></div>
+
+    <header class="nav nav--pondr" data-nav>
+      <a class="brand" href="/" data-back data-veil="#14161B" aria-label="Hawk &amp; Mason Studios ana sayfasına dön">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="p-lang" href="./" hreflang="en" lang="en" aria-label="EN, Read this page in English">EN</a>
+        <a class="store-btn store-btn--amber" href="#download">Yakında</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO: the one explanation the app, the store and the site share -->
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">Bir düşünme uygulaması</span>
+          <h1 class="w-title">Pondr</h1>
+          <p class="w-lede">Kendi seçtiğin bir konuya günde 15 dakika.</p>
+          <p class="w-sub">
+            Pondr, kendi seçtiğin bir konu üzerine düşünüp yazman için bir
+            uygulama. Amacı, kendi hayatına bir arkadaşının hayatına bakar gibi
+            dışarıdan bakman. Her gün bir soruyu 15 dakika düşünür, sonra
+            yazarsın ve Ayna’yı okursun.
+          </p>
+          <p class="w-sub">
+            Ayna, yazdıktan sonra gelen kısa bir not ve tek bir soru. Sana “sen”
+            demez. Senden adınla söz eder, örneğin “Deniz o gün neredeydi?”
+            Onları bir yapay zekâ modeli yazar. Ayna akıl vermez, övmez ve
+            senin yerine karar vermez.
+          </p>
+          <div class="store-row" id="download">
+            <span class="store-pill store-pill--ios" style="opacity:.85; cursor:default;">
+              <span class="store-kicker">Yakında</span><span class="store-name">App Store’da</span>
+            </span>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            iPhone · ilk 4 seferin ücretsiz, sonra tek bir yıllık abonelik · 18+ ·
+            <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
+          </p>
+        </div>
+        <div class="w-hero-art" aria-hidden="true">
+          <div class="w-phone w-phone-back"><img src="../assets/pondr/life-tr.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-front"><img src="../assets/pondr/today-tr.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+        </div>
+      </section>
+
+      <!-- BU SAYFADA -->
+      <nav class="p-toc" aria-label="Bu sayfada">
+        <a href="#ne-icin">Kısaca</a><a href="#parcalar">Neler var</a><a href="#icinde">Konular ve bölümler</a><a href="#yontemler">Neye dayanıyor</a><a href="#gizlilik">Gizlilik</a><a href="#guvenlik">Güvenlik</a><a href="#ucret">Ücret</a>
+      </nav>
+
+      <!-- KISACA: bu budur, buna yarar -->
+      <section class="w-feat" id="ne-icin">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Kısaca</span>
+          <h2 style="color: #fff;">Bu ne, ne işe yarar</h2>
+        </div>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Bu ne?</dt><dd><p>Günde 15 dakika düşünüp yazdığın bir uygulama. Konuyu sen seçersin.</p></dd></div>
+          <div class="p-row"><dt>Ne işe yarar?</dt><dd><p>Kafanda dönen bir şeye, bir arkadaşının derdine bakar gibi dışarıdan bakmana yardım eder.</p></dd></div>
+          <div class="p-row"><dt>Ne değil?</dt><dd><p>Sohbet botu değil. Terapi değil. Seri, rozet ve puan yok.</p></dd></div>
+          <div class="p-row"><dt>Yazdıklarıma ne olur?</dt><dd><p>Telefonunda durur. Ayna için o günkü yazın, sen izin verdikten sonra sunucumuz üzerinden OpenAI’ın modeline gider. Sunucumuz yazını saklamaz. OpenAI kötüye kullanımı denetlemek için 30 güne kadar tutabilir.</p></dd></div>
+          <div class="p-row"><dt>Ne kadar?</dt><dd><p>İlk 4 seferin ücretsiz, kart istemeyiz. Ayna’yı aldığın her 15 dakika 1 sefer sayılır, yani 4 sefer bir konunun 4 gününe yeter. Sonra tek bir yıllık abonelik: Türkiye’de yılda 1.299,99&nbsp;TL, ABD’de yılda 39,99&nbsp;$.</p></dd></div>
+          <div class="p-row"><dt>Kimin için?</dt><dd><p>18 yaş ve üstü.</p></dd></div>
+          <div class="p-row"><dt>Hangi dillerde?</dt><dd><p>Uygulama Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, Portekizce ve İtalyanca.</p></dd></div>
+        </dl>
+      </section>
+
+      <!-- NELER VAR: her parçanın işi -->
+      <section class="w-feat" id="parcalar" style="padding-bottom: 40px;">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Neler var</span>
+          <h2 style="color: #fff;">Pondr’da neler var</h2>
+          <p class="p-lead">Her parçanın tek bir işi var. İlk 4’ü ekranın altındaki sekmeler.</p>
+        </div>
+        <h3 class="p-group p-group--rows">4 sekme</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Bugün</dt><dd><p>Her gün 15 dakikayı buradan başlatırsın.</p><p><b>Ne işe yarar:</b> bugünün sorusunu görüp düşünmeye başlamak için.</p></dd></div>
+          <div class="p-row"><dt>Yazılar</dt><dd><p>Her gün için bir kart. İçinde yazın ve Ayna’nın notu durur.</p><p><b>Ne işe yarar:</b> eski bir günü açıp kendi yazdıklarını yeniden okumak için.</p></dd></div>
+          <div class="p-row"><dt>İz</dt><dd><p>Her konunun ilk ve son günü yan yana durur.</p><p><b>Ne işe yarar:</b> bir konuda neyin değiştiğini ya da aynı kaldığını görmek için.</p></dd></div>
+          <div class="p-row"><dt>Hayat</dt><dd><p>Bölümleri buradan başlatırsın. Bir bölümün sonunda yazdıkların da burada durur.</p><p><b>Ne işe yarar:</b> değerlerini, yönünü ve kararlarını tek yerde görmek için.</p></dd></div>
+        </dl>
+        <h3 class="p-group p-group--rows">4 gün boyunca her gün</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>15 dakika</dt><dd><p>Ekranda tek bir soru durur. Telefonu soruyu görebileceğin bir yere koyar, düşünürsün. Süre bitince birkaç satır yazarsın.</p><p><b>Ne işe yarar:</b> bir şeyi acele etmeden düşünmek için.</p></dd></div>
+          <div class="p-row"><dt>Ayna</dt><dd><p>Yazdıktan sonra gelen kısa bir not ve tek bir soru. Kendi konunda yarın bu soruyla devam edersin.</p><p><b>Ne işe yarar:</b> yazdığına dışarıdan bakmak için.</p></dd></div>
+          <div class="p-row"><dt>4. gün</dt><dd><p>Bir konu 4 gün sürer. 4. gün her günden kendi yazdığın bir cümle tarihiyle yan yana gelir. Sonra konuyu kapatırsın ya da devam edersin. Devam edersen istersen bir adım yazarsın: ne zaman, ne yapacaksın.</p><p><b>Ne işe yarar:</b> 4 günün sonunda nerede durduğunu görmek için. Değişmediyse bunu da görürsün.</p></dd></div>
+        </dl>
+        <h3 class="p-group p-group--rows">Bugün ekranında ayrıca</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Bir nefes</dt><dd><p>Zor bir anda 3 dakika. İstersen ne olduğunu yazarsın. Sonra ekrandaki çizgiyle nefes alırsın. Sonra etrafına bakarsın. Yazdığını yarına saklayabilir ya da silebilirsin.</p><p>Yapay zekâ yok. Pondr hiçbir şey göndermez. Herkes için ücretsiz. Tehlikedeysen bu yetmez. Yardım hatları “Bir nefes”in her adımında.</p></dd></div>
+          <div class="p-row"><dt>Günün bulmacası</dt><dd><p>Her gün küçük bir halka bulmacası, 15 dakikadan ayrı. Puan yok, süre yok.</p></dd></div>
+        </dl>
+      </section>
+
+      <!-- 4. GÜN ÖRNEĞİ: uygulamanın tanıtımındaki örnek -->
+      <p class="p-example">Örnek · Deniz’in “Babamla ilişkim” konusundaki 4 günü</p>
+      <div class="p-distance">
+        <div class="d-row"><span class="d-day">1. gün · 3 Mart</span><span class="d-text">Babamla her konuşma tartışmaya dönüyor. Ben susuyorum, o devam ediyor.</span></div>
+        <div class="d-row"><span class="d-day">4. gün · 7 Mart</span><span class="d-text">Onun sesi yüzünden susmuyorum. Haklı çıkmak istiyorum ama o masada bu olmuyor.</span></div>
+        <div class="d-row"><span class="d-day">Deniz’in adımı</span><span class="d-text">Pazar sofrasında iş konusu açılırsa, cevap vermeden önce babama bir soru soracağım.</span></div>
+      </div>
+      <p class="p-note">1. gün Deniz babasını anlatıyor. 4. gün kendini anlatıyor. İki cümleyi de Deniz yazdı. Sonra Deniz konuya devam etti ve adımı yazdı.</p>
+
+      <!-- KONULAR VE BÖLÜMLER: her biri tek satır -->
+      <section class="w-feat" id="icinde">
+        <div class="section-head section-head--center">
+          <span class="w-badge">İçinde</span>
+          <h2 style="color: #fff;">Konular, bölümler ve sayfalar</h2>
+          <p class="p-lead">Konular ve bölümler aynı 15 dakika, yalnız soruları farklı. İstediğin zaman başlatırsın. Sayfalar yazdıklarından kurulur.</p>
+        </div>
+        <h3 class="p-group">4 gün</h3>
+        <ul class="p-mods">
+          <li><b>Kendi konun</b>Aklındaki bir konuyu yazarsın ya da önerilerden seçersin. 2. günden itibaren soruyu Ayna’nın son sorusu verir.</li>
+          <li><b>Hazır konular</b>24 konu, her günün sorusu önceden yazılı. Ne düşüneceğini bilmediğin bir akşam için.</li>
+          <li><b>Değerler</b>Zamanının ve paranın gerçekte nereye gittiğine bakarsın. Sonunda vazgeçmeyeceğin 3 şeyi yazarsın.</li>
+          <li><b>Yön</b>Bir yıl sonraki bir sabahı, aradaki engeli ve bu haftaki ilk adımını yazarsın.</li>
+          <li><b>Kaçındığın</b>Ertelediğin bir şeye ve sana neye mal olduğuna bakarsın. Sonra küçük, güvenli bir adım yazarsın.</li>
+          <li><b>Bırakmak</b>Bırakmak istediğin bir alışkanlığa, hedefe ya da inanca bakarsın.</li>
+          <li><b>Karar Odası</b>Seçeneklerini yan yana yazarsın. Kararı sen verirsin.</li>
+          <li><b>Yılın zor işi</b>Bu yıl bitirmek istediğin zor ama güvenli bir iş seçersin. 3 ayda bir ara bakış ve yıl sonunda hikâye abonelikle gelir.</li>
+        </ul>
+        <h3 class="p-group">Tek gün · abonelikle</h3>
+        <ul class="p-mods">
+          <li><b>Aya bakış</b>Ayda bir, geçen ay zamanının nereye gittiğine bakarsın.</li>
+          <li><b>Bir yıl sonraya mektup</b>Bugünkü hayatını bir yıl sonraki kendine yazarsın. Mektup tam bir yıl sonra açılır.</li>
+        </ul>
+        <h3 class="p-group">Sayfalar · 15 dakika yok</h3>
+        <ul class="p-mods">
+          <li><b>Manifesto</b>Değerlerinden, yönünden ve adımlarından kurulan bir taslağı sen düzenlersin.</li>
+          <li><b>Hayat haritası</b>Değerlerin, yönün, kaçındığın şey ve zor işin 5 satırda.</li>
+          <li><b>Yılın sayfası</b>Bir yılın konuları ve sonuçları tek sayfada. Bir yıl dolunca açılır.</li>
+        </ul>
+      </section>
+
+      <!-- NEYE DAYANIYOR: ne yapar, neden, aranabilir adı ve yılı -->
+      <section class="w-feat" id="yontemler">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Neye dayanıyor</span>
+          <h2 style="color: #fff;">Nasıl çalışır, neye dayanır</h2>
+          <p class="p-lead">Her günkü 15 dakika 4 bilinen yönteme dayanır. Aşağıdaki her satır, çalışmaların ne bulduğunu söyler. Etkilerin çoğu küçüktü. Pondr’ın kendisi bir çalışmada denenmedi.</p>
+          <p class="p-lead">d ve r, bir etkinin ne kadar büyük olduğunu ölçmenin iki yolu. d için yaklaşık .2 küçük, .5 orta. r için yaklaşık .1 küçük, .3 orta.</p>
+        </div>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Kendine dışarıdan bakmak</dt><dd>
+            <p>Sorular ve Ayna sana “sen” demez. Senden adınla söz eder.</p>
+            <p>Kendinden adınla söz edince bir olaya dışarıdan bakarsın.</p>
+            <p class="p-src"><a href="https://doi.org/10.1037/a0035173">Kross ve ark., 2014</a></p>
+          </dd></div>
+          <div class="p-row"><dt>Ekrandaki soru</dt><dd>
+            <p>Soru 15 dakika ekranda durur. Telefonu soruyu görebileceğin bir yere koyarsın.</p>
+            <p>Gözünün önünde bir soru olunca düşünmek biraz kolaylaşır. Etki küçük.</p>
+            <p class="p-src"><a href="https://doi.org/10.1037/emo0000278">Westgate ve ark., 2017</a> · d = .21</p>
+          </dd></div>
+          <div class="p-row"><dt>Yaşadığını yazmak</dt><dd>
+            <p>Her gün yazıyla biter. Bir konu 4 gün sürer.</p>
+            <p>Birçok çalışmada yaşadığını yazmanın etkisi küçüktü. Bu, çalışmaların ölçtüğü her şeyin ortalaması. 3 ya da daha çok yazma oturumu olan çalışmalarda biraz daha büyüktü. 15 dakikadan kısa süre yazılan çalışmalarda ortalama bir etki görülmedi. Pondr’da 15 dakika düşünmeye ayrılır, sonra kısa bir yazı yazarsın. Bunun aynı şekilde işe yarayıp yaramadığını bilmiyoruz.</p>
+            <p class="p-src"><a href="https://doi.org/10.1037/0021-843X.95.3.274">Pennebaker ve Beall, 1986</a> · <a href="https://doi.org/10.1037/0033-2909.132.6.823">Frattaroli, 2006</a> · r = .075</p>
+          </dd></div>
+          <div class="p-row"><dt>Ne zaman, ne yapacaksın</dt><dd>
+            <p>Yön ve Kaçındığın, ne zaman ne yapacağını yazdığın bir adımla biter. Adımı sen yazarsın.</p>
+            <p>Zamanı belli bir adım, belirsiz bir niyetten daha sık atılır. Bu, her adımın atılacağı anlamına gelmez.</p>
+            <p class="p-src"><a href="https://doi.org/10.1016/S0065-2601(06)38002-1">Gollwitzer ve Sheeran, 2006</a> · d = .65</p>
+          </dd></div>
+        </dl>
+        <p class="p-after">Pondr değişim vaat etmez. Ayna’nın “neden” diye sormaması, övmemesi ve sohbet etmemesi bir bulgu değil, bizim kuralımız.</p>
+      </section>
+
+      <!-- GİZLİLİK, GÜVENLİK, ÜCRET -->
+      <section class="w-feat">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Güven ve ücret</span>
+          <h2 style="color: #fff;">Gizlilik, güvenlik ve ücret</h2>
+        </div>
+        <div class="w-grid">
+          <article class="w-card" id="gizlilik">
+            <h3>Gizlilik</h3>
+            <ul class="p-list">
+              <li>Hesap yok. E-posta ve şifre istemeyiz.</li>
+              <li>Yazdıkların telefonunda durur. iPhone yedeğin açıksa yedeğe de girer.</li>
+              <li>Ayna için o günkü yazın sunucumuz üzerinden ABD’deki OpenAI’ın yapay zekâ modeline gider. Adın, günün sorusu ve aynı konudaki önceki günlerin kısa özeti de gider. Ayarlar’da seçtiğin ton da gider. Yazdıysan değerlerin, yönün ve adımın da gider.</li>
+              <li>Göndermeden önce sorarız. Hayır dersen yazın telefonda kalır ve Ayna gelmez.</li>
+              <li>Sunucumuz yazını saklamaz. Telefonunu yalnızca rastgele bir kurulum kimliğiyle tanır. Bu kimlikle ücretsiz seferlerini sayar ve aboneliğine bakar. Aboneliğinin durumunu bu kimlikle RevenueCat tutar. Satın almayı Apple yürütür. Sunucumuz Cloudflare üzerinde çalışır.</li>
+              <li>Sunucu bir de her gün için birkaç sayı tutar. Bu sayılarda kimlik de yazı da yok.</li>
+              <li>OpenAI yazınla model eğitmez. Kötüye kullanımı denetlemek için 30 güne kadar tutabilir.</li>
+              <li>Yazdıklarını bir dosyaya aktarabilir ya da telefonundan silebilirsin. Silmek kurulum kimliğini ve kaç ücretsiz sefer kullandığını bırakır. Böylece ücretsiz seferler iki kez kullanılamaz.</li>
+            </ul>
+            <p>Tam metin <a href="privacy#tr">gizlilik politikasında</a>.</p>
+          </article>
+          <article class="w-card" id="guvenlik">
+            <h3>Güvenlik</h3>
+            <ul class="p-list">
+              <li>Pondr terapi, tıbbi bir hizmet ya da kriz hizmeti değil. Teşhis koymaz, tedavi etmez.</li>
+              <li>Zor bir dönemdeysen bir uzmanla konuş. Acil bir durumda 112’yi ya da bulunduğun yerin acil numarasını ara.</li>
+              <li>Yazında kendine ya da birine zarar verme belirtisi varsa Ayna gelmez. Yakınlarından biri sana zarar veriyorsa da Ayna gelmez. Onun yerine yardım hatları ekranı açılır. Bu ekranı insanlar yazdı.</li>
+              <li>Önce telefon bakar. Bir belirti görürse yazın gönderilmez. Sonra model de bakar. İkisi de her şeyi yakalamaz.</li>
+              <li>Yardım hatları ekranı her zaman ücretsiz.</li>
+              <li>Pondr’ı 18 yaş ve üstündekiler kullanabilir.</li>
+            </ul>
+          </article>
+          <article class="w-card" id="ucret">
+            <h3>Ücret</h3>
+            <ul class="p-list">
+              <li>İlk 4 seferin ücretsiz. Kart istemeyiz.</li>
+              <li>Ayna’yı aldığın her 15 dakika 1 sefer sayılır.</li>
+              <li>Sonra tek bir yıllık abonelik var: Türkiye’de yılda 1.299,99&nbsp;TL, ABD’de yılda 39,99&nbsp;$. Başka ülkelerde fiyatı App Store’da kendi ülkenin parasıyla görürsün.</li>
+              <li>Aylık plan, deneme süresi ve paket yok.</li>
+              <li>Aya bakış, mektup, zor işin ara bakışları ve hikâyesi abonelik ister. Bunlar 4 ücretsiz seferinin içinde değil.</li>
+              <li>Yazdıklarını okumak, dışa aktarmak ve silmek hep ücretsiz. Bir nefes ve yardım hatları da.</li>
+              <li>Abonelik her yıl Apple hesabından yenilenir. Yenilenmeden en az 24 saat önce App Store ayarlarından iptal edebilirsin.</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- DESTEK -->
+      <section class="studio">
+        <div class="studio-inner">
+          <span class="w-badge">Destek</span>
+          <h2 style="color: #fff;">Soru, hata ya da Ayna’nın yanlış okuduğu bir cümle</h2>
+          <p class="studio-lede" style="color: var(--w-muted);">
+            Ayna seni yanlış okuduysa günü ve cümleyi bize yaz. Bu, düzeltmemize
+            yardım eder. Lütfen yazılarını bize gönderme.
+          </p>
+          <div class="hero-actions" style="justify-content: center;">
+            <a class="btn btn-primary" href="support#tr" style="background: #EDE6D8; color: #131211;">Destek</a>
+            <a class="btn btn-ghost" href="privacy#tr" style="color: var(--w-azure); border-color: var(--w-line);">Gizlilik Politikası</a>
+            <a class="btn btn-ghost" href="terms#tr" style="color: var(--w-azure); border-color: var(--w-line);">Kullanım Koşulları</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Alt bağlantılar">
+        <a href="support#tr">Destek</a>
+        <a href="privacy#tr">Gizlilik</a>
+        <a href="terms#tr">Koşullar</a>
+        <a href="mailto:hello@hawkmason.com">İletişim</a>
+        <a href="./" hreflang="en" lang="en">English</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. Tüm hakları saklıdır.</p>
+    </footer>
+  </body>
+</html>

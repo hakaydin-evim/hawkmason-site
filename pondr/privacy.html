@@ -4,17 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Pondr — Privacy Policy · Hawk &amp; Mason Studios</title>
-    <meta name="description" content="Privacy Policy for Pondr, the fifteen-minute reflection app by Hawk & Mason Studios. No account; entries stay on the phone; only the day’s entry is sent, once, to prepare the mirror." />
+    <meta name="description" content="Privacy Policy for Pondr, the fifteen-minute reflection app by Hawk &amp; Mason Studios. No account. Entries stay on the phone. Only the day’s entry and the context needed to read it are sent, once, to prepare the mirror." />
     <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://hawkmason.com/pondr/privacy" />
     <link rel="icon" href="../assets/pondr/icon.png" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="../assets/pondr/icon.png" />
-    <link rel="stylesheet" href="../styles.css?v=24" />
-    <script src="../app.js?v=23" defer></script>
+    <link rel="stylesheet" href="../styles.css?v=27" />
+    <script src="../app.js?v=25" defer></script>
   </head>
   <body class="umbrella legal" data-page="legal">
     <header class="nav" data-nav>
-      <a class="brand" href="../index.html" aria-label="Hawk &amp; Mason Studios home">
-        <img class="brand-mark" src="../assets/hawk-mason-mark.png" alt="" />
+      <a class="brand" href="/" aria-label="Hawk &amp; Mason Studios home">
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason<span class="brand-suffix">Studios</span></span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -24,58 +25,84 @@
     </header>
 
     <main class="legal-main">
-      <p class="legal-identity">Pondr is published by Hawk &amp; Mason Studios, a trading name of Hakan Aydın, an independent developer based in Türkiye. Contact: <!--email_off--><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a><!--email_on-->. The Turkish text follows the English one; both say the same thing.</p>
+      <p class="legal-identity">Pondr is published by Hawk &amp; Mason Studios, a trading name of Hakan Aydın, an independent developer based in Türkiye. Contact: <!--email_off--><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a><!--email_on-->. The Turkish text follows the English one; both say the same thing. <a href="#tr" lang="tr">Türkçe metne git</a></p>
 
-      <h1 lang="en">Privacy Policy</h1>
-      <p class="legal-updated">Last updated: 26 September 2026</p>
+      <h1 lang="en" id="en">Privacy Policy</h1>
+      <p class="legal-updated">Last updated: 6 October 2026</p>
       <h2>In short</h2>
-      <p>What you write stays on your phone. No account, no ads, no data sold. Only that day’s entry is sent to a server, once, to prepare the mirror; it is not stored.</p>
+      <p>What you write stays on your phone. No account, no ads, no data sold. To prepare the mirror, only that day’s entry and the context needed to read it are sent, once, through our server. We do not store them.</p>
       <h2>What data, where</h2>
-      <p>Your name, subjects, entries, the mirror’s notes, your values, direction, letters and other outcomes are kept only in the app’s database on your phone. You can export them as text or JSON at any time and delete them entirely from Settings with “Delete everything”.</p>
+      <p>Your name, subjects, entries, the mirror’s notes, your values, direction, letters and other outcomes are kept only in the app’s database on your phone. You can export them as text or JSON at any time and delete them from your phone in Settings with “Delete everything”.</p>
       <p>If backup is turned on for your iPhone, Apple includes this database in your backup. That copy sits in your Apple account. We cannot reach it.</p>
-      <p>The app never asks you to create an account. The only thing the server knows you by is a random install id generated on your phone; it is not linked to your name or email.</p>
+      <p>The app never asks you to create an account. The only thing the server knows you by is a random install id generated on your phone. Our server does not match that id to your name or email, and it does not keep your name.</p>
       <h2>What goes to the server for the mirror</h2>
-      <p>When you finish a sitting, that day’s entry, your first name, the day’s question, a short summary of earlier days on the same subject and, if you wrote them, your values, direction and step, are sent to the server that prepares the mirror. The server passes them to OpenAI’s AI model (USA), returns the note and the question to your phone, and keeps none of it. Server logs hold timings and error codes only; entry text is never logged.</p>
-      <p>Before the first send the app asks once, explicitly; if you say no, the entry stays on your phone and no mirror is prepared. Text sent to OpenAI is not used for training; the provider’s API terms forbid it.</p>
+      <p>When you save at the end of the 15 minutes, that day’s entry, your first name, the day’s question, a short summary of earlier days on the same subject, the tone you chose in Settings, your pronoun if you picked one and, if you wrote them, your values, direction and step, are sent to the server that prepares the mirror. The server passes them to OpenAI’s AI model (USA), returns the note and the question to your phone, and keeps none of it. Server logs hold timings and error codes only; entry text is never logged.</p>
+      <p>The server also keeps a few anonymous counts for each day: how many mirrors were prepared and on which day of a subject, how many installs used up their free sessions, how many requests needed the subscription, and how many entries were sent to the support screen. Next to each count are only the date, the app’s language and whether the session was free or paid. No install id, name or text goes into these counts.</p>
+      <p>Before sending, the app asks explicitly. If you say no, the entry stays on your phone, no mirror is prepared, and the app asks again the next time you save. If you say yes, it does not ask again. You can change this in Settings at any time. Text sent to OpenAI is not used for training; the provider’s API terms forbid it. OpenAI may keep this text for up to 30 days to check for abuse.</p>
       <h2>Crisis</h2>
-      <p>Before anything is sent, your entry is checked on your phone for signs of self-harm. If found, the entry never leaves your phone and you are shown a human-written support screen.</p>
+      <p>Before anything is sent, your entry is checked on your phone for signs of suicide, self-harm, harming someone or abuse. If found, the entry never leaves your phone and you are shown a human-written support screen.</p>
+      <p>An entry that passes this check is also read for the same risks by the model that writes the mirror. If it finds one, nothing the model wrote is shown and you see the same support screen.</p>
+      <h2>A breath</h2>
+      <p>What you write in “A breath”, which you open from the Today screen, is sent nowhere, and no AI reads it. Only the crisis check on your phone reads it. It is kept on your phone only if you choose “Keep for tomorrow”. If you do not start it within 7 days, it is deleted.</p>
+      <p>The keyboard microphone is Apple’s dictation, not part of Pondr. Pondr never receives your voice, only the text it turns into. Apple may send your voice to its servers to process it. Apple’s privacy terms cover that.</p>
       <h2>Subscription</h2>
       <p>Purchases go through Apple. Subscription status is kept by RevenueCat against the install id; no name, email or entry text goes there.</p>
+      <h2>App updates</h2>
+      <p>When it opens, the app asks hawkmason.com whether there is a newer version of its own screens and texts. The request carries only the app’s version, the platform (iPhone), the number of the update you are using and a random ID the app made for this check. Your writing, your name and your subscription are not in it. We do not keep these requests. Your internet address, as with any internet request, is briefly visible to the hosting service (Cloudflare).</p>
+      <h2>Who else handles your data</h2>
+      <p>OpenAI (USA) handles your writing for the mirror. RevenueCat keeps your subscription status. Cloudflare hosts the app’s server and its updates. We use these three only to run the app for you. Apple runs the purchase and handles it under its own privacy policy, not on our behalf. We give none of them data for ads or tracking.</p>
+      <h2>How long it is kept, how to delete it</h2>
+      <p>What you write, your subjects and the mirror’s notes stay on your phone. “Delete everything” in Settings removes them from your phone. It keeps the install id and how many free sessions you used, so the free sessions cannot be used twice. Deleting the app removes everything on the phone.</p>
+      <p>Our server holds only a random id the app made and your count of free sessions. Nothing ties that id to your name, your email or any writing, so we cannot look it up for you. The server does not keep what you send for the mirror. OpenAI may keep it up to 30 days to check for misuse. To stop sending writing to OpenAI, choose “Don’t send” in Settings. After that nothing is sent. Your subscription record stays at RevenueCat under the same random id. To ask a question, write to hello@hawkmason.com.</p>
       <h2>Notifications</h2>
       <p>Reminders are scheduled locally on your phone; the server sends none.</p>
       <h2>Children</h2>
-      <p>The app is not designed for people under 16.</p>
+      <p>Pondr is for people aged 18 and over. The app is not designed for anyone under 18.</p>
       <h2>Changes and contact</h2>
       <p>If this text changes, the version in the app is updated. Questions: hello@hawkmason.com</p>
 
       <hr style="border: 0; border-top: 1px solid rgba(0,0,0,.1); margin: 3rem 0;" />
 
-      <h1 lang="tr">Gizlilik Politikası</h1>
-      <p class="legal-updated">Son güncelleme: 26 Eylül 2026</p>
+      <section lang="tr">
+      <h1 lang="tr" id="tr">Gizlilik Politikası</h1>
+      <p class="legal-updated">Son güncelleme: 6 Ekim 2026</p>
       <h2>Kısaca</h2>
-      <p>Yazdıkların telefonunda kalır. Hesap yok, reklam yok, satılan veri yok. Ayna’yı hazırlamak için yalnızca o günkü yazın bir defalığına sunucuya gönderilir; saklanmaz.</p>
+      <p>Yazdıkların telefonunda kalır. Hesap yok, reklam yok, satılan veri yok. Ayna’yı hazırlamak için yalnızca o günkü yazın ve onu okumaya yetecek kadar bağlam bir defalığına sunucumuz üzerinden gönderilir. Biz bunları saklamayız.</p>
       <h2>Hangi veri, nerede</h2>
-      <p>Adın, konuların, yazıların, Ayna’nın notları, değerlerin, yönün, mektupların ve diğer sonuçların yalnızca telefonundaki uygulama veritabanında tutulur. Bunları istediğin zaman metin ya da JSON olarak dışa aktarabilir, Ayarlar’dan “Her şeyi sil” ile tamamen silebilirsin.</p>
+      <p>Adın, konuların, yazıların, Ayna’nın notları, değerlerin, yönün, mektupların ve diğer sonuçların yalnızca telefonundaki uygulama veritabanında tutulur. Bunları istediğin zaman metin ya da JSON olarak dışa aktarabilir, Ayarlar’dan “Her şeyi sil” ile telefondan silebilirsin.</p>
       <p>iPhone’unda yedekleme açıksa Apple bu veritabanını senin yedeğine dahil eder. O kopya senin Apple hesabındadır. Biz ona erişemeyiz.</p>
-      <p>Uygulama sana hesap açtırmaz. Seni sunucuda tanıyan tek şey, telefonunda üretilen rastgele bir kurulum kimliğidir; adın ya da e-postanla ilişkilendirilmez.</p>
+      <p>Uygulama sana hesap açtırmaz. Seni sunucuda tanıyan tek şey, telefonunda üretilen rastgele bir kurulum kimliğidir. Sunucumuz bu kimliği adınla ya da e-postanla eşleştirmez ve adını saklamaz.</p>
       <h2>Ayna için sunucuya giden</h2>
-      <p>Bir oturumu bitirdiğinde o günkü yazın, adın, günün sorusu, aynı konudaki önceki günlerin kısa özeti ve (varsa) kendi cümlelerinle yazdığın değerlerin, yönün ve adımın, Ayna’yı hazırlayan sunucuya gönderilir. Sunucu bunları OpenAI’ın (ABD) yapay zekâ modeline iletir, dönen notu ve soruyu telefonuna gönderir ve kendinde tutmaz. Sunucu günlükleri yalnızca süreleri ve hata kodlarını içerir; yazının metni günlüklere yazılmaz.</p>
-      <p>İlk göndermeden önce uygulama bir kez açıkça izin ister; “gönderme” dersen yazın telefonunda kalır ve Ayna hazırlanmaz. OpenAI’a gönderilen metin eğitim için kullanılmaz; sağlayıcının API sözleşmesi bunu yasaklar.</p>
+      <p>15 dakikanın sonunda kaydettiğinde o günkü yazın, adın, günün sorusu, aynı konudaki önceki günlerin kısa özeti, Ayarlar’da seçtiğin ton, seçtiysen zamirin ve (varsa) kendi cümlelerinle yazdığın değerlerin, yönün ve adımın, Ayna’yı hazırlayan sunucuya gönderilir. Sunucu bunları OpenAI’ın (ABD) yapay zekâ modeline iletir, dönen notu ve soruyu telefonuna gönderir ve kendinde tutmaz. Sunucu günlükleri yalnızca süreleri ve hata kodlarını içerir; yazının metni günlüklere yazılmaz.</p>
+      <p>Sunucu her gün için birkaç kimliksiz sayı da tutar: kaç Ayna hazırlandı ve konunun kaçıncı günündeydi, kaç kurulum ücretsiz seferlerini bitirdi, kaç istek abonelik gerektirdi, kaç yazı destek ekranına yönlendirildi. Her sayının yanında yalnızca tarih, uygulamanın dili ve seferin ücretsiz mi ücretli mi olduğu durur. Kurulum kimliği, ad ya da yazı bu sayılara girmez.</p>
+      <p>Uygulama göndermeden önce açıkça izin ister. “Gönderme” dersen yazın telefonunda kalır, Ayna hazırlanmaz ve bir sonraki kayıtta yeniden sorar. “Gönder” dersen bir daha sormaz. Bu kararı Ayarlar’dan istediğin zaman değiştirebilirsin. OpenAI’a gönderilen metin eğitim için kullanılmaz; sağlayıcının API sözleşmesi bunu yasaklar. OpenAI, kötüye kullanımı denetlemek için bu metni 30 güne kadar saklayabilir.</p>
       <h2>Kriz durumu</h2>
-      <p>Yazın, sunucuya gitmeden önce telefonunda kendine zarar verme belirtileri açısından taranır. Böyle bir belirti bulunursa yazın telefonundan hiç çıkmaz ve sana insan yazımı bir destek ekranı gösterilir.</p>
+      <p>Yazın, sunucuya gitmeden önce telefonunda intihar, kendine zarar verme, birine zarar verme ve istismar belirtileri açısından taranır. Böyle bir belirti bulunursa yazın telefonundan hiç çıkmaz ve sana insan yazımı bir destek ekranı gösterilir.</p>
+      <p>Bu kontrolden geçen yazıyı Ayna’yı yazan model de aynı riskler için okur. Model bir risk bulursa yazdığı hiçbir şey gösterilmez ve aynı destek ekranı açılır.</p>
+      <h2>Bir nefes</h2>
+      <p>Bugün ekranından açılan “Bir nefes”te yazdığın hiçbir yere gönderilmez ve yapay zekâ onu okumaz. Onu yalnızca telefonundaki kriz kontrolü okur. Yazı yalnızca “Yarına sakla” dersen telefonunda tutulur. 7 gün içinde başlamazsan silinir.</p>
+      <p>Klavyedeki mikrofon Pondr’ın değil, Apple’ın dikte özelliği. Pondr sesini hiç almaz, yalnızca sesinden çıkan yazıyı görür. Apple sesini işlemek için kendi sunucularına gönderebilir. Bu, Apple’ın gizlilik koşullarına göre olur.</p>
       <h2>Abonelik</h2>
       <p>Satın alma Apple üzerinden yapılır. Aboneliğin durumu, RevenueCat adlı hizmette kurulum kimliğine bağlı olarak tutulur; ad, e-posta ya da yazı içeriği bu hizmete gitmez.</p>
+      <h2>Uygulama güncellemeleri</h2>
+      <p>Uygulama açılırken, kendi ekranlarının ve yazılarının yeni bir sürümü var mı diye hawkmason.com’a sorar. Bu istek yalnızca uygulamanın sürümünü, platformu (iPhone), o an kullandığın güncellemenin numarasını ve uygulamanın bu kontrol için ürettiği rastgele bir kimliği taşır. Yazdıkların, adın ve aboneliğin bu istekte yer almaz. Biz bu istekleri saklamayız. İnternet adresin, her internet isteğinde olduğu gibi, barındırma hizmetinde (Cloudflare) kısa süre görünür.</p>
+      <h2>Veriyi başka kimler işler</h2>
+      <p>Ayna için yazını OpenAI (ABD) işler. Aboneliğinin durumunu RevenueCat tutar. Uygulamanın sunucusunu ve güncellemelerini Cloudflare barındırır. Bu üçünü yalnızca uygulamayı sana sunmak için kullanırız. Satın almayı Apple yürütür ve bunu kendi gizlilik şartlarına göre işler, bizim adımıza değil. Hiçbirine reklam ya da izleme için veri vermeyiz.</p>
+      <h2>Ne kadar saklanır, nasıl silinir</h2>
+      <p>Yazdıkların, konuların ve Ayna’nın notları telefonunda durur. Ayarlar’daki “Her şeyi sil” bunları telefonundan siler. Kurulum kimliğini ve kaç ücretsiz sefer kullandığını bırakır. Böylece ücretsiz seferler iki kez kullanılamaz. Uygulamayı silmek telefondaki her şeyi siler.</p>
+      <p>Sunucumuzda yalnızca uygulamanın ürettiği rastgele kimlik ve ücretsiz sefer sayın durur. Hiçbir şey bu kimliği adına, e-postana ya da yazına bağlamaz. Bu yüzden senin için bulamayız. Ayna için gönderdiğin yazıyı sunucumuz saklamaz. OpenAI kötüye kullanımı denetlemek için onu 30 güne kadar tutabilir. Yazını OpenAI’a göndermeyi durdurmak için Ayarlar’da “Gönderme”yi seç. Bundan sonra hiçbir şey gitmez. Abonelik kaydı RevenueCat’te aynı rastgele kimlikle durur. Sormak için hello@hawkmason.com’a yaz.</p>
       <h2>Bildirimler</h2>
       <p>Hatırlatıcılar telefonunda yerel olarak kurulur; sunucudan bildirim gönderilmez.</p>
       <h2>Çocuklar</h2>
-      <p>Uygulama 16 yaş altı için tasarlanmamıştır.</p>
+      <p>Pondr 18 yaş ve üzeri içindir. Uygulama 18 yaşından küçükler için tasarlanmamıştır.</p>
       <h2>Değişiklikler ve iletişim</h2>
       <p>Bu metin değişirse uygulamadaki sürüm güncellenir. Sorular için: hello@hawkmason.com</p>
+      </section>
     </main>
 
     <footer class="foot">
       <div class="foot-brand">
-        <img class="brand-mark" src="../assets/hawk-mason-mark.png" alt="" />
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
       </div>
       <nav class="foot-links" aria-label="Footer">

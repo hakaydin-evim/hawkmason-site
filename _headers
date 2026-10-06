@@ -4,3 +4,11 @@
 /crewops-sample-roster.ics
   Content-Disposition: attachment; filename="crewops-sample-roster.ics"
   Cache-Control: public, max-age=300
+
+# Every page. Only headers that cannot break a page of this site.
+# Deliberately not set: Content-Security-Policy (inline scripts, the YouTube
+# game script and the Unity loader in playables/ would be blocked) and
+# X-Frame-Options (playables/sugar-tiles/ is built to run inside a frame).
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin

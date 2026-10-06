@@ -3,52 +3,122 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pondr — Fifteen minutes a day, on a subject you chose · Hawk &amp; Mason Studios</title>
-    <meta name="description" content="Pondr gives one subject a fifteen-minute appointment a day: a concrete question stays on the screen while the phone lies face down, then you write, then a mirror reads it back in the third person and asks one question. On the fourth day your own sentences sit side by side. No streaks, no scores, no account." />
-    <meta property="og:title" content="Pondr — Fifteen minutes a day, on a subject you chose" />
-    <meta property="og:description" content="One question a day, fifteen minutes with the phone face down, a page of writing, a mirror that reads it back from outside. On day four you see how your own sentences changed." />
+    <title>Pondr · 15 minutes a day on a subject you chose</title>
+    <meta name="description" content="Pondr is an iPhone app for thinking and writing about one subject you chose, 15 minutes a day. Think, write, read the mirror. Not therapy. 4 free sessions." />
+    <link rel="canonical" href="https://hawkmason.com/pondr/" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/pondr/" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/pondr/tr" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/pondr/" />
+    <meta property="og:title" content="Pondr · 15 minutes a day on a subject you chose" />
+    <meta property="og:description" content="One question a day, 15 minutes of thinking and a few lines of writing. Then a short note that reads it from the outside. On day 4, your own sentences sit side by side." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://hawkmason.com/pondr" />
-    <meta property="og:image" content="https://hawkmason.com/assets/pondr/bugun.png?v=2" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
+    <meta property="og:url" content="https://hawkmason.com/pondr/" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-pondr-en.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pondr on an iPhone: the Today screen with one question and a button to start the 15 minutes" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://hawkmason.com/assets/pondr/bugun.png?v=2" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-pondr-en.png" />
+    <meta name="twitter:image:alt" content="Pondr on an iPhone: the Today screen with one question and a button to start the 15 minutes" />
     <link rel="icon" href="../assets/pondr/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="../assets/pondr/icon.png?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" />
-    <link rel="stylesheet" href="../styles.css?v=24" />
-    <script src="../app.js?v=23" defer></script>
+    <link rel="stylesheet" href="../styles.css?v=27" />
+    <style>
+      /* Page-only additions for the Pondr catalog (index.html and tr.html carry
+         the same block). Everything else comes from styles.css: body.pondr,
+         the w-* product classes and the p-* Pondr classes. */
+      body.pondr .nav-store { display: flex; align-items: center; gap: 6px; }
+      body.pondr .p-lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 8px; color: var(--w-muted); font: 700 0.8rem/1 var(--text); letter-spacing: 0.06em; border-radius: 8px; }
+      body.pondr .p-lang:hover, body.pondr .p-lang:focus-visible { color: var(--w-ink); }
+      body.pondr .w-sub + .w-sub { margin-top: -0.6rem; }
+      body.pondr .p-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
+      /* Plain rows: a name on the left, one or two short lines on the right. */
+      body.pondr .p-rows { max-width: 860px; margin: 30px auto 0; }
+      body.pondr .p-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      body.pondr .p-row:last-child { border-bottom: 1px solid var(--w-line); }
+      body.pondr .p-row dt { color: #fff; font: 600 1.12rem/1.45 'Newsreader', Georgia, serif; }
+      body.pondr .p-row dd { margin: 0; }
+      body.pondr .p-row p { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      body.pondr .p-row p + p { margin-top: 4px; color: var(--w-muted); }
+      body.pondr .p-row b { color: var(--w-azure); font-weight: 600; }
+      body.pondr .p-row .p-src { font-size: 0.85rem; }
+      body.pondr .p-src a, body.pondr .w-card a { color: var(--w-azure); text-decoration: underline; text-underline-offset: 2px; }
+      body.pondr .p-after { color: var(--w-muted); line-height: 1.65; max-width: 860px; margin: 18px auto 0; font-size: 0.95rem; }
+      /* Subjects, parts and pages: one line each, under a short group label. */
+      body.pondr .p-group, body.pondr .p-example { color: var(--w-azure); font: 700 0.75rem/1.4 var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
+      body.pondr .p-group { margin: 34px 0 0; }
+      /* A group label over plain rows sits on the rows' own edge. */
+      body.pondr .p-group--rows { max-width: 860px; margin: 34px auto 0; }
+      body.pondr .p-group--rows + .p-rows { margin-top: 10px; }
+      body.pondr .p-mods { list-style: none; padding: 0; margin: 10px 0 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); column-gap: 32px; }
+      body.pondr .p-mods li { padding: 14px 0; border-top: 1px solid var(--w-line); color: var(--w-muted); line-height: 1.6; font-size: 0.96rem; }
+      body.pondr .p-mods b { display: block; color: #fff; font: 600 1.08rem/1.4 'Newsreader', Georgia, serif; margin-bottom: 2px; }
+      /* The day-4 example: a label, the two days and the step, one note. */
+      body.pondr .p-example { max-width: 720px; margin: 0 auto; padding: 0 24px 6px; text-align: center; }
+      body.pondr .p-distance { padding-bottom: 18px; }
+      body.pondr .p-note { color: var(--w-muted); font-size: 0.9rem; line-height: 1.6; max-width: 62ch; margin: 0 auto; padding: 0 24px 56px; text-align: center; }
+      body.pondr .p-list { margin: 0; padding-left: 1.1rem; color: var(--w-muted); line-height: 1.65; font-size: 0.95rem; }
+      body.pondr .p-list li + li { margin-top: 6px; }
+      body.pondr .w-card .p-list + p { margin-top: 12px; }
+      body.pondr .p-toc { max-width: 1160px; margin: 0 auto; padding: 0 24px 40px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+      body.pondr .p-toc a { padding: 10px 14px; border-radius: 6px; border: 1px solid var(--w-line); background: rgba(29, 32, 39, 0.8); color: var(--w-ink); font: 500 0.88rem/1 var(--text); }
+      body.pondr .p-toc a:hover, body.pondr .p-toc a:focus-visible { border-color: var(--w-azure); }
+      /* Section heads sit on the same edge as the cards at every width. */
+      body.pondr .w-feat .section-head { padding-left: 0; padding-right: 0; }
+      /* The studio --muted grey is 3.6:1 on this ground. The page's own muted is above 4.5:1. */
+      body.pondr .foot-links a { color: var(--w-muted); }
+      body.pondr .foot-links a:hover, body.pondr .foot-links a:focus-visible { color: var(--w-ink); }
+      body.pondr .brand-name { white-space: nowrap; }
+      /* Arrow, mark, studio name, language and button do not fit one line on a phone. The mark stays and still leads back. */
+      @media (max-width: 420px) { body.pondr .nav .brand-name { display: none; } }
+      @media (max-width: 560px) {
+        body.pondr .nav { padding-left: 16px; padding-right: 16px; }
+        body.pondr .w-hero, body.pondr .w-feat, body.pondr .p-distance, body.pondr .p-example,
+        body.pondr .p-note, body.pondr .p-toc, body.pondr .studio-inner, body.pondr .foot { padding-left: 16px; padding-right: 16px; }
+        body.pondr .w-grid, body.pondr .p-mods { grid-template-columns: 1fr; }
+        body.pondr .w-card { padding: 20px; }
+        body.pondr .p-row, body.pondr .p-distance .d-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+    </style>
+    <script src="../app.js?v=25" defer></script>
   </head>
   <body class="pondr" data-page="pondr">
     <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#131211"></div>
 
     <header class="nav nav--pondr" data-nav>
-      <a class="brand" href="../index.html" data-back data-veil="#14161B" aria-label="Back to Hawk &amp; Mason Studios">
+      <a class="brand" href="/" data-back data-veil="#14161B" aria-label="Back to Hawk &amp; Mason Studios">
         <span class="back-arrow" aria-hidden="true">←</span>
-        <img class="brand-mark" src="../assets/hawk-mason-mark.png" alt="" />
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
       <div class="nav-store">
-        <a class="store-btn store-btn--amber" href="#download">Get Pondr</a>
+        <a class="p-lang" href="tr" hreflang="tr" lang="tr" aria-label="TR, Bu sayfayı Türkçe oku">TR</a>
+        <a class="store-btn store-btn--amber" href="#download">Coming soon</a>
       </div>
     </header>
 
     <main>
-      <!-- HERO -->
+      <!-- HERO: the one explanation the app, the store and the site share -->
       <section class="w-hero">
         <div>
-          <span class="w-badge">Thinking, not journaling</span>
+          <span class="w-badge">An app for thinking</span>
           <h1 class="w-title">Pondr</h1>
-          <p class="w-lede">Fifteen minutes a day, on a subject you chose.</p>
+          <p class="w-lede">15 minutes a day, on a subject you chose.</p>
           <p class="w-sub">
-            There is a subject that has been going round your head for months: a
-            work idea, a family matter, a decision you cannot make. Pondr gives it
-            a fifteen-minute appointment a day. You choose the subject. The app asks
-            one concrete question and keeps it on the screen while the phone lies
-            face down. Then you write a page. Then the mirror does what a good
-            friend does: reads what you wrote from outside, in your name and in
-            the third person, and asks exactly one question. Tomorrow you sit with
-            that question.
+            Pondr is an app for thinking and writing about a subject you chose.
+            It is for looking at your own life from the outside, as you would a
+            friend’s. Each day you think about one question for 15 minutes, then
+            write, then read the mirror.
+          </p>
+          <p class="w-sub">
+            The mirror is a short note and one question that come after you
+            write. They use your name, not “you”, like “Where was Sam that
+            day?” An AI model writes them. The mirror gives no advice, no
+            praise, and never decides for you.
           </p>
           <div class="store-row" id="download">
             <span class="store-pill store-pill--ios" style="opacity:.85; cursor:default;">
@@ -56,218 +126,193 @@
             </span>
           </div>
           <p class="g-hero-meta" style="color: var(--w-muted);">
-            iPhone · Turkish and English · first subject free, then one yearly plan ·
+            iPhone · first 4 sessions free, then one yearly subscription · 18+ ·
             <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
           </p>
         </div>
         <div class="w-hero-art" aria-hidden="true">
-          <div class="w-phone w-phone-back"><img src="../assets/pondr/hayat.png?v=2" alt="" /></div>
-          <div class="w-phone w-phone-front"><img src="../assets/pondr/bugun.png?v=2" alt="" /></div>
+          <div class="w-phone w-phone-back"><img src="../assets/pondr/life-en.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-front"><img src="../assets/pondr/today-en.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
         </div>
       </section>
 
-      <!-- THE LOOP -->
-      <section class="w-feat" style="padding-bottom: 24px;">
-        <div class="section-head section-head--center">
-          <span class="w-badge">One day</span>
-          <h2 style="color: #fff;">Four moves, every day</h2>
-        </div>
-      </section>
-      <div class="p-loop">
-        <article class="p-step">
-          <h3>A question you can picture</h3>
-          <p>Not “how do you feel about your father” but “the first scene that comes up at the word <em>father</em>: where are you, who is there, what is said?” A scene, not the name of a feeling.</p>
-        </article>
-        <article class="p-step">
-          <h3>Fifteen minutes, phone face down</h3>
-          <p>The question stays on the screen; you are not meant to look at it. Under fifteen minutes the measured effect of this kind of writing disappears, so the clock is not a setting.</p>
-        </article>
-        <article class="p-step">
-          <h3>A page, in your own words</h3>
-          <p>Writing is the one step with randomised-trial evidence behind it. Five words are enough on a bad day; “nothing to say” is an answer the app accepts without comment.</p>
-        </article>
-        <article class="p-step">
-          <h3>The mirror</h3>
-          <p>A short note about what it noticed, in the third person and by your name, and one question that puts you outside your own situation. No advice, no praise, no verdict. It is not a chat: its turn is tomorrow.</p>
-        </article>
-      </div>
+      <!-- ON THIS PAGE -->
+      <nav class="p-toc" aria-label="On this page">
+        <a href="#what">In short</a><a href="#parts">What is in it</a><a href="#inside">Subjects and parts</a><a href="#methods">What it rests on</a><a href="#privacy">Privacy</a><a href="#safety">Safety</a><a href="#price">Price</a>
+      </nav>
 
-      <!-- THE FOURTH DAY -->
-      <section class="w-feat" style="padding-bottom: 20px;">
+      <!-- IN SHORT: this is what it is, this is what it is for -->
+      <section class="w-feat" id="what">
         <div class="section-head section-head--center">
-          <span class="w-badge">Day four</span>
-          <h2 style="color: #fff;">Your own sentences, side by side</h2>
-          <p class="w-sub" style="margin: 12px auto 0; text-align: center;">Four sittings on one subject make an arc. At the end the app puts what you wrote on the first day next to what you wrote on the fourth. No score, no graph. The distance between two sentences is yours; nobody can hand it to you, because you wrote both.</p>
+          <span class="w-badge">In short</span>
+          <h2 style="color: #fff;">What it is, and what it is for</h2>
         </div>
+        <dl class="p-rows">
+          <div class="p-row"><dt>What is it?</dt><dd><p>An app where you think and write for 15 minutes a day. You choose the subject.</p></dd></div>
+          <div class="p-row"><dt>What is it for?</dt><dd><p>It helps you see something on your mind from the outside, as you would a friend’s problem.</p></dd></div>
+          <div class="p-row"><dt>What is it not?</dt><dd><p>Not a chatbot. Not therapy. No streaks, no badges, no score.</p></dd></div>
+          <div class="p-row"><dt>What happens to my writing?</dt><dd><p>It stays on your phone. For the mirror, that day’s writing goes through our server to OpenAI’s AI model, but only after you say yes. Our server keeps none of it. OpenAI may keep it for up to 30 days to check for abuse.</p></dd></div>
+          <div class="p-row"><dt>What does it cost?</dt><dd><p>Your first 4 sessions are free, with no card. Each 15 minutes that gets a mirror counts as 1 session, so 4 sessions are enough for one 4-day subject. Then one yearly subscription: $39.99 a year in the US, TRY&nbsp;1,299.99 in Türkiye.</p></dd></div>
+          <div class="p-row"><dt>Who is it for?</dt><dd><p>People aged 18 and over.</p></dd></div>
+          <div class="p-row"><dt>Which languages?</dt><dd><p>The app is in Turkish, English, German, Spanish, French, Portuguese and Italian.</p></dd></div>
+        </dl>
       </section>
+
+      <!-- WHAT IS IN IT: each thing and its one job -->
+      <section class="w-feat" id="parts" style="padding-bottom: 40px;">
+        <div class="section-head section-head--center">
+          <span class="w-badge">What is in it</span>
+          <h2 style="color: #fff;">What is in Pondr</h2>
+          <p class="p-lead">Each item below has one job. The first 4 are the tabs at the bottom of the screen.</p>
+        </div>
+        <h3 class="p-group p-group--rows">The 4 tabs</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Today</dt><dd><p>You start your 15 minutes here each day.</p><p><b>Good for:</b> seeing today’s question and starting to think.</p></dd></div>
+          <div class="p-row"><dt>Entries</dt><dd><p>One card per day, with what you wrote and the mirror’s note.</p><p><b>Good for:</b> opening an old day and reading your own words again.</p></dd></div>
+          <div class="p-row"><dt>Trace</dt><dd><p>Each subject’s first and last day, side by side.</p><p><b>Good for:</b> seeing what changed on a subject, and what stayed the same.</p></dd></div>
+          <div class="p-row"><dt>Life</dt><dd><p>You start parts here. What you write at the end of a part is kept here too.</p><p><b>Good for:</b> seeing your values, direction and decisions in one place.</p></dd></div>
+        </dl>
+        <h3 class="p-group p-group--rows">Each day, for 4 days</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>The 15 minutes</dt><dd><p>One question stays on the screen. You put the phone where you can see it, and think. When the time is up, you write a few lines.</p><p><b>Good for:</b> thinking one thing through without rushing.</p></dd></div>
+          <div class="p-row"><dt>The mirror</dt><dd><p>A short note and one question after you write. On your own subject, tomorrow starts from that question.</p><p><b>Good for:</b> seeing what you wrote from the outside.</p></dd></div>
+          <div class="p-row"><dt>Day 4</dt><dd><p>A subject lasts 4 days. On day 4, your own sentences sit side by side, one from each day, with dates. Then you close the subject, or keep going. If you keep going, you can write a step: when, and what you will do.</p><p><b>Good for:</b> seeing where you stand after 4 days. If nothing changed, you see that too.</p></dd></div>
+        </dl>
+        <h3 class="p-group p-group--rows">Also on Today</h3>
+        <dl class="p-rows">
+          <div class="p-row"><dt>A breath</dt><dd><p>3 minutes for a hard moment. If you want, you write what is happening. Then you breathe with the line on the screen. Then you look around you. You can keep what you wrote for tomorrow, or delete it.</p><p>No AI. Pondr sends nothing. Free for everyone. If you are in danger, this is not enough. Help lines are on every step of “A breath”.</p></dd></div>
+          <div class="p-row"><dt>Today’s puzzle</dt><dd><p>A small ring puzzle each day, apart from the 15 minutes. No score, no clock.</p></dd></div>
+        </dl>
+      </section>
+
+      <!-- DAY 4 EXAMPLE: the one from the app's intro -->
+      <p class="p-example">Example · Sam’s 4 days on “My father and me”</p>
       <div class="p-distance">
-        <div class="d-row"><span class="d-day">Day 1 · 22 Sep</span><span class="d-text">Deniz stood in front of the shop for an hour and did not go in; she wrote that she had no courage.</span></div>
-        <div class="d-row"><span class="d-day">Day 4 · 25 Sep</span><span class="d-text">Deniz went in, talked to the owner, and told her mother “I’m not deciding, I’m looking.” The fear did not leave, but she was inside.</span></div>
+        <div class="d-row"><span class="d-day">Day 1 · 3 March</span><span class="d-text">Every talk with my father turns into a fight. I go quiet and he keeps going.</span></div>
+        <div class="d-row"><span class="d-day">Day 4 · 7 March</span><span class="d-text">I don’t go quiet because of his tone. I want to be right, and at that table I can’t be.</span></div>
+        <div class="d-row"><span class="d-day">Sam’s step</span><span class="d-text">If work comes up at Sunday lunch, I will ask him a question before I answer.</span></div>
       </div>
+      <p class="p-note">On day 1 Sam writes about the father. On day 4 Sam writes about Sam. Sam wrote both sentences. Then Sam kept going and wrote the step.</p>
 
-      <!-- LIFE -->
-      <section class="w-feat">
+      <!-- SUBJECTS AND PARTS: one line each -->
+      <section class="w-feat" id="inside">
         <div class="section-head section-head--center">
-          <span class="w-badge">After the first subject</span>
-          <h2 style="color: #fff;">The same fifteen minutes, pointed at your life</h2>
+          <span class="w-badge">Everything inside</span>
+          <h2 style="color: #fff;">Subjects, parts and pages</h2>
+          <p class="p-lead">Subjects and parts are the same 15 minutes with different questions. Start any of them when you like. Pages are built from what you wrote.</p>
         </div>
-        <div class="w-grid">
-          <article class="w-card">
-            <h3>Values</h3>
-            <p>Four days to find what you actually care about, in your own sentences, not from a list. Every later module reads these three lines.</p>
-          </article>
-          <article class="w-card">
-            <h3>Direction</h3>
-            <p>One morning a year from now, as a scene. Which value it serves, the one thing in the way, and the smallest step this week: what, when, where.</p>
-          </article>
-          <article class="w-card">
-            <h3>What you avoid</h3>
-            <p>Name it, see where it runs your life, and write a ten-minute safe step you choose yourself. The app never proposes the step.</p>
-          </article>
-          <article class="w-card">
-            <h3>Letting go · The Decision Room</h3>
-            <p>Four days on a habit, a goal or a belief that no longer fits; or on one decision, from every side. The app never decides. “Not yet, because…” counts.</p>
-          </article>
-          <article class="w-card">
-            <h3>Life audit · Letter to a year from now</h3>
-            <p>Once a month, seven lines from above: time, energy, people, money, attention, alignment. And once, a sealed letter that opens a year from today and asks what changed.</p>
-          </article>
-          <article class="w-card">
-            <h3>Misogi · Manifesto · Life map</h3>
-            <p>One hard thing a year, with milestones and a story at the end. One page on how you want to live, drafted from your own conclusions. And the whole of it on one screen.</p>
-          </article>
-        </div>
+        <h3 class="p-group">4 days</h3>
+        <ul class="p-mods">
+          <li><b>Your own subject</b>You write what is on your mind, or pick a suggestion. From day 2, the mirror’s last question is your question.</li>
+          <li><b>Ready-made subjects</b>24 subjects, with each day’s question already written. For an evening when you don’t know what to think about.</li>
+          <li><b>Values</b>You look at where your time and money really go. You end by writing 3 things you won’t give up.</li>
+          <li><b>Direction</b>You picture a morning a year from now. Then you write what is in the way and a first step for this week.</li>
+          <li><b>What you avoid</b>You look at something you put off and what it costs you. Then you write a small, safe step.</li>
+          <li><b>Letting go</b>You look at a habit, goal or belief you want to drop.</li>
+          <li><b>Decision Room</b>You write your options side by side. You make the decision.</li>
+          <li><b>One hard thing</b>You choose a hard but safe thing to finish this year. The check-ins every 3 months and the story at the end need the subscription.</li>
+        </ul>
+        <h3 class="p-group">One day · with the subscription</h3>
+        <ul class="p-mods">
+          <li><b>Month look-back</b>Once a month, you look at where last month’s time went.</li>
+          <li><b>A letter to next year</b>You write a letter to yourself a year from now, about your life today. It opens in exactly a year.</li>
+        </ul>
+        <h3 class="p-group">Pages · no 15 minutes</h3>
+        <ul class="p-mods">
+          <li><b>Manifesto</b>You edit a draft made from your values, direction and steps.</li>
+          <li><b>Life map</b>Your values, direction, what you avoid and your hard thing, in 5 rows.</li>
+          <li><b>Your year</b>A year’s subjects and conclusions on one page. It opens after your first year.</li>
+        </ul>
       </section>
 
-
-      <!-- METHODS -->
-      <section class="w-feat" style="padding-bottom: 8px;">
+      <!-- WHAT IT RESTS ON: what it does, why, and a name and year to look up -->
+      <section class="w-feat" id="methods">
         <div class="section-head section-head--center">
           <span class="w-badge">What it rests on</span>
-          <h2 style="color: #fff;">Sixteen methods, each with a name you can look up</h2>
-          <p class="w-sub" style="margin: 12px auto 0; text-align: center;">Nothing in Pondr is a mood. Every part of the app rests on a published method; the four amber ones carry the daily fifteen minutes, the rest live in the Life tab and open from day one.</p>
+          <h2 style="color: #fff;">How it works, and what it rests on</h2>
+          <p class="p-lead">The daily 15 minutes rest on 4 known methods. Each row below says what the studies found. Most effects were small. Pondr itself has not been tested in a study.</p>
+          <p class="p-lead">d and r are two ways to measure how big an effect is. For d, about .2 is small and .5 is medium. For r, about .1 is small and .3 is medium.</p>
         </div>
-      </section>
-      <div class="p-tape" aria-hidden="true">
-        <div class="p-tape-row">
-          <div class="p-tape-track">
-            <span class="p-chip p-chip--core">Self-distancing <i>Kross</i></span><span class="p-chip">A subject you chose <i>Ryan &amp; Deci</i></span><span class="p-chip p-chip--core">The visible question <i>Westgate</i></span><span class="p-chip">The four-day subject <i>dose threshold</i></span><span class="p-chip p-chip--core">Expressive writing <i>Pennebaker · Frattaroli</i></span><span class="p-chip">Values clarification</span><span class="p-chip p-chip--core">When, then what <i>Gollwitzer</i></span><span class="p-chip">Direction and first step</span>
-            <span class="p-chip p-chip--core">Self-distancing <i>Kross</i></span><span class="p-chip">A subject you chose <i>Ryan &amp; Deci</i></span><span class="p-chip p-chip--core">The visible question <i>Westgate</i></span><span class="p-chip">The four-day subject <i>dose threshold</i></span><span class="p-chip p-chip--core">Expressive writing <i>Pennebaker · Frattaroli</i></span><span class="p-chip">Values clarification</span><span class="p-chip p-chip--core">When, then what <i>Gollwitzer</i></span><span class="p-chip">Direction and first step</span>
-          </div>
-        </div>
-        <div class="p-tape-row p-tape-row--reverse">
-          <div class="p-tape-track">
-            <span class="p-chip">The small safe step <i>what you avoid</i></span><span class="p-chip">Letting go</span><span class="p-chip">Decision Room <i>options · regret</i></span><span class="p-chip">Life audit <i>monthly</i></span><span class="p-chip">A letter to yourself a year on <i>future self</i></span><span class="p-chip">Misogi <i>the year’s hard thing</i></span><span class="p-chip">Manifesto <i>in your own words</i></span><span class="p-chip">Looking back <i>month · year</i></span>
-            <span class="p-chip">The small safe step <i>what you avoid</i></span><span class="p-chip">Letting go</span><span class="p-chip">Decision Room <i>options · regret</i></span><span class="p-chip">Life audit <i>monthly</i></span><span class="p-chip">A letter to yourself a year on <i>future self</i></span><span class="p-chip">Misogi <i>the year’s hard thing</i></span><span class="p-chip">Manifesto <i>in your own words</i></span><span class="p-chip">Looking back <i>month · year</i></span>
-          </div>
-        </div>
-      </div>
-      <div class="p-methods">
-        <article class="p-method">
-          <h3>Self-distancing <span>Kross</span></h3>
-          <p>Speaking of yourself by name, in the third person, calms the feeling and sharpens the thinking. That is why the mirror calls you by name and never says “you”.</p>
-        </article>
-        <article class="p-method">
-          <h3>The visible question <span>Westgate</span></h3>
-          <p>A question in front of your eyes works better than thinking at random; people underestimate how rewarding thinking is when a prompt stays in view. That is why it stays on the screen for fifteen minutes.</p>
-        </article>
-        <article class="p-method">
-          <h3>Expressive writing <span>Pennebaker · Frattaroli</span></h3>
-          <p>Putting what you lived into words works, most of all with regular repetition; under fifteen minutes and under three sittings the measured effect disappears. That is why every sitting ends in writing, and why a subject takes four days.</p>
-        </article>
-        <article class="p-method">
-          <h3>When, then what <span>Gollwitzer</span></h3>
-          <p>An intention tied to a moment is kept far more often than one kept in the head (d = .65). That is why subjects close with a plan you write yourself: when, then what.</p>
-        </article>
-        <article class="p-method">
-          <h3>A subject you chose <span>Ryan &amp; Deci · Nguyen</span></h3>
-          <p>Solitude works when the subject is your own, not assigned. The app never hands you a topic; it asks what brought you here and lets you pick.</p>
-        </article>
-        <article class="p-method">
-          <h3>The Life modules <span>values · direction · the small safe step · letting go · the Decision Room · the life audit · the letter · Misogi · the manifesto · looking back</span></h3>
-          <p>Each is the same fifteen minutes with different questions: four days on your values in your own words; a year-from-now morning as a scene and the first step; a ten-minute safe step toward what you avoid, which you write and the app never proposes; a habit or a decision from every side; a monthly look from above; a sealed letter that opens in a year; one hard thing a year; one page on how you want to live; and your own sentences read back a month and a year later.</p>
-        </article>
-      </div>
-
-      <!-- PRIVACY LINE -->
-      <section class="w-quote">
-        <p>What you write stays on your phone. There is no account, because we do not want your data.</p>
-        <span>To prepare the mirror, that day’s entry, your first name and the day’s question go once through our server to OpenAI’s model and come back as a note and a question; nothing is stored on the way, and entry text is never logged. The app asks your explicit permission before the first send, and “don’t send, just save” is a real option. Entries that show signs of crisis never leave the phone at all; a human-written support screen appears instead.</span>
+        <dl class="p-rows">
+          <div class="p-row"><dt>Seeing yourself from the outside</dt><dd>
+            <p>The questions and the mirror don’t say “you”. They use your name.</p>
+            <p>Thinking of yourself by name helps you see a moment from the outside.</p>
+            <p class="p-src">Self-distancing: <a href="https://doi.org/10.1037/a0035173">Kross et al., 2014</a></p>
+          </dd></div>
+          <div class="p-row"><dt>The question you can see</dt><dd>
+            <p>The question stays on the screen for 15 minutes. You put the phone where you can see it.</p>
+            <p>A question you can see makes thinking a little easier. The effect is small.</p>
+            <p class="p-src"><a href="https://doi.org/10.1037/emo0000278">Westgate et al., 2017</a> · d = .21</p>
+          </dd></div>
+          <div class="p-row"><dt>Writing about what happened</dt><dd>
+            <p>Each day ends with writing. A subject lasts 4 days.</p>
+            <p>Across many studies, writing about what happened had a small effect. That is the average over everything the studies measured. It was a little larger in studies with 3 or more writing sessions. Studies where people wrote for less than 15 minutes showed no effect on average. In Pondr the 15 minutes are for thinking, and the writing after it is short. We do not know whether this works the same way.</p>
+            <p class="p-src">Expressive writing: <a href="https://doi.org/10.1037/0021-843X.95.3.274">Pennebaker &amp; Beall, 1986</a> · <a href="https://doi.org/10.1037/0033-2909.132.6.823">Frattaroli, 2006</a> · r = .075</p>
+          </dd></div>
+          <div class="p-row"><dt>When, then what</dt><dd>
+            <p>Direction and What you avoid end with a step and a time to take it. You write the step.</p>
+            <p>A step tied to a set time happens more often than a vague plan. That does not mean every step happens.</p>
+            <p class="p-src"><a href="https://doi.org/10.1016/S0065-2601(06)38002-1">Gollwitzer &amp; Sheeran, 2006</a> · d = .65</p>
+          </dd></div>
+        </dl>
+        <p class="p-after">Pondr does not promise a change. The mirror never asks “why”, never praises and never chats. That is our rule, not a finding.</p>
       </section>
 
-      <!-- SPECS -->
-      <section class="w-strip">
-        <div class="w-strip-inner">
-          <div style="text-align: center;">
-            <img src="../assets/pondr/icon.png?v=2" alt="Pondr app icon" style="width: 116px; height: 116px; border-radius: 26px; box-shadow: 0 16px 36px rgba(205, 164, 106, 0.28); display: block; margin: 0 auto 10px;" />
-            <span style="font-size: 0.85rem; color: var(--w-azure); font-weight: 700; letter-spacing: 0.05em;">PONDR</span>
-          </div>
-          <div>
-            <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">App information</h3>
-            <ul class="w-spec">
-              <li><b>Platform:</b> iPhone</li>
-              <li><b>Category:</b> Lifestyle · Health &amp; Fitness</li>
-              <li><b>Developer:</b> Hawk &amp; Mason Studios</li>
-              <li><b>Not:</b> a journal, a habit tracker, a meditation app, or a chatbot</li>
-            </ul>
-          </div>
-          <div>
-            <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">Languages, privacy, price</h3>
-            <ul class="w-spec">
-              <li><b>Languages:</b> Türkçe, English</li>
-              <li><b>Privacy:</b> No account; entries stay on the device; the mirror is prepared once per entry and not stored</li>
-              <li><b>Pricing:</b> First subject (four sittings) free · then one yearly subscription, 7-day free trial · no monthly plan, no tiers</li>
-              <li><b>Not a medical product:</b> no diagnosis, no advice; in a hard time, talk to a professional</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCREENS -->
+      <!-- PRIVACY, SAFETY, PRICE -->
       <section class="w-feat">
         <div class="section-head section-head--center">
-          <span class="w-badge">A look inside</span>
-          <h2 style="color: #fff;">Five screens</h2>
+          <span class="w-badge">Trust and price</span>
+          <h2 style="color: #fff;">Privacy, safety and price</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-          <figure style="margin: 0;">
-            <img src="../assets/pondr/bugun.png?v=2" alt="Today: the greeting, the one thing to do, what comes next" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Today — one thing to do; “not today” is a neutral answer.</figcaption>
-          </figure>
-          <figure style="margin: 0;">
-            <img src="../assets/pondr/giris.png?v=2" alt="Onboarding: what brought you here, with the subjects that fit" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">The door — what brought you here, and the subjects that fit it.</figcaption>
-          </figure>
-          <figure style="margin: 0;">
-            <img src="../assets/pondr/hayat.png?v=2" alt="Life: the modules as tiles, each with its benefit and method" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Life — every module, what it does for you, what it rests on.</figcaption>
-          </figure>
-          <figure style="margin: 0;">
-            <img src="../assets/pondr/yon.png?v=2" alt="The Direction module page: what happens, why it works, what it leaves" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">A module — what happens, why it works, what it leaves behind.</figcaption>
-          </figure>
-          <figure style="margin: 0;">
-            <img src="../assets/pondr/izin.png?v=3" alt="The consent card before the first entry leaves the phone" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Before the first send — asked once, plainly, with a real no.</figcaption>
-          </figure>
+        <div class="w-grid">
+          <article class="w-card" id="privacy">
+            <h3>Privacy</h3>
+            <ul class="p-list">
+              <li>No account. We ask for no email and no password.</li>
+              <li>What you write stays on your phone. If your iPhone backup is on, it goes into the backup too.</li>
+              <li>For the mirror, that day’s writing goes through our server to OpenAI’s model in the USA. Your first name, the day’s question and a short summary of earlier days on the same subject go too. The tone you chose in Settings goes too. So does your pronoun, if you picked one. So do your values, direction and step, if you wrote them.</li>
+              <li>We ask before sending. If you say no, your writing stays on your phone and there is no mirror.</li>
+              <li>Our server keeps none of your writing. It knows your phone only by a random install id. It uses that id to count your free sessions and check your subscription. RevenueCat keeps your subscription status under that id. Apple runs the purchase. Our server runs on Cloudflare.</li>
+              <li>The server also keeps a few counts per day, with no id and no writing.</li>
+              <li>OpenAI does not train on your writing. OpenAI may keep it for up to 30 days to check for abuse.</li>
+              <li>You can export what you wrote to a file, or delete it from your phone. Deleting keeps the install id and how many free sessions you used, so free sessions cannot be used twice.</li>
+            </ul>
+            <p>The full text is in the <a href="privacy">privacy policy</a>.</p>
+          </article>
+          <article class="w-card" id="safety">
+            <h3>Safety</h3>
+            <ul class="p-list">
+              <li>Pondr is not therapy, a medical service or a crisis service. It does not diagnose or treat.</li>
+              <li>If things are hard, talk to a professional. In an emergency, call your local emergency number.</li>
+              <li>If your writing shows a sign of harm to yourself or to others, you get no mirror. You also get no mirror if someone close to you is hurting you. A help lines screen opens instead. People wrote that screen.</li>
+              <li>Your phone checks first. If it finds a sign, your writing is not sent. Then the model checks too. Neither catches everything.</li>
+              <li>The help lines screen is always free.</li>
+              <li>Pondr is for people aged 18 and over.</li>
+            </ul>
+          </article>
+          <article class="w-card" id="price">
+            <h3>Price</h3>
+            <ul class="p-list">
+              <li>Your first 4 sessions are free. We ask for no card.</li>
+              <li>Each 15 minutes that gets a mirror counts as 1 session.</li>
+              <li>After that, there is one yearly subscription. It is $39.99 a year in the US and TRY&nbsp;1,299.99 in Türkiye. Other countries see their local App Store price.</li>
+              <li>No monthly plan, no free trial, no bundle.</li>
+              <li>Month look-back, the letter, and your hard thing’s check-ins and story need the subscription. They are not part of your 4 free sessions.</li>
+              <li>Reading, exporting and deleting what you wrote is always free. So are “A breath” and the help lines.</li>
+              <li>It renews each year through your Apple account. To stop it, cancel in App Store settings at least 24 hours before it renews.</li>
+            </ul>
+          </article>
         </div>
-      </section>
-
-      <!-- WHY -->
-      <section class="w-quote">
-        <p>Why fifteen minutes, why four days, why the third person.</p>
-        <span>Fifteen minutes because in the expressive-writing research the effect disappears below that dose. Four sittings because the benefit does not show before the third. The third person because looking at yourself from outside lowers the heat and sharpens the judgement (Kross). A question kept on the screen because people think better with one in front of them (Westgate). A subject you chose because assigned solitude does not work (Ryan &amp; Deci). What we sell is not psychological change; it is the felt experience of having actually thought about something, which is the best-evidenced effect there is.</span>
       </section>
 
       <!-- SUPPORT -->
       <section class="studio">
         <div class="studio-inner">
-          <span class="w-badge">Support &amp; trust</span>
+          <span class="w-badge">Support</span>
           <h2 style="color: #fff;">Questions, bugs, a sentence the mirror got wrong</h2>
           <p class="studio-lede" style="color: var(--w-muted);">
-            Pondr is a thinking and writing app, not therapy and not a medical
-            service. If the mirror misread you, tell us the day and the sentence;
-            that is the feedback that improves it fastest.
+            If the mirror misread you, tell us the day and the sentence.
+            That helps us fix it. Please do not send us your writing.
           </p>
           <div class="hero-actions" style="justify-content: center;">
             <a class="btn btn-primary" href="support" style="background: #EDE6D8; color: #131211;">Support</a>
@@ -280,7 +325,7 @@
 
     <footer class="foot">
       <div class="foot-brand">
-        <img class="brand-mark" src="../assets/hawk-mason-mark.png" alt="" />
+        <img class="brand-mark" src="../assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
       </div>
       <nav class="foot-links" aria-label="Footer">
@@ -288,6 +333,7 @@
         <a href="privacy">Privacy</a>
         <a href="terms">Terms</a>
         <a href="mailto:hello@hawkmason.com">Contact</a>
+        <a href="tr" hreflang="tr" lang="tr">Türkçe</a>
       </nav>
       <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
     </footer>

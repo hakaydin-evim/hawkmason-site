@@ -504,6 +504,12 @@ body.legal { background: var(--bg); color: var(--ink); }
 .legal-toc { display: flex; flex-wrap: wrap; gap: 0.6rem 1.4rem; margin: 0 0 2rem; }
 .legal-toc a { color: var(--muted); font-weight: 600; text-decoration: none; }
 .legal-toc a:hover { color: var(--ink); }
+/* Contrast on the white legal and support pages. The coral accent is 3.07:1 on
+   white and 2.85:1 inside the callout, and the copyright grey is 2.41:1. These
+   values are 5.36:1 on white and 4.97:1 on the callout. The section links
+   (.legal-toc) keep their own muted colour. */
+body.legal .legal-main p a, body.legal .legal-main li a, body.legal .legal-back { color: #c92f28; }
+body.legal .foot-legal { color: var(--muted); }
 
 /* subscription legal line under Sugar download CTA
    (needs .download-inner prefix to beat `.download-inner p { margin }`) */
@@ -983,3 +989,37 @@ body.pondr .w-strip { background: rgba(29, 32, 39, 0.5); }
 .p-method h3 { color: #fff; font-size: 1.05rem; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
 .p-method h3 span { color: var(--w-azure); font: 700 0.72rem/1.4 var(--text); letter-spacing: 0.06em; text-transform: uppercase; }
 .p-method p { color: var(--w-muted); line-height: 1.65; margin: 0; font-size: 0.95rem; }
+
+/* Pondr pages: small polish. */
+/* The store pill sits on the copy's own left edge at every width (the shared
+   rules centre it under 900px). The hero art is capped on tablets, where it
+   would otherwise run 720px wide and 1080px tall. The cream Support button
+   carries no coral glow. */
+body.pondr .store-row { justify-content: flex-start; }
+@media (max-width: 900px) {
+  body.pondr .w-hero-art { width: min(100%, 480px); margin-inline: auto; }
+}
+body.pondr .btn-primary, body.pondr .btn-primary:hover { box-shadow: none; }
+/* On a phone the back link, the Coming soon button, the section chips and the
+   footer links are at least 44px tall. The footer links wrap to two rows at
+   390px, so they are centred like the rest of the footer. */
+@media (max-width: 560px) {
+  body.pondr .nav .brand, body.pondr .nav .store-btn, body.pondr .p-toc a, body.pondr .foot-links a {
+    display: inline-flex; align-items: center; min-height: 44px;
+  }
+  body.pondr .foot-links { row-gap: 0; justify-content: center; }
+  body.pondr .foot-links a { padding-inline: 4px; }
+}
+
+/* Pondr pages: second polish pass from the pre-publish gate. */
+body.pondr .section-head .w-badge { margin-bottom: 14px; }
+body.pondr .p-example { text-wrap: balance; }
+@media (min-width: 900px) {
+  body.pondr .w-grid { align-items: start; }
+}
+body.umbrella .foot-legal { color: var(--muted); }
+@media (max-width: 560px) {
+  body.legal .nav-links a, body.legal .foot-links a { display: inline-flex; align-items: center; min-height: 44px; }
+  body.legal .foot-links a { padding-inline: 4px; }
+  body.legal .foot-links { row-gap: 0; justify-content: center; }
+}

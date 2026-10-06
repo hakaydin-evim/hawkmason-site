@@ -1,2 +1,10 @@
 .git
 .wrangler
+.DS_Store
+wrangler.toml
+assets/pondr/izin.png
+assets/pondr/giris.png
+assets/pondr/yon.png
+assets/pondr/bugun.png
+assets/pondr/bugun.webp
+assets/pondr/hayat.png

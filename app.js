@@ -117,9 +117,10 @@
       veil.style.setProperty('--r', far + 'px');
       veil.classList.add('is-expanding');
       sessionStorage.setItem('hm-enter', portal.dataset.enter || 'sugar');
-      const go = () => (location.href = portal.getAttribute('href'));
+      let went = false, timer;
+      const go = () => { if (went) return; went = true; clearTimeout(timer); location.href = portal.getAttribute('href'); };
       veil.addEventListener('transitionend', go, { once: true });
-      setTimeout(go, 650);
+      timer = setTimeout(go, 650);
     });
   });
 
@@ -130,10 +131,17 @@
       e.preventDefault();
       veil.style.background = back.dataset.veil || getComputedStyle(veil).backgroundColor;
       veil.classList.add('is-covering');
-      const go = () => (location.href = back.getAttribute('href'));
+      let went = false, timer;
+      const go = () => { if (went) return; went = true; clearTimeout(timer); location.href = back.getAttribute('href'); };
       veil.addEventListener('transitionend', go, { once: true });
-      setTimeout(go, 500);
+      timer = setTimeout(go, 500);
     });
+  });
+
+  /* ---- 4b. Back/forward cache: a page restored from the cache keeps whatever
+         the veil was doing when it was left, which is a full-screen overlay. ---- */
+  window.addEventListener('pageshow', (e) => {
+    if (e.persisted && veil) veil.classList.remove('is-expanding', 'is-covering', 'is-shown', 'is-retracting');
   });
 
   /* ---- 5. Mobile nav toggle ---- */
