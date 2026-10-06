@@ -5,10 +5,12 @@
     <meta name="google-site-verification" content="rnTJU4HD9IMe2Pc9-MGG0rwVdvZdFmJyDGwAh2kpxiY" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hawk &amp; Mason Studios — Mobile games &amp; apps</title>
-    <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, a sweet daily block puzzle, Ittako, a one-finger night climb, EliteLoop, a private social discovery app, Crewops for airline crew, and Pondr, fifteen minutes a day on a subject you chose." />
+    <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, Ittako, Crewops and Pondr. Calm, colorful and built to keep." />
+    <link rel="canonical" href="https://hawkmason.com/" />
     <meta property="og:title" content="Hawk & Mason Studios" />
-    <meta property="og:description" content="Mobile games & apps, crafted to keep. Makers of Sugar Tiles, Ittako, EliteLoop, Crewops and Pondr." />
+    <meta property="og:description" content="Mobile games & apps, crafted to keep. Makers of Sugar Tiles, Ittako, Crewops and Pondr." />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hawk & Mason Studios" />
     <meta property="og:url" content="https://hawkmason.com/" />
     <meta property="og:image" content="https://hawkmason.com/assets/og/og-studio.png" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -16,15 +18,37 @@
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=24" />
-    <script src="app.js?v=23" defer></script>
+    <link rel="stylesheet" href="styles.css?v=25" />
+    <script src="app.js?v=24" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://hawkmason.com/#organization",
+          "name": "Hawk & Mason Studios",
+          "url": "https://hawkmason.com/",
+          "logo": "https://hawkmason.com/assets/apple-touch-icon.png",
+          "description": "Independent studio making polished mobile games and apps."
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://hawkmason.com/#website",
+          "url": "https://hawkmason.com/",
+          "name": "Hawk & Mason Studios",
+          "publisher": { "@id": "https://hawkmason.com/#organization" }
+        }
+      ]
+    }
+    </script>
   </head>
   <body class="umbrella" data-page="home">
     <div class="veil" data-veil aria-hidden="true"></div>
 
     <header class="nav" data-nav>
-      <a class="brand" href="index.html" aria-label="Hawk & Mason Studios home">
-        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+      <a class="brand" href="/" aria-label="Hawk & Mason Studios home">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason<span class="brand-suffix">Studios</span></span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -48,8 +72,7 @@
             An independent studio building small, polished worlds for your
             phone — from <strong>Sugar Tiles</strong>, a sweet daily block
             puzzle, to <strong>Ittako</strong>, a toy climbing a bedroom at
-            night, to <strong>EliteLoop</strong>, a private social discovery app, and
-            <strong>Crewops</strong>, a roster, duty-limits and fatigue app for airline crew, and
+            night, to <strong>Crewops</strong>, a roster, duty-limits and fatigue app for airline crew, and
             <strong>Pondr</strong>, fifteen minutes a day on a subject you chose.
           </p>
           <div class="hero-actions">
@@ -57,13 +80,13 @@
             <a class="btn btn-ghost" href="#studio">About the studio</a>
           </div>
           <ul class="hero-meta">
-            <li><strong>2</strong> live · <strong>1</strong> in the works</li>
+            <li><strong>2</strong> live · <strong>2</strong> in the works</li>
             <li><strong>iOS</strong> &amp; Android</li>
             <li><strong>100%</strong> independent</li>
           </ul>
         </div>
         <div class="hero-art" aria-hidden="true">
-          <img class="hero-mark" src="assets/hawk-mason-mark.png" alt="" />
+          <img class="hero-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" fetchpriority="high" />
         </div>
       </section>
 
@@ -72,29 +95,30 @@
         <div class="section-head">
           <p class="eyebrow">What we make</p>
           <h2>Games &amp; apps</h2>
-          <p class="section-sub">Five little worlds, each its own. Tap in.</p>
+          <p class="section-sub">Four little worlds, each its own. Tap in.</p>
         </div>
 
         <div class="game-grid">
           <!-- Sugar Tiles portal -->
-          <a class="game-card game-card--sugar" href="sugar-tiles.html"
+          <a class="game-card game-card--sugar" href="sugar-tiles"
              data-portal data-veil="#fdeece" data-enter="sugar">
             <div class="card-media">
-              <img src="assets/st-home.webp" alt="Sugar Tiles home screen" />
+              <img src="assets/st-home.webp" alt="Sugar Tiles home screen" width="720" height="1482" loading="lazy" decoding="async" />
             </div>
             <div class="card-body">
               <span class="pill pill--game">Game · Live now</span>
               <h3>Sugar Tiles</h3>
+              <p class="card-sub">Sugar Tiles: Block Puzzle</p>
               <p>A sweet daily block puzzle — 768 levels across 64 candy worlds, daily puzzles and calm, satisfying line clears.</p>
               <span class="card-go">Enter the game <span aria-hidden="true">→</span></span>
             </div>
           </a>
 
           <!-- Ittako portal -->
-          <a class="game-card game-card--ittako" href="ittako.html"
+          <a class="game-card game-card--ittako" href="ittako"
              data-portal data-veil="#141225" data-enter="ittako">
             <div class="card-media">
-              <img src="assets/ittako/zirve.webp?v=2" alt="Ittako — a toy reaching the bed at dawn" />
+              <img src="assets/ittako/zirve.webp?v=2" alt="Ittako — a toy reaching the bed at dawn" width="720" height="1560" loading="lazy" decoding="async" />
             </div>
             <div class="card-body">
               <span class="pill pill--soon">Game · In the works</span>
@@ -105,31 +129,17 @@
             </div>
           </a>
 
-          <!-- EliteLoop portal -->
-          <a class="game-card game-card--elite" href="eliteloop.html"
-             data-portal data-veil="#141317" data-enter="eliteloop">
-            <div class="card-media card-media--elite">
-              <img class="elite-shot" src="assets/eliteloop/nearby.webp" alt="EliteLoop nearby discovery screen" />
-            </div>
-            <div class="card-body">
-              <span class="pill pill--app">App · Live now</span>
-              <h3>EliteLoop</h3>
-              <p>A private social discovery app for premium events and nearby plans — badge-based access, map discovery, less noise.</p>
-              <span class="card-go card-go--gold">Enter the app <span aria-hidden="true">→</span></span>
-            </div>
-          </a>
-
           <!-- Crewops portal -->
-          <a class="game-card game-card--crew" href="crewops.html"
+          <a class="game-card game-card--crew" href="crewops"
              data-portal data-veil="#070c15" data-enter="crewops">
             <div class="card-media card-media--aero">
-              <img class="aero-shot" src="assets/crewops/bugun.png?v=2" alt="Crewops today screen with duty limits and fatigue meter" />
+              <img class="aero-shot" src="assets/crewops/bugun.webp" alt="Crewops today screen with duty limits and fatigue meter" width="552" height="1199" loading="lazy" decoding="async" />
             </div>
             <div class="card-body">
-              <span class="pill pill--app" style="background: rgba(63, 182, 245, 0.15); color: #3fb6f5;">App · Live now</span>
+              <span class="pill pill--cyan">App · Live now</span>
               <h3>Crewops</h3>
               <p class="card-sub">Crewops: Roster &amp; duty limits</p>
-              <p>For airline crew: import the roster, see the duty limits and rest it leaves you, keep your own logbook, and read sourced advice on fatigue and body clock. Nothing leaves the phone.</p>
+              <p>Roster, duty limits and fatigue for airline crew — import your roster, keep a logbook, read sourced advice. Nothing leaves the phone.</p>
               <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
             </div>
           </a>
@@ -138,13 +148,13 @@
           <a class="game-card game-card--pondr" href="pondr/"
              data-portal data-veil="#131211" data-enter="pondr">
             <div class="card-media card-media--pondr">
-              <img src="assets/pondr/bugun.png?v=2" alt="Pondr today screen: the one thing to do" />
+              <img src="assets/pondr/bugun.webp" alt="Pondr today screen: the one thing to do" width="644" height="1400" loading="lazy" decoding="async" />
             </div>
             <div class="card-body">
-              <span class="pill pill--amber">App · On its way</span>
+              <span class="pill pill--amber">App · In the works</span>
               <h3>Pondr</h3>
               <p class="card-sub">Pondr: 15 minutes</p>
-              <p>One subject you chose, fifteen minutes with the phone face down, a page of writing, and a mirror that reads it back from outside and asks one question. On day four, your own sentences side by side. No streaks, no scores, no account.</p>
+              <p>One subject you chose, fifteen minutes with the phone face down, a page of writing, and a mirror that asks one question. No streaks, no scores, no account.</p>
               <span class="card-go card-go--amber">Enter the app <span aria-hidden="true">→</span></span>
             </div>
           </a>
@@ -169,14 +179,13 @@
 
     <footer class="foot" id="contact">
       <div class="foot-brand">
-        <img class="brand-mark" src="assets/hawk-mason-mark.png" alt="" />
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" loading="lazy" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
       </div>
       <nav class="foot-links" aria-label="Footer">
-        <a href="sugar-tiles.html">Sugar Tiles</a>
-        <a href="ittako.html">Ittako</a>
-        <a href="eliteloop.html">EliteLoop</a>
-        <a href="crewops.html">Crewops</a>
+        <a href="sugar-tiles">Sugar Tiles</a>
+        <a href="ittako">Ittako</a>
+        <a href="crewops">Crewops</a>
         <a href="pondr/">Pondr</a>
         <a href="#studio">Studio</a>
         <a href="mailto:hello@hawkmason.com">Contact</a>
