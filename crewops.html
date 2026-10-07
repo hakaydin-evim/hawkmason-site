@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops: Crew Roster App — Duty Limits, Fatigue, Logbook</title>
-    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone." />
+    <title>Crewops: Crew Roster App — Duty Limits, Fatigue, Logbook · Crewops for Airlines</title>
+    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone. For operators: Crewops Insight, a biomathematical roster fatigue assessment (Three-Process Model, KSS and Samn-Perelli, planned versus flown), and Crewops Crew, the company edition." />
     <link rel="canonical" href="https://hawkmason.com/crewops" />
     <meta name="apple-itunes-app" content="app-id=6811512361" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
@@ -81,7 +81,11 @@
             { "@type": "Question", "name": "Can I export my logbook?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes. Flown sectors become logbook rows that you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time." } },
             { "@type": "Question", "name": "We build crew software or run an airline. Can we work together?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Write to hello@hawkmason.com about roster export formats, test rosters or partnerships." } }
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Write to hello@hawkmason.com about roster export formats, test rosters or partnerships." } },
+            { "@type": "Question", "name": "Is there a fatigue risk management tool for the operator, not just the crew?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Crewops Insight reads an airline's roster export, planned or flown rotations, and assesses each duty with a biomathematical model (the Three-Process Model of alertness with aircrew parameters): KSS and Samn-Perelli at top of descent against the EASA FTL 2.0 thresholds, the night-duty subtypes of ED Decision 2023/023/R, FDP margins, and the planned-versus-flown comparison ORO.FTL.110(j) asks for. It runs in the browser; the file never leaves the operator's computer. Licensed per operator." } },
+            { "@type": "Question", "name": "Can an airline give Crewops to its crews?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Crewops Crew is the company edition: crews install it from a link, enter the code the airline holds, and get the full app with the modules the airline chose, with no subscription and no account. Crew data stays on the crew member's phone. Trials with selected operators from October 2026." } }
           ]
         }
       ]
@@ -351,6 +355,8 @@
           <article class="w-card"><h3>Is my roster uploaded anywhere?</h3><p>No. There is no account and no Crewops server holding your data; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account.</p></article>
           <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops.</p></article>
           <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
+          <article class="w-card"><h3>Is there a fatigue risk management tool for the operator?</h3><p>Yes: <a href="/crewops/insight" style="color: var(--w-azure);">Crewops Insight</a> assesses a roster export, planned or flown, with a biomathematical model (Three-Process Model, aircrew parameters): KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins and planned versus flown for ORO.FTL.110(j). Browser-side, licensed per operator.</p></article>
+          <article class="w-card"><h3>Can an airline give Crewops to its crews?</h3><p>Yes. Crewops Crew is the company edition: crews install it from a link, enter the airline's code, and get the full app with the modules the airline chose. No subscription, no account; crew data stays on the phone.</p></article>
           <article class="w-card"><h3>We build crew software or run an airline. Can we work together?</h3><p>Yes — write to <a href="mailto:hello@hawkmason.com?subject=Crewops%20partnership" style="color: var(--w-azure);">hello@hawkmason.com</a> about export formats, test rosters or partnerships.</p></article>
         </div>
       </section>

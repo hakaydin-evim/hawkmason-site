@@ -6,6 +6,27 @@
     <title>Crewops Insight — roster fatigue analysis for operators</title>
     <meta name="description" content="Drop an airline roster export and read it the way an FRM does: FDP margins, predicted alertness (KSS, Samn-Perelli) at top of descent, EASA night-duty types, planned versus flown. Runs in your browser; nothing is uploaded." />
     <link rel="canonical" href="https://hawkmason.com/crewops/insight" />
+    <meta property="og:title" content="Crewops Insight — roster fatigue analysis for operators" />
+    <meta property="og:description" content="A biomathematical fatigue assessment of your roster export: KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins, planned versus flown. Browser-side, licensed per operator." />
+    <meta property="og:url" content="https://hawkmason.com/crewops/insight" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        { "@type": "WebApplication", "@id": "https://hawkmason.com/crewops/insight#app", "name": "Crewops Insight", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (browser)", "url": "https://hawkmason.com/crewops/insight",
+          "description": "Roster fatigue analysis for airline operators: FDP margins, Three-Process Model alertness (KSS, Samn-Perelli) at top of descent, EASA 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; nothing is uploaded. Licensed per operator.",
+          "publisher": { "@type": "Organization", "name": "Hawk & Mason Studios", "url": "https://hawkmason.com" },
+          "isRelatedTo": { "@id": "https://hawkmason.com/crewops#app" } },
+        { "@type": "FAQPage", "mainEntity": [
+          { "@type": "Question", "name": "Which fatigue model does Crewops Insight use?", "acceptedAnswer": { "@type": "Answer", "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the parameters re-estimated on 136 aircrews by Ingre et al. 2014 — the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern; output is KSS 1–9 and Samn-Perelli 1–7 at top of descent, against the EASA FTL 2.0 thresholds KSS 7 and SP 5." } },
+          { "@type": "Question", "name": "Does the roster file get uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing and modelling run in the browser tab; nothing reaches a server. Close the tab and the analysis is gone." } },
+          { "@type": "Question", "name": "Which roster formats does it read?", "acceptedAnswer": { "@type": "Answer", "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader." } },
+          { "@type": "Question", "name": "Is it a validated FRMS tool?", "acceptedAnswer": { "@type": "Answer", "text": "It implements a published biomathematical model and documents its limits as CASA and ICAO ask. It supports a fatigue risk assessment and is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement." } }
+        ] }
+      ]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
     <style>
