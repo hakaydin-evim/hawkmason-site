@@ -21,7 +21,7 @@
         { "@type": "FAQPage", "mainEntity": [
           { "@type": "Question", "name": "Which fatigue model does Crewops Insight use?", "acceptedAnswer": { "@type": "Answer", "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the parameters re-estimated on 136 aircrews by Ingre et al. 2014 — the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern; output is KSS 1–9 and Samn-Perelli 1–7 at top of descent, against the EASA FTL 2.0 thresholds KSS 7 and SP 5." } },
           { "@type": "Question", "name": "Does the roster file get uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing and modelling run in the browser tab; nothing reaches a server. Close the tab and the analysis is gone." } },
-          { "@type": "Question", "name": "Which roster formats does it read?", "acceptedAnswer": { "@type": "Answer", "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader." } },
+          { "@type": "Question", "name": "Which roster formats does it read?", "acceptedAnswer": { "@type": "Answer", "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; rotation plans exported as a spreadsheet (.xlsx); any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader." } },
           { "@type": "Question", "name": "Is it a validated FRMS tool?", "acceptedAnswer": { "@type": "Answer", "text": "It implements a published biomathematical model and documents its limits as CASA and ICAO ask. It supports a fatigue risk assessment and is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement." } }
         ] }
       ]
@@ -92,11 +92,11 @@
       <div class="grid" id="inputs">
         <div class="card">
           <h3>PLANNED ROSTER</h3>
-          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew, Leon, CAE Crew Access, Lufthansa CAS, FLiCA PDFs · AIMS eCrew / CrewConnex / Sabre pages · AIMS CSV · any calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
+          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew, Leon, CAE Crew Access, Lufthansa CAS, FLiCA PDFs · AIMS eCrew / CrewConnex / Sabre pages · AIMS CSV · rotation spreadsheets (.xlsx) · any calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
           <h3>FLOWN ROSTER <span class="fine">(optional)</span></h3>
-          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
+          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
           <h3>OPERATION</h3>
@@ -139,6 +139,7 @@
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
       window.__pdfjs = pdfjsLib;
     </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="/assets/crewops-insight.js"></script>
     <script src="/assets/crewops-insight-page.js"></script>
   </body>

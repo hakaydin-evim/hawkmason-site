@@ -60,6 +60,21 @@
     return pages;
   }
 
+  // A workbook: every sheet as rows of text, the first sheet a reader claims wins.
+  async function sheetRows(file, base, versionId) {
+    const XLSX = window.XLSX;
+    if (!XLSX) throw new Error('spreadsheet reader not loaded');
+    const wb = XLSX.read(await file.arrayBuffer(), { type: 'array', cellDates: false });
+    let first = null;
+    for (const sheetName of wb.SheetNames) {
+      const rows = XLSX.utils.sheet_to_json(wb.Sheets[sheetName], { header: 1, raw: false, defval: '' });
+      const parsed = CrewopsInsight.parseRows(rows, base, versionId, file.name);
+      if (parsed.duties.length) return parsed;
+      first = first || parsed;
+    }
+    return first || { duties: [], warnings: [], vendor: null, kind: 'sheet' };
+  }
+
   async function readFiles(files, versionId) {
     const base = $('base').value.trim().toUpperCase();
     const out = { duties: [], warnings: [], names: [], unread: [] };
@@ -68,6 +83,8 @@
       let parsed;
       if (/\.(ics|ical|ifb|vcs)$/i.test(name) || /calendar/.test(f.type)) {
         parsed = CrewopsInsight.parseIcsText(await f.text(), base, versionId);
+      } else if (/\.(xlsx|xlsm|xls|ods|numbers)$/i.test(name) || /spreadsheet|ms-excel/.test(f.type)) {
+        parsed = await sheetRows(f, base, versionId);
       } else if (/\.pdf$/i.test(name) || /pdf/.test(f.type)) {
         parsed = CrewopsInsight.parsePdfPages(await pdfPages(f), base, versionId, name);
       } else if (/\.(html?|mhtml?)$/i.test(name) || /html/.test(f.type)) {
@@ -102,7 +119,7 @@
         state[slot] = await readFiles([...files], slot);
         nameEl.textContent = state[slot].names.join(' · ');
         if (state[slot].unread.length) $('msg').innerHTML = state[slot].unread.join('<br>');
-        else if (state[slot].warnings.length) $('msg').textContent = `${state[slot].warnings.length} rows could not be placed: ${state[slot].warnings.slice(0, 3).join(' | ')}`;
+        else if (state[slot].warnings.length) $('msg').textContent = `Reader notes (${state[slot].warnings.length}): ${state[slot].warnings.slice(0, 3).join(' | ')}`;
         $('run').disabled = !(state.planned && state.planned.duties.length > 0);
       } catch (e) {
         nameEl.textContent = '';
