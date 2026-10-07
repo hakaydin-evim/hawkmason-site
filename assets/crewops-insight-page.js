@@ -144,12 +144,14 @@
 
   function render(summary, cmp) {
     const c = summary.counts;
+    const noRest = !!(state.planned && state.planned.warnings.some((w) => /augmented crew/i.test(w)));
+    $('noRestNote').classList.toggle('hidden', !noRest);
     $('tiles').innerHTML = [
       tile(c.flights, 'flight duties'),
-      tile(c.aboveThreshold, 'KSS ≥ 7 at TOD'),
-      tile(c.flights ? Math.round((100 * c.aboveThreshold) / c.flights) + '%' : '—', 'share above threshold'),
+      tile(c.aboveThreshold, noRest ? 'KSS ≥ 7 at TOD (no-rest case)' : 'KSS ≥ 7 at TOD'),
+      tile(c.flights ? Math.round((100 * c.aboveThreshold) / c.flights) + '%' : '—', noRest ? 'share above threshold (no-rest case)' : 'share above threshold'),
       tile(c.night, 'night duties (2023/023/R)'),
-      tile(c.overMaxFdp, 'FDP over table max'),
+      tile(c.overMaxFdp, 'FDP over maximum'),
       tile(c.fdpUndetermined, 'FDP not assessable'),
     ].join('');
     const rows = summary.duties.map((d) => `<tr>
