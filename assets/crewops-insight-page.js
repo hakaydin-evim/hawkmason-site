@@ -3,7 +3,36 @@
 // and draws the tables. No network calls except the fonts and pdf.js.
 (() => {
   const $ = (id) => document.getElementById(id);
-  const state = { planned: null, actual: null };
+  const state = { planned: null, actual: null, licence: null, evaluation: false };
+
+  // Access: a signed operator code (the Crewops Crew licence) opens the file
+  // inputs; without it the page runs on the sample roster only.
+  function setAccess(lic) {
+    state.licence = lic;
+    const unlocked = !!lic;
+    document.querySelectorAll('#inputs input[type=file]').forEach((i) => { i.disabled = !unlocked; });
+    document.querySelectorAll('#inputs .drop').forEach((d) => { d.style.opacity = unlocked ? '1' : '.45'; d.style.pointerEvents = unlocked ? 'auto' : 'none'; });
+    $('accessNote').innerHTML = unlocked
+      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.`
+      : 'Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.';
+  }
+  $('codeBtn').addEventListener('click', () => {
+    const r = CrewopsInsight.checkCode($('code').value);
+    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; setAccess(r); $('msg').textContent = ''; }
+    else $('msg').textContent = r.reason === 'expired' ? 'This code has run out. Ask for a renewed one.' : r.reason === 'none' ? 'Paste the whole code.' : 'This code was not issued by Crewops.';
+  });
+  $('sampleBtn').addEventListener('click', async () => {
+    try {
+      const text = await (await fetch('/crewops-sample-roster.ics')).text();
+      state.evaluation = true;
+      state.planned = { duties: CrewopsInsight.parseIcsText(text, 'AYT', 'planned').duties, warnings: [], names: ['sample roster'], unread: [] };
+      state.actual = null;
+      $('base').value = 'AYT';
+      $('run').disabled = false;
+      $('run').click();
+    } catch (e) { $('msg').textContent = 'Could not load the sample roster.'; }
+  });
+  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; setAccess(r); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
 
   async function pdfPages(file) {
     const pdfjs = window.__pdfjs;
@@ -33,18 +62,30 @@
 
   async function readFiles(files, versionId) {
     const base = $('base').value.trim().toUpperCase();
-    const out = { duties: [], warnings: [], names: [] };
+    const out = { duties: [], warnings: [], names: [], unread: [] };
     for (const f of files) {
       const name = f.name;
       let parsed;
       if (/\.(ics|ical|ifb|vcs)$/i.test(name) || /calendar/.test(f.type)) {
         parsed = CrewopsInsight.parseIcsText(await f.text(), base, versionId);
+      } else if (/\.pdf$/i.test(name) || /pdf/.test(f.type)) {
+        parsed = CrewopsInsight.parsePdfPages(await pdfPages(f), base, versionId, name);
+      } else if (/\.(html?|mhtml?)$/i.test(name) || /html/.test(f.type)) {
+        const html = await f.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        parsed = CrewopsInsight.parseHtml(html, doc.body ? doc.body.innerText || doc.body.textContent || '' : '', base, versionId);
       } else {
-        parsed = CrewopsInsight.parseNetLinePages(await pdfPages(f), base, versionId, name);
+        parsed = CrewopsInsight.parseText(await f.text(), base, versionId);
       }
       out.duties.push(...parsed.duties);
       out.warnings.push(...parsed.warnings);
-      out.names.push(`${name} · ${parsed.duties.length} duties`);
+      if (parsed.duties.length === 0) {
+        const who = parsed.vendor ? `This looks like a ${parsed.vendor} export, which this page does not read yet.` : 'No reader recognised this file.';
+        const subject = encodeURIComponent(`Crewops Insight: roster format (${name})`);
+        const body = encodeURIComponent(`Hello,\n\nCrewops Insight could not read this roster export.\nFile: ${name}\nSystem: ${parsed.vendor || 'unknown'}\n\nPlease attach the file (anonymised if you prefer) and we will add a reader.\n`);
+        out.unread.push(`${who} Send it to <a href="mailto:hello@hawkmason.com?subject=${subject}&body=${body}">hello@hawkmason.com</a> and we add the reader, usually within days.`);
+      }
+      out.names.push(`${name} · ${parsed.duties.length} duties${parsed.vendor ? ' · ' + parsed.vendor : ''}`);
     }
     return out;
   }
@@ -57,10 +98,12 @@
       $('msg').textContent = '';
       try {
         nameEl.textContent = 'reading…';
+        state.evaluation = false;
         state[slot] = await readFiles([...files], slot);
         nameEl.textContent = state[slot].names.join(' · ');
-        if (state[slot].warnings.length) $('msg').textContent = `${state[slot].warnings.length} rows could not be placed: ${state[slot].warnings.slice(0, 3).join(' | ')}`;
-        $('run').disabled = !state.planned;
+        if (state[slot].unread.length) $('msg').innerHTML = state[slot].unread.join('<br>');
+        else if (state[slot].warnings.length) $('msg').textContent = `${state[slot].warnings.length} rows could not be placed: ${state[slot].warnings.slice(0, 3).join(' | ')}`;
+        $('run').disabled = !(state.planned && state.planned.duties.length > 0);
       } catch (e) {
         nameEl.textContent = '';
         $('msg').textContent = `Could not read ${files[0].name}: ${e && e.message ? e.message : e}`;
@@ -114,8 +157,9 @@
       const prow = cmp.matched.map((m) => `<tr><td>${m.date}</td><td>${m.route}</td><td class="r">${fmtMin(m.plannedFdpMin)}</td><td class="r">${fmtMin(m.actualFdpMin)}</td><td class="r">${m.deltaMin >= 0 ? '+' : '−'}${fmtMin(Math.abs(m.deltaMin))}</td><td class="r">${fmtMin(m.maxFdpMin)}</td><td>${m.actualOverMax ? pill('bad', 'over') : pill('ok', 'within')}</td></tr>`).join('');
       $('pvaTable').innerHTML = `<thead><tr><th>Date</th><th>Route</th><th class="r">Planned FDP</th><th class="r">Flown FDP</th><th class="r">Δ</th><th class="r">Max</th><th>Flown vs max</th></tr></thead><tbody>${prow}</tbody>`;
     } else $('pva').classList.add('hidden');
+    $('evalTag').classList.toggle('hidden', !state.evaluation);
     $('results').classList.remove('hidden');
-    $('csv').classList.remove('hidden');
+    $('csv').classList.toggle('hidden', state.evaluation);
     $('print').classList.remove('hidden');
   }
 

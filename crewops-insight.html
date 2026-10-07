@@ -46,6 +46,7 @@
       .fine { font-size:12px; color:var(--faint) }
       .note { background:var(--surface); border-left:3px solid var(--mg); padding:12px 16px; border-radius:0 12px 12px 0; color:var(--soft); font-size:13px }
       .hidden { display:none }
+      .msg a { color:var(--cy) }
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
@@ -53,19 +54,28 @@
   </head>
   <body>
     <main class="wrap">
-      <div class="eyebrow">Crewops for airlines · prototype</div>
+      <div class="eyebrow">Crewops for airlines · licensed per operator</div>
       <h1>Crewops Insight</h1>
       <p class="lead">Drop your roster export. Insight reads every duty the way a fatigue risk assessment does: FDP against the table ceiling, predicted alertness through the duty (Three-Process Model, aircrew parameters), the EASA night-duty subtypes, and planned against flown. It runs in this browser tab. Nothing is uploaded.</p>
       <div class="bar"></div>
 
-      <div class="grid">
+      <div class="card" id="access" style="margin-bottom:16px">
+        <h3>ACCESS</h3>
+        <div class="row">
+          <label class="f" style="flex:1;min-width:260px">Operator licence code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
+          <button class="ghost" id="codeBtn">UNLOCK</button>
+          <button class="ghost" id="sampleBtn">EVALUATE ON SAMPLE ROSTER</button>
+        </div>
+        <p class="fine" id="accessNote" style="margin:10px 0 0">Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.</p>
+      </div>
+      <div class="grid" id="inputs">
         <div class="card">
           <h3>PLANNED ROSTER</h3>
-          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew duty plan PDF · calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,text/calendar,application/pdf" /><div class="name"></div></label>
+          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew, Leon, CAE Crew Access, Lufthansa CAS, FLiCA PDFs · AIMS eCrew / CrewConnex / Sabre pages · AIMS CSV · any calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
           <h3>FLOWN ROSTER <span class="fine">(optional)</span></h3>
-          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,text/calendar,application/pdf" /><div class="name"></div></label>
+          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
           <h3>OPERATION</h3>
@@ -80,6 +90,7 @@
       </div>
 
       <section id="results" class="hidden">
+        <p class="fine hidden" id="evalTag" style="color:var(--risk)">EVALUATION · sample roster, not your operation. Licensed operators analyse their own exports.</p>
         <h2>Summary</h2>
         <div class="tiles" id="tiles"></div>
         <div id="pva" class="hidden">
