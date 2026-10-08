@@ -71,7 +71,7 @@
           "@type": "FAQPage",
           "mainEntity": [
             { "@type": "Question", "name": "Which crew rostering systems does Crewops read?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Lufthansa Systems NetLine/CrewLink (signed in and refreshed automatically), plus AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO through their roster pages, PDFs or calendar links, and any .ics calendar or roster PDF. If yours is not read yet, the app sends us a sample in one tap and we add it." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "Lufthansa Systems NetLine/CrewLink and JetXBit (signed in and refreshed automatically), plus AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO through their roster pages, PDFs or calendar links, and any .ics calendar or roster PDF. If yours is not read yet, the app sends us a sample in one tap and we add it." } },
             { "@type": "Question", "name": "Which flight time limitation rules does it use?",
               "acceptedAnswer": { "@type": "Answer", "text": "EASA ORO.FTL, UK CAA, FAA Part 117 and Turkish SHGM. It shows the flight duty period ceiling, minimum rest, cumulative duty and the margin the roster leaves you." } },
             { "@type": "Question", "name": "Is my roster uploaded anywhere?",
@@ -93,7 +93,7 @@
     </script>
     <link rel="icon" href="assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="styles.css?v=27" />
+    <link rel="stylesheet" href="styles.css?v=28" />
     <script src="app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops">
@@ -150,6 +150,11 @@
         </div>
       </section>
 
+      <!-- IN SERVICE: which crew systems the app reads today -->
+      <div class="w-tape" aria-label="Crew systems Crewops reads">
+        <div class="w-tape-track"><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>live sync · in service</span></span><span class="w-tape-chip"><b>JetXBit</b><span>live sync · verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>page import · calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>page import</span></span><span class="w-tape-chip"><b>EASA · UK CAA · FAA 117 · SHGM</b><span>rule sets</span></span><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>live sync · in service</span></span><span class="w-tape-chip"><b>JetXBit</b><span>live sync · verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>page import · calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>page import</span></span><span class="w-tape-chip"><b>EASA · UK CAA · FAA 117 · SHGM</b><span>rule sets</span></span></div>
+      </div>
+
       <!-- FILM -->
       <section class="w-feat" id="film">
         <div class="section-head section-head--center">
@@ -175,7 +180,7 @@
           <article class="w-card">
             <span class="w-ic">📥</span>
             <h3>Reads the roster you already have</h3>
-            <p>On NetLine/CrewLink the app signs in and pulls the roster itself. AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO are read from their roster page, PDF or calendar link, and a pasted calendar link refreshes on its own. Any .ics or roster PDF works too, read on the device from its text layer with OCR as the fallback. 273 operators come preconfigured. System not read yet? Send it to us in one tap and we add it.</p>
+            <p>On NetLine/CrewLink and JetXBit the app signs in and pulls the roster itself. AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO are read from their roster page, PDF or calendar link, and a pasted calendar link refreshes on its own. Any .ics or roster PDF works too, read on the device from its text layer with OCR as the fallback. 273 operators come preconfigured. System not read yet? Send it to us in one tap and we add it.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">⏱️</span>
@@ -304,7 +309,7 @@
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
           <article class="w-card">
             <h3>Read directly</h3>
-            <p><b>Lufthansa Systems NetLine/CrewLink</b> — signs in to your airline's CrewLink portal and refreshes the roster on its own, change notices included. <b>AIMS eCrew</b>, <b>CrewConnex</b>, <b>FLiCA</b>, <b>Leon</b> and <b>CAE Crew Access</b> — from the roster page opened in the app, or its PDF.</p>
+            <p><b>Lufthansa Systems NetLine/CrewLink</b> — signs in to your airline's CrewLink portal and refreshes the roster on its own, change notices included. <b>JetXBit</b> (Aviabit) — signs in with your portal user name, takes the e-mailed confirmation code once, then refreshes on its own; verified with crew in October 2026. <b>AIMS eCrew</b>, <b>CrewConnex</b>, <b>FLiCA</b>, <b>Leon</b> and <b>CAE Crew Access</b> — from the roster page opened in the app, or its PDF.</p>
           </article>
           <article class="w-card">
             <h3>By calendar or file</h3>
@@ -350,7 +355,7 @@
           <h2 style="color: #fff;">What crew ask first</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
-          <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink automatically; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO through their roster pages, PDFs or calendar links; and any .ics calendar or roster PDF. If yours is not read yet, the app sends us a sample in one tap and we add it.</p></article>
+          <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink and JetXBit automatically; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO through their roster pages, PDFs or calendar links; and any .ics calendar or roster PDF. If yours is not read yet, the app sends us a sample in one tap and we add it.</p></article>
           <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL, UK CAA, FAA Part 117 and Turkish SHGM: the flight duty period ceiling, minimum rest, cumulative duty, and the margin the roster leaves you.</p></article>
           <article class="w-card"><h3>Is my roster uploaded anywhere?</h3><p>No. There is no account and no Crewops server holding your data; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account.</p></article>
           <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops.</p></article>
