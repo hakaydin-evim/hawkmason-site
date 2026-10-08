@@ -144,24 +144,33 @@
 
   function render(summary, cmp) {
     const c = summary.counts;
-    const noRest = !!(state.planned && state.planned.warnings.some((w) => /augmented crew/i.test(w)));
-    $('noRestNote').classList.toggle('hidden', !noRest);
+    const aug = c.augmented > 0;
+    const noRest = summary.inFlightRest === 'none';
+    $('noRestNote').classList.toggle('hidden', !aug);
+    if (aug) {
+      const cls = summary.restFacilityClass;
+      $('noRestNote').innerHTML = noRest
+        ? `<b>Augmented crew, in-flight rest NOT credited.</b> ${c.augmented} of ${c.flights} flight duties list three or more pilots. Duties like these are only allowed with in-flight rest (CS FTL.1.205(c): at least 90 consecutive minutes for each crew member, 2 hours for the pilots at the controls for landing), so this run is a counterfactual: it shows where in each duty the body clock is lowest and how duties rank, not how sleepy any pilot is. Switch "In-flight rest" to credited for the planning view.`
+        : `<b>Augmented crew, in-flight rest credited.</b> ${c.augmented} of ${c.flights} flight duties list three or more pilots. Each pilot is credited an equal share of the cruise on every leg long enough (never under the 90-minute minimum), taken as sleep in a class ${cls} facility and ending two hours before on-blocks, since the operator's own allocation is not in the file. "EASA max" is the CS FTL.1.205(c)(2) standard value for that crew and facility; where the operator's ceiling is above it, an approved scheme may allow it and the file's figure is used as given.` + (c.operatorMaxAboveEasa ? ` <b>${c.operatorMaxAboveEasa} duties have an operator maximum above the standard value: verify the scheme.</b>` : '');
+    }
     $('tiles').innerHTML = [
       tile(c.flights, 'flight duties'),
-      tile(c.aboveThreshold, noRest ? 'KSS ≥ 7 at TOD (no-rest case)' : 'KSS ≥ 7 at TOD'),
-      tile(c.flights ? Math.round((100 * c.aboveThreshold) / c.flights) + '%' : '—', noRest ? 'share above threshold (no-rest case)' : 'share above threshold'),
+      tile(c.aboveThreshold, aug ? (noRest ? 'KSS ≥ 7 at TOD (rest not credited)' : 'KSS ≥ 7 at TOD (rest credited)') : 'KSS ≥ 7 at TOD'),
+      tile(c.flights ? Math.round((100 * c.aboveThreshold) / c.flights) + '%' : '—', 'share above threshold'),
       tile(c.night, 'night duties (2023/023/R)'),
-      tile(c.overMaxFdp, 'FDP over maximum'),
+      tile(c.overMaxFdp, 'FDP over operator maximum'),
       tile(c.fdpUndetermined, 'FDP not assessable'),
+      ...(aug ? [tile(c.augmented, 'augmented-crew duties'), tile(c.operatorMaxAboveEasa, 'operator max above CS FTL.1.205(c)')] : []),
     ].join('');
     const rows = summary.duties.map((d) => `<tr>
-      <td>${d.date}</td><td>${d.type}</td><td>${d.route}</td><td>${d.reportLocal}</td><td class="r">${d.sectors}</td>
+      <td>${d.date}</td><td>${d.type}</td><td>${d.route}</td><td>${d.reportLocal}</td><td class="r">${d.sectors}</td><td class="r">${d.pilots === null ? '—' : d.pilots}</td>
       <td class="r">${fmtMin(d.fdpMin)}</td><td class="r">${fmtMin(d.maxFdpMin)}</td><td class="r">${d.fdpMarginMin === null ? '—' : fmtMin(d.fdpMarginMin)}</td><td>${levelPill(d.fdpLevel)}</td>
+      <td>${d.easaAugmentedMaxFdpMin === null ? '<span class="pill mute">—</span>' : d.operatorMaxAboveEasa ? pill('warn', fmtMin(d.easaAugmentedMaxFdpMin) + ' · op. above') : pill('ok', fmtMin(d.easaAugmentedMaxFdpMin))}</td><td class="r">${d.restCreditedMin ? fmtMin(d.restCreditedMin) : '—'}</td>
       <td class="r">${d.indicator.score} ${d.indicator.band}</td>
       <td class="r">${d.kssAtReport.toFixed(1)}</td><td>${kssPill(d.kssTodMax)}</td><td class="r">${d.kssTodMax === null ? '—' : Math.max(1, Math.round(d.kssTodMax) - 2)}</td><td class="r">${d.kssPeak.toFixed(1)}</td>
       <td>${nightLabel[d.nightType]}</td><td class="r">${fmtMin(d.sleepPrior24Min)}</td><td class="r">${fmtMin(d.sleepPrior48Min)}</td><td class="r">${d.hoursAwakeAtReport.toFixed(1)}</td><td class="r">${d.pswmPoints}</td>
       <td>${d.indicator.factors.map((f) => f.label).join(', ')}</td></tr>`).join('');
-    $('table').innerHTML = `<thead><tr><th>Date</th><th>Type</th><th>Route</th><th>Report</th><th class="r">Sect.</th><th class="r">FDP</th><th class="r">Max</th><th class="r">Margin</th><th>FDP</th><th class="r">Indicator</th><th class="r">KSS report</th><th>KSS TOD</th><th class="r">SP TOD</th><th class="r">KSS peak</th><th>Night</th><th class="r">Sleep 24h</th><th class="r">Sleep 48h</th><th class="r">Awake h</th><th class="r">PSWM</th><th>Factors</th></tr></thead><tbody>${rows}</tbody>`;
+    $('table').innerHTML = `<thead><tr><th>Date</th><th>Type</th><th>Route</th><th>Report</th><th class="r">Sect.</th><th class="r">Pilots</th><th class="r">FDP</th><th class="r">Op. max</th><th class="r">Margin</th><th>FDP</th><th>EASA max (aug.)</th><th class="r">Rest</th><th class="r">Indicator</th><th class="r">KSS report</th><th>KSS TOD</th><th class="r">SP TOD</th><th class="r">KSS peak</th><th>Night</th><th class="r">Sleep 24h</th><th class="r">Sleep 48h</th><th class="r">Awake h</th><th class="r">PSWM</th><th>Factors</th></tr></thead><tbody>${rows}</tbody>`;
     const months = Object.entries(summary.byMonth).sort().map(([m, r]) => `<tr><td>${m}</td><td class="r">${r.flights}</td><td class="r">${r.aboveThreshold}</td><td class="r">${r.flights ? Math.round((100 * r.aboveThreshold) / r.flights) : 0}%</td><td class="r">${r.night}</td><td class="r">${r.meanKssTod === null ? '—' : r.meanKssTod.toFixed(1)}</td></tr>`).join('');
     $('months').innerHTML = `<thead><tr><th>Month</th><th class="r">Flights</th><th class="r">KSS ≥ 7</th><th class="r">Share</th><th class="r">Night</th><th class="r">Mean KSS TOD</th></tr></thead><tbody>${months}</tbody>`;
     if (cmp) {
@@ -186,7 +195,7 @@
   $('run').addEventListener('click', () => {
     $('msg').textContent = '';
     try {
-      const opts = { ruleSetId: $('rules').value, homeBase: $('base').value.trim().toUpperCase(), todLeadMin: Number($('tod').value) };
+      const opts = { ruleSetId: $('rules').value, homeBase: $('base').value.trim().toUpperCase(), todLeadMin: Number($('tod').value), inFlightRest: $('rest').value, restFacilityClass: Number($('restClass').value) };
       const planned = CrewopsInsight.analyse(state.planned.duties, opts);
       let cmp = null;
       if (state.actual) cmp = CrewopsInsight.compare(planned, CrewopsInsight.analyse(state.actual.duties, opts));

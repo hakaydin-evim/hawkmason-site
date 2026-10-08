@@ -104,6 +104,8 @@
             <label class="f">Home base (IATA)<input type="text" id="base" value="CDG" maxlength="3" style="width:90px;text-transform:uppercase" /></label>
             <label class="f">Rule set<select id="rules"><option value="easa">EASA · ORO.FTL</option><option value="ukcaa">UK CAA · ORO.FTL</option><option value="shgm">SHGM · SHT-FTL</option><option value="faa117">FAA · Part 117</option></select></label>
             <label class="f">Top of descent<select id="tod"><option value="30">30 min before on-blocks</option><option value="20">20 min</option><option value="45">45 min</option></select></label>
+            <label class="f">In-flight rest (augmented crew)<select id="rest"><option value="share">credited · equal share of cruise, as sleep</option><option value="none">not credited · no-rest counterfactual</option></select></label>
+            <label class="f">Rest facility<select id="restClass"><option value="1">class 1 · bunk</option><option value="2">class 2 · reclining seat, cabin</option><option value="3">class 3 · reclining seat</option></select></label>
           </div>
           <div class="row" style="margin-top:14px"><button id="run" disabled>ANALYSE</button><button class="ghost hidden" id="csv">CSV</button><button class="ghost hidden" id="print">PRINT / PDF</button></div>
           <div class="msg" id="msg"></div>
@@ -112,9 +114,7 @@
 
       <section id="results" class="hidden">
         <p class="fine hidden" id="evalTag" style="color:var(--risk)">EVALUATION · sample roster, not your operation. Licensed operators analyse their own exports.</p>
-        <div class="hidden" id="noRestNote" style="border:1px solid var(--risk); border-radius:10px; padding:12px 14px; margin:0 0 14px; font-size:14px; line-height:1.5">
-          <b>Augmented crew: in-flight rest is not credited in this analysis.</b> Duties like these are only possible with in-flight rest (EASA requires at least 90 consecutive minutes for each crew member, 2 hours for those at the controls for landing). The file does not say how that rest is taken, so alertness (KSS / SP at top of descent and peak) is the <b>case where the rest gives no credit: a pessimistic bound, not a description of any pilot</b>. Read it to rank duties and to see where rest matters most. FDP, maximum and margin are against the operator's own figures and do not depend on this. Add the operator's rest rules and the model follows.
-        </div>
+        <div class="hidden" id="noRestNote" style="border:1px solid var(--risk); border-radius:10px; padding:12px 14px; margin:0 0 14px; font-size:14px; line-height:1.5"></div>
         <h2>Summary</h2>
         <div class="tiles" id="tiles"></div>
         <div id="pva" class="hidden">
@@ -123,7 +123,7 @@
           <div class="tablewrap"><table id="pvaTable"></table></div>
         </div>
         <h2>Duties</h2>
-        <p class="fine">KSS 1–9 (Karolinska Sleepiness Scale) and Samn-Perelli 1–7 predicted at top of descent; EASA FTL 2.0 risk markers are KSS ≥ 7 and SP ≥ 5. Sleep is predicted from the roster, not measured. "Night" follows ED Decision 2023/023/R: start 02:00–04:59 · end 02:00–05:59 · end after 06:00 (start before 02:00). PSWM is the GM5 CS FTL.1.205 prior-sleep/wake score (0 none · 1–4 low · 5–8 moderate · 9+ high).</p>
+        <p class="fine">KSS 1–9 (Karolinska Sleepiness Scale) and Samn-Perelli 1–7 predicted at top of descent; EASA FTL 2.0 risk markers are KSS ≥ 7 and SP ≥ 5. Sleep is predicted from the roster, not measured. For augmented crews (three or more pilots listed) "EASA max" is the CS FTL.1.205(c)(2) value for that crew and rest facility (3 sectors at most; 90 min rest each, 2 h for the landing pilots) and "Rest" is the in-flight rest credited to this pilot as sleep, ending two hours before on-blocks; the operator's own ceiling prevails where an approved scheme sets it. "Night" follows ED Decision 2023/023/R: start 02:00–04:59 · end 02:00–05:59 · end after 06:00 (start before 02:00). PSWM is the GM5 CS FTL.1.205 prior-sleep/wake score (0 none · 1–4 low · 5–8 moderate · 9+ high).</p>
         <div class="tablewrap"><table id="table"></table></div>
         <h2>By month</h2>
         <div class="tablewrap"><table id="months"></table></div>
