@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops: Crew Roster App — Duty Limits, Fatigue, Logbook · Crewops for Airlines</title>
-    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone. For operators: Crewops Insight, a biomathematical roster fatigue assessment (Three-Process Model, KSS and Samn-Perelli, planned versus flown), and Crewops Crew, the company edition." />
+    <title>Crewops: Crew Roster App — Duty Limits, Fatigue, Logbook · Crewops Aviation Platform for Airlines</title>
+    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone. For operators: the Crewops Aviation Platform — Crewops Crew, the company edition, Crewops Insight, the biomathematical roster fatigue assessment, and the safety, training, fatigue-report and document modules built next with launch operators." />
     <link rel="canonical" href="https://hawkmason.com/crewops" />
     <meta name="apple-itunes-app" content="app-id=6811512361" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
@@ -81,7 +81,7 @@
             { "@type": "Question", "name": "Can I export my logbook?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes. Flown sectors become logbook rows that you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time." } },
             { "@type": "Question", "name": "We build crew software or run an airline. Can we work together?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Write to hello@hawkmason.com about roster export formats, test rosters or partnerships." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. The Crewops Aviation Platform page lists what is in service and what is built next with launch operators; write to hello@hawkmason.com about roster export formats, test rosters, a company edition or a module for your operation." } },
             { "@type": "Question", "name": "Is there a fatigue risk management tool for the operator, not just the crew?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes. Crewops Insight reads an airline's roster export, planned or flown rotations, and assesses each duty with a biomathematical model (the Three-Process Model of alertness with aircrew parameters): KSS and Samn-Perelli at top of descent against the EASA FTL 2.0 thresholds, the night-duty subtypes of ED Decision 2023/023/R, FDP margins, and the planned-versus-flown comparison ORO.FTL.110(j) asks for. It runs in the browser; the file never leaves the operator's computer. Licensed per operator." } },
             { "@type": "Question", "name": "Can an airline give Crewops to its crews?",
@@ -93,7 +93,7 @@
     </script>
     <link rel="icon" href="assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="styles.css?v=28" />
+    <link rel="stylesheet" href="styles.css?v=29" />
     <script src="app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops">
@@ -106,6 +106,7 @@
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
       <div class="nav-store">
+        <a class="nav-airlines" href="/crewops/airlines">For airlines</a>
         <a class="store-btn store-btn--azure" href="#download">Get Crewops</a>
       </div>
     </header>
@@ -326,8 +327,9 @@
       <!-- AIRLINES -->
       <section class="w-feat" id="airlines">
         <div class="section-head section-head--center">
-          <span class="w-badge">Crewops for airlines</span>
+          <span class="w-badge">Crewops Aviation Platform</span>
           <h2 style="color: #fff;">The same engines, for the operator</h2>
+          <p style="color: var(--w-muted); max-width: 60ch; margin: 14px auto 0; line-height: 1.65;">Three products in service, one family, one design language. Safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals and crew communication are built next, with launch operators. <a href="/crewops/airlines" style="color: var(--w-azure); font-weight: 600;">See the platform →</a></p>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card">
@@ -341,8 +343,9 @@
             <p style="color: var(--w-muted);">In App Review. Pilot programmes with selected operators from October 2026.</p>
           </article>
           <article class="w-card">
-            <h3>Talk to us</h3>
-            <p>Crewops Crew and Crewops Insight are licensed per operator, with a trial on your own roster files first. For a trial, a reader for your crew system, or an edition for your crews, write to <a href="mailto:hello@hawkmason.com?subject=Crewops%20for%20airlines" style="color: var(--w-azure);">hello@hawkmason.com</a>. One developer answers, within a working day.</p>
+            <h3>The platform</h3>
+            <p>Both products share the readers, the limit engines, the fatigue model and the licence, and so does every module built next: safety reporting from the crew app, training and qualification records with a <b>My Training</b> screen, fatigue reports in the FRM loop, roster publishing for spreadsheet planners, digital manuals with read acknowledgement, crew notices, radiation dose records, duty requests and integrations. Licensed per operator, trial on your own files first.</p>
+            <p><a href="/crewops/airlines" style="color: var(--w-azure); font-weight: 600;">Crewops Aviation Platform →</a> · <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform" style="color: var(--w-azure);">hello@hawkmason.com</a></p>
           </article>
         </div>
         <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; margin-top: 18px;">Insight implements a published biomathematical model and documents its limits; it supports a fatigue risk assessment and is not an FRMS, a validated commercial model or a fitness-to-fly judgement. Operator systems and rules prevail.</p>
@@ -362,7 +365,7 @@
           <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
           <article class="w-card"><h3>Is there a fatigue risk management tool for the operator?</h3><p>Yes: <a href="/crewops/insight" style="color: var(--w-azure);">Crewops Insight</a> assesses a roster export, planned or flown, with a biomathematical model (Three-Process Model, aircrew parameters): KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins and planned versus flown for ORO.FTL.110(j). Browser-side, licensed per operator.</p></article>
           <article class="w-card"><h3>Can an airline give Crewops to its crews?</h3><p>Yes. Crewops Crew is the company edition: crews install it from a link, enter the airline's code, and get the full app with the modules the airline chose. No subscription, no account; crew data stays on the phone.</p></article>
-          <article class="w-card"><h3>We build crew software or run an airline. Can we work together?</h3><p>Yes — write to <a href="mailto:hello@hawkmason.com?subject=Crewops%20partnership" style="color: var(--w-azure);">hello@hawkmason.com</a> about export formats, test rosters or partnerships.</p></article>
+          <article class="w-card"><h3>We build crew software or run an airline. Can we work together?</h3><p>Yes — see the <a href="/crewops/airlines" style="color: var(--w-azure);">Crewops Aviation Platform</a> for what is in service and what is built next, and write to <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform" style="color: var(--w-azure);">hello@hawkmason.com</a> about export formats, test rosters, a company edition or a module for your operation.</p></article>
         </div>
       </section>
 
@@ -398,7 +401,7 @@
         <a href="crewops-privacy">Privacy</a>
         <a href="crewops-terms">Terms</a>
         <a href="crewops-support">Support</a>
-        <a href="crewops/insight">For airlines</a>
+        <a href="/crewops/airlines">For airlines</a>
         <a href="mailto:hello@hawkmason.com">Contact</a>
       </nav>
       <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>

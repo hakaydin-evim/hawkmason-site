@@ -1031,3 +1031,53 @@ body.umbrella .foot-legal { color: var(--muted); }
   body.legal .foot-links a { padding-inline: 4px; }
   body.legal .foot-links { row-gap: 0; justify-content: center; }
 }
+
+/* Crewops Aviation Platform page (/crewops/airlines): the same --w-* language,
+   plus a module map in the hero, status pills on the product cards, the
+   one-data-layer flow and the contact block. */
+.store-pill--mail { background: linear-gradient(135deg, #3fb6f5, #1f6feb); color: #050a12; }
+.store-pill--mail .store-name { font-size: 1rem; }
+.w-btn-ghost { color: var(--w-azure); border-color: var(--w-line); align-self: center; }
+.w-btn-ghost:hover { border-color: var(--w-azure); }
+.w-link { color: var(--w-azure); font-weight: 600; }
+.w-map { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+.w-tile { position: relative; background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 18px; padding: 18px 16px 16px; display: flex; flex-direction: column; gap: 4px; min-height: 104px; }
+.w-tile b { color: #fff; font: 700 1rem var(--display); letter-spacing: -0.01em; }
+.w-tile span { color: var(--w-muted); font-size: 0.8rem; line-height: 1.45; }
+.w-tile i { font-style: normal; margin-top: auto; padding-top: 8px; color: var(--w-muted); font: 600 0.68rem/1 var(--text); letter-spacing: 0.1em; text-transform: uppercase; }
+.w-tile.is-live { border-color: rgba(63, 182, 245, 0.55); box-shadow: inset 0 0 0 1px rgba(63, 182, 245, 0.18), 0 18px 40px -28px rgba(63, 182, 245, 0.7); }
+.w-tile.is-live i { color: var(--w-azure); }
+.w-tile.is-live i::before { content: ""; display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--w-azure); margin-right: 6px; vertical-align: 1px; box-shadow: 0 0 10px var(--w-azure); }
+.w-prod-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; }
+.w-prod-for { color: var(--w-muted); font: 600 0.72rem/1 var(--text); letter-spacing: 0.08em; text-transform: uppercase; }
+.w-status { display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border-radius: 999px; font: 700 0.68rem/1 var(--text); letter-spacing: 0.06em; text-transform: uppercase; border: 1px solid var(--w-line); color: var(--w-muted); }
+.w-status.is-live { color: var(--w-azure); border-color: rgba(63, 182, 245, 0.45); background: rgba(63, 182, 245, 0.12); }
+.w-status.is-live::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--w-azure); box-shadow: 0 0 8px var(--w-azure); }
+.w-status.is-soon { color: #ffd166; border-color: rgba(255, 209, 102, 0.4); background: rgba(255, 209, 102, 0.1); }
+.w-strip-inner--3 { grid-template-columns: 1.1fr 1fr 1fr; max-width: 1110px; }
+.w-flow { max-width: 760px; margin: 34px auto 0; border: 1px solid var(--w-line); border-radius: 22px; background: var(--w-panel); overflow: hidden; }
+.w-flow-row { display: grid; grid-template-columns: 130px 1fr; gap: 16px; padding: 16px 22px; border-top: 1px solid rgba(255, 255, 255, 0.08); align-items: baseline; }
+.w-flow-row:first-child { border-top: 0; }
+.w-flow-row b { color: var(--w-azure); font: 700 0.76rem/1.6 var(--text); letter-spacing: 0.1em; text-transform: uppercase; }
+.w-flow-row p { margin: 0; color: var(--w-muted); line-height: 1.6; font-size: 0.96rem; }
+.w-flow-row.is-sum { background: rgba(63, 182, 245, 0.08); }
+.w-flow-row.is-sum p { color: var(--w-ink); }
+.w-flow-row.is-sum i { color: #fff; font-style: italic; }
+.w-cta { max-width: 820px; margin: 0 auto; padding: 24px 24px 72px; text-align: center; }
+.w-cta h2 { font-size: clamp(1.9rem, 4vw, 3rem); margin: 10px 0 12px; }
+.w-cta > p { color: var(--w-muted); line-height: 1.65; max-width: 56ch; margin: 0 auto 22px; }
+.w-cta-mail { margin: 18px 0 0; }
+.w-cta-mail a { color: var(--w-azure-soft); font: 600 1.05rem var(--text); letter-spacing: 0.02em; }
+@media (max-width: 900px) {
+  .w-map { grid-template-columns: repeat(2, 1fr); }
+  .w-strip-inner--3 { grid-template-columns: 1fr; }
+  .w-flow-row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (max-width: 420px) {
+  .w-map { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .w-tile { padding: 14px 12px 12px; min-height: 0; }
+}
+.nav-airlines { color: var(--w-azure-soft); font: 600 0.9rem var(--text); margin-right: 14px; white-space: nowrap; }
+.nav-airlines:hover { color: #fff; }
+.nav--crew .nav-store { display: inline-flex; align-items: center; }
+@media (max-width: 480px) { .nav-airlines { display: none; } }

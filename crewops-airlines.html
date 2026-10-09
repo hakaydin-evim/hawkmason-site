@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops Aviation Platform — crew, fatigue, safety and training software for airlines</title>
+    <meta name="description" content="Crewops for airlines: the crew roster app, a company edition and Crewops Insight, the roster fatigue assessment, are in service today. Safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals and crew communication are built next, with launch operators, in one design language on one data layer. Trial on your own roster files first." />
+    <link rel="canonical" href="https://hawkmason.com/crewops/airlines" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="Crewops Aviation Platform — for airlines and operators" />
+    <meta property="og:description" content="Crew app, company edition and roster fatigue assessment in service today. Safety reporting, training records, fatigue reports, roster publishing, digital manuals and crew communication built next, with you. One design language, one data layer." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/airlines" />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Crewops Aviation Platform — for airlines and operators" />
+    <meta name="twitter:description" content="Crew app, company edition and roster fatigue assessment in service today; safety reporting, training records, fatigue reports, digital manuals and more built next, with launch operators." />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": "https://hawkmason.com/crewops/airlines#page",
+          "url": "https://hawkmason.com/crewops/airlines",
+          "name": "Crewops Aviation Platform",
+          "description": "Crew, fatigue, safety, training, documents and operations software for airlines, built on one data layer in one design language. Three products in service; the next modules are built with launch operators.",
+          "isPartOf": { "@id": "https://hawkmason.com/#website" },
+          "about": { "@id": "https://hawkmason.com/crewops/airlines#platform" },
+          "publisher": { "@id": "https://hawkmason.com/#studio" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://hawkmason.com/#studio",
+          "name": "Hawk & Mason Studios",
+          "url": "https://hawkmason.com/",
+          "logo": "https://hawkmason.com/assets/hawk-mason-mark.png",
+          "email": "hello@hawkmason.com",
+          "contactPoint": [{
+            "@type": "ContactPoint",
+            "contactType": "sales",
+            "email": "hello@hawkmason.com",
+            "availableLanguage": ["en", "tr"],
+            "areaServed": "Worldwide"
+          }]
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://hawkmason.com/crewops/airlines#platform",
+          "name": "Crewops Aviation Platform",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "iOS, browser",
+          "url": "https://hawkmason.com/crewops/airlines",
+          "description": "A modular platform for airline crew operations: crew roster app, company edition, roster fatigue assessment, and modules for safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals, crew communication, radiation dose records, duty requests and integrations.",
+          "publisher": { "@id": "https://hawkmason.com/#studio" },
+          "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Licensed per operator; trial on the operator's own roster files first." },
+          "hasPart": [
+            { "@id": "https://hawkmason.com/crewops#app" },
+            { "@type": "MobileApplication", "@id": "https://hawkmason.com/crewops/airlines#crew", "name": "Crewops Crew", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS", "description": "The company edition of the Crewops crew app: installed from a link, unlocked by the airline's code, modules chosen by the airline, no subscription and no account. Crew data stays on the phone." },
+            { "@id": "https://hawkmason.com/crewops/insight#app" }
+          ]
+        },
+        {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Hawk & Mason Studios", "item": "https://hawkmason.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Crewops", "item": "https://hawkmason.com/crewops" },
+            { "@type": "ListItem", "position": 3, "name": "Crewops Aviation Platform", "item": "https://hawkmason.com/crewops/airlines" }
+          ]
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Can we start with one module?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Most operators start with Crewops Insight on their own roster export, or with Crewops Crew for a group of crews. Every further module is added on the same licence, in the same app and the same design, and it starts as a trial on your own files." } },
+            { "@type": "Question", "name": "Where does the data live?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Crew data stays on the crew member's phone: roster, sleep, fatigue and health data never reach a Hawk & Mason server. Crewops Insight runs in the browser on the operator's own computer. Company modules that need a shared record, such as safety reports or training records, run in a workspace set up for your operator, and the data-flow map is part of the proposal." } },
+            { "@type": "Question", "name": "Do our crews need an account?",
+              "acceptedAnswer": { "@type": "Answer", "text": "No. Crews install Crewops Crew from a link and enter the code your airline holds. There is no subscription and no account; the code says which airline, until when, and which modules are on." } },
+            { "@type": "Question", "name": "Which crew systems does the platform read?",
+              "acceptedAnswer": { "@type": "Answer", "text": "NetLine/CrewLink and JetXBit with live sync; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP through their roster pages, PDFs, spreadsheets or calendar links; any .ics calendar or roster PDF. A reader for another system is written from one sample export." } },
+            { "@type": "Question", "name": "Is Crewops Insight an FRMS?",
+              "acceptedAnswer": { "@type": "Answer", "text": "It implements a published biomathematical model (the Three-Process Model of alertness with aircrew parameters) and documents its limits. It supports a fatigue risk assessment and the FRM documentation ORO.FTL asks for; it is not an FRMS by itself and it makes no judgement about any person's fitness to fly." } },
+            { "@type": "Question", "name": "Can you build a module we do not see here?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Tell us what your operation needs. The platform is modular: the roster readers, the limit engines, the fatigue model, the licence codes and the crew app are shared by every module, so a new one starts from a working base, not from zero. Write to hello@hawkmason.com with the problem, and we answer with a first version plan." } }
+          ]
+        }
+      ]
+    }
+    </script>
+    <link rel="icon" href="assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="assets/crewops/icon.png?v=2" />
+    <link rel="stylesheet" href="styles.css?v=29" />
+    <script src="app.js?v=25" defer></script>
+  </head>
+  <body class="crew" data-page="crewops-airlines">
+    <div class="veil veil--dark" data-veil aria-hidden="true"></div>
+
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="/crewops" data-back data-veil="#070c15" aria-label="Back to Crewops">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--azure" href="#contact">Write to us</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">Crewops for airlines</span>
+          <h1 class="w-title">Crewops Aviation Platform</h1>
+          <p class="w-lede">One design language. One data layer. From the crew's phone to the operations desk.</p>
+          <p class="w-sub">
+            Three products are in service today: the crew roster app, its company edition,
+            and the roster fatigue assessment. The rest of the platform is built the same
+            way, with launch operators, one module at a time, on the engines and screens
+            your crews already know. Built by someone who flies the line.
+          </p>
+          <div class="store-row">
+            <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform%20%E2%80%94%20trial">
+              <span class="store-kicker">Start with a trial</span><span class="store-name">hello@hawkmason.com</span>
+            </a>
+            <a class="btn btn-ghost w-btn-ghost" href="/crewops/insight">Try Insight on a sample roster</a>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            Licensed per operator · trial on your own roster files first · one developer answers, within a working day
+          </p>
+        </div>
+        <div class="w-map" aria-label="Platform modules">
+          <div class="w-tile is-live"><b>Crew</b><span>Crewops · Crewops Crew</span><i>in service</i></div>
+          <div class="w-tile is-live"><b>Fatigue</b><span>Crewops Insight</span><i>in service</i></div>
+          <div class="w-tile"><b>Safety</b><span>reports · actions · dashboard</span><i>next</i></div>
+          <div class="w-tile"><b>Training</b><span>records · expiry · My Training</span><i>next</i></div>
+          <div class="w-tile"><b>Documents</b><span>manuals · SOP · acknowledgement</span><i>next</i></div>
+          <div class="w-tile"><b>Communication</b><span>notices · read receipts</span><i>next</i></div>
+          <div class="w-tile"><b>Operations</b><span>roster publishing · disruption</span><i>with you</i></div>
+          <div class="w-tile"><b>Integrations</b><span>NetLine · JetXBit · AIMS · Leon · API</span><i>growing</i></div>
+        </div>
+      </section>
+
+      <!-- IN SERVICE TAPE -->
+      <div class="w-tape" aria-label="Crew systems and rule sets the platform works with">
+        <div class="w-tape-track"><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>live sync · in service</span></span><span class="w-tape-chip"><b>JetXBit</b><span>live sync · verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>page import · calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>page import</span></span><span class="w-tape-chip"><b>Rotation spreadsheets</b><span>.xlsx · Insight</span></span><span class="w-tape-chip"><b>EASA · UK CAA · FAA 117 · SHGM</b><span>rule sets</span></span><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>live sync · in service</span></span><span class="w-tape-chip"><b>JetXBit</b><span>live sync · verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>page import · calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>page import</span></span><span class="w-tape-chip"><b>Rotation spreadsheets</b><span>.xlsx · Insight</span></span><span class="w-tape-chip"><b>EASA · UK CAA · FAA 117 · SHGM</b><span>rule sets</span></span></div>
+      </div>
+
+      <!-- IN SERVICE -->
+      <section class="w-feat" id="products">
+        <div class="section-head section-head--center">
+          <span class="w-badge">In service</span>
+          <h2 style="color: #fff;">Three products, one family</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card w-prod">
+            <div class="w-prod-head"><span class="w-status is-live">In service · App Store</span><span class="w-prod-for">For the crew member</span></div>
+            <h3>Crewops</h3>
+            <p>The crew roster app. Reads the roster the airline already sends, then shows what it leaves: the FDP ceiling, the rest owed, the month's load, where the fatigue comes from. Logbook with EASA and FAA export, document wallet, widgets and a Live Activity, Crewmates. EASA, UK CAA, FAA Part 117 and SHGM rule sets, seven languages. Nothing reaches our server.</p>
+            <p><a class="w-link" href="/crewops">About Crewops →</a></p>
+          </article>
+          <article class="w-card w-prod">
+            <div class="w-prod-head"><span class="w-status is-soon">Company edition · pilot programmes</span><span class="w-prod-for">For your crews</span></div>
+            <h3>Crewops Crew</h3>
+            <p>The same app, given by the airline. Crews install it from a link, enter the code your operation holds, and get the full app with the modules you chose: no subscription, no account. Your rule set and branding by arrangement. Crew data stays on the crew member's phone; the code only says which airline, until when, and which modules are on.</p>
+            <p><a class="w-link" href="#contact">Ask for a pilot programme →</a></p>
+          </article>
+          <article class="w-card w-prod">
+            <div class="w-prod-head"><span class="w-status is-live">Live · browser</span><span class="w-prod-for">For the operator</span></div>
+            <h3>Crewops Insight</h3>
+            <p>Drop a roster export, planned or flown, and read it the way a fatigue risk assessment does: FDP against the table ceiling, including augmented-crew limits, predicted alertness through each duty (Three-Process Model, aircrew parameters), KSS and Samn-Perelli at top of descent, the 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; the file never leaves your computer.</p>
+            <p><a class="w-link" href="/crewops/insight">Open Insight (evaluation on a sample roster) →</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SHARED BASE -->
+      <section class="w-strip">
+        <div class="w-strip-inner w-strip-inner--3">
+          <div>
+            <span class="w-badge">Shared base</span>
+            <h2 style="color: #fff; margin: 10px 0 8px; font-size: clamp(1.5rem, 2.6vw, 2rem);">Every module starts from a working base</h2>
+            <p style="color: var(--w-muted); line-height: 1.65; margin: 0;">A new module is not a new product. It reuses the readers, the engines, the licence and the screens the crews already have, so a first version is weeks of work, not a year.</p>
+          </div>
+          <ul class="w-spec">
+            <li><b>Roster readers</b> for ten crew systems, spreadsheets, PDFs and calendars</li>
+            <li><b>Limit engines</b> for EASA ORO.FTL and CS FTL.1, UK CAA, FAA Part 117, SHGM</li>
+            <li><b>Fatigue model</b>: Three-Process Model, aircrew parameters, in-flight rest credited</li>
+          </ul>
+          <ul class="w-spec">
+            <li><b>Licence codes</b> per operator, offline, modules switched by code</li>
+            <li><b>Crew app</b> in seven languages, updated over the air without a store release</li>
+            <li><b>One design language</b> on the phone and in the browser</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- NEXT MODULES -->
+      <section class="w-feat" id="modules">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Built next, with you</span>
+          <h2 style="color: #fff;">The modules an operation asks for</h2>
+          <p style="color: var(--w-muted); max-width: 62ch; margin: 14px auto 0; line-height: 1.65;">Each of these starts as a trial with a launch operator, on your own files and your own rules, and arrives in the same app and the same design as the products above. The list is open: if your operation needs something else, that is the conversation we want.</p>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));">
+          <article class="w-card">
+            <span class="w-ic">🛡️</span>
+            <h3>Safety reporting</h3>
+            <p>A cabin or flight safety report opened from the crew app, with flight number, aircraft, station and crew filled in from the roster, photos attached, and the report routed to the right department. For management: open, overdue and recurring reports, corrective actions and follow-up in one view.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🎓</span>
+            <h3>Training &amp; qualification records</h3>
+            <p>Who took which course, when, with which instructor, and when it expires: recurrent, LPC and OPC, SEP, dangerous goods, CRM, first aid, line checks. The crew member sees it on the phone as <b>My Training</b>, with what is due and what to do; the training department sees the whole fleet's calendar and gaps.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🌙</span>
+            <h3>Fatigue reports &amp; the FRM loop</h3>
+            <p>The crew member files a fatigue report from the phone; it lands in Crewops Insight next to the model's prediction for that duty. Roster pattern analysis, planned versus flown, the fatigue report register and the documentation ORO.FTL asks for, in one place.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📤</span>
+            <h3>Roster publishing</h3>
+            <p>For operators who plan in a spreadsheet: the planner drops the roster, the limit check runs before it goes out, and the roster lands on every crew phone with change notices, the same way the large crew systems deliver it.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📣</span>
+            <h3>Crew communication</h3>
+            <p>Company notices, safety bulletins and revisions delivered to the crew app, with read receipts and acknowledgement tracking, so the operation knows who has seen what before the next duty.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📚</span>
+            <h3>Digital manuals &amp; SOP library</h3>
+            <p>OM-A, OM-B, SOPs, cabin manual, QRH and bulletins as one controlled library on the phone: revision control, read acknowledgement, offline. On top of it an assistant that answers only from your approved documents and cites the section it used.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">☢️</span>
+            <h3>Radiation dose records</h3>
+            <p>The cosmic radiation dose per crew member from the flown sectors, the annual record per person, and the threshold notices the operator has to keep. The crew app already computes the dose per flight; this is the operator's side of it.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🔁</span>
+            <h3>Duty requests &amp; swaps</h3>
+            <p>Swap, leave and request bidding from the crew phone, with the limit check run before the request is made and an approval flow on the company side; written back to the crew system where its integration allows it.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🧭</span>
+            <h3>Operations views</h3>
+            <p>What a change does before it is published: the limits, the rest and the predicted alertness of the crew it touches. Disruption notices to the crews concerned, and crew recovery views built on the same engines.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">📊</span>
+            <h3>Records &amp; reporting</h3>
+            <p>Flight and duty time records per crew member from the flown roster, cumulative limits over 7, 14 and 28 days and the year, planned-versus-flown rates, and the exports an authority audit or an FRM review asks for. The crew app's logbook engine, run for the whole operation.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🫀</span>
+            <h3>Wellbeing content for crews</h3>
+            <p>The crew app carries a library of sleep, body-clock and fatigue advice cards, each with its evidence grade and source, in seven languages. An operator can add its own guidance to it. What a crew member records about sleep or health stays on the phone; the operation sees the library, never the person.</p>
+          </article>
+          <article class="w-card">
+            <span class="w-ic">🔌</span>
+            <h3>Integrations &amp; API</h3>
+            <p>NetLine/CrewLink and JetXBit today, AIMS, Leon and calendar feeds by file or page, and an API for your own systems so the platform reads from and writes to what you already run. A reader for a new system is written from one sample export.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- HOW IT FITS -->
+      <section class="w-feat" id="together">
+        <div class="section-head section-head--center">
+          <span class="w-badge">One data layer</span>
+          <h2 style="color: #fff;">Why one platform, not ten apps</h2>
+        </div>
+        <div class="w-flow">
+          <div class="w-flow-row"><b>Crew</b><p>knows the crew member reports at 05:20 tomorrow, and what the duty leaves in limits and rest.</p></div>
+          <div class="w-flow-row"><b>Training</b><p>knows the SEP recurrent expires in 42 days and there is no session on that day.</p></div>
+          <div class="w-flow-row"><b>Safety</b><p>knows an open report on that aircraft from last week is waiting for follow-up.</p></div>
+          <div class="w-flow-row"><b>Documents</b><p>knows a new SOP revision was published and not yet acknowledged.</p></div>
+          <div class="w-flow-row is-sum"><b>The crew app</b><p>says it in one line the evening before: <i>three things for tomorrow's duty.</i> That is what a digital operations layer looks like from the crew seat.</p></div>
+        </div>
+      </section>
+
+      <!-- HOW WE WORK -->
+      <section class="w-feat" id="how">
+        <div class="section-head section-head--center">
+          <span class="w-badge">How we work</span>
+          <h2 style="color: #fff;">Trial first, then a licence</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
+          <article class="w-card"><h3>1 · Your files</h3><p>Send one roster export, or open Insight on it yourself. We read your format, your rule set and your operation before anything is proposed.</p></article>
+          <article class="w-card"><h3>2 · A first version</h3><p>Weeks, not quarters: the module is built on the shared base and goes to a group of your crews or your department, in the same app they already have.</p></article>
+          <article class="w-card"><h3>3 · Licence per operator</h3><p>One code opens the crew edition, Insight and the modules you chose, for the period you chose. No per-seat accounts, no fitness-to-fly claims, your systems and records prevail.</p></article>
+          <article class="w-card"><h3>4 · Data where it belongs</h3><p>Crew data stays on the phone. Insight runs in your browser. Company records run in a workspace set up for your operator, with the data-flow map in the proposal.</p></article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="w-cta" id="contact">
+        <span class="w-badge">Talk to us</span>
+        <h2 style="color: #fff;">Tell us about your operation</h2>
+        <p>A roster export, a problem your current system does not solve, or a module you do not see here. One developer reads it and answers within a working day, in English or Turkish.</p>
+        <div class="store-row store-row--center">
+          <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform%20%E2%80%94%20trial"><span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span></a>
+          <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform%20%E2%80%94%20a%20module%20for%20our%20operation"><span class="store-kicker">Ask about a module</span><span class="store-name">Safety · Training · Fatigue · Documents</span></a>
+        </div>
+        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
+      </section>
+
+      <!-- FAQ -->
+      <section class="w-feat" id="faq">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Questions</span>
+          <h2 style="color: #fff;">What operators ask first</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card"><h3>Can we start with one module?</h3><p>Yes. Most operators start with Crewops Insight on their own roster export, or with Crewops Crew for a group of crews. Every further module is added on the same licence, in the same app and the same design, and it starts as a trial on your own files.</p></article>
+          <article class="w-card"><h3>Where does the data live?</h3><p>Crew data stays on the crew member's phone: roster, sleep, fatigue and health data never reach a Hawk &amp; Mason server. Insight runs in the browser on your own computer. Company modules that need a shared record, such as safety reports or training records, run in a workspace set up for your operator, and the data-flow map is part of the proposal.</p></article>
+          <article class="w-card"><h3>Do our crews need an account?</h3><p>No. Crews install Crewops Crew from a link and enter the code your airline holds. No subscription, no account; the code says which airline, until when, and which modules are on.</p></article>
+          <article class="w-card"><h3>Which crew systems does it read?</h3><p>NetLine/CrewLink and JetXBit with live sync; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP through their roster pages, PDFs, spreadsheets or calendar links; any .ics calendar or roster PDF. A reader for another system is written from one sample export.</p></article>
+          <article class="w-card"><h3>Is Crewops Insight an FRMS?</h3><p>It implements a published biomathematical model and documents its limits. It supports a fatigue risk assessment and the FRM documentation ORO.FTL asks for; it is not an FRMS by itself and it makes no judgement about any person's fitness to fly.</p></article>
+          <article class="w-card"><h3>Can you build a module we do not see here?</h3><p>Tell us what your operation needs. The readers, the engines, the fatigue model, the licence codes and the crew app are shared by every module, so a new one starts from a working base. Write to <a class="w-link" href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform">hello@hawkmason.com</a> with the problem; we answer with a first-version plan.</p></article>
+        </div>
+        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; margin-top: 18px;">Crewops is independent. Crew system names belong to their owners and are used only to say which formats the platform reads; no endorsement is implied. Insight implements a published model and is not a fitness-to-fly judgement. Operator systems and records prevail.</p>
+      </section>
+    </main>
+
+    <footer class="foot" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/crewops">Crewops</a>
+        <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight">Insight</a>
+        <a href="crewops-privacy">Privacy</a>
+        <a href="crewops-terms">Terms</a>
+        <a href="crewops-support">Support</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
