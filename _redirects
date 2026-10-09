@@ -2,6 +2,6 @@
 # Eski bağlantılar ve aramadaki sonuçlar ana sayfaya kalıcı yönlensin.
 /eliteloop / 301
 /eliteloop.html / 301
-/crewops/insight /crewops-insight.html 200
-/crewops/airlines /crewops-airlines.html 200
+/crewops/insight /crewops-insight 200
+/crewops/airlines /crewops-airlines 200
 /crewops/platform /crewops/airlines 301
