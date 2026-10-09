@@ -5,7 +5,7 @@
     <meta name="google-site-verification" content="rnTJU4HD9IMe2Pc9-MGG0rwVdvZdFmJyDGwAh2kpxiY" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Hawk &amp; Mason Studios — Mobile games &amp; apps</title>
-    <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, Ittako, Crewops and Pondr. Calm, colorful and built to keep." />
+    <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, Ittako, Crewops and Pondr — and of the Crewops Aviation Platform for airlines: crew roster app, company edition, roster fatigue assessment, and safety, training and document modules." />
     <link rel="canonical" href="https://hawkmason.com/" />
     <meta property="og:title" content="Hawk & Mason Studios" />
     <meta property="og:description" content="Mobile games & apps, crafted to keep. Makers of Sugar Tiles, Ittako, Crewops and Pondr." />
@@ -18,7 +18,7 @@
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=27" />
+    <link rel="stylesheet" href="styles.css?v=29" />
     <script src="app.js?v=25" defer></script>
     <script type="application/ld+json">
     {
@@ -30,7 +30,26 @@
           "name": "Hawk & Mason Studios",
           "url": "https://hawkmason.com/",
           "logo": "https://hawkmason.com/assets/apple-touch-icon.png",
-          "description": "Independent studio making polished mobile games and apps."
+          "description": "Independent studio making polished mobile games and apps, and the Crewops Aviation Platform for airlines: crew roster app, company edition, roster fatigue assessment, and safety, training, fatigue-report and document modules.",
+          "email": "hello@hawkmason.com",
+          "contactPoint": [{ "@type": "ContactPoint", "contactType": "sales", "email": "hello@hawkmason.com", "availableLanguage": ["en", "tr"] }],
+          "brand": [
+            { "@type": "Brand", "name": "Crewops", "url": "https://hawkmason.com/crewops" },
+            { "@type": "Brand", "name": "Crewops Aviation Platform", "url": "https://hawkmason.com/crewops/airlines" }
+          ]
+        },
+        {
+          "@type": "ItemList",
+          "@id": "https://hawkmason.com/#products",
+          "name": "Hawk & Mason products",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Sugar Tiles", "url": "https://hawkmason.com/sugar-tiles" },
+            { "@type": "ListItem", "position": 2, "name": "Ittako", "url": "https://hawkmason.com/ittako" },
+            { "@type": "ListItem", "position": 3, "name": "Crewops", "url": "https://hawkmason.com/crewops" },
+            { "@type": "ListItem", "position": 4, "name": "Pondr", "url": "https://hawkmason.com/pondr/" },
+            { "@type": "ListItem", "position": 5, "name": "Crewops Aviation Platform", "url": "https://hawkmason.com/crewops/airlines" },
+            { "@type": "ListItem", "position": 6, "name": "Crewops Insight", "url": "https://hawkmason.com/crewops/insight" }
+          ]
         },
         {
           "@type": "WebSite",
@@ -53,6 +72,7 @@
       </a>
       <nav class="nav-links" aria-label="Primary">
         <a href="#games">Games &amp; apps</a>
+        <a href="#airlines">For airlines</a>
         <a href="#studio">Studio</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -162,6 +182,22 @@
         <p class="games-foot">More in the workshop — new small worlds are always in the making.</p>
       </section>
 
+      <!-- FOR AIRLINES -->
+      <section class="plat" id="airlines">
+        <div class="section-head">
+          <p class="eyebrow">For airlines and operators</p>
+          <h2>Crewops Aviation Platform</h2>
+          <p class="section-sub">One design language, one data layer, from the crew's phone to the operations desk. Three products in service; the next modules are built with launch operators.</p>
+        </div>
+        <div class="plat-grid">
+          <a class="plat-card" href="crewops"><span class="pill pill--live">In service</span><h3>Crewops</h3><p>The crew roster app: duty limits, rest, fatigue, logbook. Nothing leaves the phone.</p></a>
+          <a class="plat-card" href="crewops/airlines#products"><span class="pill pill--app">Company edition</span><h3>Crewops Crew</h3><p>The same app given by the airline, unlocked by a code, modules chosen by the operator.</p></a>
+          <a class="plat-card" href="crewops/insight"><span class="pill pill--live">Live</span><h3>Crewops Insight</h3><p>A roster export read the way a fatigue risk assessment does, in the browser.</p></a>
+          <a class="plat-card plat-card--next" href="crewops/airlines#modules"><span class="pill pill--soon">Built next, with you</span><h3>Safety · Training · Fatigue · Documents</h3><p>Safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals, crew communication, integrations.</p></a>
+        </div>
+        <p class="games-foot"><a href="crewops/airlines" class="plat-link">See the platform →</a> · <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform" class="plat-link">hello@hawkmason.com</a></p>
+      </section>
+
       <!-- STUDIO -->
       <section class="studio" id="studio">
         <div class="studio-inner">
@@ -187,6 +223,7 @@
         <a href="ittako">Ittako</a>
         <a href="crewops">Crewops</a>
         <a href="pondr/">Pondr</a>
+        <a href="crewops/airlines">For airlines</a>
         <a href="#studio">Studio</a>
         <a href="mailto:hello@hawkmason.com">Contact</a>
       </nav>
