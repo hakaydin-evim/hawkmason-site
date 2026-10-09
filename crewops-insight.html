@@ -42,7 +42,7 @@
       .bar { height:6px; border-radius:3px; background:linear-gradient(90deg,var(--mg),var(--cy)); margin:0 0 28px }
       .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
       .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px }
-      .card h3 { margin:0 0 6px; font-size:14px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; color:var(--cy); font-weight:500 }
+      .card h3 { margin:0 0 6px; font-size:14px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; color:var(--cy); font-weight:500; text-transform:uppercase }
       .drop { display:block; border:1px dashed var(--faint); border-radius:14px; padding:22px; text-align:center; color:var(--soft); cursor:pointer; transition:border-color .2s }
       .drop.over, .drop:hover { border-color:var(--cy); color:var(--ink) }
       .drop input { display:none }
@@ -82,7 +82,7 @@
       <div class="bar"></div>
 
       <div class="card" id="access" style="margin-bottom:16px">
-        <h3>ACCESS</h3>
+        <h3>Access</h3>
         <div class="row">
           <label class="f" style="flex:1;min-width:260px">Operator licence code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
           <button class="ghost" id="codeBtn">UNLOCK</button>
@@ -92,15 +92,15 @@
       </div>
       <div class="grid" id="inputs">
         <div class="card">
-          <h3>PLANNED ROSTER</h3>
+          <h3>Planned roster</h3>
           <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew, Leon, CAE Crew Access, Lufthansa CAS, FLiCA PDFs · AIMS eCrew / CrewConnex / Sabre pages · AIMS CSV · rotation spreadsheets (.xlsx) · any calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
-          <h3>FLOWN ROSTER <span class="fine">(optional)</span></h3>
+          <h3>Flown roster <span class="fine">(optional)</span></h3>
           <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
-          <h3>OPERATION</h3>
+          <h3>Operation</h3>
           <div class="row">
             <label class="f">Home base (IATA)<input type="text" id="base" value="CDG" maxlength="3" style="width:90px;text-transform:uppercase" /></label>
             <label class="f">Rule set<select id="rules"><option value="easa">EASA · ORO.FTL</option><option value="ukcaa">UK CAA · ORO.FTL</option><option value="shgm">SHGM · SHT-FTL</option><option value="faa117">FAA · Part 117</option></select></label>
