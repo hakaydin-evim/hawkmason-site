@@ -3,7 +3,8 @@
 // and draws the tables. No network calls except the fonts and pdf.js.
 (() => {
   const $ = (id) => document.getElementById(id);
-  const state = { planned: null, actual: null, licence: null, evaluation: false };
+  const state = { planned: null, actual: null, licence: null, evaluation: false, code: null, ratings: null };
+  const RATINGS_ENDPOINT = 'https://updates.hawkmason.com/insight/ratings';
 
   // Access: a signed operator code (the Crewops Crew licence) opens the file
   // inputs; without it the page runs on the sample roster only.
@@ -18,7 +19,7 @@
   }
   $('codeBtn').addEventListener('click', () => {
     const r = CrewopsInsight.checkCode($('code').value);
-    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; setAccess(r); $('msg').textContent = ''; }
+    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; state.code = $('code').value.trim(); setAccess(r); $('msg').textContent = ''; }
     else $('msg').textContent = r.reason === 'expired' ? 'This code has run out. Ask for a renewed one.' : r.reason === 'none' ? 'Paste the whole code.' : 'This code was not issued by Crewops.';
   });
   $('sampleBtn').addEventListener('click', async () => {
@@ -32,7 +33,7 @@
       $('run').click();
     } catch (e) { $('msg').textContent = 'Could not load the sample roster.'; }
   });
-  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; setAccess(r); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
+  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; state.code = saved; setAccess(r); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
 
   async function pdfPages(file) {
     const pdfjs = window.__pdfjs;
@@ -171,11 +172,25 @@
       <td class="r">${fmtMin(d.fdpMin)}</td><td class="r">${fmtMin(d.maxFdpMin)}</td><td class="r">${d.fdpMarginMin === null ? '—' : fmtMin(d.fdpMarginMin)}</td><td>${levelPill(d.fdpLevel)}</td>
       <td>${d.easaAugmentedMaxFdpMin === null ? '<span class="pill mute">—</span>' : d.operatorMaxAboveEasa ? pill('warn', fmtMin(d.easaAugmentedMaxFdpMin) + ' · op. above') : pill('ok', fmtMin(d.easaAugmentedMaxFdpMin))}</td><td class="r">${d.restCreditedMin ? fmtMin(d.restCreditedMin) : '—'}</td>
       <td class="r">${d.indicator.score} ${d.indicator.band}</td>
-      <td class="r">${d.kssAtReport.toFixed(1)}</td><td>${kssPill(d.kssTodMax)}</td><td class="r">${d.kssTodMax === null ? '—' : Math.max(1, Math.round(d.kssTodMax) - 2)}</td><td class="r">${d.kssPeak.toFixed(1)}</td>
+      <td class="r">${d.kssAtReport.toFixed(1)}</td><td>${kssPill(d.kssTodMax)}</td><td class="r">${d.kssTodMax === null ? '—' : Math.max(1, Math.round(d.kssTodMax) - 2)}</td><td class="r">${d.crewReported ? `<b>${d.crewReported.meanSp.toFixed(1)}</b>${d.crewReported.n > 1 ? ` <span class="fine">×${d.crewReported.n}</span>` : ''}` : '—'}</td><td class="r">${d.kssPeak.toFixed(1)}</td>
       <td>${nightLabel[d.nightType]}</td><td class="r">${fmtMin(d.sleepPrior24Min)}</td><td class="r">${fmtMin(d.sleepPrior48Min)}</td><td class="r">${d.hoursAwakeAtReport.toFixed(1)}</td><td class="r">${d.pswmPoints}</td>
       <td>${d.indicator.factors.map((f) => f.label).join(', ')}</td></tr>`).join('');
-    $('table').innerHTML = `<thead><tr><th>Date</th><th>Type</th><th>Route</th><th>Report</th><th class="r">Sect.</th><th class="r">Pilots</th><th class="r">FDP</th><th class="r">Op. max</th><th class="r">Margin</th><th>FDP</th><th>EASA max (aug.)</th><th class="r">Rest</th><th class="r">Indicator</th><th class="r">KSS report</th><th>KSS TOD</th><th class="r">SP TOD</th><th class="r">KSS peak</th><th>Night</th><th class="r">Sleep 24h</th><th class="r">Sleep 48h</th><th class="r">Awake h</th><th class="r">PSWM</th><th>Factors</th></tr></thead><tbody>${rows}</tbody>`;
+    $('table').innerHTML = `<thead><tr><th>Date</th><th>Type</th><th>Route</th><th>Report</th><th class="r">Sect.</th><th class="r">Pilots</th><th class="r">FDP</th><th class="r">Op. max</th><th class="r">Margin</th><th>FDP</th><th>EASA max (aug.)</th><th class="r">Rest</th><th class="r">Indicator</th><th class="r">KSS report</th><th>KSS TOD</th><th class="r">SP TOD</th><th class="r">Crew SP</th><th class="r">KSS peak</th><th>Night</th><th class="r">Sleep 24h</th><th class="r">Sleep 48h</th><th class="r">Awake h</th><th class="r">PSWM</th><th>Factors</th></tr></thead><tbody>${rows}</tbody>`;
     const months = Object.entries(summary.byMonth).sort().map(([m, r]) => `<tr><td>${m}</td><td class="r">${r.flights}</td><td class="r">${r.aboveThreshold}</td><td class="r">${r.flights ? Math.round((100 * r.aboveThreshold) / r.flights) : 0}%</td><td class="r">${r.night}</td><td class="r">${r.meanKssTod === null ? '—' : r.meanKssTod.toFixed(1)}</td></tr>`).join('');
+    // Crew-reported beside predicted: per matched duty and per destination.
+    const matched = summary.duties.filter((d) => d.crewReported);
+    if (matched.length) {
+      const err = matched.map((d) => d.crewReported.meanSp - (d.kssTodMax === null ? 0 : Math.max(1, Math.round(d.kssTodMax) - 2)));
+      const mean = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+      $('crewNote').textContent = `Crew-reported ratings: ${state.ratingsCount} received, ${matched.length} duties matched. Mean reported SP ${mean(matched.map((d) => d.crewReported.meanSp)).toFixed(1)} against predicted ${mean(matched.map((d) => d.kssTodMax === null ? 0 : Math.max(1, Math.round(d.kssTodMax) - 2))).toFixed(1)}; mean difference (reported − predicted) ${mean(err) >= 0 ? '+' : ''}${mean(err).toFixed(2)}, mean absolute ${mean(err.map(Math.abs)).toFixed(2)}.`;
+      const byDest = {};
+      for (const d of matched) { const k = d.legs.length ? d.legs[d.legs.length - 1].arr : '—'; (byDest[k] ??= []).push(d); }
+      $('crewDest').innerHTML = `<thead><tr><th>Destination</th><th class="r">Duties rated</th><th class="r">Ratings</th><th class="r">Mean reported SP</th><th class="r">Mean predicted SP</th><th class="r">Difference</th></tr></thead><tbody>${Object.entries(byDest).sort().map(([k, ds]) => { const rep = mean(ds.map((d) => d.crewReported.meanSp)); const pre = mean(ds.map((d) => d.kssTodMax === null ? 0 : Math.max(1, Math.round(d.kssTodMax) - 2))); return `<tr><td>${k}</td><td class="r">${ds.length}</td><td class="r">${ds.reduce((n, d) => n + d.crewReported.n, 0)}</td><td class="r">${rep.toFixed(1)}</td><td class="r">${pre.toFixed(1)}</td><td class="r">${rep - pre >= 0 ? '+' : ''}${(rep - pre).toFixed(1)}</td></tr>`; }).join('')}</tbody>`;
+      $('crew').classList.remove('hidden');
+    } else {
+      $('crew').classList.add('hidden');
+      if (state.code && $('includeCrew').checked && state.ratingsCount !== undefined && !state.matched) $('crewNote').textContent = state.ratingsCount ? `Crew-reported ratings: ${state.ratingsCount} received, none matched these duties (date and flight number must agree).` : 'Crew-reported ratings: none received yet for this period.';
+    }
     $('months').innerHTML = `<thead><tr><th>Month</th><th class="r">Flights</th><th class="r">KSS ≥ 7</th><th class="r">Share</th><th class="r">Night</th><th class="r">Mean KSS TOD</th></tr></thead><tbody>${months}</tbody>`;
     if (cmp) {
       $('pva').classList.remove('hidden');
@@ -204,12 +219,37 @@
       let cmp = null;
       if (state.actual) cmp = CrewopsInsight.compare(planned, CrewopsInsight.analyse(state.actual.duties, opts));
       last = planned;
+      state.matched = 0;
       render(planned, cmp);
       $('results').scrollIntoView({ behavior: 'smooth' });
+      // Crew-reported ratings: what the operator's pilots gave after the
+      // flight, from the Crewops app, read with the licence code and set
+      // beside the prediction. Fetched after the first render so a slow or
+      // offline server never holds the analysis.
+      if (state.code && $('includeCrew').checked && !state.evaluation) {
+        const dates = planned.duties.map((d) => d.date).sort();
+        fetchRatings(dates[0], dates[dates.length - 1]).then((ratings) => {
+          if (!ratings || last !== planned) return;
+          state.matched = CrewopsInsight.attachCrewRatings(planned, ratings);
+          state.ratingsCount = ratings.length;
+          render(planned, cmp);
+        });
+      }
     } catch (e) {
       $('msg').textContent = `Analysis failed: ${e && e.message ? e.message : e}`;
     }
   });
+  async function fetchRatings(from, to) {
+    try {
+      const res = await fetch(`${RATINGS_ENDPOINT}?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`, { headers: { authorization: `Bearer ${state.code}` } });
+      if (!res.ok) { $('crewNote').textContent = res.status === 401 ? 'Crew ratings: the code was not accepted by the ratings service.' : `Crew ratings: service answered ${res.status}.`; return null; }
+      const body = await res.json();
+      return Array.isArray(body.ratings) ? body.ratings : [];
+    } catch (e) {
+      $('crewNote').textContent = 'Crew ratings: could not reach the ratings service.';
+      return null;
+    }
+  }
   $('csv').addEventListener('click', () => {
     if (!last) return;
     const blob = new Blob([CrewopsInsight.toCsv(last)], { type: 'text/csv' });

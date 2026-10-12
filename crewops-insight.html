@@ -115,6 +115,7 @@
               <label class="f">Sleep before each rotation<select id="priorSleep"><option value="0">predicted by the model</option><option value="6">6 h, ending 2 h before report</option><option value="7">7 h</option><option value="8">8 h</option><option value="9">9 h</option></select></label>
               <label class="f">Time-zone adaptation<select id="adapt"><option value="0.3">30% of the remaining shift per day (aircrew fit)</option><option value="0.15">15% per day</option><option value="0.5">50% per day</option><option value="0">none · body clock stays on home time</option></select></label>
             </div>
+            <label class="f" style="flex-direction:row; align-items:center; gap:8px; margin-top:10px"><input type="checkbox" id="includeCrew" checked /> Include crew-reported ratings (what your pilots gave in the Crewops app after each flight, read with your licence code and shown beside the prediction)</label>
             <p class="fine" style="margin:8px 0 0">These change the run, not the roster. The assumptions used are printed with the results and in the CSV, so a difference from another study can be traced to its cause.</p>
           </details>
           <div class="row" style="margin-top:14px"><button id="run" disabled>ANALYSE</button><button class="ghost hidden" id="csv">CSV</button><button class="ghost hidden" id="print">PRINT / PDF</button></div>
@@ -136,6 +137,12 @@
         <h2>Duties</h2>
         <p class="fine">KSS 1–9 (Karolinska Sleepiness Scale) and Samn-Perelli 1–7 predicted at top of descent; EASA FTL 2.0 risk markers are KSS ≥ 7 and SP ≥ 5. Sleep is predicted from the roster, not measured. For augmented crews (three or more pilots listed) "EASA max" is the CS FTL.1.205(c) value for that crew and rest facility: 14/15/16 h with one additional pilot and 15/16/17 h with two (class 3/2/1), plus 1 h when one sector exceeds 9 h and the FDP has at most 2 sectors (c)(4); 3 sectors at most; 90 min rest each, 2 h for the landing pilots and "Rest" is the in-flight rest credited to this pilot as sleep, ending two hours before on-blocks; the operator's own ceiling prevails where an approved scheme sets it. "Night" follows ED Decision 2023/023/R: start 02:00–04:59 · end 02:00–05:59 · end after 06:00 (start before 02:00). PSWM is the GM5 CS FTL.1.205 prior-sleep/wake score (0 none · 1–4 low · 5–8 moderate · 9+ high).</p>
         <div class="tablewrap"><table id="table"></table></div>
+        <p class="fine" id="crewNote"></p>
+        <div id="crew" class="hidden">
+          <h2>Crew-reported, by destination</h2>
+          <p class="fine">Samn-Perelli as the crew gave it after the flight, from the Crewops app, with the crew member's own switch on; the predicted figure is the model's SP at the worst landing of the same duty. The difference is reported minus predicted: positive means the crew felt sleepier than the model says.</p>
+          <div class="tablewrap"><table id="crewDest"></table></div>
+        </div>
         <h2>By month</h2>
         <div class="tablewrap"><table id="months"></table></div>
         <h2>Model card</h2>
