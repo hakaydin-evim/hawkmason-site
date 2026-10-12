@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops Insight — model card</title>
+    <meta name="description" content="What Crewops Insight computes, from which published model (Three-Process Model, aircrew parameters, Ingre 2014), with which parameters and assumptions, its verification status and its limits." />
+    <link rel="canonical" href="https://hawkmason.com/crewops/insight/model-card" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root { --paper:#08080c; --surface:#131318; --surface2:#1d1d26; --ink:#f7f6f2; --soft:#a3a1b0; --faint:#6b6978; --line:#242430; --cy:#2be3ff; --mg:#ff2fa0; --risk:#ff8a3d; --ok:#7bed9f; --warn:#ffd166; --bad:#ff7b6b; }
+      * { box-sizing:border-box }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:1.5 }
+      a { color:var(--cy) }
+      .wrap { max-width:1180px; margin:0 auto; padding:32px 16px 96px }
+      .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--cy); text-transform:uppercase }
+      h1 { font-family:'Unbounded',Arial,sans-serif; font-weight:800; font-size:clamp(28px,5vw,48px); letter-spacing:-1px; line-height:1.05; margin:8px 0 12px }
+      h2 { font-family:'Unbounded',Arial,sans-serif; font-weight:700; font-size:18px; margin:32px 0 8px }
+      p.lead { color:var(--soft); font-size:17px; max-width:70ch; margin:0 0 24px }
+      .bar { height:6px; border-radius:3px; background:linear-gradient(90deg,var(--mg),var(--cy)); margin:0 0 28px }
+      .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
+      .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px }
+      .card h3 { margin:0 0 6px; font-size:14px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; color:var(--cy); font-weight:500 }
+      .drop { display:block; border:1px dashed var(--faint); border-radius:14px; padding:22px; text-align:center; color:var(--soft); cursor:pointer; transition:border-color .2s }
+      .drop.over, .drop:hover { border-color:var(--cy); color:var(--ink) }
+      .drop input { display:none }
+      .drop .name { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cy); margin-top:8px; word-break:break-all }
+      label.f { display:flex; flex-direction:column; gap:6px; font-size:12px; color:var(--soft) }
+      select, input[type=text] { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-family:'JetBrains Mono',monospace; font-size:13px }
+      .row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end }
+      button { background:linear-gradient(90deg,var(--mg),var(--cy)); color:#08080c; border:0; border-radius:999px; padding:12px 22px; font:inherit; font-weight:600; letter-spacing:1px; cursor:pointer }
+      button.ghost { background:transparent; color:var(--cy); border:1px solid var(--cy) }
+      button:disabled { opacity:.4; cursor:default }
+      .tiles { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin:16px 0 }
+      .tile { background:var(--surface2); border-radius:14px; padding:14px }
+      .tile .n { font-family:'Unbounded',Arial,sans-serif; font-size:28px; font-weight:700 }
+      .tile .l { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--faint); text-transform:uppercase }
+      .tablewrap { overflow-x:auto; border:1px solid var(--line); border-radius:14px }
+      table { border-collapse:collapse; width:100%; font-family:'JetBrains Mono',monospace; font-size:12px; font-variant-numeric:tabular-nums }
+      th, td { padding:9px 10px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap }
+      th { color:var(--faint); font-weight:500; letter-spacing:1px; font-size:10px; text-transform:uppercase; position:sticky; top:0; background:var(--surface) }
+      td.r, th.r { text-align:right }
+      .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px }
+      .ok { background:#0f2e1c; color:var(--ok) } .warn { background:#332a0f; color:var(--warn) } .bad { background:#3a1414; color:var(--bad) } .mute { background:var(--surface2); color:var(--faint) }
+      .fine { font-size:12px; color:var(--faint) }
+      .note { background:var(--surface); border-left:3px solid var(--mg); padding:12px 16px; border-radius:0 12px 12px 0; color:var(--soft); font-size:13px }
+      .hidden { display:none }
+      .msg a { color:var(--cy) }
+      .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
+      footer { margin-top:48px; color:var(--faint); font-size:12px }
+      @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
+    </style>
+    <style>
+      .doc { max-width: 78ch; }
+      .doc h1 { font-size: clamp(24px, 4vw, 36px); }
+      .doc h2 { margin-top: 36px; }
+      .doc h3 { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 2px; color: var(--cy); text-transform: uppercase; margin: 24px 0 6px; }
+      .doc p, .doc li { color: var(--ink); line-height: 1.6; }
+      .doc ul { padding-left: 20px; }
+      .doc li { margin: 6px 0; }
+      .doc code { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--cy); }
+      .doc a { color: var(--cy); }
+    </style>
+  </head>
+  <body>
+    <div class="wrap doc">
+      <div class="eyebrow"><a href="/crewops/insight" style="text-decoration:none">← Crewops Insight</a> · <a href="/crewops/airlines" style="text-decoration:none">Crewops Aviation Platform</a></div>
+      <h1>Crewops Insight — Model card</h1>
+<p>Version 0.6.0 · 12 October 2026 · Hawk &amp; Mason Studios · hello@hawkmason.com</p>
+<p>This card states what Crewops Insight computes, from which published model, with which parameters, under which assumptions, and what it cannot tell you. It accompanies every assessment report so that a compliance team or an authority can follow each figure back to its source.</p>
+<h2>1. Intended use</h2>
+<p>Insight reads an operator's roster (planned or flown) and, for each flight duty, predicts the crew member's alertness through the duty and at each top of descent, states the flight duty period against the applicable limit, and summarises the pattern over a month. It supports a fatigue risk assessment, the FRM documentation that ORO.FTL asks for, and the scientific annex of a request to deviate from a certification specification.</p>
+<p>It is not a fatigue risk management system by itself, it is not a go/no-go device, and it makes no statement about any individual's fitness to fly. Its sleep is predicted from the roster, not measured. The operator's systems and records prevail.</p>
+<h2>2. The model</h2>
+<p>Insight implements the <strong>Three-Process Model of alertness</strong> (Åkerstedt and Folkard; Åkerstedt, Folkard and Portin, <em>Aviation, Space, and Environmental Medicine</em>, 2004) with the parameters re-estimated on aircrew by <strong>Ingre, Van Leeuwen, Klemets, Ullvetter, Hough, Kecklund, Karlsson and Åkerstedt</strong>, "Validating and extending the Three Process Model of alertness in airline operations", <em>PLoS ONE</em> 9(10): e108679, 2014. This is the model family behind the Boeing Alertness Model.</p>
+<p>Alertness is the sum of three processes evaluated on a 5-minute grid:</p>
+<ul><li><strong>S, homeostatic.</strong> Awake: S = (S_wake − L)·e^(d·t) + L, with L = 2.4 (<code>la</code>), d = −0.0353 per hour, starting from S at waking. Asleep: S rises towards the upper asymptote 14.3 (<code>ha</code>) with the rate g = ln((14.3 − 14.0)/(14.3 − 7.96))/8 per hour; below 12.2 (<code>bl</code>) the rise is linear (the "brake").</li><li><strong>C, circadian.</strong> C = 2.5·cos(2π·(t − p)/24) with amplitude 2.5 (<code>Ca</code>) and acrophase p = 15.28 h in body-clock time (the aircrew fit for the intermediate chronotype).</li><li><strong>U, ultradian.</strong> U = −0.5 + 0.5·cos(2π·(t − p − 3)/12) (<code>Ua</code> = 0.5), the afternoon dip.</li><li><strong>Output.</strong> KSS = 10.6 − 0.6·(S + C + U), the Karolinska Sleepiness Scale 1–9 (Ingre 2014). Samn-Perelli 1–7 is printed beside it with EASA's pairing of KSS 7 with SP 5 and KSS 8 with SP 6.</li></ul>
+<p><strong>Sleep generator.</strong> The roster gives sleep opportunities, not sleep. Outside duty, the person falls asleep when S + C + U drops below 8.38 and wakes when it rises above 11.38 (Ingre 2014), never within one hour before a duty, never within the duty and its margins, and not within two hours of the last waking. Before the analysed window the model settles for a week of free days from a habitual waking time of 07:00 home time.</p>
+<p><strong>Time zones.</strong> The body clock starts on home-base time and absorbs 30% of the remaining offset to the current zone per day (<code>adaptRate</code> = 0.3, the aircrew fit); the zone is that of the last duty that started.</p>
+<p><strong>In-flight rest (augmented crews).</strong> When the roster lists three or more pilots on a duty, each leg long enough yields a rest share per pilot: of the leg's block time less 90 minutes for climb and descent, the fraction (pilots − 2)/pilots, never under 90 minutes (CS FTL.1.205(c)). The modelled pilot's slot ends two hours before on-blocks (the landing pilot's rest) unless the study assumption says the relief slot, which starts one hour after departure. The slot is taken as sleep with the same recovery as any sleep. By default the whole slot is credited (the favourable bound); the study assumption can credit 75, 50 or 33% of it, the last being the TNO estimate of bunk sleep (2007).</p>
+<p><strong>Top of descent.</strong> 30 minutes before on-blocks by default (20 or 45 selectable). KSS at that instant is the per-landing figure; the per-duty figure is the highest landing.</p>
+<h2>3. The limits it is checked against</h2>
+<ul><li>FDP: the operator's own ceiling in the file when it prints one; otherwise the ORO.FTL / CS FTL.1.205 table for the acclimatised crew, the CS FTL.1.205(c) augmented-crew values (14/15/16 h with one additional pilot and 15/16/17 h with two, by rest facility class 3/2/1), the extra hour of (c)(4) when one sector exceeds 9 h and the FDP has at most two sectors, and the three-sector limit.</li><li>Night-duty subtypes of ED Decision 2023/023/R: start 02:00–04:59, end 02:00–05:59, end after 06:00 with a start before 02:00.</li><li>Risk markers of EASA's FTL 2.0 research: KSS ≥ 7 and Samn-Perelli ≥ 5 at top of descent.</li><li>Prior sleep/wake score (PSWM) of GM5 CS FTL.1.205.</li><li>Planned versus flown: the share of duties exceeding the planned FDP, for ORO.FTL.110(j).</li></ul>
+<h2>4. Verification and validation status</h2>
+<ul><li><strong>Implementation check.</strong> A test suite runs the model against the published anchor values: KSS from alertness (10.6 − 0.6·x), the sleep thresholds, the daily adaptation, and the shape of a day's curve; the FDP tables are tested against the published limits.</li><li><strong>Comparison with another model.</strong> Planned with FTL Airlines (October 2026): the same rotation run under the same stated assumptions, every difference attributed to its cause. Not yet done.</li><li><strong>Comparison with crew ratings.</strong> The crew app records a Samn-Perelli rating after each flight; the model's prediction can be set beside it once an operator's pilots use the app. Not yet done.</li><li><strong>What has not been done.</strong> No independent review of this implementation; no published validation of this implementation against measured sleep or performance. The model it implements has that literature (Ingre 2014: 136 aircrews, and EASA's FTL 2.0 study compared models of this family on 7,102 observations); the implementation does not yet.</li></ul>
+<h2>5. Known limitations</h2>
+<ul><li>Sleep is predicted from opportunities; actual sleep in hotels, bunks and at home is not measured and varies between people. This is the first limitation to state in any file.</li><li>One set of parameters for everyone: no chronotype, age or individual sensitivity. The aircrew fit is for the intermediate chronotype.</li><li>No workload, no light exposure, no caffeine or naps outside the generator's rules, no commuting.</li><li>Bunk rest is credited as sleep of the chosen fraction; the quality of in-flight sleep is not modelled beyond that fraction.</li><li>The circadian adaptation is a daily step towards the local zone; it does not model partial or directional (east/west) asymmetries.</li><li>The flown-versus-planned comparison needs the flown file in the same format; it does not read actual sleep.</li><li>Readers for roster formats are built from samples; a format read for the first time is flagged and should be checked against the roster by eye.</li></ul>
+<h2>6. How to cite a run</h2>
+<p>State: Crewops Insight version; the model (Three-Process Model, Ingre 2014 parameters); the assumptions the run printed (in-flight rest credited or not, facility class, rest slot, fraction credited, sleep before the rotation, adaptation rate, top-of-descent lead); the rule set; the file(s) analysed and their dates. The CSV export carries the assumptions in every row.</p>
+<h2>7. References</h2>
+<ul><li>Åkerstedt T, Folkard S, Portin C. Predictions from the three-process model of alertness. <em>Aviat Space Environ Med.</em> 2004;75(3 Suppl):A75–83.</li><li>Ingre M, Van Leeuwen W, Klemets T, et al. Validating and extending the three process model of alertness in airline operations. <em>PLoS ONE.</em> 2014;9(10):e108679.</li><li>EASA. Effective flight time limitations (FTL 2.0) research; ED Decision 2023/023/R (AMC/GM to Part-ORO, fatigue).</li><li>Commission Regulation (EU) 965/2012, ORO.FTL; EASA CS FTL.1.205 and GM5 CS FTL.1.205.</li><li>Samn SW, Perelli LP. Estimating aircrew fatigue: a technique with application to airlift operations. USAF SAM-TR-82-21, 1982.</li><li>CASA. Biomathematical fatigue models: guidance document. 2010/2014.</li></ul>
+    </div>
+  </body>
+</html>

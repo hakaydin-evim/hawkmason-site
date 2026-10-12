@@ -153,6 +153,10 @@
         ? `<b>Augmented crew, in-flight rest NOT credited.</b> ${c.augmented} of ${c.flights} flight duties list three or more pilots. Duties like these are only allowed with in-flight rest (CS FTL.1.205(c): at least 90 consecutive minutes for each crew member, 2 hours for the pilots at the controls for landing), so this run is a counterfactual: it shows where in each duty the body clock is lowest and how duties rank, not how sleepy any pilot is. Switch "In-flight rest" to credited for the planning view.`
         : `<b>Augmented crew, in-flight rest credited.</b> ${c.augmented} of ${c.flights} flight duties list three or more pilots. Each pilot is credited an equal share of the cruise on every leg long enough (never under the 90-minute minimum), taken as sleep in a class ${cls} facility and ending two hours before on-blocks, since the operator's own allocation is not in the file. "EASA max" is the CS FTL.1.205(c) standard value for that crew and facility, including the extra hour for a sector over 9 h with at most 2 sectors; where the operator's ceiling is above it, an approved scheme or a pilot not listed in the file may explain it, and the file's figure is used as given.` + (c.operatorMaxAboveEasa ? ` <b>${c.operatorMaxAboveEasa} duties have an operator maximum above the standard value: verify the scheme.</b>` : '');
     }
+    const a = summary.assumptions || {};
+    const assumptionsLine = `Assumptions of this run: in-flight rest ${a.inFlightRest === 'none' ? 'not credited' : 'credited'} · facility class ${a.restFacilityClass} · modelled pilot takes the ${a.restSlot === 'relief' ? 'relief' : 'landing'} slot · ${Math.round((a.restQuality || 1) * 100)}% of the slot credited as sleep · sleep before each rotation ${a.priorSleepHours ? a.priorSleepHours + ' h, ending 2 h before report' : 'predicted by the model'} · time-zone adaptation ${Math.round((a.adaptRate || 0) * 100)}% per day · top of descent ${a.todLeadMin} min before on-blocks.`;
+    const an = $('assumptions');
+    if (an) an.textContent = assumptionsLine;
     $('tiles').innerHTML = [
       tile(c.flights, 'flight duties'),
       tile(c.aboveThreshold, aug ? (noRest ? 'KSS ≥ 7 at TOD (rest not credited)' : 'KSS ≥ 7 at TOD (rest credited)') : 'KSS ≥ 7 at TOD'),
@@ -195,7 +199,7 @@
   $('run').addEventListener('click', () => {
     $('msg').textContent = '';
     try {
-      const opts = { ruleSetId: $('rules').value, homeBase: $('base').value.trim().toUpperCase(), todLeadMin: Number($('tod').value), inFlightRest: $('rest').value, restFacilityClass: Number($('restClass').value) };
+      const opts = { ruleSetId: $('rules').value, homeBase: $('base').value.trim().toUpperCase(), todLeadMin: Number($('tod').value), inFlightRest: $('rest').value, restFacilityClass: Number($('restClass').value), restSlot: $('restSlot').value, restQuality: Number($('restQuality').value), priorSleepHours: Number($('priorSleep').value), adaptRate: Number($('adapt').value) };
       const planned = CrewopsInsight.analyse(state.planned.duties, opts);
       let cmp = null;
       if (state.actual) cmp = CrewopsInsight.compare(planned, CrewopsInsight.analyse(state.actual.duties, opts));
