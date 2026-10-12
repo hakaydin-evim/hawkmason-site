@@ -4,12 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crewops: crew roster app — duty limits, fatigue, logbook · Crewops Aviation Platform for airlines</title>
-    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone. For operators: the Crewops Aviation Platform — Crewops Crew, the company edition, Crewops Insight, the biomathematical roster fatigue assessment, and the safety, training, fatigue-report and document modules built next with launch operators." />
+    <meta name="description" content="Crewops reads your airline roster and shows FDP limits, legal rest, fatigue and your logbook. EASA, FAA 117, UK CAA, SHGM. Nothing leaves the phone unless you choose to share with your airline. For operators: the Crewops Aviation Platform — Crewops Crew, the company edition, Crewops Insight, the biomathematical roster fatigue assessment, and the safety, training, fatigue-report and document modules built next with launch operators." />
     <link rel="canonical" href="https://hawkmason.com/crewops" />
     <meta name="apple-itunes-app" content="app-id=6811512361" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
     <meta property="og:title" content="Crewops — your roster, read properly" />
-    <meta property="og:description" content="The crew roster app for line pilots and cabin crew: duty limits, legal rest, fatigue, logbook, Crewmates and Lock Screen countdown. Nothing reaches our server." />
+    <meta property="og:description" content="The crew roster app for line pilots and cabin crew: duty limits, legal rest, fatigue, logbook, Crewmates and Lock Screen countdown. Nothing reaches our server unless you switch on sharing with your airline." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/crewops" />
     <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
@@ -75,7 +75,7 @@
             { "@type": "Question", "name": "Which flight time limitation rules does it use?",
               "acceptedAnswer": { "@type": "Answer", "text": "EASA ORO.FTL, UK CAA, FAA Part 117 and Turkish SHGM. It shows the flight duty period ceiling, minimum rest, cumulative duty and the margin the roster leaves you." } },
             { "@type": "Question", "name": "Is my roster uploaded anywhere?",
-              "acceptedAnswer": { "@type": "Answer", "text": "No. There is no account and no Crewops server holding your data; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account. The one thing you can choose to send us is your post-flight rating, for your airline's fatigue programme, and only with the switch on." } },
             { "@type": "Question", "name": "Does Crewops work for cabin crew?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops." } },
             { "@type": "Question", "name": "Can I export my logbook?",
@@ -276,7 +276,7 @@
             <ul class="w-spec">
               <li><b>Requires:</b> iOS 16.4 or later</li>
               <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR</li>
-              <li><b>Privacy:</b> No account, no server; iCloud sync only if you turn it on</li>
+              <li><b>Privacy:</b> No account, no server holding your roster; iCloud sync and sharing with your airline only if you turn them on</li>
               <li><b>Pricing:</b> Free to use · Crewops Pro $6.99/month or $49.99/year (USD), one-month free trial</li>
             </ul>
           </div>
@@ -368,7 +368,7 @@
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink and JetXBit automatically; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access and RAIDO through their roster pages, PDFs or calendar links; and any .ics calendar or roster PDF. If yours is not read yet, the app sends us a sample in one tap and we add it.</p></article>
           <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL, UK CAA, FAA Part 117 and Turkish SHGM: the flight duty period ceiling, minimum rest, cumulative duty, and the margin the roster leaves you.</p></article>
-          <article class="w-card"><h3>Is my roster uploaded anywhere?</h3><p>No. There is no account and no Crewops server holding your data; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account.</p></article>
+          <article class="w-card"><h3>Is my roster uploaded anywhere?</h3><p>No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account. The one thing you can choose to send us is your post-flight rating, for your airline's fatigue programme, and only with the switch on.</p></article>
           <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops.</p></article>
           <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
           <article class="w-card"><h3>Is there a fatigue risk management tool for the operator?</h3><p>Yes: <a href="/crewops/insight" style="color: var(--w-azure);">Crewops Insight</a> assesses a roster export, planned or flown, with a biomathematical model (Three-Process Model, aircrew parameters): KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins and planned versus flown for ORO.FTL.110(j). Browser-side, licensed per operator.</p></article>
