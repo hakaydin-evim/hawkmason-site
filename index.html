@@ -39,12 +39,12 @@
           "@id": "https://hawkmason.com/#products",
           "name": "Hawk & Mason products",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Sugar Tiles", "url": "https://hawkmason.com/sugar-tiles" },
-            { "@type": "ListItem", "position": 2, "name": "Ittako", "url": "https://hawkmason.com/ittako" },
-            { "@type": "ListItem", "position": 3, "name": "Crewops", "url": "https://hawkmason.com/crewops" },
-            { "@type": "ListItem", "position": 4, "name": "Pondr", "url": "https://hawkmason.com/pondr/" },
-            { "@type": "ListItem", "position": 5, "name": "Crewops Aviation Platform", "url": "https://hawkmason.com/crewops/airlines" },
-            { "@type": "ListItem", "position": 6, "name": "Crewops Insight", "url": "https://hawkmason.com/crewops/insight" }
+            { "@type": "ListItem", "position": 1, "name": "Crewops", "url": "https://hawkmason.com/crewops" },
+            { "@type": "ListItem", "position": 2, "name": "Crewops Aviation Platform", "url": "https://hawkmason.com/crewops/airlines" },
+            { "@type": "ListItem", "position": 3, "name": "Sugar Tiles", "url": "https://hawkmason.com/sugar-tiles" },
+            { "@type": "ListItem", "position": 4, "name": "Ittako", "url": "https://hawkmason.com/ittako" },
+            { "@type": "ListItem", "position": 5, "name": "Pondr", "url": "https://hawkmason.com/pondr/" },
+            { "@type": "ListItem", "position": 6, "name": "Crewops operator portal", "url": "https://hawkmason.com/crewops/portal" }
           ]
         },
         {
@@ -85,9 +85,9 @@
           <h1>Mobile games &amp; apps,<br />crafted to keep.</h1>
           <p class="lede">
             An independent studio building small, polished worlds for your
-            phone — from <strong>Sugar Tiles</strong>, a sweet daily block
-            puzzle, to <strong>Ittako</strong>, a toy climbing a bedroom at
-            night, to <strong>Crewops</strong>, a roster, duty-limits and fatigue app for airline crew, and
+            phone — from <strong>Crewops</strong>, a roster, duty-limits and fatigue app for airline
+            crew with its platform for airlines, to <strong>Sugar Tiles</strong>, a sweet daily block
+            puzzle, <strong>Ittako</strong>, a toy climbing a bedroom at night, and
             <strong>Pondr</strong>, fifteen minutes a day on a subject you chose.
           </p>
           <div class="hero-actions">
@@ -115,6 +115,21 @@
 
         <div class="game-grid">
           <!-- Sugar Tiles portal -->
+          <a class="game-card game-card--crew" href="crewops"
+             data-portal data-veil="#070c15" data-enter="crewops">
+            <div class="card-media card-media--aero">
+              <img class="aero-shot" src="assets/crewops/bugun.webp" alt="Crewops today screen with duty limits and fatigue meter" width="552" height="1199" loading="lazy" decoding="async" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--cyan">App · Live now</span>
+              <h3>Crewops</h3>
+              <p class="card-sub">Crewops: Roster &amp; duty limits</p>
+              <p>Roster, duty limits and fatigue for airline crew — import your roster, keep a logbook, read sourced advice. Nothing leaves the phone unless you say so.</p>
+              <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <!-- Pondr portal -->
           <a class="game-card game-card--sugar" href="sugar-tiles"
              data-portal data-veil="#fdeece" data-enter="sugar">
             <div class="card-media">
@@ -145,21 +160,6 @@
           </a>
 
           <!-- Crewops portal -->
-          <a class="game-card game-card--crew" href="crewops"
-             data-portal data-veil="#070c15" data-enter="crewops">
-            <div class="card-media card-media--aero">
-              <img class="aero-shot" src="assets/crewops/bugun.webp" alt="Crewops today screen with duty limits and fatigue meter" width="552" height="1199" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <span class="pill pill--cyan">App · Live now</span>
-              <h3>Crewops</h3>
-              <p class="card-sub">Crewops: Roster &amp; duty limits</p>
-              <p>Roster, duty limits and fatigue for airline crew — import your roster, keep a logbook, read sourced advice. Nothing leaves the phone unless you say so.</p>
-              <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
-            </div>
-          </a>
-
-          <!-- Pondr portal -->
           <a class="game-card game-card--pondr" href="pondr/"
              data-portal data-veil="#131211" data-enter="pondr">
             <div class="card-media card-media--pondr">
