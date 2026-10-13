@@ -54,6 +54,25 @@
       $('lbMsg').textContent = `Published ${body.code} rev. ${body.revision}. Phones pick it up the next time the app opens; an older offline copy is removed.`;
     } catch (e) { $('lbMsg').textContent = e.message; }
   });
+  // Upload the PDF to the airline's file store; its address goes into the file field.
+  $('lbFile').addEventListener('change', async (ev) => {
+    const f = ev.target.files && ev.target.files[0];
+    if (!f) return;
+    if (f.type !== 'application/pdf') { $('lbMsg').textContent = 'PDF files only.'; return; }
+    if (f.size > 60 * 1024 * 1024) { $('lbMsg').textContent = 'Up to 60 MB.'; return; }
+    $('lbMsg').textContent = `Uploading ${f.name}…`;
+    try {
+      const res = await fetch(`${ENDPOINT}/files?name=${encodeURIComponent(f.name)}`, { method: 'POST', headers: { authorization: `Bearer ${state.code}`, 'content-type': 'application/pdf' }, body: f });
+      const body = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(body.error || `The library service answered ${res.status}.`);
+      $('lbUrl').value = body.fileUrl;
+      $('lbMsg').textContent = `${f.name} uploaded (${Math.round(f.size / 1024)} KB). Fill the revision and publish; the file is served only to your paired crews.`;
+    } catch (e) {
+      $('lbMsg').textContent = e.message;
+    } finally {
+      ev.target.value = '';
+    }
+  });
   $('lbRefresh').addEventListener('click', load);
 
   window.addEventListener('crewops-code', (ev) => {
