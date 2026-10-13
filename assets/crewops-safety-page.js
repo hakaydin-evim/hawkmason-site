@@ -5,8 +5,15 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const ENDPOINT = (window.CREWOPS_SAFETY_ENDPOINT || 'https://updates.hawkmason.com/safety');
-  const state = { code: null, reports: [], open: null, detail: null };
-  const TYPES = { flight: 'Flight', cabin: 'Cabin', fatigue: 'Fatigue', hazard: 'Hazard', ground: 'Ground', dg: 'Dangerous goods', security: 'Security', suggestion: 'Suggestion' };
+  const state = { code: null, reports: [], open: null, detail: null, family: 'all' };
+  const TYPES = {
+    flight: 'Flight operations', cabin: 'Cabin', ground: 'Ground / cargo', security: 'Security', dg: 'Dangerous goods', hazard: 'Hazard',
+    engineering: 'Technical', ohs: 'Health & safety at work', fatigue: 'Fatigue', wildlife: 'Bird / wildlife', discretion: "Commander's discretion", suggestion: 'Suggestion',
+    irregularity: 'Irregularity', environment: 'Environment', quality: 'Quality', occ: 'Operations control',
+  };
+  // The report taxonomy, generated from the app (tools/safety/export-taxonomy.mjs): labels for each report's own answers.
+  const TAX = window.CrewopsSafetyTaxonomy || null;
+  const familyOf = (type) => (TAX && TAX.typeDef(type) ? TAX.typeDef(type).family : 'safety');
   const STATUSES = ['new', 'triage', 'investigation', 'action', 'closed'];
   const CATEGORIES = [
     '1000000 ATM, aerodrome or aircraft system/component related event',
@@ -53,13 +60,23 @@
     const due = open.filter((r) => r.clockDue && !r.clockMetAt && Date.parse(r.clockDue) - Date.now() < 24 * 3600000);
     const fatigue = state.reports.filter((r) => r.type === 'fatigue');
     const anon = state.reports.filter((r) => r.anonymous).length;
+    const operational = state.reports.filter((r) => familyOf(r.type) === 'operational').length;
     $('safetyTiles').innerHTML = [
-      ['Open', open.length], ['72 h clock · due within 24 h', due.length], ['Fatigue reports', fatigue.length], ['Closed', state.reports.length - open.length], ['Anonymous', anon],
+      ['Open', open.length], ['72 h clock · due within 24 h', due.length], ['Fatigue reports', fatigue.length], ['Operational reports', operational], ['Closed', state.reports.length - open.length], ['Anonymous', anon],
     ].map(([l, n]) => `<div class="tile"><div class="n">${n}</div><div class="l">${esc(l)}</div></div>`).join('');
   }
 
   function drawTable() {
-    const rows = state.reports.map((r) => {
+    if (!$('safetyFamily')) {
+      const bar = document.createElement('div');
+      bar.className = 'row';
+      bar.style.margin = '10px 0';
+      bar.innerHTML = '<label class="f">Show<select id="safetyFamily"><option value="all">All reports</option><option value="safety">Safety reports</option><option value="operational">Operational reports</option></select></label>';
+      $('safetyTable').closest('.tablewrap').before(bar);
+      $('safetyFamily').addEventListener('change', (ev) => { state.family = ev.target.value; drawTable(); });
+    }
+    const shown = state.reports.filter((r) => state.family === 'all' || familyOf(r.type) === state.family);
+    const rows = shown.map((r) => {
       const c = clock(r);
       return `<tr class="click${state.open === r.id ? ' sel' : ''}" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${r.urgent ? '<span class="pill bad">URGENT</span> ' : ''}${esc(TYPES[r.type] || r.type)}</td><td>${esc(r.date)}</td><td>${esc(r.flightNo || r.station || '')}${r.dep ? ` · ${esc(r.dep)}→${esc(r.arr || '')}` : ''}</td><td style="white-space:normal;min-width:260px">${esc(r.title)}</td><td>${r.anonymous ? '<span class="pill mute">anonymous</span>' : esc(r.crewCode || '—')}</td><td>${r.sp ? `SP ${r.sp}` : ''}</td><td><span class="pill ${c.cls}">${esc(c.text)}</span></td><td><span class="pill ${r.status === 'closed' ? 'ok' : r.status === 'new' ? 'warn' : 'mute'}">${esc(r.status)}</span></td></tr>`;
     });
@@ -100,6 +117,7 @@
       </div>
       ${f ? `<p style="margin:12px 0 4px"><b>${esc(f.flightNo)}</b> · ${esc(f.date)} · ${esc((f.legs || []).map((l) => `${l.dep}→${l.arr}`).join(' · ') || `${f.dep || ''}→${f.arr || ''}`)}${f.reg ? ` · ${esc(f.reg)}` : ''}${f.acType ? ` · ${esc(f.acType)}` : ''}${f.std ? ` · ${esc(f.std.slice(11, 16))}–${esc((f.sta || '').slice(11, 16))} UTC` : ''}${f.diverted ? ` · diverted ${esc(f.diverted)}` : ''}</p>` : r.station ? `<p style="margin:12px 0 4px">Station ${esc(r.station)}</p>` : ''}
       ${g ? `<div class="tiles" style="margin:8px 0"><div class="tile"><div class="n">${g.sp}</div><div class="l">Samn-Perelli · crew</div></div>${g.fdpMin ? `<div class="tile"><div class="n">${hm(g.fdpMin * 60000)}</div><div class="l">FDP${g.maxFdpMin ? ` · max ${hm(g.maxFdpMin * 60000)}` : ''}</div></div>` : ''}${g.sectors ? `<div class="tile"><div class="n">${g.sectors}</div><div class="l">Sectors</div></div>` : ''}${g.sleep48Min ? `<div class="tile"><div class="n">${hm(g.sleep48Min * 60000)}</div><div class="l">Sleep 48 h · shared</div></div>` : ''}</div><p class="fine">Reasons: ${esc((g.reasons || []).join(', ') || '—')}</p>` : ''}
+      ${detailsHtml(r)}
       <h3 style="margin-top:14px">WHAT THE REPORTER WROTE</h3>
       <p style="white-space:pre-wrap">${esc(r.text)}</p>
       ${r.suggestion ? `<p class="fine"><b>Suggestion:</b> ${esc(r.suggestion)}</p>` : ''}
@@ -124,6 +142,23 @@
     $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); });
     $('sdSave').addEventListener('click', save);
     $('safetyDetail').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); patch({ actionDone: Number(a.dataset.done), by: $('sdBy').value.trim() || undefined }); }));
+  }
+
+  /** The report type's own answers, labelled from the taxonomy; discretion reports get their FDP tiles. */
+  function detailsHtml(r) {
+    const d = r.details;
+    if (!d || !TAX) return '';
+    const def = TAX.typeDef(r.type);
+    const label = (k) => (def && def.fields.find((f) => f.id === k) ? def.fields.find((f) => f.id === k).label.en : k);
+    const fdp = ['planned_fdp_min', 'max_fdp_min', 'actual_fdp_min'];
+    let tiles = '';
+    if (r.type === 'discretion') {
+      const used = d.actual_fdp_min !== undefined && d.max_fdp_min !== undefined ? Math.max(0, d.actual_fdp_min - d.max_fdp_min) : undefined;
+      const t = (n, l) => (n === undefined ? '' : `<div class="tile"><div class="n">${hm(n * 60000)}</div><div class="l">${esc(l)}</div></div>`);
+      tiles = `<div class="tiles" style="margin:8px 0">${t(d.planned_fdp_min, 'FDP planned')}${t(d.max_fdp_min, 'FDP maximum')}${t(d.actual_fdp_min, 'FDP actual')}${t(used, 'Discretion used')}</div>`;
+    }
+    const rows = Object.keys(d).filter((k) => !(r.type === 'discretion' && fdp.includes(k))).map((k) => `<li><b>${esc(label(k))}:</b> ${esc(TAX.answerText(r.type, k, d[k], 'en'))}</li>`).join('');
+    return `<h3 style="margin-top:14px">DETAILS FROM THE REPORTER</h3>${tiles}${rows ? `<ul class="tl">${rows}</ul>` : ''}`;
   }
 
   async function patch(body) {
