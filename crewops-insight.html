@@ -68,6 +68,10 @@
       .note { background:var(--surface); border-left:3px solid var(--mg); padding:12px 16px; border-radius:0 12px 12px 0; color:var(--soft); font-size:13px }
       .hidden { display:none }
       .msg a { color:var(--cy) }
+      textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-size:14px; width:100%; min-height:72px; resize:vertical }
+      tr.sel td { background:var(--surface2) }
+      tr.click { cursor:pointer }
+      .tl { list-style:none; padding:0; margin:8px 0 0 } .tl li { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--soft); padding:4px 0; border-bottom:1px solid var(--line) } .tl li b { color:var(--ink); font-weight:500 }
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
@@ -154,6 +158,17 @@
         </div>
       </section>
 
+      <section id="safety" class="hidden">
+        <div class="bar" style="margin-top:40px"></div>
+        <div class="eyebrow">Crewops Safety · the operator's workspace</div>
+        <h2 style="margin-top:8px">Safety reports</h2>
+        <p class="fine" style="max-width:80ch">Reports your crews send from the Crewops app, with the flight, aircraft, stations and duty times filled in from their roster. Classify, act and reply here; the reply goes back to the reporter's phone. The 72-hour clock is Regulation (EU) 376/2014 Art. 4(8): a reportable occurrence reaches the authority within 72 hours; mark a report "not reportable" to stop it. The CSV follows the Annex I fields for your ECCAIRS or SHGM submission; it is an export, not a submission.</p>
+        <div class="tiles" id="safetyTiles"></div>
+        <div class="row" style="margin:0 0 12px"><button class="ghost" id="safetyRefresh">REFRESH</button><button class="ghost" id="safetyCsv">EXPORT CSV · ECCAIRS FIELDS</button><span class="fine" id="safetyMsg"></span></div>
+        <div class="tablewrap"><table id="safetyTable"></table></div>
+        <div id="safetyDetail" class="card hidden" style="margin-top:16px"></div>
+      </section>
+
       <footer>Crewops Insight · Hawk &amp; Mason Studios · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     <script type="module">
@@ -164,5 +179,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="/assets/crewops-insight.js"></script>
     <script src="/assets/crewops-insight-page.js"></script>
+    <script src="/assets/crewops-safety-page.js"></script>
   </body>
 </html>

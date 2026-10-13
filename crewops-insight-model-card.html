@@ -47,6 +47,10 @@
       .note { background:var(--surface); border-left:3px solid var(--mg); padding:12px 16px; border-radius:0 12px 12px 0; color:var(--soft); font-size:13px }
       .hidden { display:none }
       .msg a { color:var(--cy) }
+      textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-size:14px; width:100%; min-height:72px; resize:vertical }
+      tr.sel td { background:var(--surface2) }
+      tr.click { cursor:pointer }
+      .tl { list-style:none; padding:0; margin:8px 0 0 } .tl li { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--soft); padding:4px 0; border-bottom:1px solid var(--line) } .tl li b { color:var(--ink); font-weight:500 }
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }

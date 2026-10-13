@@ -14,12 +14,12 @@
     document.querySelectorAll('#inputs input[type=file]').forEach((i) => { i.disabled = !unlocked; });
     document.querySelectorAll('#inputs .drop').forEach((d) => { d.style.opacity = unlocked ? '1' : '.45'; d.style.pointerEvents = unlocked ? 'auto' : 'none'; });
     $('accessNote').innerHTML = unlocked
-      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.`
+      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.${lic.ops ? ' Operator code: crew-reported ratings and safety reports open below.' : ' Crew code: analysis only; crew-reported data needs the operator code.'}`
       : 'Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.';
   }
   $('codeBtn').addEventListener('click', () => {
     const r = CrewopsInsight.checkCode($('code').value);
-    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; state.code = $('code').value.trim(); setAccess(r); $('msg').textContent = ''; }
+    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; state.code = $('code').value.trim(); setAccess(r); $('msg').textContent = ''; window.dispatchEvent(new CustomEvent('crewops-code', { detail: { code: state.code, licence: r } })); }
     else $('msg').textContent = r.reason === 'expired' ? 'This code has run out. Ask for a renewed one.' : r.reason === 'none' ? 'Paste the whole code.' : 'This code was not issued by Crewops.';
   });
   $('sampleBtn').addEventListener('click', async () => {
@@ -33,7 +33,7 @@
       $('run').click();
     } catch (e) { $('msg').textContent = 'Could not load the sample roster.'; }
   });
-  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; state.code = saved; setAccess(r); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
+  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; state.code = saved; setAccess(r); window.dispatchEvent(new CustomEvent('crewops-code', { detail: { code: saved, licence: r } })); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
 
   async function pdfPages(file) {
     const pdfjs = window.__pdfjs;
