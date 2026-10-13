@@ -889,6 +889,7 @@ body.crew {
 .w-title { font-size: clamp(2.6rem, 6vw, 4.2rem); line-height: 1.02; margin: 14px 0 10px; color: #fff; }
 .w-lede { font-size: clamp(1.08rem, 1.6vw, 1.3rem); color: var(--w-azure-soft); line-height: 1.6; max-width: 44ch; margin: 0 0 0.9rem; }
 .w-sub { color: var(--w-muted); line-height: 1.7; max-width: 52ch; margin: 0 0 1.6rem; }
+.w-tag { display: block; font-size: 0.62em; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--w-muted); margin-top: 6px; }
 /* The phones are positioned absolutely and sized as a percentage of this
    box, so their height tracks its WIDTH while a pixel min-height does not.
    At 375px the front phone ran 62px past the hero and landed on the
