@@ -3,29 +3,91 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops Aviation Platform — operator portal: fatigue (Insight), safety, training, documents</title>
-    <meta name="description" content="The Crewops Aviation Platform operator portal: one operator code per airline opens the products it holds. Roster fatigue analysis (Crewops Insight: FDP margins, predicted alertness, KSS and Samn-Perelli at top of descent, planned versus flown), safety reports from the crew app (Crewops Safety), training and qualification records (Crewops Academy) and controlled documents (Crewops Library). Try Insight on a sample roster." />
+    <title>Crewops operator portal · Crewops Aviation Platform</title>
+    <meta name="description" content="Your airline's workspace: sign in with the operator code for roster fatigue analysis, safety reports, training records and controlled documents. Try Insight on a sample roster." />
     <link rel="canonical" href="https://hawkmason.com/crewops/portal" />
     <meta property="og:title" content="Crewops Aviation Platform — operator portal" />
-    <meta property="og:description" content="A biomathematical fatigue assessment of your roster export: KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins, planned versus flown. Browser-side, licensed per operator." />
+    <meta property="og:description" content="One operator code per airline opens the products it holds: roster fatigue analysis (Insight), safety reports, training records and controlled documents." />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content="https://hawkmason.com/crewops/portal" />
     <meta property="og:type" content="website" />
     <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://hawkmason.com/crewops/portal#page",
+   "url": "https://hawkmason.com/crewops/portal",
+   "name": "Crewops operator portal",
+   "description": "The Crewops Aviation Platform's operator portal: one operator code per airline opens the products it holds, roster fatigue analysis (Crewops Insight), safety reports (Crewops Safety), training records (Crewops Academy) and controlled documents (Crewops Library).",
+   "isPartOf": {
+    "@id": "https://hawkmason.com/#website"
+   },
+   "about": {
+    "@id": "https://hawkmason.com/crewops/airlines#platform"
+   }
+  },
+  {
+   "@type": "WebApplication",
+   "@id": "https://hawkmason.com/crewops/insight#app",
+   "name": "Crewops Insight",
+   "applicationCategory": "BusinessApplication",
+   "operatingSystem": "Any (browser)",
+   "url": "https://hawkmason.com/crewops/portal#insight",
+   "description": "Roster fatigue analysis for airline operators: FDP margins, Three-Process Model alertness (KSS, Samn-Perelli) at top of descent, EASA 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; nothing is uploaded. Licensed per operator.",
+   "publisher": {
+    "@type": "Organization",
+    "name": "Hawk & Mason Studios",
+    "url": "https://hawkmason.com"
+   },
+   "isRelatedTo": {
+    "@id": "https://hawkmason.com/crewops#app"
+   },
+   "isPartOf": {
+    "@id": "https://hawkmason.com/crewops/airlines#platform"
+   }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
     {
-      "@context": "https://schema.org",
-      "@graph": [
-        { "@type": "WebApplication", "@id": "https://hawkmason.com/crewops/insight#app", "name": "Crewops Insight", "applicationCategory": "BusinessApplication", "operatingSystem": "Any (browser)", "url": "https://hawkmason.com/crewops/insight",
-          "description": "Roster fatigue analysis for airline operators: FDP margins, Three-Process Model alertness (KSS, Samn-Perelli) at top of descent, EASA 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; nothing is uploaded. Licensed per operator.",
-          "publisher": { "@type": "Organization", "name": "Hawk & Mason Studios", "url": "https://hawkmason.com" },
-          "isRelatedTo": { "@id": "https://hawkmason.com/crewops#app" } },
-        { "@type": "FAQPage", "mainEntity": [
-          { "@type": "Question", "name": "Which fatigue model does Crewops Insight use?", "acceptedAnswer": { "@type": "Answer", "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the parameters re-estimated on 136 aircrews by Ingre et al. 2014 — the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern; output is KSS 1–9 and Samn-Perelli 1–7 at top of descent, against the EASA FTL 2.0 thresholds KSS 7 and SP 5." } },
-          { "@type": "Question", "name": "Does the roster file get uploaded?", "acceptedAnswer": { "@type": "Answer", "text": "No. Parsing and modelling run in the browser tab; nothing reaches a server. Close the tab and the analysis is gone." } },
-          { "@type": "Question", "name": "Which roster formats does it read?", "acceptedAnswer": { "@type": "Answer", "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; rotation plans exported as a spreadsheet (.xlsx); any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader." } },
-          { "@type": "Question", "name": "Is it a validated FRMS tool?", "acceptedAnswer": { "@type": "Answer", "text": "It implements a published biomathematical model and documents its limits as CASA and ICAO ask. It supports a fatigue risk assessment and is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement." } }
-        ] }
-      ]
+     "@type": "Question",
+     "name": "Which fatigue model does Crewops Insight use?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the parameters re-estimated on 136 aircrews by Ingre et al. 2014 — the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern; output is KSS 1–9 and Samn-Perelli 1–7 at top of descent, against the EASA FTL 2.0 thresholds KSS 7 and SP 5."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does the roster file get uploaded?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Parsing and modelling run in the browser tab; nothing reaches a server. Close the tab and the analysis is gone."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which roster formats does it read?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; rotation plans exported as a spreadsheet (.xlsx); any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is it a validated FRMS tool?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It implements a published biomathematical model and documents its limits as CASA and ICAO ask. It supports a fatigue risk assessment and is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement."
+     }
     }
+   ]
+  }
+ ]
+}
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
