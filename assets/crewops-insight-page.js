@@ -15,9 +15,10 @@
     const unlocked = !!lic && (lic.products || ['insight']).includes('insight');
     document.querySelectorAll('#inputs input[type=file]').forEach((i) => { i.disabled = !unlocked; });
     document.querySelectorAll('#inputs .drop').forEach((d) => { d.style.opacity = unlocked ? '1' : '.45'; d.style.pointerEvents = unlocked ? 'auto' : 'none'; });
-    $('accessNote').innerHTML = unlocked
-      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.${lic.ops ? ` Operator code · products: ${(lic.products || []).map((x) => ({ insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library' })[x] || x).join(', ')}.` : ' Crew code: analysis only; crew-reported data needs the operator code.'}`
-      : 'Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.';
+    const names = { insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library' };
+    $('accessNote').innerHTML = lic
+      ? `Signed in: <b>${lic.name}</b>, until ${lic.exp}. Products: ${(lic.products || ['insight']).map((x) => names[x] || x).join(', ')}.${unlocked ? ' Roster files are read in this browser; nothing is uploaded.' : ''}${lic.ops ? '' : ' This is a crew code: it opens the analysis only; reports, training and documents need the operator code.'}`
+      : 'One operator code per airline opens the products it holds. Not a customer yet? Try Crewops Insight on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform%3A%20operator%20access">ask for a trial</a>.';
   }
   $('codeBtn').addEventListener('click', () => {
     const r = CrewopsInsight.checkCode($('code').value);

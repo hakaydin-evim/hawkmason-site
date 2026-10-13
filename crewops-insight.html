@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops Insight — roster fatigue analysis for operators</title>
-    <meta name="description" content="Drop an airline roster export and read it the way an FRM does: FDP margins, predicted alertness (KSS, Samn-Perelli) at top of descent, EASA night-duty types, planned versus flown. Runs in your browser; nothing is uploaded." />
-    <link rel="canonical" href="https://hawkmason.com/crewops/insight" />
-    <meta property="og:title" content="Crewops Insight — roster fatigue analysis for operators" />
+    <title>Crewops Aviation Platform — operator portal: fatigue (Insight), safety, training, documents</title>
+    <meta name="description" content="The Crewops Aviation Platform operator portal: one operator code per airline opens the products it holds. Roster fatigue analysis (Crewops Insight: FDP margins, predicted alertness, KSS and Samn-Perelli at top of descent, planned versus flown), safety reports from the crew app (Crewops Safety), training and qualification records (Crewops Academy) and controlled documents (Crewops Library). Try Insight on a sample roster." />
+    <link rel="canonical" href="https://hawkmason.com/crewops/portal" />
+    <meta property="og:title" content="Crewops Aviation Platform — operator portal" />
     <meta property="og:description" content="A biomathematical fatigue assessment of your roster export: KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins, planned versus flown. Browser-side, licensed per operator." />
-    <meta property="og:url" content="https://hawkmason.com/crewops/insight" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/portal" />
     <meta property="og:type" content="website" />
     <script type="application/ld+json">
     {
@@ -75,25 +75,46 @@
       .tl { list-style:none; padding:0; margin:8px 0 0 } .tl li { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--soft); padding:4px 0; border-bottom:1px solid var(--line) } .tl li b { color:var(--ink); font-weight:500 }
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
+      .f { max-width:100% } .f select, .f input { max-width:100% } select { text-overflow:ellipsis }
+      .modbar { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0 0 8px }
+      .mod { display:flex; flex-direction:column; gap:2px; padding:14px 14px 12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); color:var(--ink); text-decoration:none }
+      .mod b { font-family:'Unbounded',Arial,sans-serif; font-size:14px }
+      .mod span { color:var(--soft); font-size:12px }
+      .mod i { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint); margin-top:6px }
+      .mod.on { border-color:var(--cy) } .mod.on i { color:var(--cy) }
+      .mod.off { opacity:.55 } .mod.off i { color:var(--risk) }
+      @media (max-width:720px) { .modbar { grid-template-columns:repeat(2,1fr) } }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
     </style>
   </head>
   <body>
     <main class="wrap">
-      <div class="eyebrow">Crewops for airlines · licensed per operator</div>
-      <h1>Crewops Insight</h1>
-      <p class="lead">Drop your roster export. Insight reads every duty the way a fatigue risk assessment does: FDP against the table ceiling, predicted alertness through the duty (Three-Process Model, aircrew parameters), the EASA night-duty subtypes, and planned against flown. It runs in this browser tab. Nothing is uploaded.</p>
+      <div class="eyebrow">Crewops Aviation Platform · operator portal</div>
+      <h1>Your airline's workspace</h1>
+      <p class="lead">Where your departments work with what your crews send from the Crewops app. Sign in with your airline's operator code: the products your airline holds open below. Fatigue (Crewops Insight), safety reports (Crewops Safety), training records (Crewops Academy) and controlled documents (Crewops Library).</p>
       <div class="bar"></div>
 
       <div class="card" id="access" style="margin-bottom:16px">
         <h3>ACCESS</h3>
         <div class="row">
-          <label class="f" style="flex:1;min-width:260px">Operator licence code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
+          <label class="f" style="flex:1;min-width:260px">Operator code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
           <button class="ghost" id="codeBtn">UNLOCK</button>
-          <button class="ghost" id="sampleBtn">EVALUATE ON SAMPLE ROSTER</button>
+          <button class="ghost" id="sampleBtn">TRY INSIGHT ON A SAMPLE ROSTER</button>
         </div>
         <p class="fine" id="accessNote" style="margin:10px 0 0">Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.</p>
       </div>
+      <nav class="modbar" id="modbar" aria-label="Products">
+        <a class="mod" href="#insight" data-mod="insight"><b>Fatigue</b><span>Crewops Insight</span><i data-state>Sign in, or try the sample</i></a>
+        <a class="mod" href="#safety" data-mod="safety"><b>Safety</b><span>Crewops Safety</span><i data-state>Sign in to open</i></a>
+        <a class="mod" href="#academy" data-mod="academy"><b>Training</b><span>Crewops Academy</span><i data-state>Sign in to open</i></a>
+        <a class="mod" href="#library" data-mod="library"><b>Documents</b><span>Crewops Library</span><i data-state>Sign in to open</i></a>
+      </nav>
+
+      <section id="insight">
+      <div class="bar" style="margin-top:28px"></div>
+      <div class="eyebrow">Crewops Insight · fatigue risk assessment of a roster</div>
+      <h2 style="margin-top:8px">Roster fatigue analysis</h2>
+      <p class="fine" style="max-width:80ch">Drop a roster export, planned or flown: every duty against the FDP ceiling, predicted alertness through the duty (Three-Process Model, aircrew parameters), KSS and Samn-Perelli at top of descent, planned versus flown, and the post-flight ratings your crews share from the app. Files are read in this browser; nothing is uploaded.</p>
       <div class="grid" id="inputs">
         <div class="card">
           <h3>PLANNED ROSTER</h3>
@@ -157,6 +178,7 @@
           <p><b>What it is not.</b> Not a measurement of any person, not a validated commercial product, not a fitness-to-fly judgement and not an FRMS by itself. Per CASA (2010, 2014) and the IATA Human Factors Task Force (2025): model outputs support a risk assessment and compare rosters relatively; any threshold must be validated in your own operation; never a sole go/no-go. FTL tables are implemented from the published regulation and marked unverified in the Crewops app; your operator's scheme and system prevail.</p>
           <p><b>Where the data goes.</b> Nowhere. Parsing and modelling run in this page; close the tab and it is gone.</p>
         </div>
+      </section>
       </section>
 
       <section id="safety" class="hidden">
@@ -259,7 +281,7 @@
         </div>
       </section>
 
-      <footer>Crewops Insight · Hawk &amp; Mason Studios · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
+      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     <script type="module">
       import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs';
@@ -273,5 +295,6 @@
     <script src="/assets/crewops-safety-page.js"></script>
     <script src="/assets/crewops-academy-page.js"></script>
     <script src="/assets/crewops-library-page.js"></script>
+    <script src="/assets/crewops-portal.js"></script>
   </body>
 </html>

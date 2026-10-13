@@ -157,11 +157,10 @@
       </div>
 
       <!-- PRODUCTS: the family, right under the hero -->
-      <section class="w-prodbar" aria-label="The Crewops family">
-        <a class="w-prodbar-item is-live" href="#download"><span class="w-status is-live">In service</span><b>Crewops</b><span>The crew roster app · App Store</span></a>
-        <a class="w-prodbar-item" href="/crewops/airlines#products"><span class="w-status is-soon">Company edition</span><b>Crewops Crew</b><span>Given by the airline, unlocked by a code</span></a>
-        <a class="w-prodbar-item is-live" href="/crewops/insight"><span class="w-status is-live">Live</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
-        <a class="w-prodbar-item is-plat" href="/crewops/airlines"><span class="w-status">Platform</span><b>Crewops Aviation Platform</b><span>Safety, training, fatigue, documents · built next →</span></a>
+      <section class="w-prodbar" aria-label="The Crewops family" style="grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));">
+        <a class="w-prodbar-item is-live" href="#download"><span class="w-status is-live">For you · App Store</span><b>Crewops</b><span>Your roster, your limits, your fatigue. The crew app anyone can download.</span></a>
+        <a class="w-prodbar-item" href="/crewops/airlines#crew"><span class="w-status is-soon">For your airline's crews</span><b>Crewops Crew</b><span>The same app, given by the airline: unlocked by its code, with the products it holds.</span></a>
+        <a class="w-prodbar-item is-plat" href="/crewops/airlines"><span class="w-status">For your airline's departments</span><b>Crewops Aviation Platform</b><span>Fatigue (Insight) · Safety · Training (Academy) · Documents (Library) →</span></a>
       </section>
 
       <!-- FILM -->
@@ -335,28 +334,22 @@
       <!-- AIRLINES -->
       <section class="w-feat" id="airlines">
         <div class="section-head section-head--center">
-          <span class="w-badge">Crewops Aviation Platform</span>
-          <h2 style="color: #fff;">The same engines, for the operator</h2>
-          <p style="color: var(--w-muted); max-width: 60ch; margin: 14px auto 0; line-height: 1.65;">Six products for airlines, each licensed on its own and all sharing this app's engines: the company edition, roster fatigue assessment, safety reporting, training records and controlled documents. Your airline buys what it needs; crews see only what it holds.</p>
+          <span class="w-badge">For airlines</span>
+          <h2 style="color: #fff;">The same app, for a whole airline</h2>
+          <p style="color: var(--w-muted); max-width: 62ch; margin: 14px auto 0; line-height: 1.65;">An airline gives its crews Crewops Crew and runs its departments on the Crewops Aviation Platform. What a crew member sends from the phone reaches the right department; what the department publishes reaches the phone.</p>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card">
-            <h3>Crewops Insight</h3>
-            <p>Drop your roster export, planned or flown, and read it the way a fatigue risk assessment does: FDP against the table ceiling, predicted alertness through each duty (Three-Process Model, aircrew parameters), KSS and Samn-Perelli at top of descent against the EASA FTL 2.0 thresholds, the 2023 night-duty subtypes, and planned versus flown for ORO.FTL.110(j). It runs in the browser; the file never leaves your computer. Licensed per operator; the same code that unlocks Crewops Crew for your pilots opens it.</p>
-            <p><a href="/crewops/insight" style="color: var(--w-azure); font-weight: 600;">See Crewops Insight (evaluation on a sample roster) →</a></p>
+            <h3>Crewops Crew · for the crews</h3>
+            <p>The company edition of this app. Crews install it from a link and enter the code their airline holds: no subscription, no account. The code opens the products the airline bought, inside the app they already know.</p>
+            <p style="color: var(--w-muted);">TestFlight now; pilot programmes with launch operators.</p>
           </article>
           <article class="w-card">
-            <h3>Crewops Crew</h3>
-            <p>The company edition of the crew app. Your crew install it from a link you give them, enter the code your airline holds, and get the full app with the modules you chose, no subscription, no account. The same roster readers and limits as Crewops; your operation's rule set and branding by arrangement. Crew data stays on the crew member's phone.</p>
-            <p style="color: var(--w-muted);">In App Review. Pilot programmes with selected operators from October 2026.</p>
-          </article>
-          <article class="w-card">
-            <h3>The platform</h3>
-            <p>Ready for launch operators on the same base: <b><a href="/crewops/safety" style="color: var(--w-azure);">Crewops Safety</a></b>, every report an airline runs, from the crew phone; <b><a href="/crewops/academy" style="color: var(--w-azure);">Crewops Academy</a></b>, qualifications, expiry dates and read-and-sign notices; <b><a href="/crewops/library" style="color: var(--w-azure);">Crewops Library</a></b>, the current revision of every manual, offline, with confirmations.</p>
-            <p><a href="/crewops/airlines" style="color: var(--w-azure); font-weight: 600;">Crewops Aviation Platform →</a> · <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform" style="color: var(--w-azure);">hello@hawkmason.com</a></p>
+            <h3>Crewops Aviation Platform · for the departments</h3>
+            <p>Four products, each licensed on its own: <b><a href="/crewops/airlines#products" style="color: var(--w-azure);">Crewops Insight</a></b>, roster fatigue assessment; <b><a href="/crewops/safety" style="color: var(--w-azure);">Crewops Safety</a></b>, every report from the crew phone to the safety office; <b><a href="/crewops/academy" style="color: var(--w-azure);">Crewops Academy</a></b>, qualifications, expiry and read-and-sign; <b><a href="/crewops/library" style="color: var(--w-azure);">Crewops Library</a></b>, the current manual on every phone.</p>
+            <p><a href="/crewops/airlines" style="color: var(--w-azure); font-weight: 600;">Crewops Aviation Platform →</a> · <a href="/crewops/portal" style="color: var(--w-azure);">Operator portal</a></p>
           </article>
         </div>
-        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; margin-top: 18px;">Insight implements a published biomathematical model and documents its limits; it supports a fatigue risk assessment and is not an FRMS, a validated commercial model or a fitness-to-fly judgement. Operator systems and rules prevail.</p>
       </section>
 
       <!-- FAQ -->
@@ -371,7 +364,7 @@
           <article class="w-card"><h3>Is my roster uploaded anywhere?</h3><p>No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account. The one thing you can choose to send us is your post-flight rating, for your airline's fatigue programme, and only with the switch on.</p></article>
           <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops.</p></article>
           <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
-          <article class="w-card"><h3>Is there a fatigue risk management tool for the operator?</h3><p>Yes: <a href="/crewops/insight" style="color: var(--w-azure);">Crewops Insight</a> assesses a roster export, planned or flown, with a biomathematical model (Three-Process Model, aircrew parameters): KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins and planned versus flown for ORO.FTL.110(j). Browser-side, licensed per operator.</p></article>
+          <article class="w-card"><h3>Is there a fatigue risk management tool for the operator?</h3><p>Yes: <a href="/crewops/portal" style="color: var(--w-azure);">Crewops Insight</a> assesses a roster export, planned or flown, with a biomathematical model (Three-Process Model, aircrew parameters): KSS and Samn-Perelli at top of descent, EASA night-duty types, FDP margins and planned versus flown for ORO.FTL.110(j). Browser-side, licensed per operator.</p></article>
           <article class="w-card"><h3>Can an airline give Crewops to its crews?</h3><p>Yes. Crewops Crew is the company edition: crews install it from a link, enter the airline's code, and get the full app with the modules the airline chose. No subscription, no account; crew data stays on the phone.</p></article>
           <article class="w-card"><h3>We build crew software or run an airline. Can we work together?</h3><p>Yes — see the <a href="/crewops/airlines" style="color: var(--w-azure);">Crewops Aviation Platform</a> for what is in service and what is built next, and write to <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform" style="color: var(--w-azure);">hello@hawkmason.com</a> about export formats, test rosters, a company edition or a module for your operation.</p></article>
         </div>
