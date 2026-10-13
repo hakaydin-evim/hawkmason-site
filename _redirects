@@ -8,5 +8,8 @@
 /crewops/safety /crewops-safety 200
 /crewops/academy /crewops-academy 200
 /crewops/library /crewops-library 200
+/crewops/api /crewops-api 200
+/crewops/faq /crewops-faq 200
+/crewops/report /crewops-report 200
 /crewops/platform /crewops/airlines 301
 /crewops/insight/model-card /crewops-insight-model-card 200

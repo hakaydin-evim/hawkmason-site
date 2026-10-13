@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops API reference: endpoints, keys and webhooks</title>
+    <meta name="description" content="The endpoints your own systems can call for Crewops Safety, Academy, Library, Insight and the operator portal, with API keys and signed webhooks." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://hawkmason.com/crewops/api" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="Crewops API reference" />
+    <meta property="og:description" content="Connect your SMS, HR, training or document system to Crewops: JSON endpoints per product, API keys made in the operator portal, and HMAC-signed webhooks." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/api" />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/products/safety-reply.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Crewops API reference" />
+    <meta name="twitter:description" content="Connect your SMS, HR, training or document system to Crewops: JSON endpoints per product, API keys made in the operator portal, and HMAC-signed webhooks." />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/crewops/products/safety-reply.webp" />
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "TechArticle",
+   "@id": "https://hawkmason.com/crewops/api#article",
+   "url": "https://hawkmason.com/crewops/api",
+   "headline": "Crewops API reference",
+   "description": "The endpoints your own systems can call for Crewops Safety, Academy, Library, Insight and the operator portal, with API keys and signed webhooks.",
+   "inLanguage": "en",
+   "dateModified": "2026-10-14",
+   "proficiencyLevel": "Expert",
+   "isPartOf": {
+    "@id": "https://hawkmason.com/#website"
+   },
+   "about": {
+    "@id": "https://hawkmason.com/crewops/airlines#platform"
+   },
+   "author": {
+    "@id": "https://hawkmason.com/#studio"
+   },
+   "publisher": {
+    "@id": "https://hawkmason.com/#studio"
+   }
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://hawkmason.com/#studio",
+   "name": "Hawk & Mason Studios",
+   "url": "https://hawkmason.com/",
+   "email": "hello@hawkmason.com"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Hawk & Mason Studios",
+     "item": "https://hawkmason.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Crewops Aviation Platform",
+     "item": "https://hawkmason.com/crewops/airlines"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Crewops API reference",
+     "item": "https://hawkmason.com/crewops/api"
+    }
+   ]
+  }
+ ]
+}
+    </script>
+    <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
+    <link rel="stylesheet" href="/styles.css?v=31" />
+    <style>
+      .api-sec { max-width: 980px; margin: 0 auto; padding: 16px 24px 64px; }
+      .api-sec > h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 10px 0 12px; }
+      .api-sec h3 { color: #fff; font-size: 1.12rem; margin: 30px 0 8px; }
+      .api-sec p, .api-sec li { color: var(--w-muted); line-height: 1.65; font-size: 0.97rem; }
+      .api-sec ul { padding-left: 20px; margin: 8px 0 14px; }
+      .api-sec a { color: var(--w-azure-soft, var(--w-azure)); }
+      .api-sec code, .api-table code { font: 0.86em/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--w-ink); background: rgba(255, 255, 255, 0.06); padding: 1px 5px; border-radius: 6px; overflow-wrap: anywhere; }
+      .api-code { margin: 14px 0 18px; padding: 14px 16px; background: #0b111c; border: 1px solid var(--w-line); border-radius: 14px; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; color: #d6e4f5; font: 0.84rem/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; tab-size: 2; }
+      .api-code code { background: none; padding: 0; color: inherit; font: inherit; overflow-wrap: normal; }
+      .api-scroll { margin: 14px 0 18px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--w-line); border-radius: 14px; background: var(--w-panel); }
+      .api-table { width: 100%; min-width: 620px; border-collapse: collapse; font-size: 0.92rem; }
+      .api-table th, .api-table td { text-align: left; vertical-align: top; padding: 10px 14px; border-top: 1px solid rgba(255, 255, 255, 0.08); color: var(--w-muted); line-height: 1.55; }
+      .api-table th { border-top: 0; color: var(--w-ink); font-weight: 600; background: rgba(255, 255, 255, 0.03); }
+      .api-table td:first-child { white-space: nowrap; font: 700 0.78rem/1.9 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: var(--w-azure); }
+      .api-table td:nth-child(2) { white-space: nowrap; }
+      .api-toc { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 26px auto 0; max-width: 980px; padding: 0 24px; }
+      .api-toc a { padding: 8px 14px; border: 1px solid var(--w-line); border-radius: 999px; color: var(--w-ink); background: var(--w-panel); font-size: 0.92rem; }
+      .api-note { border-left: 3px solid var(--w-azure); padding: 4px 0 4px 14px; margin: 14px 0; }
+      @media (max-width: 600px) {
+        .api-sec, .w-feat, .w-cta, .api-toc, .w-fine, .w-prodbar { padding-left: 16px; padding-right: 16px; }
+        .w-hero { padding-left: 16px; padding-right: 16px; }
+      }
+    </style>
+    <script src="/app.js?v=25" defer></script>
+  </head>
+  <body class="crew" data-page="crewops-api">
+    <div class="veil veil--dark" data-veil aria-hidden="true"></div>
+
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="/crewops/airlines" data-back data-veil="#070c15" aria-label="Back to the Crewops Aviation Platform">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="nav-airlines" href="/crewops/portal">Operator portal</a>
+        <a class="store-btn store-btn--azure" href="#contact">Write to us</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-hero" style="grid-template-columns: 1fr;">
+        <div>
+          <span class="w-badge">For your IT team</span>
+          <h1 class="w-title">Crewops API reference</h1>
+          <p class="w-lede">Your SMS, HR, training and document systems read and write Crewops data directly, so a product you buy on its own still fits the way you work.</p>
+          <p class="w-sub">Every endpoint below takes and returns JSON over HTTPS and opens with your airline's operator code or an API key made from it. Webhooks tell your systems when a report arrives, a notice is signed, a course is completed or a revision is confirmed. Each section covers one product; the endpoints of a product your airline does not hold answer 403.</p>
+          <div class="store-row">
+            <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20API%20%E2%80%94%20a%20question">
+              <span class="store-kicker">Ask a developer</span><span class="store-name">hello@hawkmason.com</span>
+            </a>
+            <a class="btn btn-ghost w-btn-ghost" href="#webhooks">Webhooks</a>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">Base URL https://updates.hawkmason.com · JSON · Bearer operator code or API key</p>
+        </div>
+      </section>
+
+      <nav class="api-toc" aria-label="On this page">
+        <a href="#basics">Basics</a>
+        <a href="#keys">API keys</a>
+        <a href="#errors">Errors</a>
+        <a href="#portal">Portal</a>
+        <a href="#safety">Safety</a>
+        <a href="#academy">Academy</a>
+        <a href="#library">Library</a>
+        <a href="#insight">Insight</a>
+        <a href="#webhooks">Webhooks</a>
+      </nav>
+
+      <section class="api-sec" id="basics">
+        <span class="w-badge">Basics</span>
+        <h2>Base URL, format and sign-in</h2>
+        <ul>
+          <li><b style="color: var(--w-ink);">Base URL:</b> <code>https://updates.hawkmason.com</code>. Every path on this page is relative to it.</li>
+          <li><b style="color: var(--w-ink);">Format:</b> JSON in and out. Send <code>Content-Type: application/json</code> with every JSON body; without it the request answers 415. File uploads send the file itself as the body with its own content type.</li>
+          <li><b style="color: var(--w-ink);">Sign-in:</b> <code>Authorization: Bearer &lt;operator code or API key&gt;</code> on every request.</li>
+          <li><b style="color: var(--w-ink);">Scope:</b> the code says which airline it belongs to, so there is no airline parameter. Every list and record is your airline's own.</li>
+          <li><b style="color: var(--w-ink);">Products:</b> the code also says which products your airline holds (Insight, Safety, Academy, Library). A product's endpoints open only if the code includes it.</li>
+          <li><b style="color: var(--w-ink);">From a server:</b> call the API from your own systems. Browsers on other websites are refused by the CORS policy, which allows only hawkmason.com.</li>
+        </ul>
+        <p class="api-note">The crew code your crews enter in Crewops Crew never opens these endpoints. A crew code answers 403: it is in every crew member's hands and must not read colleagues' data.</p>
+<pre class="api-code"><code>export CREWOPS="https://updates.hawkmason.com"
+export CREWOPS_KEY="cwk_…"          # an API key, or the operator code
+
+curl -s "$CREWOPS/portal/today" \
+  -H "Authorization: Bearer $CREWOPS_KEY"</code></pre>
+      </section>
+
+      <section class="api-sec" id="keys">
+        <span class="w-badge">API keys</span>
+        <h2>One key per connected system</h2>
+        <p>Make a key in the operator portal, under Connections, for each system that calls the API: your SMS, your HR system, your training system, your document system. Give each one a name so you know which system it belongs to.</p>
+        <ul>
+          <li>A key looks like <code>cwk_</code> followed by 40 hexadecimal characters. It is shown once, when it is made. Crewops stores only its SHA-256 hash.</li>
+          <li>A key acts as the operator code it was made with: the same airline, the same products and the same expiry date.</li>
+          <li>A key cannot make or revoke keys, and cannot set, rotate, test or delete the webhook. It can read the webhook settings.</li>
+          <li>Revoke a key on its own, in the portal, and every other key keeps working. Up to 20 keys can be active at once.</li>
+          <li>The portal shows the day each key was last used.</li>
+        </ul>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/portal/keys</code></td><td>Lists the keys: <code>{ airline, keys: [{ id, name, createdAt, lastUsed, revokedAt, exp }] }</code>. Operator code only.</td></tr>
+              <tr><td>POST</td><td><code>/portal/keys</code></td><td>Makes a key from <code>{ name }</code> (up to 60 characters). Answers 201 with <code>{ id, name, key, products, exp }</code>; the key is shown only here. Operator code only.</td></tr>
+              <tr><td>DELETE</td><td><code>/portal/keys/&lt;id&gt;</code></td><td>Revokes the key with this id (<code>K-</code> and 8 hex characters). Operator code only.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="api-sec" id="errors">
+        <span class="w-badge">Errors</span>
+        <h2>What a refusal means</h2>
+        <p>An error answers JSON with an <code>error</code> field that says what was wrong, for example <code>{ "error": "revisionDate YYYY-MM-DD" }</code>.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Status</th><th>Meaning</th><th>Typical cause</th></tr></thead>
+            <tbody>
+              <tr><td>400</td><td>Bad request</td><td>A required field is missing or has the wrong format, or the body is not valid JSON.</td></tr>
+              <tr><td>401</td><td>No valid code</td><td>No <code>Authorization</code> header, an unknown or revoked key, or an expired code.</td></tr>
+              <tr><td>403</td><td>Not allowed</td><td>A crew code instead of the operator code, a code that does not include this product, or an API key used to manage keys or the webhook.</td></tr>
+              <tr><td>404</td><td>Not found</td><td>No such record in your airline, or no such path. Another airline's record answers 404 too.</td></tr>
+              <tr><td>409</td><td>Conflict</td><td>The revision is already published, a report already has 4 photos, or 20 keys are already active.</td></tr>
+              <tr><td>413</td><td>Too large</td><td>A JSON body or a file over its limit (limits are given with each endpoint).</td></tr>
+              <tr><td>415</td><td>Wrong content type</td><td>A JSON endpoint called without <code>Content-Type: application/json</code>, or a file of a type the endpoint does not take.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="api-sec" id="portal">
+        <span class="w-badge">Operator portal</span>
+        <h2>Today board and webhook settings</h2>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/portal/today</code></td><td>What needs action now, across the products your airline holds. Up to 200 items, the most urgent first, then by date.</td></tr>
+              <tr><td>GET</td><td><code>/portal/webhook</code></td><td>The webhook: <code>{ url, events, createdAt, rotatedAt, available, log }</code>. <code>available</code> lists the events your products allow; <code>log</code> holds the last 20 deliveries. The secret is never returned here.</td></tr>
+              <tr><td>PUT</td><td><code>/portal/webhook</code></td><td>Sets the endpoint and events from <code>{ url, events }</code>. The URL must be https. The first time, it answers 201 with the <code>secret</code>, once. Operator code only.</td></tr>
+              <tr><td>POST</td><td><code>/portal/webhook/test</code></td><td>Sends a <code>ping</code> event now and answers the delivery: <code>{ id, event, at, status, ok, error? }</code>. Operator code only.</td></tr>
+              <tr><td>POST</td><td><code>/portal/webhook/rotate</code></td><td>Makes a new secret and answers it once. The old secret stops signing at once. Operator code only.</td></tr>
+              <tr><td>DELETE</td><td><code>/portal/webhook</code></td><td>Removes the webhook. Operator code only.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>The Today board</h3>
+        <p>Each item has a <code>level</code> (<code>bad</code>, <code>warn</code> or <code>info</code>), a <code>kind</code>, a <code>title</code>, a <code>detail</code>, an optional <code>due</code> date and a <code>ref</code> that points to the record: <code>report</code>, <code>risk</code>, <code>audit</code>, <code>change</code>, <code>crew</code>, <code>notice</code>, <code>course</code>, <code>doc</code> or <code>flight</code>.</p>
+<pre class="api-code"><code>curl -s "$CREWOPS/portal/today" -H "Authorization: Bearer $CREWOPS_KEY"
+
+{
+  "airline": "DEMO",
+  "products": ["insight", "safety", "academy", "library"],
+  "at": "2026-10-14T07:00:00.000Z",
+  "counts": { "bad": 1, "warn": 1, "info": 0 },
+  "total": 2,
+  "items": [
+    { "product": "safety", "level": "bad", "kind": "report_clock",
+      "title": "72-hour clock passed", "detail": "DEMO-261010-7KQ2M · Unstable approach",
+      "due": "2026-10-13T08:41:00.000Z", "ref": { "report": "DEMO-261010-7KQ2M" } },
+    { "product": "academy", "level": "warn", "kind": "qual_expiring",
+      "title": "LPC expires within 30 days", "detail": "A1234 · cockpit",
+      "due": "2026-11-02", "ref": { "crew": "A1234" } }
+  ]
+}</code></pre>
+        <h3>Set the webhook</h3>
+<pre class="api-code"><code>curl -s -X PUT "$CREWOPS/portal/webhook" \
+  -H "Authorization: Bearer $OPERATOR_CODE" \
+  -H "Content-Type: application/json" \
+  -d '{ "url": "https://sms.example.com/hooks/crewops",
+        "events": ["safety.report.created", "safety.report.updated"] }'</code></pre>
+      </section>
+
+      <section class="api-sec" id="safety">
+        <span class="w-badge">Crewops Safety</span>
+        <h2>Reports, office records and exports</h2>
+        <p>Report ids look like <code>DEMO-261014-7KQ2M</code>: your airline, the date received (YYMMDD) and five characters. A report's status is one of <code>new</code>, <code>triage</code>, <code>investigation</code>, <code>action</code> or <code>closed</code>.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/safety/reports</code></td><td>Your reports, newest first, as summaries: <code>{ airline, count, reports }</code>.</td></tr>
+              <tr><td>GET</td><td><code>/safety/reports/&lt;id&gt;</code></td><td>One report in full, with its flight, answers, classification, actions, reply, photos and timeline.</td></tr>
+              <tr><td>PATCH</td><td><code>/safety/reports/&lt;id&gt;</code></td><td>Changes status, classification, actions, investigation, reply or note (fields below). Answers the report.</td></tr>
+              <tr><td>GET</td><td><code>/safety/export.csv</code></td><td>Every report as CSV, one row per report, with columns named after the Annex I fields.</td></tr>
+              <tr><td>GET</td><td><code>/safety/reports/&lt;id&gt;/e5x</code></td><td>One report as an ECCAIRS E5X file.</td></tr>
+              <tr><td>GET</td><td><code>/safety/export.e5x?ids=a,b</code></td><td>The listed reports in one E5X file (up to 200).</td></tr>
+              <tr><td>GET</td><td><code>/safety/export.e5x?reportable=1</code></td><td>The reports classified as mandatory reportable, in one E5X file (up to 200, newest first).</td></tr>
+              <tr><td>GET</td><td><code>/safety/photo/&lt;airline&gt;/&lt;id&gt;/&lt;file&gt;</code></td><td>One photo of a report. The file names are in the report's <code>photos</code> list.</td></tr>
+              <tr><td>GET</td><td><code>/safety/office/&lt;kind&gt;</code></td><td>The office records of one kind, newest first: <code>risks</code>, <code>audits</code> or <code>changes</code>.</td></tr>
+              <tr><td>POST</td><td><code>/safety/office/&lt;kind&gt;</code></td><td>Makes a record. <code>title</code> is required; a risk also needs <code>likelihood</code> (1–5) and <code>severity</code> (A–E).</td></tr>
+              <tr><td>GET</td><td><code>/safety/office/&lt;kind&gt;/&lt;id&gt;</code></td><td>One record.</td></tr>
+              <tr><td>PATCH</td><td><code>/safety/office/&lt;kind&gt;/&lt;id&gt;</code></td><td>Changes fields, or adds a mitigation, finding or decision (below).</td></tr>
+              <tr><td>GET</td><td><code>/safety/weblink</code></td><td>Your web report link, made on the first call: <code>{ airline, key, url }</code>.</td></tr>
+              <tr><td>POST</td><td><code>/safety/weblink/rotate</code></td><td>A new web report link. The old one stops working at once.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>What a report summary holds</h3>
+        <p><code>id</code>, <code>type</code>, <code>family</code> (<code>safety</code> or <code>operational</code>), <code>urgent</code>, <code>status</code>, <code>anonymous</code>, <code>crewCode</code> (absent when anonymous), <code>title</code>, <code>date</code>, <code>flightNo</code>, <code>dep</code>, <code>arr</code>, <code>station</code>, <code>receivedAt</code>, <code>clockDue</code> (the end of the 72-hour clock, or null), <code>reportable</code>, <code>photos</code>, <code>rootCause</code>, <code>riskId</code>, <code>sp</code> (the Samn-Perelli score of a fatigue report), <code>source</code> (<code>web</code> for a report sent through the web link) and <code>actionDue</code> (the earliest open action's due date).</p>
+
+        <h3>What PATCH changes</h3>
+        <p>Send only the fields you change. Add <code>by</code> (up to 60 characters) to name who did it on the report's timeline.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Field</th><th>Value</th><th>Effect</th></tr></thead>
+            <tbody>
+              <tr><td>status</td><td><code>"triage"</code></td><td>Moves the report. Moving it out of <code>new</code> records that the 72-hour clock was met.</td></tr>
+              <tr><td>classification</td><td><code>{ occurrenceClass, category, eventType, eventTop, risk, reportable, mandatoryClass }</code></td><td>Replaces the classification as a whole. <code>category</code> is the ADREP mnemonic (for example <code>"CABIN"</code>); <code>occurrenceClass</code> is one of <code>accident</code>, <code>serious_incident</code>, <code>major_incident</code>, <code>significant_incident</code>, <code>incident</code>, <code>no_safety_effect</code>, <code>not_determined</code>, <code>observation</code>; <code>eventTop</code> is one of <code>equipment</code>, <code>operational</code>, <code>personnel</code>, <code>organisational</code>, <code>consequential</code>, <code>other</code>, <code>unknown</code>. <code>reportable: false</code> clears the 72-hour clock.</td></tr>
+              <tr><td>action</td><td><code>{ text, owner?, due? }</code></td><td>Adds a corrective action. <code>due</code> is YYYY-MM-DD.</td></tr>
+              <tr><td>actionDone</td><td><code>0</code></td><td>Marks the action at this index as done.</td></tr>
+              <tr><td>investigation</td><td><code>{ rootCause?, factors?, whys?, findings?, riskId? }</code></td><td>Only the keys you send change. <code>riskId</code> links a risk from the register. Never shown to the reporter.</td></tr>
+              <tr><td>reply</td><td><code>"…"</code></td><td>The reply the reporter reads on the phone or the follow-up page.</td></tr>
+              <tr><td>askMore</td><td><code>"…"</code></td><td>A question to the reporter, who can answer by adding information.</td></tr>
+              <tr><td>note</td><td><code>"…"</code></td><td>An internal note on the timeline. Never shown to the reporter.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><code>rootCause</code> is one of <code>human_skill</code>, <code>human_decision</code>, <code>human_perception</code>, <code>human_violation</code>, <code>communication_crm</code>, <code>procedure</code>, <code>training</code>, <code>organisation</code>, <code>equipment_technical</code>, <code>environment</code>, <code>external</code>, <code>undetermined</code>. JSON bodies are limited to 64 KB.</p>
+<pre class="api-code"><code>curl -s -X PATCH "$CREWOPS/safety/reports/DEMO-261014-7KQ2M" \
+  -H "Authorization: Bearer $CREWOPS_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "status": "action",
+        "classification": { "occurrenceClass": "incident", "category": "CABIN",
+                            "eventTop": "operational", "reportable": true },
+        "action": { "text": "Brief cabin crew on the revised galley stowage check",
+                    "owner": "Cabin safety", "due": "2026-10-31" },
+        "by": "Safety office" }'</code></pre>
+
+        <h3>E5X and CSV exports</h3>
+        <p>The E5X file is built and checked against the public ECCAIRS data-bridge schema, so your office can upload it to the ECCAIRS 2 reporting portal or to an authority's ECCAIRS-based system. It carries the date and time, headline, occurrence class, ADREP occurrence category, location, flight number, phase, registration, event type (top level), narrative and reporting history. The operator, aircraft model and aerodrome codes are completed in the ECCAIRS portal. Your office makes the submission; Crewops does not submit. The taxonomy version in the file header is <code>9.0.0.1</code> unless you pass <code>?taxonomy=</code> with another version.</p>
+<pre class="api-code"><code># every report marked mandatory reportable, as one E5X file
+curl -s -o reportable.e5x "$CREWOPS/safety/export.e5x?reportable=1" \
+  -H "Authorization: Bearer $CREWOPS_KEY"
+
+# the register as CSV
+curl -s -o safety.csv "$CREWOPS/safety/export.csv" -H "Authorization: Bearer $CREWOPS_KEY"</code></pre>
+
+        <h3>Risks, audits and changes</h3>
+        <ul>
+          <li><b style="color: var(--w-ink);">risks</b> (ids <code>R-…</code>): <code>title</code>, <code>hazard</code>, <code>area</code>, <code>owner</code>, <code>likelihood</code> 1–5, <code>severity</code> A–E, <code>residualLikelihood</code>, <code>residualSeverity</code>, <code>reviewDate</code>, <code>status</code> (<code>open</code>, <code>mitigating</code>, <code>monitoring</code>, <code>closed</code>), <code>sources</code> (report ids). The record comes back with its <code>index</code> and <code>tolerability</code> on the ICAO Doc 9859 5×5 matrix. PATCH also takes <code>addMitigation: { text, owner?, due? }</code>, <code>mitigationDone: index</code> and <code>addSource: reportId</code>.</li>
+          <li><b style="color: var(--w-ink);">audits</b> (ids <code>A-…</code>): <code>title</code>, <code>area</code>, <code>kind</code> (<code>internal</code>, <code>external</code>, <code>authority</code>, <code>supplier</code>), <code>date</code>, <code>auditor</code>, <code>scope</code>, <code>status</code>. PATCH also takes <code>addFinding: { text, level, requirement?, owner?, due? }</code> with level <code>level1</code>, <code>level2</code> or <code>observation</code>, and <code>updateFinding: { index, rootCause?, cap?, owner?, due?, evidence?, status? }</code>.</li>
+          <li><b style="color: var(--w-ink);">changes</b> (ids <code>C-…</code>): <code>title</code>, <code>description</code>, <code>kind</code>, <code>hazards</code>, <code>owner</code>, <code>plannedDate</code>, <code>reviewDate</code>, <code>status</code>, <code>risks</code> (risk ids). PATCH also takes <code>decision: "approved"</code> or <code>"rejected"</code> with an optional <code>note</code>.</li>
+        </ul>
+<pre class="api-code"><code>curl -s -X POST "$CREWOPS/safety/office/risks" \
+  -H "Authorization: Bearer $CREWOPS_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "title": "Unstable approaches at night", "likelihood": 3, "severity": "C",
+        "owner": "Flight safety", "reviewDate": "2027-01-15",
+        "sources": ["DEMO-261014-7KQ2M"] }'</code></pre>
+
+        <h3>Photos and the web report link</h3>
+        <p>Reporters add up to 4 photos to a report (JPEG, PNG or HEIC, up to 10 MB each) from the app or the web form. Your systems read them with the photo path above; each entry in a report's <code>photos</code> list has its <code>file</code>, <code>size</code> and <code>at</code>. The web report link opens the form for crews without the app; share it on your own channels, and rotate it when it has gone further than it should.</p>
+      </section>
+
+      <section class="api-sec" id="academy">
+        <span class="w-badge">Crewops Academy</span>
+        <h2>Records, notices and courses</h2>
+        <p><code>crewCode</code> on this page is the crew member's own code in your airline (2–12 capital letters or digits). An <code>audience</code> is <code>{ "all": true }</code>, or <code>{ "roles": ["cockpit", "cabin"], "codes": ["A1234"] }</code>. JSON bodies are limited to 256 KB.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/academy/records</code></td><td>Every crew member's qualification records, with <code>paired</code> (whether a phone holds the code).</td></tr>
+              <tr><td>POST</td><td><code>/academy/records</code></td><td>Imports records, up to 500 crew members per call. Each crew member's items replace the ones held. Answers <code>{ ok, written }</code>.</td></tr>
+              <tr><td>GET</td><td><code>/academy/overview</code></td><td><code>{ crew, expired, expiring, overdueNotices, notices }</code>: expired items, items expiring within 30 days and notices past their date.</td></tr>
+              <tr><td>GET</td><td><code>/academy/requirements</code></td><td>What each role must hold: <code>{ requirements: { cockpit, cabin }, isDefault, kinds }</code>.</td></tr>
+              <tr><td>PUT</td><td><code>/academy/requirements</code></td><td>Sets them from <code>{ cockpit: [kinds], cabin: [kinds] }</code>. The matrix and the Today board read them.</td></tr>
+              <tr><td>GET</td><td><code>/academy/export.csv</code></td><td>The records as CSV: <code>crew_code, role, name, kind, label, issued, expires, note, updated</code>.</td></tr>
+              <tr><td>GET</td><td><code>/academy/notices</code></td><td>Notices, each with its count of signatures (<code>acks</code>).</td></tr>
+              <tr><td>POST</td><td><code>/academy/notices</code></td><td>Publishes a read-and-sign notice: <code>{ type, title, body?, url?, dueDate?, minutes?, audience?, by? }</code>.</td></tr>
+              <tr><td>GET</td><td><code>/academy/notices/&lt;id&gt;/acks</code></td><td>Who signed it and when: <code>{ notice, acks: [{ crewCode, at }] }</code>.</td></tr>
+              <tr><td>DELETE</td><td><code>/academy/notices/&lt;id&gt;</code></td><td>Withdraws the notice. It stays on record.</td></tr>
+              <tr><td>GET</td><td><code>/academy/courses</code></td><td>Courses, each with its lesson count, exam pass mark and number of completions.</td></tr>
+              <tr><td>POST</td><td><code>/academy/courses</code></td><td>Publishes a course (fields below). The answer never includes the exam's answers.</td></tr>
+              <tr><td>GET</td><td><code>/academy/courses/&lt;id&gt;/done</code></td><td>Who completed it (<code>done</code>) and every crew member's latest exam attempt (<code>attempts</code>).</td></tr>
+              <tr><td>DELETE</td><td><code>/academy/courses/&lt;id&gt;</code></td><td>Withdraws the course. It stays on record.</td></tr>
+              <tr><td>POST</td><td><code>/academy/files?name=</code></td><td>Uploads a lesson file, MP4 or PDF, as the raw body, up to 95 MB. Answers <code>{ fileUrl, kind, size }</code>.</td></tr>
+              <tr><td>POST</td><td><code>/academy/scorm</code></td><td>Starts a SCORM package upload. Answers <code>{ pkg }</code>.</td></tr>
+              <tr><td>PUT</td><td><code>/academy/scorm/&lt;pkg&gt;/&lt;path&gt;</code></td><td>Uploads one file of the unzipped package, as the raw body, up to 95 MB per file. Answers <code>{ url }</code>.</td></tr>
+              <tr><td>POST</td><td><code>/academy/unbind</code></td><td>Releases a crew member's code from their old phone, from <code>{ crewCode }</code>, so a new phone can pair.</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Import records from your HR or training system</h3>
+        <p>Each record is a crew member with a list of items. <code>kind</code> is one of <code>opc</code>, <code>lpc</code>, <code>line_check</code>, <code>sep</code>, <code>dg</code>, <code>crm</code>, <code>first_aid</code>, <code>route_competence</code>, <code>aerodrome_competence</code>, <code>recurrent_cabin</code>, <code>triennial_cabin</code>, <code>medical</code>, <code>licence</code>, <code>other</code>. Dates are YYYY-MM-DD. <code>label</code> (up to 80 characters) names an item, and <code>note</code> takes up to 200.</p>
+<pre class="api-code"><code>curl -s -X POST "$CREWOPS/academy/records" \
+  -H "Authorization: Bearer $CREWOPS_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "records": [
+        { "crewCode": "A1234", "role": "cockpit", "name": "A. Pilot",
+          "items": [
+            { "kind": "lpc", "issued": "2026-05-02", "expires": "2027-05-31" },
+            { "kind": "medical", "label": "Class 1", "expires": "2027-02-28" },
+            { "kind": "dg", "issued": "2025-11-10", "expires": "2027-11-30" } ] },
+        { "crewCode": "C5678", "role": "cabin",
+          "items": [ { "kind": "recurrent_cabin", "expires": "2027-03-31" } ] } ] }'</code></pre>
+
+        <h3>Notices</h3>
+        <p><code>type</code> is one of <code>crew_notice</code>, <code>safety_bulletin</code>, <code>safety_memo</code>, <code>coordination_sheet</code>, <code>security_notice</code>, <code>information</code>, <code>training_document</code>, <code>revision</code>. <code>url</code> must be https.</p>
+<pre class="api-code"><code>curl -s -X POST "$CREWOPS/academy/notices" \
+  -H "Authorization: Bearer $CREWOPS_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "type": "safety_bulletin", "title": "Lithium battery fires in the cabin",
+        "body": "Read the revised procedure before your next duty.",
+        "dueDate": "2026-10-31", "audience": { "roles": ["cabin"] } }'</code></pre>
+
+        <h3>Courses</h3>
+        <p>A course takes <code>{ title, kind?, mode, dueDate?, minutes?, lessons, quiz?, audience?, by? }</code>. <code>mode</code> is <code>required</code> (with a due date) or <code>self</code> for self-study. <code>kind</code> takes the qualification kinds above.</p>
+        <ul>
+          <li><b style="color: var(--w-ink);">lessons</b>, up to 40: <code>{ title, kind, url, minutes? }</code>. <code>kind</code> is <code>video</code> (MP4), <code>pdf</code>, <code>link</code> or <code>scorm</code>; <code>url</code> must be https. Upload video and PDF to <code>/academy/files</code> and use the <code>fileUrl</code>, so crews can download the lesson and study offline.</li>
+          <li><b style="color: var(--w-ink);">quiz</b>, optional: <code>{ passMark, questions: [{ q, options, answer }] }</code>, with 2–6 options, <code>answer</code> as the index of the right option, up to 60 questions and a pass mark of 50–100 (75 if not given). The exam is graded on the server; the answers never reach the phone. Attempts are kept.</li>
+        </ul>
+<pre class="api-code"><code>curl -s -X POST "$CREWOPS/academy/courses" \
+  -H "Authorization: Bearer $CREWOPS_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{ "title": "Dangerous goods recurrent", "kind": "dg", "mode": "required",
+        "dueDate": "2026-12-15", "audience": { "all": true },
+        "lessons": [
+          { "title": "Recognising hidden dangerous goods", "kind": "video", "minutes": 18,
+            "url": "https://updates.hawkmason.com/academy/file/DEMO/&lt;file&gt;.mp4" } ],
+        "quiz": { "passMark": 80, "questions": [
+          { "q": "Who must be told first about a spare lithium battery in checked baggage?",
+            "options": ["The commander", "The passenger", "Ground handling"], "answer": 0 } ] } }'</code></pre>
+
+        <h3>SCORM packages</h3>
+        <p>SCORM 1.2 and 2004 packages are uploaded unzipped, one file at a time, and then used as a lesson. The phone keeps the package offline and plays it in the app; the module's own result (passed, completed or failed, with its score) completes the course.</p>
+        <ul>
+          <li>1. <code>POST /academy/scorm</code> answers a package id, <code>pkg</code>.</li>
+          <li>2. <code>PUT /academy/scorm/&lt;pkg&gt;/&lt;path&gt;</code> for every file in the package, keeping its path inside the package (no <code>..</code>). Each answers the file's <code>url</code>.</li>
+          <li>3. <code>POST /academy/courses</code> with a lesson <code>{ "kind": "scorm", "url": &lt;the launch file's url&gt;, "files": [every path], "version": "1.2" or "2004" }</code>. The launch file is the one the package's manifest names.</li>
+        </ul>
+<pre class="api-code"><code>PKG=$(curl -s -X POST "$CREWOPS/academy/scorm" -H "Authorization: Bearer $CREWOPS_KEY" | jq -r .pkg)
+
+cd crm-module/            # the unzipped package
+find . -type f | sed 's|^\./||' | while read -r f; do
+  curl -s -X PUT "$CREWOPS/academy/scorm/$PKG/$f" \
+    -H "Authorization: Bearer $CREWOPS_KEY" --data-binary "@$f" &gt; /dev/null
+done
+# then publish a course whose lesson is
+# { "title": "CRM module", "kind": "scorm", "version": "2004",
+#   "url": "https://updates.hawkmason.com/academy/sco/DEMO/$PKG/index.html",
+#   "files": ["index.html", "imsmanifest.xml", …] }</code></pre>
+        <p>Paths with spaces or other special characters must be percent-encoded in the URL.</p>
+      </section>
+
+      <section class="api-sec" id="library">
+        <span class="w-badge">Crewops Library</span>
+        <h2>Controlled documents and revisions</h2>
+        <p>A document has a stable <code>code</code>, such as <code>OM-A</code> (capital letters, digits, dots and dashes). Publishing a revision under an existing code replaces the current revision and keeps the history. JSON bodies are limited to 128 KB.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/library/docs</code></td><td>The current revision of every document, with its number of revisions and confirmations: <code>{ airline, crew, documents }</code>.</td></tr>
+              <tr><td>POST</td><td><code>/library/docs</code></td><td>Publishes a document (201) or a new revision of one (200). A revision number already published answers 409.</td></tr>
+              <tr><td>GET</td><td><code>/library/docs/&lt;code&gt;</code></td><td>The document with its full revision history.</td></tr>
+              <tr><td>GET</td><td><code>/library/docs/&lt;code&gt;/acks</code></td><td>Who confirmed the current revision: <code>{ code, revision, acks: [{ crewCode, at }] }</code>.</td></tr>
+              <tr><td>DELETE</td><td><code>/library/docs/&lt;code&gt;</code></td><td>Withdraws the document. It stays in the history; a new revision publishes it again.</td></tr>
+              <tr><td>POST</td><td><code>/library/files?name=</code></td><td>Uploads a PDF as the raw body, up to 60 MB. Answers <code>{ fileUrl, name, size }</code>. The file is served only to your paired crews and to your operator code and keys.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>Publish from your document system</h3>
+        <p>Required: <code>code</code>, <code>revision</code> and <code>revisionDate</code>; a new document also needs <code>title</code> and <code>type</code> (<code>manual</code>, <code>procedure</code>, <code>policy</code>, <code>bulletin</code>, <code>form</code>, <code>checklist</code>, <code>regulation</code>, <code>certificate</code>, <code>other</code>). Optional: <code>category</code>, <code>owner</code>, <code>audience</code>, <code>effectiveDate</code>, <code>changeLog</code>, <code>fileUrl</code> (https), <code>pages</code>, <code>approved</code>, <code>requiresAck</code>, <code>ackDue</code> (the read-by date) and <code>by</code>.</p>
+<pre class="api-code"><code># 1. upload the PDF
+FILE_URL=$(curl -s -X POST "$CREWOPS/library/files?name=OM-A%20rev%2014.pdf" \
+  -H "Authorization: Bearer $CREWOPS_KEY" -H "Content-Type: application/pdf" \
+  --data-binary @om-a-rev14.pdf | jq -r .fileUrl)
+
+# 2. publish the revision with a read-and-confirm
+curl -s -X POST "$CREWOPS/library/docs" \
+  -H "Authorization: Bearer $CREWOPS_KEY" -H "Content-Type: application/json" \
+  -d "{ \"code\": \"OM-A\", \"revision\": \"14\", \"revisionDate\": \"2026-10-14\",
+        \"effectiveDate\": \"2026-11-01\", \"fileUrl\": \"$FILE_URL\",
+        \"changeLog\": \"8.3.2 revised: stabilised approach criteria\",
+        \"requiresAck\": true, \"ackDue\": \"2026-10-31\" }"</code></pre>
+      </section>
+
+      <section class="api-sec" id="insight">
+        <span class="w-badge">Crewops Insight</span>
+        <h2>Crew post-flight ratings</h2>
+        <p>The ratings crews have chosen to share after their flights, for the dates you ask. A crew member shares only if they switch sharing on in the app.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/insight/ratings?from=&amp;to=</code></td><td>Ratings for flights between the two dates (YYYY-MM-DD, both included), by date and flight: <code>{ airline, count, ratings }</code>.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Each rating has <code>date</code>, <code>flightNo</code>, <code>dep</code>, <code>arr</code>, <code>scale</code> (<code>samn-perelli</code> or <code>kss</code>), <code>value</code>, <code>ratedAt</code>, <code>afterMin</code>, <code>sectors</code>, <code>role</code>, <code>crewCode</code> when the crew member gave it, <code>crewId</code> (a pseudonym of the phone) and <code>receivedAt</code>. Nothing else about the crew member is sent: no sleep, no health entries and no roster beyond the sector rated.</p>
+<pre class="api-code"><code>curl -s "$CREWOPS/insight/ratings?from=2026-10-01&amp;to=2026-10-14" \
+  -H "Authorization: Bearer $CREWOPS_KEY"</code></pre>
+      </section>
+
+      <section class="api-sec" id="webhooks">
+        <span class="w-badge">Webhooks</span>
+        <h2>Hear about events as they happen</h2>
+        <p>Set one https endpoint in the operator portal, under Connections, and pick the events it should receive. You can pick only the events of products your airline holds.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Event</th><th>When it fires</th><th>data</th></tr></thead>
+            <tbody>
+              <tr><td>safety.report.created</td><td>A report arrives, from the app or the web report link.</td><td>The report, without the reporter's reply token, the phone's pseudonym or the timeline, with <code>family</code> and the number of <code>photos</code>.</td></tr>
+              <tr><td>safety.report.updated</td><td>The office changes status, classification, actions, investigation, reply or asks for more. An internal note alone does not fire it.</td><td>The same view of the report, with <code>changed</code>: the fields that changed.</td></tr>
+              <tr><td>academy.notice.acknowledged</td><td>A crew member signs a notice.</td><td><code>{ noticeId, title, type, crewCode, at }</code></td></tr>
+              <tr><td>academy.course.completed</td><td>A crew member completes a course.</td><td><code>{ courseId, title, kind, crewCode, at, verified }</code>; with <code>score</code> and <code>attempts</code> when a server-graded exam was passed (<code>verified: true</code>), or <code>scorm: { status, score }</code> from a SCORM module.</td></tr>
+              <tr><td>library.revision.confirmed</td><td>A crew member confirms a revision.</td><td><code>{ code, title, revision, crewCode, at }</code></td></tr>
+              <tr><td>ping</td><td>You press the test button, or call <code>/portal/webhook/test</code>.</td><td><code>{ message, events }</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>The delivery</h3>
+        <p>Each delivery is a POST with a JSON body:</p>
+<pre class="api-code"><code>POST /hooks/crewops HTTP/1.1
+Content-Type: application/json
+User-Agent: Crewops-Webhooks/1
+X-Crewops-Event: academy.course.completed
+X-Crewops-Signature: t=1791969164,v1=5d0c…e19a
+
+{
+  "id": "evt_3f9c0a1b2c4d5e6f7a8b",
+  "event": "academy.course.completed",
+  "airline": "DEMO",
+  "at": "2026-10-14T09:12:44.512Z",
+  "data": {
+    "courseId": "C-261014-K7QD", "title": "Dangerous goods recurrent", "kind": "dg",
+    "crewCode": "A1234", "at": "2026-10-14T09:12:44.501Z",
+    "verified": true, "score": 90, "attempts": 1
+  }
+}</code></pre>
+        <ul>
+          <li><b style="color: var(--w-ink);">One try:</b> each event is sent once, with a 5-second timeout and no retries. Answer with a 2xx status quickly and do the slow work afterwards.</li>
+          <li><b style="color: var(--w-ink);">The log:</b> the portal lists the last 20 deliveries with their status, so you can see a failed one and fetch the record through the API.</li>
+          <li><b style="color: var(--w-ink);">Duplicates:</b> keep the <code>id</code> of each event you have handled and ignore one you have seen.</li>
+          <li><b style="color: var(--w-ink);">The secret:</b> it starts with <code>whsec_</code> and is shown once, when the webhook is made or the secret rotated.</li>
+        </ul>
+
+        <h3>Check the signature</h3>
+        <p>The header <code>x-crewops-signature</code> is <code>t=&lt;unix seconds&gt;,v1=&lt;hex&gt;</code>. <code>v1</code> is the HMAC-SHA256, keyed with your secret, of the string <code>&lt;t&gt;.&lt;raw body&gt;</code>. Compute it over the body exactly as received, before any JSON parsing, compare it in constant time, and reject a <code>t</code> more than five minutes old.</p>
+        <p style="margin-bottom: 0;"><b style="color: var(--w-ink);">Node.js</b> (no dependencies)</p>
+<pre class="api-code"><code>import http from 'node:http';
+import crypto from 'node:crypto';
+
+const SECRET = process.env.CREWOPS_WEBHOOK_SECRET; // whsec_…
+
+function verify(rawBody, header, toleranceS = 300) {
+  const parts = Object.fromEntries(String(header).split(',').map((p) =&gt; p.split('=', 2)));
+  const t = Number(parts.t);
+  if (!Number.isInteger(t) || Math.abs(Date.now() / 1000 - t) &gt; toleranceS) return false;
+  const expected = crypto.createHmac('sha256', SECRET).update(`${t}.${rawBody}`).digest('hex');
+  const given = String(parts.v1 ?? '');
+  return given.length === expected.length &amp;&amp;
+    crypto.timingSafeEqual(Buffer.from(given), Buffer.from(expected));
+}
+
+http.createServer((req, res) =&gt; {
+  let raw = '';
+  req.setEncoding('utf8');
+  req.on('data', (chunk) =&gt; (raw += chunk));
+  req.on('end', () =&gt; {
+    if (!verify(raw, req.headers['x-crewops-signature'] ?? '')) return res.writeHead(400).end();
+    const { id, event, airline, at, data } = JSON.parse(raw);
+    // remember id, queue the work, answer within 5 s
+    res.writeHead(204).end();
+  });
+}).listen(8080);</code></pre>
+        <p style="margin-bottom: 0;"><b style="color: var(--w-ink);">Python</b> (Flask)</p>
+<pre class="api-code"><code>import hashlib, hmac, json, os, time
+from flask import Flask, request
+
+SECRET = os.environ["CREWOPS_WEBHOOK_SECRET"].encode()  # whsec_...
+app = Flask(__name__)
+
+def verify(raw_body: bytes, header: str, tolerance_s: int = 300) -&gt; bool:
+    parts = dict(p.split("=", 1) for p in header.split(",") if "=" in p)
+    try:
+        t = int(parts["t"])
+    except (KeyError, ValueError):
+        return False
+    if abs(time.time() - t) &gt; tolerance_s:
+        return False
+    expected = hmac.new(SECRET, f"{t}.".encode() + raw_body, hashlib.sha256).hexdigest()
+    return hmac.compare_digest(expected, parts.get("v1", ""))
+
+@app.post("/hooks/crewops")
+def crewops_hook():
+    raw = request.get_data()  # the body exactly as received
+    if not verify(raw, request.headers.get("x-crewops-signature", "")):
+        return "", 400
+    event = json.loads(raw)  # id, event, airline, at, data
+    # remember event["id"], queue the work, answer within 5 s
+    return "", 204</code></pre>
+      </section>
+
+      <section class="w-cta" id="contact">
+        <span class="w-badge">Talk to us</span>
+        <h2 style="color: #fff;">Connecting a system we have not listed?</h2>
+        <p>Tell us which system it is and what it should send or receive. The developer who wrote this API reads it and answers within a working day, in English or Turkish.</p>
+        <div class="store-row store-row--center">
+          <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20API%20%E2%80%94%20a%20question"><span class="store-kicker">Ask about the API</span><span class="store-name">hello@hawkmason.com</span></a>
+          <a class="store-pill store-pill--mail" href="/crewops/faq"><span class="store-kicker">Questions and answers</span><span class="store-name">Crewops FAQ</span></a>
+        </div>
+        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
+      </section>
+
+      <nav class="w-prodbar" aria-label="Crewops products">
+        <a class="w-prodbar-item" href="/crewops/portal"><span class="w-status is-live">In service</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-soon">Launch operators</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
+        <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-soon">Launch operators</span><b>Crewops Academy</b><span>Training records, expiry, read-and-sign</span></a>
+        <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-soon">Launch operators</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
+      </nav>
+      <p class="w-fine">Crewops is independent software by Hawk &amp; Mason Studios. Regulation references say which rules a feature is built around; they are not a statement of approval by any authority. Your procedures, records and approved systems prevail.</p>
+    </main>
+
+    <footer class="foot" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/crewops">Crewops</a>
+        <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/portal">Operator portal</a>
+        <a href="/crewops/safety">Safety</a>
+        <a href="/crewops/academy">Academy</a>
+        <a href="/crewops/library">Library</a>
+        <a href="/crewops/faq">Questions</a>
+        <a href="/crewops/api">API</a>
+        <a href="/crewops-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

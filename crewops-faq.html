@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops questions and answers: apps, portal, data</title>
+    <meta name="description" content="What Crewops and Crewops Crew are, what each airline product does, how the portal, API and webhooks work, and who can read which data." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://hawkmason.com/crewops/faq" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="Crewops questions and answers" />
+    <meta property="og:description" content="For crew members, airline departments and IT teams: the apps, the operator portal, Insight, Safety, Academy and Library, connecting your systems, and your data." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/faq" />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/products/safety-reply.webp" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Crewops questions and answers" />
+    <meta name="twitter:description" content="For crew members, airline departments and IT teams: the apps, the operator portal, Insight, Safety, Academy and Library, connecting your systems, and your data." />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/crewops/products/safety-reply.webp" />
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "FAQPage",
+   "@id": "https://hawkmason.com/crewops/faq#page",
+   "url": "https://hawkmason.com/crewops/faq",
+   "name": "Crewops questions and answers",
+   "description": "What Crewops and Crewops Crew are, what each airline product does, how the portal, API and webhooks work, and who can read which data.",
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://hawkmason.com/#website"
+   },
+   "publisher": {
+    "@id": "https://hawkmason.com/#studio"
+   },
+   "mainEntity": [
+    {
+     "@type": "Question",
+     "name": "What is the difference between Crewops and Crewops Crew?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Crewops is the App Store app for individual crew members: roster, FTL limits, fatigue and logbook. Crewops Crew is the company edition of the same app, which an airline gives to its crews and which opens with the airline's crew code."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Crewops cost a crew member?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Crewops is on the App Store with a free version and an optional subscription, Crewops Pro. The App Store shows the current price in your country before you subscribe."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the airline side cost?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Each product is licensed separately, per airline. Ask us for a price for your operation at hello@hawkmason.com."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What do crews see in Crewops Crew?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Their roster and the products their airline holds, and nothing else. If the airline holds Safety but not Academy, crews see a Safety tab and no Academy."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the Crewops Aviation Platform?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The airline side of Crewops: four products licensed separately, Crewops Insight for roster fatigue assessment, Crewops Safety, Crewops Academy and Crewops Library. What an airline buys is what opens, for its departments and its crews."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the difference between the operator code and the crew code?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The operator code, one per airline, signs your departments in to the operator portal at hawkmason.com/crewops/portal and opens the products you hold. The crew code is what your crews enter in Crewops Crew; it opens the crew side of the same products and never opens operator data."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What is the Today board?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The first page of the portal: one list, across the products you hold, of what needs action now. It shows safety reports near or past their 72-hour clock, overdue actions and findings, open intolerable risks, expired or missing qualifications, notices, courses and revisions past their date, and very tired crew ratings. Each line opens its record."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How does a trial start?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Your airline gets an operator code for the portal and a crew code for a group of your crews. The crews install Crewops Crew from a link, enter the code, and the products open. Nothing has to be integrated on day one."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Crewops Insight do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It assesses the fatigue of a roster in the browser, and shows the post-flight ratings crews have chosen to share beside it. Ratings from the last 7 days that say very tired (Samn-Perelli 6–7, KSS 8–9) also appear on the Today board."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Insight build or change our rosters?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. It reads a roster and assesses it; it is not a rostering or pairing optimiser and not an operations control tool. Your rostering system and your own fatigue risk management stay in charge."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What can crews report?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Sixteen kinds of report: twelve safety reports, from flight operations to commander's discretion, and four operational ones. The flight is filled in from the roster, a report can be anonymous, carry up to 4 photos and be written offline, and the reporter follows its status and reads the reply."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can crews without the app report?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, through the web report link your safety office shares on its own channels, such as the crew portal, e-mail or a QR code in the crew room. The page is in English and Turkish, offers every report kind except commander's discretion, takes photos, can be sent anonymously and has a follow-up page for the reply. The office can replace the link at any time, and the old one stops working."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does Crewops send our reports to the authority?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Your safety office exports an ECCAIRS E5X file, per report or for all reports marked mandatory reportable, and uploads it to the ECCAIRS 2 reporting portal or to its authority's ECCAIRS-based system. The operator, aircraft model and aerodrome codes are completed there."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does the safety office do beyond reading reports?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It classifies reports, records investigations, and keeps a risk register on the ICAO Doc 9859 5×5 matrix, audits and findings with the levels of ORO.GEN.150, management of change and indicators. These features are built around those rules; your own procedures and records prevail."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Crewops Academy keep?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Read-and-sign notices, qualification records with their expiry dates, and courses. A qualification matrix shows every crew member against every qualification as expired, missing, expiring within 30 days or valid, against role requirements you can edit."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do courses work?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Lessons are video, PDF or a link, and crews can download them to study offline. Exams are graded on the server with a pass mark, so the answers never reach the phone, and every attempt is kept. A course is either required with a due date or self-study, and a certificate appears on the phone when the course is done."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can we use our existing SCORM courses?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes, SCORM 1.2 and 2004 packages are imported from the portal. The phone keeps the package offline and plays it in the app, and the module's own result completes the course. Bookmark and progress are kept on the phone between sessions."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Crewops Library do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It puts your manuals, procedures, bulletins and forms on the crew phone under a code such as OM-A. Each new revision replaces the current one with its change log, the history is kept, and a revision can ask crews to read and confirm it by a date."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Who can open our documents?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Only your paired crews and your operator code. PDFs are kept in your airline's store, served to no one else, and work offline on the phone once downloaded."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can we buy one product on its own?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Each product works on its own and can plug into the systems you already run. Safety even works without rolling out the app, through the web report link."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "How do our systems connect?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Through the API, with an API key made in the portal for each system: your SMS, HR, training or document system. A key opens the same products and has the same expiry as your operator code, and it cannot make other keys or change the webhook. Every endpoint is documented at hawkmason.com/crewops/api."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What do webhooks send?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A signed POST to one https endpoint you set, when a safety report is created or updated, a notice is signed, a course is completed or a revision is confirmed. Each delivery is signed with HMAC-SHA256 and tried once with a 5-second timeout and no retries; the portal has a test button and lists the last 20 deliveries."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Which files go in and out?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Safety exports CSV with the Annex I fields and ECCAIRS E5X files. Academy imports qualification records by CSV or the API, exports them as CSV, and imports SCORM 1.2 and 2004 packages. Library takes PDFs, uploaded in the portal or published from your document system through the API."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Do you offer single sign-on?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The portal signs in with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "What does Crewops not do?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "It does not build rosters or pairings, run operations control or plan flights, and it does not submit reports to an authority on your behalf. It holds no approval or certification from any authority; your procedures, records and approved systems prevail."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Who can read our airline's data?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Your departments, with your operator code in the portal, and your systems, with API keys made from it. Every record is kept for your airline alone, and a code from another airline does not open it."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Can a crew member read a colleague's data?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. The crew code never opens operator data: not other crew members' reports, ratings, records or confirmations. A crew member's code is paired with one phone, so typing a colleague's code does not open their records."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Is an anonymous report really anonymous?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "An anonymous report carries no crew code. The reply still comes back to the phone that sent it, so the safety office can ask for more and the reporter can answer."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "Does my airline see my health data from the Crewops app?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Your sleep entries, fatigue self-ratings and other health entries stay with you. Only what you send yourself reaches your airline: a post-flight rating with the flight it belongs to, if you switch sharing on and your airline runs Crewops Insight, and a report you file, such as a fatigue report. The details are in the privacy policy."
+     }
+    }
+   ]
+  },
+  {
+   "@type": "Organization",
+   "@id": "https://hawkmason.com/#studio",
+   "name": "Hawk & Mason Studios",
+   "url": "https://hawkmason.com/",
+   "email": "hello@hawkmason.com"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Hawk & Mason Studios",
+     "item": "https://hawkmason.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Crewops Aviation Platform",
+     "item": "https://hawkmason.com/crewops/airlines"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Crewops questions and answers",
+     "item": "https://hawkmason.com/crewops/faq"
+    }
+   ]
+  }
+ ]
+}
+    </script>
+    <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
+    <link rel="stylesheet" href="/styles.css?v=31" />
+    <style>
+      .faq-toc { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 26px auto 0; max-width: 980px; padding: 0 24px; }
+      .faq-toc a { padding: 8px 14px; border: 1px solid var(--w-line); border-radius: 999px; color: var(--w-ink); background: var(--w-panel); font-size: 0.92rem; }
+      .w-card p a { color: var(--w-azure-soft, var(--w-azure)); }
+      @media (max-width: 600px) {
+        .w-hero, .w-feat, .w-cta, .faq-toc, .w-fine, .w-prodbar { padding-left: 16px; padding-right: 16px; }
+      }
+    </style>
+    <script src="/app.js?v=25" defer></script>
+  </head>
+  <body class="crew" data-page="crewops-faq">
+    <div class="veil veil--dark" data-veil aria-hidden="true"></div>
+
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="/crewops/airlines" data-back data-veil="#070c15" aria-label="Back to the Crewops Aviation Platform">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="nav-airlines" href="/crewops/portal">Operator portal</a>
+        <a class="store-btn store-btn--azure" href="#contact">Write to us</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-hero" style="grid-template-columns: 1fr;">
+        <div>
+          <span class="w-badge">Questions and answers</span>
+          <h1 class="w-title">Crewops, explained</h1>
+          <p class="w-lede">What each app and product is, what it is for and how to start, in one place.</p>
+          <p class="w-sub">Written for three readers: a crew member who wants to know what the app does and what the airline sees, an airline department that wants to know what it would use, and an IT team that wants to know how it connects. Each answer says what is built today and nothing more.</p>
+          <div class="store-row">
+            <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20%E2%80%94%20a%20question">
+              <span class="store-kicker">Ask us</span><span class="store-name">hello@hawkmason.com</span>
+            </a>
+            <a class="btn btn-ghost w-btn-ghost" href="/crewops/api">API reference</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="readers">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Start here</span>
+          <h2 style="color: #fff;">Which questions are yours</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));">
+          <article class="w-card"><h3>A crew member</h3><p>Read <a href="#apps">the apps</a> and <a href="#data">data and privacy</a>: which app you have, what it costs you, and what your airline can and cannot see.</p></article>
+          <article class="w-card"><h3>An airline department</h3><p>Read <a href="#platform">the platform and the portal</a>, then your product: <a href="#insight">Insight</a>, <a href="#safety">Safety</a>, <a href="#academy">Academy</a> or <a href="#library">Library</a>.</p></article>
+          <article class="w-card"><h3>An IT team</h3><p>Read <a href="#connect">buying one module and connecting your systems</a> and <a href="#data">data and privacy</a>. Every endpoint is in the <a href="/crewops/api">API reference</a>.</p></article>
+        </div>
+      </section>
+
+      <nav class="faq-toc" aria-label="On this page">
+        <a href="#apps">The apps</a>
+        <a href="#platform">Platform and portal</a>
+        <a href="#insight">Insight</a>
+        <a href="#safety">Safety</a>
+        <a href="#academy">Academy</a>
+        <a href="#library">Library</a>
+        <a href="#connect">Connecting systems</a>
+        <a href="#data">Data and privacy</a>
+      </nav>
+
+      <section class="w-feat" id="apps">
+        <div class="section-head section-head--center">
+          <span class="w-badge">The apps</span>
+          <h2 style="color: #fff;">Crewops and Crewops Crew</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What is the difference between Crewops and Crewops Crew?</h3><p>Crewops is the App Store app for individual crew members: roster, FTL limits, fatigue and logbook. Crewops Crew is the company edition of the same app, which an airline gives to its crews and which opens with the airline's crew code.</p></article>
+          <article class="w-card" data-faq><h3>What does Crewops cost a crew member?</h3><p>Crewops is on the App Store with a free version and an optional subscription, Crewops Pro. The App Store shows the current price in your country before you subscribe.</p></article>
+          <article class="w-card" data-faq><h3>What does the airline side cost?</h3><p>Each product is licensed separately, per airline. Ask us for a price for your operation at hello@hawkmason.com.</p></article>
+          <article class="w-card" data-faq><h3>What do crews see in Crewops Crew?</h3><p>Their roster and the products their airline holds, and nothing else. If the airline holds Safety but not Academy, crews see a Safety tab and no Academy.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="platform">
+        <div class="section-head section-head--center">
+          <span class="w-badge">The platform and the portal</span>
+          <h2 style="color: #fff;">How the airline side works</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What is the Crewops Aviation Platform?</h3><p>The airline side of Crewops: four products licensed separately, Crewops Insight for roster fatigue assessment, Crewops Safety, Crewops Academy and Crewops Library. What an airline buys is what opens, for its departments and its crews.</p></article>
+          <article class="w-card" data-faq><h3>What is the difference between the operator code and the crew code?</h3><p>The operator code, one per airline, signs your departments in to the operator portal at hawkmason.com/crewops/portal and opens the products you hold. The crew code is what your crews enter in Crewops Crew; it opens the crew side of the same products and never opens operator data.</p></article>
+          <article class="w-card" data-faq><h3>What is the Today board?</h3><p>The first page of the portal: one list, across the products you hold, of what needs action now. It shows safety reports near or past their 72-hour clock, overdue actions and findings, open intolerable risks, expired or missing qualifications, notices, courses and revisions past their date, and very tired crew ratings. Each line opens its record.</p></article>
+          <article class="w-card" data-faq><h3>How does a trial start?</h3><p>Your airline gets an operator code for the portal and a crew code for a group of your crews. The crews install Crewops Crew from a link, enter the code, and the products open. Nothing has to be integrated on day one.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="insight">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Crewops Insight</span>
+          <h2 style="color: #fff;">Roster fatigue assessment</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What does Crewops Insight do?</h3><p>It assesses the fatigue of a roster in the browser, and shows the post-flight ratings crews have chosen to share beside it. Ratings from the last 7 days that say very tired (Samn-Perelli 6–7, KSS 8–9) also appear on the Today board.</p></article>
+          <article class="w-card" data-faq><h3>Does Insight build or change our rosters?</h3><p>No. It reads a roster and assesses it; it is not a rostering or pairing optimiser and not an operations control tool. Your rostering system and your own fatigue risk management stay in charge.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="safety">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Crewops Safety</span>
+          <h2 style="color: #fff;">Reporting and the safety office</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What can crews report?</h3><p>Sixteen kinds of report: twelve safety reports, from flight operations to commander's discretion, and four operational ones. The flight is filled in from the roster, a report can be anonymous, carry up to 4 photos and be written offline, and the reporter follows its status and reads the reply.</p></article>
+          <article class="w-card" data-faq><h3>Can crews without the app report?</h3><p>Yes, through the web report link your safety office shares on its own channels, such as the crew portal, e-mail or a QR code in the crew room. The page is in English and Turkish, offers every report kind except commander's discretion, takes photos, can be sent anonymously and has a follow-up page for the reply. The office can replace the link at any time, and the old one stops working.</p></article>
+          <article class="w-card" data-faq><h3>Does Crewops send our reports to the authority?</h3><p>No. Your safety office exports an ECCAIRS E5X file, per report or for all reports marked mandatory reportable, and uploads it to the ECCAIRS 2 reporting portal or to its authority's ECCAIRS-based system. The operator, aircraft model and aerodrome codes are completed there.</p></article>
+          <article class="w-card" data-faq><h3>What does the safety office do beyond reading reports?</h3><p>It classifies reports, records investigations, and keeps a risk register on the ICAO Doc 9859 5×5 matrix, audits and findings with the levels of ORO.GEN.150, management of change and indicators. These features are built around those rules; your own procedures and records prevail.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="academy">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Crewops Academy</span>
+          <h2 style="color: #fff;">Training records, notices and courses</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What does Crewops Academy keep?</h3><p>Read-and-sign notices, qualification records with their expiry dates, and courses. A qualification matrix shows every crew member against every qualification as expired, missing, expiring within 30 days or valid, against role requirements you can edit.</p></article>
+          <article class="w-card" data-faq><h3>How do courses work?</h3><p>Lessons are video, PDF or a link, and crews can download them to study offline. Exams are graded on the server with a pass mark, so the answers never reach the phone, and every attempt is kept. A course is either required with a due date or self-study, and a certificate appears on the phone when the course is done.</p></article>
+          <article class="w-card" data-faq><h3>Can we use our existing SCORM courses?</h3><p>Yes, SCORM 1.2 and 2004 packages are imported from the portal. The phone keeps the package offline and plays it in the app, and the module's own result completes the course. Bookmark and progress are kept on the phone between sessions.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="library">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Crewops Library</span>
+          <h2 style="color: #fff;">Controlled documents on the crew phone</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>What does Crewops Library do?</h3><p>It puts your manuals, procedures, bulletins and forms on the crew phone under a code such as OM-A. Each new revision replaces the current one with its change log, the history is kept, and a revision can ask crews to read and confirm it by a date.</p></article>
+          <article class="w-card" data-faq><h3>Who can open our documents?</h3><p>Only your paired crews and your operator code. PDFs are kept in your airline's store, served to no one else, and work offline on the phone once downloaded.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="connect">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Buying one module and connecting your systems</span>
+          <h2 style="color: #fff;">For IT and for a single department</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>Can we buy one product on its own?</h3><p>Yes. Each product works on its own and can plug into the systems you already run. Safety even works without rolling out the app, through the web report link.</p></article>
+          <article class="w-card" data-faq><h3>How do our systems connect?</h3><p>Through the API, with an API key made in the portal for each system: your SMS, HR, training or document system. A key opens the same products and has the same expiry as your operator code, and it cannot make other keys or change the webhook. Every endpoint is documented at hawkmason.com/crewops/api.</p></article>
+          <article class="w-card" data-faq><h3>What do webhooks send?</h3><p>A signed POST to one https endpoint you set, when a safety report is created or updated, a notice is signed, a course is completed or a revision is confirmed. Each delivery is signed with HMAC-SHA256 and tried once with a 5-second timeout and no retries; the portal has a test button and lists the last 20 deliveries.</p></article>
+          <article class="w-card" data-faq><h3>Which files go in and out?</h3><p>Safety exports CSV with the Annex I fields and ECCAIRS E5X files. Academy imports qualification records by CSV or the API, exports them as CSV, and imports SCORM 1.2 and 2004 packages. Library takes PDFs, uploaded in the portal or published from your document system through the API.</p></article>
+          <article class="w-card" data-faq><h3>Do you offer single sign-on?</h3><p>No. The portal signs in with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com.</p></article>
+          <article class="w-card" data-faq><h3>What does Crewops not do?</h3><p>It does not build rosters or pairings, run operations control or plan flights, and it does not submit reports to an authority on your behalf. It holds no approval or certification from any authority; your procedures, records and approved systems prevail.</p></article>
+        </div>
+      </section>
+
+      <section class="w-feat" id="data">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Data and privacy</span>
+          <h2 style="color: #fff;">Who can read what</h2>
+        </div>
+        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+          <article class="w-card" data-faq><h3>Who can read our airline's data?</h3><p>Your departments, with your operator code in the portal, and your systems, with API keys made from it. Every record is kept for your airline alone, and a code from another airline does not open it.</p></article>
+          <article class="w-card" data-faq><h3>Can a crew member read a colleague's data?</h3><p>No. The crew code never opens operator data: not other crew members' reports, ratings, records or confirmations. A crew member's code is paired with one phone, so typing a colleague's code does not open their records.</p></article>
+          <article class="w-card" data-faq><h3>Is an anonymous report really anonymous?</h3><p>An anonymous report carries no crew code. The reply still comes back to the phone that sent it, so the safety office can ask for more and the reporter can answer.</p></article>
+          <article class="w-card" data-faq><h3>Does my airline see my health data from the Crewops app?</h3><p>No. Your sleep entries, fatigue self-ratings and other health entries stay with you. Only what you send yourself reaches your airline: a post-flight rating with the flight it belongs to, if you switch sharing on and your airline runs Crewops Insight, and a report you file, such as a fatigue report. The details are in the <a href="/crewops-privacy">privacy policy</a>.</p></article>
+        </div>
+      </section>
+
+      <section class="w-cta" id="contact">
+        <span class="w-badge">Talk to us</span>
+        <h2 style="color: #fff;">A question this page does not answer?</h2>
+        <p>Write to us. One developer reads it and answers within a working day, in English or Turkish.</p>
+        <div class="store-row store-row--center">
+          <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20%E2%80%94%20a%20question"><span class="store-kicker">Ask a question</span><span class="store-name">hello@hawkmason.com</span></a>
+          <a class="store-pill store-pill--mail" href="/crewops/api"><span class="store-kicker">For your IT team</span><span class="store-name">API reference</span></a>
+        </div>
+        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
+      </section>
+
+      <nav class="w-prodbar" aria-label="Crewops products">
+        <a class="w-prodbar-item" href="/crewops/portal"><span class="w-status is-live">In service</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-soon">Launch operators</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
+        <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-soon">Launch operators</span><b>Crewops Academy</b><span>Training records, expiry, read-and-sign</span></a>
+        <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-soon">Launch operators</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
+      </nav>
+      <p class="w-fine">Crewops is independent software by Hawk &amp; Mason Studios. Regulation references say which rules a feature is built around; they are not a statement of approval by any authority. Your procedures, records and approved systems prevail.</p>
+    </main>
+
+    <footer class="foot" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/crewops">Crewops</a>
+        <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/portal">Operator portal</a>
+        <a href="/crewops/safety">Safety</a>
+        <a href="/crewops/academy">Academy</a>
+        <a href="/crewops/library">Library</a>
+        <a href="/crewops/faq">Questions</a>
+        <a href="/crewops/api">API</a>
+        <a href="/crewops-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

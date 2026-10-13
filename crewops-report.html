@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Safety report · Crewops Safety</title>
+    <meta name="description" content="Send a safety or operational report to your airline's safety office. Your airline gives you this link." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root { --paper:#08080c; --surface:#131318; --surface2:#1d1d26; --ink:#f7f6f2; --soft:#a3a1b0; --faint:#6b6978; --line:#242430; --cy:#2be3ff; --mg:#ff2fa0; --risk:#ff8a3d; --ok:#7bed9f; --bad:#ff7b6b; color-scheme:dark }
+      @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0081a0; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --bad:#b3281e; color-scheme:light } }
+      * { box-sizing:border-box }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:1.5 }
+      .wrap { max-width:720px; margin:0 auto; padding:28px 16px calc(80px + env(safe-area-inset-bottom, 0px)) }
+      .top { display:flex; justify-content:space-between; align-items:center; gap:12px }
+      .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--cy); text-transform:uppercase }
+      h1 { font-family:'Unbounded',Arial,sans-serif; font-weight:800; font-size:clamp(26px,6vw,38px); letter-spacing:-.5px; line-height:1.1; margin:10px 0 8px; text-wrap:balance }
+      h2 { font-family:'Unbounded',Arial,sans-serif; font-weight:600; font-size:15px; margin:28px 0 10px }
+      p.lead { color:var(--soft); margin:0 0 20px; max-width:62ch }
+      .lang { display:flex; gap:4px } .lang button { background:transparent; color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:6px 10px; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; cursor:pointer } .lang button.on { color:var(--cy); border-color:var(--cy) }
+      .kinds { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px }
+      .kind { text-align:left; background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:12px; padding:10px 12px; cursor:pointer; font:inherit }
+      .kind b { display:block; font-size:14px } .kind span { display:block; color:var(--faint); font-size:12px; line-height:1.3; margin-top:2px }
+      .kind.on { border-color:var(--cy); box-shadow:inset 0 0 0 1px var(--cy) }
+      .fam { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--faint); text-transform:uppercase; margin:14px 0 6px }
+      label.f { display:flex; flex-direction:column; gap:6px; font-size:13px; color:var(--soft); margin:0 0 12px }
+      input[type=text], input[type=number], input[type=datetime-local], select, textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font:inherit; font-size:16px; width:100%; max-width:100% }
+      textarea { min-height:120px; resize:vertical }
+      .grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:0 12px }
+      .chips { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 12px }
+      .chip { background:var(--surface); color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:7px 12px; font:inherit; font-size:13px; cursor:pointer }
+      .chip.on { border-color:var(--cy); color:var(--cy) }
+      .group { font-size:12px; color:var(--faint); margin:8px 0 2px }
+      .q { font-size:13px; color:var(--soft); margin:6px 0 4px }
+      .check { display:flex; gap:10px; align-items:flex-start; margin:10px 0; font-size:14px } .check input { width:20px; height:20px; margin-top:2px; accent-color:var(--cy) }
+      .sp { display:grid; gap:6px } .sp button { text-align:left }
+      .send { width:100%; margin-top:18px; background:linear-gradient(90deg,var(--mg),var(--cy)); color:#08080c; border:0; border-radius:999px; padding:15px 22px; font:600 16px 'Plus Jakarta Sans',Arial,sans-serif; cursor:pointer }
+      .send:disabled { opacity:.45; cursor:default }
+      button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline:2px solid var(--cy); outline-offset:2px }
+      .card { background:var(--surface); border:1px solid var(--line); border-radius:16px; padding:18px; margin:16px 0 }
+      .msg { color:var(--bad); font-size:14px; min-height:1.2em; margin-top:10px }
+      .fine { color:var(--faint); font-size:12px }
+      .thumbs { display:flex; flex-wrap:wrap; gap:8px; margin:6px 0 } .thumbs img { width:84px; height:84px; object-fit:cover; border-radius:10px; border:1px solid var(--line) }
+      .tl { list-style:none; padding:0; margin:8px 0 } .tl li { padding:8px 0; border-bottom:1px solid var(--line); font-size:14px } .tl li small { display:block; color:var(--faint); font-family:'JetBrains Mono',monospace; font-size:11px }
+      code { font-family:'JetBrains Mono',monospace; color:var(--cy) }
+      .hidden { display:none }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top"><div class="eyebrow">Crewops Safety</div><div class="lang" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="tr">TR</button></div></div>
+      <h1 data-t="title">Safety report</h1>
+      <p class="lead" data-t="lead">Goes straight to your airline's safety office. Report what happened, or what could happen: a just culture runs on honest reports.</p>
+
+      <div id="bad" class="card hidden"><p data-t="badLink">This link is not valid any more. Ask your safety office for the current one.</p></div>
+
+      <form id="form" class="hidden" novalidate>
+        <h2 data-t="whatKind">What is it about?</h2>
+        <div id="kinds"></div>
+
+        <div id="rest" class="hidden">
+          <h2 data-t="when">When and where</h2>
+          <div class="grid2">
+            <label class="f"><span data-t="occurred">Date and time (your local time)</span><input type="datetime-local" id="occurred" /></label>
+            <label class="f" id="stationBox"><span data-t="station">Airport (IATA, optional)</span><input type="text" id="station" maxlength="3" autocapitalize="characters" placeholder="AYT" /></label>
+          </div>
+          <div id="flightBox" class="grid2">
+            <label class="f"><span data-t="flightNo">Flight number</span><input type="text" id="flightNo" maxlength="12" autocapitalize="characters" placeholder="XQ 123" /></label>
+            <label class="f"><span data-t="dep">From (IATA)</span><input type="text" id="dep" maxlength="3" autocapitalize="characters" /></label>
+            <label class="f"><span data-t="arr">To (IATA)</span><input type="text" id="arr" maxlength="3" autocapitalize="characters" /></label>
+            <label class="f"><span data-t="reg">Registration</span><input type="text" id="reg" maxlength="8" autocapitalize="characters" placeholder="TC-ABC" /></label>
+            <label class="f"><span data-t="acType">Aircraft type</span><input type="text" id="acType" maxlength="5" autocapitalize="characters" placeholder="B738" /></label>
+          </div>
+
+          <div id="fatigueBox" class="hidden">
+            <h2 data-t="spTitle">How you felt at the end · Samn-Perelli</h2>
+            <div class="sp" id="sp"></div>
+            <p class="q" data-t="reasons">Why · pick any</p>
+            <div class="chips" id="reasons"></div>
+          </div>
+
+          <div id="details"></div>
+
+          <h2 data-t="tell">What happened</h2>
+          <label class="f"><span data-t="headline">Short title (optional)</span><input type="text" id="headline" maxlength="120" /></label>
+          <label class="f"><span data-t="narrative">Describe it: what, how, what you did</span><textarea id="text" maxlength="8000" required></textarea></label>
+          <label class="f"><span data-t="suggestion">What would prevent it? (optional)</span><textarea id="suggestion" maxlength="2000" style="min-height:72px"></textarea></label>
+
+          <h2 data-t="photos">Photos (up to 4)</h2>
+          <input type="file" id="photos" accept="image/jpeg,image/png,image/heic" multiple />
+          <div class="thumbs" id="thumbs"></div>
+
+          <h2 data-t="you">About you</h2>
+          <div class="chips" id="role"></div>
+          <label class="check"><input type="checkbox" id="anon" /><span data-t="anon">Send anonymously (the office cannot ask you questions)</span></label>
+          <label class="f" id="codeBox"><span data-t="crewCode">Your crew code (optional, so the office can reply)</span><input type="text" id="crewCode" maxlength="12" autocapitalize="characters" /></label>
+          <label class="check"><input type="checkbox" id="urgent" /><span data-t="urgent">Urgent · the safety office should see it today</span></label>
+
+          <button class="send" id="send" type="submit" data-t="send">Send report</button>
+          <p class="msg" id="msg" role="alert"></p>
+          <p class="fine" data-t="note">Not an emergency channel. If something is unsafe right now, tell your commander, operations control or the authority.</p>
+        </div>
+      </form>
+
+      <section id="done" class="card hidden" aria-live="polite">
+        <h2 style="margin-top:0" data-t="sentTitle">Report received</h2>
+        <p><span data-t="sentNo">Your report number</span>: <code id="doneId"></code></p>
+        <p data-t="sentBody">Keep this page's address: it shows what the safety office does with your report and its reply.</p>
+        <p class="fine" id="donePhotos"></p>
+        <button class="send" id="followBtn" type="button" data-t="follow">Follow my report</button>
+      </section>
+
+      <section id="status" class="card hidden">
+        <h2 style="margin-top:0"><span data-t="reportNo">Report</span> <code id="stId"></code></h2>
+        <p><span data-t="statusIs">Status</span>: <b id="stStatus"></b></p>
+        <div id="stReply"></div>
+        <ul class="tl" id="stTimeline"></ul>
+        <label class="f"><span data-t="more">Add information</span><textarea id="moreText" maxlength="4000" style="min-height:72px"></textarea></label>
+        <button class="send" id="moreBtn" type="button" data-t="moreSend">Send to the safety office</button>
+        <p class="msg" id="stMsg" role="alert"></p>
+      </section>
+    </main>
+    <script src="/assets/crewops-safety-taxonomy.js"></script>
+    <script src="/assets/crewops-report-page.js"></script>
+  </body>
+</html>

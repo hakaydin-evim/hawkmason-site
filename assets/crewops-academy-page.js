@@ -5,7 +5,8 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const ENDPOINT = (window.CREWOPS_ACADEMY_ENDPOINT || 'https://updates.hawkmason.com/academy');
-  const state = { code: null, overview: null, notices: [], courses: [], records: [] };
+  const state = { code: null, overview: null, notices: [], courses: [], records: [], req: null, qmRole: '' };
+  const KLABEL = { opc: 'OPC', lpc: 'LPC', line_check: 'Line check', sep: 'SEP', dg: 'DG', crm: 'CRM', first_aid: 'First aid', route_competence: 'Route', aerodrome_competence: 'Aerodrome', recurrent_cabin: 'Cabin recurrent', triennial_cabin: 'Cabin triennial', medical: 'Medical', licence: 'Licence', other: 'Other' };
   const NTYPES = { crew_notice: 'Crew notice', safety_bulletin: 'Safety bulletin', safety_memo: 'Safety memo', coordination_sheet: 'Coordination sheet', security_notice: 'Security notice', information: 'Information', training_document: 'Training document', revision: 'Revision' };
   const KINDS = ['opc', 'lpc', 'line_check', 'sep', 'dg', 'crm', 'first_aid', 'route_competence', 'aerodrome_competence', 'recurrent_cabin', 'triennial_cabin', 'medical', 'licence', 'other'];
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
@@ -20,7 +21,8 @@
   async function load() {
     $('acMsg').textContent = 'Loading…';
     try {
-      const [o, n, c, r] = await Promise.all([api('/overview'), api('/notices'), api('/courses'), api('/records')]);
+      const [o, n, c, r, q] = await Promise.all([api('/overview'), api('/notices'), api('/courses'), api('/records'), api('/requirements')]);
+      state.req = await q.json();
       state.overview = await o.json();
       state.notices = (await n.json()).notices;
       state.courses = (await c.json()).courses;
@@ -39,6 +41,8 @@
     const exp = [...o.expired.map((e) => ({ ...e, state: 'expired' })), ...o.expiring.map((e) => ({ ...e, state: 'expiring' }))];
     $('acExpiry').innerHTML = `<thead><tr><th>Crew</th><th>Role</th><th>Item</th><th>Expires</th><th>State</th></tr></thead><tbody>${exp.map((e) => `<tr><td>${esc(e.crewCode)}</td><td>${esc(e.role || '')}</td><td>${esc(e.label || e.kind)}</td><td>${esc(e.expires)}</td><td><span class="pill ${e.state === 'expired' ? 'bad' : 'warn'}">${e.state}</span></td></tr>`).join('') || '<tr><td colspan="5" class="fine">Nothing expired or expiring within 30 days.</td></tr>'}</tbody>`;
 
+    drawMatrix();
+
     $('acNotices').innerHTML = `<thead><tr><th>Id</th><th>Type</th><th>Title</th><th>Issued</th><th>Due</th><th>Confirmed</th><th></th></tr></thead><tbody>${state.notices.map((n) => `<tr${n.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(n.id)}</td><td>${esc(NTYPES[n.type] || n.type)}</td><td style="white-space:normal;min-width:240px">${esc(n.title)}</td><td>${esc(n.issuedAt.slice(0, 10))}</td><td>${esc(n.dueDate || '—')}</td><td>${n.acks} / ${o.crew}</td><td>${n.withdrawn ? 'withdrawn' : `<a href="#" data-acks="${esc(n.id)}">who</a> · <a href="#" data-withdraw="${esc(n.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="7" class="fine">No notice yet.</td></tr>'}</tbody>`;
     $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/notices/${a.dataset.acks}/acks`)).json(); $('acMsg').textContent = `${d.notice.title}: confirmed by ${d.acks.map((x) => `${x.crewCode} (${x.at.slice(0, 10)})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acNotices').querySelectorAll('a[data-withdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this notice from every phone?')) return; try { await api(`/notices/${a.dataset.withdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
@@ -50,6 +54,36 @@
     $('acRecords').innerHTML = `<thead><tr><th>Crew</th><th>Role</th><th>Items</th><th>Nearest expiry</th><th>Phone</th><th></th></tr></thead><tbody>${state.records.map((r) => { const exps = (r.items || []).map((i) => i.expires).filter(Boolean).sort(); return `<tr><td>${esc(r.crewCode)}</td><td>${esc(r.role || '')}</td><td>${(r.items || []).length}</td><td>${esc(exps[0] || '—')}</td><td>${r.paired ? 'paired' : '—'}</td><td>${r.paired ? `<a href="#" data-unbind="${esc(r.crewCode)}">reset pairing</a>` : ''}</td></tr>`; }).join('') || '<tr><td colspan="6" class="fine">No records yet. Upload a CSV below.</td></tr>'}</tbody>`;
     $('acRecords').querySelectorAll('a[data-unbind]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm(`Reset the phone pairing of ${a.dataset.unbind}? The next phone that reads the code will be paired.`)) return; try { await api('/unbind', { method: 'POST', body: JSON.stringify({ crewCode: a.dataset.unbind }) }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
   }
+
+  // The qualification matrix: one row per crew member, one column per qualification kind
+  // that any role requires (plus any other kind on record). A required kind not on record is "missing".
+  function drawMatrix() {
+    const req = state.req.requirements;
+    const today = new Date().toISOString().slice(0, 10);
+    const in30 = new Date(Date.now() + 30 * 86400000).toISOString().slice(0, 10);
+    const rows = state.records.filter((r) => !state.qmRole || r.role === state.qmRole);
+    const used = new Set([...(state.qmRole ? req[state.qmRole] || [] : [...req.cockpit, ...req.cabin])]);
+    rows.forEach((r) => (r.items || []).forEach((i) => used.add(i.kind)));
+    const cols = KINDS.filter((k) => used.has(k));
+    const cell = (r, k) => {
+      const it = (r.items || []).filter((i) => i.kind === k).sort((a, b) => (b.expires || '9999').localeCompare(a.expires || '9999'))[0];
+      const need = r.role && (req[r.role] || []).includes(k);
+      if (!it) return need ? '<td><span class="pill bad">missing</span></td>' : '<td></td>';
+      if (!it.expires) return '<td><span class="pill ok">held</span></td>';
+      const cls = it.expires < today ? 'bad' : it.expires <= in30 ? 'warn' : 'ok';
+      return `<td><span class="pill ${cls}" title="${esc(it.label || KLABEL[k])} · expires ${esc(it.expires)}">${esc(it.expires)}</span></td>`;
+    };
+    const gaps = (r) => (r.role ? (req[r.role] || []).filter((k) => { const it = (r.items || []).find((i) => i.kind === k && (!i.expires || i.expires >= today)); return !it; }).length : 0);
+    $('acMatrix').innerHTML = rows.length
+      ? `<thead><tr><th>Crew</th><th>Role</th><th class="r">Gaps</th>${cols.map((k) => `<th>${esc(KLABEL[k] || k)}</th>`).join('')}</tr></thead><tbody>${rows.map((r) => `<tr><td>${esc(r.crewCode)}${r.name ? ` · ${esc(r.name)}` : ''}</td><td>${esc(r.role || '—')}</td><td class="r">${gaps(r) ? `<span class="pill bad">${gaps(r)}</span>` : '<span class="pill ok">0</span>'}</td>${cols.map((k) => cell(r, k)).join('')}</tr>`).join('')}</tbody>`
+      : '<tbody><tr><td class="fine">No crew records yet. Upload the qualification CSV below.</td></tr></tbody>';
+    $('qmReq').innerHTML = ['cockpit', 'cabin'].map((role) => `<div style="margin:6px 0"><b style="font-size:13px">${role === 'cockpit' ? 'Flight crew' : 'Cabin crew'}${state.req.isDefault ? ' <span class="pill mute">default</span>' : ''}</b><div class="row" style="gap:10px;margin-top:4px">${KINDS.filter((k) => k !== 'other').map((k) => `<label class="fine" style="display:flex;gap:4px;align-items:center"><input type="checkbox" data-role="${role}" value="${k}" ${(req[role] || []).includes(k) ? 'checked' : ''} />${esc(KLABEL[k])}</label>`).join('')}</div></div>`).join('');
+  }
+  $('qmRole').addEventListener('click', (ev) => { const b = ev.target.closest('.subtab'); if (!b) return; state.qmRole = b.dataset.role; $('qmRole').querySelectorAll('.subtab').forEach((x) => x.classList.toggle('on', x === b)); drawMatrix(); });
+  $('qmSave').addEventListener('click', async () => {
+    const pick = (role) => [...$('qmReq').querySelectorAll(`input[data-role="${role}"]:checked`)].map((x) => x.value);
+    try { state.req = await (await api('/requirements', { method: 'PUT', body: JSON.stringify({ cockpit: pick('cockpit'), cabin: pick('cabin') }) })).json(); drawMatrix(); $('qmMsg').textContent = 'Saved.'; } catch (e) { $('qmMsg').textContent = e.message; }
+  });
 
   // Publishing
   $('acNoticeBtn').addEventListener('click', async () => {
@@ -65,13 +99,78 @@
     $('acLessons').querySelectorAll('a[data-lrm]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); draft.lessons.splice(Number(a.dataset.lrm), 1); drawDraft(); }));
     $('acQuestions').querySelectorAll('a[data-qrm]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); draft.questions.splice(Number(a.dataset.qrm), 1); drawDraft(); }));
   };
+  // ---- SCORM packages: unzipped here in the browser, each file stored in the airline's store,
+  // the launch file read from imsmanifest.xml. The phone keeps the package offline and plays it.
+  async function unzip(file) {
+    const buf = new Uint8Array(await file.arrayBuffer());
+    const dv = new DataView(buf.buffer);
+    let eocd = -1;
+    for (let i = buf.length - 22; i >= Math.max(0, buf.length - 65557); i--) if (dv.getUint32(i, true) === 0x06054b50) { eocd = i; break; }
+    if (eocd < 0) throw new Error('This is not a zip file.');
+    const count = dv.getUint16(eocd + 10, true);
+    let p = dv.getUint32(eocd + 16, true);
+    const out = [];
+    const dec = new TextDecoder();
+    for (let n = 0; n < count; n++) {
+      if (dv.getUint32(p, true) !== 0x02014b50) throw new Error('The zip directory is damaged.');
+      const method = dv.getUint16(p + 10, true), csize = dv.getUint32(p + 20, true), nlen = dv.getUint16(p + 28, true), xlen = dv.getUint16(p + 30, true), clen = dv.getUint16(p + 32, true), local = dv.getUint32(p + 42, true);
+      const name = dec.decode(buf.subarray(p + 46, p + 46 + nlen));
+      p += 46 + nlen + xlen + clen;
+      if (name.endsWith('/') || name.startsWith('__MACOSX/') || /(^|\/)\.DS_Store$/.test(name)) continue;
+      const start = local + 30 + dv.getUint16(local + 26, true) + dv.getUint16(local + 28, true);
+      const raw = buf.subarray(start, start + csize);
+      if (method !== 0 && method !== 8) throw new Error(`${name}: compression method ${method} is not supported.`);
+      out.push({ name, read: async () => (method === 0 ? raw : new Uint8Array(await new Response(new Blob([raw]).stream().pipeThrough(new DecompressionStream('deflate-raw'))).arrayBuffer())) });
+    }
+    return out;
+  }
+  async function importScorm(f, title, minutes) {
+    const entries = await unzip(f);
+    const manifest = entries.find((e) => e.name === 'imsmanifest.xml');
+    if (!manifest) throw new Error('No imsmanifest.xml at the top of the zip: this is not a SCORM package.');
+    const doc = new DOMParser().parseFromString(new TextDecoder().decode(await manifest.read()), 'application/xml');
+    const byTag = (el, tag) => [...el.getElementsByTagName('*')].filter((x) => x.localName === tag);
+    const ver = (byTag(doc, 'schemaversion')[0]?.textContent || '').trim();
+    const version = /2004|CAM 1\.3/i.test(ver) ? '2004' : '1.2';
+    const orgs = byTag(doc, 'organizations')[0];
+    const org = byTag(doc, 'organization').find((o) => o.getAttribute('identifier') === orgs?.getAttribute('default')) || byTag(doc, 'organization')[0];
+    const item = org && byTag(org, 'item').find((i) => i.getAttribute('identifierref'));
+    const res = item && byTag(doc, 'resource').find((r) => r.getAttribute('identifier') === item.getAttribute('identifierref'));
+    const href = res && res.getAttribute('href');
+    if (!href) throw new Error('The manifest names no launch file.');
+    const base = (byTag(doc, 'resources')[0]?.getAttribute('xml:base') || '') + (res.getAttribute('xml:base') || '');
+    const launch = (base + href).replace(/^\.\//, '');
+    const name = title || (byTag(org, 'title')[0]?.textContent || '').trim() || f.name.replace(/\.zip$/i, '');
+    const { pkg } = await (await api('/scorm', { method: 'POST' })).json();
+    const enc = (p) => p.split('/').map(encodeURIComponent).join('/');
+    let done = 0;
+    const queue = [...entries];
+    const work = async () => {
+      for (let e = queue.shift(); e; e = queue.shift()) {
+        const data = await e.read();
+        const r = await fetch(`${ENDPOINT}/scorm/${pkg}/${enc(e.name)}`, { method: 'PUT', headers: { authorization: `Bearer ${state.code}` }, body: data });
+        if (!r.ok) throw new Error(`${e.name}: the academy service answered ${r.status}.`);
+        done++;
+        $('acCMsg').textContent = `Uploading the package… ${done}/${entries.length}`;
+      }
+    };
+    await Promise.all([work(), work(), work(), work()]);
+    const root = ENDPOINT.replace(/\/academy$/, '').replace(/^http:\/\/localhost:\d+/, 'https://updates.hawkmason.com');
+    return { title: name, kind: 'scorm', url: `${root}/academy/sco/${state.airline}/${pkg}/${enc(launch.split('?')[0])}`, files: entries.map((e) => e.name), version, minutes };
+  }
+
   $('acLAdd').addEventListener('click', async () => {
     const title = $('acLTitle').value.trim();
     const minutes = parseInt($('acLMin').value, 10) || undefined;
     const f = $('acLFile').files && $('acLFile').files[0];
-    if (!title) { $('acCMsg').textContent = 'A lesson title is needed.'; return; }
+    const isZip = f && (/\.zip$/i.test(f.name) || /zip/.test(f.type));
+    if (!title && !isZip) { $('acCMsg').textContent = 'A lesson title is needed.'; return; }
     try {
-      if (f) {
+      if (isZip) {
+        if (f.size > 300 * 1024 * 1024) throw new Error('Up to 300 MB per package.');
+        $('acCMsg').textContent = 'Reading the package…';
+        draft.lessons.push(await importScorm(f, title, minutes));
+      } else if (f) {
         if (!['video/mp4', 'application/pdf'].includes(f.type)) throw new Error('MP4 video or PDF only.');
         if (f.size > 95 * 1024 * 1024) throw new Error('Up to 95 MB per file.');
         $('acCMsg').textContent = `Uploading ${f.name}…`;
@@ -154,6 +253,7 @@
     const { code, licence } = ev.detail;
     if (!licence.ops || !(licence.products || []).includes('academy')) { $('academy').classList.add('hidden'); return; }
     state.code = code;
+    state.airline = licence.airline;
     $('academy').classList.remove('hidden');
     load();
   });

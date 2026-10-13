@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops Library: airline manuals and revisions on crew phones</title>
+    <title>Crewops Library: manuals and revisions on crew phones</title>
     <meta name="description" content="The current revision of every airline manual on the crew phone: what changed, readable offline, and a read-and-confirm the documentation office can prove." />
-    <meta name="keywords" content="airline document management, controlled documents, operations manual revision, OM-A OM-B, manual distribution, read and confirm, revision control, crew manuals app, document acknowledgement, ORO.MLR.100, documentation office software, offline manuals, Crewops Library" />
+    <meta name="keywords" content="airline document management, controlled documents, operations manual revision, document management API, revision webhook, OM-A OM-B, manual distribution, read and confirm, revision control, crew manuals app, document acknowledgement, ORO.MLR.100, documentation office software, offline manuals, Crewops Library" />
     <link rel="canonical" href="https://hawkmason.com/crewops/library" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
     <meta property="og:title" content="Crewops Library — for airlines and operators" />
@@ -104,7 +104,7 @@
      "name": "Where do the files live?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "On your document server. The documentation office publishes a link with each revision, and each phone downloads the file once into the app's private storage."
+      "text": "On your document server, or in your airline's own file store in Crewops. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage."
      }
     },
     {
@@ -161,7 +161,7 @@
             </a>
             <a class="btn btn-ghost w-btn-ghost" href="#panel">What your department does</a>
           </div>
-          <p class="g-hero-meta" style="color: var(--w-muted);">Licensed on its own · your manuals stay on your document server · runs in the Crewops Crew app and your browser</p>
+          <p class="g-hero-meta" style="color: var(--w-muted);">Licensed on its own · your document server or your airline's file store · runs in the Crewops Crew app and your browser</p>
         </div>
         <div class="w-hero-art w-hero-art--one">
           <div class="w-phone w-phone-solo"><img src="/assets/crewops/products/library-revision.webp" alt="Crewops Library on the phone: Operations Manual Part A, revision 38.01, with its effective date, authority approval, what changed, kept offline and confirmed" width="506" height="1100" loading="eager" /></div>
@@ -208,6 +208,8 @@
           <article class="w-card"><h3>Who has confirmed</h3><p>Confirmations against crew on record for every revision that asks for one, and the crew codes with their dates.</p></article>
           <article class="w-card"><h3>Withdraw</h3><p>Takes a document off every phone. It stays in the history in the portal.</p></article>
           <article class="w-card"><h3>At a glance</h3><p>Documents live, revisions in the last 30 days, revisions awaiting confirmation, crew on record.</p></article>
+          <article class="w-card"><h3>On the Today board</h3><p>Revisions past their read-by date and not yet confirmed by everyone appear on the portal's Today board. Each line opens its document.</p></article>
+          <article class="w-card"><h3>From your document system</h3><p>Library works on its own and can be bought alone. When you want it connected, your document system publishes revisions through the API with a key made in the portal; every endpoint is in the <a class="w-link" href="/crewops/api">API reference</a>. A signed webhook tells your systems each time a crew member confirms a revision.</p></article>
         </div>
       </section>
 
@@ -261,7 +263,7 @@
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Is it an EFB?</h3><p>No. Crewops Library is the crew member's reference copy and the revision and confirmation trail. It is not an approved EFB application, and your EFB and its approvals stay as they are.</p></article>
-          <article class="w-card"><h3>Where do the files live?</h3><p>On your document server. The documentation office publishes a link with each revision, and each phone downloads the file once into the app's private storage.</p></article>
+          <article class="w-card"><h3>Where do the files live?</h3><p>On your document server, or in your airline's own file store in Crewops. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage.</p></article>
           <article class="w-card"><h3>Can we see a sample?</h3><p>Yes: a <a class="w-link" href="/assets/demo/crewops-demo-om-a.pdf">two-page demonstration manual</a>, fictional and written for this page, is the file the demo library uses.</p></article>
           <article class="w-card"><h3>What do our crews need?</h3><p>The Crewops Crew app, your airline's code and their own crew code. No account and no password. Crews of an airline that has not bought Crewops Library do not see the Library.</p></article>
         </div>
@@ -299,6 +301,8 @@
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>
+        <a href="/crewops/faq">Questions</a>
+        <a href="/crewops/api">API</a>
         <a href="/crewops-privacy">Privacy</a>
         <a href="mailto:hello@hawkmason.com">Contact</a>
       </nav>

@@ -98,6 +98,9 @@
     $('rkTitle').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
   window.addEventListener('crewops-open-risk', (ev) => { show('sfRisks'); openRisk(ev.detail.id); });
+  window.addEventListener('crewops-open-audit', (ev) => { show('sfAudits'); state.openAudit = ev.detail.id; drawAudit(); $('auDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  window.addEventListener('crewops-open-change', (ev) => { show('sfChanges'); state.openChange = ev.detail.id; drawChange(); $('chDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+  window.addEventListener('crewops-safety-tab', (ev) => show(ev.detail.tab));
 
   // ---- audits and findings -------------------------------------------------
   const LEVEL = { level1: 'Level 1', level2: 'Level 2', observation: 'Observation' };

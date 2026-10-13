@@ -69,6 +69,13 @@
       .mod.on { border-color:var(--cy) } .mod.on i { color:var(--cy) }
       .mod.off { opacity:.55 } .mod.off i { color:var(--risk) }
       @media (max-width:720px) { .modbar { grid-template-columns:repeat(2,1fr) } }
+      .today { display:flex; flex-direction:column }
+      .tdi { display:grid; grid-template-columns:76px 92px 1fr auto; gap:10px; align-items:baseline; padding:9px 4px; border-top:1px solid var(--line); cursor:pointer; background:none; border-left:0; border-right:0; border-bottom:0; border-radius:0; color:var(--ink); text-align:left; font:inherit; letter-spacing:0; font-weight:400 }
+      .tdi:hover, .tdi:focus-visible { background:var(--surface2); outline:none }
+      .tdi .p { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
+      .tdi .t b { font-weight:600 } .tdi .t span { display:block; color:var(--soft); font-size:12px; overflow-wrap:anywhere }
+      .tdi .d { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); white-space:nowrap }
+      @media (max-width:620px) { .tdi { grid-template-columns:auto 1fr; } .tdi .p { grid-column:2; grid-row:1 } .tdi .t { grid-column:1 / -1 } .tdi .d { grid-column:1 / -1 } }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
     </style>
     <style>

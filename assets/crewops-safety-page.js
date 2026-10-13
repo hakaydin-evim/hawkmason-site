@@ -27,14 +27,10 @@
     open(ev.detail.reportId);
   });
   window.crewopsSafety = { api: (path, init) => api(path, init), reports: () => state.reports, openReport: (id) => open(id) };
-  const CATEGORIES = [
-    '1000000 ATM, aerodrome or aircraft system/component related event',
-    '3000000 Consequential events',
-    '99010158 Events of an operational nature',
-    '99010159 Personnel events',
-    '99010164 Organisational events',
-    '99012035 Any other event',
-  ];
+  // ECCAIRS / ADREP values the E5X export writes (Worker src/e5x.js holds the numeric ids).
+  const CATEGORIES = [['AMAN', 'Abrupt manoeuvre'], ['ARC', 'Abnormal runway contact'], ['ATM', 'ATM/CNS'], ['BIRD', 'Birdstrike'], ['CABIN', 'Cabin safety events'], ['CFIT', 'Controlled flight into terrain'], ['CTOL', 'Collision with obstacle at take-off/landing'], ['EVAC', 'Evacuation'], ['F-NI', 'Fire/smoke (non-impact)'], ['F-POST', 'Fire/smoke (post-impact)'], ['FUEL', 'Fuel related'], ['GCOL', 'Ground collision'], ['ICE', 'Icing'], ['ISEC', 'Information security'], ['LALT', 'Low altitude operations'], ['LOC-G', 'Loss of control, ground'], ['LOC-I', 'Loss of control, inflight'], ['MAC', 'Airprox / ACAS / loss of separation'], ['MED', 'Medical'], ['NAV', 'Navigation error'], ['RAMP', 'Ground handling'], ['RE', 'Runway excursion'], ['RI', 'Runway incursion'], ['SCF-NP', 'System/component failure (non-powerplant)'], ['SCF-PP', 'Powerplant failure'], ['SEC', 'Security related'], ['TURB', 'Turbulence encounter'], ['UIMC', 'Unintended flight in IMC'], ['USOS', 'Undershoot/overshoot'], ['WILD', 'Collision with wildlife'], ['WSTRW', 'Windshear or thunderstorm'], ['ADRM', 'Aerodrome'], ['OTHR', 'Other'], ['UNK', 'Unknown or undetermined']];
+  const CLASSES = [['accident', 'Accident'], ['serious_incident', 'Serious incident'], ['incident', 'Incident'], ['major_incident', 'Major incident (ATM)'], ['significant_incident', 'Significant incident (ATM)'], ['no_safety_effect', 'Occurrence without safety effect'], ['observation', 'Observation'], ['not_determined', 'Not determined']];
+  const EVENT_TOPS = [['equipment', 'Equipment'], ['operational', 'Operational'], ['personnel', 'Personnel'], ['organisational', 'Organisational'], ['consequential', 'Consequential events'], ['other', 'Any other events'], ['unknown', 'Unknown']];
   const MANDATORY = ['I · Operation of the aircraft', 'II · Technical condition, maintenance and repair', 'III · Air navigation services and facilities', 'IV · Aerodromes and ground services'];
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const hm = (ms) => `${Math.floor(ms / 3600000)}:${String(Math.floor((ms % 3600000) / 60000)).padStart(2, '0')}`;
@@ -90,7 +86,7 @@
     const shown = state.reports.filter((r) => state.family === 'all' || familyOf(r.type) === state.family);
     const rows = shown.map((r) => {
       const c = clock(r);
-      return `<tr class="click${state.open === r.id ? ' sel' : ''}" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${r.urgent ? '<span class="pill bad">URGENT</span> ' : ''}${esc(TYPES[r.type] || r.type)}</td><td>${esc(r.date)}</td><td>${esc(r.flightNo || r.station || '')}${r.dep ? ` · ${esc(r.dep)}→${esc(r.arr || '')}` : ''}</td><td style="white-space:normal;min-width:260px">${esc(r.title)}</td><td>${r.anonymous ? '<span class="pill mute">anonymous</span>' : esc(r.crewCode || '—')}</td><td>${r.sp ? `SP ${r.sp}` : ''}</td><td><span class="pill ${c.cls}">${esc(c.text)}</span></td><td><span class="pill ${r.status === 'closed' ? 'ok' : r.status === 'new' ? 'warn' : 'mute'}">${esc(r.status)}</span></td></tr>`;
+      return `<tr class="click${state.open === r.id ? ' sel' : ''}" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${r.urgent ? '<span class="pill bad">URGENT</span> ' : ''}${esc(TYPES[r.type] || r.type)}</td><td>${esc(r.date)}</td><td>${esc(r.flightNo || r.station || '')}${r.dep ? ` · ${esc(r.dep)}→${esc(r.arr || '')}` : ''}</td><td style="white-space:normal;min-width:260px">${esc(r.title)}</td><td>${r.anonymous ? '<span class="pill mute">anonymous</span>' : esc(r.crewCode || '—')}${r.source === 'web' ? ' <span class="pill mute">web</span>' : ''}</td><td>${r.sp ? `SP ${r.sp}` : ''}</td><td><span class="pill ${c.cls}">${esc(c.text)}</span></td><td><span class="pill ${r.status === 'closed' ? 'ok' : r.status === 'new' ? 'warn' : 'mute'}">${esc(r.status)}</span></td></tr>`;
     });
     $('safetyTable').innerHTML = `<thead><tr><th>No</th><th>Type</th><th>Date</th><th>Flight</th><th>Title</th><th>Crew</th><th>Rating</th><th>72 h</th><th>Status</th></tr></thead><tbody>${rows.join('')}</tbody>`;
     $('safetyTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => open(tr.dataset.id)));
@@ -119,12 +115,13 @@
     const inv = r.investigation || {};
     const c = clock({ ...r, reportable: cls.reportable });
     const opt = (list, cur, none) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + list.map((v) => `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(v)}</option>`).join('');
+    const optKV = (pairs, cur, none, showKey) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + pairs.map(([k, l]) => `<option value="${esc(k)}"${k === cur ? ' selected' : ''}>${esc(showKey ? `${k} · ${l}` : l)}</option>`).join('');
     const kindText = { submitted: 'Submitted', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
     $('safetyDetail').innerHTML = `
       <div class="row" style="justify-content:space-between;align-items:flex-start">
         <div>
           <h3>${esc(r.id)} · ${esc(TYPES[r.type] || r.type)}${r.urgent ? ' · <span class="pill bad">URGENT</span>' : ''}</h3>
-          <div class="fine">${esc(r.occurredAt.replace('T', ' ').slice(0, 16))} UTC · ${r.anonymous ? 'anonymous' : `crew ${esc(r.crewCode || 'code not given')}`}${r.role ? ` · ${esc(r.role)}` : ''} · received ${esc(r.receivedAt.replace('T', ' ').slice(0, 16))} UTC · <span class="pill ${c.cls}">72 h: ${esc(c.text)}</span></div>
+          <div class="fine">${esc(r.occurredAt.replace('T', ' ').slice(0, 16))} UTC · ${r.anonymous ? 'anonymous' : `crew ${esc(r.crewCode || 'code not given')}`}${r.role ? ` · ${esc(r.role)}` : ''} · received ${esc(r.receivedAt.replace('T', ' ').slice(0, 16))} UTC${r.source === 'web' ? ' via the web link' : ''} · <span class="pill ${c.cls}">72 h: ${esc(c.text)}</span></div>
         </div>
         <button class="ghost" id="sdClose">CLOSE</button>
       </div>
@@ -138,7 +135,9 @@
       <h3 style="margin-top:14px">CLASSIFY · REG. (EU) 376/2014 ANNEX I</h3>
       <div class="row">
         <label class="f">Status<select id="sdStatus">${STATUSES.map((s) => `<option value="${s}"${s === r.status ? ' selected' : ''}>${s}</option>`).join('')}</select></label>
-        <label class="f">Occurrence category (ADREP)<select id="sdCategory">${opt(CATEGORIES, cls.category, '— not yet classified —')}</select></label>
+        <label class="f">Occurrence class<select id="sdClass">${optKV(CLASSES, cls.occurrenceClass, '— not yet —')}</select></label>
+        <label class="f">Occurrence category (ADREP)<select id="sdCategory">${optKV(CATEGORIES, cls.category, '— not yet classified —', true)}</select></label>
+        <label class="f">Event type · top level (ADREP)<select id="sdEventTop">${optKV(EVENT_TOPS, cls.eventTop, '—')}</select></label>
         <label class="f">Mandatory reportable (Reg. 2015/1018)<select id="sdMandatory"><option value=""${cls.reportable === undefined ? ' selected' : ''}>— undecided —</option><option value="no"${cls.reportable === false ? ' selected' : ''}>no · voluntary, clock stops</option>${MANDATORY.map((m) => `<option value="${esc(m)}"${cls.reportable && cls.mandatoryClass === m ? ' selected' : ''}>yes · ${esc(m)}</option>`).join('')}</select></label>
         <label class="f">Risk (ERCS)<select id="sdRisk">${opt(['A', 'B', 'C', 'D', 'E'], cls.risk, '—')}</select></label>
         <label class="f">Event type · free text<input type="text" id="sdEvent" value="${esc(cls.eventType || '')}" placeholder="e.g. Fire/smoke in cabin" /></label>
@@ -160,11 +159,12 @@
       <h3 style="margin-top:14px">REPLY TO THE REPORTER · GOES TO THEIR PHONE</h3>
       <textarea id="sdReply">${esc(r.reply ? r.reply.text : '')}</textarea>
       <div class="row" style="margin-top:8px"><label class="f" style="flex:1;min-width:240px">Ask for more information<input type="text" id="sdMore" placeholder="What you need from the reporter" /></label><label class="f" style="flex:1;min-width:240px">Internal note · never shown to the reporter<input type="text" id="sdNote" placeholder="For the file" /></label><label class="f">Signed by<input type="text" id="sdBy" value="${esc(localStorage.getItem('crewops-safety-by') || '')}" placeholder="Your name or unit" /></label></div>
-      <div class="row" style="margin-top:14px"><button id="sdSave">SAVE</button><span class="fine" id="sdMsg"></span></div>
+      <div class="row" style="margin-top:14px"><button id="sdSave">SAVE</button><button class="ghost" id="sdE5x" title="ECCAIRS E5X file for the ECCAIRS 2 reporting portal or your authority">DOWNLOAD E5X</button><span class="fine" id="sdMsg"></span></div>
       <h3 style="margin-top:18px">TIMELINE</h3>
       <ul class="tl">${(r.timeline || []).map((e) => `<li><b>${esc(kindText[e.kind] || e.kind)}${e.status ? ` → ${esc(e.status)}` : ''}</b> · ${esc(e.at.slice(0, 16).replace('T', ' '))} UTC${e.by ? ` · ${esc(e.by)}` : ''}${e.text ? `<br />${esc(e.text)}` : ''}</li>`).join('')}</ul>`;
     $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); });
     $('sdSave').addEventListener('click', save);
+    $('sdE5x').addEventListener('click', () => download(`/reports/${encodeURIComponent(r.id)}/e5x`, `${r.id}.e5x`, $('sdMsg')));
     // Photos are served only with the operator code: fetched with it, shown from memory.
     document.querySelectorAll('#sdPhotos img').forEach(async (img) => {
       try {
@@ -219,14 +219,16 @@
     if (status !== r.status) body.status = status;
     const mand = $('sdMandatory').value;
     const cls = {
+      occurrenceClass: $('sdClass').value || undefined,
       category: $('sdCategory').value || undefined,
+      eventTop: $('sdEventTop').value || undefined,
       eventType: $('sdEvent').value.trim() || undefined,
       risk: $('sdRisk').value || undefined,
       reportable: mand === '' ? undefined : mand !== 'no',
       mandatoryClass: mand && mand !== 'no' ? mand : undefined,
     };
     const prev = r.classification || {};
-    if (JSON.stringify(cls) !== JSON.stringify({ category: prev.category, eventType: prev.eventType, risk: prev.risk, reportable: prev.reportable, mandatoryClass: prev.mandatoryClass })) body.classification = cls;
+    if (JSON.stringify(cls) !== JSON.stringify({ occurrenceClass: prev.occurrenceClass, category: prev.category, eventTop: prev.eventTop, eventType: prev.eventType, risk: prev.risk, reportable: prev.reportable, mandatoryClass: prev.mandatoryClass })) body.classification = cls;
     const action = $('sdAction').value.trim();
     if (action) body.action = { text: action, owner: $('sdOwner').value.trim() || undefined, due: $('sdDue').value.trim() || undefined };
     const reply = $('sdReply').value.trim();
@@ -243,6 +245,17 @@
   }
 
   $('safetyRefresh').addEventListener('click', load);
+  async function download(path, name, msgEl) {
+    try {
+      const blob = await (await api(path)).blob();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = name;
+      a.click();
+    } catch (e) { msgEl.textContent = e.message; }
+  }
+  $('safetyE5x').addEventListener('click', () => download('/export.e5x?reportable=1', `crewops-safety-${new Date().toISOString().slice(0, 10)}.e5x`, $('safetyMsg')));
+
   $('safetyCsv').addEventListener('click', async () => {
     try {
       const csv = await (await api('/export.csv')).text();
@@ -253,11 +266,26 @@
     } catch (e) { $('safetyMsg').textContent = e.message; }
   });
 
+  // The web report link for crews without the app (GET /safety/weblink, POST /safety/weblink/rotate).
+  async function weblink(rotate) {
+    try {
+      const r = await (await api(rotate ? '/weblink/rotate' : '/weblink', rotate ? { method: 'POST' } : undefined)).json();
+      $('wlUrl').value = r.url;
+      $('wlMsg').textContent = rotate ? 'New link made. The old one no longer works.' : '';
+    } catch (e) { $('wlMsg').textContent = e.message; }
+  }
+  $('wlCopy').addEventListener('click', async () => { try { await navigator.clipboard.writeText($('wlUrl').value); $('wlMsg').textContent = 'Copied.'; } catch (e) { $('wlUrl').select(); } });
+  $('wlOpen').addEventListener('click', () => { if ($('wlUrl').value) window.open($('wlUrl').value, '_blank', 'noopener'); });
+  $('wlRotate').addEventListener('click', () => { if (confirm('Make a new link? The current link stops working for everyone who has it.')) weblink(true); });
+
+  window.addEventListener('crewops-open-report', (ev) => { window.dispatchEvent(new CustomEvent('crewops-safety-tab', { detail: { tab: 'sfReports' } })); open(ev.detail.id); });
+
   window.addEventListener('crewops-code', (ev) => {
     const { code, licence } = ev.detail;
     if (!licence.ops || !(licence.products || []).includes('safety')) { $('safety').classList.add('hidden'); return; }
     state.code = code;
     $('safety').classList.remove('hidden');
     load();
+    weblink(false);
   });
 })();
