@@ -60,9 +60,9 @@
             { "@id": "https://hawkmason.com/crewops#app" },
             { "@type": "MobileApplication", "@id": "https://hawkmason.com/crewops/airlines#crew", "name": "Crewops Crew", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS", "description": "The company edition of the Crewops crew app: installed from a link, unlocked by the airline's code, modules chosen by the airline, no subscription and no account. Crew data stays on the phone." },
             { "@id": "https://hawkmason.com/crewops/insight#app" },
-            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#safety", "name": "Crewops Safety", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Safety, hazard, cabin and fatigue reports opened from the crew app with the flight, aircraft, station, crew and duty times filled in from the roster; investigation notes, corrective actions, the 72-hour clock and an ECCAIRS-compatible export for the safety office. Built next, with launch operators." },
-            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#library", "name": "Crewops Library", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Controlled documents on the crew phone: manuals, procedures, bulletins and forms under their code, current revision only, with the change log, effective date, authority approval and a read-and-confirm the documentation office follows on its panel. Files kept on the phone for offline reading and replaced when a new revision is published." },
-            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#academy", "name": "Crewops Academy", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Training and qualification records for flight and cabin crew: courses, instructors, results and expiry dates, read-and-sign bulletins and short courses on the crew phone, the fleet calendar and gaps for the training department, with the record-keeping the regulation asks for. Built next, with launch operators." }
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#safety", "url": "https://hawkmason.com/crewops/safety", "name": "Crewops Safety", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Safety, hazard, cabin and fatigue reports opened from the crew app with the flight, aircraft, station, crew and duty times filled in from the roster; investigation notes, corrective actions, the 72-hour clock and an ECCAIRS-compatible export for the safety office. Built next, with launch operators." },
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#library", "url": "https://hawkmason.com/crewops/library", "name": "Crewops Library", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Controlled documents on the crew phone: manuals, procedures, bulletins and forms under their code, current revision only, with the change log, effective date, authority approval and a read-and-confirm the documentation office follows on its panel. Files kept on the phone for offline reading and replaced when a new revision is published." },
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#academy", "url": "https://hawkmason.com/crewops/academy", "name": "Crewops Academy", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Training and qualification records for flight and cabin crew: courses, instructors, results and expiry dates, read-and-sign bulletins and short courses on the crew phone, the fleet calendar and gaps for the training department, with the record-keeping the regulation asks for. Built next, with launch operators." }
           ]
         },
         {
@@ -97,7 +97,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=30" />
+    <link rel="stylesheet" href="/styles.css?v=31" />
     <script src="/app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops-airlines">
@@ -140,9 +140,9 @@
         <div class="w-map" aria-label="Platform modules">
           <div class="w-tile is-live"><b>Crew</b><span>Crewops · Crewops Crew</span><i>In service</i></div>
           <div class="w-tile is-live"><b>Fatigue</b><span>Crewops Insight</span><i>In service</i></div>
-          <div class="w-tile"><b>Safety</b><span>Crewops Safety · Reports · Actions</span><i>Pilot</i></div>
-          <div class="w-tile"><b>Training</b><span>Crewops Academy · Records · Expiry</span><i>Pilot</i></div>
-          <div class="w-tile"><b>Documents</b><span>Crewops Library · Manuals · Revisions</span><i>Pilot</i></div>
+          <a class="w-tile" href="/crewops/safety"><b>Safety</b><span>Crewops Safety · Reports · Actions</span><i>Pilot</i></a>
+          <a class="w-tile" href="/crewops/academy"><b>Training</b><span>Crewops Academy · Records · Expiry</span><i>Pilot</i></a>
+          <a class="w-tile" href="/crewops/library"><b>Documents</b><span>Crewops Library · Manuals · Revisions</span><i>Pilot</i></a>
           <div class="w-tile"><b>Communication</b><span>Notices · Read receipts</span><i>Next</i></div>
           <div class="w-tile"><b>Operations</b><span>Roster publishing · Disruption</span><i>With you</i></div>
           <div class="w-tile"><b>Integrations</b><span>NetLine · JetXBit · AIMS · Leon · API</span><i>Growing</i></div>
@@ -215,11 +215,13 @@
             <span class="w-ic">🛡️</span>
             <h3>Crewops Safety <span class="w-tag">Safety reporting</span></h3>
             <p>A safety, hazard, cabin or fatigue report opened from the crew app, with flight number, aircraft, station, crew and duty times filled in from the roster, photos attached, written offline and sent later. For the safety office: open, overdue and recurring reports, investigation notes, corrective actions, the 72-hour clock and an ECCAIRS-compatible export. A fatigue report lands in Crewops Insight next to the model's prediction for that duty.</p>
+            <p style="margin-top: 12px;"><a class="w-link" href="/crewops/safety">About Crewops Safety →</a></p>
           </article>
           <article class="w-card">
             <span class="w-ic">🎓</span>
             <h3>Crewops Academy <span class="w-tag">Training &amp; qualification records</span></h3>
             <p>Who took which course, when, with which instructor, and when it expires: recurrent, LPC and OPC, SEP, dangerous goods, CRM, first aid, line checks. The crew member sees it on the phone as <b>My Training</b>, with what is due, read-and-sign bulletins and short courses, checked against the roster. The training department sees the whole fleet's calendar and gaps, keeps the records the regulation asks for, and writes completions back to its training system.</p>
+            <p style="margin-top: 12px;"><a class="w-link" href="/crewops/academy">About Crewops Academy →</a></p>
           </article>
           <article class="w-card">
             <span class="w-ic">🌙</span>
@@ -240,6 +242,7 @@
             <span class="w-ic">📚</span>
             <h3>Crewops Library <span class="w-tag">Controlled documents</span></h3>
             <p>OM-A, OM-B, SOPs, cabin manual and bulletins on the crew phone under their code, current revision only: what changed, the effective date, authority approval, and a read-and-confirm where the revision asks for one. The file is kept on the phone for offline reading and replaced the moment a new revision is published. The documentation office publishes and follows confirmations on its panel. Next on it: an assistant that answers only from your approved documents and cites the section it used.</p>
+            <p style="margin-top: 12px;"><a class="w-link" href="/crewops/library">About Crewops Library →</a></p>
           </article>
           <article class="w-card">
             <span class="w-ic">☢️</span>
@@ -342,6 +345,9 @@
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
         <a href="/crewops/insight">Insight</a>
+        <a href="/crewops/safety">Safety</a>
+        <a href="/crewops/academy">Academy</a>
+        <a href="/crewops/library">Library</a>
         <a href="/crewops-privacy">Privacy</a>
         <a href="/crewops-terms">Terms</a>
         <a href="/crewops-support">Support</a>

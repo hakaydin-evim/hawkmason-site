@@ -1106,3 +1106,14 @@ body.umbrella .foot-legal { color: var(--muted); }
 .plat-card--next p { color: #9bd8ff; }
 .plat-card--next .pill { background: rgba(63, 182, 245, 0.18); color: #3fb6f5; }
 .plat-link { color: var(--accent-2); font-weight: 700; }
+
+/* Crewops product pages (/crewops/safety, /academy, /library): one real
+   phone capture centred in the hero, a short intro under section heads,
+   and the fine print under the product bar. */
+.w-hero-art--one { aspect-ratio: 1 / 1.42; }
+.w-phone-solo { width: 62%; top: 3%; left: 50%; transform: translateX(-50%) rotate(-2deg); }
+.w-intro { color: var(--w-muted); max-width: 62ch; margin: 14px auto 0; line-height: 1.65; }
+.w-fine { max-width: 1160px; margin: 18px auto 56px; padding: 0 24px; color: var(--w-muted); font-size: 0.82rem; line-height: 1.6; text-align: center; }
+.w-prodbar-item[aria-current="page"] { pointer-events: none; }
+a.w-tile { transition: transform 0.18s ease, border-color 0.18s ease; }
+a.w-tile:hover { transform: translateY(-3px); border-color: var(--w-azure); }
