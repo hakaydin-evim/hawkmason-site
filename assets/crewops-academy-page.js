@@ -100,7 +100,7 @@
 
   window.addEventListener('crewops-code', (ev) => {
     const { code, licence } = ev.detail;
-    if (!licence.ops) { $('academy').classList.add('hidden'); return; }
+    if (!licence.ops || !(licence.products || []).includes('academy')) { $('academy').classList.add('hidden'); return; }
     state.code = code;
     $('academy').classList.remove('hidden');
     load();

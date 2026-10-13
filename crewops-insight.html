@@ -223,6 +223,41 @@
         <div class="tablewrap"><table id="acRecords"></table></div>
       </section>
 
+      <section id="library" class="hidden">
+        <div class="bar" style="margin-top:40px"></div>
+        <div class="eyebrow">Crewops Library · the documentation office's workspace</div>
+        <h2 style="margin-top:8px">Controlled documents</h2>
+        <p class="fine" style="max-width:80ch">Manuals, procedures, bulletins and forms on every crew phone, current revision only. Publish a document once under its code (OM-A, CCM…); each new revision replaces the one on the phones, keeps the history here and removes the old offline copy. Mark a revision "read and confirm" and see who has confirmed it. The file stays on your own file host (an https link); the app downloads it once for offline reading.</p>
+        <div class="tiles" id="lbTiles"></div>
+        <div class="row" style="margin:0 0 12px"><button class="ghost" id="lbRefresh">REFRESH</button><label class="f">Signed by<input type="text" id="lbBy" placeholder="Your name or unit" /></label><span class="fine" id="lbMsg"></span></div>
+        <div class="tablewrap"><table id="lbTable"></table></div>
+        <div class="card" style="margin-top:16px">
+          <h3>PUBLISH A DOCUMENT OR A NEW REVISION</h3>
+          <div class="row">
+            <label class="f">Code<input type="text" id="lbCode" placeholder="OM-A" style="width:120px;text-transform:uppercase" /></label>
+            <label class="f" style="flex:1;min-width:220px">Title<input type="text" id="lbTitle" placeholder="Operations Manual Part A" /></label>
+            <label class="f">Type<select id="lbType"><option value="manual">Manual</option><option value="procedure">Procedure</option><option value="policy">Policy</option><option value="bulletin">Bulletin</option><option value="form">Form</option><option value="checklist">Checklist</option><option value="regulation">Regulation</option><option value="certificate">Certificate</option><option value="other">Other</option></select></label>
+            <label class="f">Category<select id="lbCat"><option value="operations">Flight operations</option><option value="cabin">Cabin</option><option value="training">Training</option><option value="safety">Safety</option><option value="security">Security</option><option value="ground">Ground operations</option><option value="technical">Technical</option><option value="regulation">Regulation</option><option value="company">Company</option><option value="other">Other</option></select></label>
+            <label class="f">Owner<input type="text" id="lbOwner" placeholder="Department" /></label>
+          </div>
+          <div class="row" style="margin-top:8px">
+            <label class="f">Revision<input type="text" id="lbRev" placeholder="38.01" style="width:100px" /></label>
+            <label class="f">Revision date<input type="text" id="lbRevDate" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+            <label class="f">Effective<input type="text" id="lbEff" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+            <label class="f" style="flex:1;min-width:220px">File link · https<input type="text" id="lbUrl" placeholder="https://…/OM-A-rev38.01.pdf" /></label>
+            <label class="f">Pages<input type="text" id="lbPages" style="width:70px" /></label>
+            <label class="f">Audience<input type="text" id="lbAud" placeholder="all · cockpit · cabin · codes" /></label>
+          </div>
+          <label class="f" style="margin-top:8px">Change log · what changed in this revision<textarea id="lbLog"></textarea></label>
+          <div class="row" style="margin-top:8px;align-items:center">
+            <label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="lbApproved" /> Approved by the authority</label>
+            <label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="lbAck" /> Crew must read and confirm</label>
+            <label class="f">Confirm by<input type="text" id="lbAckDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+          </div>
+          <div class="row" style="margin-top:12px"><button id="lbPublish">PUBLISH</button></div>
+        </div>
+      </section>
+
       <footer>Crewops Insight · Hawk &amp; Mason Studios · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     <script type="module">
@@ -235,5 +270,6 @@
     <script src="/assets/crewops-insight-page.js"></script>
     <script src="/assets/crewops-safety-page.js"></script>
     <script src="/assets/crewops-academy-page.js"></script>
+    <script src="/assets/crewops-library-page.js"></script>
   </body>
 </html>

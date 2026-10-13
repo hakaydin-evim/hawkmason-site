@@ -10,11 +10,13 @@
   // inputs; without it the page runs on the sample roster only.
   function setAccess(lic) {
     state.licence = lic;
-    const unlocked = !!lic;
+    // The roster analysis is Crewops Insight; a code that bought only Safety,
+    // Academy or Library opens those sections, not the analysis.
+    const unlocked = !!lic && (lic.products || ['insight']).includes('insight');
     document.querySelectorAll('#inputs input[type=file]').forEach((i) => { i.disabled = !unlocked; });
     document.querySelectorAll('#inputs .drop').forEach((d) => { d.style.opacity = unlocked ? '1' : '.45'; d.style.pointerEvents = unlocked ? 'auto' : 'none'; });
     $('accessNote').innerHTML = unlocked
-      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.${lic.ops ? ' Operator code: crew-reported ratings and safety reports open below.' : ' Crew code: analysis only; crew-reported data needs the operator code.'}`
+      ? `Licensed to <b>${lic.name}</b> until ${lic.exp}. Files are read in this browser; nothing is uploaded.${lic.ops ? ` Operator code · products: ${(lic.products || []).map((x) => ({ insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library' })[x] || x).join(', ')}.` : ' Crew code: analysis only; crew-reported data needs the operator code.'}`
       : 'Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.';
   }
   $('codeBtn').addEventListener('click', () => {
