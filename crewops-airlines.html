@@ -3,18 +3,19 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops Aviation Platform — crew, fatigue, safety and training software for airlines</title>
-    <meta name="description" content="Crewops for airlines: the crew roster app, a company edition and Crewops Insight, the roster fatigue assessment, are in service today. Safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals and crew communication are built next, with launch operators, in one design language on one data layer. Trial on your own roster files first." />
+    <title>Crewops Aviation Platform — crew app, fatigue assessment, safety reporting and training records software for airlines</title>
+    <meta name="description" content="Crewops Aviation Platform for airlines: the crew roster app, Crewops Crew (company edition) and Crewops Insight (roster fatigue assessment, Three-Process Model, EASA ORO.FTL) are in service today. Crewops Safety (safety and fatigue reporting from the crew phone, investigation and corrective actions, ECCAIRS-compatible export) and Crewops Academy (training and qualification records, expiry calendar, read-and-sign) are built next, with launch operators, on one data layer. Trial on your own roster files first." />
+    <meta name="keywords" content="airline crew software, crew roster app, fatigue risk assessment, biomathematical fatigue model, EASA ORO.FTL, airline safety reporting software, safety management system software, occurrence reporting app, fatigue report, crew training records software, training management, qualification expiry tracking, crew app, Crewops" />
     <link rel="canonical" href="https://hawkmason.com/crewops/airlines" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
     <meta property="og:title" content="Crewops Aviation Platform — for airlines and operators" />
-    <meta property="og:description" content="Crew app, company edition and roster fatigue assessment in service today. Safety reporting, training records, fatigue reports, roster publishing, digital manuals and crew communication built next, with you. One design language, one data layer." />
+    <meta property="og:description" content="Crew app, company edition and roster fatigue assessment in service today. Crewops Safety (safety reporting) and Crewops Academy (training records) built next, with you, on one data layer." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/crewops/airlines" />
     <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Crewops Aviation Platform — for airlines and operators" />
-    <meta name="twitter:description" content="Crew app, company edition and roster fatigue assessment in service today; safety reporting, training records, fatigue reports, digital manuals and more built next, with launch operators." />
+    <meta name="twitter:description" content="Crew app, company edition and roster fatigue assessment in service today; Crewops Safety (safety reporting) and Crewops Academy (training records) built next, with launch operators." />
     <meta name="twitter:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
     <script type="application/ld+json">
     {
@@ -52,13 +53,15 @@
           "applicationCategory": "BusinessApplication",
           "operatingSystem": "iOS, browser",
           "url": "https://hawkmason.com/crewops/airlines",
-          "description": "A modular platform for airline crew operations: crew roster app, company edition, roster fatigue assessment, and modules for safety reporting, training and qualification records, fatigue reports, roster publishing, digital manuals, crew communication, radiation dose records, duty requests and integrations.",
+          "description": "A modular platform for airline crew operations: crew roster app, company edition (Crewops Crew), roster fatigue assessment (Crewops Insight), safety reporting (Crewops Safety), training and qualification records (Crewops Academy), fatigue reports, roster publishing, digital manuals, crew communication, radiation dose records, duty requests and integrations.",
           "publisher": { "@id": "https://hawkmason.com/#studio" },
           "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Licensed per operator; trial on the operator's own roster files first." },
           "hasPart": [
             { "@id": "https://hawkmason.com/crewops#app" },
             { "@type": "MobileApplication", "@id": "https://hawkmason.com/crewops/airlines#crew", "name": "Crewops Crew", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS", "description": "The company edition of the Crewops crew app: installed from a link, unlocked by the airline's code, modules chosen by the airline, no subscription and no account. Crew data stays on the phone." },
-            { "@id": "https://hawkmason.com/crewops/insight#app" }
+            { "@id": "https://hawkmason.com/crewops/insight#app" },
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#safety", "name": "Crewops Safety", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Safety, hazard, cabin and fatigue reports opened from the crew app with the flight, aircraft, station, crew and duty times filled in from the roster; investigation notes, corrective actions, the 72-hour clock and an ECCAIRS-compatible export for the safety office. Built next, with launch operators." },
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/airlines#academy", "name": "Crewops Academy", "applicationCategory": "BusinessApplication", "operatingSystem": "iOS, Web", "description": "Training and qualification records for flight and cabin crew: courses, instructors, results and expiry dates, read-and-sign bulletins and short courses on the crew phone, the fleet calendar and gaps for the training department, with the record-keeping the regulation asks for. Built next, with launch operators." }
           ]
         },
         {
@@ -82,6 +85,8 @@
               "acceptedAnswer": { "@type": "Answer", "text": "NetLine/CrewLink and JetXBit with live sync; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP through their roster pages, PDFs, spreadsheets or calendar links; any .ics calendar or roster PDF. A reader for another system is written from one sample export." } },
             { "@type": "Question", "name": "Is Crewops Insight an FRMS?",
               "acceptedAnswer": { "@type": "Answer", "text": "It implements a published biomathematical model (the Three-Process Model of alertness with aircrew parameters) and documents its limits. It supports a fatigue risk assessment and the FRM documentation ORO.FTL asks for; it is not an FRMS by itself and it makes no judgement about any person's fitness to fly." } },
+            { "@type": "Question", "name": "Is there a safety reporting module?",
+              "acceptedAnswer": { "@type": "Answer", "text": "Crewops Safety is built next, with launch operators: safety, hazard, cabin and fatigue reports opened from the crew app with the flight and duty filled in from the roster, routed to the safety office with investigation notes, corrective actions and an ECCAIRS-compatible export. Crewops Academy covers training and qualification records the same way." } },
             { "@type": "Question", "name": "Can you build a module we do not see here?",
               "acceptedAnswer": { "@type": "Answer", "text": "Tell us what your operation needs. The platform is modular: the roster readers, the limit engines, the fatigue model, the licence codes and the crew app are shared by every module, so a new one starts from a working base, not from zero. Write to hello@hawkmason.com with the problem, and we answer with a first version plan." } }
           ]
