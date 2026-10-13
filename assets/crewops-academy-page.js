@@ -43,8 +43,8 @@
     $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/notices/${a.dataset.acks}/acks`)).json(); $('acMsg').textContent = `${d.notice.title}: confirmed by ${d.acks.map((x) => `${x.crewCode} (${x.at.slice(0, 10)})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acNotices').querySelectorAll('a[data-withdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this notice from every phone?')) return; try { await api(`/notices/${a.dataset.withdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
 
-    $('acCourses').innerHTML = `<thead><tr><th>Id</th><th>Title</th><th>Due</th><th>Minutes</th><th>Completed</th><th></th></tr></thead><tbody>${state.courses.map((c) => `<tr${c.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(c.id)}</td><td style="white-space:normal;min-width:240px">${esc(c.title)}</td><td>${esc(c.dueDate || '—')}</td><td>${esc(c.minutes || '')}</td><td>${c.completions} / ${o.crew}</td><td>${c.withdrawn ? 'withdrawn' : `<a href="#" data-done="${esc(c.id)}">who</a> · <a href="#" data-cwithdraw="${esc(c.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="6" class="fine">No course yet.</td></tr>'}</tbody>`;
-    $('acCourses').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/courses/${a.dataset.done}/done`)).json(); $('acMsg').textContent = `${d.course.title}: completed by ${d.done.map((x) => `${x.crewCode} (${x.at.slice(0, 10)}${x.score !== undefined ? ', ' + x.score + '%' : ''})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
+    $('acCourses').innerHTML = `<thead><tr><th>Id</th><th>Title</th><th>Type</th><th>Lessons</th><th>Exam</th><th>Due</th><th>Completed</th><th></th></tr></thead><tbody>${state.courses.map((c) => `<tr${c.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(c.id)}</td><td style="white-space:normal;min-width:240px">${esc(c.title)}</td><td>${esc(c.mode || 'required')}</td><td>${c.lessons || 0}</td><td>${c.quiz ? `${c.quiz.questions} q · ${c.quiz.passMark}%` : '—'}</td><td>${esc(c.dueDate || '—')}</td><td>${c.completions} / ${o.crew}</td><td>${c.withdrawn ? 'withdrawn' : `<a href="#" data-done="${esc(c.id)}">who</a> · <a href="#" data-cwithdraw="${esc(c.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="8" class="fine">No course yet.</td></tr>'}</tbody>`;
+    $('acCourses').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/courses/${a.dataset.done}/done`)).json(); $('acMsg').textContent = `${d.course.title}: completed by ${d.done.map((x) => `${x.crewCode} (${x.at.slice(0, 10)}${x.score !== undefined ? ', ' + x.score + '%' : ''}${x.verified ? ', verified' : ''})`).join(', ') || 'nobody yet'}.${(d.attempts || []).filter((a) => !a.passed).length ? ` Not passed yet: ${(d.attempts || []).filter((a) => !a.passed).map((a) => `${a.crewCode} (${a.score}%, attempt ${a.count || 1})`).join(', ')}.` : ''}`; } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acCourses').querySelectorAll('a[data-cwithdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this course?')) return; try { await api(`/courses/${a.dataset.cwithdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
 
     $('acRecords').innerHTML = `<thead><tr><th>Crew</th><th>Role</th><th>Items</th><th>Nearest expiry</th><th>Phone</th><th></th></tr></thead><tbody>${state.records.map((r) => { const exps = (r.items || []).map((i) => i.expires).filter(Boolean).sort(); return `<tr><td>${esc(r.crewCode)}</td><td>${esc(r.role || '')}</td><td>${(r.items || []).length}</td><td>${esc(exps[0] || '—')}</td><td>${r.paired ? 'paired' : '—'}</td><td>${r.paired ? `<a href="#" data-unbind="${esc(r.crewCode)}">reset pairing</a>` : ''}</td></tr>`; }).join('') || '<tr><td colspan="6" class="fine">No records yet. Upload a CSV below.</td></tr>'}</tbody>`;
@@ -57,10 +57,62 @@
     if (!body.title) { $('acMsg').textContent = 'A title is needed.'; return; }
     try { await api('/notices', { method: 'POST', body: JSON.stringify(body) }); $('acNTitle').value = ''; $('acNBody').value = ''; $('acNUrl').value = ''; await load(); $('acMsg').textContent = 'Published. It is on every crew phone the next time the app opens.'; } catch (e) { $('acMsg').textContent = e.message; }
   });
+  // The course being built: lessons (uploaded to the airline's store, or links) and an optional exam.
+  const draft = { lessons: [], questions: [] };
+  const drawDraft = () => {
+    $('acLessons').innerHTML = draft.lessons.map((l, i) => `<li><b>${i + 1}. ${esc(l.title)}</b> · ${esc(l.kind)}${l.minutes ? ` · ${l.minutes} min` : ''} · <a href="#" data-lrm="${i}">remove</a></li>`).join('') || '<li class="fine">No lesson yet.</li>';
+    $('acQuestions').innerHTML = draft.questions.map((q, i) => `<li><b>${i + 1}. ${esc(q.q)}</b> · ${q.options.map((o, j) => (j === q.answer ? `<u>${esc(o)}</u>` : esc(o))).join(' / ')} · <a href="#" data-qrm="${i}">remove</a></li>`).join('') || '<li class="fine">No question: the crew member confirms completion and you verify it.</li>';
+    $('acLessons').querySelectorAll('a[data-lrm]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); draft.lessons.splice(Number(a.dataset.lrm), 1); drawDraft(); }));
+    $('acQuestions').querySelectorAll('a[data-qrm]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); draft.questions.splice(Number(a.dataset.qrm), 1); drawDraft(); }));
+  };
+  $('acLAdd').addEventListener('click', async () => {
+    const title = $('acLTitle').value.trim();
+    const minutes = parseInt($('acLMin').value, 10) || undefined;
+    const f = $('acLFile').files && $('acLFile').files[0];
+    if (!title) { $('acCMsg').textContent = 'A lesson title is needed.'; return; }
+    try {
+      if (f) {
+        if (!['video/mp4', 'application/pdf'].includes(f.type)) throw new Error('MP4 video or PDF only.');
+        if (f.size > 95 * 1024 * 1024) throw new Error('Up to 95 MB per file.');
+        $('acCMsg').textContent = `Uploading ${f.name}…`;
+        const res = await fetch(`${ENDPOINT}/files?name=${encodeURIComponent(f.name)}`, { method: 'POST', headers: { authorization: `Bearer ${state.code}`, 'content-type': f.type }, body: f });
+        const b = await res.json().catch(() => ({}));
+        if (!res.ok) throw new Error(b.error || `The academy service answered ${res.status}.`);
+        draft.lessons.push({ title, kind: b.kind, url: b.fileUrl, minutes });
+      } else {
+        const url = $('acLUrl').value.trim();
+        if (!/^https:\/\//.test(url)) throw new Error('Upload a file or give an https link.');
+        draft.lessons.push({ title, kind: /\.pdf(\?|$)/i.test(url) ? 'pdf' : /\.mp4(\?|$)/i.test(url) ? 'video' : 'link', url, minutes });
+      }
+      ['acLTitle', 'acLMin', 'acLUrl'].forEach((id) => { $(id).value = ''; });
+      $('acLFile').value = '';
+      $('acCMsg').textContent = 'Lesson added.';
+      drawDraft();
+    } catch (e) { $('acCMsg').textContent = e.message; }
+  });
+  $('acQAdd').addEventListener('click', () => {
+    const q = $('acQText').value.trim();
+    const lines = $('acQOpts').value.split('\n').map((x) => x.trim()).filter(Boolean);
+    const answer = lines.findIndex((x) => x.startsWith('*'));
+    const options = lines.map((x) => x.replace(/^\*\s*/, ''));
+    if (!q || options.length < 2 || answer < 0) { $('acCMsg').textContent = 'A question, at least two options, and the right one marked with *.'; return; }
+    draft.questions.push({ q, options, answer });
+    $('acQText').value = ''; $('acQOpts').value = '';
+    drawDraft();
+  });
   $('acCourseBtn').addEventListener('click', async () => {
-    const body = { title: $('acCTitle').value.trim(), kind: $('acCKind').value || undefined, dueDate: $('acCDue').value.trim(), url: $('acCUrl').value.trim(), minutes: parseInt($('acCMin').value, 10) || undefined, audience: audienceOf($('acCAud').value), by: $('acBy').value.trim() || undefined };
-    if (!body.title) { $('acMsg').textContent = 'A title is needed.'; return; }
-    try { await api('/courses', { method: 'POST', body: JSON.stringify(body) }); $('acCTitle').value = ''; $('acCUrl').value = ''; await load(); $('acMsg').textContent = 'Assigned.'; } catch (e) { $('acMsg').textContent = e.message; }
+    const body = {
+      title: $('acCTitle').value.trim(), mode: $('acCMode').value, kind: $('acCKind').value || undefined, dueDate: $('acCDue').value.trim(), url: $('acCUrl').value.trim(),
+      minutes: parseInt($('acCMin').value, 10) || undefined, audience: audienceOf($('acCAud').value), by: $('acBy').value.trim() || undefined,
+      lessons: draft.lessons, quiz: draft.questions.length ? { passMark: parseInt($('acQPass').value, 10) || 75, questions: draft.questions } : undefined,
+    };
+    if (!body.title) { $('acCMsg').textContent = 'A title is needed.'; return; }
+    try {
+      await api('/courses', { method: 'POST', body: JSON.stringify(body) });
+      $('acCTitle').value = ''; $('acCUrl').value = ''; draft.lessons = []; draft.questions = []; drawDraft();
+      await load();
+      $('acCMsg').textContent = 'Published. It is on every crew phone in the audience the next time the app opens.';
+    } catch (e) { $('acCMsg').textContent = e.message; }
   });
   function audienceOf(v) {
     v = (v || '').trim();

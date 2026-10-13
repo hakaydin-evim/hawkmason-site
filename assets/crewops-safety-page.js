@@ -15,6 +15,18 @@
   const TAX = window.CrewopsSafetyTaxonomy || null;
   const familyOf = (type) => (TAX && TAX.typeDef(type) ? TAX.typeDef(type).family : 'safety');
   const STATUSES = ['new', 'triage', 'investigation', 'action', 'closed'];
+  const ROOT = {
+    human_skill: 'Human · skill or technique', human_decision: 'Human · decision', human_perception: 'Human · perception or attention', human_violation: 'Human · routine or exceptional violation',
+    communication_crm: 'Communication / CRM', procedure: 'Procedure missing or unclear', training: 'Training', organisation: 'Organisation · planning, staffing, pressure',
+    equipment_technical: 'Equipment / technical', environment: 'Environment · weather, airport', external: 'External party', undetermined: 'Undetermined',
+  };
+  // The office script asks for these after it links a report to a risk.
+  window.addEventListener('crewops-report-linked', async (ev) => {
+    if (!state.detail || state.detail.id !== ev.detail.reportId) return;
+    await load();
+    open(ev.detail.reportId);
+  });
+  window.crewopsSafety = { api: (path, init) => api(path, init), reports: () => state.reports, openReport: (id) => open(id) };
   const CATEGORIES = [
     '1000000 ATM, aerodrome or aircraft system/component related event',
     '3000000 Consequential events',
@@ -104,6 +116,7 @@
     const f = r.flight;
     const g = r.fatigue;
     const cls = r.classification || {};
+    const inv = r.investigation || {};
     const c = clock({ ...r, reportable: cls.reportable });
     const opt = (list, cur, none) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + list.map((v) => `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(v)}</option>`).join('');
     const kindText = { submitted: 'Submitted', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
@@ -130,6 +143,17 @@
         <label class="f">Risk (ERCS)<select id="sdRisk">${opt(['A', 'B', 'C', 'D', 'E'], cls.risk, '—')}</select></label>
         <label class="f">Event type · free text<input type="text" id="sdEvent" value="${esc(cls.eventType || '')}" placeholder="e.g. Fire/smoke in cabin" /></label>
       </div>
+      ${(r.photos || []).length ? `<h3 style="margin-top:14px">PHOTOS FROM THE REPORTER</h3><div class="thumbs" id="sdPhotos">${r.photos.map((p) => `<img data-file="${esc(p.file)}" alt="Photo attached to ${esc(r.id)}" />`).join('')}</div>` : ''}
+      <h3 style="margin-top:14px">INVESTIGATION · NEVER SHOWN TO THE REPORTER</h3>
+      <div class="row">
+        <label class="f">Root cause<select id="sdRoot">${opt(Object.keys(ROOT), inv.rootCause, '— not yet —').replace(/>([a-z_]+)<\/option>/g, (m, k) => `>${esc(ROOT[k] || k)}</option>`)}</select></label>
+        <label class="f" style="flex:1;min-width:240px">Contributing factors<textarea id="sdFactors">${esc(inv.factors || '')}</textarea></label>
+      </div>
+      <div class="row">
+        <label class="f" style="flex:1;min-width:240px">Five whys<textarea id="sdWhys" placeholder="Why? → Why? → …">${esc(inv.whys || '')}</textarea></label>
+        <label class="f" style="flex:1;min-width:240px">Findings and conclusion<textarea id="sdFindings">${esc(inv.findings || '')}</textarea></label>
+      </div>
+      <div class="row" style="margin:6px 0 0"><button class="ghost" id="sdToRisk">${inv.riskId ? `IN THE RISK REGISTER · ${esc(inv.riskId)}` : 'ADD TO RISK REGISTER'}</button></div>
       <h3 style="margin-top:14px">ACTIONS</h3>
       <ul class="tl">${(r.actions || []).map((a, i) => `<li><b>${esc(a.text)}</b> · ${esc(a.owner || '')} · due ${esc(a.due || '—')} · ${a.done ? 'done' : `open <a href="#" data-done="${i}">mark done</a>`}</li>`).join('') || '<li class="fine">No action yet.</li>'}</ul>
       <div class="row" style="margin-top:8px"><label class="f" style="flex:2;min-width:240px">New action<input type="text" id="sdAction" placeholder="What is to be done" /></label><label class="f">Owner<input type="text" id="sdOwner" placeholder="Department or person" /></label><label class="f">Due<input type="text" id="sdDue" placeholder="YYYY-MM-DD" /></label></div>
@@ -141,6 +165,18 @@
       <ul class="tl">${(r.timeline || []).map((e) => `<li><b>${esc(kindText[e.kind] || e.kind)}${e.status ? ` → ${esc(e.status)}` : ''}</b> · ${esc(e.at.slice(0, 16).replace('T', ' '))} UTC${e.by ? ` · ${esc(e.by)}` : ''}${e.text ? `<br />${esc(e.text)}` : ''}</li>`).join('')}</ul>`;
     $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); });
     $('sdSave').addEventListener('click', save);
+    // Photos are served only with the operator code: fetched with it, shown from memory.
+    document.querySelectorAll('#sdPhotos img').forEach(async (img) => {
+      try {
+        const blob = await (await api(`/photo/${encodeURIComponent(r.airline)}/${encodeURIComponent(r.id)}/${encodeURIComponent(img.dataset.file)}`)).blob();
+        img.src = URL.createObjectURL(blob);
+        img.addEventListener('click', () => window.open(img.src, '_blank'));
+      } catch (e) { img.alt = 'Photo could not be loaded'; }
+    });
+    $('sdToRisk').addEventListener('click', () => {
+      if (inv.riskId) { window.dispatchEvent(new CustomEvent('crewops-open-risk', { detail: { id: inv.riskId } })); return; }
+      window.dispatchEvent(new CustomEvent('crewops-risk-from-report', { detail: { report: r, by: $('sdBy').value.trim() || undefined } }));
+    });
     $('safetyDetail').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', (ev) => { ev.preventDefault(); patch({ actionDone: Number(a.dataset.done), by: $('sdBy').value.trim() || undefined }); }));
   }
 
@@ -199,6 +235,9 @@
     if (more) body.askMore = more;
     const note = $('sdNote').value.trim();
     if (note) body.note = note;
+    const invNow = { rootCause: $('sdRoot').value || undefined, factors: $('sdFactors').value.trim() || undefined, whys: $('sdWhys').value.trim() || undefined, findings: $('sdFindings').value.trim() || undefined };
+    const invPrev = r.investigation || {};
+    if (['rootCause', 'factors', 'whys', 'findings'].some((k) => (invNow[k] || '') !== (invPrev[k] || ''))) body.investigation = { ...invNow, riskId: invPrev.riskId };
     if (Object.keys(body).filter((k) => k !== 'by').length === 0) { $('sdMsg').textContent = 'Nothing changed.'; return; }
     patch(body);
   }

@@ -13,6 +13,8 @@
     // The roster analysis is Crewops Insight; a code that bought only Safety,
     // Academy or Library opens those sections, not the analysis.
     const unlocked = !!lic && (lic.products || ['insight']).includes('insight');
+    // The model card link is for licensed operators; the page itself is noindex.
+    $('modelCardLink').classList.toggle('hidden', !unlocked);
     document.querySelectorAll('#inputs input[type=file]').forEach((i) => { i.disabled = !unlocked; });
     document.querySelectorAll('#inputs .drop').forEach((d) => { d.style.opacity = unlocked ? '1' : '.45'; d.style.pointerEvents = unlocked ? 'auto' : 'none'; });
     const names = { insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library' };

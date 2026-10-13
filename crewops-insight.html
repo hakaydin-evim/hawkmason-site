@@ -138,6 +138,10 @@
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
       .f { max-width:100% } .f select, .f input { max-width:100% } select { text-overflow:ellipsis }
+      .subtabs { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 16px } .subtab { background:transparent; color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; cursor:pointer } .subtab.on { color:var(--cy); border-color:var(--cy) }
+      .mx { border-collapse:collapse } .mx td { width:34px; height:28px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; border:1px solid var(--paper) } .mx th { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); padding:2px 6px }
+      .mx .in { background:#7a1f2b; color:#fff } .mx .to { background:#7a5a12; color:#fff } .mx .ac { background:#1d5a3a; color:#fff }
+      .thumbs img { width:110px; height:110px; object-fit:cover; border-radius:10px; border:1px solid var(--line); margin:0 8px 8px 0; cursor:zoom-in }
       .modbar { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0 0 8px }
       .mod { display:flex; flex-direction:column; gap:2px; padding:14px 14px 12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); color:var(--ink); text-decoration:none }
       .mod b { font-family:'Unbounded',Arial,sans-serif; font-size:14px }
@@ -234,7 +238,7 @@
         <h2>By month</h2>
         <div class="tablewrap"><table id="months"></table></div>
         <h2>Model card</h2>
-        <p class="fine">The full model card (model, equations, parameters, assumptions, verification status, limitations, references) is at <a href="/crewops/insight/model-card">hawkmason.com/crewops/insight/model-card</a>; it accompanies every assessment report.</p>
+        <p class="fine hidden" id="modelCardLink">The full model card (model, equations, parameters, assumptions, verification status, limitations, references) is at <a href="/crewops/insight/model-card">hawkmason.com/crewops/insight/model-card</a>; it accompanies every assessment report.</p>
         <div class="note">
           <p><b>What this is.</b> A roster reading with two layers: the duty-factor indicator Crewops shows crew (WOCL, early start, long FDP, sectors, short rest, consecutive duties, 7-day load, time zones; 0–100) and a biomathematical prediction from the Three-Process Model of alertness (Åkerstedt &amp; Folkard; parameters re-estimated on 136 aircrews by Ingre et al. 2014, PLoS ONE 9(10):e108679), the same model family behind the Boeing Alertness Model. Sleep is generated from the duty pattern with the paper's thresholds; time-zone adaptation 30 % per day; KSS = 10.6 − 0.6 × alertness.</p>
           <p><b>What it is not.</b> Not a measurement of any person, not a validated commercial product, not a fitness-to-fly judgement and not an FRMS by itself. Per CASA (2010, 2014) and the IATA Human Factors Task Force (2025): model outputs support a risk assessment and compare rosters relatively; any threshold must be validated in your own operation; never a sole go/no-go. FTL tables are implemented from the published regulation and marked unverified in the Crewops app; your operator's scheme and system prevail.</p>
@@ -246,12 +250,60 @@
       <section id="safety" class="hidden">
         <div class="bar" style="margin-top:40px"></div>
         <div class="eyebrow">Crewops Safety · the operator's workspace</div>
-        <h2 style="margin-top:8px">Safety reports</h2>
+        <h2 style="margin-top:8px">Safety office</h2>
         <p class="fine" style="max-width:80ch">Reports your crews send from the Crewops app, with the flight, aircraft, stations and duty times filled in from their roster. Classify, act and reply here; the reply goes back to the reporter's phone. The 72-hour clock is Regulation (EU) 376/2014 Art. 4(8): a reportable occurrence reaches the authority within 72 hours; mark a report "not reportable" to stop it. The CSV follows the Annex I fields for your ECCAIRS or SHGM submission; it is an export, not a submission.</p>
+        <nav class="subtabs" id="sfTabs" aria-label="Safety office">
+          <button class="subtab on" data-tab="sfReports">REPORTS</button>
+          <button class="subtab" data-tab="sfRisks">RISK REGISTER</button>
+          <button class="subtab" data-tab="sfAudits">AUDITS &amp; FINDINGS</button>
+          <button class="subtab" data-tab="sfChanges">MANAGEMENT OF CHANGE</button>
+          <button class="subtab" data-tab="sfKpi">INDICATORS</button>
+        </nav>
+        <div id="sfReports">
         <div class="tiles" id="safetyTiles"></div>
         <div class="row" style="margin:0 0 12px"><button class="ghost" id="safetyRefresh">REFRESH</button><button class="ghost" id="safetyCsv">EXPORT CSV · ECCAIRS FIELDS</button><span class="fine" id="safetyMsg"></span></div>
         <div class="tablewrap"><table id="safetyTable"></table></div>
         <div id="safetyDetail" class="card hidden" style="margin-top:16px"></div>
+        </div>
+        <div id="sfRisks" class="hidden">
+          <p class="fine" style="max-width:80ch">The hazard and risk register (ICAO Doc 9859 5×5: probability 1–5 × severity A–E). Initial and residual risk, mitigations with owner and due date, the reports a risk came from, and a review date. Open a report and press <b>ADD TO RISK REGISTER</b> to start from it.</p>
+          <div class="row" style="align-items:flex-start;gap:24px"><div id="rkMatrix"></div><div class="tiles" id="rkTiles" style="flex:1"></div></div>
+          <div class="tablewrap"><table id="rkTable"></table></div>
+          <div id="rkDetail" class="card hidden" style="margin-top:16px"></div>
+          <div class="card" style="margin-top:16px"><h3>NEW RISK</h3>
+            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="rkTitle" placeholder="e.g. Lithium battery fires in the cabin" /></label><label class="f">Area<input type="text" id="rkArea" placeholder="Cabin, Flight ops…" /></label><label class="f">Owner<input type="text" id="rkOwner" placeholder="Person or unit" /></label></div>
+            <div class="row"><label class="f" style="flex:1;min-width:240px">Hazard · what could happen and why<textarea id="rkHazard"></textarea></label></div>
+            <div class="row"><label class="f">Probability<select id="rkP"><option value="5">5 · frequent</option><option value="4">4 · occasional</option><option value="3" selected>3 · remote</option><option value="2">2 · improbable</option><option value="1">1 · extremely improbable</option></select></label><label class="f">Severity<select id="rkS"><option value="A">A · catastrophic</option><option value="B">B · hazardous</option><option value="C" selected>C · major</option><option value="D">D · minor</option><option value="E">E · negligible</option></select></label><label class="f">Review date<input type="text" id="rkReview" placeholder="YYYY-MM-DD" /></label><label class="f">From report<input type="text" id="rkSource" placeholder="report number, optional" /></label></div>
+            <div class="row" style="margin-top:8px"><button id="rkCreate">ADD RISK</button><span class="fine" id="rkMsg"></span></div>
+          </div>
+        </div>
+        <div id="sfAudits" class="hidden">
+          <p class="fine" style="max-width:80ch">Audits and inspections with their findings (level 1, level 2, observation per ORO.GEN.150): corrective action plan, owner, due date, closure with evidence.</p>
+          <div class="tiles" id="auTiles"></div>
+          <div class="tablewrap"><table id="auTable"></table></div>
+          <div id="auDetail" class="card hidden" style="margin-top:16px"></div>
+          <div class="card" style="margin-top:16px"><h3>NEW AUDIT OR INSPECTION</h3>
+            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="auTitle" placeholder="e.g. Ramp safety inspection AYT" /></label><label class="f">Kind<select id="auKind"><option value="internal">internal</option><option value="external">external</option><option value="authority">authority</option><option value="supplier">supplier</option></select></label><label class="f">Area<input type="text" id="auArea" placeholder="Ground ops…" /></label><label class="f">Date<input type="text" id="auDate" placeholder="YYYY-MM-DD" /></label><label class="f">Auditor<input type="text" id="auAuditor" /></label></div>
+            <div class="row"><label class="f" style="flex:1;min-width:240px">Scope<textarea id="auScope"></textarea></label></div>
+            <div class="row" style="margin-top:8px"><button id="auCreate">ADD AUDIT</button><span class="fine" id="auMsg"></span></div>
+          </div>
+        </div>
+        <div id="sfChanges" class="hidden">
+          <p class="fine" style="max-width:80ch">Management of change (ORO.GEN.200): what changes, the hazards it brings, the risks it links to in the register, the decision and the review after it is in place.</p>
+          <div class="tablewrap"><table id="chTable"></table></div>
+          <div id="chDetail" class="card hidden" style="margin-top:16px"></div>
+          <div class="card" style="margin-top:16px"><h3>NEW CHANGE</h3>
+            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="chTitle" placeholder="e.g. New route to KRK" /></label><label class="f">Kind<select id="chKind"><option value="organisation">organisation</option><option value="procedure">procedure</option><option value="equipment">equipment</option><option value="fleet">fleet</option><option value="route">route</option><option value="system">system</option><option value="supplier">supplier</option><option value="other">other</option></select></label><label class="f">Owner<input type="text" id="chOwner" /></label><label class="f">Planned for<input type="text" id="chDate" placeholder="YYYY-MM-DD" /></label></div>
+            <div class="row"><label class="f" style="flex:1;min-width:240px">What changes<textarea id="chDesc"></textarea></label><label class="f" style="flex:1;min-width:240px">Hazards it brings<textarea id="chHaz"></textarea></label></div>
+            <div class="row" style="margin-top:8px"><button id="chCreate">ADD CHANGE</button><span class="fine" id="chMsg"></span></div>
+          </div>
+        </div>
+        <div id="sfKpi" class="hidden">
+          <p class="fine" style="max-width:80ch">Safety performance indicators from your own records: reports per month, by kind, time to close, replies, open and overdue actions, the risk picture and open findings.</p>
+          <div class="tiles" id="kpiTiles"></div>
+          <div id="kpiMonths" style="margin-top:12px"></div>
+          <div class="tablewrap" style="margin-top:12px"><table id="kpiKinds"></table></div>
+        </div>
       </section>
 
       <section id="academy" class="hidden">
@@ -280,18 +332,36 @@
             <div class="row" style="margin-top:12px"><button id="acNoticeBtn">PUBLISH</button></div>
           </div>
           <div class="card">
-            <h3>ASSIGN A COURSE</h3>
+            <h3>BUILD A COURSE · LESSONS AND EXAM</h3>
             <div class="row">
               <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acCTitle" /></label>
+              <label class="f">Type<select id="acCMode"><option value="required">required · with a due date</option><option value="self">self-study · offered</option></select></label>
               <label class="f">Counts as<select id="acCKind"><option value="">—</option><option value="sep">SEP</option><option value="dg">Dangerous goods</option><option value="crm">CRM</option><option value="first_aid">First aid</option><option value="recurrent_cabin">Cabin recurrent</option><option value="other">Other</option></select></label>
             </div>
             <div class="row" style="margin-top:8px">
-              <label class="f" style="flex:1;min-width:200px">Course link · https<input type="text" id="acCUrl" placeholder="https://…" /></label>
               <label class="f">Due<input type="text" id="acCDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
               <label class="f">Minutes<input type="text" id="acCMin" placeholder="60" style="width:70px" /></label>
               <label class="f">Audience<input type="text" id="acCAud" placeholder="all · cockpit · cabin · codes" /></label>
+              <label class="f" style="flex:1;min-width:200px">Or one course link · https<input type="text" id="acCUrl" placeholder="https://…" /></label>
             </div>
-            <div class="row" style="margin-top:12px"><button id="acCourseBtn">ASSIGN</button></div>
+            <h3 style="margin-top:14px">LESSONS</h3>
+            <ul class="tl" id="acLessons"><li class="fine">No lesson yet.</li></ul>
+            <div class="row" style="margin-top:8px">
+              <label class="f" style="flex:1;min-width:200px">Lesson title<input type="text" id="acLTitle" /></label>
+              <label class="f">Minutes<input type="text" id="acLMin" style="width:70px" /></label>
+              <label class="f" style="min-width:220px">Upload video (MP4) or PDF · up to 95 MB<input type="file" id="acLFile" accept="video/mp4,application/pdf" /></label>
+              <label class="f" style="flex:1;min-width:200px">or a link · https<input type="text" id="acLUrl" placeholder="https://…" /></label>
+              <button class="ghost" id="acLAdd">ADD LESSON</button>
+            </div>
+            <h3 style="margin-top:14px">EXAM · OPTIONAL · GRADED ON THE SERVER</h3>
+            <ul class="tl" id="acQuestions"><li class="fine">No question: the crew member confirms completion and you verify it.</li></ul>
+            <div class="row" style="margin-top:8px">
+              <label class="f" style="flex:2;min-width:240px">Question<input type="text" id="acQText" /></label>
+              <label class="f" style="flex:2;min-width:240px">Options · one per line, the right one starts with *<textarea id="acQOpts" placeholder="Fire containment bag&#10;*Water, then the bag&#10;Nothing"></textarea></label>
+              <button class="ghost" id="acQAdd">ADD QUESTION</button>
+              <label class="f">Pass mark %<input type="text" id="acQPass" value="75" style="width:70px" /></label>
+            </div>
+            <div class="row" style="margin-top:12px"><button id="acCourseBtn">PUBLISH COURSE</button><span class="fine" id="acCMsg"></span></div>
           </div>
           <div class="card">
             <h3>QUALIFICATION RECORDS · CSV</h3>
@@ -355,6 +425,7 @@
     <script src="/assets/crewops-insight-page.js"></script>
     <script src="/assets/crewops-safety-taxonomy.js"></script>
     <script src="/assets/crewops-safety-page.js"></script>
+    <script src="/assets/crewops-safety-office-page.js"></script>
     <script src="/assets/crewops-academy-page.js"></script>
     <script src="/assets/crewops-library-page.js"></script>
     <script src="/assets/crewops-portal.js"></script>
