@@ -71,6 +71,7 @@
       textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-size:14px; width:100%; min-height:72px; resize:vertical }
       tr.sel td { background:var(--surface2) }
       tr.click { cursor:pointer }
+      code { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cy) }
       .tl { list-style:none; padding:0; margin:8px 0 0 } .tl li { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--soft); padding:4px 0; border-bottom:1px solid var(--line) } .tl li b { color:var(--ink); font-weight:500 }
       .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
       footer { margin-top:48px; color:var(--faint); font-size:12px }
@@ -169,6 +170,59 @@
         <div id="safetyDetail" class="card hidden" style="margin-top:16px"></div>
       </section>
 
+      <section id="academy" class="hidden">
+        <div class="bar" style="margin-top:40px"></div>
+        <div class="eyebrow">Crewops Academy · the training department's workspace</div>
+        <h2 style="margin-top:8px">Training &amp; qualifications</h2>
+        <p class="fine" style="max-width:80ch">Read-and-sign notices land on every crew phone and come back confirmed, one tap each. Qualification records (OPC, line check, SEP, DG, CRM, cabin recurrent…) are uploaded as a CSV and shown to each crew member as their own; the validity periods follow ORO.FC.230 / ORO.CC.140 as your department sets them. Courses are assigned with a due date and a link; completion comes back from the phone for your department to verify. Records are kept for the periods of ORO.MLR.115.</p>
+        <div class="tiles" id="acTiles"></div>
+        <div class="row" style="margin:0 0 12px"><button class="ghost" id="acRefresh">REFRESH</button><button class="ghost" id="acCsv">EXPORT RECORDS CSV</button><label class="f">Signed by<input type="text" id="acBy" placeholder="Your name or unit" /></label><span class="fine" id="acMsg"></span></div>
+        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">EXPIRED AND EXPIRING · 30 DAYS</h3>
+        <div class="tablewrap"><table id="acExpiry"></table></div>
+        <div class="grid" style="margin-top:18px">
+          <div class="card">
+            <h3>PUBLISH A NOTICE · READ AND SIGN</h3>
+            <div class="row">
+              <label class="f">Type<select id="acNType"><option value="crew_notice">Crew notice</option><option value="safety_bulletin">Safety bulletin</option><option value="safety_memo">Safety memo</option><option value="coordination_sheet">Coordination sheet</option><option value="security_notice">Security notice</option><option value="information">Information</option><option value="training_document">Training document</option><option value="revision">Revision</option></select></label>
+              <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acNTitle" /></label>
+            </div>
+            <label class="f" style="margin-top:8px">Text · shown on the phone<textarea id="acNBody"></textarea></label>
+            <div class="row" style="margin-top:8px">
+              <label class="f" style="flex:1;min-width:200px">Document link · https, optional<input type="text" id="acNUrl" placeholder="https://…" /></label>
+              <label class="f">Due<input type="text" id="acNDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+              <label class="f">Minutes<input type="text" id="acNMin" placeholder="5" style="width:70px" /></label>
+              <label class="f">Audience<input type="text" id="acNAud" placeholder="all · cockpit · cabin · codes" /></label>
+            </div>
+            <div class="row" style="margin-top:12px"><button id="acNoticeBtn">PUBLISH</button></div>
+          </div>
+          <div class="card">
+            <h3>ASSIGN A COURSE</h3>
+            <div class="row">
+              <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acCTitle" /></label>
+              <label class="f">Counts as<select id="acCKind"><option value="">—</option><option value="sep">SEP</option><option value="dg">Dangerous goods</option><option value="crm">CRM</option><option value="first_aid">First aid</option><option value="recurrent_cabin">Cabin recurrent</option><option value="other">Other</option></select></label>
+            </div>
+            <div class="row" style="margin-top:8px">
+              <label class="f" style="flex:1;min-width:200px">Course link · https<input type="text" id="acCUrl" placeholder="https://…" /></label>
+              <label class="f">Due<input type="text" id="acCDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+              <label class="f">Minutes<input type="text" id="acCMin" placeholder="60" style="width:70px" /></label>
+              <label class="f">Audience<input type="text" id="acCAud" placeholder="all · cockpit · cabin · codes" /></label>
+            </div>
+            <div class="row" style="margin-top:12px"><button id="acCourseBtn">ASSIGN</button></div>
+          </div>
+          <div class="card">
+            <h3>QUALIFICATION RECORDS · CSV</h3>
+            <p class="fine">Columns: <code>crew_code, role, name, kind, label, issued, expires, note</code>, one row per item; a crew code's rows replace its record. Kinds: opc, lpc, line_check, sep, dg, crm, first_aid, route_competence, aerodrome_competence, recurrent_cabin, triennial_cabin, medical, licence, other.</p>
+            <label class="drop">Drop the CSV here, or click to choose<input type="file" id="acCsvFile" accept=".csv,text/csv" /></label>
+          </div>
+        </div>
+        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">NOTICES</h3>
+        <div class="tablewrap"><table id="acNotices"></table></div>
+        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">COURSES</h3>
+        <div class="tablewrap"><table id="acCourses"></table></div>
+        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">CREW RECORDS</h3>
+        <div class="tablewrap"><table id="acRecords"></table></div>
+      </section>
+
       <footer>Crewops Insight · Hawk &amp; Mason Studios · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     <script type="module">
@@ -180,5 +234,6 @@
     <script src="/assets/crewops-insight.js"></script>
     <script src="/assets/crewops-insight-page.js"></script>
     <script src="/assets/crewops-safety-page.js"></script>
+    <script src="/assets/crewops-academy-page.js"></script>
   </body>
 </html>
