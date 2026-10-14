@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Müşterilerim · Crewops</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      /* Owner panel: one card per customer, newest activity first. Phone-first, the portal's palette. */
+      :root { --paper:#08080c; --surface:#131318; --surface2:#1d1d26; --ink:#f7f6f2; --soft:#a3a1b0; --faint:#6b6978; --line:#242430; --cy:#2be3ff; --mg:#ff2fa0; --ok:#7bed9f; --warn:#ffd166; --bad:#ff7b6b; color-scheme:dark }
+      @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0081a0; --mg:#c81172; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e; color-scheme:light } }
+      * { box-sizing:border-box }
+      [hidden] { display:none !important }
+      body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.5 'Plus Jakarta Sans',Arial,sans-serif }
+      .wrap { max-width:980px; margin:0 auto; padding:24px 16px calc(64px + env(safe-area-inset-bottom,0px)) }
+      .eyebrow { font:500 11px 'JetBrains Mono',monospace; letter-spacing:3px; color:var(--cy); text-transform:uppercase }
+      h1 { font:800 clamp(28px,7vw,42px)/1.05 'Unbounded',Arial,sans-serif; margin:8px 0 6px }
+      .lead { color:var(--soft); margin:0 0 18px; max-width:62ch }
+      .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center }
+      input, select { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:13px 'JetBrains Mono',monospace; min-width:0 }
+      input { flex:1 1 220px }
+      button { background:linear-gradient(90deg,var(--mg),var(--cy)); color:#08080c; border:0; border-radius:999px; padding:10px 18px; font:600 14px 'Plus Jakarta Sans',Arial,sans-serif; cursor:pointer }
+      button.ghost { background:transparent; color:var(--cy); border:1px solid var(--cy) }
+      button:focus-visible, input:focus-visible, select:focus-visible { outline:2px solid var(--cy); outline-offset:2px }
+      .msg { color:var(--bad); font-size:13px; min-height:1.2em; margin:8px 0 }
+      .tiles { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:10px; margin:16px 0 20px }
+      .tile { background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:12px 14px }
+      .tile b { display:block; font:700 26px 'Unbounded',Arial,sans-serif; font-variant-numeric:tabular-nums }
+      .tile span { font:500 10px 'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
+      .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:16px; margin-bottom:14px }
+      .head { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap }
+      .head h2 { font:700 19px 'Unbounded',Arial,sans-serif; margin:0 }
+      .head small { font:500 12px 'JetBrains Mono',monospace; color:var(--faint); margin-left:6px }
+      .pill { display:inline-block; padding:3px 10px; border-radius:999px; font:600 11px 'JetBrains Mono',monospace; letter-spacing:.5px }
+      .p-ok { background:color-mix(in srgb, var(--ok) 18%, transparent); color:var(--ok) }
+      .p-warn { background:color-mix(in srgb, var(--warn) 18%, transparent); color:var(--warn) }
+      .p-bad { background:color-mix(in srgb, var(--bad) 18%, transparent); color:var(--bad) }
+      .p-mute { background:var(--surface2); color:var(--soft) }
+      .chips { display:flex; gap:6px; flex-wrap:wrap; margin:10px 0 }
+      .hint { margin:10px 0 0; padding:10px 12px; border-radius:12px; background:var(--surface2); color:var(--soft); font-size:14px }
+      .hint b { color:var(--ink) }
+      .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:8px 16px; margin-top:12px }
+      .kv span { display:block; font:500 10px 'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
+      .kv b { font-weight:600; font-variant-numeric:tabular-nums }
+      .bars { margin-top:12px; overflow:hidden }
+      .bars svg { width:100%; height:46px; display:block }
+      .bars .axis { display:flex; justify-content:space-between; font:500 10px 'JetBrains Mono',monospace; color:var(--faint) }
+      .fine { font-size:12px; color:var(--faint) }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="eyebrow">Crewops · sahip paneli</div>
+      <h1>Müşterilerim</h1>
+      <p class="lead">Her havayolu portala ne zaman girdi, neye baktı, ekipleri ne gönderdi. Sadece sayılar; içerik yok.</p>
+
+      <div id="gate" class="row">
+        <input type="password" id="code" placeholder="Sahip kodu (CREW1.…)" autocomplete="off" aria-label="Sahip kodu" />
+        <button id="open">AÇ</button>
+      </div>
+      <div class="row" id="bar" hidden style="margin-top:6px">
+        <label class="fine" for="days">Dönem</label>
+        <select id="days"><option value="7">7 gün</option><option value="30" selected>30 gün</option><option value="90">90 gün</option></select>
+        <button class="ghost" id="refresh">YENİLE</button>
+        <button class="ghost" id="forget">ÇIKIŞ</button>
+        <span class="fine" id="stamp"></span>
+      </div>
+      <p class="msg" id="msg" role="alert"></p>
+
+      <div class="tiles" id="tiles" hidden></div>
+      <div id="list"></div>
+    </main>
+    <script>
+      (() => {
+        const ENDPOINT = window.CREWOPS_OWNER_ENDPOINT || 'https://updates.hawkmason.com/owner';
+        const $ = (id) => document.getElementById(id);
+        const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+        const store = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} } };
+        const PRODUCT = { insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library' };
+        const STATUS = { evaluation: ['deneme', 'p-warn'], active: ['lisanslı', 'p-ok'], ended: ['kapalı', 'p-mute'] };
+        const VIEW = { today: 'Bugün', insight: 'Insight', safety: 'Safety', academy: 'Academy', library: 'Library', connect: 'Bağlantılar' };
+        const when = (iso) => new Date(iso).toLocaleString('tr-TR', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+        const daysAgo = (iso) => Math.floor((Date.now() - Date.parse(iso)) / 86400000);
+
+        function bars(activity, days) {
+          const byDay = new Map(activity.map((a) => [a.day, a.open + a.analyse]));
+          const n = Number(days);
+          const vals = [];
+          for (let i = n - 1; i >= 0; i--) vals.push(byDay.get(new Date(Date.now() - i * 86400000).toISOString().slice(0, 10)) || 0);
+          const max = Math.max(1, ...vals);
+          const w = 100 / n;
+          const rects = vals.map((v, i) => `<rect x="${(i * w + w * 0.15).toFixed(2)}" y="${(40 - (v / max) * 38).toFixed(2)}" width="${(w * 0.7).toFixed(2)}" height="${v ? ((v / max) * 38).toFixed(2) : 1}" rx="0.6" fill="${v ? 'var(--cy)' : 'var(--line)'}"/>`).join('');
+          return `<div class="bars" aria-label="Günlük portal kullanımı, ${n} gün"><svg viewBox="0 0 100 40" preserveAspectRatio="none" role="img">${rects}</svg><div class="axis"><span>${n} gün önce</span><span>bugün</span></div></div>`;
+        }
+
+        function hint(c) {
+          const t = c.totals;
+          if (!c.lastSeen) return '<b>Henüz girmediler.</b> Sabırla bekle; bir hafta daha sessiz kalırsa kısa, yardım teklif eden bir mail uygun olur.';
+          const ago = daysAgo(c.lastSeen);
+          if (t.activeDays >= 2 && ago <= 7) return `<b>Kullanıyorlar.</b> ${t.activeDays} farklı günde girdiler${t.analyses ? `, ${t.analyses} analiz çalıştırdılar` : ''}. Takip maili için iyi bir an.`;
+          if (ago <= 7) return '<b>Bir kez baktılar.</b> Birkaç gün daha izle; ikinci girişte yazmak doğal olur.';
+          return `<b>${ago} gündür sessiz.</b> Son girişten sonra ses yok; bir yardım teklifi uygun olabilir.`;
+        }
+
+        function card(c, days) {
+          const ago = c.lastSeen ? daysAgo(c.lastSeen) : null;
+          const state = !c.lastSeen ? ['hiç girmedi', 'p-mute'] : ago <= 7 ? ['aktif', 'p-ok'] : [`${ago} gündür sessiz`, 'p-warn'];
+          const products = Object.entries(c.products).map(([p, s]) => `<span class="pill ${(STATUS[s.status] || ['', 'p-mute'])[1]}">${PRODUCT[p] || p} · ${(STATUS[s.status] || [s.status])[0]}${s.until && s.status !== 'ended' ? ` → ${esc(s.until)}` : ''}</span>`).join('');
+          const views = Object.entries(c.totals.views).map(([k, n]) => `${VIEW[k] || k} ${n}`).join(' · ') || '—';
+          const kv = (label, value) => `<div class="kv"><span>${label}</span><b>${value}</b></div>`;
+          return `<article class="card">
+            <div class="head"><h2>${esc(c.name)}<small>${esc(c.airline)}</small></h2><span class="pill ${state[1]}">${state[0]}</span></div>
+            <div class="chips">${products}</div>
+            <div class="grid">
+              ${kv('Son giriş', c.lastSeen ? when(c.lastSeen) : '—')}
+              ${kv('Portal açılışı', `${c.totals.opens} · ${c.totals.activeDays} gün`)}
+              ${kv('Insight analizi', c.totals.analyses)}
+              ${kv('Dışa aktarma', c.totals.exports)}
+            </div>
+            ${bars(c.activity, days)}
+            <div class="grid">
+              ${kv('Baktıkları bölümler', esc(views))}
+              ${kv('Emniyet raporu', `${c.safety.reports} · ${c.safety.open} açık · ${c.safety.recent} yeni`)}
+              ${kv('Eğitim', `${c.academy.crew} ekip · ${c.academy.completions} tamamlama`)}
+              ${kv('Doküman · puan', `${c.library.documents} doküman · ${c.insight.recent} puan`)}
+              ${kv('Bağlantılar', `${c.connections.webhook ? 'webhook var' : 'webhook yok'} · ${c.connections.apiKeys} API anahtarı`)}
+            </div>
+            <p class="hint">${hint(c)}</p>
+          </article>`;
+        }
+
+        async function load() {
+          const code = store.get('crewops-owner-code') || $('code').value.trim();
+          if (!code) return;
+          $('msg').textContent = '';
+          $('list').innerHTML = '<p class="fine">Yükleniyor…</p>';
+          try {
+            const days = $('days').value;
+            const res = await fetch(`${ENDPOINT}/overview?days=${days}`, { headers: { authorization: `Bearer ${code}` } });
+            const body = await res.json().catch(() => ({}));
+            if (res.status === 403 || res.status === 401) { store.set('crewops-owner-code', null); throw new Error('Bu kod sahip kodu değil.'); }
+            if (!res.ok) throw new Error(body.error || `Sunucu ${res.status} döndü.`);
+            store.set('crewops-owner-code', code);
+            $('gate').hidden = true; $('bar').hidden = false; $('tiles').hidden = false;
+            const cs = body.customers;
+            const active = cs.filter((c) => c.lastSeen && daysAgo(c.lastSeen) <= 7).length;
+            const never = cs.filter((c) => !c.lastSeen).length;
+            const trials = cs.filter((c) => Object.values(c.products).some((p) => p.status === 'evaluation')).length;
+            $('tiles').innerHTML = [[cs.length, 'Müşteri'], [trials, 'Denemede'], [active, 'Son 7 günde aktif'], [never, 'Hiç girmedi']].map(([n, l]) => `<div class="tile"><b>${n}</b><span>${l}</span></div>`).join('');
+            $('list').innerHTML = cs.map((c) => card(c, days)).join('') || '<p class="fine">Henüz müşteri yok.</p>';
+            $('stamp').textContent = `Güncellendi ${when(body.at)}`;
+          } catch (e) {
+            $('list').innerHTML = '';
+            $('gate').hidden = false; $('bar').hidden = true; $('tiles').hidden = true;
+            $('msg').textContent = e.message;
+          }
+        }
+        $('open').addEventListener('click', load);
+        $('code').addEventListener('keydown', (e) => { if (e.key === 'Enter') load(); });
+        $('refresh').addEventListener('click', load);
+        $('days').addEventListener('change', load);
+        $('forget').addEventListener('click', () => { store.set('crewops-owner-code', null); location.reload(); });
+        if (store.get('crewops-owner-code')) load();
+      })();
+    </script>
+  </body>
+</html>
