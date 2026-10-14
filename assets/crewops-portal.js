@@ -40,3 +40,38 @@
     }
   });
 })();
+
+// Portal activity (2026-10-14): counts, per airline, that the portal was opened, which
+// product sections were looked at, and how many Insight analyses and exports were run, so
+// we can support a team on trial. Counts only: no roster, file or crew data leaves the page.
+(() => {
+  const ENDPOINT = (window.CREWOPS_PORTAL_ENDPOINT || 'https://updates.hawkmason.com/portal');
+  let code = null;
+  const seen = new Set();
+  const send = (event, product) => {
+    if (!code) return;
+    fetch(`${ENDPOINT}/activity`, { method: 'POST', headers: { authorization: `Bearer ${code}`, 'content-type': 'application/json' }, body: JSON.stringify(product ? { event, product } : { event }), keepalive: true }).catch(() => undefined);
+  };
+  const observer = 'IntersectionObserver' in window ? new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      const id = e.target.id;
+      // A section counts as viewed once a real part of it is on screen (sections are taller than the window).
+      if (!e.isIntersecting || e.intersectionRect.height < Math.min(200, window.innerHeight * 0.4) || e.target.classList.contains('hidden') || seen.has(id)) continue;
+      seen.add(id);
+      send('view', id);
+    }
+  }, { threshold: Array.from({ length: 101 }, (_, i) => i / 100) }) : null;
+  window.addEventListener('crewops-code', (ev) => {
+    const first = !code;
+    code = ev.detail.code;
+    if (first) send('open');
+    if (observer) ['today', 'insight', 'safety', 'academy', 'library', 'connect'].forEach((id) => { const el = document.getElementById(id); if (el) observer.observe(el); });
+  });
+  document.addEventListener('click', (ev) => {
+    const b = ev.target.closest('button');
+    if (!b) return;
+    if (b.id === 'run') send('analyse');
+    else if (['csv', 'print', 'safetyCsv', 'safetyE5x', 'acCsv', 'sdE5x'].includes(b.id)) send('export');
+  }, true);
+})();
+
