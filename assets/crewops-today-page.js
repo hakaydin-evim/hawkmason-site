@@ -36,17 +36,16 @@
     }
   }
 
-  // A line → its product's section, and the record itself where that section can open one.
-  const OPEN = { report: 'crewops-open-report', risk: 'crewops-open-risk', audit: 'crewops-open-audit', change: 'crewops-open-change' };
+  // A line opens its record in the product's own panel (each record has an address there).
+  const PANEL = { insight: '/crewops/insight', safety: '/crewops/portal/safety', academy: '/crewops/portal/academy', library: '/crewops/portal/library' };
+  const HASH = { report: 'r', risk: 'risk', audit: 'audit', change: 'change', course: 'course', notice: 'notice', doc: 'doc', crew: 'crew' };
   $('todayList').addEventListener('click', (ev) => {
     const b = ev.target.closest('.tdi');
     if (!b) return;
     const it = (state.all ? state.items : state.items.slice(0, FIRST))[Number(b.dataset.i)];
     const ref = it.ref || {};
-    const kind = Object.keys(ref).find((k) => OPEN[k]);
-    if (kind) { window.dispatchEvent(new CustomEvent(OPEN[kind], { detail: { id: ref[kind] } })); return; }
-    const section = $(it.product === 'insight' ? 'insight' : it.product);
-    if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const kind = Object.keys(ref).find((k) => HASH[k]);
+    location.href = `${PANEL[it.product] || '/crewops/portal'}${kind ? `#${HASH[kind]}/${encodeURIComponent(ref[kind])}` : ''}`;
   });
   $('todayMore').addEventListener('click', () => { state.all = true; draw(); });
   $('todayRefresh').addEventListener('click', load);

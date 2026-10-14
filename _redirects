@@ -3,7 +3,6 @@
 /eliteloop / 301
 /eliteloop.html / 301
 /crewops/insight /crewops-insight 200
-/crewops/portal /crewops-insight 200
 /crewops/airlines /crewops-airlines 200
 /crewops/safety /crewops-safety 200
 /crewops/academy /crewops-academy 200
@@ -14,3 +13,8 @@
 /crewops/platform /crewops/airlines 301
 /crewops/insight/model-card /crewops-insight-model-card 200
 /crewops/owner /crewops-owner 200
+/crewops/portal /crewops-portal 200
+/crewops/portal/safety /crewops-portal-safety 200
+/crewops/portal/academy /crewops-portal-academy 200
+/crewops/portal/library /crewops-portal-library 200
+/crewops/portal/connect /crewops-portal-connect 200

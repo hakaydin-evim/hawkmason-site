@@ -44,11 +44,11 @@
     drawMatrix();
 
     $('acNotices').innerHTML = `<thead><tr><th>Id</th><th>Type</th><th>Title</th><th>Issued</th><th>Due</th><th>Confirmed</th><th></th></tr></thead><tbody>${state.notices.map((n) => `<tr${n.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(n.id)}</td><td>${esc(NTYPES[n.type] || n.type)}</td><td style="white-space:normal;min-width:240px">${esc(n.title)}</td><td>${esc(n.issuedAt.slice(0, 10))}</td><td>${esc(n.dueDate || '—')}</td><td>${n.acks} / ${o.crew}</td><td>${n.withdrawn ? 'withdrawn' : `<a href="#" data-acks="${esc(n.id)}">who</a> · <a href="#" data-withdraw="${esc(n.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="7" class="fine">No notice yet.</td></tr>'}</tbody>`;
-    $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/notices/${a.dataset.acks}/acks`)).json(); $('acMsg').textContent = `${d.notice.title}: confirmed by ${d.acks.map((x) => `${x.crewCode} (${x.at.slice(0, 10)})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
+    $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); history.pushState(null, '', `#notice/${a.dataset.acks}`); try { const d = await (await api(`/notices/${a.dataset.acks}/acks`)).json(); $('acMsg').textContent = `${d.notice.title}: confirmed by ${d.acks.map((x) => `${x.crewCode} (${x.at.slice(0, 10)})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acNotices').querySelectorAll('a[data-withdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this notice from every phone?')) return; try { await api(`/notices/${a.dataset.withdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
 
     $('acCourses').innerHTML = `<thead><tr><th>Id</th><th>Title</th><th>Type</th><th>Lessons</th><th>Exam</th><th>Due</th><th>Completed</th><th></th></tr></thead><tbody>${state.courses.map((c) => `<tr${c.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(c.id)}</td><td style="white-space:normal;min-width:240px">${esc(c.title)}</td><td>${esc(c.mode || 'required')}</td><td>${c.lessons || 0}</td><td>${c.quiz ? `${c.quiz.questions} q · ${c.quiz.passMark}%` : '—'}</td><td>${esc(c.dueDate || '—')}</td><td>${c.completions} / ${o.crew}</td><td>${c.withdrawn ? 'withdrawn' : `<a href="#" data-done="${esc(c.id)}">who</a> · <a href="#" data-cwithdraw="${esc(c.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="8" class="fine">No course yet.</td></tr>'}</tbody>`;
-    $('acCourses').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); try { const d = await (await api(`/courses/${a.dataset.done}/done`)).json(); $('acMsg').textContent = `${d.course.title}: completed by ${d.done.map((x) => `${x.crewCode} (${x.at.slice(0, 10)}${x.score !== undefined ? ', ' + x.score + '%' : ''}${x.verified ? ', verified' : ''})`).join(', ') || 'nobody yet'}.${(d.attempts || []).filter((a) => !a.passed).length ? ` Not passed yet: ${(d.attempts || []).filter((a) => !a.passed).map((a) => `${a.crewCode} (${a.score}%, attempt ${a.count || 1})`).join(', ')}.` : ''}`; } catch (e) { $('acMsg').textContent = e.message; } }));
+    $('acCourses').querySelectorAll('a[data-done]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); history.pushState(null, '', `#course/${a.dataset.done}`); try { const d = await (await api(`/courses/${a.dataset.done}/done`)).json(); $('acMsg').textContent = `${d.course.title}: completed by ${d.done.map((x) => `${x.crewCode} (${x.at.slice(0, 10)}${x.score !== undefined ? ', ' + x.score + '%' : ''}${x.verified ? ', verified' : ''})`).join(', ') || 'nobody yet'}.${(d.attempts || []).filter((a) => !a.passed).length ? ` Not passed yet: ${(d.attempts || []).filter((a) => !a.passed).map((a) => `${a.crewCode} (${a.score}%, attempt ${a.count || 1})`).join(', ')}.` : ''}`; } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acCourses').querySelectorAll('a[data-cwithdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this course?')) return; try { await api(`/courses/${a.dataset.cwithdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
 
     $('acRecords').innerHTML = `<thead><tr><th>Crew</th><th>Role</th><th>Items</th><th>Nearest expiry</th><th>Phone</th><th></th></tr></thead><tbody>${state.records.map((r) => { const exps = (r.items || []).map((i) => i.expires).filter(Boolean).sort(); return `<tr><td>${esc(r.crewCode)}</td><td>${esc(r.role || '')}</td><td>${(r.items || []).length}</td><td>${esc(exps[0] || '—')}</td><td>${r.paired ? 'paired' : '—'}</td><td>${r.paired ? `<a href="#" data-unbind="${esc(r.crewCode)}">reset pairing</a>` : ''}</td></tr>`; }).join('') || '<tr><td colspan="6" class="fine">No records yet. Upload a CSV below.</td></tr>'}</tbody>`;
@@ -249,12 +249,20 @@
   $('acRefresh').addEventListener('click', load);
   $('acCsv').addEventListener('click', async () => { try { const csv = await (await api('/export.csv')).text(); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = `crewops-academy-${new Date().toISOString().slice(0, 10)}.csv`; a.click(); } catch (e) { $('acMsg').textContent = e.message; } });
 
+  // The address names a course or notice (#course/<id>, #notice/<id>): its "who" list opens.
+  function fromHash() {
+    const m = /^#(course|notice)\/([A-Z0-9-]{6,40})$/.exec(location.hash);
+    if (!m) return;
+    const a = document.querySelector(m[1] === 'course' ? `a[data-done="${m[2]}"]` : `a[data-acks="${m[2]}"]`);
+    if (a) { a.click(); a.closest('tr').scrollIntoView({ block: 'center' }); }
+  }
+  window.addEventListener('popstate', fromHash);
   window.addEventListener('crewops-code', (ev) => {
     const { code, licence } = ev.detail;
     if (!licence.ops || !(licence.products || []).includes('academy')) { $('academy').classList.add('hidden'); return; }
     state.code = code;
     state.airline = licence.airline;
     $('academy').classList.remove('hidden');
-    load();
+    load().then(fromHash);
   });
 })();

@@ -3,14 +3,15 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops operator portal · Crewops Aviation Platform</title>
-    <meta name="description" content="Your airline's workspace: sign in with the operator code for roster fatigue analysis, safety reports, training records and controlled documents. Try Insight on a sample roster." />
-    <link rel="canonical" href="https://hawkmason.com/crewops/portal" />
-    <meta property="og:title" content="Crewops Aviation Platform — operator portal" />
-    <meta property="og:description" content="One operator code per airline opens the products it holds: roster fatigue analysis (Insight), safety reports, training records and controlled documents." />
+    <title>Crewops Insight · roster fatigue assessment</title>
+    <meta name="description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown. Licensed per operator; sample roster without a code." />
+    <link rel="canonical" href="https://hawkmason.com/crewops/insight" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="Crewops Insight · roster fatigue assessment" />
+    <meta property="og:description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown. Licensed per operator; sample roster without a code." />
     <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta property="og:url" content="https://hawkmason.com/crewops/portal" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/insight" />
     <meta property="og:type" content="website" />
     <script type="application/ld+json">
 {
@@ -157,45 +158,47 @@
       .tdi .t b { font-weight:600 } .tdi .t span { display:block; color:var(--soft); font-size:12px; overflow-wrap:anywhere }
       .tdi .d { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); white-space:nowrap }
       @media (max-width:620px) { .tdi { grid-template-columns:auto 1fr; } .tdi .p { grid-column:2; grid-row:1 } .tdi .t { grid-column:1 / -1 } .tdi .d { grid-column:1 / -1 } }
+      .pbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:10px 0 12px; border-bottom:1px solid var(--line); margin-bottom:22px }
+      .pbar-brand { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--cy); text-decoration:none; white-space:nowrap }
+      .pbar-brand span { color:var(--faint) }
+      .pbar-nav { display:flex; gap:4px; flex-wrap:wrap; flex:1 }
+      .pbar-nav a { color:var(--soft); text-decoration:none; font-size:13px; padding:6px 10px; border-radius:999px; border:1px solid transparent }
+      .pbar-nav a[aria-current] { color:var(--ink); border-color:var(--cy) }
+      .pbar-nav a.off { opacity:.45 }
+      .pbar-nav a.gone { display:none }
+      .pbar-who { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); display:flex; gap:10px; align-items:center }
+      .pbar-who button { background:none; border:0; color:var(--cy); font:inherit; padding:0; cursor:pointer; letter-spacing:1px }
+      .pbar-badge { display:inline-block; min-width:18px; padding:1px 6px; border-radius:999px; background:#3a1414; color:var(--bad); font-size:10px; text-align:center; margin-left:4px }
+      #noAccess { border-left:3px solid var(--risk) }
       @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
     </style>
   </head>
-  <body>
+  <body data-panel="insight">
     <main class="wrap">
-      <div class="eyebrow">Crewops Aviation Platform · operator portal</div>
-      <h1>Your airline's workspace</h1>
-      <p class="lead">Where your departments work with what your crews send from the Crewops app. Sign in with your airline's operator code: the products your airline holds open below. Fatigue (Crewops Insight), safety reports (Crewops Safety), training records (Crewops Academy) and controlled documents (Crewops Library).</p>
-      <div class="bar"></div>
-
+      <header class="pbar" id="pbar">
+        <a class="pbar-brand" href="/crewops/portal">Crewops <span>· operator portal</span></a>
+        <nav class="pbar-nav" aria-label="Portal">
+          <a href="/crewops/portal" data-panel="hub">Today</a>
+          <a href="/crewops/insight" data-panel="insight">Insight</a>
+          <a href="/crewops/portal/safety" data-panel="safety">Safety</a>
+          <a href="/crewops/portal/academy" data-panel="academy">Academy</a>
+          <a href="/crewops/portal/library" data-panel="library">Library</a>
+          <a href="/crewops/portal/connect" data-panel="connect">Connections</a>
+        </nav>
+        <div class="pbar-who"><span id="pbarAirline"></span><button id="signOut" hidden>SIGN OUT</button></div>
+      </header>
+      <div class="card hidden" id="noAccess" style="margin-bottom:16px"><h3>NOT IN YOUR LICENCE</h3><p class="fine" id="noAccessText" style="margin:0"></p></div>
+      
       <div class="card" id="access" style="margin-bottom:16px">
         <h3>ACCESS</h3>
         <div class="row">
           <label class="f" style="flex:1;min-width:260px">Operator code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
-          <button class="ghost" id="codeBtn">UNLOCK</button>
+          <button class="ghost" id="codeBtn">SIGN IN</button>
           <button class="ghost" id="sampleBtn">TRY INSIGHT ON A SAMPLE ROSTER</button>
         </div>
         <p class="fine" id="accessNote" style="margin:10px 0 0">Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.</p>
         <p class="fine" style="margin:6px 0 0">We count how your airline uses this portal (when it is opened, which product, how many analyses and exports) to support your team. Rosters, files and crew data are not sent.</p>
       </div>
-      <nav class="modbar" id="modbar" aria-label="Products">
-        <a class="mod" href="#insight" data-mod="insight"><b>Fatigue</b><span>Crewops Insight</span><i data-state>Sign in, or try the sample</i></a>
-        <a class="mod" href="#safety" data-mod="safety"><b>Safety</b><span>Crewops Safety</span><i data-state>Sign in to open</i></a>
-        <a class="mod" href="#academy" data-mod="academy"><b>Training</b><span>Crewops Academy</span><i data-state>Sign in to open</i></a>
-        <a class="mod" href="#library" data-mod="library"><b>Documents</b><span>Crewops Library</span><i data-state>Sign in to open</i></a>
-      </nav>
-
-      <section id="today" class="hidden" aria-labelledby="todayTitle">
-        <div class="card" style="margin-top:16px">
-          <div class="row" style="justify-content:space-between;align-items:center">
-            <h3 id="todayTitle" style="margin:0">TODAY · WHAT NEEDS ACTION</h3>
-            <div class="row" style="gap:8px" id="todayCounts"></div>
-          </div>
-          <p class="fine" style="margin:6px 0 10px">Across the products your airline holds: safety clocks and overdue actions, expired training, unconfirmed revisions, crew who rated themselves very tired. Click a line to open it.</p>
-          <div class="today" id="todayList"><p class="fine">Loading…</p></div>
-          <div class="row" style="margin-top:10px"><button class="ghost" id="todayMore" hidden>SHOW ALL</button><button class="ghost" id="todayRefresh">REFRESH</button></div>
-        </div>
-      </section>
-
       <section id="insight">
       <div class="bar" style="margin-top:28px"></div>
       <div class="eyebrow">Crewops Insight · fatigue risk assessment of a roster</div>
@@ -267,207 +270,9 @@
       </section>
       </section>
 
-      <section id="safety" class="hidden">
-        <div class="bar" style="margin-top:40px"></div>
-        <div class="eyebrow">Crewops Safety · the operator's workspace</div>
-        <h2 style="margin-top:8px">Safety office</h2>
-        <p class="fine" style="max-width:80ch">Reports your crews send from the Crewops app, with the flight, aircraft, stations and duty times filled in from their roster. Classify, act and reply here; the reply goes back to the reporter's phone. The 72-hour clock is Regulation (EU) 376/2014 Art. 4(8): a reportable occurrence reaches the authority within 72 hours; mark a report "not reportable" to stop it. The E5X file is the ECCAIRS format: upload it to the ECCAIRS 2 reporting portal or your authority's ECCAIRS system and complete the operator, aircraft model and aerodrome there. The CSV follows the Annex I fields. Both are exports; the submission stays yours.</p>
-        <nav class="subtabs" id="sfTabs" aria-label="Safety office">
-          <button class="subtab on" data-tab="sfReports">REPORTS</button>
-          <button class="subtab" data-tab="sfRisks">RISK REGISTER</button>
-          <button class="subtab" data-tab="sfAudits">AUDITS &amp; FINDINGS</button>
-          <button class="subtab" data-tab="sfChanges">MANAGEMENT OF CHANGE</button>
-          <button class="subtab" data-tab="sfKpi">INDICATORS</button>
-        </nav>
-        <div id="sfReports">
-        <div class="tiles" id="safetyTiles"></div>
-        <div class="row" style="margin:0 0 12px"><button class="ghost" id="safetyRefresh">REFRESH</button><button class="ghost" id="safetyCsv">EXPORT CSV · ECCAIRS FIELDS</button><button class="ghost" id="safetyE5x" title="Every report marked mandatory reportable, as one E5X file">E5X · REPORTABLE</button><span class="fine" id="safetyMsg"></span></div>
-        <div class="tablewrap"><table id="safetyTable"></table></div>
-        <div id="safetyDetail" class="card hidden" style="margin-top:16px"></div>
-        <div class="card" style="margin-top:16px">
-          <h3>WEB REPORT LINK · FOR CREWS WITHOUT THE APP</h3>
-          <p class="fine" style="margin:0 0 10px">Share it on your own channels (crew portal, e-mail, a QR code in the crew room). Reports sent through it arrive here like app reports, marked "web". A new link stops the old one.</p>
-          <div class="row"><input type="text" id="wlUrl" readonly style="flex:1;min-width:260px" aria-label="Web report link" /><button class="ghost" id="wlCopy">COPY</button><button class="ghost" id="wlOpen">OPEN</button><button class="ghost" id="wlRotate">NEW LINK</button></div>
-          <p class="msg" id="wlMsg"></p>
-        </div>
-        </div>
-        <div id="sfRisks" class="hidden">
-          <p class="fine" style="max-width:80ch">The hazard and risk register (ICAO Doc 9859 5×5: probability 1–5 × severity A–E). Initial and residual risk, mitigations with owner and due date, the reports a risk came from, and a review date. Open a report and press <b>ADD TO RISK REGISTER</b> to start from it.</p>
-          <div class="row" style="align-items:flex-start;gap:24px"><div id="rkMatrix"></div><div class="tiles" id="rkTiles" style="flex:1"></div></div>
-          <div class="tablewrap"><table id="rkTable"></table></div>
-          <div id="rkDetail" class="card hidden" style="margin-top:16px"></div>
-          <div class="card" style="margin-top:16px"><h3>NEW RISK</h3>
-            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="rkTitle" placeholder="e.g. Lithium battery fires in the cabin" /></label><label class="f">Area<input type="text" id="rkArea" placeholder="Cabin, Flight ops…" /></label><label class="f">Owner<input type="text" id="rkOwner" placeholder="Person or unit" /></label></div>
-            <div class="row"><label class="f" style="flex:1;min-width:240px">Hazard · what could happen and why<textarea id="rkHazard"></textarea></label></div>
-            <div class="row"><label class="f">Probability<select id="rkP"><option value="5">5 · frequent</option><option value="4">4 · occasional</option><option value="3" selected>3 · remote</option><option value="2">2 · improbable</option><option value="1">1 · extremely improbable</option></select></label><label class="f">Severity<select id="rkS"><option value="A">A · catastrophic</option><option value="B">B · hazardous</option><option value="C" selected>C · major</option><option value="D">D · minor</option><option value="E">E · negligible</option></select></label><label class="f">Review date<input type="text" id="rkReview" placeholder="YYYY-MM-DD" /></label><label class="f">From report<input type="text" id="rkSource" placeholder="report number, optional" /></label></div>
-            <div class="row" style="margin-top:8px"><button id="rkCreate">ADD RISK</button><span class="fine" id="rkMsg"></span></div>
-          </div>
-        </div>
-        <div id="sfAudits" class="hidden">
-          <p class="fine" style="max-width:80ch">Audits and inspections with their findings (level 1, level 2, observation per ORO.GEN.150): corrective action plan, owner, due date, closure with evidence.</p>
-          <div class="tiles" id="auTiles"></div>
-          <div class="tablewrap"><table id="auTable"></table></div>
-          <div id="auDetail" class="card hidden" style="margin-top:16px"></div>
-          <div class="card" style="margin-top:16px"><h3>NEW AUDIT OR INSPECTION</h3>
-            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="auTitle" placeholder="e.g. Ramp safety inspection AYT" /></label><label class="f">Kind<select id="auKind"><option value="internal">internal</option><option value="external">external</option><option value="authority">authority</option><option value="supplier">supplier</option></select></label><label class="f">Area<input type="text" id="auArea" placeholder="Ground ops…" /></label><label class="f">Date<input type="text" id="auDate" placeholder="YYYY-MM-DD" /></label><label class="f">Auditor<input type="text" id="auAuditor" /></label></div>
-            <div class="row"><label class="f" style="flex:1;min-width:240px">Scope<textarea id="auScope"></textarea></label></div>
-            <div class="row" style="margin-top:8px"><button id="auCreate">ADD AUDIT</button><span class="fine" id="auMsg"></span></div>
-          </div>
-        </div>
-        <div id="sfChanges" class="hidden">
-          <p class="fine" style="max-width:80ch">Management of change (ORO.GEN.200): what changes, the hazards it brings, the risks it links to in the register, the decision and the review after it is in place.</p>
-          <div class="tablewrap"><table id="chTable"></table></div>
-          <div id="chDetail" class="card hidden" style="margin-top:16px"></div>
-          <div class="card" style="margin-top:16px"><h3>NEW CHANGE</h3>
-            <div class="row"><label class="f" style="flex:2;min-width:240px">Title<input type="text" id="chTitle" placeholder="e.g. New route to KRK" /></label><label class="f">Kind<select id="chKind"><option value="organisation">organisation</option><option value="procedure">procedure</option><option value="equipment">equipment</option><option value="fleet">fleet</option><option value="route">route</option><option value="system">system</option><option value="supplier">supplier</option><option value="other">other</option></select></label><label class="f">Owner<input type="text" id="chOwner" /></label><label class="f">Planned for<input type="text" id="chDate" placeholder="YYYY-MM-DD" /></label></div>
-            <div class="row"><label class="f" style="flex:1;min-width:240px">What changes<textarea id="chDesc"></textarea></label><label class="f" style="flex:1;min-width:240px">Hazards it brings<textarea id="chHaz"></textarea></label></div>
-            <div class="row" style="margin-top:8px"><button id="chCreate">ADD CHANGE</button><span class="fine" id="chMsg"></span></div>
-          </div>
-        </div>
-        <div id="sfKpi" class="hidden">
-          <p class="fine" style="max-width:80ch">Safety performance indicators from your own records: reports per month, by kind, time to close, replies, open and overdue actions, the risk picture and open findings.</p>
-          <div class="tiles" id="kpiTiles"></div>
-          <div id="kpiMonths" style="margin-top:12px"></div>
-          <div class="tablewrap" style="margin-top:12px"><table id="kpiKinds"></table></div>
-        </div>
-      </section>
-
-      <section id="academy" class="hidden">
-        <div class="bar" style="margin-top:40px"></div>
-        <div class="eyebrow">Crewops Academy · the training department's workspace</div>
-        <h2 style="margin-top:8px">Training &amp; qualifications</h2>
-        <p class="fine" style="max-width:80ch">Read-and-sign notices land on every crew phone and come back confirmed, one tap each. Qualification records (OPC, line check, SEP, DG, CRM, cabin recurrent…) are uploaded as a CSV and shown to each crew member as their own; the validity periods follow ORO.FC.230 / ORO.CC.140 as your department sets them. Courses are assigned with a due date and a link; completion comes back from the phone for your department to verify. Records are kept for the periods of ORO.MLR.115.</p>
-        <div class="tiles" id="acTiles"></div>
-        <div class="row" style="margin:0 0 12px"><button class="ghost" id="acRefresh">REFRESH</button><button class="ghost" id="acCsv">EXPORT RECORDS CSV</button><label class="f">Signed by<input type="text" id="acBy" placeholder="Your name or unit" /></label><span class="fine" id="acMsg"></span></div>
-        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">EXPIRED AND EXPIRING · 30 DAYS</h3>
-        <div class="tablewrap"><table id="acExpiry"></table></div>
-        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">QUALIFICATION MATRIX · WHO HOLDS WHAT, UNTIL WHEN</h3>
-        <div class="row" style="margin:0 0 8px;align-items:center"><nav class="subtabs" id="qmRole" style="margin:0"><button class="subtab on" data-role="">ALL</button><button class="subtab" data-role="cockpit">FLIGHT CREW</button><button class="subtab" data-role="cabin">CABIN CREW</button></nav><span class="fine"><span class="pill bad">expired / missing</span> <span class="pill warn">≤ 30 days</span> <span class="pill ok">valid</span> · blank: not required</span></div>
-        <div class="tablewrap"><table id="acMatrix"></table></div>
-        <details style="margin-top:10px"><summary class="fine" style="cursor:pointer">What each role must hold · edit</summary><div id="qmReq" style="margin-top:8px"></div><div class="row" style="margin-top:8px"><button class="ghost" id="qmSave">SAVE REQUIREMENTS</button><span class="fine" id="qmMsg"></span></div></details>
-        <div class="grid" style="margin-top:18px">
-          <div class="card">
-            <h3>PUBLISH A NOTICE · READ AND SIGN</h3>
-            <div class="row">
-              <label class="f">Type<select id="acNType"><option value="crew_notice">Crew notice</option><option value="safety_bulletin">Safety bulletin</option><option value="safety_memo">Safety memo</option><option value="coordination_sheet">Coordination sheet</option><option value="security_notice">Security notice</option><option value="information">Information</option><option value="training_document">Training document</option><option value="revision">Revision</option></select></label>
-              <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acNTitle" /></label>
-            </div>
-            <label class="f" style="margin-top:8px">Text · shown on the phone<textarea id="acNBody"></textarea></label>
-            <div class="row" style="margin-top:8px">
-              <label class="f" style="flex:1;min-width:200px">Document link · https, optional<input type="text" id="acNUrl" placeholder="https://…" /></label>
-              <label class="f">Due<input type="text" id="acNDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
-              <label class="f">Minutes<input type="text" id="acNMin" placeholder="5" style="width:70px" /></label>
-              <label class="f">Audience<input type="text" id="acNAud" placeholder="all · cockpit · cabin · codes" /></label>
-            </div>
-            <div class="row" style="margin-top:12px"><button id="acNoticeBtn">PUBLISH</button></div>
-          </div>
-          <div class="card">
-            <h3>BUILD A COURSE · LESSONS AND EXAM</h3>
-            <div class="row">
-              <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acCTitle" /></label>
-              <label class="f">Type<select id="acCMode"><option value="required">required · with a due date</option><option value="self">self-study · offered</option></select></label>
-              <label class="f">Counts as<select id="acCKind"><option value="">—</option><option value="sep">SEP</option><option value="dg">Dangerous goods</option><option value="crm">CRM</option><option value="first_aid">First aid</option><option value="recurrent_cabin">Cabin recurrent</option><option value="other">Other</option></select></label>
-            </div>
-            <div class="row" style="margin-top:8px">
-              <label class="f">Due<input type="text" id="acCDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
-              <label class="f">Minutes<input type="text" id="acCMin" placeholder="60" style="width:70px" /></label>
-              <label class="f">Audience<input type="text" id="acCAud" placeholder="all · cockpit · cabin · codes" /></label>
-              <label class="f" style="flex:1;min-width:200px">Or one course link · https<input type="text" id="acCUrl" placeholder="https://…" /></label>
-            </div>
-            <h3 style="margin-top:14px">LESSONS</h3>
-            <ul class="tl" id="acLessons"><li class="fine">No lesson yet.</li></ul>
-            <div class="row" style="margin-top:8px">
-              <label class="f" style="flex:1;min-width:200px">Lesson title<input type="text" id="acLTitle" /></label>
-              <label class="f">Minutes<input type="text" id="acLMin" style="width:70px" /></label>
-              <label class="f" style="min-width:220px">Upload video (MP4), PDF or a SCORM package (.zip) · up to 95 MB<input type="file" id="acLFile" accept="video/mp4,application/pdf,application/zip,.zip" /></label>
-              <label class="f" style="flex:1;min-width:200px">or a link · https<input type="text" id="acLUrl" placeholder="https://…" /></label>
-              <button class="ghost" id="acLAdd">ADD LESSON</button>
-            </div>
-            <h3 style="margin-top:14px">EXAM · OPTIONAL · GRADED ON THE SERVER</h3>
-            <ul class="tl" id="acQuestions"><li class="fine">No question: the crew member confirms completion and you verify it.</li></ul>
-            <div class="row" style="margin-top:8px">
-              <label class="f" style="flex:2;min-width:240px">Question<input type="text" id="acQText" /></label>
-              <label class="f" style="flex:2;min-width:240px">Options · one per line, the right one starts with *<textarea id="acQOpts" placeholder="Fire containment bag&#10;*Water, then the bag&#10;Nothing"></textarea></label>
-              <button class="ghost" id="acQAdd">ADD QUESTION</button>
-              <label class="f">Pass mark %<input type="text" id="acQPass" value="75" style="width:70px" /></label>
-            </div>
-            <div class="row" style="margin-top:12px"><button id="acCourseBtn">PUBLISH COURSE</button><span class="fine" id="acCMsg"></span></div>
-          </div>
-          <div class="card">
-            <h3>QUALIFICATION RECORDS · CSV</h3>
-            <p class="fine">Columns: <code>crew_code, role, name, kind, label, issued, expires, note</code>, one row per item; a crew code's rows replace its record. Kinds: opc, lpc, line_check, sep, dg, crm, first_aid, route_competence, aerodrome_competence, recurrent_cabin, triennial_cabin, medical, licence, other.</p>
-            <label class="drop">Drop the CSV here, or click to choose<input type="file" id="acCsvFile" accept=".csv,text/csv" /></label>
-          </div>
-        </div>
-        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">NOTICES</h3>
-        <div class="tablewrap"><table id="acNotices"></table></div>
-        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">COURSES</h3>
-        <div class="tablewrap"><table id="acCourses"></table></div>
-        <h3 style="font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:var(--cy);font-weight:500;margin:18px 0 6px">CREW RECORDS</h3>
-        <div class="tablewrap"><table id="acRecords"></table></div>
-      </section>
-
-      <section id="library" class="hidden">
-        <div class="bar" style="margin-top:40px"></div>
-        <div class="eyebrow">Crewops Library · the documentation office's workspace</div>
-        <h2 style="margin-top:8px">Controlled documents</h2>
-        <p class="fine" style="max-width:80ch">Manuals, procedures, bulletins and forms on every crew phone, current revision only. Publish a document once under its code (OM-A, CCM…); each new revision replaces the one on the phones, keeps the history here and removes the old offline copy. Mark a revision "read and confirm" and see who has confirmed it. The file stays on your own file host (an https link); the app downloads it once for offline reading.</p>
-        <div class="tiles" id="lbTiles"></div>
-        <div class="row" style="margin:0 0 12px"><button class="ghost" id="lbRefresh">REFRESH</button><label class="f">Signed by<input type="text" id="lbBy" placeholder="Your name or unit" /></label><span class="fine" id="lbMsg"></span></div>
-        <div class="tablewrap"><table id="lbTable"></table></div>
-        <div class="card" style="margin-top:16px">
-          <h3>PUBLISH A DOCUMENT OR A NEW REVISION</h3>
-          <div class="row">
-            <label class="f">Code<input type="text" id="lbCode" placeholder="OM-A" style="width:120px;text-transform:uppercase" /></label>
-            <label class="f" style="flex:1;min-width:220px">Title<input type="text" id="lbTitle" placeholder="Operations Manual Part A" /></label>
-            <label class="f">Type<select id="lbType"><option value="manual">Manual</option><option value="procedure">Procedure</option><option value="policy">Policy</option><option value="bulletin">Bulletin</option><option value="form">Form</option><option value="checklist">Checklist</option><option value="regulation">Regulation</option><option value="certificate">Certificate</option><option value="other">Other</option></select></label>
-            <label class="f">Category<select id="lbCat"><option value="operations">Flight operations</option><option value="cabin">Cabin</option><option value="training">Training</option><option value="safety">Safety</option><option value="security">Security</option><option value="ground">Ground operations</option><option value="technical">Technical</option><option value="regulation">Regulation</option><option value="company">Company</option><option value="other">Other</option></select></label>
-            <label class="f">Owner<input type="text" id="lbOwner" placeholder="Department" /></label>
-          </div>
-          <div class="row" style="margin-top:8px">
-            <label class="f">Revision<input type="text" id="lbRev" placeholder="38.01" style="width:100px" /></label>
-            <label class="f">Revision date<input type="text" id="lbRevDate" placeholder="YYYY-MM-DD" style="width:130px" /></label>
-            <label class="f">Effective<input type="text" id="lbEff" placeholder="YYYY-MM-DD" style="width:130px" /></label>
-            <label class="f" style="flex:1;min-width:220px">File link · https<input type="text" id="lbUrl" placeholder="https://…/OM-A-rev38.01.pdf" /></label>
-            <label class="f" style="min-width:220px">Or upload the PDF · up to 60 MB<input type="file" id="lbFile" accept="application/pdf" /></label>
-            <label class="f">Pages<input type="text" id="lbPages" style="width:70px" /></label>
-            <label class="f">Audience<input type="text" id="lbAud" placeholder="all · cockpit · cabin · codes" /></label>
-          </div>
-          <label class="f" style="margin-top:8px">Change log · what changed in this revision<textarea id="lbLog"></textarea></label>
-          <div class="row" style="margin-top:8px;align-items:center">
-            <label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="lbApproved" /> Approved by the authority</label>
-            <label class="f" style="flex-direction:row;align-items:center;gap:8px"><input type="checkbox" id="lbAck" /> Crew must read and confirm</label>
-            <label class="f">Confirm by<input type="text" id="lbAckDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
-          </div>
-          <div class="row" style="margin-top:12px"><button id="lbPublish">PUBLISH</button></div>
-        </div>
-      </section>
-
-      <section id="connect" class="hidden">
-        <div class="bar" style="margin-top:40px"></div>
-        <div class="eyebrow">Crewops Aviation Platform · connections</div>
-        <h2 style="margin-top:8px">Connect your own systems</h2>
-        <p class="fine" style="max-width:80ch">A webhook sends each event to your system the moment it happens: a new safety report into your SMS, a completed course into your training records, a confirmed revision into your document system. Every delivery is signed (header <code>x-crewops-signature: t=…,v1=…</code>, HMAC-SHA256 of <code>t.body</code> with your secret). One try, 5 seconds; the last 20 deliveries are listed below. Your data also leaves as CSV from each product.</p>
-        <div class="card">
-          <label class="f">Your endpoint (https)<input type="text" id="whUrl" placeholder="https://sms.your-airline.example/crewops" /></label>
-          <div id="whEvents" style="margin:10px 0"></div>
-          <div class="row"><button id="whSave">SAVE</button><button class="ghost" id="whTest" disabled>SEND A TEST</button><button class="ghost" id="whRotate" disabled>NEW SECRET</button><button class="ghost" id="whDelete" disabled>REMOVE</button></div>
-          <p class="msg" id="whMsg"></p>
-          <div id="whSecret" class="note hidden" style="margin-top:10px"></div>
-          <div class="tablewrap" style="margin-top:12px"><table id="whLog"></table></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <h3>API KEYS · FOR YOUR OWN SYSTEMS</h3>
-          <p class="fine" style="margin:0 0 10px">A key reads and writes what this operator code opens (same products, same expiry), for one system at a time: your SMS, HR or training system, your document system. Revoke a key without touching the others or your code. Every endpoint is described on the <a href="/crewops/api" target="_blank" rel="noopener">API reference</a>.</p>
-          <div class="row"><label class="f" style="flex:1;min-width:220px">Which system uses it<input type="text" id="kyName" placeholder="e.g. SMS integration" /></label><button id="kyMake">MAKE A KEY</button></div>
-          <p class="msg" id="kyMsg"></p>
-          <div id="kySecret" class="note hidden" style="margin-top:10px"></div>
-          <div class="tablewrap" style="margin-top:12px"><table id="kyList"></table></div>
-        </div>
-      </section>
-
-      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops">Crewops for crew</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
+      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/portal">Today</a> · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
+    
     <script type="module">
       import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs';
       pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs';
@@ -476,13 +281,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="/assets/crewops-insight.js"></script>
     <script src="/assets/crewops-insight-page.js"></script>
-    <script src="/assets/crewops-safety-taxonomy.js"></script>
-    <script src="/assets/crewops-safety-page.js"></script>
-    <script src="/assets/crewops-safety-office-page.js"></script>
-    <script src="/assets/crewops-academy-page.js"></script>
-    <script src="/assets/crewops-library-page.js"></script>
-    <script src="/assets/crewops-portal.js"></script>
-    <script src="/assets/crewops-today-page.js"></script>
-    <script src="/assets/crewops-connect-page.js"></script>
+    <script src="/assets/crewops-session.js"></script>
   </body>
 </html>

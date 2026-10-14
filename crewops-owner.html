@@ -127,6 +127,7 @@
               ${kv('Doküman · puan', `${c.library.documents} doküman · ${c.insight.recent} puan`)}
               ${kv('Bağlantılar', `${c.connections.webhook ? 'webhook var' : 'webhook yok'} · ${c.connections.apiKeys} API anahtarı`)}
             </div>
+            ${c.codes && c.codes.length ? `<div class="kv" style="margin-top:12px"><span>Verilen kodlar</span></div><div class="chips">${c.codes.map((k) => `<span class="pill ${k.valid ? (k.role === 'ops' ? 'p-ok' : 'p-mute') : 'p-bad'}" title="verildi ${esc(k.issued)}">${k.role === 'ops' ? 'operatör' : 'ekip'} · ${(k.products || []).map((p) => PRODUCT[p] || p).join(', ')} · ${esc(k.expires)}${k.valid ? '' : ' · süresi doldu'}</span>`).join('')}</div>` : ''}
             <p class="hint">${hint(c)}</p>
           </article>`;
         }

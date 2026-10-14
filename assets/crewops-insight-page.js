@@ -22,11 +22,9 @@
       ? `Signed in: <b>${lic.name}</b>, until ${lic.exp}. Products: ${(lic.products || ['insight']).map((x) => names[x] || x).join(', ')}.${unlocked ? ' Roster files are read in this browser; nothing is uploaded.' : ''}${lic.ops ? '' : ' This is a crew code: it opens the analysis only; reports, training and documents need the operator code.'}`
       : 'One operator code per airline opens the products it holds. Not a customer yet? Try Crewops Insight on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Aviation%20Platform%3A%20operator%20access">ask for a trial</a>.';
   }
-  $('codeBtn').addEventListener('click', () => {
-    const r = CrewopsInsight.checkCode($('code').value);
-    if (r.ok) { try { localStorage.setItem('crewops-insight-code', $('code').value.trim()); } catch (e) {} state.evaluation = false; state.code = $('code').value.trim(); setAccess(r); $('msg').textContent = ''; window.dispatchEvent(new CustomEvent('crewops-code', { detail: { code: state.code, licence: r } })); }
-    else $('msg').textContent = r.reason === 'expired' ? 'This code has run out. Ask for a renewed one.' : r.reason === 'none' ? 'Paste the whole code.' : 'This code was not issued by Crewops.';
-  });
+  // Sign-in lives in crewops-session.js (shared by every portal page); this page only reacts.
+  window.addEventListener('crewops-code', (ev) => { state.evaluation = false; state.code = ev.detail.code; setAccess(ev.detail.licence); });
+  window.addEventListener('crewops-nocode', () => setAccess(null));
   $('sampleBtn').addEventListener('click', async () => {
     try {
       const text = await (await fetch('/crewops-sample-roster.ics')).text();
@@ -38,7 +36,6 @@
       $('run').click();
     } catch (e) { $('msg').textContent = 'Could not load the sample roster.'; }
   });
-  try { const saved = localStorage.getItem('crewops-insight-code'); if (saved) { const r = CrewopsInsight.checkCode(saved); if (r.ok) { $('code').value = saved; state.code = saved; setAccess(r); window.dispatchEvent(new CustomEvent('crewops-code', { detail: { code: saved, licence: r } })); } else setAccess(null); } else setAccess(null); } catch (e) { setAccess(null); }
 
   async function pdfPages(file) {
     const pdfjs = window.__pdfjs;

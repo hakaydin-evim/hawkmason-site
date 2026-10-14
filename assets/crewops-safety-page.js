@@ -94,6 +94,7 @@
 
   async function open(id) {
     state.open = id;
+    if (location.hash !== `#r/${id}`) history.pushState(null, '', `#r/${id}`);
     drawTable();
     const box = $('safetyDetail');
     box.classList.remove('hidden');
@@ -162,7 +163,7 @@
       <div class="row" style="margin-top:14px"><button id="sdSave">SAVE</button><button class="ghost" id="sdE5x" title="ECCAIRS E5X file for the ECCAIRS 2 reporting portal or your authority">DOWNLOAD E5X</button><span class="fine" id="sdMsg"></span></div>
       <h3 style="margin-top:18px">TIMELINE</h3>
       <ul class="tl">${(r.timeline || []).map((e) => `<li><b>${esc(kindText[e.kind] || e.kind)}${e.status ? ` → ${esc(e.status)}` : ''}</b> · ${esc(e.at.slice(0, 16).replace('T', ' '))} UTC${e.by ? ` · ${esc(e.by)}` : ''}${e.text ? `<br />${esc(e.text)}` : ''}</li>`).join('')}</ul>`;
-    $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); });
+    $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); if (/^#r\//.test(location.hash)) history.pushState(null, '', location.pathname); });
     $('sdSave').addEventListener('click', save);
     $('sdE5x').addEventListener('click', () => download(`/reports/${encodeURIComponent(r.id)}/e5x`, `${r.id}.e5x`, $('sdMsg')));
     // Photos are served only with the operator code: fetched with it, shown from memory.
@@ -278,6 +279,14 @@
   $('wlOpen').addEventListener('click', () => { if ($('wlUrl').value) window.open($('wlUrl').value, '_blank', 'noopener'); });
   $('wlRotate').addEventListener('click', () => { if (confirm('Make a new link? The current link stops working for everyone who has it.')) weblink(true); });
 
+  // The address names the record: #r/<id> opens a report, #tab/<id> an office tab.
+  function fromHash() {
+    const m = /^#r\/([A-Z0-9]{2,4}-\d{6}-[A-Z0-9]{5})$/.exec(location.hash);
+    if (m) { window.dispatchEvent(new CustomEvent('crewops-safety-tab', { detail: { tab: 'sfReports' } })); open(m[1]); }
+    else if (state.open && !location.hash) { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); }
+  }
+  window.addEventListener('popstate', fromHash);
+
   window.addEventListener('crewops-open-report', (ev) => { window.dispatchEvent(new CustomEvent('crewops-safety-tab', { detail: { tab: 'sfReports' } })); open(ev.detail.id); });
 
   window.addEventListener('crewops-code', (ev) => {
@@ -285,7 +294,7 @@
     if (!licence.ops || !(licence.products || []).includes('safety')) { $('safety').classList.add('hidden'); return; }
     state.code = code;
     $('safety').classList.remove('hidden');
-    load();
+    load().then(fromHash);
     weblink(false);
   });
 })();

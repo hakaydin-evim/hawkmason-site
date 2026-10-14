@@ -23,13 +23,24 @@
     $('sfTabs').querySelectorAll('.subtab').forEach((b) => b.classList.toggle('on', b.dataset.tab === tab));
     if (tab === 'sfKpi') drawKpi();
   }
-  $('sfTabs').addEventListener('click', (ev) => { const b = ev.target.closest('.subtab'); if (b) show(b.dataset.tab); });
+  $('sfTabs').addEventListener('click', (ev) => { const b = ev.target.closest('.subtab'); if (b) { show(b.dataset.tab); go(b.dataset.tab === 'sfReports' ? location.pathname : `#tab/${b.dataset.tab}`); } });
+  // The address names the office record or tab (#risk/<id>, #audit/<id>, #change/<id>, #tab/<tab>).
+  function officeFromHash() {
+    const m = /^#(risk|audit|change|tab)\/([A-Za-z0-9-]+)$/.exec(location.hash);
+    if (!m) return;
+    if (m[1] === 'tab' && TABS.includes(m[2])) show(m[2]);
+    else if (m[1] === 'risk') { show('sfRisks'); state.openRisk = m[2]; drawRisk(); $('rkDetail').scrollIntoView({ block: 'start' }); }
+    else if (m[1] === 'audit') { show('sfAudits'); state.openAudit = m[2]; drawAudit(); $('auDetail').scrollIntoView({ block: 'start' }); }
+    else if (m[1] === 'change') { show('sfChanges'); state.openChange = m[2]; drawChange(); }
+  }
+  window.addEventListener('popstate', officeFromHash);
 
   async function loadAll() {
     try {
       const [r, a, c] = await Promise.all(['risks', 'audits', 'changes'].map(async (k) => (await (await api(`/office/${k}`)).json())[k] || []));
       state.risks = r; state.audits = a; state.changes = c;
       drawRisks(); drawAudits(); drawChanges();
+      officeFromHash();
     } catch (e) { $('rkMsg').textContent = e.message; }
   }
   window.addEventListener('crewops-code', (ev) => {
@@ -55,7 +66,8 @@
     $('rkTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => openRisk(tr.dataset.id)));
     if (state.openRisk) drawRisk();
   }
-  function openRisk(id) { state.openRisk = id; drawRisk(); $('rkDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  const go = (h) => { if (location.hash !== h) history.pushState(null, '', h); };
+  function openRisk(id) { state.openRisk = id; drawRisk(); go(`#risk/${id}`); $('rkDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); }
   function drawRisk() {
     const r = state.risks.find((x) => x.id === state.openRisk);
     if (!r) { $('rkDetail').classList.add('hidden'); return; }
@@ -110,7 +122,7 @@
     $('auTiles').innerHTML = [['Audits', state.audits.length], ['Findings open', open.length], ['Level 1 open', open.filter((f) => f.level === 'level1').length], ['Overdue', open.filter((f) => f.due && f.due < today()).length]]
       .map(([l, n]) => `<div class="tile"><div class="n">${n}</div><div class="l">${esc(l)}</div></div>`).join('');
     $('auTable').innerHTML = `<thead><tr><th>No</th><th>Audit</th><th>Kind</th><th>Area</th><th>Date</th><th>Findings open</th><th>Overdue</th><th>Status</th></tr></thead><tbody>${state.audits.map((a) => `<tr class="click" data-id="${esc(a.id)}"><td>${esc(a.id)}</td><td style="white-space:normal;min-width:220px">${esc(a.title)}</td><td>${esc(a.kind || '')}</td><td>${esc(a.area || '')}</td><td>${esc(a.date || '')}</td><td>${a.openFindings || 0}</td><td>${a.overdueFindings ? `<span class="pill bad">${a.overdueFindings}</span>` : '0'}</td><td>${esc(a.status)}</td></tr>`).join('') || '<tr><td colspan="8" class="fine">No audit yet.</td></tr>'}</tbody>`;
-    $('auTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => { state.openAudit = tr.dataset.id; drawAudit(); $('auDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
+    $('auTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => { state.openAudit = tr.dataset.id; drawAudit(); go(`#audit/${tr.dataset.id}`); $('auDetail').scrollIntoView({ behavior: 'smooth', block: 'start' }); }));
     if (state.openAudit) drawAudit();
   }
   function drawAudit() {
@@ -151,7 +163,7 @@
   // ---- management of change -------------------------------------------------
   function drawChanges() {
     $('chTable').innerHTML = `<thead><tr><th>No</th><th>Change</th><th>Kind</th><th>Owner</th><th>Planned</th><th>Linked risks</th><th>Status</th></tr></thead><tbody>${state.changes.map((c) => `<tr class="click" data-id="${esc(c.id)}"><td>${esc(c.id)}</td><td style="white-space:normal;min-width:220px">${esc(c.title)}</td><td>${esc(c.kind || '')}</td><td>${esc(c.owner || '')}</td><td>${esc(c.plannedDate || '')}</td><td>${(c.risks || []).length}</td><td><span class="pill ${c.status === 'approved' || c.status === 'implemented' || c.status === 'reviewed' ? 'ok' : c.status === 'rejected' ? 'bad' : 'warn'}">${esc(c.status)}</span></td></tr>`).join('') || '<tr><td colspan="7" class="fine">No change yet.</td></tr>'}</tbody>`;
-    $('chTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => { state.openChange = tr.dataset.id; drawChange(); }));
+    $('chTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => { state.openChange = tr.dataset.id; drawChange(); go(`#change/${tr.dataset.id}`); }));
     if (state.openChange) drawChange();
   }
   function drawChange() {
