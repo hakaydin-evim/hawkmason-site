@@ -117,7 +117,7 @@
     const c = clock({ ...r, reportable: cls.reportable });
     const opt = (list, cur, none) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + list.map((v) => `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(v)}</option>`).join('');
     const optKV = (pairs, cur, none, showKey) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + pairs.map(([k, l]) => `<option value="${esc(k)}"${k === cur ? ' selected' : ''}>${esc(showKey ? `${k} · ${l}` : l)}</option>`).join('');
-    const kindText = { submitted: 'Submitted', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
+    const kindText = { submitted: 'Submitted', photo: 'Photo added', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
     $('safetyDetail').innerHTML = `
       <div class="row" style="justify-content:space-between;align-items:flex-start">
         <div>

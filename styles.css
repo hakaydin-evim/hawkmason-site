@@ -1168,3 +1168,11 @@ a.w-tile:hover { transform: translateY(-3px); border-color: var(--w-azure); }
   .w-hero--duo .g-hero-meta { display: none; }
   .w-shot .w-panel + figcaption::before { content: "Swipe sideways to see the full width."; display: block; margin-bottom: 4px; color: var(--w-azure-soft); font-weight: 600; }
 }
+
+/* Reduced motion lays the tape out as a wrapped list; the aria-hidden copy that makes the loop seamless would show every chip twice. */
+@media (prefers-reduced-motion: reduce) { .w-tape-chip[aria-hidden="true"] { display: none; } }
+
+/* Four equal figures: four across, two by two at tablet width, one column on phones. No orphan card at 768. */
+.w-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 960px) { .w-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .w-grid--4 { grid-template-columns: 1fr; } }

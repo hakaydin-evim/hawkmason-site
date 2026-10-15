@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Crewops: crew roster app with duty limits, fatigue &amp; logbook</title>
+    <title>Crewops: crew roster app with duty limits, fatigue, logbook</title>
     <meta name="description" content="Crewops reads your airline roster: duty limits, rest, fatigue, logbook. EASA tables, also applied for UK CAA and SHGM; FAA Part 117. Free to use on iPhone." />
     <link rel="canonical" href="https://hawkmason.com/crewops" />
     <meta name="apple-itunes-app" content="app-id=6811512361" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
     <meta property="og:title" content="Crewops — your roster, read properly" />
-    <meta property="og:description" content="Roster app for line pilots and cabin crew: duty limits, legal rest, fatigue, logbook and Crewmates. Nothing reaches our server unless you switch on sharing with your airline." />
+    <meta property="og:description" content="Roster app for line pilots and cabin crew: duty limits, legal rest, fatigue, logbook and Crewmates. No account, and no Crewops server holding your roster." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/crewops" />
     <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
@@ -31,7 +31,7 @@
           "operatingSystem": "iOS 16.4 or later",
           "applicationCategory": "BusinessApplication",
           "applicationSubCategory": "Airline crew roster, flight time limitations and logbook",
-          "description": "Reads the roster an airline already sends its crew and shows what it leaves them: flight duty period limits, minimum rest, cumulative duty, a fatigue indicator, a logbook with EASA and FAA CSV export, a document wallet, widgets and a Live Activity, and Crewmates roster sharing. Rule sets: EASA tables, also applied for UK CAA and SHGM; FAA Part 117.",
+          "description": "Reads the roster an airline already sends its crew and shows what it leaves them: flight duty period limits, minimum rest, cumulative duty, a fatigue indicator with sourced coaching, a logbook with EASA and FAA CSV export and a flight map, widgets and a Live Activity, and Crewmates roster sharing. Rule sets: EASA tables, also applied for UK CAA and SHGM; FAA Part 117.",
           "url": "https://hawkmason.com/crewops",
           "downloadUrl": "https://apps.apple.com/app/id6811512361",
           "installUrl": "https://apps.apple.com/app/id6811512361",
@@ -40,7 +40,7 @@
             "https://hawkmason.com/assets/crewops/bugun.png?v=2",
             "https://hawkmason.com/assets/crewops/ritim.png?v=2",
             "https://hawkmason.com/assets/crewops/saglik.png?v=2",
-            "https://hawkmason.com/assets/crewops/roster.png?v=2"
+            "https://hawkmason.com/assets/crewops/roster.png?v=3"
           ],
           "inLanguage": ["en", "tr", "de", "es", "fr", "it", "pt-BR"],
           "offers": [
@@ -61,7 +61,7 @@
         {
           "@type": "VideoObject",
           "name": "Crewops in 60 seconds",
-          "description": "Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown. One minute, with sound.",
+          "description": "Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown.",
           "thumbnailUrl": "https://hawkmason.com/assets/crewops/crewops-promo-poster.jpg",
           "contentUrl": "https://hawkmason.com/assets/crewops/crewops-promo.mp4",
           "uploadDate": "2026-09-30",
@@ -71,17 +71,17 @@
           "@type": "FAQPage",
           "mainEntity": [
             { "@type": "Question", "name": "Which crew rostering systems does Crewops read?",
-              "acceptedAnswer": { "@type": "Answer", "text": "NetLine/CrewLink and JetXBit sign in and refresh the roster on their own. AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP are read from their roster pages, PDFs or calendar links. Any .ics calendar or roster PDF works too. If yours is not read yet, the app sends us a sample in one tap and we add it." } },
-            { "@type": "Question", "name": "Which flight time limitation rules does it use?",
-              "acceptedAnswer": { "@type": "Answer", "text": "EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117. They give the flight duty period ceiling, minimum rest, cumulative duty and the margin the roster leaves you." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "NetLine/CrewLink and JetXBit refresh on their own; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP are read from their roster pages, PDFs or calendar links. Other .ics calendars and roster PDFs work when their layout is known." } },
             { "@type": "Question", "name": "Is my roster uploaded, and does my airline see my data?",
-              "acceptedAnswer": { "@type": "Answer", "text": "No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account. Your airline sees nothing from the app, unless you switch on sharing a post-flight rating with it. The privacy policy has the details." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Your airline sees nothing from the app unless you share a post-flight rating, or file or sign something in a product it licenses. Details in the privacy policy." } },
+            { "@type": "Question", "name": "Which flight time limitation rules does it use?",
+              "acceptedAnswer": { "@type": "Answer", "text": "EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117, give the flight duty period ceiling, minimum rest, cumulative duty and the margin your roster leaves you." } },
             { "@type": "Question", "name": "Does Crewops work for cabin crew?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Cabin crew get the same duty limits, rest and fatigue views, plus a flight-and-duty record with block time, duty time and night stops." } },
             { "@type": "Question", "name": "Can I export my logbook?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "Yes, as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time." } },
             { "@type": "Question", "name": "What does Crewops cost?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Crewops is free to use. Crewops Pro is an optional subscription with a one-month free trial. The App Store shows the current price." } }
+              "acceptedAnswer": { "@type": "Answer", "text": "Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the App Store shows the price." } }
           ]
         }
       ]
@@ -89,7 +89,7 @@
     </script>
     <link rel="icon" href="assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="styles.css?v=29" />
+    <link rel="stylesheet" href="styles.css?v=33" />
     <script src="app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops">
@@ -123,10 +123,6 @@
               <span class="store-kicker">Download on the</span><span class="store-name">App Store</span>
             </a>
           </div>
-          <p class="g-hero-meta" style="color: var(--w-muted); margin-bottom: 4px;">
-            <b style="color: var(--w-azure);">New in 1.2.2 (October 2026):</b> a post-flight share card with
-            the route on a map, a rebuilt Health tab, and Crewmates that works offline.
-          </p>
           <p class="g-hero-meta" style="color: var(--w-muted);">
             iPhone and iPad · 7 languages · free, with a one-month free trial on Pro ·
             <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
@@ -138,10 +134,13 @@
         </div>
       </section>
 
-      <!-- CREW SYSTEMS: the canonical list the app reads (repeated in #systems and the FAQ) -->
-      <div class="w-tape" aria-label="Crew systems Crewops reads">
-        <div class="w-tape-track"><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip"><b>EASA tables · FAA Part 117</b><span>Rule sets · EASA tables also applied for UK CAA, SHGM</span></span><span class="w-tape-chip" aria-hidden="true"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip" aria-hidden="true"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip" aria-hidden="true"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip" aria-hidden="true"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip" aria-hidden="true"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>EASA tables · FAA Part 117</b><span>Rule sets · EASA tables also applied for UK CAA, SHGM</span></span></div>
-      </div>
+      <!-- CREW SYSTEMS: the canonical list the app reads (the FAQ repeats it in words) -->
+      <section id="systems">
+        <div class="w-tape" aria-label="Crew systems Crewops reads">
+          <div class="w-tape-track"><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip"><b>EASA tables · FAA Part 117</b><span>Rule sets</span></span><span class="w-tape-chip" aria-hidden="true"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip" aria-hidden="true"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip" aria-hidden="true"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip" aria-hidden="true"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip" aria-hidden="true"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>EASA tables · FAA Part 117</b><span>Rule sets</span></span></div>
+        </div>
+        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; max-width: 640px; margin: 14px auto 28px; padding: 0 24px;">Not listed? The app opens an email to us with a sample attached; nothing is sent until you press Send. Product names belong to their owners; Crewops has no affiliation with them.</p>
+      </section>
 
       <!-- FILM -->
       <section class="w-feat" id="film">
@@ -154,7 +153,7 @@
             <source src="assets/crewops/crewops-promo.mp4" type="video/mp4" />
             <a href="assets/crewops/crewops-promo.mp4">Watch the Crewops film</a>
           </video>
-          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown. One minute, with sound.</figcaption>
+          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown.</figcaption>
         </figure>
       </section>
 
@@ -164,74 +163,38 @@
           <span class="w-badge">What it does</span>
           <h2 style="color: #fff;">Everything your roster does not tell you</h2>
         </div>
-        <div class="w-grid">
+        <div class="w-grid w-grid--c">
           <article class="w-card">
             <span class="w-ic">📥</span>
-            <h3>Reads the roster you already have</h3>
-            <p>Import from your crew system, a pasted calendar link or any roster PDF. The app reads it on the device, from the text layer with OCR as the fallback. 273 operators are preset in the picker.</p>
+            <h3>Reads your roster</h3>
+            <p>Crew system, calendar link or PDF. When it changes, the old time is struck through beside the new one.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">⏱️</span>
-            <h3>Limits from the published tables</h3>
-            <p>EASA tables, also applied for UK CAA and SHGM, and FAA Part 117. FDP ceilings, minimum rest, cumulative duty, and the earliest they can call you again — with the margin the roster leaves, not just the numbers on it.</p>
+            <h3>Knows your limits</h3>
+            <p>FDP ceiling, minimum rest, cumulative duty and the earliest they can call you again. EASA tables, also applied for UK CAA and SHGM, and FAA Part 117.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">🌙</span>
-            <h3>Fatigue you can point at</h3>
-            <p>An indicator built from the schedule itself: WOCL encroachment, early starts, short rest, consecutive days, time-zone displacement. Never a fitness-to-fly verdict. That call stays yours.</p>
+            <h3>Shows the fatigue</h3>
+            <p>An indicator built from your schedule, with 76 sourced coaching cards. Never a fitness-to-fly verdict.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">📗</span>
-            <h3>A logbook you own</h3>
-            <p>Sectors you confirm become logbook rows. EASA and FAA CSV export whenever you want them. Cabin crew get their own flight-and-duty record with block time, duty time and night stops.</p>
+            <h3>Keeps your logbook</h3>
+            <p>Confirm a sector, get a logbook row. EASA and FAA CSV export, and every flown sector on one flight map.</p>
           </article>
           <article class="w-card">
-            <span class="w-ic">🩺</span>
-            <h3>Coaching, with sources</h3>
-            <p>Sleep, body clock, light and caffeine windows, cosmic radiation against the Euratom reference levels. Seventy-six cards that fire off your own numbers — 27 on fatigue, 22 on sleep, 15 on the body clock, 12 on radiation — each naming the study or regulation behind it.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">🗂️</span>
-            <h3>Documents that warn you early</h3>
-            <p>Licence, medical, passport and visa expiry dates, with reminders before they bite, and a note of which destinations need which visa.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">☁️</span>
-            <h3>Your devices, in step</h3>
-            <p>Optional iCloud sync keeps your roster, logbook, documents and settings the same on every device you own, through your own iCloud account. Off by default, encrypted on the device with a key that never leaves your devices. Sleep, fatigue and IMSAFE entries never go to iCloud.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">📅</span>
-            <h3>Every change, on record</h3>
-            <p>A roster moves several times a week. Crewops keeps every update: what changed, day by day, with the old time struck through beside the new one, the duty that was added and the one that was taken away. Last Monday's change is still there on Friday.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">🗺️</span>
-            <h3>Every sector, mapped</h3>
-            <p>The routes you have flown drawn on one map, with block hours, sectors and airports adding up underneath — flown sectors only, deadheads left out, the hours still planned shown apart. Every duty shows its own route too. After each flight, a summary — block, FDP margin, fatigue, estimated dose — that you confirm into the logbook and can share as an image.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">📝</span>
-            <h3>Notes that stay</h3>
-            <p>A note on every duty and on every airport: the gate that always changes, the hotel shuttle, the crew room code. Refreshing the roster never wipes them, and they travel with iCloud sync when it is on.</p>
-          </article>
-          <article class="w-card">
-            <span class="w-ic">🧑‍✈️</span>
-            <h3>Your crew, one screen</h3>
-            <p>Crewmates shares your roster, read-only, with the colleagues you invite, and shows you theirs: who is flying, who is off, and a grid of the weeks ahead — press and hold a day to see that flight. The share panel names the people it is shared with, invitations still unanswered marked. It runs through your own iCloud with Apple's sharing, costs nothing, works offline on the last copy, and never includes sleep, fatigue or health entries. Stop sharing or leave whenever you like.</p>
+            <span class="w-ic">⏰</span>
+            <h3>Counts down to report</h3>
+            <p>Home and Lock Screen widgets, and a Live Activity on the Dynamic Island.</p>
           </article>
           <article class="w-card">
             <span class="w-ic">🔒</span>
-            <h3>On your Lock Screen, in your calendar</h3>
-            <p>Home and Lock Screen widgets in your colour theme show the next duty, and a Live Activity counts down to report on the Dynamic Island — and on to release if you want it through the duty. The roster can mirror into your calendar with a reminder before each report. All local: no server, no push.</p>
+            <h3>Stays yours</h3>
+            <p>No account and no server of ours holding your roster. iCloud sync and Crewmates are opt-in.</p>
           </article>
         </div>
-      </section>
-
-      <!-- PRIVACY LINE -->
-      <section class="w-quote">
-        <p>Your roster, your hours and your health are on your device, not on our server. We do not have an account system, because we do not want your data.</p>
-        <span>Crewops computes everything on the device. The only things it fetches or sends are public weather and space-weather feeds, your own airline's portal or calendar link when you ask it to, signed app updates from our own server, your Pro subscription status if you subscribe, and, only if you switch sharing on, your post-flight rating, sent for your airline to read. If you switch iCloud sync on, an encrypted copy goes to your own iCloud account and nowhere else. Crewmates shares only your duties, only with the people you invite, through your iCloud.</span>
       </section>
 
       <!-- SPECS -->
@@ -255,7 +218,7 @@
             <ul class="w-spec">
               <li><b>Requires:</b> iOS 16.4 or later</li>
               <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR</li>
-              <li><b>Privacy:</b> No account, no server holding your roster; iCloud sync and sharing with your airline only if you turn them on</li>
+              <li><b>Privacy:</b> iCloud sync and sharing with your airline are opt-in</li>
               <li><b>Pricing:</b> Free to use · Crewops Pro $6.99/month or $49.99/year (USD), one-month free trial</li>
             </ul>
           </div>
@@ -268,43 +231,24 @@
           <span class="w-badge">A look inside</span>
           <h2 style="color: #fff;">Four screens crew actually open</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+        <div class="w-grid w-grid--4">
           <figure style="margin: 0;">
             <img src="assets/crewops/bugun.png?v=2" alt="The Today screen: next duty, report time, duty limits and the fatigue meter" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" width="552" height="1199" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Today — the next duty, the margin, the fatigue meter.</figcaption>
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Today: next duty, margin, fatigue meter.</figcaption>
           </figure>
           <figure style="margin: 0;">
             <img src="assets/crewops/ritim.png?v=2" alt="The Rhythm screen: a month of duties as day lanes" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" width="552" height="1199" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Rhythm — a month, day by day, rest and WOCL drawn in.</figcaption>
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Rhythm: a month, rest and WOCL drawn in.</figcaption>
           </figure>
           <figure style="margin: 0;">
             <img src="assets/crewops/saglik.png?v=2" alt="The Health screen: sleep, fatigue, radiation and body clock scores with coaching cards" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" width="552" height="1199" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Health — sleep, fatigue and dose scores, then sourced coaching from your own numbers.</figcaption>
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Health: sleep, fatigue and dose scores, sourced coaching.</figcaption>
           </figure>
           <figure style="margin: 0;">
-            <img src="assets/crewops/roster.png?v=2" alt="The Roster screen: imported duties with report, release, FDP and sectors" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" width="552" height="1199" />
-            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Roster — every duty as imported, nothing rewritten.</figcaption>
+            <img src="assets/crewops/roster.png?v=3" alt="The Roster screen: imported duties with report, release, FDP and sectors" style="width: 100%; border-radius: 22px; border: 1px solid var(--w-line);" width="552" height="1199" />
+            <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px;">Roster: every duty as imported, nothing rewritten.</figcaption>
           </figure>
         </div>
-      </section>
-
-      <!-- CREW SYSTEMS -->
-      <section class="w-feat" id="systems">
-        <div class="section-head section-head--center">
-          <span class="w-badge">Works with your crew system</span>
-          <h2 style="color: #fff;">One app, whichever system rosters you</h2>
-        </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
-          <article class="w-card">
-            <h3>Signs in and refreshes</h3>
-            <p><b>NetLine/CrewLink</b> signs in to your airline's CrewLink portal and refreshes the roster on its own, change notices included. <b>JetXBit</b> signs in with your portal user name, takes the emailed confirmation code once, then refreshes on its own. It is verified with crew in October 2026.</p>
-          </article>
-          <article class="w-card">
-            <h3>Page, PDF or calendar link</h3>
-            <p><b>AIMS eCrew</b>, <b>CrewConnex</b>, <b>FLiCA</b>, <b>Leon</b>, <b>CAE Crew Access</b>, <b>RAIDO</b> and <b>Sabre CWP</b> are read from the roster page opened in the app, its PDF or a calendar link, depending on the system. A pasted calendar link refreshes by itself. Any <b>.ics</b> calendar or roster <b>PDF</b>, text or scanned, is read on the phone.</p>
-          </article>
-        </div>
-        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; margin-top: 18px;">Product names belong to their owners; Crewops has no affiliation with them.</p>
       </section>
 
       <!-- FAQ -->
@@ -314,12 +258,12 @@
           <h2 style="color: #fff;">What crew ask first</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
-          <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink and JetXBit sign in and refresh the roster on their own. AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP are read from their roster pages, PDFs or calendar links. Any .ics calendar or roster PDF works too. If yours is not read yet, the app sends us a sample in one tap and we add it.</p></article>
-          <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117. They give the flight duty period ceiling, minimum rest, cumulative duty and the margin the roster leaves you.</p></article>
-          <article class="w-card"><h3>Is my roster uploaded, and does my airline see my data?</h3><p>No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Optional iCloud sync and Crewmates go through your own iCloud account. Your airline sees nothing from the app, unless you switch on sharing a post-flight rating with it. The <a href="crewops-privacy#sharing" style="color: var(--w-azure);">privacy policy</a> has the details.</p></article>
-          <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, and their own flight-and-duty record with block time, duty time and night stops.</p></article>
-          <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes. Flown sectors become logbook rows you can export as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
-          <article class="w-card"><h3>What does Crewops cost?</h3><p>Crewops is free to use. Crewops Pro is an optional subscription with a one-month free trial. The App Store shows the current price.</p></article>
+          <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink and JetXBit refresh on their own; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP are read from their roster pages, PDFs or calendar links. Other .ics calendars and roster PDFs work when their layout is known.</p></article>
+          <article class="w-card"><h3>Is my roster uploaded, and does my airline see my data?</h3><p>No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Your airline sees nothing from the app unless you share a post-flight rating, or file or sign something in a product it licenses. Details in the <a href="crewops-privacy#sharing" style="color: var(--w-azure);">privacy policy</a>.</p></article>
+          <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117, give the flight duty period ceiling, minimum rest, cumulative duty and the margin your roster leaves you.</p></article>
+          <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, plus a flight-and-duty record with block time, duty time and night stops.</p></article>
+          <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes, as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
+          <article class="w-card"><h3>What does Crewops cost?</h3><p>Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the App Store shows the price.</p></article>
         </div>
       </section>
 
@@ -341,8 +285,7 @@
           <p class="studio-lede" style="color: var(--w-muted);">
             Crewops is not an operator's system of record and it does not replace
             your company's crew portal or your official logbook. If a limit looks
-            wrong for your operation, tell us which rule and which duty — that is
-            the feedback that improves it fastest.
+            wrong, tell us which rule and which duty.
           </p>
           <div class="hero-actions" style="justify-content: center;">
             <a class="btn btn-primary" href="crewops-support">Support</a>
