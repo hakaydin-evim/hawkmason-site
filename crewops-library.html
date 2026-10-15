@@ -89,6 +89,15 @@
    ]
   },
   {
+   "@type": "VideoObject",
+   "name": "Crewops Library: a revision published, confirmed on the phone, read receipts back",
+   "description": "Crewops Library in 10 seconds: a revision published, confirmed on the phone, read receipts back. Captions and music, no voice-over. Fictional airline.",
+   "thumbnailUrl": "https://hawkmason.com/assets/crewops/clips/library-poster.jpg",
+   "contentUrl": "https://hawkmason.com/assets/crewops/clips/crewops-library.mp4",
+   "uploadDate": "2026-10-15",
+   "duration": "PT10S"
+  },
+  {
    "@type": "FAQPage",
    "mainEntity": [
     {
@@ -104,7 +113,7 @@
      "name": "Where do the files live?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "On your document server, or uploaded to Crewops, where the file sits on Cloudflare servers that Hawk & Mason Studios runs, separate for each airline. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage."
+      "text": "On your document server, or uploaded to Crewops, where the file sits on Cloudflare servers that Hawk & Mason Studios runs, with each airline's records kept apart by its airline code. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage."
      }
     },
     {
@@ -130,7 +139,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <script src="/app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops-library">
@@ -148,12 +157,12 @@
     </header>
 
     <main>
-      <section class="w-hero">
+      <section class="w-hero w-hero--duo">
         <div>
           <span class="w-badge">For the documentation office</span>
           <h1 class="w-title">Crewops Library</h1>
           <p class="w-lede">Shows who has confirmed the current revision of each manual.</p>
-          <p class="w-sub">OM-A, OM-B, the cabin crew manual, SOPs and bulletins on the crew phone, current revision only, with what changed and from when. Once a document is downloaded, it opens offline on a layover. The old copy is removed from the phone when it picks up the new revision, and each crew member's confirmation comes back to your documentation office.</p>
+          <p class="w-sub">OM-A, OM-B, the cabin crew manual, SOPs and bulletins reach the crew phone as current revisions only, with what changed. Each crew member's confirmation comes back to your documentation office.</p>
           <div class="store-row">
             <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Library%20%E2%80%94%20trial">
               <span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span>
@@ -162,9 +171,21 @@
           </div>
           <p class="g-hero-meta" style="color: var(--w-muted);">Licensed on its own · your document server or your airline's file store · runs in the crew app and your browser</p>
         </div>
-        <div class="w-hero-art w-hero-art--one">
-          <div class="w-phone w-phone-solo"><img src="/assets/crewops/products/library-revision.webp" alt="Crewops Library on the phone: Operations Manual Part A, revision 38.03, with its revision and effective dates, what changed, Keep offline and the Read and understood button" width="506" height="1100" loading="eager" /></div>
+        <div class="w-hero-art w-hero-art--duo">
+          <div class="w-panel"><img src="/assets/crewops/products/library-panel.webp" alt="The Crewops Library panel in the browser: the list of controlled documents with OM-A revision 38.03 first, and the start of the form to publish a document or a new revision" width="1400" height="875" loading="eager" /></div>
+          <div class="w-phone w-phone-duo"><img src="/assets/crewops/products/library-revision.webp" alt="Crewops Library on the phone: Operations Manual Part A, revision 38.03, with its revision and effective dates, what changed, Keep offline and the Read and understood button" width="506" height="1100" loading="eager" /></div>
         </div>
+      </section>
+
+      <!-- FILM -->
+      <section class="w-feat" id="film">
+        <figure style="margin: 0 auto; max-width: 960px; padding: 0 24px;">
+          <video controls playsinline preload="none" poster="/assets/crewops/clips/library-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f;">
+            <source src="/assets/crewops/clips/crewops-library.mp4" type="video/mp4" />
+            <a href="/assets/crewops/clips/crewops-library.mp4">Watch the Crewops Library clip</a>
+          </video>
+          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Crewops Library: a revision published, confirmed on the phone, read receipts back. 10 seconds, captions and music. Fictional airline.</figcaption>
+        </figure>
       </section>
 
       <section class="w-feat" id="why">
@@ -186,7 +207,7 @@
           <h2 style="color: #fff;">What your crews see</h2>
           <p class="w-intro">Inside the crew app your crews already use for their roster, in seven languages. The Library sits on Me, under My airline.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Library on Me</h3><p>The documents the airline publishes, searchable by title or code, with filters for new revisions, bookmarks and category.</p></article>
           <article class="w-card"><h3>One page per document</h3><p>Code, title, revision, revision date, effective date, owner and authority approval as your office entered it at the top, then what changed in this revision.</p></article>
           <article class="w-card"><h3>Offline</h3><p>One tap keeps the file in the app's private storage. Once it is downloaded, the manual opens on a layover with no signal. When a new revision is published, the old file is removed; a withdrawn document leaves the phone.</p></article>
@@ -199,9 +220,13 @@
         <div class="section-head section-head--center">
           <span class="w-badge">In the operator portal</span>
           <h2 style="color: #fff;">What your department does</h2>
-          <p class="w-intro">In its own panel of the operator portal, signed in with your airline's operator code; a code can open this product alone. Nothing to install.</p>
+          <p class="w-intro">In its own panel of the operator portal. Your airline's operator code opens it, and a code can open this product alone. Nothing to install.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <figure class="w-shot">
+          <div class="w-panel"><img src="/assets/crewops/products/library-panel-wide.webp" alt="The Crewops Library panel: four summary tiles, the line of crew who confirmed OM-A revision 38.03 and the table of controlled documents with their confirmation counts" width="1800" height="1000" loading="lazy" /></div>
+          <figcaption>The table of controlled documents, with the crew who confirmed the current OM-A revision and the number confirmed for each document. Fictional airline.</figcaption>
+        </figure>
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Publish</h3><p>Code, title, type (manual, procedure, policy, bulletin, form, checklist, regulation, certificate), category, revision, revision and effective dates, change log, file link, an authority-approval field that you fill in, and a read-and-confirm with its due date.</p></article>
           <article class="w-card"><h3>New revision</h3><p>One click opens the document with its code and title filled in. The phones pick up the revision the next time the app opens, and the older offline copy is removed.</p></article>
           <article class="w-card"><h3>Who has confirmed</h3><p>Confirmations by crew code and date for every revision that asks for one, counted against the crew list when Academy records are loaded.</p></article>
@@ -248,7 +273,7 @@
           <h2 style="color: #fff;">Trial first, then a licence</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
-          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app through the pilot programme. Nothing to integrate on day one.</p></article>
+          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app with your airline's company code. Nothing to integrate on day one.</p></article>
           <article class="w-card"><h3>2 · Publish your documents</h3><p>Your documentation office publishes its first documents with their revisions.</p></article>
           <article class="w-card"><h3>3 · A licence</h3><p>Crewops Library is licensed on its own, per operator, for the period you choose. What your airline holds is what opens; your crews see nothing else.</p></article>
         </div>
@@ -259,9 +284,9 @@
           <span class="w-badge">Questions</span>
           <h2 style="color: #fff;">What departments ask first</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Is it an EFB?</h3><p>No. Crewops Library is the crew member's reference copy and the revision and confirmation trail. It is not an approved EFB application, and your EFB and its approvals stay as they are.</p></article>
-          <article class="w-card"><h3>Where do the files live?</h3><p>On your document server, or uploaded to Crewops, where the file sits on Cloudflare servers that Hawk &amp; Mason Studios runs, separate for each airline. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage.</p></article>
+          <article class="w-card"><h3>Where do the files live?</h3><p>On your document server, or uploaded to Crewops, where the file sits on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code. The documentation office publishes a link with each revision or uploads the PDF, which is served only to your paired crews, and each phone downloads the file once into the app's private storage.</p></article>
           <article class="w-card"><h3>Can we see a sample?</h3><p>Yes: a <a class="w-link" href="/assets/demo/crewops-demo-om-a.pdf">two-page demonstration manual</a>, fictional and written for this page, is the file the demo library uses.</p></article>
           <article class="w-card"><h3>What do our crews need?</h3><p>The crew app, your airline's company code and their own crew code. No account and no password. Crews of an airline that has not bought Crewops Library do not see the Library.</p></article>
         </div>
@@ -275,11 +300,10 @@
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Library%20%E2%80%94%20trial"><span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span></a>
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Library%20%E2%80%94%20a%20question"><span class="store-kicker">Ask a question</span><span class="store-name">Crewops Library</span></a>
         </div>
-        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
       </section>
 
       <nav class="w-prodbar" aria-label="Crewops products">
-        <a class="w-prodbar-item" href="/crewops/insight"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/insight-product"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
         <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-live">Available</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
         <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-live">Available</span><b>Crewops Academy</b><span>Courses, exams, training records, read-and-sign</span></a>
         <a class="w-prodbar-item is-plat" href="/crewops/library" aria-current="page"><span class="w-status is-live">Available</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
@@ -295,6 +319,7 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

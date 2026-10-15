@@ -89,6 +89,15 @@
    ]
   },
   {
+   "@type": "VideoObject",
+   "name": "Crewops Safety: a report from the phone to the safety office and back",
+   "description": "Crewops Safety in 12 seconds: a report from the phone to the safety office and back. Captions and music, no voice-over. Fictional airline.",
+   "thumbnailUrl": "https://hawkmason.com/assets/crewops/clips/safety-poster.jpg",
+   "contentUrl": "https://hawkmason.com/assets/crewops/clips/crewops-safety.mp4",
+   "uploadDate": "2026-10-15",
+   "duration": "PT12S"
+  },
+  {
    "@type": "FAQPage",
    "mainEntity": [
     {
@@ -112,7 +121,7 @@
      "name": "Who can read a report?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Your safety office, in the operator portal, with your airline's operator code. Reports are stored on Cloudflare servers that Hawk & Mason Studios runs, separate for each airline and kept until you ask us to delete them. An anonymous report carries no crew code or name, and the reply still comes back to the phone that sent it."
+      "text": "Your safety office, in the operator portal, with your airline's operator code. Reports are stored on Cloudflare servers that Hawk & Mason Studios runs, with each airline's records kept apart by its airline code and kept until you ask us to delete them. An anonymous report carries no crew code or name, and the reply still comes back to the phone that sent it."
      }
     },
     {
@@ -146,7 +155,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <script src="/app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops-safety">
@@ -164,12 +173,12 @@
     </header>
 
     <main>
-      <section class="w-hero">
+      <section class="w-hero w-hero--duo">
         <div>
           <span class="w-badge">For the safety office</span>
           <h1 class="w-title">Crewops Safety</h1>
           <p class="w-lede">Reports start from the duty on the phone, with the facts already filled in.</p>
-          <p class="w-sub">Crews report from the phone they already carry: sixteen kinds of report, from an air safety report to a bird strike, an injury at work or a commander's discretion. The flight, route and duty come from the roster. Crews without the app use your airline's web report link. Your safety office classifies, investigates, acts and writes back, and the reporter reads the reply on the same screen. The risk register, audits and changes sit beside the reports.</p>
+          <p class="w-sub">Crews report from the phone they already carry, or from your web report link. Your safety office classifies, investigates, acts and writes back; the reporter reads the reply.</p>
           <div class="store-row">
             <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Safety%20%E2%80%94%20trial">
               <span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span>
@@ -178,10 +187,21 @@
           </div>
           <p class="g-hero-meta" style="color: var(--w-muted);">Licensed on its own · trial with a group of your crews · runs in the crew app and your browser</p>
         </div>
-        <div class="w-hero-art" aria-hidden="false">
-          <div class="w-phone w-phone-back"><img src="/assets/crewops/products/safety-reply.webp" alt="Crewops Safety on the phone: a closed fatigue report with the safety office's reply and the report's timeline" width="506" height="1100" loading="eager" /></div>
-          <div class="w-phone w-phone-front"><img src="/assets/crewops/products/safety-fatigue.webp" alt="Crewops Safety on the phone: a fatigue report started from the duty, with FDP against its limit and the Samn-Perelli scale" width="506" height="1100" loading="eager" /></div>
+        <div class="w-hero-art w-hero-art--duo">
+          <div class="w-panel"><img src="/assets/crewops/products/safety-panel.webp" alt="The Crewops Safety panel in the browser: page tabs for reports, risk register, audits, change and indicators, report counts, the export buttons and the first rows of the report table" width="1400" height="875" loading="eager" /></div>
+          <div class="w-phone w-phone-duo"><img src="/assets/crewops/products/safety-fatigue.webp" alt="Crewops Safety on the phone: a fatigue report started from the duty, with FDP against its limit and the Samn-Perelli scale" width="506" height="1100" loading="eager" /></div>
         </div>
+      </section>
+
+      <!-- FILM -->
+      <section class="w-feat" id="film">
+        <figure style="margin: 0 auto; max-width: 960px; padding: 0 24px;">
+          <video controls playsinline preload="none" poster="/assets/crewops/clips/safety-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f;">
+            <source src="/assets/crewops/clips/crewops-safety.mp4" type="video/mp4" />
+            <a href="/assets/crewops/clips/crewops-safety.mp4">Watch the Crewops Safety clip</a>
+          </video>
+          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Crewops Safety: a report from the phone to the safety office and back. 12 seconds, captions and music. Fictional airline.</figcaption>
+        </figure>
       </section>
 
       <section class="w-feat" id="why">
@@ -203,7 +223,7 @@
           <h2 style="color: #fff;">What your crews see</h2>
           <p class="w-intro">Inside the crew app your crews already use for their roster, in seven languages.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Sixteen kinds of report</h3><p>Twelve safety reports: flight operations, cabin, ground and cargo, security, dangerous goods, hazard, technical, health and safety at work, fatigue, bird and wildlife, commander's discretion, suggestion. Four operational reports: irregularity, environment, quality, operations control.</p></article>
           <article class="w-card"><h3>Three steps</h3><p>Choose the kind of report, pick the duty from the roster, answer that kind's own questions and write what happened. Date, flight, route and duty times come from the roster.</p></article>
           <article class="w-card"><h3>The questions that matter</h3><p>Each kind asks its own: phase of flight and the event list for a flight report, the disruptive level and what was done on board for an unruly passenger, UN number and class for dangerous goods, injury, body part and treatment at work, birds seen and struck and the parts hit for a bird strike. Tap what you know; the safety office completes the rest.</p></article>
@@ -222,9 +242,13 @@
         <div class="section-head section-head--center">
           <span class="w-badge">In the operator portal</span>
           <h2 style="color: #fff;">What your department does</h2>
-          <p class="w-intro">In its own panel of the operator portal, signed in with your airline's operator code; a code can open this product alone. Reports, investigations, risks, audits, changes and indicators in one place. Nothing to install.</p>
+          <p class="w-intro">In its own panel of the operator portal. Your airline's operator code opens it, and a code can open this product alone. Reports, investigations, risks, audits, changes and indicators in one place. Nothing to install.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <figure class="w-shot">
+          <div class="w-panel"><img src="/assets/crewops/products/safety-panel-wide.webp" alt="A safety report opened in the Crewops Safety panel: header with the 72-hour clock, the reporter's text, the classification fields and two photos from the reporter" width="1800" height="1000" loading="lazy" /></div>
+          <figcaption>A new cabin report opened in the panel: the 72-hour clock, the reporter's own text and photos, and the classification fields. Fictional airline.</figcaption>
+        </figure>
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>The report box</h3><p>Open reports, reports due within 24 hours on the 72-hour clock, fatigue and operational reports, closed and anonymous counts, with safety and operational reports filtered apart. Every report with its kind, date, flight and status, the reporter's own answers labelled under it and the photos. Reports sent through the web link arrive the same way, marked web.</p></article>
           <article class="w-card"><h3>Classification</h3><p>Status from new through triage, investigation and action to closed. Occurrence class, ADREP occurrence category from the full list, event type at its top level, mandatory reportable under Regulation (EU) 2015/1018, risk class on the ERCS scheme.</p></article>
           <article class="w-card"><h3>Investigation</h3><p>Root cause, contributing factors, the 5 whys and the findings, kept with the report. The investigation is never shown to the reporter.</p></article>
@@ -295,7 +319,7 @@
           <h2 style="color: #fff;">Trial first, then a licence</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
-          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app through the pilot programme. Nothing to integrate on day one.</p></article>
+          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app with your airline's company code. Nothing to integrate on day one.</p></article>
           <article class="w-card"><h3>2 · Set it up</h3><p>Your safety office sets up its web report link and classification. Your IT team connects webhooks or the API if you want them.</p></article>
           <article class="w-card"><h3>3 · A licence</h3><p>Crewops Safety is licensed on its own, per operator, for the period you choose. What your airline holds is what opens; your crews see nothing else.</p></article>
         </div>
@@ -309,7 +333,7 @@
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>What can crews report?</h3><p>Sixteen kinds of report: twelve safety reports, from an air safety report to a commander's discretion report, and four operational reports for irregularities, environment, quality and operations control. The 72-hour clock starts on every safety report except a suggestion and stops when the office marks it not reportable. Operational reports and suggestions have none.</p></article>
           <article class="w-card"><h3>Is Crewops Safety a complete SMS?</h3><p>It puts the records an SMS runs on in one place: reporting, investigation, the risk register, audits and findings, and management of change, with indicators beside them. Your SMS manual, your safety review board and your approvals remain yours; Crewops Safety keeps the records they work from.</p></article>
-          <article class="w-card"><h3>Who can read a report?</h3><p>Your safety office, in the operator portal, with your airline's operator code. Reports are stored on Cloudflare servers that Hawk &amp; Mason Studios runs, separate for each airline and kept until you ask us to delete them. An anonymous report carries no crew code or name, and the reply still comes back to the phone that sent it.</p></article>
+          <article class="w-card"><h3>Who can read a report?</h3><p>Your safety office, in the operator portal, with your airline's operator code. Reports are stored on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code and kept until you ask us to delete them. An anonymous report carries no crew code or name, and the reply still comes back to the phone that sent it.</p></article>
           <article class="w-card"><h3>Does it replace our reporting system?</h3><p>It runs beside your SMS or feeds it. Signed webhooks tell your SMS when a report is created or updated, API keys connect your other systems, and the CSV in ECCAIRS-style columns and the ECCAIRS E5X file carry reports into the occurrence database you already keep.</p></article>
           <article class="w-card"><h3>Can crews report without the app?</h3><p>Yes. Share your airline's web report link on your crew portal, by email or as a QR code in the crew room. The page is in English and Turkish, offers every kind of report except commander's discretion, which needs the roster and stays in the app, takes up to four photos and can be sent without a name. After sending, a follow-up page shows the status and the reply and takes more information.</p></article>
           <article class="w-card"><h3>What do our crews need?</h3><p>The crew app and your airline's company code. No account and no password. Crews of an airline that has not bought Crewops Safety do not see Safety in the app.</p></article>
@@ -324,11 +348,10 @@
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Safety%20%E2%80%94%20trial"><span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span></a>
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Safety%20%E2%80%94%20a%20question"><span class="store-kicker">Ask a question</span><span class="store-name">Crewops Safety</span></a>
         </div>
-        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
       </section>
 
       <nav class="w-prodbar" aria-label="Crewops products">
-        <a class="w-prodbar-item" href="/crewops/insight"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/insight-product"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
         <a class="w-prodbar-item is-plat" href="/crewops/safety" aria-current="page"><span class="w-status is-live">Available</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
         <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-live">Available</span><b>Crewops Academy</b><span>Courses, exams, training records, read-and-sign</span></a>
         <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-live">Available</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
@@ -344,6 +367,7 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

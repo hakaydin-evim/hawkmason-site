@@ -62,7 +62,7 @@
           "publisher": { "@id": "https://hawkmason.com/#studio" },
           "offers": { "@type": "Offer", "availability": "https://schema.org/InStock", "description": "Licensed per operator; trial on the operator's own files first." },
           "hasPart": [
-            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/insight#app", "url": "https://hawkmason.com/crewops/insight", "name": "Crewops Insight" },
+            { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/insight-product#app", "url": "https://hawkmason.com/crewops/insight-product", "name": "Crewops Insight" },
             { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/safety#app", "url": "https://hawkmason.com/crewops/safety", "name": "Crewops Safety" },
             { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/academy#app", "url": "https://hawkmason.com/crewops/academy", "name": "Crewops Academy" },
             { "@type": "SoftwareApplication", "@id": "https://hawkmason.com/crewops/library#app", "url": "https://hawkmason.com/crewops/library", "name": "Crewops Library" }
@@ -77,12 +77,21 @@
           ]
         },
         {
+          "@type": "VideoObject",
+          "name": "Crewops Aviation Platform in 90 seconds",
+          "description": "From dated, disconnected airline tools to one crew app and four products: Safety, Academy, Library and Insight, with an API and signed webhooks. Captions and music, no voice-over.",
+          "thumbnailUrl": "https://hawkmason.com/assets/crewops/crewops-aviation-platform-poster.jpg",
+          "contentUrl": "https://hawkmason.com/assets/crewops/crewops-aviation-platform.mp4",
+          "uploadDate": "2026-10-15",
+          "duration": "PT90S"
+        },
+        {
           "@type": "FAQPage",
           "mainEntity": [
             { "@type": "Question", "name": "Can we buy one product?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes. Each product has its own licence, so you can hold one, two, three or all four. An operator code opens only the products it covers." } },
             { "@type": "Question", "name": "Where does the data live?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk & Mason Studios runs, separate for each airline, opened only by your operator code or API keys." } },
+              "acceptedAnswer": { "@type": "Answer", "text": "Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk & Mason Studios runs, with each airline's records kept apart by its airline code, and read on the airline's side only with your operator code or API keys." } },
             { "@type": "Question", "name": "Do our crews need an account?",
               "acceptedAnswer": { "@type": "Answer", "text": "No. In the pilot programme, crews open the crew app with your airline's company code. They create no account and buy nothing in the app." } },
             { "@type": "Question", "name": "Does it work with the systems we already run?",
@@ -96,11 +105,9 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <style>
-      /* Platform page: hub capture beside the headline, a calm hero. */
-      .w-hero-shot { margin: 0; }
-      .w-hero-shot img { display: block; width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--w-line); background: #05080f; box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8); }
+      /* Platform page: the hub capture in a panel frame with the crew phone in front (.w-hero-art--duo), beside the headline. */
       .w-hero--hub .w-lede { max-width: 50ch; margin-bottom: 1.6rem; }
       @media (min-width: 901px) { .w-hero--hub { grid-template-columns: 0.9fr 1.1fr; } }
       .w-start { text-align: center; margin: 26px 0 0; }
@@ -133,7 +140,7 @@
 
     <main>
       <!-- HERO -->
-      <section class="w-hero w-hero--hub">
+      <section class="w-hero w-hero--hub w-hero--duo">
         <div>
           <span class="w-badge">Crewops for airlines</span>
           <h1 class="w-title">Crewops Aviation Platform</h1>
@@ -144,8 +151,24 @@
             </a>
           </div>
         </div>
-        <figure class="w-hero-shot">
-          <img src="/assets/crewops/platform-hub.webp" width="1600" height="1000" loading="eager" decoding="async" fetchpriority="high" alt="The operator portal: a Today board listing an expired qualification, an overdue audit finding and an urgent report not yet opened, above four tiles for fatigue, safety, training and documents." />
+        <div class="w-hero-art w-hero-art--duo">
+          <div class="w-panel"><img src="/assets/crewops/platform-hub-panel.webp" width="1600" height="797" loading="eager" decoding="async" fetchpriority="high" alt="The operator portal: four tiles for fatigue, safety, training and documents above a Today board that lists an expired qualification, an overdue audit finding and an urgent report not yet opened." /></div>
+          <div class="w-phone w-phone-duo"><img src="/assets/crewops/platform-phone.webp" alt="The crew phone, Me tab: a My airline block with Safety, My training with three items pending and the Library with two to confirm, above the logbook" width="506" height="1100" loading="eager" /></div>
+        </div>
+      </section>
+
+      <!-- FILM -->
+      <section class="w-feat" id="film">
+        <div class="section-head section-head--center">
+          <span class="w-badge">Watch</span>
+          <h2 style="color: #fff;">The platform in 90 seconds</h2>
+        </div>
+        <figure style="margin: 0 auto; max-width: 960px; padding: 0 24px;">
+          <video controls playsinline preload="none" poster="/assets/crewops/crewops-aviation-platform-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f;">
+            <source src="/assets/crewops/crewops-aviation-platform.mp4" type="video/mp4" />
+            <a href="/assets/crewops/crewops-aviation-platform.mp4">Watch the Crewops Aviation Platform film</a>
+          </video>
+          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">From dated, disconnected tools to one crew app and four products. Captions and music, no voice-over. Fictional airline.</figcaption>
         </figure>
       </section>
 
@@ -160,7 +183,7 @@
             <div class="w-prod-head"><span class="w-status is-live">Available</span></div>
             <h3>Crewops Insight</h3>
             <p>Fatigue assessment from a roster export, in your browser. Duty limits and predicted alertness; the file stays on your computer.</p>
-            <p><a class="w-link" href="/crewops/insight">Try it on a sample roster →</a></p>
+            <p><a class="w-link" href="/crewops/insight-product">About Crewops Insight →</a></p>
           </article>
           <article class="w-card w-prod">
             <div class="w-prod-head"><span class="w-status is-live">Available</span></div>
@@ -253,9 +276,9 @@
           <span class="w-badge">Questions</span>
           <h2 style="color: #fff;">What operators ask first</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Can we buy one product?</h3><p>Yes. Each product has its own licence, so you can hold one, two, three or all four. An operator code opens only the products it covers.</p></article>
-          <article class="w-card"><h3>Where does the data live?</h3><p>Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, separate for each airline, opened only by your operator code or API keys.</p></article>
+          <article class="w-card"><h3>Where does the data live?</h3><p>Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code, and read on the airline's side only with your operator code or API keys.</p></article>
           <article class="w-card"><h3>Do our crews need an account?</h3><p>No. In the pilot programme, crews open the crew app with your airline's company code. They create no account and buy nothing in the app.</p></article>
           <article class="w-card"><h3>Does it work with the systems we already run?</h3><p>Yes. Each product runs on its own beside your SMS, HR, training and document systems, or feeds them through the API, webhooks and exports.</p></article>
           <article class="w-card"><h3>Can you build a module we do not see here?</h3><p>Write to us with the problem. We look at your files and rules first, then answer with a plan. A module appears here only once it is built.</p></article>
@@ -273,6 +296,7 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

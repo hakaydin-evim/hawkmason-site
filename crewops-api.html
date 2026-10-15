@@ -78,7 +78,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <style>
       .api-sec { max-width: 980px; margin: 0 auto; padding: 16px 24px 64px; }
       .api-sec > h2 { color: #fff; font-size: clamp(1.6rem, 3vw, 2.2rem); margin: 10px 0 12px; }
@@ -150,11 +150,11 @@
 
       <section class="api-sec" id="basics">
         <span class="w-badge">Basics</span>
-        <h2>Base URL, format and sign-in</h2>
+        <h2>Base URL, format and authentication</h2>
         <ul>
           <li><b style="color: var(--w-ink);">Base URL:</b> <code>https://updates.hawkmason.com</code>. Every path on this page is relative to it.</li>
           <li><b style="color: var(--w-ink);">Format:</b> JSON in and out. Send <code>Content-Type: application/json</code> with every JSON body; without it the request answers 415. File uploads send the file itself as the body with its own content type.</li>
-          <li><b style="color: var(--w-ink);">Sign-in:</b> <code>Authorization: Bearer &lt;operator code or API key&gt;</code> on every request.</li>
+          <li><b style="color: var(--w-ink);">Authentication:</b> <code>Authorization: Bearer &lt;operator code or API key&gt;</code> on every request.</li>
           <li><b style="color: var(--w-ink);">Scope:</b> the code says which airline it belongs to, so there is no airline parameter. Every list and record is your airline's own.</li>
           <li><b style="color: var(--w-ink);">Products:</b> the code also says which products your airline holds (Insight, Safety, Academy, Library). A product's endpoints open only if the code includes it.</li>
           <li><b style="color: var(--w-ink);">From a server:</b> call the API from your own systems. Browsers on other websites are refused by the CORS policy, which allows only hawkmason.com.</li>
@@ -587,11 +587,10 @@ def crewops_hook():
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20API%20%E2%80%94%20a%20question"><span class="store-kicker">Ask about the API</span><span class="store-name">hello@hawkmason.com</span></a>
           <a class="store-pill store-pill--mail" href="/crewops/faq"><span class="store-kicker">Questions and answers</span><span class="store-name">Crewops FAQ</span></a>
         </div>
-        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
       </section>
 
       <nav class="w-prodbar" aria-label="Crewops products">
-        <a class="w-prodbar-item" href="/crewops/insight"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/insight-product"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
         <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-live">Available</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
         <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-live">Available</span><b>Crewops Academy</b><span>Training records, expiry, read-and-sign</span></a>
         <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-live">Available</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
@@ -607,6 +606,7 @@ def crewops_hook():
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

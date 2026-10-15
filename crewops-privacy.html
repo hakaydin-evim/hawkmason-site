@@ -27,17 +27,21 @@
 
     <main class="legal-main">
       <h1>Crewops — Privacy Policy</h1>
-      <p class="legal-updated">Last updated: 12 October 2026</p>
+      <p class="legal-updated">Last updated: 15 October 2026</p>
 
       <p class="legal-lede">
         Crewops is a personal planning tool for airline crew, published by Hawk
         &amp; Mason Studios (“Hawk &amp; Mason”, “we”, “us”). It has no account.
         Your roster, your logbook, your documents and everything you record
         about your own sleep and fatigue are stored on your device and are not
-        sent to us. The one exception is yours to make: if your airline runs a
+        sent to us. The exceptions are yours to make: if your airline runs a
         fatigue programme on Crewops Insight, you can choose to share your
         post-flight rating with it (see <a href="#sharing">the section on
-        sharing</a>); nothing is shared until you switch it on.
+        sharing</a>); and if your airline licenses other Crewops products, the
+        reports you file and the notices and courses you sign or complete go to
+        your airline (see <a href="#airline-products">the section on products
+        your airline licenses</a>). Beyond the requests that section lists, nothing
+        is shared until you switch it on or send it.
       </p>
       <p class="legal-identity">Hawk &amp; Mason Studios is a trading name of Hakan Aydın, an independent developer based in Türkiye. Contact: <!--email_off--><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a><!--email_on-->.</p>
 
@@ -45,6 +49,7 @@
         <a href="#device">What stays on your device</a>
         <a href="#leaves">What leaves your device</a>
         <a href="#portal">Your airline's crew portal</a>
+        <a href="#airline-products">Products your airline licenses</a>
         <a href="#health">Health information</a>
         <a href="#purchases">Purchases</a>
         <a href="#icloud">iCloud sync</a>
@@ -57,8 +62,8 @@
       <h2 id="device">What stays on your device</h2>
       <p>
         Crewops works without an account. There is no sign-up, no password of
-        ours, and no profile held anywhere but on your phone. The following is
-        written to the app's private storage on your device and nowhere else:
+        ours, and no profile of ours held anywhere but on your phone. The following
+        is written to the app's private storage on your device and nowhere else:
       </p>
       <ul>
         <li><strong>Your profile</strong> — the first name, crew code, home base and rule set you enter during setup.</li>
@@ -71,9 +76,13 @@
       </ul>
       <p>
         We cannot read any of it. It is not backed up to a server of ours: the
-        only thing we ever hold is a post-flight rating you chose to share with
-        your airline (see <a href="#sharing">below</a>). If your phone is included
-        in an Apple device backup, that backup belongs to Apple and to you.
+        only things we hold are what you chose to send to your airline, namely a
+        post-flight rating you share (see <a href="#sharing">below</a>) and what
+        you file, sign or complete in the products your airline licenses,
+        together with the pairing of your crew code with your phone's identifier
+        (see <a href="#airline-products">the section on those products</a>). If
+        your phone is included in an Apple device backup, that backup belongs to
+        Apple and to you.
       </p>
       <p>
         One option changes where some of this sits, and only if you switch it on
@@ -102,15 +111,17 @@
         <li><strong>Your airline's crew portal</strong> — only when you choose that import method. See the next section.</li>
         <li><strong>A calendar link you paste</strong> — if your crew system publishes your roster as a calendar link and you paste it into the app, the app downloads the calendar from that address when you refresh. The request goes only to the address you gave and carries nothing else about you; the link stays on your device.</li>
         <li><strong>Your post-flight rating, to your airline</strong> — only if you switch it on, and only where your airline runs a Crewops Insight programme. See the section below.</li>
+        <li><strong>What you file, sign or complete in your airline's products</strong>, and the requests that read your notices, records and documents — only where your airline licenses them. See <a href="#airline-products">Products your airline licenses</a>.</li>
+        <li><strong>A link or file your airline hosts elsewhere</strong> — if your airline points a notice, course or document at its own web address, the app opens or downloads it from there. That address sees your IP address and what any web request carries; we do not.</li>
         <li><strong>Your own iCloud account</strong> — only if you switch iCloud sync on. See the section below for exactly what goes and what does not.</li>
         <li><strong>Anything you export yourself</strong> — a CSV logbook or a JSON copy of your data goes wherever you send it, through your own share sheet.</li>
         <li><strong>App updates</strong> — when it opens, the app asks updates.hawkmason.com, our own server, whether a newer version of its code is available. The request carries the app's runtime version and platform, nothing about you; updates are signed and the app refuses anything we did not sign.</li>
         <li><strong>A roster file you choose to send us</strong> — when the app cannot read your airline's roster format yet, it offers to email the file to us. The email opens in your own mail app with the file attached — plus your portal's sign-in address if you choose to type it, never a password — and nothing is sent until you press Send. We use the file only to teach the app that format, keep it no longer than that takes, and then delete it; it may contain your name, crew code and colleagues' names, so remove anything you prefer not to share before sending.</li>
       </ul>
       <p>
-        There is no analytics SDK, no advertising, no tracking identifier and no
-        crash reporter that sends us your data. We do not sell personal data and
-        we have nothing to sell.
+        There is no analytics SDK, no advertising, no identifier used to track you
+        across apps or sites and no crash reporter that sends us your data. We
+        do not sell personal data and we have nothing to sell.
       </p>
 
       <h2 id="portal">Your airline's crew portal</h2>
@@ -150,8 +161,8 @@
       </p>
       <p>
         With the switch on, each time you give a Samn-Perelli rating after a
-        flight the app sends, to updates.hawkmason.com (our own server, in the
-        European Union, on Cloudflare), this and nothing else: the date, flight
+        flight the app sends, to updates.hawkmason.com (our own server, hosted
+        on Cloudflare), this and nothing else: the date, flight
         number, departure and arrival of that flight, the number of sectors, the
         rating and when you gave it, whether you fly in the cockpit or the cabin,
         your crew code as you entered it in the app, and a random identifier for
@@ -162,20 +173,122 @@
         Your airline's compliance or safety team reads these records on its
         Crewops Insight page with the airline's licence code, beside the model's
         prediction for the same flight. The records are stored for two years and
-        then deleted; the airline, as the controller of its fatigue programme,
-        decides what it does with them on its side. To have your records deleted
-        earlier, switch sharing off and write to the address below with your
+        then deleted; the airline decides what it does with them on its side.
+        To have your records deleted earlier, switch sharing off and write to the address below with your
         crew code; we delete them within 30 days. The legal basis is your consent
         (GDPR Article 6(1)(a)), which the switch gives and withdraws.
+      </p>
+
+      <h2 id="airline-products">Products your airline licenses</h2>
+      <p>
+        An airline can license further Crewops products for its crews:
+        <strong>Crewops Safety</strong> (reports to its safety office),
+        <strong>Crewops Academy</strong> (notices to read and sign, training
+        records, courses and exams), <strong>Crewops Library</strong> (manuals
+        and their revisions) and <strong>Crewops Insight</strong>. The app offers
+        a product only if your airline has licensed it. The rating you can share
+        through Insight is described in the <a href="#sharing">section above</a>;
+        this section covers the others.
+      </p>
+      <p><strong>What you send, and when:</strong></p>
+      <ul>
+        <li><strong>A report</strong> — when you press Send in Crewops Safety, or send one through your airline's web report link. It carries the kind of report, what you wrote, whether it is urgent, an optional headline and suggestion, up to four optional photos, your answers to that kind's questions (most are ticks; a few are a number or a short text), the time of the event, the airport if you picked no duty, and your language setting. If you pick a duty from your roster, the flight comes with it: date, flight number, route, aircraft registration and type, and scheduled times. A fatigue report carries your Samn-Perelli rating and the reasons you tick, and from a picked duty the planned and maximum duty period and the number of sectors; a commander's discretion report carries the planned, maximum and actual duty period. Your crew code goes with a report unless you send it anonymously; whether you fly in the cockpit or the cabin always goes with it. A report about an injury or an illness carries what you say about it. Information you add to a report later, and the safety office's replies, travel the same way. Offline, a report waits on your phone and goes the next time you open Crewops Safety; photos are sent in separate requests after the report.</li>
+        <li><strong>A report sent with “anonymous” switched on</strong> — leaves out your crew code, and nothing else. It still carries what you wrote, the flight and times if you picked a duty, whether you fly in the cockpit or the cabin, and the random identifier of your phone. That identifier is stored with the report, and your airline's operator access can read it. It is the same identifier the app uses when it asks for your notices and records and when you share a rating, so an airline whose records tie your crew code to it, or that knows the flight, can tell who sent the report. Anonymous here means only that your crew code is not attached.</li>
+        <li><strong>A confirmation</strong> — when you mark a notice as read and understood in Crewops Academy, or confirm a revision in Crewops Library: which notice or document and revision, your crew code, the identifier of your phone and the time.</li>
+        <li><strong>A course or module result</strong> — when you finish a course in Crewops Academy: that you completed it, and when, with your crew code and the identifier of your phone. For an exam, your answers are marked on the server and what is stored is the score, the result and the number of attempts. For a SCORM module it is the result the module reports (passed or completed, and a score if it gives one; a failed result is not stored); the module's own progress stays on your phone.</li>
+        <li><strong>Your crew code and a random identifier of your phone</strong> — whenever the app asks your airline's workspace for what is yours: your notices, training records, courses and documents. That happens when you open the Me tab or those screens, if you have entered a crew code and your airline licenses Academy or Library. The app makes the identifier at random. It is the same on every request your phone makes to your airline's workspace, and the workspace stores it next to your crew code in the pairing. The first phone to ask for a crew code is paired with it, and another phone using the same crew code is refused until your airline resets the pairing. The app also keeps the identifier in the iOS Keychain, so deleting and reinstalling the app on the same phone keeps the pairing.</li>
+        <li><strong>The web report link</strong> — for crews without the app, your airline's safety office can share a web form. A report sent through it reaches the same safety office and is marked “web”. Your crew code is optional there. Your browser keeps a random identifier, and the report numbers and secret keys it needs to show the state of your reports, on that browser only; anyone using the same browser can open them. The page loads its typefaces from Google Fonts, so Google receives your IP address when you open it.</li>
+      </ul>
+      <p>
+        To know whether your airline runs a product, the app asks our server for
+        the list of airlines that do. That request carries nothing about you.
+      </p>
+      <p>
+        <strong>What your airline puts there.</strong> In Crewops Academy the
+        airline loads your qualification records itself: for example the dates of
+        checks, training, licences and medical certificates, each with a label
+        and a short note, with your crew code, your role and, if it chooses, your
+        name. They show in the app under your training. The airline also
+        publishes the notices, courses and documents. Its staff may type their
+        own names in the browser panel, for example as the author of a notice or
+        of a change to a report. If the airline points a notice, course or
+        document at its own web address, the app opens or downloads it from
+        there (see <a href="#leaves">What leaves your device</a>).
+      </p>
+      <p>
+        <strong>What stays on your device.</strong> Your roster, sleep entries,
+        health entries, logbook and notes. Apart from the requests above, only
+        what you file, sign, complete or share leaves. The reports you sent, the
+        notices and documents the app shows and a course's progress are kept on
+        your phone and are not part of iCloud sync.
+      </p>
+      <p>
+        <strong>Who receives it.</strong> Your airline: its safety office for
+        reports, its training department for Academy and its documentation
+        office for Library, through the airline's browser panel. If the airline
+        has set them up, its own systems receive it too, by API and by webhook.
+        A webhook sends events such as a new report, a signed notice, a completed
+        course or a confirmed revision to one address the airline names. Each
+        event carries the record itself: for a report, the report as sent and
+        the safety office's handling of it, that is what the person wrote, the
+        flight, the answers, their crew code unless it was sent anonymously, and
+        the status, classification and reply (the photos are only counted, and
+        the phone's identifier is left out); for the other events, the crew code,
+        the time and the notice, course or document concerned, with a score or
+        result where there is one.
+      </p>
+      <p>
+        <strong>Where it is stored, and who can read it.</strong> On Cloudflare:
+        records in Workers KV, and photos, course files and manuals in R2
+        storage, kept apart by airline code. The airline reads them in its
+        browser panel with its operator code, or through an API key it made from
+        that code. Your phone asks for your notices, records and documents by
+        sending your airline code, your crew code and the phone's identifier; the
+        first phone to use a crew code is paired with it. That pairing prevents
+        mix-ups; it is not a password. As the provider of the service we can
+        reach the storage itself; we do that to run the service and to carry out
+        the airline's instructions.
+      </p>
+      <p>
+        <strong>How long.</strong> We set no expiry on the records of these
+        products. They stay until your airline asks us to delete it, and that is
+        also so when an airline's licence ends. The post-flight rating of Crewops Insight
+        is the exception: two years, as described above.
+      </p>
+      <p>
+        <strong>Who decides what is done with it.</strong> Your airline decides
+        why the data is collected and for how long; Hawk &amp; Mason Studios
+        hosts it and processes it on the airline's instructions. To have a
+        report, a photo or a record deleted, or a record corrected, ask your
+        airline: its safety office for a report, its training department for a
+        record or a confirmation. The airline then instructs us. The text of a
+        report cannot be changed once it is sent; you can add information to it.
+        You can also write to us and we will pass your request to your airline.
+        Deleting the app removes what the app holds on your phone, not what your
+        airline holds; the one thing it leaves is the phone's identifier in the
+        iOS Keychain, kept so that reinstalling does not look like a new phone.
+        Delete everything in the app clears your own data but not that
+        identifier, nor the course files and manuals the app downloaded, nor the
+        photos of a report not yet sent; see
+        <a href="#retention">how long data is kept</a>.
+      </p>
+      <p>
+        We do not use any of this for advertising, we do not sell it, and we
+        build no analytics profile of crew members.
       </p>
 
       <h2 id="health">Health information</h2>
       <p>
         Sleep entries, fatigue self-ratings, IMSAFE answers and the estimated
         cosmic radiation dose are health-related information about you. They are
-        created by you, stored only on your device, never transmitted to us, and
-        never shared with your employer, your regulator or anyone else by this
-        app.
+        created by you and stored only on your device. This app does not send
+        them to us, to your employer, to your regulator or to anyone else, with
+        two exceptions that are yours to make: a post-flight fatigue rating you
+        share with your airline (see <a href="#sharing">the section on
+        sharing</a>), and a report you send in Crewops Safety, which carries what
+        you rate, tick or write in it (see <a href="#airline-products">Products
+        your airline licenses</a>). Your logged sleep entries and IMSAFE answers
+        are not sent in either.
       </p>
       <p>
         Each health module is switched off until you turn it on, and each one
@@ -281,14 +394,24 @@
       <h2 id="basis">Legal basis and international transfers</h2>
       <p>
         Almost everything Crewops does with your data happens on your own
-        device, under your control, and we are not a recipient of it. Where the
-        GDPR and the KVKK ask us to name a basis, these are the ones that apply:
+        device, under your control. The exception is what you send to your
+        airline's workspace, which we host for your airline (see
+        <a href="#airline-products">above</a>). Where the GDPR and the KVKK ask
+        us to name a basis, these are the ones that apply:
       </p>
       <ul>
         <li><strong>Performance of our contract with you</strong> (GDPR Art. 6(1)(b); KVKK Art. 5(2)(c)) — processing your subscription state so Crewops Pro works and can be restored.</li>
         <li><strong>Your consent</strong> (GDPR Art. 6(1)(a), and Art. 9(2)(a) for health data; KVKK Art. 6(2)) — each health module, and the crew-portal sign-in. Each is off until you switch it on, and you may withdraw at any time by switching it off or deleting your data. Withdrawing does not affect what was done before you withdrew.</li>
         <li><strong>Our legitimate interests</strong> (GDPR Art. 6(1)(f); KVKK Art. 5(2)(f)) — the public weather and space-weather lookups, which carry an airport code and nothing about you.</li>
       </ul>
+      <p>
+        <strong>Products your airline licenses.</strong> For the reports,
+        records and confirmations described in <a href="#airline-products">that
+        section</a>, your airline decides why the data is collected and for how
+        long; Hawk &amp; Mason Studios hosts it and processes it on the
+        airline's instructions. This policy does not state a legal basis for
+        what the airline does with the data; ask your airline.
+      </p>
       <p>
         <strong>Where the data goes.</strong> We are established in Türkiye, so
         if you are in the EU/EEA or the UK your subscription state reaches a
@@ -305,20 +428,36 @@
         consent under KVKK Art. 9.
       </p>
       <p>
-        We use one processor and no others: RevenueCat, Inc., for subscription
-        state. Apple is an independent controller for the purchase itself.
+        <strong>Cloudflare.</strong> Our update service and the airline
+        workspaces are hosted on Cloudflare, Inc., a company established in the
+        United States whose network runs in many countries. We do not promise a
+        country for the data held there, so what you send to your airline's
+        workspace, or share as a post-flight rating, can be processed outside the
+        country you are in.
+      </p>
+      <p>
+        The service providers we use are RevenueCat, Inc., for subscription
+        state, and Cloudflare, Inc., which hosts our update service and the
+        airline workspaces. Apple is an independent controller for the purchase
+        itself.
       </p>
 
       <h2 id="retention">How long data is kept, and how to delete it</h2>
       <p>
-        Everything Crewops holds about you stays on your device, or with iCloud
-        sync on in your own iCloud account, until you remove it. We keep nothing,
-        so there is nothing for us to delete on our side.
+        Nearly everything Crewops holds about you stays on your device, or with
+        iCloud sync on in your own iCloud account, until you remove it. The
+        exceptions are what you chose to send: a shared post-flight rating, kept
+        for two years (see <a href="#sharing">sharing</a>), and what you file,
+        sign or complete in your airline's products, kept until your airline asks
+        us to delete it (see <a href="#airline-products">Products your airline
+        licenses</a>). Those sit in your airline's workspace, and deleting the
+        app or using Delete everything does not remove them; the sections named
+        explain how to have them deleted.
       </p>
       <ul>
-        <li><strong>Delete everything in the app</strong> — <strong>Me → Data &amp; privacy → Delete everything</strong> (Turkish build: Ben → Veri ve gizlilik → Her şeyi sil) wipes the roster, logbook, documents and attachments, health entries, saved portal credentials and scheduled reminders, and your roster shared through <a href="#circle">Crewmates</a>, and returns the app to its first-launch state.</li>
+        <li><strong>Delete everything in the app</strong> — <strong>Me → Data &amp; privacy → Delete everything</strong> (Turkish build: Ben → Veri ve gizlilik → Her şeyi sil) wipes the roster, logbook, documents and attachments, health entries, saved portal credentials and scheduled reminders, and your roster shared through <a href="#circle">Crewmates</a>, and returns the app to its first-launch state. It does not remove the phone's identifier from the iOS Keychain, kept so that reinstalling does not look like a new phone, nor the course files and manuals the app downloaded, nor the photos of a report not yet sent; deleting the app removes those files.</li>
         <li><strong>Export first if you want a copy</strong> — the same screen writes a full JSON copy of your data, and the logbook exports as CSV.</li>
-        <li><strong>Delete the app</strong> — removing Crewops from your device deletes its storage with it. If you turned iCloud sync on, the encrypted copy in <em>your</em> iCloud account is not deleted with the app; remove it as described under <a href="#icloud">iCloud sync</a>.</li>
+        <li><strong>Delete the app</strong> — removing Crewops from your device deletes its storage with it, except the phone's identifier in the iOS Keychain. If you turned iCloud sync on, the encrypted copy in <em>your</em> iCloud account is not deleted with the app; remove it as described under <a href="#icloud">iCloud sync</a>.</li>
         <li><strong>Subscription</strong> — deleting your data does not cancel a subscription. Cancel it in your Apple Account settings.</li>
       </ul>
 
@@ -333,8 +472,12 @@
         your hands, the export gives you a portable copy, and the delete function
         erases it. Where you believe we hold something about you — for example a
         support email you sent us — write to us and we will tell you what we have
-        and delete it on request. You may also complain to your national data
-        protection authority.
+        and delete it on request. What you sent to your airline's products sits
+        in your airline's workspace: ask your airline to have it deleted, or a
+        record corrected, as described under
+        <a href="#airline-products">Products your airline licenses</a>. You may
+        also complain to your national data protection
+        authority.
       </p>
       <p>
         Crewops is a professional tool intended for adults working as airline

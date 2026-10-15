@@ -1117,3 +1117,54 @@ body.umbrella .foot-legal { color: var(--muted); }
 .w-prodbar-item[aria-current="page"] { pointer-events: none; }
 a.w-tile { transition: transform 0.18s ease, border-color 0.18s ease; }
 a.w-tile:hover { transform: translateY(-3px); border-color: var(--w-azure); }
+
+/* Product pages: the airline's browser panel behind the crew phone (2026-10-15).
+   .w-hero-art--duo holds a .w-panel (a real capture of the panel in a quiet browser frame) and one .w-phone.w-phone-duo
+   in front of its lower right corner, below the part of the panel that carries the figures. .w-shot is the same window
+   as a wide figure inside a section. .w-hero--duo is the hero that holds them: same top edge on every product page. */
+.w-hero-art--duo { aspect-ratio: 1 / 1; }
+.w-panel { position: absolute; left: 0; top: 3%; width: 94%; border-radius: 14px; overflow: hidden; background: #0c0c11; border: 1px solid var(--w-line); box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8); }
+.w-panel::before { content: ""; display: block; height: 22px; background: #15151c; border-bottom: 1px solid #22222c; background-image: radial-gradient(circle at 12px 11px, #3a3a46 4px, transparent 5px), radial-gradient(circle at 28px 11px, #3a3a46 4px, transparent 5px), radial-gradient(circle at 44px 11px, #3a3a46 4px, transparent 5px); }
+.w-panel img { display: block; width: 100%; height: auto; }
+.w-phone-duo { width: 27%; right: 0; bottom: 0; }
+.w-shot { max-width: 1100px; margin: 30px auto 0; padding: 0 24px; }
+.w-shot .w-panel { position: relative; width: 100%; top: 0; }
+.w-shot figcaption { margin-top: 12px; text-align: center; color: var(--w-muted); font-size: 0.85rem; line-height: 1.5; }
+
+/* The hero art sits at the top of its row, so the panel starts at the same height on every product page,
+   and gets the wider column. The Insight page has no phone: its panel fills the art box. */
+.w-hero--duo { align-items: start; }
+.w-hero--duo .w-hero-art { margin-top: 8px; }
+.w-hero--duo .g-hero-meta { line-height: 1.6; }
+.w-hero-art--panel-only { aspect-ratio: auto; }
+.w-hero-art--panel-only .w-panel { position: relative; top: 0; width: 100%; margin-top: 17px; }
+@media (min-width: 901px) {
+  .w-hero--duo { grid-template-columns: 0.9fr 1.1fr; }
+  .w-hero--duo.w-hero--panel { grid-template-columns: 0.8fr 1.2fr; }
+  .w-hero--duo .w-title { font-size: clamp(2.4rem, 4.6vw, 3.7rem); text-wrap: balance; }
+}
+
+/* Card grids: a last row of one or two cards sits centred under the full rows. */
+.w-grid--c { display: flex; flex-wrap: wrap; justify-content: center; }
+.w-grid--c > .w-card { flex: 0 1 calc((100% - 36px) / 3); min-width: 0; }
+@media (max-width: 960px) { .w-grid--c > .w-card { flex-basis: calc((100% - 18px) / 2); } }
+@media (max-width: 620px) { .w-grid--c > .w-card { flex-basis: 100%; } }
+
+/* Regulatory strip: the two lists start on the same line. */
+.w-strip-inner--3 { align-items: start; }
+.w-strip-inner--3 .w-spec li:first-child { padding-top: 0; border-top: 0; }
+
+/* Phones: the hero panel shows its left two thirds at a readable size, the crew phone sits lower and narrower,
+   the wide figures scroll sideways at a readable size instead of shrinking, and the buttons start on the copy's edge. */
+@media (max-width: 560px) {
+  .w-hero-art--duo { aspect-ratio: 1 / 1.1; }
+  .w-hero-art--panel-only { aspect-ratio: auto; }
+  .w-phone-duo { width: 32%; }
+  .w-hero-art--duo .w-panel img { width: 150%; max-width: none; }
+  .w-shot { padding: 0 16px; }
+  .w-shot .w-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .w-shot .w-panel img { width: 760px; max-width: none; }
+  .w-hero--duo .store-row { justify-content: flex-start; gap: 0.6rem; }
+  .w-hero--duo .g-hero-meta { display: none; }
+  .w-shot .w-panel + figcaption::before { content: "Swipe sideways to see the full width."; display: block; margin-bottom: 4px; color: var(--w-azure-soft); font-weight: 600; }
+}

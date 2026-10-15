@@ -80,7 +80,7 @@
      "name": "What is the difference between an operator code, a company code and a crew code?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "An operator code signs an airline department in to the operator portal. It opens the products you hold, each as its own panel (Safety, Academy, Library, Insight), and a code can be limited to one department and one product. A company code is what your crews type in the crew app, Crewops Crew; it opens the crew side of the same products and never opens operator data. A crew code is one person's own code in your airline; it is paired with one phone."
+      "text": "An operator code gives an airline department the operator portal, with the products you hold as separate panels (Safety, Academy, Library, Insight); a code can be limited to one department and one product. A company code is what your crews type in the crew app, Crewops Crew; it opens the crew side of the same products and never opens operator data. A crew code is one person's own code in your airline; it is paired with one phone."
      }
     },
     {
@@ -224,7 +224,7 @@
      "name": "Do you offer single sign-on?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "No. The operator portal signs in with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com."
+      "text": "No. The operator portal opens with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com."
      }
     },
     {
@@ -240,7 +240,7 @@
      "name": "Who can read our airline's data?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Your departments, with your operator code in the operator portal, and your systems, with API keys made from it. What a crew member files or signs is stored on Cloudflare servers that Hawk & Mason Studios runs, separate for each airline, and a code from another airline does not open it."
+      "text": "Your departments, with your operator code in the operator portal, and your systems, with API keys made from it. What a crew member files or signs is stored on Cloudflare servers that Hawk & Mason Studios runs, with each airline's records kept apart by its airline code, and a code from another airline does not open them."
      }
     },
     {
@@ -304,7 +304,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <style>
       .faq-toc { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin: 26px auto 0; max-width: 980px; padding: 0 24px; }
       .faq-toc a { padding: 8px 14px; border: 1px solid var(--w-line); border-radius: 999px; color: var(--w-ink); background: var(--w-panel); font-size: 0.92rem; }
@@ -388,7 +388,7 @@
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card" data-faq><h3>What is the Crewops Aviation Platform?</h3><p>The airline side of Crewops: four products licensed separately, Crewops Insight for roster fatigue assessment, Crewops Safety, Crewops Academy and Crewops Library. What an airline buys is what opens, for its departments and its crews.</p></article>
-          <article class="w-card" data-faq><h3>What is the difference between an operator code, a company code and a crew code?</h3><p>An operator code signs an airline department in to the operator portal. It opens the products you hold, each as its own panel (Safety, Academy, Library, Insight), and a code can be limited to one department and one product. A company code is what your crews type in the crew app, Crewops Crew; it opens the crew side of the same products and never opens operator data. A crew code is one person's own code in your airline; it is paired with one phone.</p></article>
+          <article class="w-card" data-faq><h3>What is the difference between an operator code, a company code and a crew code?</h3><p>An operator code gives an airline department the operator portal, with the products you hold as separate panels (Safety, Academy, Library, Insight); a code can be limited to one department and one product. A company code is what your crews type in the crew app, Crewops Crew; it opens the crew side of the same products and never opens operator data. A crew code is one person's own code in your airline; it is paired with one phone.</p></article>
           <article class="w-card" data-faq><h3>What is the Today board?</h3><p>The first page of the operator portal: one list, across the products you hold, of what needs action now. It shows safety reports near or past their 72-hour clock, overdue actions and findings, open intolerable risks, expired or missing qualifications, notices, courses and revisions past their date, and very tired crew ratings. Each line opens its record.</p></article>
           <article class="w-card" data-faq><h3>How does a trial start?</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app through the pilot programme. Nothing has to be integrated on day one.</p></article>
         </div>
@@ -451,7 +451,7 @@
           <article class="w-card" data-faq><h3>How do our systems connect?</h3><p>Through the API, with an API key made in the operator portal for each system: your SMS, HR, training or document system. A key opens the same products and has the same expiry as your operator code, and it cannot make other keys or change the webhook. Every endpoint is documented at hawkmason.com/crewops/api.</p></article>
           <article class="w-card" data-faq><h3>What do webhooks send?</h3><p>A signed POST to one https endpoint you set, when a safety report is created or updated, a notice is signed, a course is completed or a revision is confirmed. Each delivery is signed with HMAC-SHA256 and tried once with a 5-second timeout and no retries; the operator portal has a test button and lists the last 20 deliveries.</p></article>
           <article class="w-card" data-faq><h3>Which files go in and out?</h3><p>Safety exports CSV in ECCAIRS-style columns and ECCAIRS E5X files. Academy imports qualification records by CSV or the API, exports them as CSV, and imports SCORM 1.2 and 2004 packages. Library takes PDFs, uploaded in the operator portal or published from your document system through the API.</p></article>
-          <article class="w-card" data-faq><h3>Do you offer single sign-on?</h3><p>No. The operator portal signs in with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com.</p></article>
+          <article class="w-card" data-faq><h3>Do you offer single sign-on?</h3><p>No. The operator portal opens with your airline's operator code, and your systems use API keys. If your IT policy needs single sign-on, ask us at hello@hawkmason.com.</p></article>
           <article class="w-card" data-faq><h3>What does Crewops not do?</h3><p>It does not build rosters or pairings, run operations control or plan flights, and it does not submit reports to an authority on your behalf. It holds no approval or certification from any authority; your procedures, records and approved systems prevail.</p></article>
         </div>
       </section>
@@ -462,7 +462,7 @@
           <h2 style="color: #fff;">Who can read what</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
-          <article class="w-card" data-faq><h3>Who can read our airline's data?</h3><p>Your departments, with your operator code in the operator portal, and your systems, with API keys made from it. What a crew member files or signs is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, separate for each airline, and a code from another airline does not open it.</p></article>
+          <article class="w-card" data-faq><h3>Who can read our airline's data?</h3><p>Your departments, with your operator code in the operator portal, and your systems, with API keys made from it. What a crew member files or signs is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code, and a code from another airline does not open them.</p></article>
           <article class="w-card" data-faq><h3>Can a crew member read a colleague's data?</h3><p>No. The company code never opens operator data: not other crew members' reports, ratings, records or confirmations. A crew code is paired with the first phone that opens it, and other phones are refused until the department resets it. A code nobody has opened yet belongs to whoever opens it first.</p></article>
           <article class="w-card" data-faq><h3>Is an anonymous report really anonymous?</h3><p>An anonymous report carries no crew code and no name. It still holds the flight and duty it came from and a random phone identifier, which is how the reply reaches you; both are in the safety office's record. Treat it as confidential, not untraceable.</p></article>
           <article class="w-card" data-faq><h3>Does my airline see my health data?</h3><p>No. Roster, sleep and health entries stay on your phone. Your airline receives only what you file, sign, complete or share yourself in the crew app: a report, a confirmation, a course result, or a post-flight rating if you switch sharing on. The details are in the <a href="/crewops-privacy">privacy policy</a>.</p></article>
@@ -477,11 +477,10 @@
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20%E2%80%94%20a%20question"><span class="store-kicker">Ask a question</span><span class="store-name">hello@hawkmason.com</span></a>
           <a class="store-pill store-pill--mail" href="/crewops/api"><span class="store-kicker">For your IT team</span><span class="store-name">API reference</span></a>
         </div>
-        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
       </section>
 
       <nav class="w-prodbar" aria-label="Crewops products">
-        <a class="w-prodbar-item" href="/crewops/insight"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/insight-product"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
         <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-live">Available</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
         <a class="w-prodbar-item" href="/crewops/academy"><span class="w-status is-live">Available</span><b>Crewops Academy</b><span>Training records, expiry, read-and-sign</span></a>
         <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-live">Available</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
@@ -497,6 +496,7 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

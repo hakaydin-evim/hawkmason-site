@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crewops Insight · roster fatigue assessment</title>
-    <meta name="description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown. Licensed per operator; sample roster without a code." />
+    <meta name="description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown FDP. Licensed per operator." />
     <link rel="canonical" href="https://hawkmason.com/crewops/insight" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="noindex, nofollow" />
     <meta property="og:title" content="Crewops Insight · roster fatigue assessment" />
-    <meta property="og:description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown. Licensed per operator; sample roster without a code." />
+    <meta property="og:description" content="Roster fatigue assessment in the browser: FDP margins, predicted alertness through every duty, planned against flown FDP. Licensed per operator." />
     <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta property="og:url" content="https://hawkmason.com/crewops/insight" />
@@ -37,7 +37,7 @@
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any (browser)",
    "url": "https://hawkmason.com/crewops/insight",
-   "description": "Roster fatigue analysis for airline operators: FDP margins, Three-Process Model alertness (KSS, Samn-Perelli) at top of descent, EASA 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; nothing is uploaded. Licensed per operator.",
+   "description": "Roster fatigue analysis for airline operators: FDP against the ceiling in use, Three-Process Model alertness (predicted KSS and a Samn-Perelli equivalent) at a top-of-descent stand-in, the night-duty subtypes of ED Decision 2023/023/R, and planned-against-flown FDP beside the ORO.FTL.110(j) 33% level. Roster files are read in the browser and are not uploaded. An evaluation tool, not an FRMS and not a fitness-to-fly judgement. Licensed per operator.",
    "publisher": {
     "@type": "Organization",
     "name": "Hawk & Mason Studios",
@@ -58,7 +58,7 @@
      "name": "Which fatigue model does Crewops Insight use?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the parameters re-estimated on 136 aircrews by Ingre et al. 2014 — the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern; output is KSS 1–9 and Samn-Perelli 1–7 at top of descent, against the EASA FTL 2.0 thresholds KSS 7 and SP 5."
+      "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the circadian phase of an intermediate chronotype and the 30% per day time-zone adaptation that Ingre et al. 2014 estimated on 136 aircrews; the other constants are the original model's. It is the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern. Output is predicted KSS 1–9, taken 30 minutes before each on-blocks as the stand-in for top of descent, and a Samn-Perelli equivalent (KSS rounded, minus 2). KSS 7 and Samn-Perelli 5 are high-fatigue ratings that EASA's FTL 2.0 research recommends as safety metrics; they are research metrics, not regulatory limits."
      }
     },
     {
@@ -66,7 +66,7 @@
      "name": "Does the roster file get uploaded?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "No. Parsing and modelling run in the browser tab; nothing reaches a server. Close the tab and the analysis is gone."
+      "text": "No. The roster is read and analysed in the browser tab and is not uploaded; close the tab and the analysis is gone. With a licence code the page sends usage counts (opens, panel views, analyses and exports) and, when crew ratings are included, asks our ratings service for the ratings between the first and last date of the roster. Two things are kept on our server: counts of portal use, with date, time and airline, for 400 days, and crew ratings, which the crew app sends with the crew member's consent, for two years. The PDF and spreadsheet readers load from a public CDN, and the fonts from Google Fonts, when the page opens."
      }
     },
     {
@@ -74,7 +74,7 @@
      "name": "Which roster formats does it read?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "NetLine/Crew duty plans, Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew, CrewConnex and Sabre CWP roster pages; AIMS CSV; rotation plans exported as a spreadsheet (.xlsx); any .ics calendar. A format it does not read yet is named, and a sample can be sent to add a reader."
+      "text": "Read from real exports: NetLine/Crew PDFs and the 'Activités' rotation workbook (.xlsx). The NetLine reader has been checked on two real PDFs; other layouts have not. Beta readers, built from public format descriptions or test files and not yet from a real export: Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew (page and CSV), CrewConnex and Sabre CWP pages; SkedPlus+; the RAIDO/NAVBLUE and FLiCA calendar layouts. Other calendar (.ics) files are read as events, and one without report times is counted from the first departure. Other spreadsheet layouts are not read. Check a first read against your roster by eye. For a format it does not read, send a sample file, anonymised if you prefer; we look at it and tell you whether and when a reader can be added."
      }
     },
     {
@@ -82,7 +82,7 @@
      "name": "Is it a validated FRMS tool?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "It implements a published biomathematical model and documents its limits as CASA and ICAO ask. It supports a fatigue risk assessment and is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement."
+      "text": "No. It implements a published biomathematical model and documents its limits in a model card. It supports a fatigue risk assessment. It is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement; no independent review of the implementation and no validation against measured sleep has been done yet."
      }
     }
    ]
@@ -204,15 +204,16 @@
       <div class="bar" style="margin-top:28px"></div>
       <div class="eyebrow">Crewops Insight · fatigue risk assessment of a roster</div>
       <h2 style="margin-top:8px">Roster fatigue analysis</h2>
-      <p class="fine" style="max-width:80ch">Drop a roster export, planned or flown: every duty against the FDP ceiling, predicted alertness through the duty (Three-Process Model, aircrew parameters), KSS and Samn-Perelli at top of descent, planned versus flown, and the post-flight ratings your crews share from the app. Files are read in this browser; nothing is uploaded.</p>
+      <p class="fine" style="max-width:80ch">Drop a roster export, planned or flown. Each flight duty's FDP is set against the ceiling the file prints, or against the table of the selected rule set when it prints none. Alertness through the duty is predicted with the Three-Process Model (circadian phase and time-zone adaptation from an aircrew study, other constants from the original model) and given as KSS and a Samn-Perelli equivalent at a top-of-descent stand-in. A flown export is matched to the planned one to compare FDP, and post-flight ratings that crew members of an airline on the ratings programme choose to share from the app are shown beside the prediction. Roster files are read in this browser and are not uploaded.</p>
       <div class="grid" id="inputs">
         <div class="card">
           <h3>PLANNED ROSTER</h3>
-          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew, Leon, CAE Crew Access, Lufthansa CAS, FLiCA PDFs · AIMS eCrew / CrewConnex / Sabre pages · AIMS CSV · rotation spreadsheets (.xlsx) · any calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
+          <label class="drop" id="dropPlanned">Drop a roster file here, or click to choose<br /><span class="fine">NetLine/Crew PDFs · "Activités" rotation workbook (.xlsx) · beta readers: Leon, CAE Crew Access, Lufthansa CAS, FLiCA, AIMS eCrew, CrewConnex, Sabre CWP, SkedPlus+ · calendar (.ics) · one or many files</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
+          <p class="fine" style="margin:8px 0 0">Read from real exports: NetLine/Crew PDFs and the "Activités" rotation workbook (.xlsx); other spreadsheet layouts are not read. The browser reads PDF text with pdf.js. The NetLine reader has been checked on two real PDFs; other layouts have not. Beta readers, built from public format descriptions or test files and not yet from a real export: Leon, CAE Crew Access, Lufthansa CAS and FLiCA PDFs; AIMS eCrew (page and CSV), CrewConnex and Sabre CWP pages; SkedPlus+; the RAIDO/NAVBLUE and FLiCA calendar layouts. Other calendar (.ics) files are read as events; one that carries no report time is read from the first departure, so its FDP is counted from departure, not from report. The page does not mark duties read by a beta reader: check a first read against your roster by eye.</p>
         </div>
         <div class="card">
           <h3>FLOWN ROSTER <span class="fine">(optional)</span></h3>
-          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · ORO.FTL.110(j) exceedance share</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
+          <label class="drop" id="dropActual">Drop the flown version to compare<br /><span class="fine">same formats · matched to the planned roster; FDP only</span><input type="file" multiple accept=".pdf,.ics,.ical,.ifb,.vcs,.html,.htm,.csv,.txt,.xlsx,.xlsm,.xls,.ods,text/calendar,application/pdf,text/html,text/csv,text/plain" /><div class="name"></div></label>
         </div>
         <div class="card">
           <h3>OPERATION</h3>
@@ -220,8 +221,8 @@
             <label class="f">Home base (IATA)<input type="text" id="base" value="CDG" maxlength="3" style="width:90px;text-transform:uppercase" /></label>
             <label class="f">Rule set<select id="rules"><option value="easa">EASA · ORO.FTL</option><option value="ukcaa">UK CAA · ORO.FTL</option><option value="shgm">SHGM · SHT-FTL</option><option value="faa117">FAA · Part 117</option></select></label>
             <label class="f">Top of descent<select id="tod"><option value="30">30 min before on-blocks</option><option value="20">20 min</option><option value="45">45 min</option></select></label>
-            <label class="f">In-flight rest (augmented crew)<select id="rest"><option value="share">credited · equal share of cruise, as sleep</option><option value="none">not credited · no-rest counterfactual</option></select></label>
-            <label class="f">Rest facility<select id="restClass"><option value="1">class 1 · bunk</option><option value="2">class 2 · reclining seat, cabin</option><option value="3">class 3 · reclining seat</option></select></label>
+            <label class="f">In-flight rest (where three or more pilots are listed)<select id="rest"><option value="share">credited · equal share of cruise, as sleep</option><option value="none">not credited · no-rest counterfactual</option></select></label>
+            <label class="f">Rest facility (selects the CS FTL.1.205(c) maximum shown; class 1 is the most permissive)<select id="restClass"><option value="1">class 1 · bunk</option><option value="2">class 2 · reclining seat, cabin</option><option value="3">class 3 · reclining seat</option></select></label>
           </div>
           <details id="study" style="margin-top:14px">
             <summary class="fine" style="cursor:pointer">STUDY ASSUMPTIONS · to set a run beside another model's study on the same terms</summary>
@@ -231,7 +232,7 @@
               <label class="f">Sleep before each rotation<select id="priorSleep"><option value="0">predicted by the model</option><option value="6">6 h, ending 2 h before report</option><option value="7">7 h</option><option value="8">8 h</option><option value="9">9 h</option></select></label>
               <label class="f">Time-zone adaptation<select id="adapt"><option value="0.3">30% of the remaining shift per day (aircrew fit)</option><option value="0.15">15% per day</option><option value="0.5">50% per day</option><option value="0">none · body clock stays on home time</option></select></label>
             </div>
-            <label class="f" style="flex-direction:row; align-items:center; gap:8px; margin-top:10px"><input type="checkbox" id="includeCrew" checked /> Include crew-reported ratings (what your pilots gave in the Crewops app after each flight, read with your licence code and shown beside the prediction)</label>
+            <label class="f" style="flex-direction:row; align-items:center; gap:8px; margin-top:10px"><input type="checkbox" id="includeCrew" checked /> Include crew-reported ratings (post-flight ratings that your crew members chose to share from the Crewops app; Insight asks our ratings service for those between the first and last date of this roster, with your operator code, and shows them beside the prediction)</label>
             <p class="fine" style="margin:8px 0 0">These change the run, not the roster. The assumptions used are printed with the results and in the CSV, so a difference from another study can be traced to its cause.</p>
           </details>
           <div class="row" style="margin-top:14px"><button id="run" disabled>ANALYSE</button><button class="ghost hidden" id="csv">CSV</button><button class="ghost hidden" id="print">PRINT / PDF</button></div>
@@ -247,26 +248,30 @@
         <div class="tiles" id="tiles"></div>
         <div id="pva" class="hidden">
           <h2>Planned versus flown</h2>
+          <p class="fine">Duties are matched by date, type, start station and first flight number; a duty whose first flight number changed is not matched. Only FDP is compared; alertness is shown for the planned roster. "Max" is the ceiling the file prints, or the table value when it prints none; for a duty with three or four listed pilots and no printed ceiling that is the two-pilot table value, so a duty can count as flown over the maximum while inside its augmented limit. ORO.FTL.110(j) sets a 33% level for a schedule over a scheduled seasonal period, so the share shown is only as complete as the files supplied; the tile reads YES above one third.</p>
           <div class="tiles" id="pvaTiles"></div>
           <div class="tablewrap"><table id="pvaTable"></table></div>
         </div>
         <h2>Duties</h2>
-        <p class="fine">KSS 1–9 (Karolinska Sleepiness Scale) and Samn-Perelli 1–7 predicted at top of descent; EASA FTL 2.0 risk markers are KSS ≥ 7 and SP ≥ 5. Sleep is predicted from the roster, not measured. For augmented crews (three or more pilots listed) "EASA max" is the CS FTL.1.205(c) value for that crew and rest facility: 14/15/16 h with one additional pilot and 15/16/17 h with two (class 3/2/1), plus 1 h when one sector exceeds 9 h and the FDP has at most 2 sectors (c)(4); 3 sectors at most; 90 min rest each, 2 h for the landing pilots and "Rest" is the in-flight rest credited to this pilot as sleep, ending two hours before on-blocks; the operator's own ceiling prevails where an approved scheme sets it. "Night" follows ED Decision 2023/023/R: start 02:00–04:59 · end 02:00–05:59 · end after 06:00 (start before 02:00). PSWM is the GM5 CS FTL.1.205 prior-sleep/wake score (0 none · 1–4 low · 5–8 moderate · 9+ high).</p>
+        <p class="fine">KSS 1–9 (Karolinska Sleepiness Scale) is predicted 30 minutes before each on-blocks (adjustable), taken as the stand-in for top of descent; a duty row shows the highest of its landings. "SP equiv. TOD" is a Samn-Perelli equivalent: the KSS rounded, minus 2. Samn-Perelli is not modelled separately, so it can differ from a rating given on that scale. KSS ≥ 7 and Samn-Perelli ≥ 5 are high-fatigue ratings that EASA's FTL 2.0 research recommends as safety metrics, measured on crew ratings at the last top of descent of non-augmented duties (Insight applies them to every flight duty); they are research metrics, not regulatory limits, and the two columns can disagree near the threshold (KSS 6.5 to 6.9 shows SP 5, while the KSS count above counts 7.0 and over). Sleep is predicted from the roster, not measured. The source study reported a residual error of about 1.4 KSS points (standard deviation) for its best-fitting models on the crews' logged sleep, and about 1.5 for one variant with model-generated sleep. It did not test the parameter mix used here, and Insight's own prediction error has not been measured.</p>
+        <p class="fine">"Max FDP" is the ceiling the file prints; where the file prints none, it is the table of the selected rule set: for EASA, the CS FTL.1.205 table for a two-pilot crew; the SHGM and UK CAA selections use the same table (national differences are not modelled); FAA uses Part 117 Table B, unaugmented. These tables were transcribed from secondary sources, not read line by line from the regulation text, and no independent compliance reviewer has checked them. "Within / over" compares the FDP with that ceiling (where nothing can be assessed the label reads n/a); it is not a compliance statement, and the operator's own scheme prevails. Where a duty lists three or four pilots and the file prints no ceiling, that label compares the FDP with the two-pilot table, so a duty inside its CS FTL.1.205(c) maximum can read over; it then also counts in "FDP over the maximum in use" and in the planned-versus-flown share. The table also lists standby and ground duties; their FDP, Max FDP and within label come from the flight-duty table, are not FDP assessments and are not counted in the tiles.</p>
+        <p class="fine">For duties that list three or four pilots ("Pilots" counts the crew entries not marked as cabin crew), "EASA max (aug.)" shows beside it the CS FTL.1.205(c) maximum for the selected rest facility class (14/15/16 h with one additional pilot and 15/16/17 h with two, class 3/2/1; the class is your choice and is not read from the file), plus 1 h when one sector is over 9 h block time and the FDP has at most 2 sectors, (c)(4), deadhead legs included. It is for comparison and does not change the within / over label; read it beside that label. No value is shown for other crew sizes. Where the file lists three or more pilots, "Rest" is the in-flight rest credited to this pilot as sleep in the alertness run: by default all of the slot (the favourable bound), or the fraction chosen under study assumptions. By default the slot is the landing pilot's and ends two hours before on-blocks; the relief slot starts one hour after departure. The facility class does not change it. Run the duty with rest credited and not credited to see the range.</p>
+        <p class="fine">"Night" places each flight duty, by report and release time on the home-base clock, in the three night-duty subtypes of CS FTL.1.205(a)(3) as amended by ED Decision 2023/023/R: start 02:00–04:59 · end 02:00–05:59 · end 06:00 or later (the last two with a start at 01:59 or earlier). Insight reads "start at 01:59 or earlier" as including starts from 18:00, and requires a duty of at least 6 hours for the last subtype. "Sleep/wake score" is Insight's own score, shown as points (0 to 12), from predicted sleep in the 24 and 48 hours before report (which includes credited in-flight rest) and the hours awake at report; it is not the scoring of GM5 CS FTL.1.205, whose point table is different, and no risk band is applied to it. "Night", "EASA max (aug.)" and the KSS 7 / Samn-Perelli 5 markers are EASA-based under every rule set.</p>
         <div class="tablewrap"><table id="table"></table></div>
         <p class="fine" id="crewNote"></p>
         <div id="crew" class="hidden">
           <h2>Crew-reported, by destination</h2>
-          <p class="fine">Samn-Perelli as the crew gave it after the flight, from the Crewops app, with the crew member's own switch on; the predicted figure is the model's SP at the worst landing of the same duty. The difference is reported minus predicted: positive means the crew felt sleepier than the model says.</p>
+          <p class="fine">Samn-Perelli ratings that crew members of your airline chose to share from the Crewops app after the flight. Sharing is off by default and is offered only to airlines on the ratings programme. Each rating carries the flight, date, route, number of sectors, the rating itself and when it was given, the role when known and, when the pilot entered one, the crew code, plus a random identifier of the pilot's phone, so that a changed rating replaces the earlier one. Ratings are not anonymous to the holder of your operator code: the crew code, when entered, names the pilot. Ratings are self-reported, the receiving service does not verify who sent one, and they are kept on our server for two years; they are read back with your airline's operator code or an API key made from it. A rating given on the KSS scale is converted to Samn-Perelli as KSS minus 2. The predicted figure is Insight's Samn-Perelli equivalent (KSS minus 2) at the highest-KSS landing of the same duty, matched by date and flight number. The difference is reported minus predicted: positive means the rating is higher (sleepier) than the prediction. The comparison is indicative; the prediction has not been validated against these ratings.</p>
           <div class="tablewrap"><table id="crewDest"></table></div>
         </div>
         <h2>By month</h2>
         <div class="tablewrap"><table id="months"></table></div>
         <h2>Model card</h2>
-        <p class="fine hidden" id="modelCardLink">The full model card (model, equations, parameters, assumptions, verification status, limitations, references) is at <a href="/crewops/insight/model-card">hawkmason.com/crewops/insight/model-card</a>; it accompanies every assessment report.</p>
+        <p class="fine hidden" id="modelCardLink">The model card (intended use, the model, the limits and markers it is read against, verification status, known limitations, references) is at <a href="/crewops/insight/model-card">hawkmason.com/crewops/insight/model-card</a>. The equations and parameter values are in the report edition delivered with an assessment report.</p>
         <div class="note">
-          <p><b>What this is.</b> A roster reading with two layers: the duty-factor indicator Crewops shows crew (WOCL, early start, long FDP, sectors, short rest, consecutive duties, 7-day load, time zones; 0–100) and a biomathematical prediction from the Three-Process Model of alertness (Åkerstedt &amp; Folkard; parameters re-estimated on 136 aircrews by Ingre et al. 2014, PLoS ONE 9(10):e108679), the same model family behind the Boeing Alertness Model. Sleep is generated from the duty pattern with the paper's thresholds; time-zone adaptation 30 % per day; KSS = 10.6 − 0.6 × alertness.</p>
-          <p><b>What it is not.</b> Not a measurement of any person, not a validated commercial product, not a fitness-to-fly judgement and not an FRMS by itself. Per CASA (2010, 2014) and the IATA Human Factors Task Force (2025): model outputs support a risk assessment and compare rosters relatively; any threshold must be validated in your own operation; never a sole go/no-go. FTL tables are implemented from the published regulation and marked unverified in the Crewops app; your operator's scheme and system prevail.</p>
-          <p><b>Where the data goes.</b> Nowhere. Parsing and modelling run in this page; close the tab and it is gone.</p>
+          <p><b>What this is.</b> A roster reading with two layers: the duty-factor indicator Crewops shows crew (WOCL, early start, long FDP, sectors, short rest, consecutive duties, 7-day load, time zones; 0–100) and a biomathematical prediction from the Three-Process Model of alertness (Åkerstedt &amp; Folkard), with the circadian phase of an intermediate chronotype and the 30 % per day time-zone adaptation that Ingre et al. 2014 (PLoS ONE 9(10):e108679) estimated on 136 aircrews; the other constants are the original model's. It is the same model family as the Boeing Alertness Model. Sleep is generated from the duty pattern with the original model's thresholds (8.38 and 11.38); KSS = 10.6 − 0.6 × alertness. Ingre et al. report that the original sleep generator did not perform well with adjusted circadian phases, which is the pairing Insight uses.</p>
+          <p><b>What it is not.</b> Not a measurement of any person, not a validated commercial product, not a fitness-to-fly judgement and not an FRMS by itself. Per CASA (2010, 2014) and the IATA Human Factors Task Force (2025): model outputs support a risk assessment and compare rosters relatively; any threshold must be validated in your own operation; never a sole go/no-go. No independent review of this implementation and no validation against measured sleep has been done yet. The FTL tables were transcribed from secondary sources, not read line by line from the regulation text, and are marked unverified in the Crewops app; your operator's scheme and system prevail.</p>
+          <p><b>Where the data goes.</b> The roster files are read and analysed in this browser tab and are not uploaded; close the tab and the analysis is gone. The PDF and spreadsheet readers load from a public CDN (cdnjs) and the fonts from Google Fonts when the page opens. With a licence code, the page also sends usage counts (opens, panel views, analyses and exports) to our server and, when &quot;Include crew-reported ratings&quot; is ticked, asks our ratings service for the ratings between the first and last date of the roster you analysed; the licence code goes with each request and stays in this browser until you sign out. Two things are kept on our server: counts of portal use (opens, panel views, analyses and exports, each with date, time, your airline and whether the operator or crew code was used, kept for 400 days) and crew ratings (the crew app sends them, with the crew member's consent, and they are kept for two years).</p>
         </div>
       </section>
       </section>

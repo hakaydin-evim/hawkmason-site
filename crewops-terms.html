@@ -27,7 +27,7 @@
 
     <main class="legal-main">
       <h1>Crewops — Terms of Use</h1>
-      <p class="legal-updated">Last updated: 1 October 2026</p>
+      <p class="legal-updated">Last updated: 15 October 2026</p>
 
       <p class="legal-lede">
         These terms govern your use of Crewops, an iOS app published by Hawk &amp;
@@ -42,6 +42,7 @@
         <a href="#yours">Your data &amp; your account</a>
         <a href="#sub">Subscription terms</a>
         <a href="#portal">Third-party portals</a>
+        <a href="#operators">For airlines</a>
         <a href="#liability">Liability</a>
         <a href="#changes">Changes &amp; law</a>
       </nav>
@@ -90,21 +91,30 @@
           examiner.
         </li>
         <li>
-          <strong>It is not a reporting channel.</strong> Nothing you enter is
-          sent to your airline, your regulator or anyone else. Fatigue reports,
-          safety reports and sickness notifications go through your operator's own
-          system.
+          <strong>It is not a reporting channel of its own.</strong> Unless you
+          switch on sharing, or file, sign or complete something as the
+          <a href="crewops-privacy#airline-products">privacy policy</a> describes,
+          Crewops sends nothing you enter to your airline, your regulator or
+          anyone else, apart from the crew code and phone identifier it sends to
+          read your notices, records and documents where your airline licenses
+          Academy or Library. If your airline licenses Crewops Safety, a report
+          you file there goes to your airline's safety office, not to a
+          regulator, and it is not a declaration that you are fit to fly. Sickness notifications,
+          and anything else your operator requires through its own system, still
+          go through that system.
         </li>
       </ul>
 
       <h2 id="yours">Your data and your account</h2>
       <p>
         There is no account. Your data is stored on your device and is yours; we
-        do not receive it and cannot recover it for you. You can export it or
-        delete it at any time from inside the app.
+        do not receive it, apart from what you send to your airline's products
+        (see the <a href="crewops-privacy#airline-products">privacy policy</a>),
+        and cannot recover it for you. You can export it or delete it at any
+        time from inside the app.
       </p>
       <p>
-        By default the data lives only on your device, so losing the device,
+        By default your own data lives only on your device, so losing the device,
         deleting the app or resetting the phone deletes it with it. If you switch
         iCloud sync on, an encrypted copy of part of it is kept in your own iCloud
         account and can come back on a new phone signed into the same Apple
@@ -146,6 +156,24 @@
         is governed by your airline, not by us, and we are not responsible for its
         availability, its content or the consequences of your using it.
       </p>
+
+      <h2 id="operators">For airlines</h2>
+      <p>
+        An airline (the operator) can license Crewops products for its crews and
+        its departments: Crewops Safety, Crewops Academy, Crewops Library and
+        Crewops Insight. This section is for the operator. Crew members use these
+        products under their airline's instructions.
+      </p>
+      <ul>
+        <li><strong>Licence.</strong> A licence is per operator and per product. A product the operator has not licensed does not open for it. The operator code carries the date it ends, and stops working then.</li>
+        <li><strong>Operator code and API keys.</strong> The operator code opens the airline's browser panel and the airline's records. API keys made from it open the same records, for the same products and until the same date, for the operator's own systems. The operator keeps both secret and is responsible for what is done with them. In the browser panel it can make and revoke API keys, replace the webhook secret and replace the web report link. A new operator code is issued by us on request. Issuing one does not switch off an earlier code, which works until its end date; API keys can be revoked at once in the browser panel.</li>
+        <li><strong>Webhooks.</strong> The operator names one https address and the events it wants. Each event is sent to that address, signed, once: if the address answers with an error or does not answer within five seconds, that event is not sent again. Each event carries the record concerned, so the address receives crew data and is the operator's to secure. The panel keeps the outcome of the last 20 deliveries. The operator's system can read the same records by API.</li>
+        <li><strong>Crew data.</strong> The operator decides why the data its crews send is collected and for how long; Hawk &amp; Mason Studios hosts it and processes it on the operator's instructions. The <a href="crewops-privacy#airline-products">privacy policy</a> says what the products send and store.</li>
+        <li><strong>Exports and authorities.</strong> The CSV and E5X exports are the operator's own files. Crewops submits nothing to any authority; any report, notification or submission to one is made by the operator.</li>
+        <li><strong>Independent software.</strong> References to regulation, such as a time limit, a classification or an export format, say what a feature is built around. They are not an approval or certification by any authority, and the operator's own procedures and records prevail over what Crewops shows. Crewops Insight assesses fatigue risk from rosters; it does not judge whether anyone is fit to fly.</li>
+        <li><strong>Use counts.</strong> For each airline we count how often the browser panel is opened, which sections are used, how many analyses and exports are run, how many reports, crew records, course completions, documents and ratings its workspace holds, and whether it has set up a webhook or API keys, to see whether the service is in use and to support the airline's team. The counts hold no names, crew codes or file content. Panel counts are kept for 400 days.</li>
+        <li><strong>Records.</strong> The operator's records stay until the operator asks us to delete them, also after a licence ends, except post-flight ratings, which are deleted after two years. Access, new codes, deletion and exports are asked for by email; see <a href="crewops-support#airlines">support</a>. We keep a list of the codes we issue, with the name of the person at the airline who holds each one, its role, products and end date; the list does not hold the codes themselves.</li>
+      </ul>
 
       <h2 id="liability">Liability</h2>
       <p>

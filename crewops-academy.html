@@ -89,6 +89,15 @@
    ]
   },
   {
+   "@type": "VideoObject",
+   "name": "Crewops Academy: the qualification matrix, a course on the phone, the result in the portal",
+   "description": "Crewops Academy in 12 seconds: the qualification matrix, a course on the phone, the result in the portal. Captions and music, no voice-over. Fictional airline.",
+   "thumbnailUrl": "https://hawkmason.com/assets/crewops/clips/academy-poster.jpg",
+   "contentUrl": "https://hawkmason.com/assets/crewops/clips/crewops-academy.mp4",
+   "uploadDate": "2026-10-15",
+   "duration": "PT12S"
+  },
+  {
    "@type": "FAQPage",
    "mainEntity": [
     {
@@ -146,7 +155,7 @@
     </script>
     <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
     <link rel="apple-touch-icon" href="/assets/crewops/icon.png?v=2" />
-    <link rel="stylesheet" href="/styles.css?v=31" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
     <script src="/app.js?v=25" defer></script>
   </head>
   <body class="crew" data-page="crewops-academy">
@@ -164,12 +173,12 @@
     </header>
 
     <main>
-      <section class="w-hero">
+      <section class="w-hero w-hero--duo">
         <div>
           <span class="w-badge">For the training department</span>
           <h1 class="w-title">Crewops Academy</h1>
           <p class="w-lede">Shows which qualifications have expired, expire soon or are missing, and who has signed each notice.</p>
-          <p class="w-sub">Each crew member sees their own qualifications and expiry dates on the phone, signs notices and bulletins there, and takes courses, exams and SCORM modules. Courses and SCORM modules work offline; exams are graded on the server. Your training department sees each crew member against the qualifications their role needs: what has expired, what expires within 30 days, and who has not signed or completed. Signatures and results carry their date.</p>
+          <p class="w-sub">Crew members see their own qualifications on the phone, sign notices there and take courses and exams. Your training department sees each person against their role's qualifications.</p>
           <div class="store-row">
             <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Academy%20%E2%80%94%20trial">
               <span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span>
@@ -178,9 +187,21 @@
           </div>
           <p class="g-hero-meta" style="color: var(--w-muted);">Licensed on its own · records in by CSV or API · runs in the crew app and your browser</p>
         </div>
-        <div class="w-hero-art w-hero-art--one">
-          <div class="w-phone w-phone-solo"><img src="/assets/crewops/products/academy-training.webp" alt="Crewops Academy on the phone: My training with a safety bulletin to read and sign, a crew notice and an assigned course, each with its due date" width="506" height="1100" loading="eager" /></div>
+        <div class="w-hero-art w-hero-art--duo">
+          <div class="w-panel"><img src="/assets/crewops/products/academy-panel.webp" alt="The Crewops Academy panel in the browser: the qualification matrix with filters for flight and cabin crew, a legend, and one row per crew member showing each qualification's expiry date, with an expired LPC, a line check expiring soon and a missing SEP" width="1400" height="875" loading="eager" /></div>
+          <div class="w-phone w-phone-duo"><img src="/assets/crewops/products/academy-training.webp" alt="Crewops Academy on the phone: My training with a safety bulletin to read and sign, a crew notice and an assigned course, each with its due date" width="506" height="1100" loading="eager" /></div>
         </div>
+      </section>
+
+      <!-- FILM -->
+      <section class="w-feat" id="film">
+        <figure style="margin: 0 auto; max-width: 960px; padding: 0 24px;">
+          <video controls playsinline preload="none" poster="/assets/crewops/clips/academy-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f;">
+            <source src="/assets/crewops/clips/crewops-academy.mp4" type="video/mp4" />
+            <a href="/assets/crewops/clips/crewops-academy.mp4">Watch the Crewops Academy clip</a>
+          </video>
+          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Crewops Academy: the qualification matrix, a course on the phone, the result in the portal. 12 seconds, captions and music. Fictional airline.</figcaption>
+        </figure>
       </section>
 
       <section class="w-feat" id="why">
@@ -202,7 +223,7 @@
           <h2 style="color: #fff;">What your crews see</h2>
           <p class="w-intro">Inside the crew app your crews already use for their roster, in seven languages. My training sits on Me, under My airline.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>My training</h3><p>One screen on Me, under My airline: what is up next, how many items are pending, and the days left on each, in colour as the date gets close. Each crew member also sees their own stats.</p></article>
           <article class="w-card"><h3>Read and understood</h3><p>Crew notices, safety bulletins, safety memos, coordination sheets, security notices, training documents and revisions, each with its reading time and due date. One tap signs it, with the date.</p></article>
           <article class="w-card"><h3>My qualifications</h3><p>Each check and course on record, with the date it was done and the date it expires, as the training department holds them.</p></article>
@@ -218,9 +239,13 @@
         <div class="section-head section-head--center">
           <span class="w-badge">In the operator portal</span>
           <h2 style="color: #fff;">What your department does</h2>
-          <p class="w-intro">In its own panel of the operator portal, signed in with your airline's operator code; a code can open this product alone. Nothing to install.</p>
+          <p class="w-intro">In its own panel of the operator portal. Your airline's operator code opens it, and a code can open this product alone. Nothing to install.</p>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <figure class="w-shot">
+          <div class="w-panel"><img src="/assets/crewops/products/academy-panel-wide.webp" alt="The Crewops Academy panel: a table of expired and expiring qualifications above the qualification matrix of crew members and their qualification dates" width="1800" height="1000" loading="lazy" /></div>
+          <figcaption>The list of expired and expiring qualifications above the qualification matrix, one row per crew member. Fictional airline.</figcaption>
+        </figure>
+        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
           <article class="w-card"><h3>Today board</h3><p>Training joins the portal's Today board with the other products you hold: qualifications expired or expiring within 30 days, required qualifications missing for a role, and notices and required courses past their date that not everyone has done. Each line opens its record.</p></article>
           <article class="w-card"><h3>Qualification matrix</h3><p>One row per crew member, one column per qualification. Each cell shows expired, missing, expiring within 30 days or valid. Filter flight or cabin crew and see the gaps counted.</p></article>
           <article class="w-card"><h3>Role requirements</h3><p>Set which qualifications each role needs, and the matrix shows who is missing one. The defaults: flight crew OPC, LPC, line check, SEP, CRM, DG, medical and licence; cabin crew recurrent, SEP, first aid, CRM, DG and medical.</p></article>
@@ -283,7 +308,7 @@
           <h2 style="color: #fff;">Trial first, then a licence</h2>
         </div>
         <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));">
-          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app through the pilot programme. Nothing to integrate on day one.</p></article>
+          <article class="w-card"><h3>1 · A trial</h3><p>Your airline gets an operator code for the portal. Crews open the products in the crew app with your airline's company code. Nothing to integrate on day one.</p></article>
           <article class="w-card"><h3>2 · Load your records</h3><p>Your training department loads qualification records and role requirements, publishes courses and imports SCORM packages.</p></article>
           <article class="w-card"><h3>3 · A licence</h3><p>Crewops Academy is licensed on its own, per operator, for the period you choose. What your airline holds is what opens; your crews see nothing else.</p></article>
         </div>
@@ -312,11 +337,10 @@
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Academy%20%E2%80%94%20trial"><span class="store-kicker">Start a trial</span><span class="store-name">hello@hawkmason.com</span></a>
           <a class="store-pill store-pill--mail" href="mailto:hello@hawkmason.com?subject=Crewops%20Academy%20%E2%80%94%20a%20question"><span class="store-kicker">Ask a question</span><span class="store-name">Crewops Academy</span></a>
         </div>
-        <p class="w-cta-mail"><a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
       </section>
 
       <nav class="w-prodbar" aria-label="Crewops products">
-        <a class="w-prodbar-item" href="/crewops/insight"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
+        <a class="w-prodbar-item" href="/crewops/insight-product"><span class="w-status is-live">Available</span><b>Crewops Insight</b><span>Roster fatigue assessment, in the browser</span></a>
         <a class="w-prodbar-item" href="/crewops/safety"><span class="w-status is-live">Available</span><b>Crewops Safety</b><span>Safety and fatigue reports from the crew phone</span></a>
         <a class="w-prodbar-item is-plat" href="/crewops/academy" aria-current="page"><span class="w-status is-live">Available</span><b>Crewops Academy</b><span>Courses, exams, training records, read-and-sign</span></a>
         <a class="w-prodbar-item" href="/crewops/library"><span class="w-status is-live">Available</span><b>Crewops Library</b><span>Manuals and revisions on the crew phone</span></a>
@@ -332,6 +356,7 @@
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
+        <a href="/crewops/insight-product">Insight</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>
