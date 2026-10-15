@@ -108,6 +108,7 @@
           <a href="/crewops/portal/safety" data-panel="safety">Safety</a>
           <a href="/crewops/portal/academy" data-panel="academy">Academy</a>
           <a href="/crewops/portal/library" data-panel="library">Library</a>
+          <a href="/crewops/portal/tasks" data-panel="tasks">Tasks</a>
           <a href="/crewops/portal/connect" data-panel="connect">Connections</a>
         </nav>
         <div class="pbar-who"><span id="pbarAirline"></span><button id="signOut" hidden>SIGN OUT</button></div>
@@ -128,7 +129,7 @@
         <div class="bar" style="margin-top:40px"></div>
         <div class="eyebrow">Crewops Aviation Platform · connections</div>
         <h2 style="margin-top:8px">Connect your own systems</h2>
-        <p class="fine" style="max-width:80ch">A webhook sends each event to your system the moment it happens: a new safety report into your SMS, a completed course into your training records, a confirmed revision into your document system. Every delivery is signed (header <code>x-crewops-signature: t=…,v1=…</code>, HMAC-SHA256 of <code>t.body</code> with your secret). One try, 5 seconds; the last 20 deliveries are listed below. Your data also leaves as CSV from each product.</p>
+        <p class="fine" style="max-width:80ch">A webhook sends each event to your system the moment it happens: a new safety report into your SMS, a completed course into your training records, a confirmed revision into your document system, a completed task into your own work tracking. Every delivery is signed (header <code>x-crewops-signature: t=…,v1=…</code>, HMAC-SHA256 of <code>t.body</code> with your secret). One try, 5 seconds; the last 20 deliveries are listed below. Your data also leaves as CSV from each product.</p>
         <div class="card">
           <label class="f">Your endpoint (https)<input type="text" id="whUrl" placeholder="https://sms.your-airline.example/crewops" /></label>
           <div id="whEvents" style="margin:10px 0"></div>

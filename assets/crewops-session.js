@@ -8,8 +8,9 @@
   const ENDPOINT = (window.CREWOPS_PORTAL_ENDPOINT || 'https://updates.hawkmason.com/portal');
   const $ = (id) => document.getElementById(id);
   const PANEL = document.body.dataset.panel || 'hub';
-  const NAMES = { insight: 'Crewops Insight', safety: 'Crewops Safety', academy: 'Crewops Academy', library: 'Crewops Library' };
-  const PAGE_OF = { insight: '/crewops/insight', safety: '/crewops/safety', academy: '/crewops/academy', library: '/crewops/library' };
+  const NAMES = { insight: 'Crewops Insight', safety: 'Crewops Safety', academy: 'Crewops Academy', library: 'Crewops Library', tasks: 'Crewops Tasks' };
+  // Tasks is not a product: every operator code opens it, whatever products the licence lists.
+  const PAGE_OF = { insight: '/crewops/insight', safety: '/crewops/safety', academy: '/crewops/academy', library: '/crewops/library', tasks: '/crewops/portal/tasks' };
   const KEY = 'crewops-insight-code'; // the name FTL's browser already holds; never renamed
   const store = { get: (k) => { try { return localStorage.getItem(k); } catch (e) { return null; } }, set: (k, v) => { try { v === null ? localStorage.removeItem(k) : localStorage.setItem(k, v); } catch (e) {} } };
   const check = (text) => (window.CrewopsLicence || window.CrewopsInsight).checkCode(text);
@@ -59,6 +60,10 @@
       a.classList.remove('on', 'off');
       if (!held) { st.textContent = 'Sign in to open'; continue; }
       const ops = mod === 'insight' || licence.ops;
+      if (mod === 'tasks') {
+        if (licence.ops) { a.classList.add('on'); st.textContent = 'Open'; } else { a.classList.add('off'); st.textContent = 'Needs the operator code'; }
+        continue;
+      }
       if (held.includes(mod) && ops) { a.classList.add('on'); st.textContent = 'Open'; }
       else if (held.includes(mod)) { a.classList.add('off'); st.textContent = 'Needs the operator code'; a.href = PAGE_OF[mod]; }
       else { a.classList.add('off'); st.textContent = 'Not in your licence · what it does'; a.href = PAGE_OF[mod]; }
@@ -71,7 +76,7 @@
     const held = licence.products || ['insight'];
     let text = '';
     if (['safety', 'academy', 'library'].includes(PANEL) && !held.includes(PANEL)) text = `Your airline's code does not include ${NAMES[PANEL]}. Read what it does on <a href="${PAGE_OF[PANEL]}">its page</a>, or <a href="mailto:hello@hawkmason.com?subject=${encodeURIComponent(`${NAMES[PANEL]} for our airline`)}">ask us</a>.`;
-    else if (['safety', 'academy', 'library', 'connect'].includes(PANEL) && !licence.ops) text = 'This is the crew code. The operator code, held by your departments, opens this panel.';
+    else if (['safety', 'academy', 'library', 'tasks', 'connect'].includes(PANEL) && !licence.ops) text = 'This is the crew code. The operator code, held by your departments, opens this panel.';
     box.classList.toggle('hidden', !text);
     $('noAccessText').innerHTML = text;
   }

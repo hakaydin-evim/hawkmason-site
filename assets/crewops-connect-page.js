@@ -10,6 +10,7 @@
     'safety.report.created': 'A safety report arrives', 'safety.report.updated': 'A safety report changes (status, classification, action, reply)',
     'academy.notice.acknowledged': 'A crew member signs a notice', 'academy.course.completed': 'A crew member completes a course',
     'library.revision.confirmed': 'A crew member confirms a revision',
+    'task.completed': 'A crew member completes a task',
   };
   const state = { code: null, hook: null };
 

@@ -108,6 +108,7 @@
           <a href="/crewops/portal/safety" data-panel="safety">Safety</a>
           <a href="/crewops/portal/academy" data-panel="academy">Academy</a>
           <a href="/crewops/portal/library" data-panel="library">Library</a>
+          <a href="/crewops/portal/tasks" data-panel="tasks">Tasks</a>
           <a href="/crewops/portal/connect" data-panel="connect">Connections</a>
         </nav>
         <div class="pbar-who"><span id="pbarAirline"></span><button id="signOut" hidden>SIGN OUT</button></div>
@@ -127,11 +128,17 @@
         <p class="fine" id="accessNote" style="margin:10px 0 0">Operator access comes with a licence: sign in with the operator code your airline received. Write to <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a> for anything about access.</p>
         <p class="fine" style="margin:6px 0 0">We count how your airline uses this portal (when it is opened, which product, how many analyses and exports) to support your team. Rosters, files and crew data are not sent.</p>
       </div>
+      <style>
+        /* Tasks is the fifth tile: every operator code opens it, whatever products it holds. */
+        .modbar { grid-template-columns: repeat(5, 1fr) }
+        @media (max-width: 720px) { .modbar { grid-template-columns: repeat(2, 1fr) } .mod[data-mod="tasks"] { grid-column: 1 / -1 } }
+      </style>
       <nav class="modbar" id="modbar" aria-label="Products">
         <a class="mod" href="/crewops/insight" data-mod="insight"><b>Fatigue</b><span>Crewops Insight</span><i data-state>Sign in to open</i></a>
         <a class="mod" href="/crewops/portal/safety" data-mod="safety"><b>Safety</b><span>Crewops Safety</span><i data-state>Sign in to open</i></a>
         <a class="mod" href="/crewops/portal/academy" data-mod="academy"><b>Training</b><span>Crewops Academy</span><i data-state>Sign in to open</i></a>
         <a class="mod" href="/crewops/portal/library" data-mod="library"><b>Documents</b><span>Crewops Library</span><i data-state>Sign in to open</i></a>
+        <a class="mod" href="/crewops/portal/tasks" data-mod="tasks"><b>Tasks</b><span>Follow-up for every office</span><i data-state>Sign in to open</i></a>
       </nav>
 
       <section id="today" class="hidden" aria-labelledby="todayTitle">
@@ -140,7 +147,7 @@
             <h3 id="todayTitle" style="margin:0">TODAY · WHAT NEEDS ACTION</h3>
             <div class="row" style="gap:8px" id="todayCounts"></div>
           </div>
-          <p class="fine" style="margin:6px 0 10px">Across the products your airline holds: safety clocks and overdue actions, expired training, unconfirmed revisions, crew who rated themselves very tired. Click a line to open it.</p>
+          <p class="fine" style="margin:6px 0 10px">Across the products your airline holds: safety clocks and overdue actions, expired training, unconfirmed revisions, tasks past their due date, crew who rated themselves very tired. Click a line to open it.</p>
           <div class="today" id="todayList"><p class="fine">Loading…</p></div>
           <div class="row" style="margin-top:10px"><button class="ghost" id="todayMore" hidden>SHOW ALL</button><button class="ghost" id="todayRefresh">REFRESH</button></div>
         </div>

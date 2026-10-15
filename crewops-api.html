@@ -144,6 +144,7 @@
         <a href="#safety">Safety</a>
         <a href="#academy">Academy</a>
         <a href="#library">Library</a>
+        <a href="#tasks">Tasks</a>
         <a href="#insight">Insight</a>
         <a href="#webhooks">Webhooks</a>
       </nav>
@@ -156,7 +157,7 @@
           <li><b style="color: var(--w-ink);">Format:</b> JSON in and out. Send <code>Content-Type: application/json</code> with every JSON body; without it the request answers 415. File uploads send the file itself as the body with its own content type.</li>
           <li><b style="color: var(--w-ink);">Authentication:</b> <code>Authorization: Bearer &lt;operator code or API key&gt;</code> on every request.</li>
           <li><b style="color: var(--w-ink);">Scope:</b> the code says which airline it belongs to, so there is no airline parameter. Every list and record is your airline's own.</li>
-          <li><b style="color: var(--w-ink);">Products:</b> the code also says which products your airline holds (Insight, Safety, Academy, Library). A product's endpoints open only if the code includes it.</li>
+          <li><b style="color: var(--w-ink);">Products:</b> the code also says which products your airline holds (Insight, Safety, Academy, Library). A product's endpoints open only if the code includes it. Tasks are the exception: every operator code opens them.</li>
           <li><b style="color: var(--w-ink);">From a server:</b> call the API from your own systems. Browsers on other websites are refused by the CORS policy, which allows only hawkmason.com.</li>
         </ul>
         <p class="api-note">The company code your crews enter in the crew app never opens these endpoints. A company code answers 403: all your crews hold it, so it must not read colleagues' data.</p>
@@ -227,7 +228,7 @@ curl -s "$CREWOPS/portal/today" \
           </table>
         </div>
         <h3>The Today board</h3>
-        <p>Each item has a <code>level</code> (<code>bad</code>, <code>warn</code> or <code>info</code>), a <code>kind</code>, a <code>title</code>, a <code>detail</code>, an optional <code>due</code> date and a <code>ref</code> that points to the record: <code>report</code>, <code>risk</code>, <code>audit</code>, <code>change</code>, <code>crew</code>, <code>notice</code>, <code>course</code>, <code>doc</code> or <code>flight</code>.</p>
+        <p>Each item has a <code>level</code> (<code>bad</code>, <code>warn</code> or <code>info</code>), a <code>kind</code>, a <code>title</code>, a <code>detail</code>, an optional <code>due</code> date and a <code>ref</code> that points to the record: <code>report</code>, <code>risk</code>, <code>audit</code>, <code>change</code>, <code>crew</code>, <code>notice</code>, <code>course</code>, <code>doc</code>, <code>flight</code> or <code>task</code>.</p>
 <pre class="api-code"><code>curl -s "$CREWOPS/portal/today" -H "Authorization: Bearer $CREWOPS_KEY"
 
 {
@@ -461,6 +462,39 @@ curl -s -X POST "$CREWOPS/library/docs" \
         \"requiresAck\": true, \"ackDue\": \"2026-10-31\" }"</code></pre>
       </section>
 
+      <section class="api-sec" id="tasks">
+        <span class="w-badge">Crewops Tasks</span>
+        <h2>Follow-up for every department</h2>
+        <p>A task is one piece of follow-up with one assignee: a corrective action, a training gap, a document to confirm or a report to answer. Crews see their tasks on the phone and complete them there. JSON bodies are limited to 32 KB.</p>
+        <div class="api-scroll">
+          <table class="api-table">
+            <thead><tr><th>Method</th><th>Path</th><th>What it does</th></tr></thead>
+            <tbody>
+              <tr><td>GET</td><td><code>/tasks</code></td><td>The tasks, newest first, up to 500: <code>{ airline, tasks, counts }</code>. Filters: <code>status</code> (<code>open</code>, the default, covers open and in progress; <code>done</code>; <code>all</code>), <code>assignee</code> (<code>crew:&lt;code&gt;</code>, <code>role:&lt;role&gt;</code> or <code>office:&lt;name&gt;</code>) and <code>overdue=1</code>.</td></tr>
+              <tr><td>POST</td><td><code>/tasks</code></td><td>Makes a task (201). <code>title</code> and <code>assignee</code> are required.</td></tr>
+              <tr><td>GET</td><td><code>/tasks/&lt;id&gt;</code></td><td>One task with its history.</td></tr>
+              <tr><td>PATCH</td><td><code>/tasks/&lt;id&gt;</code></td><td>Changes <code>status</code>, <code>due</code>, <code>title</code>, <code>detail</code> or <code>assignee</code>, with an optional <code>note</code> for the history. Setting <code>status</code> back to <code>open</code> reopens a finished task.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h3>What a task holds</h3>
+        <ul>
+          <li><b style="color: var(--w-ink);">title</b> (1&ndash;120 characters), optional <b style="color: var(--w-ink);">detail</b> (up to 1000) and <b style="color: var(--w-ink);">due</b> (<code>YYYY-MM-DD</code>).</li>
+          <li><b style="color: var(--w-ink);">kind:</b> <code>action</code>, <code>training</code>, <code>document</code>, <code>report</code> or <code>other</code>.</li>
+          <li><b style="color: var(--w-ink);">assignee:</b> <code>{ "type": "crew", "crewCode": "A1234" }</code>, <code>{ "type": "role", "role": "cockpit" | "cabin" | "all" }</code> or <code>{ "type": "office", "office": "safety" | "training" | "documentation" | "operations" }</code>. A role task is one shared task: the first crew member who completes it closes it.</li>
+          <li><b style="color: var(--w-ink);">status:</b> <code>open</code>, <code>in_progress</code>, <code>done</code> or <code>cancelled</code>. An office task is closed through the API or the portal; crew complete the tasks assigned to them, or to their role, on the phone.</li>
+          <li><b style="color: var(--w-ink);">ref:</b> optional <code>{ product, id }</code> that links the task to a record in Safety, Academy, Library or Insight.</li>
+          <li><b style="color: var(--w-ink);">by:</b> an optional label (up to 60 characters) that names who made the change in the history. It cannot start with <code>crew:</code>; only a crew completion writes that.</li>
+        </ul>
+        <p>A task past its due date appears on the Today board. Its completion on the phone fires the <code>task.completed</code> webhook event.</p>
+<pre class="api-code"><code>curl -s -X POST "$CREWOPS/tasks" \
+  -H "Authorization: Bearer $CREWOPS_KEY" -H "Content-Type: application/json" \
+  -d '{ "title": "Return the signed lithium battery briefing",
+        "kind": "document", "due": "2026-10-23",
+        "assignee": { "type": "role", "role": "cabin" },
+        "by": "Safety office" }'</code></pre>
+      </section>
+
       <section class="api-sec" id="insight">
         <span class="w-badge">Crewops Insight</span>
         <h2>Crew post-flight ratings</h2>
@@ -481,7 +515,7 @@ curl -s -X POST "$CREWOPS/library/docs" \
       <section class="api-sec" id="webhooks">
         <span class="w-badge">Webhooks</span>
         <h2>Hear about events as they happen</h2>
-        <p>Set one https endpoint in the operator portal, under Connections, and pick the events it should receive. You can pick only the events of products your airline holds.</p>
+        <p>Set one https endpoint in the operator portal, under Connections, and pick the events it should receive. You can pick only the events of products your airline holds, plus <code>task.completed</code>, which every airline can pick.</p>
         <div class="api-scroll">
           <table class="api-table">
             <thead><tr><th>Event</th><th>When it fires</th><th>data</th></tr></thead>
@@ -491,6 +525,7 @@ curl -s -X POST "$CREWOPS/library/docs" \
               <tr><td>academy.notice.acknowledged</td><td>A crew member signs a notice.</td><td><code>{ noticeId, title, type, crewCode, at }</code></td></tr>
               <tr><td>academy.course.completed</td><td>A crew member completes a course.</td><td><code>{ courseId, title, kind, crewCode, at, verified }</code>; with <code>score</code> and <code>attempts</code> when a server-graded exam was passed (<code>verified: true</code>), or <code>scorm: { status, score }</code> from a SCORM module.</td></tr>
               <tr><td>library.revision.confirmed</td><td>A crew member confirms a revision.</td><td><code>{ code, title, revision, crewCode, at }</code></td></tr>
+              <tr><td>task.completed</td><td>A crew member completes a task on the phone. Available to every airline.</td><td><code>{ id, title, assignee, doneBy, at }</code>, with <code>doneBy</code> as <code>crew:&lt;code&gt;</code>.</td></tr>
               <tr><td>ping</td><td>You press the test button, or call <code>/portal/webhook/test</code>.</td><td><code>{ message, events }</code></td></tr>
             </tbody>
           </table>

@@ -5,9 +5,10 @@
   const ENDPOINT = (window.CREWOPS_PORTAL_ENDPOINT || 'https://updates.hawkmason.com/portal');
   const $ = (id) => document.getElementById(id);
   const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
-  const NAMES = { insight: 'Fatigue', safety: 'Safety', academy: 'Training', library: 'Documents' };
+  const NAMES = { insight: 'Fatigue', safety: 'Safety', academy: 'Training', library: 'Documents', tasks: 'Tasks' };
   const PILL = { bad: ['bad', 'NOW'], warn: ['warn', 'SOON'], info: ['mute', 'NOTE'] };
   const FIRST = 12;
+  const TASKS = (window.CREWOPS_TASKS_ENDPOINT || 'https://updates.hawkmason.com/tasks');
   const state = { code: null, items: [], all: false };
   if (!$('today')) return;
 
@@ -36,9 +37,20 @@
     }
   }
 
+  // The Tasks tile says how many tasks are open; silent when the service does not answer.
+  async function taskTile() {
+    const st = document.querySelector('#modbar [data-mod="tasks"] [data-state]');
+    if (!st) return;
+    try {
+      const res = await fetch(`${TASKS}?status=open`, { headers: { authorization: `Bearer ${state.code}` } });
+      const c = res.ok ? (await res.json()).counts : null;
+      if (c && typeof c.open === 'number') st.textContent = `${c.open + (c.in_progress || 0)} open${c.overdue ? ` · ${c.overdue} overdue` : ''}`;
+    } catch (e) { /* the tile keeps "Open" */ }
+  }
+
   // A line opens its record in the product's own panel (each record has an address there).
-  const PANEL = { insight: '/crewops/insight', safety: '/crewops/portal/safety', academy: '/crewops/portal/academy', library: '/crewops/portal/library' };
-  const HASH = { report: 'r', risk: 'risk', audit: 'audit', change: 'change', course: 'course', notice: 'notice', doc: 'doc', crew: 'crew' };
+  const PANEL = { insight: '/crewops/insight', safety: '/crewops/portal/safety', academy: '/crewops/portal/academy', library: '/crewops/portal/library', tasks: '/crewops/portal/tasks' };
+  const HASH = { report: 'r', risk: 'risk', audit: 'audit', change: 'change', course: 'course', notice: 'notice', doc: 'doc', crew: 'crew', task: 't' };
   $('todayList').addEventListener('click', (ev) => {
     const b = ev.target.closest('.tdi');
     if (!b) return;
@@ -56,5 +68,6 @@
     state.code = code;
     $('today').classList.remove('hidden');
     load();
+    taskTile();
   });
 })();

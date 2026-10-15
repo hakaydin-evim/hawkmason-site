@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Crewops Tasks · follow-up</title>
+    <meta name="description" content="Tasks shared with the crew phones: corrective actions, training gaps, document confirmations and report follow-ups." />
+    <link rel="canonical" href="https://hawkmason.com/crewops/portal/tasks" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta property="og:title" content="Crewops Tasks · follow-up" />
+    <meta property="og:description" content="Tasks shared with the crew phones: corrective actions, training gaps, document confirmations and report follow-ups." />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/portal/tasks" />
+    <meta property="og:type" content="website" />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root { --paper:#08080c; --surface:#131318; --surface2:#1d1d26; --ink:#f7f6f2; --soft:#a3a1b0; --faint:#6b6978; --line:#242430; --cy:#2be3ff; --mg:#ff2fa0; --risk:#ff8a3d; --ok:#7bed9f; --warn:#ffd166; --bad:#ff7b6b; }
+      * { box-sizing:border-box }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:15px; line-height:1.5 }
+      a { color:var(--cy) }
+      .wrap { max-width:1180px; margin:0 auto; padding:32px 16px 96px }
+      .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--cy); text-transform:uppercase }
+      h1 { font-family:'Unbounded',Arial,sans-serif; font-weight:800; font-size:clamp(28px,5vw,48px); letter-spacing:-1px; line-height:1.05; margin:8px 0 12px }
+      h2 { font-family:'Unbounded',Arial,sans-serif; font-weight:700; font-size:18px; margin:32px 0 8px }
+      p.lead { color:var(--soft); font-size:17px; max-width:70ch; margin:0 0 24px }
+      .bar { height:6px; border-radius:3px; background:linear-gradient(90deg,var(--mg),var(--cy)); margin:0 0 28px }
+      .grid { display:grid; gap:16px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)) }
+      .card { background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:18px }
+      .card h3 { margin:0 0 6px; font-size:14px; font-family:'JetBrains Mono',monospace; letter-spacing:2px; color:var(--cy); font-weight:500 }
+      .drop { display:block; border:1px dashed var(--faint); border-radius:14px; padding:22px; text-align:center; color:var(--soft); cursor:pointer; transition:border-color .2s }
+      .drop.over, .drop:hover { border-color:var(--cy); color:var(--ink) }
+      .drop input { display:none }
+      .drop .name { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cy); margin-top:8px; word-break:break-all }
+      label.f { display:flex; flex-direction:column; gap:6px; font-size:12px; color:var(--soft) }
+      select, input[type=text] { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-family:'JetBrains Mono',monospace; font-size:13px }
+      .row { display:flex; gap:12px; flex-wrap:wrap; align-items:flex-end }
+      button { background:linear-gradient(90deg,var(--mg),var(--cy)); color:#08080c; border:0; border-radius:999px; padding:12px 22px; font:inherit; font-weight:600; letter-spacing:1px; cursor:pointer }
+      button.ghost { background:transparent; color:var(--cy); border:1px solid var(--cy) }
+      button:disabled { opacity:.4; cursor:default }
+      .tiles { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin:16px 0 }
+      .tile { background:var(--surface2); border-radius:14px; padding:14px }
+      .tile .n { font-family:'Unbounded',Arial,sans-serif; font-size:28px; font-weight:700 }
+      .tile .l { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:2px; color:var(--faint); text-transform:uppercase }
+      .tablewrap { overflow-x:auto; border:1px solid var(--line); border-radius:14px }
+      table { border-collapse:collapse; width:100%; font-family:'JetBrains Mono',monospace; font-size:12px; font-variant-numeric:tabular-nums }
+      th, td { padding:9px 10px; border-bottom:1px solid var(--line); text-align:left; white-space:nowrap }
+      th { color:var(--faint); font-weight:500; letter-spacing:1px; font-size:10px; text-transform:uppercase; position:sticky; top:0; background:var(--surface) }
+      td.r, th.r { text-align:right }
+      .pill { display:inline-block; padding:2px 8px; border-radius:999px; font-size:11px }
+      .ok { background:#0f2e1c; color:var(--ok) } .warn { background:#332a0f; color:var(--warn) } .bad { background:#3a1414; color:var(--bad) } .mute { background:var(--surface2); color:var(--faint) }
+      .fine { font-size:12px; color:var(--faint) }
+      .note { background:var(--surface); border-left:3px solid var(--mg); padding:12px 16px; border-radius:0 12px 12px 0; color:var(--soft); font-size:13px }
+      .hidden { display:none }
+      .msg a { color:var(--cy) }
+      textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font:inherit; font-size:14px; width:100%; min-height:72px; resize:vertical }
+      tr.sel td { background:var(--surface2) }
+      tr.click { cursor:pointer }
+      code { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--cy) }
+      .tl { list-style:none; padding:0; margin:8px 0 0 } .tl li { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--soft); padding:4px 0; border-bottom:1px solid var(--line) } .tl li b { color:var(--ink); font-weight:500 }
+      .msg { font-family:'JetBrains Mono',monospace; font-size:12px; color:var(--risk); margin-top:8px; min-height:1.2em }
+      footer { margin-top:48px; color:var(--faint); font-size:12px }
+      .f { max-width:100% } .f select, .f input { max-width:100% } select { text-overflow:ellipsis }
+      .subtabs { display:flex; flex-wrap:wrap; gap:6px; margin:6px 0 16px } .subtab { background:transparent; color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 12px; font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; cursor:pointer } .subtab.on { color:var(--cy); border-color:var(--cy) }
+      .mx { border-collapse:collapse } .mx td { width:34px; height:28px; text-align:center; font-family:'JetBrains Mono',monospace; font-size:11px; border:1px solid var(--paper) } .mx th { font-family:'JetBrains Mono',monospace; font-size:10px; color:var(--faint); padding:2px 6px }
+      .mx .in { background:#7a1f2b; color:#fff } .mx .to { background:#7a5a12; color:#fff } .mx .ac { background:#1d5a3a; color:#fff }
+      .thumbs img { width:110px; height:110px; object-fit:cover; border-radius:10px; border:1px solid var(--line); margin:0 8px 8px 0; cursor:zoom-in }
+      .modbar { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:0 0 8px }
+      .mod { display:flex; flex-direction:column; gap:2px; padding:14px 14px 12px; border:1px solid var(--line); border-radius:14px; background:var(--surface); color:var(--ink); text-decoration:none }
+      .mod b { font-family:'Unbounded',Arial,sans-serif; font-size:14px }
+      .mod span { color:var(--soft); font-size:12px }
+      .mod i { font-style:normal; font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint); margin-top:6px }
+      .mod.on { border-color:var(--cy) } .mod.on i { color:var(--cy) }
+      .mod.off { opacity:.55 } .mod.off i { color:var(--risk) }
+      @media (max-width:720px) { .modbar { grid-template-columns:repeat(2,1fr) } }
+      .today { display:flex; flex-direction:column }
+      .tdi { display:grid; grid-template-columns:76px 92px 1fr auto; gap:10px; align-items:baseline; padding:9px 4px; border-top:1px solid var(--line); cursor:pointer; background:none; border-left:0; border-right:0; border-bottom:0; border-radius:0; color:var(--ink); text-align:left; font:inherit; letter-spacing:0; font-weight:400 }
+      .tdi:hover, .tdi:focus-visible { background:var(--surface2); outline:none }
+      .tdi .p { font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
+      .tdi .t b { font-weight:600 } .tdi .t span { display:block; color:var(--soft); font-size:12px; overflow-wrap:anywhere }
+      .tdi .d { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); white-space:nowrap }
+      @media (max-width:620px) { .tdi { grid-template-columns:auto 1fr; } .tdi .p { grid-column:2; grid-row:1 } .tdi .t { grid-column:1 / -1 } .tdi .d { grid-column:1 / -1 } }
+      .pbar { display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:10px 0 12px; border-bottom:1px solid var(--line); margin-bottom:22px }
+      .pbar-brand { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; text-transform:uppercase; color:var(--cy); text-decoration:none; white-space:nowrap }
+      .pbar-brand span { color:var(--faint) }
+      .pbar-nav { display:flex; gap:4px; flex-wrap:wrap; flex:1 }
+      .pbar-nav a { color:var(--soft); text-decoration:none; font-size:13px; padding:6px 10px; border-radius:999px; border:1px solid transparent }
+      .pbar-nav a[aria-current] { color:var(--ink); border-color:var(--cy) }
+      .pbar-nav a.off { opacity:.45 }
+      .pbar-nav a.gone { display:none }
+      .pbar.out .pbar-nav { display:none }
+      .pbar-who { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); display:flex; gap:10px; align-items:center }
+      .pbar-who button { background:none; border:0; color:var(--cy); font:inherit; padding:0; cursor:pointer; letter-spacing:1px }
+      .pbar-badge { display:inline-block; min-width:18px; padding:1px 6px; border-radius:999px; background:#3a1414; color:var(--bad); font-size:10px; text-align:center; margin-left:4px }
+      #noAccess { border-left:3px solid var(--risk) }
+      @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0091ab; --mg:#c81172; --risk:#c2540f; --ok:#1f7a45; --warn:#8a6a00; --bad:#b3281e } .ok{background:#dff5e8} .warn{background:#fbf0cc} .bad{background:#fbe0dd} button{color:#fff} }
+    </style>
+  </head>
+  <body data-panel="tasks">
+    <main class="wrap">
+      <header class="pbar out" id="pbar">
+        <a class="pbar-brand" href="/crewops/portal">Crewops <span>· operator portal</span></a>
+        <nav class="pbar-nav" aria-label="Portal">
+          <a href="/crewops/portal" data-panel="hub">Today</a>
+          <a href="/crewops/insight" data-panel="insight">Insight</a>
+          <a href="/crewops/portal/safety" data-panel="safety">Safety</a>
+          <a href="/crewops/portal/academy" data-panel="academy">Academy</a>
+          <a href="/crewops/portal/library" data-panel="library">Library</a>
+          <a href="/crewops/portal/tasks" data-panel="tasks">Tasks</a>
+          <a href="/crewops/portal/connect" data-panel="connect">Connections</a>
+        </nav>
+        <div class="pbar-who"><span id="pbarAirline"></span><button id="signOut" hidden>SIGN OUT</button></div>
+      </header>
+      <div class="card hidden" id="noAccess" style="margin-bottom:16px"><h3>NOT IN YOUR LICENCE</h3><p class="fine" id="noAccessText" style="margin:0"></p></div>
+      
+      <div class="card" id="access" style="margin-bottom:16px">
+        <h3>ACCESS</h3>
+        <div class="row">
+          <label class="f" style="flex:1;min-width:260px">Operator code<input type="text" id="code" placeholder="CREW1.… (the code your airline holds)" /></label>
+          <button class="ghost" id="codeBtn">SIGN IN</button>
+          
+        </div>
+        <p class="fine" id="accessNote" style="margin:10px 0 0">Operator access comes with a licence: sign in with the operator code your airline received. Write to <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a> for anything about access.</p>
+        <p class="fine" style="margin:6px 0 0">We count how your airline uses this portal (when it is opened, which product, how many analyses and exports) to support your team. Rosters, files and crew data are not sent.</p>
+      </div>
+      <section id="tasks" class="hidden">
+        <style>.pill.prog { background: color-mix(in srgb, var(--cy) 16%, transparent); color: var(--cy) }</style>
+        <div class="bar" style="margin-top:40px"></div>
+        <div class="eyebrow">Crewops Tasks · follow-up for every department</div>
+        <h2 style="margin-top:8px">Tasks</h2>
+        <p class="fine" style="max-width:80ch">One list for corrective actions, training gaps, document confirmations and report follow-ups. Assign a task to a crew member, to a role or to a department office. Crew see their tasks on the phone and complete them there; the result shows here, and reaches your own system as the <code>task.completed</code> webhook event. A task for an office is completed here, by that office.</p>
+        <div class="tiles" id="tkTiles"></div>
+        <div class="row" style="margin:0 0 12px"><button class="ghost" id="tkRefresh">REFRESH</button><button id="tkNewBtn">NEW TASK</button><label class="f">Signed by<input type="text" id="tkBy" placeholder="Your name or unit" /></label><span class="fine" id="tkMsg"></span></div>
+        <div class="row" style="margin:0 0 12px">
+          <label class="f">Show<select id="tkFStatus"><option value="active">Open and in progress</option><option value="open">Open</option><option value="in_progress">In progress</option><option value="done">Done</option><option value="cancelled">Cancelled</option><option value="all">All</option></select></label>
+          <label class="f">Assigned to<select id="tkFType"><option value="any">Anyone</option><option value="crew">A crew member</option><option value="role">A role</option><option value="office">An office</option></select></label>
+          <label class="f" id="tkFValueBox" style="display:none"><span>Crew code</span><input type="text" id="tkFText" placeholder="ZZ042" style="width:130px;text-transform:uppercase" /><select id="tkFSel"></select></label>
+          <label class="f" style="flex-direction:row;align-items:center;gap:8px;padding-bottom:10px"><input type="checkbox" id="tkFLate" /> Overdue only</label>
+        </div>
+        <div class="tablewrap"><table id="tkTable"></table></div>
+        <div id="tkDetail" class="card hidden" style="margin-top:16px"></div>
+        <div class="card" id="tkNew" style="margin-top:16px">
+          <h3>NEW TASK</h3>
+          <div class="row">
+            <label class="f" style="flex:2;min-width:260px">Task · what has to be done<input type="text" id="tkNTitle" placeholder="e.g. Brief all cabin crew on the new galley latch check" /></label>
+            <label class="f">Kind<select id="tkNKind"><option value="action">Corrective action</option><option value="training">Training</option><option value="document">Document</option><option value="report">Report follow-up</option><option value="other">Other</option></select></label>
+          </div>
+          <label class="f" style="margin-top:8px">Details · optional<textarea id="tkNDetail"></textarea></label>
+          <div class="row" style="margin-top:8px">
+            <label class="f">Assign to<select id="tkNType"><option value="crew">A crew member</option><option value="role">A role</option><option value="office">An office</option></select></label>
+            <label class="f" id="tkNValueBox"><span>Crew code</span><input type="text" id="tkNText" placeholder="ZZ042" style="width:130px;text-transform:uppercase" /><select id="tkNSel"></select></label>
+            <label class="f">Due · optional<input type="text" id="tkNDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
+          </div>
+          <div class="row" style="margin-top:12px"><button id="tkCreate">CREATE TASK</button><span class="msg" id="tkNMsg" style="margin:0"></span></div>
+        </div>
+      </section>
+
+      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
+    </main>
+    
+    <script src="/assets/crewops-licence.js"></script>
+    <script src="/assets/crewops-tasks-page.js"></script>
+    <script src="/assets/crewops-session.js"></script>
+  </body>
+</html>
