@@ -139,21 +139,21 @@
         <div class="w-tape" aria-label="Crew systems Crewops reads">
           <div class="w-tape-track"><span class="w-tape-chip"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip"><b>EASA tables · FAA Part 117</b><span>Rule sets</span></span><span class="w-tape-chip" aria-hidden="true"><b>NetLine/CrewLink</b><span>Live sync</span></span><span class="w-tape-chip" aria-hidden="true"><b>JetXBit</b><span>Live sync · Verified with crew, Oct 2026</span></span><span class="w-tape-chip" aria-hidden="true"><b>AIMS eCrew</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>CrewConnex</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>FLiCA</b><span>Page import · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>Leon</b><span>PDF</span></span><span class="w-tape-chip" aria-hidden="true"><b>CAE Crew Access</b><span>PDF · Calendar</span></span><span class="w-tape-chip" aria-hidden="true"><b>RAIDO</b><span>Calendar link</span></span><span class="w-tape-chip" aria-hidden="true"><b>Sabre CWP</b><span>Page import</span></span><span class="w-tape-chip" aria-hidden="true"><b>EASA tables · FAA Part 117</b><span>Rule sets</span></span></div>
         </div>
-        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; max-width: 640px; margin: 14px auto 28px; padding: 0 24px;">Not listed? The app opens an email to us with a sample attached; nothing is sent until you press Send. Product names belong to their owners; Crewops has no affiliation with them.</p>
+        <p style="color: var(--w-muted); font-size: 0.82rem; text-align: center; max-width: 640px; margin: 14px auto 0; padding: 0 24px;">Not listed? The app opens an email to us with a sample attached; nothing is sent until you press Send. Product names belong to their owners; Crewops has no affiliation with them.</p>
       </section>
 
       <!-- FILM -->
       <section class="w-feat" id="film">
-        <div class="section-head section-head--center">
-          <span class="w-badge">Watch</span>
-          <h2 style="color: #fff;">Crewops in 60 seconds</h2>
-        </div>
-        <figure style="margin: 0 auto; max-width: 720px;">
-          <video controls playsinline preload="none" poster="assets/crewops/crewops-promo-poster.jpg" style="width: 100%; aspect-ratio: 1 / 1; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f; display: block;">
+        <figure class="w-film w-film--square">
+          <figcaption class="w-film-cap">
+            <span class="w-badge">Watch</span>
+            <h2>Crewops in 60 seconds</h2>
+            <p>Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown.</p>
+          </figcaption>
+          <video controls playsinline preload="none" poster="assets/crewops/crewops-promo-poster.jpg">
             <source src="assets/crewops/crewops-promo.mp4" type="video/mp4" />
             <a href="assets/crewops/crewops-promo.mp4">Watch the Crewops film</a>
           </video>
-          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">Roster import, duty limits, fatigue, Crewmates, the flight map and the Lock Screen countdown.</figcaption>
         </figure>
       </section>
 
@@ -163,7 +163,7 @@
           <span class="w-badge">What it does</span>
           <h2 style="color: #fff;">Everything your roster does not tell you</h2>
         </div>
-        <div class="w-grid w-grid--c">
+        <div class="w-grid w-grid--6">
           <article class="w-card">
             <span class="w-ic">📥</span>
             <h3>Reads your roster</h3>
@@ -257,7 +257,7 @@
           <span class="w-badge">Questions</span>
           <h2 style="color: #fff;">What crew ask first</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
+        <div class="w-grid w-grid--6">
           <article class="w-card"><h3>Which crew rostering systems does Crewops read?</h3><p>NetLine/CrewLink and JetXBit refresh on their own; AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP are read from their roster pages, PDFs or calendar links. Other .ics calendars and roster PDFs work when their layout is known.</p></article>
           <article class="w-card"><h3>Is my roster uploaded, and does my airline see my data?</h3><p>No. There is no account and no Crewops server holding your roster; everything is computed on the phone. Your airline sees nothing from the app unless you share a post-flight rating, or file or sign something in a product it licenses. Details in the <a href="crewops-privacy#sharing" style="color: var(--w-azure);">privacy policy</a>.</p></article>
           <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117, give the flight duty period ceiling, minimum rest, cumulative duty and the margin your roster leaves you.</p></article>

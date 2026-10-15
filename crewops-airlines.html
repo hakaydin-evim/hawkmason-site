@@ -109,16 +109,15 @@
     <style>
       /* Platform page: the hub capture in a panel frame with the crew phone in front (.w-hero-art--duo), beside the headline. */
       .w-hero--hub .w-lede { max-width: 50ch; margin-bottom: 1.6rem; }
-      @media (min-width: 901px) { .w-hero--hub { grid-template-columns: 0.9fr 1.1fr; } }
       .w-start { text-align: center; margin: 26px 0 0; }
       /* Portal carrier: phone, portal, your systems. Colours come from the --w-* tokens. */
-      .w-path { display: flex; align-items: stretch; justify-content: center; gap: 10px; max-width: 760px; margin: 30px auto 0; }
+      .w-path { display: flex; align-items: stretch; justify-content: center; gap: 10px; max-width: 860px; margin: 30px auto 0; }
       .w-path-box { flex: 1 1 0; display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; border: 1px solid var(--w-line); border-radius: 16px; background: var(--w-panel); text-align: center; }
       .w-path-box b { color: var(--w-ink); font-size: 0.98rem; }
       .w-path-box span { color: var(--w-muted); font-size: 0.82rem; line-height: 1.45; }
       .w-path-box.is-core { border-color: var(--w-azure); }
       .w-path-arrow { align-self: center; color: var(--w-azure); font-size: 1.3rem; line-height: 1; }
-      .w-readers { max-width: 760px; margin: 18px auto 0; text-align: center; color: var(--w-muted); font-size: 0.9rem; line-height: 1.6; }
+      .w-readers { max-width: 860px; margin: 18px auto 0; text-align: center; color: var(--w-muted); font-size: 0.9rem; line-height: 1.6; }
       .w-readers b { color: var(--w-ink); font-weight: 600; }
       @media (max-width: 640px) { .w-path { flex-direction: column; } .w-path-arrow { transform: rotate(90deg); } }
     </style>
@@ -159,16 +158,16 @@
 
       <!-- FILM -->
       <section class="w-feat" id="film">
-        <div class="section-head section-head--center">
-          <span class="w-badge">Watch</span>
-          <h2 style="color: #fff;">The platform in 90 seconds</h2>
-        </div>
-        <figure style="margin: 0 auto; max-width: 960px; padding: 0 24px;">
-          <video controls playsinline preload="none" poster="/assets/crewops/crewops-aviation-platform-poster.jpg" style="width: 100%; aspect-ratio: 16 / 9; border-radius: 22px; border: 1px solid var(--w-line); background: #05080f;">
+        <figure class="w-film">
+          <figcaption class="w-film-cap">
+            <span class="w-badge">Watch</span>
+            <h2>The platform in 90 seconds</h2>
+            <p>From dated, disconnected tools to one crew app and four products. Captions and music, no voice-over. Fictional airline.</p>
+          </figcaption>
+          <video controls playsinline preload="none" poster="/assets/crewops/crewops-aviation-platform-poster.jpg">
             <source src="/assets/crewops/crewops-aviation-platform.mp4" type="video/mp4" />
             <a href="/assets/crewops/crewops-aviation-platform.mp4">Watch the Crewops Aviation Platform film</a>
           </video>
-          <figcaption style="color: var(--w-muted); font-size: 0.9rem; margin-top: 10px; text-align: center;">From dated, disconnected tools to one crew app and four products. Captions and music, no voice-over. Fictional airline.</figcaption>
         </figure>
       </section>
 
@@ -178,7 +177,7 @@
           <span class="w-badge">Four products</span>
           <h2 style="color: #fff;">One product for each department</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));">
+        <div class="w-grid w-grid--4">
           <article class="w-card w-prod">
             <div class="w-prod-head"><span class="w-status is-live">Available</span></div>
             <h3>Crewops Insight</h3>
@@ -236,7 +235,7 @@
           <span class="w-badge">Crew app</span>
           <h2 style="color: #fff;">One crew app, set by your licence</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: minmax(min(300px, 100%), 640px); justify-content: center;">
+        <div class="w-grid w-grid--1">
           <article class="w-card w-prod">
             <div class="w-prod-head"><span class="w-status">Pilot programme</span></div>
             <p style="margin-top: 12px;">Crewops Crew is the Crewops app, given by your airline and opened with its company code. Your licence turns modules on or off and sets your airline's name and expiry. Your rule set is agreed with you.</p>
@@ -252,7 +251,7 @@
           <span class="w-badge">How it starts</span>
           <h2 style="color: #fff;">Trial first, then a licence</h2>
         </div>
-        <div class="w-grid" style="grid-template-columns: repeat(auto-fit, minmax(min(240px, 100%), 1fr));">
+        <div class="w-grid w-grid--3">
           <article class="w-card"><h3>1 · Trial</h3><p>Start on your own files: a roster export, qualification records or a manual.</p></article>
           <article class="w-card"><h3>2 · Your way of working</h3><p>We read your formats and your rule set before we propose anything.</p></article>
           <article class="w-card"><h3>3 · Licence</h3><p>Operator codes open the products you hold, for the period you agreed.</p></article>
@@ -276,12 +275,12 @@
           <span class="w-badge">Questions</span>
           <h2 style="color: #fff;">What operators ask first</h2>
         </div>
-        <div class="w-grid w-grid--c" style="grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));">
-          <article class="w-card"><h3>Can we buy one product?</h3><p>Yes. Each product has its own licence, so you can hold one, two, three or all four. An operator code opens only the products it covers.</p></article>
-          <article class="w-card"><h3>Where does the data live?</h3><p>Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code, and read on the airline's side only with your operator code or API keys.</p></article>
-          <article class="w-card"><h3>Do our crews need an account?</h3><p>No. In the pilot programme, crews open the crew app with your airline's company code. They create no account and buy nothing in the app.</p></article>
-          <article class="w-card"><h3>Does it work with the systems we already run?</h3><p>Yes. Each product runs on its own beside your SMS, HR, training and document systems, or feeds them through the API, webhooks and exports.</p></article>
-          <article class="w-card"><h3>Can you build a module we do not see here?</h3><p>Write to us with the problem. We look at your files and rules first, then answer with a plan. A module appears here only once it is built.</p></article>
+        <div class="w-flow w-flow--faq">
+          <div class="w-flow-row"><b>Can we buy one product?</b><p>Yes. Each product has its own licence, so you can hold one, two, three or all four. An operator code opens only the products it covers.</p></div>
+          <div class="w-flow-row"><b>Where does the data live?</b><p>Roster, sleep and health entries stay on the phone. What a crew member files or signs (a report, a confirmation, a course result, a shared rating) is stored on Cloudflare servers that Hawk &amp; Mason Studios runs, with each airline's records kept apart by its airline code, and read on the airline's side only with your operator code or API keys.</p></div>
+          <div class="w-flow-row"><b>Do our crews need an account?</b><p>No. In the pilot programme, crews open the crew app with your airline's company code. They create no account and buy nothing in the app.</p></div>
+          <div class="w-flow-row"><b>Does it work with the systems we already run?</b><p>Yes. Each product runs on its own beside your SMS, HR, training and document systems, or feeds them through the API, webhooks and exports.</p></div>
+          <div class="w-flow-row"><b>Can you build a module we do not see here?</b><p>Write to us with the problem. We look at your files and rules first, then answer with a plan. A module appears here only once it is built.</p></div>
         </div>
       </section>
 
