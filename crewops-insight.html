@@ -19,10 +19,10 @@
  "@graph": [
   {
    "@type": "WebPage",
-   "@id": "https://hawkmason.com/crewops/portal#page",
-   "url": "https://hawkmason.com/crewops/portal",
-   "name": "Crewops operator portal",
-   "description": "The Crewops Aviation Platform's operator portal: one operator code per airline opens the products it holds, roster fatigue analysis (Crewops Insight), safety reports (Crewops Safety), training records (Crewops Academy) and controlled documents (Crewops Library).",
+   "@id": "https://hawkmason.com/crewops/insight#page",
+   "url": "https://hawkmason.com/crewops/insight",
+   "name": "Crewops Insight",
+   "description": "Roster fatigue assessment in the browser, a product of the Crewops Aviation Platform.",
    "isPartOf": {
     "@id": "https://hawkmason.com/#website"
    },
@@ -36,7 +36,7 @@
    "name": "Crewops Insight",
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any (browser)",
-   "url": "https://hawkmason.com/crewops/portal#insight",
+   "url": "https://hawkmason.com/crewops/insight",
    "description": "Roster fatigue analysis for airline operators: FDP margins, Three-Process Model alertness (KSS, Samn-Perelli) at top of descent, EASA 2023 night-duty subtypes, planned versus flown for ORO.FTL.110(j). Runs in the browser; nothing is uploaded. Licensed per operator.",
    "publisher": {
     "@type": "Organization",
@@ -166,6 +166,7 @@
       .pbar-nav a[aria-current] { color:var(--ink); border-color:var(--cy) }
       .pbar-nav a.off { opacity:.45 }
       .pbar-nav a.gone { display:none }
+      .pbar.out .pbar-nav { display:none }
       .pbar-who { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); display:flex; gap:10px; align-items:center }
       .pbar-who button { background:none; border:0; color:var(--cy); font:inherit; padding:0; cursor:pointer; letter-spacing:1px }
       .pbar-badge { display:inline-block; min-width:18px; padding:1px 6px; border-radius:999px; background:#3a1414; color:var(--bad); font-size:10px; text-align:center; margin-left:4px }
@@ -175,7 +176,7 @@
   </head>
   <body data-panel="insight">
     <main class="wrap">
-      <header class="pbar" id="pbar">
+      <header class="pbar out" id="pbar">
         <a class="pbar-brand" href="/crewops/portal">Crewops <span>· operator portal</span></a>
         <nav class="pbar-nav" aria-label="Portal">
           <a href="/crewops/portal" data-panel="hub">Today</a>
@@ -270,7 +271,7 @@
       </section>
       </section>
 
-      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/portal">Today</a> · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
+      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     
     <script type="module">

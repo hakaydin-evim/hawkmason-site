@@ -41,6 +41,9 @@
       a.classList.toggle('off', !!held && product && !held.includes(p));
       if (held && product && !held.includes(p)) a.title = `${NAMES[p]} is not in your licence`;
     });
+    bar.classList.toggle('out', !licence);
+    const brand = bar.querySelector('.pbar-brand');
+    if (brand && PANEL === 'insight') brand.setAttribute('href', licence ? '/crewops/portal' : '/crewops/airlines');
     $('pbarAirline').textContent = licence ? `${licence.name} · until ${licence.exp}${licence.ops ? '' : ' · crew code'}` : '';
     $('signOut').hidden = !licence;
   }

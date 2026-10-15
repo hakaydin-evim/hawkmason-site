@@ -115,7 +115,6 @@
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
       <div class="nav-store">
-        <a class="nav-airlines" href="/crewops/portal">Operator portal</a>
         <a class="store-btn store-btn--azure" href="#contact">Write to us</a>
       </div>
     </header>
@@ -171,7 +170,7 @@ curl -s "$CREWOPS/portal/today" \
       <section class="api-sec" id="keys">
         <span class="w-badge">API keys</span>
         <h2>One key per connected system</h2>
-        <p>Make a key in the operator portal, under Connections (hawkmason.com/crewops/portal/connect), for each system that calls the API: your SMS, your HR system, your training system, your document system. Give each one a name so you know which system it belongs to.</p>
+        <p>Make a key in the operator portal, under Connections, for each system that calls the API: your SMS, your HR system, your training system, your document system. Give each one a name so you know which system it belongs to.</p>
         <ul>
           <li>A key looks like <code>cwk_</code> followed by 40 hexadecimal characters. It is shown once, when it is made. Crewops stores only its SHA-256 hash.</li>
           <li>A key acts as the operator code it was made with: the same airline, the same products and the same expiry date.</li>
@@ -482,7 +481,7 @@ curl -s -X POST "$CREWOPS/library/docs" \
       <section class="api-sec" id="webhooks">
         <span class="w-badge">Webhooks</span>
         <h2>Hear about events as they happen</h2>
-        <p>Set one https endpoint in the operator portal, under Connections (hawkmason.com/crewops/portal/connect), and pick the events it should receive. You can pick only the events of products your airline holds.</p>
+        <p>Set one https endpoint in the operator portal, under Connections, and pick the events it should receive. You can pick only the events of products your airline holds.</p>
         <div class="api-scroll">
           <table class="api-table">
             <thead><tr><th>Event</th><th>When it fires</th><th>data</th></tr></thead>
@@ -608,7 +607,6 @@ def crewops_hook():
       <nav class="foot-links" aria-label="Footer">
         <a href="/crewops">Crewops</a>
         <a href="/crewops/airlines">For airlines</a>
-        <a href="/crewops/portal">Operator portal</a>
         <a href="/crewops/safety">Safety</a>
         <a href="/crewops/academy">Academy</a>
         <a href="/crewops/library">Library</a>

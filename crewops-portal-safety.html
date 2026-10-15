@@ -90,6 +90,7 @@
       .pbar-nav a[aria-current] { color:var(--ink); border-color:var(--cy) }
       .pbar-nav a.off { opacity:.45 }
       .pbar-nav a.gone { display:none }
+      .pbar.out .pbar-nav { display:none }
       .pbar-who { font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--faint); display:flex; gap:10px; align-items:center }
       .pbar-who button { background:none; border:0; color:var(--cy); font:inherit; padding:0; cursor:pointer; letter-spacing:1px }
       .pbar-badge { display:inline-block; min-width:18px; padding:1px 6px; border-radius:999px; background:#3a1414; color:var(--bad); font-size:10px; text-align:center; margin-left:4px }
@@ -99,7 +100,7 @@
   </head>
   <body data-panel="safety">
     <main class="wrap">
-      <header class="pbar" id="pbar">
+      <header class="pbar out" id="pbar">
         <a class="pbar-brand" href="/crewops/portal">Crewops <span>· operator portal</span></a>
         <nav class="pbar-nav" aria-label="Portal">
           <a href="/crewops/portal" data-panel="hub">Today</a>
@@ -120,7 +121,7 @@
           <button class="ghost" id="codeBtn">SIGN IN</button>
           
         </div>
-        <p class="fine" id="accessNote" style="margin:10px 0 0">Crewops Insight is licensed per operator. The same code that unlocks Crewops Crew for your pilots opens this page. No code yet? Run it on the sample roster, or <a href="mailto:hello@hawkmason.com?subject=Crewops%20Insight%3A%20access%20request">ask for a trial on your own files</a>.</p>
+        <p class="fine" id="accessNote" style="margin:10px 0 0">Operator access comes with a licence: sign in with the operator code your airline received. Write to <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a> for anything about access.</p>
         <p class="fine" style="margin:6px 0 0">We count how your airline uses this portal (when it is opened, which product, how many analyses and exports) to support your team. Rosters, files and crew data are not sent.</p>
       </div>
       <section id="safety" class="hidden">
@@ -188,7 +189,7 @@
         </div>
       </section>
 
-      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/portal">Today</a> · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
+      <footer>Crewops Aviation Platform · operator portal · Hawk &amp; Mason Studios · <a href="/crewops/airlines">About the platform</a> · <a href="/crewops/faq">Questions</a> · <a href="/crewops/api">API</a> · <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></footer>
     </main>
     
     <script src="/assets/crewops-licence.js"></script>
