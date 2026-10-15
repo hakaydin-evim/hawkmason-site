@@ -1120,16 +1120,13 @@ a.w-tile:hover { transform: translateY(-3px); border-color: var(--w-azure); }
 
 /* Product pages: the airline's browser panel behind the crew phone (2026-10-15).
    .w-hero-art--duo holds a .w-panel (a real capture of the panel in a quiet browser frame) and one .w-phone.w-phone-duo
-   in front of its lower right corner, below the part of the panel that carries the figures. .w-shot is the same window
-   as a wide figure inside a section. .w-hero--duo is the hero that holds them: same top edge on every product page. */
+   in front of its lower right corner, below the part of the panel that carries the figures. .w-hero--duo is the hero
+   that holds them: same top edge on every product page. */
 .w-hero-art--duo { aspect-ratio: 1 / 1; }
 .w-panel { position: absolute; left: 0; top: 3%; width: 94%; border-radius: 14px; overflow: hidden; background: #0c0c11; border: 1px solid var(--w-line); box-shadow: 0 30px 70px -24px rgba(0, 0, 0, 0.8); }
 .w-panel::before { content: ""; display: block; height: 22px; background: #15151c; border-bottom: 1px solid #22222c; background-image: radial-gradient(circle at 12px 11px, #3a3a46 4px, transparent 5px), radial-gradient(circle at 28px 11px, #3a3a46 4px, transparent 5px), radial-gradient(circle at 44px 11px, #3a3a46 4px, transparent 5px); }
 .w-panel img { display: block; width: 100%; height: auto; }
 .w-phone-duo { width: 27%; right: 0; bottom: 0; }
-.w-shot { max-width: 1100px; margin: 30px auto 0; padding: 0 24px; }
-.w-shot .w-panel { position: relative; width: 100%; top: 0; }
-.w-shot figcaption { margin-top: 12px; text-align: center; color: var(--w-muted); font-size: 0.85rem; line-height: 1.5; }
 
 /* The hero art sits at the top of its row, so the panel starts at the same height on every product page,
    and gets the wider column. The Insight page has no phone: its panel fills the art box. */
@@ -1154,19 +1151,22 @@ a.w-tile:hover { transform: translateY(-3px); border-color: var(--w-azure); }
 .w-strip-inner--3 { align-items: start; }
 .w-strip-inner--3 .w-spec li:first-child { padding-top: 0; border-top: 0; }
 
+/* A one-line strip (Insight: "Ask us how it works"): centred, with room before the section that follows it. */
+.w-strip--note .w-strip-inner { display: block; max-width: 640px; text-align: center; }
+.w-strip--note p { margin: 8px 0 0; color: var(--w-muted); line-height: 1.6; }
+.w-strip--note + .w-feat { padding-top: 56px; }
+
 /* Phones: the hero panel shows its left two thirds at a readable size, the crew phone sits lower and narrower,
-   the wide figures scroll sideways at a readable size instead of shrinking, and the buttons start on the copy's edge. */
+   and the buttons start on the copy's edge. */
 @media (max-width: 560px) {
   .w-hero-art--duo { aspect-ratio: 1 / 1.1; }
   .w-hero-art--panel-only { aspect-ratio: auto; }
   .w-phone-duo { width: 32%; }
   .w-hero-art--duo .w-panel img { width: 150%; max-width: none; }
-  .w-shot { padding: 0 16px; }
-  .w-shot .w-panel { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .w-shot .w-panel img { width: 760px; max-width: none; }
+  /* Insight has no phone and a short capture: show report time through the within label, not the left two thirds. */
+  .w-hero-art--panel-only .w-panel img { width: 178%; margin-left: -73.5%; }
   .w-hero--duo .store-row { justify-content: flex-start; gap: 0.6rem; }
   .w-hero--duo .g-hero-meta { display: none; }
-  .w-shot .w-panel + figcaption::before { content: "Swipe sideways to see the full width."; display: block; margin-bottom: 4px; color: var(--w-azure-soft); font-weight: 600; }
 }
 
 /* Reduced motion lays the tape out as a wrapped list; the aria-hidden copy that makes the loop seamless would show every chip twice. */
