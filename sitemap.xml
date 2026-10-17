@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hawkmason.com/</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/sugar-tiles</loc>
@@ -27,6 +28,7 @@
   </url>
   <url>
     <loc>https://hawkmason.com/crewops</loc>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/pondr/</loc>
@@ -60,12 +62,15 @@
   </url>
   <url>
     <loc>https://hawkmason.com/crewops-privacy</loc>
+    <lastmod>2026-10-15</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops-terms</loc>
+    <lastmod>2026-10-15</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops-support</loc>
+    <lastmod>2026-10-15</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/privacy</loc>
@@ -78,27 +83,27 @@
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/airlines</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/insight-product</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/safety</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/academy</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/library</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/faq</loc>
-    <lastmod>2026-10-15</lastmod>
+    <lastmod>2026-10-17</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/crewops/api</loc>
