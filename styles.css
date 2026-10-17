@@ -442,19 +442,18 @@ body.game {
 .game-card--crew .card-body p { color: #8fa3bd; }
 .game-card--crew .aero-shot { box-shadow: 0 26px 44px -18px rgba(63, 182, 245, 0.28); }
 .game-card--aero .card-body h3 { color: #fff; }
-/* Platform band on the umbrella grid (2026-10-17): full width, the browser panel on the left and the copy on the right,
-   above the four consumer cards. On phones it stacks like the other cards. */
-.game-card--platform { grid-column: 1 / -1; min-height: 0; flex-direction: row; align-items: stretch; }
-.game-card--platform .card-media--panel { flex: 0 0 54%; padding: 2.2rem 0 0 2.2rem; display: grid; align-items: end; overflow: hidden; }
-.game-card--platform .panel-shot { width: 100%; height: 100%; aspect-ratio: auto; object-fit: cover; object-position: left top; border-radius: 14px 0 0 0; border: 1px solid #1c3558; border-right: 0; border-bottom: 0; box-shadow: 0 26px 44px -18px rgba(63, 182, 245, 0.28); transition: transform 0.28s cubic-bezier(0.4, 1.3, 0.5, 1); }
-.game-card--platform .card-body { flex: 1; justify-content: center; padding: 2.2rem 2.2rem 2.2rem 2rem; }
-.game-card--platform:hover .panel-shot { transform: translate(4px, -4px); }
-@media (max-width: 900px) {
-  .game-card--platform { flex-direction: column; }
-  .game-card--platform .card-media--panel { flex: none; padding: 2rem 1.6rem 0; }
-  .game-card--platform .panel-shot { height: auto; aspect-ratio: 16 / 9; border-radius: 14px 14px 0 0; border-right: 1px solid #1c3558; }
-  .game-card--platform .card-body { padding: 1.6rem; }
-}
+/* For airlines (2026-10-17): the platform gets its own section between the products and the studio,
+   a two-column layout that stacks on phones. */
+.airlines { padding: clamp(2.5rem, 6vw, 4.5rem) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #0c1c33, #070c15); }
+.airlines-inner { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center; }
+.airlines .eyebrow { color: #3fb6f5; }
+.airlines h2 { color: #fff; margin: 0.4rem 0 0.8rem; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.15; }
+.airlines-lede { color: #8fa3bd; line-height: 1.65; margin: 0 0 1.5rem; max-width: 46ch; }
+.airlines-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
+.airlines-list li { display: grid; gap: 0.2rem; padding: 0.9rem 1.1rem; border: 1px solid #14294a; border-radius: 16px; background: rgba(12, 28, 51, 0.6); }
+.airlines-list b { color: #fff; font-size: 1rem; }
+.airlines-list span { color: #8fa3bd; font-size: 0.93rem; line-height: 1.5; }
+@media (max-width: 860px) { .airlines-inner { grid-template-columns: 1fr; } }
 .game-card--aero .card-body p { color: #8b9bb4; }
 .card-go--cyan { color: #00e5ff; }
 
