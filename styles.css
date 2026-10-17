@@ -442,18 +442,15 @@ body.game {
 .game-card--crew .card-body p { color: #8fa3bd; }
 .game-card--crew .aero-shot { box-shadow: 0 26px 44px -18px rgba(63, 182, 245, 0.28); }
 .game-card--aero .card-body h3 { color: #fff; }
-/* For airlines (2026-10-17): the platform gets its own section between the products and the studio,
-   a two-column layout that stacks on phones. */
-.airlines { padding: clamp(2.5rem, 6vw, 4.5rem) 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: linear-gradient(180deg, #0c1c33, #070c15); }
-.airlines-inner { max-width: 1180px; margin: 0 auto; padding: 0 clamp(1.1rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.6rem, 4vw, 3.5rem); align-items: center; }
-.airlines .eyebrow { color: #3fb6f5; }
-.airlines h2 { color: #fff; margin: 0.4rem 0 0.8rem; font-size: clamp(1.7rem, 3vw, 2.3rem); line-height: 1.15; }
-.airlines-lede { color: #8fa3bd; line-height: 1.65; margin: 0 0 1.5rem; max-width: 46ch; }
-.airlines-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
-.airlines-list li { display: grid; gap: 0.2rem; padding: 0.9rem 1.1rem; border: 1px solid #14294a; border-radius: 16px; background: rgba(12, 28, 51, 0.6); }
-.airlines-list b { color: #fff; font-size: 1rem; }
-.airlines-list span { color: #8fa3bd; font-size: 0.93rem; line-height: 1.5; }
-@media (max-width: 860px) { .airlines-inner { grid-template-columns: 1fr; } }
+/* Crewops card (2026-10-17): the app link on top and, inside the same card, a strip for the airline platform. */
+.game-card--split { display: flex; flex-direction: column; }
+.game-card--split .card-main { flex: 1; display: flex; flex-direction: column; color: inherit; text-decoration: none; }
+.game-card--split .card-main .card-body { flex: 1; }
+.card-strip { display: grid; gap: 0.35rem; padding: 1.1rem 1.7rem 1.4rem; border-top: 1px solid rgba(63, 182, 245, 0.22); background: rgba(63, 182, 245, 0.06); text-decoration: none; transition: background 0.2s ease; }
+.card-strip:hover { background: rgba(63, 182, 245, 0.12); }
+.card-strip-kicker { font: 700 0.72rem/1 var(--text); letter-spacing: 0.05em; text-transform: uppercase; color: #3fb6f5; }
+.card-strip-text { color: #8fa3bd; font-size: 0.93rem; line-height: 1.5; }
+.card-strip .card-go { font-size: 0.95rem; margin-top: 0.2rem; }
 .game-card--aero .card-body p { color: #8b9bb4; }
 .card-go--cyan { color: #00e5ff; }
 

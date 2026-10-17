@@ -114,19 +114,25 @@
 
         <div class="game-grid">
           <!-- Sugar Tiles portal -->
-          <a class="game-card game-card--crew" href="crewops"
-             data-portal data-veil="#070c15" data-enter="crewops">
-            <div class="card-media card-media--aero">
-              <img class="aero-shot" src="assets/crewops/bugun.webp" alt="Crewops today screen with duty limits and fatigue meter" width="552" height="1199" loading="lazy" decoding="async" />
-            </div>
-            <div class="card-body">
-              <span class="pill pill--cyan">App · Live now</span>
-              <h3>Crewops</h3>
-              <p class="card-sub">Crewops: Crew Roster &amp; FTL</p>
-              <p>Roster, duty limits and fatigue for airline crew — import your roster, keep a logbook, read sourced advice. Nothing leaves the phone unless you say so.</p>
-              <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
-            </div>
-          </a>
+          <div class="game-card game-card--crew game-card--split">
+            <a class="card-main" href="crewops" data-portal data-veil="#070c15" data-enter="crewops">
+              <div class="card-media card-media--aero">
+                <img class="aero-shot" src="assets/crewops/bugun.webp" alt="Crewops today screen with duty limits and fatigue meter" width="552" height="1199" loading="lazy" decoding="async" />
+              </div>
+              <div class="card-body">
+                <span class="pill pill--cyan">App · Live now</span>
+                <h3>Crewops</h3>
+                <p class="card-sub">Crewops: Crew Roster &amp; FTL</p>
+                <p>Roster, duty limits and fatigue for airline crew — import your roster, keep a logbook, read sourced advice. Nothing leaves the phone unless you say so.</p>
+                <span class="card-go card-go--cyan">Enter the app <span aria-hidden="true">→</span></span>
+              </div>
+            </a>
+            <a class="card-strip" href="crewops/airlines">
+              <span class="card-strip-kicker">For airlines · Crewops Aviation Platform</span>
+              <span class="card-strip-text">Safety reports, training records and courses, manuals with read receipts, roster fatigue assessment — four products for the departments behind the crew, each licensed on its own.</span>
+              <span class="card-go card-go--cyan">Enter the platform <span aria-hidden="true">→</span></span>
+            </a>
+          </div>
 
           <!-- Pondr portal -->
           <a class="game-card game-card--sugar" href="sugar-tiles"
@@ -174,24 +180,6 @@
           </a>
         </div>
         <p class="games-foot">More in the workshop — new small worlds are always in the making.</p>
-      </section>
-
-      <!-- FOR AIRLINES -->
-      <section class="airlines" id="airlines">
-        <div class="airlines-inner">
-          <div class="airlines-copy">
-            <p class="eyebrow">For airlines</p>
-            <h2>Crewops Aviation Platform</h2>
-            <p class="airlines-lede">The airline side of Crewops: four products for the departments behind the crew, each licensed on its own, in any combination, with an API and signed webhooks. Crews keep one app.</p>
-            <a class="btn btn-primary" href="crewops/airlines">See the platform <span aria-hidden="true">→</span></a>
-          </div>
-          <ul class="airlines-list">
-            <li><b>Crewops Safety</b><span>Reports from the duty on the phone; your safety office follows up and writes back.</span></li>
-            <li><b>Crewops Academy</b><span>Read-and-sign notices, qualification records with expiry, courses and exams.</span></li>
-            <li><b>Crewops Library</b><span>Current manuals on the crew phone, with read receipts.</span></li>
-            <li><b>Crewops Insight</b><span>Roster fatigue assessment in the browser, duty by duty.</span></li>
-          </ul>
-        </div>
       </section>
 
       <!-- STUDIO -->
