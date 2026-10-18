@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <title>Müşterilerim · Crewops</title>
+    <title>Kontrol merkezi · Crewops</title>
     <meta name="robots" content="noindex, nofollow" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
@@ -42,19 +42,38 @@
       .hint { margin:10px 0 0; padding:10px 12px; border-radius:12px; background:var(--surface2); color:var(--soft); font-size:14px }
       .hint b { color:var(--ink) }
       .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(128px,1fr)); gap:8px 16px; margin-top:12px }
-      .kv span { display:block; font:500 10px 'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
+      .kv > span { display:block; font:500 10px 'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint) }
       .kv b { font-weight:600; font-variant-numeric:tabular-nums }
       .bars { margin-top:12px; overflow:hidden }
       .bars svg { width:100%; height:46px; display:block }
       .bars .axis { display:flex; justify-content:space-between; font:500 10px 'JetBrains Mono',monospace; color:var(--faint) }
       .fine { font-size:12px; color:var(--faint) }
+      .tabs { display:flex; gap:6px; overflow-x:auto; margin:6px 0 16px; padding-bottom:4px; scrollbar-width:none }
+      .tabs button { background:var(--surface); color:var(--soft); border:1px solid var(--line); padding:8px 14px; font-size:13px; white-space:nowrap }
+      .tabs button[aria-selected="true"] { background:var(--ink); color:var(--paper); border-color:var(--ink) }
+      .tabs button .n { display:inline-block; margin-left:6px; padding:0 7px; border-radius:999px; background:var(--mg); color:#fff; font:600 11px 'JetBrains Mono',monospace }
+      .alerts { display:grid; gap:8px; margin-bottom:18px }
+      .alert { display:flex; gap:10px; align-items:flex-start; background:var(--surface); border:1px solid var(--line); border-left:4px solid var(--warn); border-radius:12px; padding:10px 12px }
+      .alert.bad { border-left-color:var(--bad) } .alert.ok { border-left-color:var(--ok) } .alert.info { border-left-color:var(--cy) }
+      .alert b { display:block } .alert span { color:var(--soft); font-size:13px }
+      h3.sec { font:600 12px 'JetBrains Mono',monospace; letter-spacing:2px; text-transform:uppercase; color:var(--faint); margin:22px 0 10px }
+      .tbl { width:100%; border-collapse:collapse; font-size:14px }
+      .tbl th { text-align:left; font:500 10px 'JetBrains Mono',monospace; letter-spacing:1.5px; text-transform:uppercase; color:var(--faint); padding:6px 8px; border-bottom:1px solid var(--line) }
+      .tbl td { padding:8px; border-bottom:1px solid var(--line); vertical-align:top }
+      .scroll { overflow-x:auto }
+      .apps { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:12px }
+      .item { padding:8px 0; border-bottom:1px solid var(--line); display:flex; gap:10px; justify-content:space-between }
+      .item:last-child { border-bottom:0 }
+      .item .t { flex:1 }
+      code { font:12px 'JetBrains Mono',monospace; background:var(--surface2); padding:2px 6px; border-radius:6px }
+      label.chk { display:flex; gap:6px; align-items:center; font-size:13px; color:var(--soft) }
     </style>
   </head>
   <body>
     <main class="wrap">
       <div class="eyebrow">Crewops · sahip paneli</div>
-      <h1>Müşterilerim</h1>
-      <p class="lead">Her havayolu portala ne zaman girdi, neye baktı, ekipleri ne gönderdi. Sadece sayılar; içerik yok.</p>
+      <h1>Kontrol merkezi</h1>
+      <p class="lead">Müşteriler, lisanslar, uygulamalar ve işler tek yerde. Sadece durum ve sayılar; içerik yok.</p>
 
       <div id="gate" class="row">
         <input type="password" id="code" placeholder="Sahip kodu (CREW1.…)" autocomplete="off" aria-label="Sahip kodu" />
@@ -69,8 +88,18 @@
       </div>
       <p class="msg" id="msg" role="alert"></p>
 
-      <div class="tiles" id="tiles" hidden></div>
-      <div id="list"></div>
+      <nav class="tabs" id="tabs" role="tablist" hidden>
+        <button role="tab" data-tab="ozet" aria-selected="true">Özet</button>
+        <button role="tab" data-tab="musteri" aria-selected="false">Müşteriler</button>
+        <button role="tab" data-tab="lisans" aria-selected="false">Lisanslar</button>
+        <button role="tab" data-tab="uygulama" aria-selected="false">Uygulamalar</button>
+        <button role="tab" data-tab="is" aria-selected="false">İşler</button>
+      </nav>
+      <section id="ozet" class="pane"></section>
+      <section id="musteri" class="pane" hidden><div class="tiles" id="tiles"></div><div id="list"></div></section>
+      <section id="lisans" class="pane" hidden></section>
+      <section id="uygulama" class="pane" hidden></section>
+      <section id="is" class="pane" hidden></section>
     </main>
     <script>
       (() => {
@@ -132,6 +161,115 @@
           </article>`;
         }
 
+
+        // ---- Kontrol merkezi: summary, licences, apps, work ----
+        const ASC = { READY_FOR_SALE: ['yayında', 'p-ok'], REJECTED: ['reddedildi', 'p-bad'], METADATA_REJECTED: ['metadata reddi', 'p-bad'], WAITING_FOR_REVIEW: ['incelemede sırada', 'p-warn'], IN_REVIEW: ['inceleniyor', 'p-warn'], PREPARE_FOR_SUBMISSION: ['hazırlanıyor', 'p-mute'], PENDING_DEVELOPER_RELEASE: ['onaylandı · yayın bekliyor', 'p-warn'], DEVELOPER_REJECTED: ['geri çekildi', 'p-mute'], READY_FOR_REVIEW: ['gönderilmeye hazır', 'p-mute'], PROCESSING_FOR_APP_STORE: ['işleniyor', 'p-mute'] };
+        const BUILD = { VALID: ['hazır', 'p-ok'], PROCESSING: ['işleniyor', 'p-warn'], INVALID: ['geçersiz', 'p-bad'], FAILED: ['başarısız', 'p-bad'] };
+        const TRACK = { production: 'Üretim', beta: 'Açık test', alpha: 'Kapalı test', internal: 'Dahili test' };
+        const REL = { completed: ['yayında', 'p-ok'], draft: ['taslak', 'p-mute'], inProgress: ['kademeli', 'p-warn'], halted: ['durduruldu', 'p-bad'] };
+        const day = (iso) => iso ? new Date(iso).toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', year: 'numeric' }) : '—';
+        const daysTo = (d) => Math.ceil((Date.parse(d) - Date.now()) / 86400000);
+        const pill = (pair) => `<span class="pill ${pair[1]}">${esc(pair[0])}</span>`;
+        const alert = (kind, title, sub) => `<div class="alert ${kind}"><div><b>${title}</b>${sub ? `<span>${sub}</span>` : ''}</div></div>`;
+
+        function renderSummary(cs, st) {
+          const A = [];
+          if (!st) A.push(alert('bad', 'Uygulama durumu henüz yok', 'Mac’te <code>node tools/owner/status.mjs --push</code> çalışınca dolar.'));
+          else if (Date.now() - Date.parse(st.at) > 36 * 3600000) A.push(alert('warn', `Uygulama durumu ${Math.floor((Date.now() - Date.parse(st.at)) / 3600000)} saat önce güncellendi`, 'Mac kapalıysa güncellenmez; açınca kendiliğinden yenilenir.'));
+          for (const a of st?.apps ?? []) {
+            const v = a.appStore?.versions?.[0];
+            if (v && ['REJECTED', 'METADATA_REJECTED'].includes(v.state)) A.push(alert('bad', `${esc(a.name)} ${a.platform} ${esc(v.version)}: reddedildi`, 'Düzeltme ve yeniden gönderim gerekiyor.'));
+            if (v && ['WAITING_FOR_REVIEW', 'IN_REVIEW'].includes(v.state)) A.push(alert('info', `${esc(a.name)} ${a.platform} ${esc(v.version)}: ${ASC[v.state][0]}`, `${day(v.created)} tarihinden beri.`));
+            if (v && v.state === 'PENDING_DEVELOPER_RELEASE') A.push(alert('warn', `${esc(a.name)} ${a.platform} ${esc(v.version)} onaylandı`, 'Yayın senin tıklamanı bekliyor.'));
+            if (a.ota?.kind === 'rolledBack') A.push(alert('warn', `${esc(a.name)} ${a.platform}: OTA kanalı geri çekili`, `${day(a.ota.at)} tarihinden beri telefonlar yerleşik paketi çalıştırıyor.`));
+          }
+          for (const c of cs) {
+            for (const [p, s] of Object.entries(c.products)) {
+              if (s.status === 'ended' || !s.until) continue;
+              const d = daysTo(s.until);
+              if (d < 0) A.push(alert('bad', `${esc(c.name)} · ${PRODUCT[p] || p}: süre ${-d} gün önce bitti`, 'Konsolda ürünü kapat ya da uzat.'));
+              else if (d <= 14) A.push(alert('warn', `${esc(c.name)} · ${PRODUCT[p] || p}: ${s.status === 'evaluation' ? 'deneme' : 'lisans'} ${d} gün sonra bitiyor`, `Bitiş ${esc(s.until)}.`));
+            }
+            for (const k of c.codes ?? []) {
+              if (!k.valid || !k.expires) continue;
+              const d = daysTo(k.expires);
+              if (d >= 0 && d <= 14) A.push(alert('warn', `${esc(c.name)}: ${k.role === 'ops' ? 'operatör' : 'ekip'} kodu ${d} gün sonra bitiyor`, `Bitiş ${esc(k.expires)}.`));
+            }
+            const trial = Object.values(c.products).some((p) => p.status === 'evaluation');
+            if (trial && !c.lastSeen) A.push(alert('warn', `${esc(c.name)} denemede ama portala hiç girmedi`, 'Kısa, yardım teklif eden bir mail uygun.'));
+          }
+          for (const w of st?.watch ?? []) A.push(alert('info', esc(w.title), `${esc(w.since)} · bekleniyor: ${esc(w.waiting)} · sonra: ${esc(w.next)}`));
+          const mine = (st?.backlog ?? []).flatMap((s) => s.items.filter((i) => i.hakan).map((i) => ({ ...i, sec: s.title })));
+          const open = (st?.backlog ?? []).reduce((n, s) => n + s.items.length, 0);
+          const active = cs.filter((c) => c.lastSeen && daysAgo(c.lastSeen) <= 7).length;
+          const trials = cs.filter((c) => Object.values(c.products).some((p) => p.status === 'evaluation')).length;
+          const live = (st?.apps ?? []).filter((a) => a.appStore?.versions?.some((v) => v.state === 'READY_FOR_SALE') || a.play?.tracks?.some((t) => t.track === 'production' && t.releases.some((r) => r.status === 'completed'))).length;
+          const tiles = [[cs.length, 'Müşteri'], [trials, 'Denemede'], [active, '7 günde aktif'], [`${live}/${(st?.apps ?? []).length || 4}`, 'Mağazada yayında'], [open, 'Açık iş'], [mine.length, 'Seni bekleyen']];
+          $('ozet').innerHTML = `<div class="tiles">${tiles.map(([n, l]) => `<div class="tile"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
+            <h3 class="sec">Dikkat</h3><div class="alerts">${A.join('') || alert('ok', 'Şu an dikkat isteyen bir şey yok', '')}</div>
+            ${mine.length ? `<h3 class="sec">Seni bekleyenler</h3><div class="card">${mine.map((i) => `<div class="item"><span class="t">${esc(i.text)}</span><span class="fine">${esc(i.sec)}</span></div>`).join('')}</div>` : ''}`;
+          const tab = document.querySelector('[data-tab="ozet"]');
+          tab.innerHTML = `Özet${A.filter((x) => /alert (bad|warn)/.test(x)).length ? `<span class="n">${A.filter((x) => /alert (bad|warn)/.test(x)).length}</span>` : ''}`;
+        }
+
+        function renderLicences(cs) {
+          const rows = cs.flatMap((c) => (c.codes ?? []).map((k) => ({ c, k }))).sort((a, b) => String(a.k.expires).localeCompare(String(b.k.expires)));
+          const prod = cs.flatMap((c) => Object.entries(c.products).map(([p, s]) => ({ c, p, s })));
+          $('lisans').innerHTML = `<div class="hint"><b>Yeni lisans ya da ürün değişikliği:</b> Mac’te <code>node tools/console/server.mjs</code> çalıştır, çıkan bağlantıyı aç. Kodlar orada üretilir (imza anahtarı Mac’ten çıkmaz) ve bu sayfa kendiliğinden güncellenir.</div>
+            <h3 class="sec">Ürünler · müşteri başına</h3>
+            <div class="card scroll"><table class="tbl"><thead><tr><th>Müşteri</th><th>Ürün</th><th>Durum</th><th>Bitiş</th><th>Kalan</th></tr></thead><tbody>
+            ${prod.map(({ c, p, s }) => { const d = s.until ? daysTo(s.until) : null; return `<tr><td>${esc(c.name)} <span class="fine">${esc(c.airline)}</span></td><td>${PRODUCT[p] || esc(p)}</td><td>${pill(STATUS[s.status] || [s.status, 'p-mute'])}</td><td>${esc(s.until || '—')}</td><td>${d === null || s.status === 'ended' ? '—' : d < 0 ? `<span class="pill p-bad">${-d} gün geçti</span>` : `${d} gün`}</td></tr>`; }).join('') || '<tr><td colspan="5" class="fine">Ürün yok.</td></tr>'}
+            </tbody></table></div>
+            <h3 class="sec">Verilen kodlar · ${rows.length}</h3>
+            <div class="card scroll"><table class="tbl"><thead><tr><th>Müşteri</th><th>Rol</th><th>Ürünler</th><th>Verildi</th><th>Bitiş</th><th>Durum</th></tr></thead><tbody>
+            ${rows.map(({ c, k }) => `<tr><td>${esc(c.name)}</td><td>${k.role === 'ops' ? 'operatör' : k.role === 'owner' ? 'sahip' : 'ekip'}</td><td>${(k.products || []).map((p) => PRODUCT[p] || esc(p)).join(', ') || 'Insight'}</td><td>${esc(k.issued || '—')}</td><td>${esc(k.expires || '—')}</td><td>${k.valid ? pill(['geçerli', 'p-ok']) : pill(['süresi doldu', 'p-bad'])}</td></tr>`).join('') || '<tr><td colspan="6" class="fine">Kod yok.</td></tr>'}
+            </tbody></table></div>`;
+        }
+
+        function renderApps(st) {
+          if (!st) { $('uygulama').innerHTML = '<p class="fine">Uygulama durumu henüz gelmedi.</p>'; return; }
+          const kv = (label, value) => `<div class="kv"><span>${label}</span><b>${value}</b></div>`;
+          const ota = (o) => !o ? '—' : o.kind === 'update' ? `güncelleme ${esc(o.id)} · ${day(o.at)}` : o.kind === 'rolledBack' ? `<span class="pill p-warn">geri çekili · ${day(o.at)}</span>` : o.kind === 'none' ? 'yayınlanmadı' : esc(o.kind);
+          const card = (a) => {
+            const lines = [];
+            if (a.appStore) {
+              if (a.appStore.error) lines.push(kv('App Store', `<span class="pill p-bad">okunamadı</span>`));
+              for (const v of a.appStore.versions ?? []) lines.push(kv(`Sürüm ${esc(v.version)}`, `${pill(ASC[v.state] || [v.state, 'p-mute'])} <span class="fine">${day(v.created)}</span>`));
+              const b = a.appStore.builds?.[0];
+              if (b) lines.push(kv('Son build', `${esc(b.build)} ${pill(BUILD[b.state] || [b.state, 'p-mute'])} <span class="fine">${day(b.uploaded)}</span>`));
+            }
+            if (a.play) {
+              if (a.play.error) lines.push(kv('Google Play', `<span class="pill p-mute">${/access/.test(a.play.error) ? 'erişim yok' : 'okunamadı'}</span>`));
+              for (const t of a.play.tracks ?? []) for (const r of t.releases) lines.push(kv(TRACK[t.track] || esc(t.track), `${esc(r.name)} ${pill(REL[r.status] || [r.status, 'p-mute'])}`));
+              if (a.play.tracks && !a.play.tracks.some((t) => t.releases.length)) lines.push(kv('Google Play', 'sürüm yok'));
+            }
+            lines.push(kv('OTA kanalı', ota(a.ota)));
+            lines.push(kv('Dağıtım', esc(a.distribution)));
+            return `<article class="card"><div class="head"><h2>${esc(a.name)}<small>${a.platform}</small></h2><span class="pill ${a.edition === 'crew' ? 'p-warn' : 'p-ok'}">${a.edition === 'crew' ? 'şirket (B2B)' : 'mağaza (B2C)'}</span></div><div class="grid">${lines.join('')}</div></article>`;
+          };
+          $('uygulama').innerHTML = `<div class="apps">${st.apps.map(card).join('')}</div>
+            <h3 class="sec">Kod depoları · son değişiklik</h3>
+            <div class="card scroll"><table class="tbl"><tbody>${st.repos.map((r) => `<tr><td>${esc(r.name)}</td><td><code>${esc(r.hash || '—')}</code></td><td>${day(r.date)}</td><td>${esc(r.subject || r.error || '')}</td></tr>`).join('')}</tbody></table></div>
+            <p class="fine">Durum ${when(st.at)} tarihinde Mac’ten alındı.</p>`;
+        }
+
+        function renderWork(st) {
+          const secs = st?.backlog ?? [];
+          const onlyMine = $('mine')?.checked;
+          $('is').innerHTML = `<div class="row" style="margin-bottom:10px"><label class="chk"><input type="checkbox" id="mine" ${onlyMine ? 'checked' : ''} style="flex:0 0 auto" /> Sadece seni bekleyenler</label></div>
+            ${secs.map((s) => { const items = s.items.filter((i) => !onlyMine || i.hakan); return items.length ? `<h3 class="sec">${esc(s.title)} · ${items.length}</h3><div class="card">${items.map((i) => `<div class="item"><span class="t">${i.hakan ? '<span class="pill p-warn">sen</span> ' : ''}${esc(i.text)}</span><span class="fine">${esc(i.size)} · ${esc(i.status)}</span></div>`).join('')}</div>` : ''; }).join('') || '<p class="fine">Açık iş yok.</p>'}
+            <p class="fine">Kaynak: docs/backlog.md</p>`;
+          $('mine').addEventListener('change', () => renderWork(st));
+        }
+
+        function show(tab) {
+          for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
+          for (const p of document.querySelectorAll('.pane')) p.hidden = p.id !== tab;
+          store.set('crewops-owner-tab', tab);
+        }
+        document.querySelectorAll('[data-tab]').forEach((b) => b.addEventListener('click', () => show(b.dataset.tab)));
+        show(store.get('crewops-owner-tab') || 'ozet');
+
         async function load() {
           const code = store.get('crewops-owner-code') || $('code').value.trim();
           if (!code) return;
@@ -144,8 +282,12 @@
             if (res.status === 403 || res.status === 401) { store.set('crewops-owner-code', null); throw new Error('Bu kod sahip kodu değil.'); }
             if (!res.ok) throw new Error(body.error || `Sunucu ${res.status} döndü.`);
             store.set('crewops-owner-code', code);
-            $('gate').hidden = true; $('bar').hidden = false; $('tiles').hidden = false;
+            $('gate').hidden = true; $('bar').hidden = false; $('tabs').hidden = false;
             const cs = body.customers;
+            renderSummary(cs, body.status);
+            renderLicences(cs);
+            renderApps(body.status);
+            renderWork(body.status);
             const active = cs.filter((c) => c.lastSeen && daysAgo(c.lastSeen) <= 7).length;
             const never = cs.filter((c) => !c.lastSeen).length;
             const trials = cs.filter((c) => Object.values(c.products).some((p) => p.status === 'evaluation')).length;
@@ -154,7 +296,7 @@
             $('stamp').textContent = `Güncellendi ${when(body.at)}`;
           } catch (e) {
             $('list').innerHTML = '';
-            $('gate').hidden = false; $('bar').hidden = true; $('tiles').hidden = true;
+            $('gate').hidden = false; $('bar').hidden = true; $('tabs').hidden = true;
             $('msg').textContent = e.message;
           }
         }
