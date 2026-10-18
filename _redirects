@@ -13,7 +13,7 @@
 /crewops/report /crewops-report 200
 /crewops/crew/android /crewops-crew-android 200
 /crewops/platform /crewops/airlines 301
-/crewops/insight/model-card /crewops-insight-model-card 200
+/crewops/insight/model-card /crewops/insight 301
 /crewops/owner /crewops-owner 200
 /crewops/portal /crewops-portal 200
 /crewops/portal/safety /crewops-portal-safety 200

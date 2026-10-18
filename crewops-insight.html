@@ -37,7 +37,7 @@
    "applicationCategory": "BusinessApplication",
    "operatingSystem": "Any (browser)",
    "url": "https://hawkmason.com/crewops/insight",
-   "description": "Roster fatigue analysis for airline operators: FDP against the ceiling in use, Three-Process Model alertness (predicted KSS and a Samn-Perelli equivalent) at a top-of-descent stand-in, the night-duty subtypes of ED Decision 2023/023/R, and planned-against-flown FDP beside the ORO.FTL.110(j) 33% level. Roster files are read in the browser and are not uploaded. An evaluation tool, not an FRMS and not a fitness-to-fly judgement. Licensed per operator.",
+   "description": "Roster fatigue analysis for airline operators: FDP against the ceiling in use, predicted alertness (KSS and a Samn-Perelli equivalent) at a top-of-descent stand-in, the night-duty subtypes of ED Decision 2023/023/R, and planned-against-flown FDP beside the ORO.FTL.110(j) 33% level. Roster files are read in the browser and are not uploaded. An evaluation tool, not an FRMS and not a fitness-to-fly judgement. Licensed per operator.",
    "publisher": {
     "@type": "Organization",
     "name": "Hawk & Mason Studios",
@@ -53,14 +53,6 @@
   {
    "@type": "FAQPage",
    "mainEntity": [
-    {
-     "@type": "Question",
-     "name": "Which fatigue model does Crewops Insight use?",
-     "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "The Three-Process Model of alertness (Åkerstedt and Folkard), with the circadian phase of an intermediate chronotype and the 30% per day time-zone adaptation that Ingre et al. 2014 estimated on 136 aircrews; the other constants are the original model's. It is the model family behind the Boeing Alertness Model. Sleep is predicted from the duty pattern. Output is predicted KSS 1–9, taken 30 minutes before each on-blocks as the stand-in for top of descent, and a Samn-Perelli equivalent (KSS rounded, minus 2). KSS 7 and Samn-Perelli 5 are high-fatigue ratings that EASA's FTL 2.0 research recommends as safety metrics; they are research metrics, not regulatory limits."
-     }
-    },
     {
      "@type": "Question",
      "name": "Does the roster file get uploaded?",
@@ -82,14 +74,14 @@
      "name": "Is it a validated FRMS tool?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "No. It implements a published biomathematical model and documents its limits in a model card. It supports a fatigue risk assessment. It is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement; no independent review of the implementation and no validation against measured sleep has been done yet."
+      "text": "No. It is a biomathematical roster reading. It supports a fatigue risk assessment. It is not an FRMS by itself, not a validated commercial model and not a fitness-to-fly judgement; no independent review of the implementation and no validation against measured sleep has been done yet."
      }
     }
    ]
   }
  ]
 }
-    </script>
+</script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
     <style>
@@ -205,7 +197,7 @@
       <div class="bar" style="margin-top:28px"></div>
       <div class="eyebrow">Crewops Insight · fatigue risk assessment of a roster</div>
       <h2 style="margin-top:8px">Roster fatigue analysis</h2>
-      <p class="fine" style="max-width:80ch">Drop a roster export, planned or flown. Each flight duty's FDP is set against the ceiling the file prints, or against the table of the selected rule set when it prints none. Alertness through the duty is predicted with the Three-Process Model (circadian phase and time-zone adaptation from an aircrew study, other constants from the original model) and given as KSS and a Samn-Perelli equivalent at a top-of-descent stand-in. A flown export is matched to the planned one to compare FDP, and post-flight ratings that crew members of an airline on the ratings programme choose to share from the app are shown beside the prediction. Roster files are read in this browser and are not uploaded.</p>
+      <p class="fine" style="max-width:80ch">Drop a roster export, planned or flown. Each flight duty's FDP is set against the ceiling in use, alertness through the duty is predicted and given as KSS and a Samn-Perelli equivalent, a flown export is compared with the planned one, and the ratings crews of an airline on the ratings programme choose to share from the app are shown beside the prediction. Roster files are read in this browser and are not uploaded.</p>
       <div class="grid" id="inputs">
         <div class="card">
           <h3>PLANNED ROSTER</h3>
@@ -267,10 +259,8 @@
         </div>
         <h2>By month</h2>
         <div class="tablewrap"><table id="months"></table></div>
-        <h2>Model card</h2>
-        <p class="fine hidden" id="modelCardLink">The model card (intended use, the model, the limits and markers it is read against, verification status, known limitations, references) is at <a href="/crewops/insight/model-card">hawkmason.com/crewops/insight/model-card</a>. The equations and parameter values are in the report edition delivered with an assessment report.</p>
         <div class="note">
-          <p><b>What this is.</b> A roster reading with two layers: the duty-factor indicator Crewops shows crew (WOCL, early start, long FDP, sectors, short rest, consecutive duties, 7-day load, time zones; 0–100) and a biomathematical prediction from the Three-Process Model of alertness (Åkerstedt &amp; Folkard), with the circadian phase of an intermediate chronotype and the 30 % per day time-zone adaptation that Ingre et al. 2014 (PLoS ONE 9(10):e108679) estimated on 136 aircrews; the other constants are the original model's. It is the same model family as the Boeing Alertness Model. Sleep is generated from the duty pattern with the original model's thresholds (8.38 and 11.38); KSS = 10.6 − 0.6 × alertness. Ingre et al. report that the original sleep generator did not perform well with adjusted circadian phases, which is the pairing Insight uses.</p>
+          <p><b>What this is.</b> A roster reading with two layers: the duty-factor indicator Crewops shows crew (0–100) and a biomathematical prediction of alertness through each duty. The method is documented for licensed operators and provided on request.</p>
           <p><b>What it is not.</b> Not a measurement of any person, not a validated commercial product, not a fitness-to-fly judgement and not an FRMS by itself. Per CASA (2010, 2014) and the IATA Human Factors Task Force (2025): model outputs support a risk assessment and compare rosters relatively; any threshold must be validated in your own operation; never a sole go/no-go. No independent review of this implementation and no validation against measured sleep has been done yet. The FTL tables were transcribed from secondary sources, not read line by line from the regulation text, and are marked unverified in the Crewops app; your operator's scheme and system prevail.</p>
           <p><b>Where the data goes.</b> The roster files are read and analysed in this browser tab and are not uploaded; close the tab and the analysis is gone. The PDF and spreadsheet readers load from a public CDN (cdnjs) and the fonts from Google Fonts when the page opens. With a licence code, the page also sends usage counts (opens, panel views, analyses and exports) to our server and, when &quot;Include crew-reported ratings&quot; is ticked, asks our ratings service for the ratings between the first and last date of the roster you analysed; the licence code goes with each request and stays in this browser until you sign out. Two things are kept on our server: counts of portal use (opens, panel views, analyses and exports, each with date, time, your airline and whether the operator or crew code was used, kept for 400 days) and crew ratings (the crew app sends them, with the crew member's consent, and they are kept for two years).</p>
         </div>
