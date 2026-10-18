@@ -94,12 +94,14 @@
         <button role="tab" data-tab="lisans" aria-selected="false">Lisanslar</button>
         <button role="tab" data-tab="uygulama" aria-selected="false">Uygulamalar</button>
         <button role="tab" data-tab="is" aria-selected="false">İşler</button>
+        <button role="tab" data-tab="gunluk" aria-selected="false">Günlük</button>
       </nav>
       <section id="ozet" class="pane"></section>
       <section id="musteri" class="pane" hidden><div class="tiles" id="tiles"></div><div id="list"></div></section>
       <section id="lisans" class="pane" hidden></section>
       <section id="uygulama" class="pane" hidden></section>
       <section id="is" class="pane" hidden></section>
+      <section id="gunluk" class="pane" hidden></section>
     </main>
     <script>
       (() => {
@@ -207,6 +209,7 @@
           const tiles = [[cs.length, 'Müşteri'], [trials, 'Denemede'], [active, '7 günde aktif'], [`${live}/${(st?.apps ?? []).length || 4}`, 'Mağazada yayında'], [open, 'Açık iş'], [mine.length, 'Seni bekleyen']];
           $('ozet').innerHTML = `<div class="tiles">${tiles.map(([n, l]) => `<div class="tile"><b>${n}</b><span>${l}</span></div>`).join('')}</div>
             <h3 class="sec">Dikkat</h3><div class="alerts">${A.join('') || alert('ok', 'Şu an dikkat isteyen bir şey yok', '')}</div>
+            ${(st?.journal ?? []).length ? `<h3 class="sec">Son ilerlemeler</h3><div class="card">${journalRows(st.journal.slice(0, 6))}</div>` : ''}
             ${mine.length ? `<h3 class="sec">Seni bekleyenler</h3><div class="card">${mine.map((i) => `<div class="item"><span class="t">${esc(i.text)}</span><span class="fine">${esc(i.sec)}</span></div>`).join('')}</div>` : ''}`;
           const tab = document.querySelector('[data-tab="ozet"]');
           tab.innerHTML = `Özet${A.filter((x) => /alert (bad|warn)/.test(x)).length ? `<span class="n">${A.filter((x) => /alert (bad|warn)/.test(x)).length}</span>` : ''}`;
@@ -262,6 +265,20 @@
           $('mine').addEventListener('change', () => renderWork(st));
         }
 
+        function journalRows(items) {
+          return items.map((j) => `<div class="item"><span class="fine" style="flex:0 0 92px">${esc(j.date)}</span><span class="t">${esc(j.text)}</span></div>`).join('');
+        }
+        function renderJournal(st) {
+          const items = st?.journal ?? [];
+          const q = ($('jq')?.value || '').toLowerCase();
+          const shown = q ? items.filter((j) => j.text.toLowerCase().includes(q) || j.date.includes(q)) : items;
+          $('gunluk').innerHTML = `<div class="row" style="margin-bottom:10px"><input id="jq" placeholder="Günlükte ara (ör. Android, OTA, Crew)" value="${esc(q)}" aria-label="Günlükte ara" /></div>
+            <div class="card">${journalRows(shown) || '<p class="fine">Kayıt yok.</p>'}</div>
+            <p class="fine">Kaynak: docs/journal.md · son ${items.length} kayıt, en yenisi üstte.</p>`;
+          const inp = $('jq');
+          inp.addEventListener('input', () => { const pos = inp.selectionStart; renderJournal(st); const n = $('jq'); n.focus(); n.setSelectionRange(pos, pos); });
+        }
+
         function show(tab) {
           for (const b of document.querySelectorAll('[data-tab]')) b.setAttribute('aria-selected', String(b.dataset.tab === tab));
           for (const p of document.querySelectorAll('.pane')) p.hidden = p.id !== tab;
@@ -288,6 +305,7 @@
             renderLicences(cs);
             renderApps(body.status);
             renderWork(body.status);
+            renderJournal(body.status);
             const active = cs.filter((c) => c.lastSeen && daysAgo(c.lastSeen) <= 7).length;
             const never = cs.filter((c) => !c.lastSeen).length;
             const trials = cs.filter((c) => Object.values(c.products).some((p) => p.status === 'evaluation')).length;
