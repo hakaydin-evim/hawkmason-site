@@ -195,7 +195,9 @@
             for (const k of c.codes ?? []) {
               if (!k.valid || !k.expires) continue;
               const d = daysTo(k.expires);
-              if (d >= 0 && d <= 14) A.push(alert('warn', `${esc(c.name)}: ${k.role === 'ops' ? 'operatör' : 'ekip'} kodu ${d} gün sonra bitiyor`, `Bitiş ${esc(k.expires)}.`));
+              // A later valid code of the same role covers this one (e.g. a short test code beside the real one).
+              const covered = (c.codes ?? []).some((o) => o !== k && o.valid && o.role === k.role && String(o.expires) > String(k.expires));
+              if (!covered && d >= 0 && d <= 14) A.push(alert('warn', `${esc(c.name)}: ${k.role === 'ops' ? 'operatör' : 'ekip'} kodu ${d} gün sonra bitiyor`, `Bitiş ${esc(k.expires)}.`));
             }
             const trial = Object.values(c.products).some((p) => p.status === 'evaluation');
             if (trial && !c.lastSeen) A.push(alert('warn', `${esc(c.name)} denemede ama portala hiç girmedi`, 'Kısa, yardım teklif eden bir mail uygun.'));

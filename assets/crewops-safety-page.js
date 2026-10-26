@@ -5,7 +5,7 @@
 (() => {
   const $ = (id) => document.getElementById(id);
   const ENDPOINT = (window.CREWOPS_SAFETY_ENDPOINT || 'https://updates.hawkmason.com/safety');
-  const state = { code: null, reports: [], open: null, detail: null, family: 'all' };
+  const state = { code: null, reports: [], open: null, detail: null, family: 'all', you: null, canSeeConfidential: false };
   const TYPES = {
     flight: 'Flight operations', cabin: 'Cabin', ground: 'Ground / cargo', security: 'Security', dg: 'Dangerous goods', hazard: 'Hazard',
     engineering: 'Technical', ohs: 'Health & safety at work', fatigue: 'Fatigue', wildlife: 'Bird / wildlife', discretion: "Commander's discretion", suggestion: 'Suggestion',
@@ -35,9 +35,16 @@
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   const hm = (ms) => `${Math.floor(ms / 3600000)}:${String(Math.floor((ms % 3600000) / 60000)).padStart(2, '0')}`;
 
+  const AUTHORITIES = [['SHGM', 'SHGM (Turkey)'], ['DHMI', 'DHMİ (Turkey)'], ['EASA', 'EASA'], ['UK_CAA', 'UK CAA'], ['other', 'Other authority']];
+  const CHANNELS = [['eccairs', 'ECCAIRS 2 portal'], ['email', 'E-mail'], ['portal', "Authority's own portal"], ['phone', 'Phone'], ['letter', 'Letter'], ['other', 'Other']];
+  const authorityText = (n) => (n.authority === 'other' ? n.authorityName : (AUTHORITIES.find((a) => a[0] === n.authority) || [0, n.authority])[1]);
+
+  // The clock is met by a recorded notification to the authority (Reg. (EU)
+  // 376/2014 Art. 4), not by opening the report: until 2026-10-26 triage stopped it.
   function clock(r) {
     if (!r.clockDue) return { text: r.reportable === false ? 'not reportable' : '—', cls: 'mute' };
-    if (r.status !== 'new' && r.clockMetAt) return { text: 'met', cls: 'ok' };
+    if (r.notifiedAt || (r.notifications && r.notifications.length)) return { text: 'notified', cls: 'ok' };
+    if (r.reportable === false) return { text: 'not reportable', cls: 'mute' };
     const left = Date.parse(r.clockDue) - Date.now();
     if (left < 0) return { text: `overdue ${hm(-left)}`, cls: 'bad' };
     return { text: `${hm(left)} left`, cls: left < 12 * 3600000 ? 'bad' : left < 36 * 3600000 ? 'warn' : 'ok' };
@@ -46,7 +53,11 @@
   async function api(path, init) {
     const res = await fetch(`${ENDPOINT}${path}`, { ...init, headers: { authorization: `Bearer ${state.code}`, ...(init && init.body ? { 'content-type': 'application/json' } : {}), ...(init && init.headers) } });
     if (res.status === 401 || res.status === 403) throw new Error('This code does not open the safety workspace. The operator code (not the crew code) is needed.');
-    if (!res.ok) throw new Error(`The safety service answered ${res.status}.`);
+    if (!res.ok) {
+      let why = '';
+      try { why = (await res.clone().json()).error || ''; } catch (e) {}
+      throw new Error(why ? `Not saved: ${why}.` : `The safety service answered ${res.status}.`);
+    }
     return res;
   }
 
@@ -55,6 +66,8 @@
     try {
       const body = await (await api('/reports')).json();
       state.reports = body.reports || [];
+      state.you = body.you || null;
+      state.canSeeConfidential = body.canSeeConfidential === true;
       drawTiles();
       drawTable();
       $('safetyMsg').textContent = state.reports.length ? '' : 'No reports yet. They appear here the moment a crew member sends one from the app.';
@@ -65,7 +78,7 @@
 
   function drawTiles() {
     const open = state.reports.filter((r) => r.status !== 'closed');
-    const due = open.filter((r) => r.clockDue && !r.clockMetAt && Date.parse(r.clockDue) - Date.now() < 24 * 3600000);
+    const due = open.filter((r) => r.clockDue && !r.notifiedAt && r.reportable !== false && Date.parse(r.clockDue) - Date.now() < 24 * 3600000);
     const fatigue = state.reports.filter((r) => r.type === 'fatigue');
     const anon = state.reports.filter((r) => r.anonymous).length;
     const operational = state.reports.filter((r) => familyOf(r.type) === 'operational').length;
@@ -86,7 +99,7 @@
     const shown = state.reports.filter((r) => state.family === 'all' || familyOf(r.type) === state.family);
     const rows = shown.map((r) => {
       const c = clock(r);
-      return `<tr class="click${state.open === r.id ? ' sel' : ''}" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${r.urgent ? '<span class="pill bad">URGENT</span> ' : ''}${esc(TYPES[r.type] || r.type)}</td><td>${esc(r.date)}</td><td>${esc(r.flightNo || r.station || '')}${r.dep ? ` · ${esc(r.dep)}→${esc(r.arr || '')}` : ''}</td><td style="white-space:normal;min-width:260px">${esc(r.title)}</td><td>${r.anonymous ? '<span class="pill mute">anonymous</span>' : esc(r.crewCode || '—')}${r.source === 'web' ? ' <span class="pill mute">web</span>' : ''}</td><td>${r.sp ? `SP ${r.sp}` : ''}</td><td><span class="pill ${c.cls}">${esc(c.text)}</span></td><td><span class="pill ${r.status === 'closed' ? 'ok' : r.status === 'new' ? 'warn' : 'mute'}">${esc(r.status)}</span></td></tr>`;
+      return `<tr class="click${state.open === r.id ? ' sel' : ''}" data-id="${esc(r.id)}"><td>${esc(r.id)}</td><td>${r.urgent ? '<span class="pill bad">URGENT</span> ' : ''}${esc(TYPES[r.type] || r.type)}</td><td>${esc(r.date)}</td><td>${esc(r.flightNo || r.station || '')}${r.dep ? ` · ${esc(r.dep)}→${esc(r.arr || '')}` : ''}</td><td style="white-space:normal;min-width:260px">${esc(r.title)}</td><td>${r.anonymous ? '<span class="pill mute">anonymous</span>' : r.confidential ? `<span class="pill warn">confidential</span>${r.crewCode && r.crewCode !== 'CONFIDENTIAL' ? ` ${esc(r.crewCode)}` : ''}` : esc(r.crewCode || '—')}${r.source === 'web' ? ' <span class="pill mute">web</span>' : ''}</td><td>${r.sp ? `SP ${r.sp}` : ''}</td><td><span class="pill ${c.cls}">${esc(c.text)}</span></td><td><span class="pill ${r.status === 'closed' ? 'ok' : r.status === 'new' ? 'warn' : 'mute'}">${esc(r.status)}</span></td></tr>`;
     });
     $('safetyTable').innerHTML = `<thead><tr><th>No</th><th>Type</th><th>Date</th><th>Flight</th><th>Title</th><th>Crew</th><th>Rating</th><th>72 h</th><th>Status</th></tr></thead><tbody>${rows.join('')}</tbody>`;
     $('safetyTable').querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => open(tr.dataset.id)));
@@ -117,14 +130,14 @@
     const c = clock({ ...r, reportable: cls.reportable });
     const opt = (list, cur, none) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + list.map((v) => `<option value="${esc(v)}"${v === cur ? ' selected' : ''}>${esc(v)}</option>`).join('');
     const optKV = (pairs, cur, none, showKey) => `<option value=""${!cur ? ' selected' : ''}>${none}</option>` + pairs.map(([k, l]) => `<option value="${esc(k)}"${k === cur ? ' selected' : ''}>${esc(showKey ? `${k} · ${l}` : l)}</option>`).join('');
-    const kindText = { submitted: 'Submitted', photo: 'Photo added', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
+    const kindText = { notified: 'Authority notified', awareness: 'Awareness time set', submitted: 'Submitted', photo: 'Photo added', status: 'Status', classified: 'Classified', action: 'Action added', action_done: 'Action done', reply: 'Reply sent', more_requested: 'More information requested', more_given: 'Reporter added information', note: 'Internal note' };
     $('safetyDetail').innerHTML = `
       <div class="row" style="justify-content:space-between;align-items:flex-start">
         <div>
           <h3>${esc(r.id)} · ${esc(TYPES[r.type] || r.type)}${r.urgent ? ' · <span class="pill bad">URGENT</span>' : ''}</h3>
-          <div class="fine">${esc(r.occurredAt.replace('T', ' ').slice(0, 16))} UTC · ${r.anonymous ? 'anonymous' : `crew ${esc(r.crewCode || 'code not given')}`}${r.role ? ` · ${esc(r.role)}` : ''} · received ${esc(r.receivedAt.replace('T', ' ').slice(0, 16))} UTC${r.source === 'web' ? ' via the web link' : ''} · <span class="pill ${c.cls}">72 h: ${esc(c.text)}</span></div>
+          <div class="fine">${esc(r.occurredAt.replace('T', ' ').slice(0, 16))} UTC · ${r.anonymous ? 'anonymous' : r.confidential ? (r.crewCode && r.crewCode !== 'CONFIDENTIAL' ? `confidential · crew ${esc(r.crewCode)} (visible to you as safety manager)` : 'confidential · reporter visible to the safety manager only') : `crew ${esc(r.crewCode || 'code not given')}`}${r.role ? ` · ${esc(r.role)}` : ''} · received ${esc(r.receivedAt.replace('T', ' ').slice(0, 16))} UTC${r.source === 'web' ? ' via the web link' : ''} · <span class="pill ${c.cls}">72 h: ${esc(c.text)}</span></div>
         </div>
-        <button class="ghost" id="sdClose">CLOSE</button>
+        <div class="row" style="gap:8px"><button class="ghost" id="sdPrint" title="A clean page of this report for the file or the authority; your browser's print dialog saves it as PDF">PRINT / PDF</button><button class="ghost" id="sdClose">CLOSE</button></div>
       </div>
       ${f ? `<p style="margin:12px 0 4px"><b>${esc(f.flightNo)}</b> · ${esc(f.date)} · ${esc((f.legs || []).map((l) => `${l.dep}→${l.arr}`).join(' · ') || `${f.dep || ''}→${f.arr || ''}`)}${f.reg ? ` · ${esc(f.reg)}` : ''}${f.acType ? ` · ${esc(f.acType)}` : ''}${f.std ? ` · ${esc(f.std.slice(11, 16))}–${esc((f.sta || '').slice(11, 16))} UTC` : ''}${f.diverted ? ` · diverted ${esc(f.diverted)}` : ''}</p>` : r.station ? `<p style="margin:12px 0 4px">Station ${esc(r.station)}</p>` : ''}
       ${g ? `<div class="tiles" style="margin:8px 0"><div class="tile"><div class="n">${g.sp}</div><div class="l">Samn-Perelli · crew</div></div>${g.fdpMin ? `<div class="tile"><div class="n">${hm(g.fdpMin * 60000)}</div><div class="l">FDP${g.maxFdpMin ? ` · max ${hm(g.maxFdpMin * 60000)}` : ''}</div></div>` : ''}${g.sectors ? `<div class="tile"><div class="n">${g.sectors}</div><div class="l">Sectors</div></div>` : ''}${g.sleep48Min ? `<div class="tile"><div class="n">${hm(g.sleep48Min * 60000)}</div><div class="l">Sleep 48 h · shared</div></div>` : ''}</div><p class="fine">Reasons: ${esc((g.reasons || []).join(', ') || '—')}</p>` : ''}
@@ -143,6 +156,20 @@
         <label class="f">Risk (ERCS)<select id="sdRisk">${opt(['A', 'B', 'C', 'D', 'E'], cls.risk, '—')}</select></label>
         <label class="f">Event type · free text<input type="text" id="sdEvent" value="${esc(cls.eventType || '')}" placeholder="e.g. Fire/smoke in cabin" /></label>
       </div>
+      <h3 style="margin-top:14px">AUTHORITY NOTIFICATION · REG. (EU) 376/2014 ART. 4</h3>
+      ${(r.notifications || []).length ? `<ul class="tl">${r.notifications.map((n) => `<li><b>${esc(authorityText(n))}</b> · ${esc(n.at.slice(0, 16).replace('T', ' '))} UTC · ${esc((CHANNELS.find((c) => c[0] === n.channel) || [0, n.channel])[1])}${n.ref ? ` · ref ${esc(n.ref)}` : ''} · recorded by ${esc(n.by || '—')}${n.verified ? ' ✓' : ''}</li>`).join('')}</ul>` : `<p class="fine">Not notified yet. The 72-hour clock keeps running until a notification is recorded here${r.clockDue ? ` (due ${esc(r.clockDue.slice(0, 16).replace('T', ' '))} UTC)` : ''}, or the report is classified as not reportable.</p>`}
+      <div class="row">
+        <label class="f">Notified at (UTC)<input type="datetime-local" id="snAt" value="${esc(new Date().toISOString().slice(0, 16))}" /></label>
+        <label class="f">Authority<select id="snAuth">${AUTHORITIES.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select></label>
+        <label class="f hidden" id="snOtherWrap">Authority name<input type="text" id="snOther" maxlength="60" /></label>
+        <label class="f">Channel<select id="snChan">${CHANNELS.map(([k, l]) => `<option value="${k}">${esc(l)}</option>`).join('')}</select></label>
+        <label class="f" style="flex:1;min-width:200px">Authority reference<input type="text" id="snRef" maxlength="80" placeholder="Their occurrence or file number" /></label>
+        <button class="ghost" id="snSave" style="align-self:flex-end">RECORD NOTIFICATION</button>
+      </div>
+      <div class="row" style="margin-top:6px">
+        <label class="f">We learned of it at (UTC)<input type="datetime-local" id="snAware" value="${esc((r.awarenessAt || r.receivedAt).slice(0, 16))}" /></label>
+        <button class="ghost" id="snAwareSave" style="align-self:flex-end" title="When the report reached you late (a web form, a forwarded e-mail), the 72 hours run from when the operator first learned of the occurrence">SET AWARENESS TIME</button>
+      </div>
       ${(r.photos || []).length ? `<h3 style="margin-top:14px">PHOTOS FROM THE REPORTER</h3><div class="thumbs" id="sdPhotos">${r.photos.map((p) => `<img data-file="${esc(p.file)}" alt="Photo attached to ${esc(r.id)}" />`).join('')}</div>` : ''}
       <h3 style="margin-top:14px">INVESTIGATION · NEVER SHOWN TO THE REPORTER</h3>
       <div class="row">
@@ -159,12 +186,23 @@
       <div class="row" style="margin-top:8px"><label class="f" style="flex:2;min-width:240px">New action<input type="text" id="sdAction" placeholder="What is to be done" /></label><label class="f">Owner<input type="text" id="sdOwner" placeholder="Department or person" /></label><label class="f">Due<input type="text" id="sdDue" placeholder="YYYY-MM-DD" /></label></div>
       <h3 style="margin-top:14px">REPLY TO THE REPORTER · GOES TO THEIR PHONE</h3>
       <textarea id="sdReply">${esc(r.reply ? r.reply.text : '')}</textarea>
-      <div class="row" style="margin-top:8px"><label class="f" style="flex:1;min-width:240px">Ask for more information<input type="text" id="sdMore" placeholder="What you need from the reporter" /></label><label class="f" style="flex:1;min-width:240px">Internal note · never shown to the reporter<input type="text" id="sdNote" placeholder="For the file" /></label><label class="f">Signed by<input type="text" id="sdBy" value="${esc(localStorage.getItem('crewops-safety-by') || '')}" placeholder="Your name or unit" /></label></div>
+      <div class="row" style="margin-top:8px"><label class="f" style="flex:1;min-width:240px">Ask for more information<input type="text" id="sdMore" placeholder="What you need from the reporter" /></label><label class="f" style="flex:1;min-width:240px">Internal note · never shown to the reporter<input type="text" id="sdNote" placeholder="For the file" /></label>${state.you ? `<div class="f"><span class="fine">Signed by</span><b>${esc(state.you)}</b><span class="fine">from your personal code</span><input type="hidden" id="sdBy" value="" /></div>` : `<label class="f">Signed by<input type="text" id="sdBy" value="${esc(localStorage.getItem('crewops-safety-by') || '')}" placeholder="Your name or unit" /></label>`}</div>
       <div class="row" style="margin-top:14px"><button id="sdSave">SAVE</button><button class="ghost" id="sdE5x" title="ECCAIRS E5X file for the ECCAIRS 2 reporting portal or your authority">DOWNLOAD E5X</button><span class="fine" id="sdMsg"></span></div>
       <h3 style="margin-top:18px">TIMELINE</h3>
-      <ul class="tl">${(r.timeline || []).map((e) => `<li><b>${esc(kindText[e.kind] || e.kind)}${e.status ? ` → ${esc(e.status)}` : ''}</b> · ${esc(e.at.slice(0, 16).replace('T', ' '))} UTC${e.by ? ` · ${esc(e.by)}` : ''}${e.text ? `<br />${esc(e.text)}` : ''}</li>`).join('')}</ul>`;
+      <ul class="tl">${(r.timeline || []).map((e) => `<li><b>${esc(kindText[e.kind] || e.kind)}${e.status ? ` → ${esc(e.status)}` : ''}</b> · ${esc(e.at.slice(0, 16).replace('T', ' '))} UTC${e.by ? ` · ${esc(e.by)}${e.verified ? ' ✓' : ''}` : ''}${e.text ? `<br />${esc(e.text)}` : ''}</li>`).join('')}</ul>`;
     $('sdClose').addEventListener('click', () => { state.open = null; $('safetyDetail').classList.add('hidden'); drawTable(); if (/^#r\//.test(location.hash)) history.pushState(null, '', location.pathname); });
     $('sdSave').addEventListener('click', save);
+    $('sdPrint').addEventListener('click', () => printReport(r));
+    $('snAuth').addEventListener('change', () => $('snOtherWrap').classList.toggle('hidden', $('snAuth').value !== 'other'));
+    $('snSave').addEventListener('click', () => {
+      const v = $('snAt').value;
+      if (!v) { $('sdMsg').textContent = 'When was the authority notified?'; return; }
+      patch({ notification: { at: new Date(`${v}:00Z`).toISOString(), authority: $('snAuth').value, authorityName: $('snOther').value.trim() || undefined, channel: $('snChan').value, ref: $('snRef').value.trim() || undefined }, by: $('sdBy').value.trim() || undefined });
+    });
+    $('snAwareSave').addEventListener('click', () => {
+      const v = $('snAware').value;
+      if (v) patch({ awareness: new Date(`${v}:00Z`).toISOString(), by: $('sdBy').value.trim() || undefined });
+    });
     $('sdE5x').addEventListener('click', () => download(`/reports/${encodeURIComponent(r.id)}/e5x`, `${r.id}.e5x`, $('sdMsg')));
     // Photos are served only with the operator code: fetched with it, shown from memory.
     document.querySelectorAll('#sdPhotos img').forEach(async (img) => {
@@ -245,7 +283,58 @@
     patch(body);
   }
 
+  /** One report as a plain page for the file or the authority; the browser's print dialog saves it as PDF. */
+  function printReport(r) {
+    const cls = r.classification || {};
+    const f = r.flight;
+    const row = (k, v) => (v === undefined || v === null || v === '' ? '' : `<tr><th>${esc(k)}</th><td>${esc(v)}</td></tr>`);
+    const who = r.anonymous ? 'Anonymous' : r.confidential ? 'Confidential (identity held by the safety manager)' : r.crewCode || '—';
+    const html = `<!doctype html><html><head><meta charset="utf-8"><title>${esc(r.id)}</title><style>
+      body{font:12px/1.45 -apple-system,Helvetica,Arial,sans-serif;color:#111;margin:28px}h1{font-size:18px;margin:0}h2{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:18px 0 6px;border-bottom:1px solid #999}
+      table{border-collapse:collapse;width:100%}th{text-align:left;width:34%;color:#444;font-weight:600;padding:3px 6px 3px 0;vertical-align:top}td{padding:3px 0}.fine{color:#555;font-size:10px}pre{white-space:pre-wrap;font:inherit;margin:0}
+    </style></head><body>
+      <h1>${esc(r.id)} · ${esc(TYPES[r.type] || r.type)}</h1>
+      <div class="fine">Printed ${esc(new Date().toISOString().slice(0, 16).replace('T', ' '))} UTC from the Crewops safety workspace${state.you ? ` by ${esc(state.you)}` : ''}</div>
+      <h2>Occurrence</h2><table>${row('Occurred (UTC)', r.occurredAt.slice(0, 16).replace('T', ' '))}${row('Received (UTC)', r.receivedAt.slice(0, 16).replace('T', ' '))}${row('Awareness (UTC)', r.awarenessAt && r.awarenessAt.slice(0, 16).replace('T', ' '))}${row('Reporter', who)}${row('Role', r.role)}${row('Flight', f && `${f.flightNo} · ${f.date} · ${(f.legs || []).map((l) => `${l.dep}→${l.arr}`).join(' · ') || `${f.dep || ''}→${f.arr || ''}`}`)}${row('Aircraft', f && [f.reg, f.acType].filter(Boolean).join(' · '))}${row('Station', !f && r.station)}${row('Status', r.status)}</table>
+      <h2>Classification</h2><table>${row('Occurrence class', cls.occurrenceClass)}${row('Category (ADREP)', cls.category)}${row('Event type', [cls.eventTop, cls.eventType].filter(Boolean).join(' · '))}${row('Mandatory reportable', cls.reportable === true ? `yes · ${cls.mandatoryClass || ''}` : cls.reportable === false ? 'no' : 'undecided')}${row('Risk', cls.risk)}</table>
+      <h2>Authority notification</h2>${(r.notifications || []).length ? `<table>${r.notifications.map((n) => row(authorityText(n), `${n.at.slice(0, 16).replace('T', ' ')} UTC · ${n.channel}${n.ref ? ` · ref ${n.ref}` : ''} · recorded by ${n.by || '—'}`)).join('')}</table>` : '<p>Not notified.</p>'}
+      <h2>Narrative</h2><pre>${esc(r.text)}</pre>${r.suggestion ? `<p><b>Suggestion:</b> ${esc(r.suggestion)}</p>` : ''}${(r.more || []).map((m) => `<p><b>Added ${esc(m.at.slice(0, 16).replace('T', ' '))}:</b> ${esc(m.text)}</p>`).join('')}
+      <h2>Actions</h2>${(r.actions || []).length ? `<table>${r.actions.map((a) => row(a.text, `${a.owner || ''} · due ${a.due || '—'} · ${a.done ? 'done' : 'open'}`)).join('')}</table>` : '<p>None.</p>'}
+      <h2>Timeline</h2><table>${(r.timeline || []).filter((e) => e.kind !== 'note').map((e) => row(`${e.at.slice(0, 16).replace('T', ' ')} UTC`, `${e.kind}${e.status ? ` → ${e.status}` : ''}${e.by ? ` · ${e.by}` : ''}`)).join('')}</table>
+    </body></html>`;
+    const w = window.open('', '_blank');
+    if (!w) { $('sdMsg').textContent = 'Allow pop-ups for this page to print.'; return; }
+    w.document.write(html);
+    w.document.close();
+    w.focus();
+    w.print();
+  }
+
+  /** Who changed what: the office's log, newest first (GET /safety/log). */
+  async function showLog() {
+    const box = $('safetyDetail');
+    box.classList.remove('hidden');
+    box.innerHTML = '<p class="fine">Loading…</p>';
+    try {
+      const body = await (await api('/log')).json();
+      const kinds = { status: 'status', classified: 'classified', action: 'action added', action_done: 'action done', reply: 'reply', more_requested: 'asked for more', note: 'note', investigated: 'investigation', notified: 'authority notified', awareness: 'awareness time' };
+      box.innerHTML = `<div class="row" style="justify-content:space-between"><h3>CHANGE LOG · ${body.count} ENTRIES</h3><button class="ghost" id="slClose">CLOSE</button></div>
+        <p class="fine">Written by the server on every change; it cannot be edited or deleted from the panel. ✓ = signed by a personal operator code.</p>
+        <div class="tablewrap"><table><thead><tr><th>When (UTC)</th><th>Report</th><th>What</th><th>Who</th></tr></thead><tbody>${(body.entries || []).map((e) => `<tr class="click" data-id="${esc(e.report)}"><td>${esc(e.at.slice(0, 16).replace('T', ' '))}</td><td>${esc(e.report)}</td><td>${esc((e.kinds || []).map((k) => kinds[k] || k).join(', '))}</td><td>${esc(e.by || '—')}${e.verified ? ' ✓' : ''}</td></tr>`).join('') || '<tr><td colspan="4" class="fine">No changes yet.</td></tr>'}</tbody></table></div>`;
+      $('slClose').addEventListener('click', () => box.classList.add('hidden'));
+      box.querySelectorAll('tr.click').forEach((tr) => tr.addEventListener('click', () => open(tr.dataset.id)));
+    } catch (e) { box.innerHTML = `<p class="msg">${esc(e.message)}</p>`; }
+  }
+
   $('safetyRefresh').addEventListener('click', load);
+  if ($('safetyRefresh') && !$('safetyLog')) {
+    const b = document.createElement('button');
+    b.className = 'ghost';
+    b.id = 'safetyLog';
+    b.textContent = 'CHANGE LOG';
+    $('safetyRefresh').after(b);
+    b.addEventListener('click', showLog);
+  }
   async function download(path, name, msgEl) {
     try {
       const blob = await (await api(path)).blob();
