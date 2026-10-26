@@ -42,6 +42,7 @@
       <nav class="legal-toc" aria-label="Sections">
         <a href="#reads">What the app reads</a>
         <a href="#stores">What the app stores</a>
+        <a href="#location">Location</a>
         <a href="#siri">Siri and Spotlight</a>
         <a href="#permissions">Permissions</a>
         <a href="#ai">Apple Intelligence</a>
@@ -58,7 +59,8 @@
         With your permission, Noticely looks at photos in your library and
         decides on your device whether a photo looks like a document. Only the
         kinds you switch on are processed: receipts and invoices, screenshots,
-        documents and contracts, medicine boxes. Family and holiday photos are
+        documents and contracts, medicine boxes. PDFs can be shared to the app or
+        picked from Files; the first pages are read the same way. Family and holiday photos are
         never read, and there is no face recognition of any kind. A photo that
         does not look like a document is skipped without being analysed further.
       </p>
@@ -85,6 +87,17 @@
         are deliberately left out of every record.
       </p>
 
+      <h2 id="location">Location</h2>
+      <p>
+        Noticely never asks for your location. If a photo already carries a
+        location (most camera photos do), the app uses it to label a record with
+        the neighbourhood, for example "Kadıköy, İstanbul". To turn coordinates
+        into that name, iOS sends them to Apple's geocoding service; Apple
+        returns the place name and does not share the request with us. Only the
+        short name is kept in the record. Screenshots, shared files and photos
+        without a location are not affected.
+      </p>
+
       <h2 id="siri">Siri and Spotlight</h2>
       <p>
         Records you approve are written to the on-device Spotlight index so
@@ -97,7 +110,8 @@
       <ul>
         <li><strong>Photos</strong> — to read documents in your library. Limited access works.</li>
         <li><strong>Notifications</strong> — for reminders you set up by approving a record: warranty end, due date, medication expiry, appointment, delivery day.</li>
-        <li><strong>Calendar</strong> — only when you tap <em>Add to calendar</em>, and to match appointments with events you already have.</li>
+        <li><strong>Calendar</strong> — only when you tap <em>Add to calendar</em>, to match appointments with events you already have, and to warn you when an appointment overlaps another event.</li>
+        <li><strong>Reminders</strong> — only when you tap <em>Add to Reminders</em>. The app writes the reminder and reads nothing else.</li>
         <li><strong>Contacts</strong> — only if you allow it in Settings, to match a store or person on a document with a contact. Contacts are read, never written, and never leave the device.</li>
         <li><strong>Camera</strong> — only when you tap <em>Snap</em>.</li>
       </ul>
@@ -128,7 +142,7 @@
         <li>No analytics or crash-reporting SDKs. Diagnostics reach us only if you opt in to sharing with developers in iOS Settings, through Apple.</li>
         <li>No advertising, no tracking, no data brokers, no selling of data.</li>
         <li>No reading of messages, mail, notes, browser history or other apps' notifications.</li>
-        <li>No network connection of its own: the app makes no requests to any server we operate.</li>
+        <li>No network connection of its own: the app makes no requests to any server we operate. The only network use is iOS's own place-name lookup described under Location.</li>
       </ul>
 
       <h2 id="apis">Required-reason APIs</h2>
