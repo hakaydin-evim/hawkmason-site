@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Crewops Crew · on the web</title>
+    <meta name="description" content="Your airline's notices, training, documents and tasks on a computer. Sign in with a code from the Crewops Crew app on your phone." />
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;800&family=Plus+Jakarta+Sans:wght@400;600&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <style>
+      :root { --paper:#08080c; --surface:#131318; --surface2:#1d1d26; --ink:#f7f6f2; --soft:#a3a1b0; --faint:#6b6978; --line:#242430; --cy:#2be3ff; --mg:#ff2fa0; --warn:#ffb020; --ok:#7bed9f; --bad:#ff7b6b; color-scheme:dark }
+      @media (prefers-color-scheme: light) { :root { --paper:#f4f3f7; --surface:#ffffff; --surface2:#e9e7f0; --ink:#100f14; --soft:#4a4854; --faint:#7a7886; --line:#e1dfe8; --cy:#0081a0; --mg:#c81172; --warn:#a15c00; --ok:#1f7a45; --bad:#b3281e; color-scheme:light } }
+      * { box-sizing:border-box }
+      body { margin:0; background:var(--paper); color:var(--ink); font-family:'Plus Jakarta Sans',Arial,sans-serif; font-size:16px; line-height:1.5 }
+      .wrap { max-width:960px; margin:0 auto; padding:28px 16px calc(80px + env(safe-area-inset-bottom, 0px)) }
+      .top { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap }
+      .eyebrow { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:3px; color:var(--cy); text-transform:uppercase }
+      h1 { font-family:'Unbounded',Arial,sans-serif; font-weight:800; font-size:clamp(26px,5vw,38px); letter-spacing:-.5px; line-height:1.1; margin:10px 0 8px; text-wrap:balance }
+      h2 { font-family:'Unbounded',Arial,sans-serif; font-weight:600; font-size:15px; margin:28px 0 10px }
+      h3 { font-size:17px; margin:4px 0 2px; line-height:1.3 }
+      p.lead { color:var(--soft); margin:0 0 20px; max-width:62ch }
+      .lang { display:flex; gap:4px } .lang button, .ghost { background:transparent; color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:6px 10px; font:500 11px 'JetBrains Mono',monospace; letter-spacing:1px; cursor:pointer } .lang button.on { color:var(--cy); border-color:var(--cy) }
+      .ghost:hover { color:var(--cy); border-color:var(--cy) }
+      .tabs { display:flex; gap:6px; flex-wrap:wrap; margin:18px 0 6px }
+      .tabs button { background:var(--surface); color:var(--soft); border:1px solid var(--line); border-radius:999px; padding:8px 14px; font:600 13px 'Plus Jakarta Sans',Arial,sans-serif; cursor:pointer }
+      .tabs button.on { color:var(--cy); border-color:var(--cy) }
+      .tabs button .n { display:inline-block; min-width:18px; margin-left:6px; padding:0 5px; border-radius:999px; background:var(--mg); color:#fff; font-size:11px; text-align:center }
+      .card { background:var(--surface); border:1px solid var(--line); border-left:3px solid var(--line); border-radius:14px; padding:14px 16px; margin:10px 0 }
+      .card.due { border-left-color:var(--warn) } .card.late { border-left-color:var(--bad) } .card.okc { border-left-color:var(--ok) } .card.new { border-left-color:var(--cy) }
+      .meta { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; color:var(--faint); text-transform:uppercase; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap }
+      .sub { color:var(--soft); font-size:13px; margin:2px 0 0 }
+      .body { white-space:pre-wrap; margin:12px 0 }
+      .tag { font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:1px; text-transform:uppercase }
+      .tag.ok { color:var(--ok) } .tag.bad { color:var(--bad) } .tag.warn { color:var(--warn) } .tag.cy { color:var(--cy) }
+      input[type=text], textarea { background:var(--surface2); color:var(--ink); border:1px solid var(--line); border-radius:10px; padding:11px 12px; font:inherit; font-size:16px; width:100% }
+      textarea { min-height:72px; resize:vertical }
+      .code { font-family:'JetBrains Mono',monospace; font-size:22px; letter-spacing:4px; text-transform:uppercase; text-align:center; max-width:320px }
+      .go { background:linear-gradient(90deg,var(--mg),var(--cy)); color:#08080c; border:0; border-radius:999px; padding:12px 22px; font:600 15px 'Plus Jakarta Sans',Arial,sans-serif; cursor:pointer }
+      .go:disabled { opacity:.45; cursor:default }
+      .row { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:10px }
+      a { color:var(--cy) }
+      button:focus-visible, input:focus-visible, textarea:focus-visible, a:focus-visible { outline:2px solid var(--cy); outline-offset:2px }
+      video { width:100%; max-height:70vh; background:#000; border-radius:12px; margin-top:8px }
+      .lesson { display:flex; justify-content:space-between; align-items:center; gap:10px; padding:10px 0; border-top:1px solid var(--line) }
+      .q { margin:16px 0 6px; font-weight:600 } .opt { display:flex; gap:10px; align-items:flex-start; margin:6px 0; cursor:pointer } .opt input { margin-top:4px; accent-color:var(--cy) }
+      .msg { color:var(--bad); font-size:14px; min-height:1.2em; margin-top:10px }
+      .fine { color:var(--faint); font-size:12px }
+      .qual { display:flex; justify-content:space-between; gap:10px; padding:10px 0; border-bottom:1px solid var(--line) }
+      ol.how { color:var(--soft); padding-left:20px; margin:8px 0 } ol.how li { margin:4px 0 }
+      .hidden, .tabs button .n.hidden { display:none }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="top"><div class="eyebrow">Crewops Crew · web</div><div class="row" style="margin:0"><span class="fine" id="who"></span><button class="ghost hidden" id="out" data-t="signOut">SIGN OUT</button><div class="lang" role="group" aria-label="Language"><button data-lang="en">EN</button><button data-lang="tr">TR</button></div></div></div>
+
+      <section id="signin" class="hidden">
+        <h1 data-t="title">Your airline, on a computer</h1>
+        <p class="lead" data-t="lead">Notices, training, documents and tasks from your airline, the same as in the app. What you confirm here counts as confirmed on your phone.</p>
+        <div class="card">
+          <ol class="how">
+            <li data-t="how1">Open Crewops Crew on your phone.</li>
+            <li data-t="how2">Me → MY AIRLINE → Open on a computer.</li>
+            <li data-t="how3">Type the 8-character code here. It works once, for ten minutes.</li>
+          </ol>
+          <div class="row"><input type="text" id="code" class="code" maxlength="9" autocomplete="one-time-code" autocapitalize="characters" spellcheck="false" aria-label="Sign-in code" placeholder="XXXX-XXXX" /><button class="go" id="go" data-t="signIn">Sign in</button></div>
+          <div class="msg" id="signMsg" role="status"></div>
+          <p class="fine" data-t="privacy">You stay signed in on this browser for 30 days, or until you sign out or end web sessions from your phone. On a shared computer, sign out when you are done.</p>
+        </div>
+      </section>
+
+      <section id="app" class="hidden">
+        <h1 id="hello" data-t="hello">Up next</h1>
+        <div class="tabs" role="tablist">
+          <button data-tab="notices" role="tab"><span data-t="tabNotices">Notices</span><span class="n hidden" id="nNotices"></span></button>
+          <button data-tab="courses" role="tab"><span data-t="tabCourses">Training</span><span class="n hidden" id="nCourses"></span></button>
+          <button data-tab="docs" role="tab"><span data-t="tabDocs">Library</span><span class="n hidden" id="nDocs"></span></button>
+          <button data-tab="tasks" role="tab"><span data-t="tabTasks">Tasks</span><span class="n hidden" id="nTasks"></span></button>
+          <button data-tab="quals" role="tab"><span data-t="tabQuals">Qualifications</span></button>
+        </div>
+        <div class="msg" id="appMsg" role="status"></div>
+        <div id="view"></div>
+      </section>
+    </main>
+    
+    <script src="/assets/crewops-crew-page.js"></script>
+  </body>
+</html>

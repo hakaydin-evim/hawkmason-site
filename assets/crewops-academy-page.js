@@ -65,7 +65,7 @@
     const box = $('acReceipt');
     box.classList.remove('hidden');
     box.innerHTML = `<div class="row" style="justify-content:space-between;align-items:baseline"><h3 style="margin:0">${n.no ? `NO ${esc(n.no)} · ` : ''}${esc(n.title)}</h3><span><button class="ghost" id="acRcCsv">CSV</button> <button class="ghost" id="acRcClose">CLOSE</button></span></div>
-      <p class="fine">${esc(NTYPES[n.type] || n.type)} · issued ${esc(n.issuedAt.slice(0, 10))}${n.dueDate ? ` · due ${esc(n.dueDate)}` : ''}${n.withdrawn ? ` · <b>cancelled ${esc(n.withdrawn.slice(0, 10))}</b>` : ''} · ${count('confirmed')} confirmed, ${count('opened')} opened but not confirmed, ${count('unread')} not opened</p>
+      <p class="fine">${esc(NTYPES[n.type] || n.type)} · issued ${esc(n.issuedAt.slice(0, 10))}${n.dueDate ? ` · due ${esc(n.dueDate)}` : ''}${n.withdrawn ? ` · <b>cancelled ${esc(n.withdrawn.slice(0, 10))}</b>` : ''}${(n.files || []).length ? ` · ${n.files.length} attachment${n.files.length > 1 ? 's' : ''}: ${n.files.map((f) => esc(f.name)).join(', ')}` : ''} · ${count('confirmed')} confirmed, ${count('opened')} opened but not confirmed, ${count('unread')} not opened</p>
       <div class="tablewrap"><table><thead><tr><th>Crew</th><th>Name</th><th>Role</th><th>State</th><th>Opened (UTC)</th><th>Confirmed (UTC)</th><th>Comment</th></tr></thead><tbody>${people.map((p) => `<tr><td>${esc(p.crewCode)}</td><td>${esc(p.name || '')}</td><td>${esc(p.role || '')}</td><td><span class="pill ${STATE[p.state][0]}">${STATE[p.state][1]}</span></td><td>${when(p.openedAt)}</td><td>${when(p.ackAt)}</td><td style="white-space:normal;min-width:200px">${esc(p.comment || '')}</td></tr>`).join('') || '<tr><td colspan="7" class="fine">Nobody on record for this notice yet.</td></tr>'}</tbody></table></div>`;
     $('acRcClose').addEventListener('click', () => { box.classList.add('hidden'); history.pushState(null, '', location.pathname); });
     $('acRcCsv').addEventListener('click', () => {
@@ -113,7 +113,23 @@
   $('acNoticeBtn').addEventListener('click', async () => {
     const body = { type: $('acNType').value, title: $('acNTitle').value.trim(), body: $('acNBody').value.trim(), url: $('acNUrl').value.trim(), dueDate: $('acNDue').value.trim(), minutes: parseInt($('acNMin').value, 10) || undefined, audience: audienceOf($('acNAud').value), by: $('acBy').value.trim() || undefined };
     if (!body.title) { $('acMsg').textContent = 'A title is needed.'; return; }
-    try { await api('/notices', { method: 'POST', body: JSON.stringify(body) }); $('acNTitle').value = ''; $('acNBody').value = ''; $('acNUrl').value = ''; await load(); $('acMsg').textContent = 'Published. It is on every crew phone the next time the app opens.'; } catch (e) { $('acMsg').textContent = e.message; }
+    const pdfs = [...$('acNFiles').files];
+    if (pdfs.length > 5) { $('acMsg').textContent = 'Up to five attachments.'; return; }
+    if (pdfs.some((f) => f.type !== 'application/pdf')) { $('acMsg').textContent = 'Attachments must be PDF files.'; return; }
+    try {
+      // The PDFs go to the airline's store first; the notice carries their addresses.
+      body.files = [];
+      for (const [i, f] of pdfs.entries()) {
+        $('acMsg').textContent = `Uploading ${i + 1} of ${pdfs.length}: ${f.name}…`;
+        const res = await fetch(`${ENDPOINT}/files?name=${encodeURIComponent(f.name)}`, { method: 'POST', headers: { authorization: `Bearer ${state.code}`, 'content-type': f.type }, body: f });
+        if (!res.ok) throw new Error(`${f.name}: ${(await res.json().catch(() => ({}))).error || res.status}`);
+        body.files.push({ url: (await res.json()).fileUrl, name: f.name });
+      }
+      await api('/notices', { method: 'POST', body: JSON.stringify(body) });
+      $('acNTitle').value = ''; $('acNBody').value = ''; $('acNUrl').value = ''; $('acNFiles').value = '';
+      await load();
+      $('acMsg').textContent = 'Published. It is on every crew phone the next time the app opens.';
+    } catch (e) { $('acMsg').textContent = e.message; }
   });
   // The course being built: lessons (uploaded to the airline's store, or links) and an optional exam.
   const draft = { lessons: [], questions: [] };
@@ -225,7 +241,7 @@
   });
   $('acCourseBtn').addEventListener('click', async () => {
     const body = {
-      title: $('acCTitle').value.trim(), mode: $('acCMode').value, kind: $('acCKind').value || undefined, dueDate: $('acCDue').value.trim(), url: $('acCUrl').value.trim(),
+      title: $('acCTitle').value.trim(), mode: $('acCMode').value, kind: $('acCKind').value || undefined, renewMonths: $('acCKind').value && $('acCRenew').value ? Number($('acCRenew').value) : undefined, dueDate: $('acCDue').value.trim(), url: $('acCUrl').value.trim(),
       minutes: parseInt($('acCMin').value, 10) || undefined, audience: audienceOf($('acCAud').value), by: $('acBy').value.trim() || undefined,
       lessons: draft.lessons, quiz: draft.questions.length ? { passMark: parseInt($('acQPass').value, 10) || 75, questions: draft.questions } : undefined,
     };

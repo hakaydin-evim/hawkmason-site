@@ -152,6 +152,7 @@
               <label class="f">Minutes<input type="text" id="acNMin" placeholder="5" style="width:70px" /></label>
               <label class="f">Audience<input type="text" id="acNAud" placeholder="all · cockpit · cabin · codes" /></label>
             </div>
+            <label class="f" style="margin-top:8px">Attachments · PDF, up to 5 (e.g. Turkish and English), on every phone and offline<input type="file" id="acNFiles" accept="application/pdf" multiple /></label>
             <div class="row" style="margin-top:12px"><button id="acNoticeBtn">PUBLISH</button></div>
           </div>
           <div class="card">
@@ -160,6 +161,7 @@
               <label class="f" style="flex:1;min-width:200px">Title<input type="text" id="acCTitle" /></label>
               <label class="f">Type<select id="acCMode"><option value="required">required · with a due date</option><option value="self">self-study · offered</option></select></label>
               <label class="f">Counts as<select id="acCKind"><option value="">—</option><option value="sep">SEP</option><option value="dg">Dangerous goods</option><option value="crm">CRM</option><option value="first_aid">First aid</option><option value="recurrent_cabin">Cabin recurrent</option><option value="other">Other</option></select></label>
+              <label class="f">A passed exam renews it for<select id="acCRenew"><option value="">— (record only)</option><option value="12">12 months</option><option value="24">24 months</option><option value="36">36 months</option></select></label>
             </div>
             <div class="row" style="margin-top:8px">
               <label class="f">Due<input type="text" id="acCDue" placeholder="YYYY-MM-DD" style="width:130px" /></label>
