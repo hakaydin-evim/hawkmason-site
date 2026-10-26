@@ -44,6 +44,7 @@
         <a href="#stores">What the app stores</a>
         <a href="#location">Location</a>
         <a href="#siri">Siri and Spotlight</a>
+        <a href="#icloud">iCloud sync and Household</a>
         <a href="#permissions">Permissions</a>
         <a href="#ai">Apple Intelligence</a>
         <a href="#purchases">Purchases</a>
@@ -106,6 +107,25 @@
         secrets, and we never show a purchase offer through Siri.
       </p>
 
+      <h2 id="icloud">iCloud sync and Household</h2>
+      <p>
+        Both are off until you turn them on. <strong>iCloud sync</strong> copies your
+        records to your own iCloud account (Apple's CloudKit private database) so
+        your other devices see them. <strong>Household</strong> lets you pick
+        individual records — a bill, a warranty, a medicine box, an appointment —
+        and share them with people you invite through Apple's sharing sheet. A
+        shared record carries its title, company, date, amount and, for bills and
+        deliveries, the reference number; photos and extra fields are never
+        shared. If you mark a record "remind on their phone too", the invited
+        person's device schedules the same reminders locally.
+      </p>
+      <p>
+        This data is stored and transferred by Apple under your Apple Account.
+        Hawk &amp; Mason Studios has no access to it, cannot read it, and runs no
+        server of its own. Removing a member, leaving a household or turning sync
+        off is done in the app or in iOS Settings → Apple Account → iCloud.
+      </p>
+
       <h2 id="permissions">Permissions</h2>
       <ul>
         <li><strong>Photos</strong> — to read documents in your library. Limited access works.</li>
@@ -142,7 +162,7 @@
         <li>No analytics or crash-reporting SDKs. Diagnostics reach us only if you opt in to sharing with developers in iOS Settings, through Apple.</li>
         <li>No advertising, no tracking, no data brokers, no selling of data.</li>
         <li>No reading of messages, mail, notes, browser history or other apps' notifications.</li>
-        <li>No network connection of its own: the app makes no requests to any server we operate. The only network use is iOS's own place-name lookup described under Location.</li>
+        <li>No network connection of its own: the app makes no requests to any server we operate. Network use is limited to Apple services you turn on: place-name lookup (Location), iCloud sync and Household.</li>
       </ul>
 
       <h2 id="apis">Required-reason APIs</h2>
