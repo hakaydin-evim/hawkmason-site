@@ -85,7 +85,9 @@
       </p>
       <p>
         Secrets are not stored. Card numbers, IBANs, passwords and ID numbers
-        are deliberately left out of every record.
+        are deliberately left out of every record. When a receipt shows a masked
+        card number, only its last four digits are kept, so you can name the
+        card ("Bonus · 1234"); card names stay on this device.
       </p>
 
       <h2 id="location">Location</h2>
@@ -133,7 +135,8 @@
         <li><strong>Calendar</strong> — only when you tap <em>Add to calendar</em>, to match appointments with events you already have, and to warn you when an appointment overlaps another event.</li>
         <li><strong>Reminders</strong> — only when you tap <em>Add to Reminders</em>. The app writes the reminder and reads nothing else.</li>
         <li><strong>Contacts</strong> — only if you allow it in Settings, to match a store or person on a document with a contact. Contacts are read, never written, and never leave the device.</li>
-        <li><strong>Camera</strong> — only when you tap <em>Snap</em>.</li>
+        <li><strong>Camera</strong> — only when you tap <em>Snap</em>. Live scanning highlights text and barcodes on screen; a barcode can be used as a delivery tracking number.</li>
+        <li><strong>Health</strong> — only when you tap <em>Match with medications in Health</em>, and only for the medications you select in Apple's prompt. Noticely reads the names to match a medicine box you photographed; it never writes to Health, never sends health data anywhere, and keeps the match only on this device (not in iCloud).</li>
       </ul>
       <p>Every permission is asked for in context, when you first use the feature, and the app works without any of them except Photos.</p>
 
