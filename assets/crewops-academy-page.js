@@ -43,8 +43,8 @@
 
     drawMatrix();
 
-    $('acNotices').innerHTML = `<thead><tr><th>Id</th><th>Type</th><th>Title</th><th>Issued</th><th>Due</th><th>Confirmed</th><th></th></tr></thead><tbody>${state.notices.map((n) => `<tr${n.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(n.id)}</td><td>${esc(NTYPES[n.type] || n.type)}</td><td style="white-space:normal;min-width:240px">${esc(n.title)}</td><td>${esc(n.issuedAt.slice(0, 10))}</td><td>${esc(n.dueDate || '—')}</td><td>${n.acks} / ${o.crew}</td><td>${n.withdrawn ? 'withdrawn' : `<a href="#" data-acks="${esc(n.id)}">who</a> · <a href="#" data-withdraw="${esc(n.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="7" class="fine">No notice yet.</td></tr>'}</tbody>`;
-    $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); history.pushState(null, '', `#notice/${a.dataset.acks}`); try { const d = await (await api(`/notices/${a.dataset.acks}/acks`)).json(); $('acMsg').textContent = `${d.notice.title}: confirmed by ${d.acks.map((x) => `${x.crewCode} (${x.at.slice(0, 10)})`).join(', ') || 'nobody yet'}.`; } catch (e) { $('acMsg').textContent = e.message; } }));
+    $('acNotices').innerHTML = `<thead><tr><th>No</th><th>Type</th><th>Title</th><th>Issued</th><th>Due</th><th>Opened</th><th>Confirmed</th><th></th></tr></thead><tbody>${state.notices.map((n) => `<tr${n.withdrawn ? ' style="opacity:.45"' : ''}><td title="${esc(n.id)}">${n.no ? esc(n.no) : esc(n.id)}</td><td>${esc(NTYPES[n.type] || n.type)}</td><td style="white-space:normal;min-width:240px">${esc(n.title)}</td><td>${esc(n.issuedAt.slice(0, 10))}</td><td>${esc(n.dueDate || '—')}</td><td>${n.opened ?? 0} / ${n.of ?? o.crew}</td><td>${n.acks} / ${n.of ?? o.crew}</td><td>${n.withdrawn ? `cancelled ${esc(n.withdrawn.slice(0, 10))} · <a href="#" data-acks="${esc(n.id)}">who</a>` : `<a href="#" data-acks="${esc(n.id)}">who</a> · <a href="#" data-withdraw="${esc(n.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="8" class="fine">No notice yet.</td></tr>'}</tbody>`;
+    $('acNotices').querySelectorAll('a[data-acks]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); history.pushState(null, '', `#notice/${a.dataset.acks}`); try { showReceipt(await (await api(`/notices/${a.dataset.acks}/acks`)).json()); } catch (e) { $('acMsg').textContent = e.message; } }));
     $('acNotices').querySelectorAll('a[data-withdraw]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm('Withdraw this notice from every phone?')) return; try { await api(`/notices/${a.dataset.withdraw}`, { method: 'DELETE' }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
 
     $('acCourses').innerHTML = `<thead><tr><th>Id</th><th>Title</th><th>Type</th><th>Lessons</th><th>Exam</th><th>Due</th><th>Completed</th><th></th></tr></thead><tbody>${state.courses.map((c) => `<tr${c.withdrawn ? ' style="opacity:.45"' : ''}><td>${esc(c.id)}</td><td style="white-space:normal;min-width:240px">${esc(c.title)}</td><td>${esc(c.mode || 'required')}</td><td>${c.lessons || 0}</td><td>${c.quiz ? `${c.quiz.questions} q · ${c.quiz.passMark}%` : '—'}</td><td>${esc(c.dueDate || '—')}</td><td>${c.completions} / ${o.crew}</td><td>${c.withdrawn ? 'withdrawn' : `<a href="#" data-done="${esc(c.id)}">who</a> · <a href="#" data-cwithdraw="${esc(c.id)}">withdraw</a>`}</td></tr>`).join('') || '<tr><td colspan="8" class="fine">No course yet.</td></tr>'}</tbody>`;
@@ -53,6 +53,30 @@
 
     $('acRecords').innerHTML = `<thead><tr><th>Crew</th><th>Role</th><th>Items</th><th>Nearest expiry</th><th>Phone</th><th></th></tr></thead><tbody>${state.records.map((r) => { const exps = (r.items || []).map((i) => i.expires).filter(Boolean).sort(); return `<tr><td>${esc(r.crewCode)}</td><td>${esc(r.role || '')}</td><td>${(r.items || []).length}</td><td>${esc(exps[0] || '—')}</td><td>${r.paired ? 'paired' : '—'}</td><td>${r.paired ? `<a href="#" data-unbind="${esc(r.crewCode)}">reset pairing</a>` : ''}</td></tr>`; }).join('') || '<tr><td colspan="6" class="fine">No records yet. Upload a CSV below.</td></tr>'}</tbody>`;
     $('acRecords').querySelectorAll('a[data-unbind]').forEach((a) => a.addEventListener('click', async (ev) => { ev.preventDefault(); if (!confirm(`Reset the phone pairing of ${a.dataset.unbind}? The next phone that reads the code will be paired.`)) return; try { await api('/unbind', { method: 'POST', body: JSON.stringify({ crewCode: a.dataset.unbind }) }); await load(); } catch (e) { $('acMsg').textContent = e.message; } }));
+  }
+
+  // Read receipts of one notice: everyone it is for, unread first, with the time each opened and confirmed it.
+  const STATE = { unread: ['bad', 'unread'], opened: ['warn', 'opened'], confirmed: ['ok', 'confirmed'] };
+  const when = (iso) => (iso ? `${iso.slice(0, 10)} ${iso.slice(11, 16)}Z` : '—');
+  function showReceipt(d) {
+    const n = d.notice;
+    const people = d.people || d.acks.map((x) => ({ crewCode: x.crewCode, ackAt: x.at, openedAt: x.at, state: 'confirmed' }));
+    const count = (k) => people.filter((p) => p.state === k).length;
+    const box = $('acReceipt');
+    box.classList.remove('hidden');
+    box.innerHTML = `<div class="row" style="justify-content:space-between;align-items:baseline"><h3 style="margin:0">${n.no ? `NO ${esc(n.no)} · ` : ''}${esc(n.title)}</h3><span><button class="ghost" id="acRcCsv">CSV</button> <button class="ghost" id="acRcClose">CLOSE</button></span></div>
+      <p class="fine">${esc(NTYPES[n.type] || n.type)} · issued ${esc(n.issuedAt.slice(0, 10))}${n.dueDate ? ` · due ${esc(n.dueDate)}` : ''}${n.withdrawn ? ` · <b>cancelled ${esc(n.withdrawn.slice(0, 10))}</b>` : ''} · ${count('confirmed')} confirmed, ${count('opened')} opened but not confirmed, ${count('unread')} not opened</p>
+      <div class="tablewrap"><table><thead><tr><th>Crew</th><th>Name</th><th>Role</th><th>State</th><th>Opened (UTC)</th><th>Confirmed (UTC)</th><th>Comment</th></tr></thead><tbody>${people.map((p) => `<tr><td>${esc(p.crewCode)}</td><td>${esc(p.name || '')}</td><td>${esc(p.role || '')}</td><td><span class="pill ${STATE[p.state][0]}">${STATE[p.state][1]}</span></td><td>${when(p.openedAt)}</td><td>${when(p.ackAt)}</td><td style="white-space:normal;min-width:200px">${esc(p.comment || '')}</td></tr>`).join('') || '<tr><td colspan="7" class="fine">Nobody on record for this notice yet.</td></tr>'}</tbody></table></div>`;
+    $('acRcClose').addEventListener('click', () => { box.classList.add('hidden'); history.pushState(null, '', location.pathname); });
+    $('acRcCsv').addEventListener('click', () => {
+      const cell = (v) => { const s = String(v ?? ''); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+      const rows = [['notice_no', 'notice_id', 'title', 'crew_code', 'name', 'role', 'state', 'opened_utc', 'confirmed_utc', 'comment'], ...people.map((p) => [n.no, n.id, n.title, p.crewCode, p.name, p.role, p.state, p.openedAt, p.ackAt, p.comment])];
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([rows.map((r) => r.map(cell).join(',')).join('\n') + '\n'], { type: 'text/csv' }));
+      a.download = `crewops-notice-${n.no || n.id}-receipts.csv`;
+      a.click();
+    });
+    box.scrollIntoView({ block: 'nearest' });
   }
 
   // The qualification matrix: one row per crew member, one column per qualification kind
