@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wirelit — Privacy Policy · Hawk &amp; Mason Studios</title>
+    <meta name="description" content="Privacy policy for Wirelit by Hawk & Mason Studios: no analytics, no ads, no tracking, no account. Progress stays on your devices." />
+    <link rel="canonical" href="https://hawkmason.com/wirelit-privacy" />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css?v=27" />
+    <script src="app.js?v=25" defer></script>
+  </head>
+  <body class="umbrella legal" data-page="legal">
+    <header class="nav" data-nav>
+      <a class="brand" href="/" aria-label="Hawk &amp; Mason Studios home">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason<span class="brand-suffix">Studios</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="wirelit-support">Support</a>
+      </nav>
+    </header>
+
+    <main class="legal-main">
+      <h1>Wirelit — Privacy Policy</h1>
+      <p class="legal-updated">Effective date: 27 October 2026</p>
+      <p class="legal-lede">
+        We collect nothing about you. Wirelit has no analytics, no advertising,
+        no tracking, no account and no server of ours. Your progress stays on
+        your devices. The only things that ever leave a device go to Apple
+        services you already use, and only if you use them: iCloud keeps the
+        list of lit windows in step across your devices, and Game Center
+        receives your achievement progress if you are signed in.
+      </p>
+      <p class="legal-identity">Hawk &amp; Mason Studios is a trading name of Hakan Aydın, an independent developer based in Türkiye. Contact: <!--email_off--><a href="mailto:hello@hawkmason.com?subject=Wirelit%20Privacy">hello@hawkmason.com</a><!--email_on-->.</p>
+
+      <nav class="legal-toc" aria-label="Sections">
+        <a href="#stores">What the app stores</a>
+        <a href="#icloud">iCloud</a>
+        <a href="#gamecenter">Game Center</a>
+        <a href="#intelligence">Apple Intelligence and Siri</a>
+        <a href="#not">What it does not do</a>
+        <a href="#apis">Required-reason APIs</a>
+        <a href="#children">Children</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <h2 id="stores">What the app stores</h2>
+      <p>
+        Wirelit keeps a small amount of game state on your device, in storage
+        shared only between the app, its widgets and its Apple Watch app:
+      </p>
+      <ul>
+        <li>which boxes you have lit, and where each ring of an unfinished box was left;</li>
+        <li>the state of tonight's box, and the nights on which you solved it;</li>
+        <li>the watchman's logbook — the short note written for each box you solve, and a few lines for each neighbourhood you light completely;</li>
+        <li>your settings (sound and haptics).</li>
+      </ul>
+      <p>
+        None of this contains your name, email, location, a device ID or an
+        advertising ID. Deleting the app deletes it; <em>Settings → Reset
+        progress</em> clears the lit windows, unfinished boxes and the logbook.
+      </p>
+
+      <h2 id="icloud">iCloud (automatic if you use iCloud)</h2>
+      <p>
+        If your device is signed in to iCloud, Wirelit stores one thing in
+        Apple's iCloud key-value storage: the list of boxes you have lit, so
+        that a window lit on your iPhone is lit on your iPad, Mac and Apple TV
+        too. It is a list of box numbers and nothing else. It lives in your
+        iCloud account under Apple's privacy policy; we cannot read it.
+      </p>
+
+      <h2 id="gamecenter">Game Center (optional)</h2>
+      <p>
+        Game Center is Apple's service, not ours, and is governed by
+        <a href="https://www.apple.com/legal/privacy/">Apple's Privacy Policy</a>.
+      </p>
+      <ul>
+        <li><strong>It is optional.</strong> When the game opens, iOS may show Apple's Game Center sign-in. You can close it and play the whole game, fully offline.</li>
+        <li><strong>Achievements only.</strong> If you are signed in, the game reports achievement progress — how many windows of each neighbourhood are lit, how many nightly boxes you have solved. There are no leaderboards and no scores.</li>
+        <li><strong>Nothing comes to us.</strong> The game does not store your Game Center name or ID and has no server to send it to.</li>
+      </ul>
+
+      <h2 id="intelligence">Apple Intelligence and Siri</h2>
+      <p>
+        On devices with Apple Intelligence, the watchman's logbook adds a line
+        about the night written by Apple's on-device model. It runs entirely on
+        your device: the model is told only a neighbourhood name and the time,
+        and nothing is sent anywhere. Without Apple Intelligence the logbook
+        uses lines we wrote.
+      </p>
+      <p>
+        If you ask Siri about tonight's box, Siri is handled by Apple under
+        Apple's privacy policy. The game only answers how many lamps are lit.
+      </p>
+
+      <h2 id="not">What the app does not do</h2>
+      <ul>
+        <li><strong>No connections of our own.</strong> We run no server, and the game contains no analytics, crash-reporting or advertising code. It plays fully in airplane mode.</li>
+        <li><strong>No tracking.</strong> <code>NSPrivacyTracking</code> is <code>false</code>; there are no tracking domains and no data types are declared as collected.</li>
+        <li><strong>No third-party code.</strong> Wirelit is built only with Apple's own frameworks.</li>
+        <li><strong>No account.</strong> There is nothing to sign up for.</li>
+        <li><strong>No purchases inside the app.</strong> No in-app purchases, no subscriptions, no ads.</li>
+      </ul>
+
+      <h2 id="apis">Required-reason APIs</h2>
+      <p>
+        Apple requires a declared reason for certain system APIs. Wirelit
+        declares one category, used only to keep its own game state:
+      </p>
+      <ul>
+        <li>User defaults — <code>CA92.1</code> (the app's own settings) and <code>1C8F.1</code> (state shared with its widgets and Apple Watch app)</li>
+      </ul>
+
+      <h2 id="children">Children</h2>
+      <p>
+        Wirelit is suitable for all ages: we collect nothing, there is no chat,
+        no user-generated content shared with anyone, no advertising and no way
+        to spend money inside the game. Game Center is optional and follows
+        Apple's parental controls.
+      </p>
+
+      <h2 id="contact">Contact</h2>
+      <div class="legal-callout">
+        <p>Questions about this policy? Email <!--email_off--><a href="mailto:hello@hawkmason.com?subject=Wirelit%20Privacy">hello@hawkmason.com</a><!--email_on--></p>
+      </div>
+      <p>If this policy ever changes, the effective date above changes with it.</p>
+    
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="wirelit">Wirelit</a>
+        <a href="wirelit-support">Support</a>
+        <a href="/">Studio</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
