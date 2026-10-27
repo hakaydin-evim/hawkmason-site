@@ -12,3 +12,7 @@
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+
+# Press kits (Wirelit's Apple Arcade pitch): reachable by link, kept out of search.
+/press/*
+  X-Robots-Tag: noindex, nofollow
