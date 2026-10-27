@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wirelit · Turn the rings, light the city</title>
+    <meta name="description" content="Wirelit is a calm circuit puzzle by Hawk &amp; Mason Studios. The city’s power is out: turn the rings and bring 12 neighbourhoods back to light. Coming in 2027 to iPhone, iPad, Mac, Apple TV and Apple Watch." />
+    <link rel="canonical" href="https://hawkmason.com/wirelit" />
+    <meta property="og:title" content="Wirelit · Turn the rings, light the city" />
+    <meta property="og:description" content="A calm circuit puzzle. The city’s power is out and you are the night watchman: 12 neighbourhoods, 288 boxes and a new box every night." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/wirelit" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-wirelit.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Wirelit on a Mac: a lit circuit box on the left, the city skyline on the right" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-wirelit.png" />
+    <link rel="icon" href="assets/wirelit/icon.png" type="image/png" sizes="128x128" />
+    <link rel="apple-touch-icon" href="assets/wirelit/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="styles.css?v=28" />
+    <style>
+      /* Page-only theme for Wirelit: the game's night (ground #0D1320) and its sodium lamp. Everything else comes from
+         the shared w-* product classes in styles.css. */
+      body.wirelit {
+        --w-bg: #0D1320;
+        --w-panel: rgba(22, 30, 46, 0.82);
+        --w-azure: #FF8A3D;
+        --w-azure-soft: #F3D2B4;
+        --w-ink: #E2E8F2;
+        --w-muted: #8C97AA;
+        --w-line: rgba(226, 232, 242, 0.13);
+        background: radial-gradient(1200px 600px at 70% -10%, rgba(255, 124, 44, 0.12), transparent 60%), var(--w-bg);
+        color: var(--w-ink);
+        font-family: var(--text);
+      }
+      body.wirelit .w-badge { background: rgba(255, 124, 44, 0.14); color: var(--w-azure); }
+      body.wirelit .w-title, body.wirelit h2 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; }
+      body.wirelit .w-title { font-size: clamp(3.4rem, 8vw, 6rem); text-shadow: 0 0 40px rgba(255, 124, 44, 0.35); }
+      body.wirelit .w-lede { font-size: clamp(1.25rem, 2vw, 1.6rem); color: var(--w-azure-soft); }
+      body.wirelit .w-phone { border-radius: 26px; }
+      body.wirelit .w-card h3 { font-size: 1.1rem; }
+      .nav--wirelit { background: rgba(13, 19, 32, 0.86); backdrop-filter: blur(16px); }
+      .nav--wirelit.is-scrolled { border-bottom: 1px solid var(--w-line); }
+      .nav--wirelit .brand-name { color: #fff; }
+      .store-btn--sodium { background: #FF8A3D; color: #0D1320; font-weight: 600; border-radius: 10px; }
+      .wl-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
+      .wl-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 34px; }
+      .wl-shots figure { margin: 0; }
+      .wl-shots img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--w-line); box-shadow: 0 26px 60px -26px rgba(0, 0, 0, 0.9); }
+      .wl-shots figcaption { color: var(--w-muted); font-size: 0.92rem; line-height: 1.55; margin-top: 12px; }
+      .wl-shots figcaption b { color: #fff; font-weight: 600; display: block; }
+      .wl-hoods { list-style: none; padding: 0; margin: 26px auto 0; max-width: 900px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .wl-hoods li { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--w-line); background: var(--w-panel); font: 600 0.82rem/1 var(--text); letter-spacing: 0.04em; }
+      .wl-hoods li span { color: var(--w-azure); margin-right: 6px; }
+      .wl-rows { max-width: 860px; margin: 30px auto 0; }
+      .wl-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      .wl-row:last-child { border-bottom: 1px solid var(--w-line); }
+      .wl-row dt { color: #fff; font: 700 1.15rem/1.4 'Barlow Condensed', 'Arial Narrow', sans-serif; letter-spacing: 0.02em; text-transform: uppercase; }
+      .wl-row dd { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      .wl-mac { max-width: 980px; margin: 34px auto 0; }
+      .wl-mac img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--w-line); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9); }
+      @media (max-width: 640px) {
+        .wl-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+    </style>
+    <script src="app.js?v=25" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Wirelit",
+        "url": "https://hawkmason.com/wirelit",
+        "description": "A calm circuit puzzle: turn the rings and bring 12 neighbourhoods back to light.",
+        "genre": ["Puzzle", "Brain puzzle"],
+        "gamePlatform": ["iPhone", "iPad", "Mac", "Apple TV", "Apple Watch"],
+        "inLanguage": ["en", "tr", "fr", "de", "es", "it", "ja", "ko", "zh-Hans", "pt-BR"],
+        "image": "https://hawkmason.com/assets/og/og-wirelit.png",
+        "publisher": { "@id": "https://hawkmason.com/#organization" }
+      }
+    </script>
+  </head>
+  <body class="wirelit" data-page="wirelit">
+    <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#0D1320"></div>
+
+    <header class="nav nav--wirelit" data-nav>
+      <a class="brand" href="/" data-back data-veil="#14161B" aria-label="Back to Hawk &amp; Mason Studios">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--sodium" href="#soon">Coming 2027</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">A calm circuit puzzle</span>
+          <h1 class="w-title">Wirelit</h1>
+          <p class="w-lede">Turn the rings. Light the city.</p>
+          <p class="w-sub">
+            The city’s power is out and you hold the keys to every fuse box: you
+            are the night watchman. Every box is a small board of wires around a
+            transformer. Tap a piece and its whole ring turns a quarter turn.
+          </p>
+          <p class="w-sub">
+            Turn the rings until current reaches every window lamp. When the last
+            one catches, the box says “All the lamps are lit”, your phone gives
+            one long, warm pulse, and a window in the skyline lights up for good.
+          </p>
+          <div class="store-row" id="soon">
+            <span class="store-pill store-pill--ios" style="opacity:.85; cursor:default;">
+              <span class="store-kicker">Coming 2027 on the</span><span class="store-name">App Store</span>
+            </span>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            iPhone · iPad · Mac · Apple TV · Apple Watch · 10 languages ·
+            <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
+          </p>
+        </div>
+        <div class="w-hero-art" aria-hidden="true">
+          <div class="w-phone w-phone-back"><img src="assets/wirelit/city.webp" alt="" width="600" height="1004" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-front"><img src="assets/wirelit/harbor.webp" alt="" width="600" height="1004" decoding="async" style="height:auto" /></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="how">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">How a box works</h2>
+          <p class="wl-lead">One rule, a dozen ideas built on it. No score, no timer, no move counter: only light.</p>
+        </div>
+        <div class="w-grid">
+          <div class="w-card"><span class="w-ic" aria-hidden="true">↻</span><h3>Tap to turn a ring</h3><p>Any piece turns its whole ring a quarter turn. While your finger is down, the ring that will turn lights up, with an arrow for the way it goes.</p></div>
+          <div class="w-card"><span class="w-ic" aria-hidden="true">⚡</span><h3>Light every window</h3><p>Current flows from the transformer at the centre. Bring it to every lamp; a sleeping window, drawn dashed, must stay dark.</p></div>
+          <div class="w-card"><span class="w-ic" aria-hidden="true">◎</span><h3>One answer, never one tap away</h3><p>Every box has exactly one solution and none starts a single turn from solved. Stuck? The hint says a little more each time.</p></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="city">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">12 neighbourhoods, 288 boxes</h2>
+          <p class="wl-lead">Each neighbourhood has its own light, lamp shape, skyline and musical key, and brings one new idea: sleeping windows, chain and gear rings, bolted pieces, half and reverse rings, 9×9 squares.</p>
+        </div>
+        <ul class="wl-hoods">
+          <li><span>1</span>Streetlight</li><li><span>2</span>Neighborhood</li><li><span>3</span>Apartments</li><li><span>4</span>Market</li>
+          <li><span>5</span>Harbor</li><li><span>6</span>Clock Tower</li><li><span>7</span>Square</li><li><span>8</span>Factory</li>
+          <li><span>9</span>Station</li><li><span>10</span>Bridge</li><li><span>11</span>Power Plant</li><li><span>12</span>Midnight</li>
+        </ul>
+        <div class="wl-shots">
+          <figure><img src="assets/wirelit/gear.webp" alt="A Clock Tower box with gear rings" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>Clock Tower</b>The ring you tap turns one way, the ring outside it turns the other.</figcaption></figure>
+          <figure><img src="assets/wirelit/midnight.webp" alt="A 9×9 Midnight box" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>Midnight</b>The city’s last boxes: everything you have learned, on a 9×9 board.</figcaption></figure>
+          <figure><img src="assets/wirelit/logbook.webp" alt="The watchman’s logbook" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>The watchman’s logbook</b>A short note for every box you solve, and an entry for each neighbourhood you bring back.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="w-feat" id="tonight">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Tonight’s box, everywhere</h2>
+          <p class="wl-lead">A new box every night, the same for everyone. Lit windows follow you through iCloud.</p>
+        </div>
+        <dl class="wl-rows">
+          <div class="wl-row"><dt>iPhone &amp; iPad</dt><dd>Play tonight’s box right on the Home Screen with the large widget, or ask Siri how it is going. Unfold iPhone Duo for two pages: the box on one, the city on the other.</dd></div>
+          <div class="wl-row"><dt>Mac</dt><dd>Click a piece, or turn rings with the number keys; the ring under the pointer lights up first.</dd></div>
+          <div class="wl-row"><dt>Apple TV</dt><dd>The whole skyline on the big screen. Swipe to pick a ring, press to turn it.</dd></div>
+          <div class="wl-row"><dt>Apple Watch</dt><dd>Every 5×5 box on your wrist, with the Digital Crown, and tonight’s box on a complication.</dd></div>
+          <div class="wl-row"><dt>Game controller</dt><dd>The d-pad picks a ring, A turns it, Y asks for a hint.</dd></div>
+        </dl>
+        <div class="wl-mac"><img src="assets/wirelit/mac.webp" alt="Wirelit on a Mac: the box on the left, the city on the right" width="1200" height="750" loading="lazy" decoding="async" /></div>
+      </section>
+
+      <section class="w-feat" id="quiet">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Quiet by design</h2>
+        </div>
+        <dl class="wl-rows">
+          <div class="wl-row"><dt>Nothing to chase</dt><dd>No score, no timer, no move counter, no leaderboards. Game Center achievements for each neighbourhood, the nightly boxes and the whole city.</dd></div>
+          <div class="wl-row"><dt>Nothing about you</dt><dd>No ads, no account, no tracking, and no internet needed to play. Details in the <a href="wirelit-privacy" style="color: var(--w-azure);">privacy policy</a>.</dd></div>
+          <div class="wl-row"><dt>Sound and touch</dt><dd>Rings sing on a musical scale and a melody rises as lamps light; you feel every turn through haptics.</dd></div>
+          <div class="wl-row"><dt>For everyone</dt><dd>Every ring can be turned with VoiceOver, text grows with Dynamic Type, and Reduce Motion stills the flowing current.</dd></div>
+          <div class="wl-row"><dt>Languages</dt><dd>English, Türkçe, Français, Deutsch, Español, Italiano, 日本語, 한국어, 简体中文 and Português (Brasil).</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="503" height="616" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="wirelit-support">Support</a>
+        <a href="wirelit-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+        <a href="/">Studio</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
