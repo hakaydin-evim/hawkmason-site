@@ -185,6 +185,12 @@ body.crew .studio { background: rgba(11, 22, 38, 0.55); border-block-color: var(
 .foot-links a { color: var(--muted); font-weight: 600; }
 .foot-links a:hover { color: var(--ink); }
 .foot-legal { color: #a7a5b8; font-size: 0.86rem; margin: 0; }
+.foot-cols { display: grid; grid-template-columns: repeat(3, auto); gap: 1rem clamp(2.5rem, 7vw, 6rem); text-align: left; }
+.foot-col { display: grid; gap: 0.45rem; align-content: start; }
+.foot-col h4 { margin: 0 0 0.25rem; font: 700 0.78rem var(--text); letter-spacing: 0.1em; text-transform: uppercase; color: #a7a5b8; }
+.foot-col a { color: var(--muted); font-weight: 600; }
+.foot-col a:hover { color: var(--ink); }
+@media (max-width: 560px) { .foot-cols { grid-template-columns: 1fr 1fr; gap: 1.4rem 2rem; } .foot-col:last-child { grid-column: 1 / -1; } }
 
 /* ============================================================
    VEIL (transition overlay)
