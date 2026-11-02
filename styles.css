@@ -171,6 +171,9 @@ body.crew .studio { background: rgba(11, 22, 38, 0.55); border-block-color: var(
 }
 .studio-inner h2 { font-size: clamp(1.8rem, 3.6vw, 2.7rem); margin-bottom: 1.2rem; }
 .studio-lede { color: var(--muted); font-size: 1.12rem; line-height: 1.7; margin: 0 auto 2.3rem; max-width: 60ch; }
+.studio-lede:has(+ .studio-open) { margin-bottom: 1.1rem; }
+.studio-open { color: var(--muted); font-size: 1.05rem; line-height: 1.7; margin: 0 auto 2.1rem; max-width: 56ch; }
+.studio-open strong { color: var(--ink); }
 .studio-stats { display: flex; justify-content: center; gap: clamp(1.5rem, 5vw, 3.5rem); margin-bottom: 2.4rem; flex-wrap: wrap; }
 .studio-stats div { display: flex; flex-direction: column; }
 .studio-stats strong { font: 800 2.6rem var(--display); color: var(--ink); letter-spacing: -0.03em; }
