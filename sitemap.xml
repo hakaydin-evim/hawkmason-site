@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hawkmason.com/</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/sugar-tiles</loc>
@@ -33,6 +33,18 @@
   <url>
     <loc>https://hawkmason.com/wirelit</loc>
     <lastmod>2026-10-28</lastmod>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/emlak-krali</loc>
+    <lastmod>2026-11-01</lastmod>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/emlak-krali-privacy</loc>
+    <lastmod>2026-11-01</lastmod>
+  </url>
+  <url>
+    <loc>https://hawkmason.com/emlak-krali-support</loc>
+    <lastmod>2026-11-01</lastmod>
   </url>
   <url>
     <loc>https://hawkmason.com/pondr/</loc>

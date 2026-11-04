@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason</title>
+    <meta name="description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı Kariyer, Canlı Kadıköy'de 60 oyuncu. Reklam yok." />
+    <link rel="canonical" href="https://hawkmason.com/emlak-krali" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason" />
+    <meta property="og:description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı Kariyer, Canlı Kadıköy'de 60 oyuncu. Reklam yok." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/emlak-krali" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-emlak-krali.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="iPhone'da Emlak Kralı: izometrik bir şehir olarak çizilmiş Kadıköy" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason" />
+    <meta name="twitter:description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı Kariyer, Canlı Kadıköy'de 60 oyuncu. Reklam yok." />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-emlak-krali.png" />
+    <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
+    <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href="assets/emlak-krali/apple-touch-icon.png" />
+    <link rel="stylesheet" href="styles.css?v=30" />
+    <style>
+      /* Page-only theme for Emlak Kralı: the enamel-blue street sign, its paper card and the gold akçe coin
+         (app/Bogaz/UI/Theme.swift). Everything else comes from the shared w-* product classes in styles.css. */
+      body.bogaz {
+        --w-bg: #0E1B33;
+        --w-panel: rgba(23, 41, 74, 0.78);
+        --w-azure: #E9B949;
+        --w-azure-soft: #F6F0E2;
+        --w-ink: #E8EDF5;
+        --w-muted: #9AA8BF;
+        --w-line: rgba(201, 212, 230, 0.16);
+        background: radial-gradient(1200px 620px at 72% -10%, rgba(64, 140, 190, 0.22), transparent 62%), var(--w-bg);
+        color: var(--w-ink);
+        font-family: var(--text);
+      }
+      body.bogaz .w-badge { background: rgba(233, 185, 73, 0.15); color: var(--w-azure); }
+      body.bogaz .w-title { font-size: clamp(3.2rem, 8vw, 5.4rem); }
+      body.bogaz .w-title--en { font-size: clamp(2.7rem, 6.6vw, 4.5rem); }
+      body.bogaz .w-tag { color: var(--w-azure-soft); font-size: 0.3em; letter-spacing: 0.06em; margin-top: 10px; }
+      body.bogaz .w-phone { border-radius: 26px; }
+      .nav--bogaz { background: rgba(14, 27, 51, 0.86); backdrop-filter: blur(16px); }
+      .nav--bogaz.is-scrolled { border-bottom: 1px solid var(--w-line); }
+      .nav--bogaz .brand-name { color: #fff; }
+      .store-btn--akce { background: #E9B949; color: #0E1B33; font-weight: 700; border-radius: 10px; cursor: default; }
+      .bz-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; margin-top: 44px; }
+      .bz-shots figure { margin: 0; }
+      .bz-shots img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--w-line); box-shadow: 0 26px 60px -26px rgba(0, 0, 0, 0.9); }
+      .bz-credit { text-align: center; color: var(--w-muted); font-size: 0.86rem; margin: 22px 0 0; }
+      .bz-credit a, .bz-link { color: var(--w-azure); }
+      .bz-rows { max-width: 860px; margin: 30px auto 0; }
+      .bz-row { display: grid; grid-template-columns: 200px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      .bz-row:last-child { border-bottom: 1px solid var(--w-line); }
+      .bz-row dt { color: #fff; font: 700 1.05rem/1.45 var(--display); }
+      .bz-row dd { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      .bz-icon { display: block; margin: 0 auto; width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 24px 50px -24px rgba(0, 0, 0, 0.9); }
+      .bz-soon { padding: 24px 24px 84px; }
+      .bz-note { color: var(--w-muted); font-size: 0.95rem; line-height: 1.6; max-width: 60ch; margin: 22px auto 0; }
+      .bz-lang { margin: 14px 0 0; font-size: 0.95rem; }
+      .bz-lang a { color: var(--w-azure); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+      .bz-divider { max-width: 1112px; margin: 0 auto; border: 0; border-top: 1px solid var(--w-line); }
+      @media (max-width: 640px) {
+        .bz-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+      @media (max-width: 520px) {
+        .bz-nav-en { display: none; }
+      }
+    </style>
+    <script src="app.js?v=25" defer></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["VideoGame", "MobileApplication"],
+          "@id": "https://hawkmason.com/emlak-krali#game",
+          "name": "Emlak Kralı: İstanbul",
+          "alternateName": ["Emlak Kralı", "Estate King: Istanbul"],
+          "description": "A real-estate game set in an isometric Istanbul drawn from data. Kadıköy's 4,871 buildings are rendered from OpenStreetMap data with our own 3D model: buy, renovate and rent out flats and shops, take over the building and outpace rival investors. An offline Career, Live Kadıköy with up to 60 players, and a Weekly Race with six leagues. Free: no purchases, no energy timers, no third-party ads.",
+          "url": "https://hawkmason.com/emlak-krali",
+          "image": "https://hawkmason.com/assets/og/og-emlak-krali.png",
+          "screenshot": [
+            "https://hawkmason.com/assets/emlak-krali/miras.webp",
+            "https://hawkmason.com/assets/emlak-krali/panolar.webp",
+            "https://hawkmason.com/assets/emlak-krali/deger.webp",
+            "https://hawkmason.com/assets/emlak-krali/firsat.webp",
+            "https://hawkmason.com/assets/emlak-krali/album.webp"
+          ],
+          "genre": ["Simulation", "Strategy", "Tycoon"],
+          "gamePlatform": ["iPhone"],
+          "operatingSystem": "iOS",
+          "applicationCategory": "GameApplication",
+          "playMode": ["SinglePlayer", "MultiPlayer"],
+          "inLanguage": "tr",
+          "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+          "gameLocation": { "@type": "Place", "name": "Kadıköy, İstanbul" },
+          "publisher": { "@id": "https://hawkmason.com/#organization" }
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://hawkmason.com/#organization",
+          "name": "Hawk & Mason Studios",
+          "url": "https://hawkmason.com/",
+          "logo": "https://hawkmason.com/assets/apple-touch-icon.png"
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bogaz" data-page="bogaz">
+    <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#0E1B33"></div>
+
+    <header class="nav nav--bogaz" data-nav>
+      <a class="brand" href="/" data-back data-veil="#14161B" aria-label="Hawk &amp; Mason Studios">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <!-- No App Store link until the App Store page is live. -->
+        <span class="store-btn store-btn--akce"><span lang="tr">Yakında</span><span class="bz-nav-en" lang="en">&nbsp;· Coming soon</span></span>
+      </div>
+    </header>
+
+    <main>
+      <!-- ============================ TÜRKÇE ============================ -->
+      <div id="tr" lang="tr">
+        <section class="w-hero">
+          <div>
+            <span class="w-badge">Yakında</span>
+            <h1 class="w-title">Emlak Kralı<span class="w-tag">İstanbul</span></h1>
+            <p class="w-lede">Kadıköy'deki her bina gerçek ve satılık.</p>
+            <p class="w-sub">
+              Emlak Kralı, veriden çizilmiş izometrik bir İstanbul'da geçen bir emlak
+              oyunu. Kadıköy'ün 4.871 binası OpenStreetMap verisinden kendi 3B
+              modelimizle çizildi. Babaannenin dairesiyle başla; al, yenile,
+              kiraya ver, binanın yönetimini kap, rakip yatırımcıları geç.
+            </p>
+            <div class="store-row">
+              <span class="store-pill store-pill--ios store-pill--soon">
+                <span class="store-kicker">Yakında</span><span class="store-name">App Store'da</span>
+              </span>
+            </div>
+            <p class="g-hero-meta" style="color: var(--w-muted);">
+              iPhone için, şimdilik yalnız Türkçe. <strong>Yakında App Store'da.</strong>
+            </p>
+            <p class="bz-lang"><a href="#en" hreflang="en" lang="en">English ↓</a></p>
+          </div>
+          <div class="w-hero-art" aria-hidden="true">
+            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/miras.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+          </div>
+        </section>
+
+        <section class="w-feat">
+          <dl class="bz-rows">
+            <div class="bz-row"><dt>Bina bina</dt><dd>Daire ve dükkânları tek tek al; yarıdan fazlası seninse yönetim sende, aidat sana akar; eski binaları güçlendir.</dd></div>
+            <div class="bz-row"><dt>Kariyer</dt><dd>Beş bölüm, üç rakip, sonra Kadıköy Kariyeri'nin unvanları. Çevrimdışı, duraklatılabilir.</dd></div>
+            <div class="bz-row"><dt>Canlı Kadıköy</dt><dd>Her pazartesi yeni dünya, en çok 60 oyuncu, iki saatte bir oyun ayı, 14 günlük sezon.</dd></div>
+            <div class="bz-row"><dt>Her hafta</dt><dd>Haftalık Yarış ve Haydarpaşa'dan Fenerbahçe'ye altı lig; Kadıköy Albümü; Game Center başarıları.</dd></div>
+            <div class="bz-row"><dt>Adil</dt><dd>Ücretsiz. Oyunda avantaj satılmaz, enerji yok, üçüncü taraf reklam yok. İsteğe bağlı pano kiralama oyun gücü vermez.</dd></div>
+          </dl>
+          <div class="bz-shots">
+            <figure><img src="assets/emlak-krali/miras.webp" alt="Bölüm 1: babaannenin üç daire bıraktığı Moda'daki binanın üzerinde altın bir ok" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/panolar.webp" alt="Yukarıdan Moda: çatılarda uydurma Kadıköy dükkânlarının ve Sugar Tiles'ın reklam panoları" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/deger.webp" alt="Lütfübey Sokağı'nda bir bina kartı ve &quot;Değer neden bu?&quot; dökümü" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/firsat.webp" alt="Günün Fırsatı: günün binası değerinin yüzde 12 altında satışta" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/album.webp" alt="Kadıköy Albümü: Moda İskelesi ve Haydarpaşa Camii gibi simge yapı kartları" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+          </div>
+        </section>
+
+        <section class="w-cta bz-soon" id="soon">
+          <img class="bz-icon" src="assets/emlak-krali/ikon.webp" alt="Emlak Kralı uygulama simgesi: yukarıdan Moda İskelesi" width="264" height="264" loading="lazy" decoding="async" />
+          <p class="bz-note"><a class="bz-link" href="emlak-krali-privacy">Gizlilik</a> · <a class="bz-link" href="emlak-krali-support">Destek</a></p>
+          <p class="bz-credit">Harita verisi © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, ODbL. Emlak Kralı bir Hawk &amp; Mason Studios oyunudur.</p>
+        </section>
+      </div>
+
+      <hr class="bz-divider" />
+
+      <!-- ============================ ENGLISH ============================ -->
+      <div id="en" lang="en">
+        <section class="w-hero">
+          <div>
+            <span class="w-badge">Coming soon</span>
+            <h1 class="w-title w-title--en">Estate King<span class="w-tag">Istanbul</span></h1>
+            <p class="w-lede">Every building in Kadıköy is real, and for sale.</p>
+            <p class="w-sub">
+              Estate King is a real-estate game set in an isometric Istanbul drawn
+              from data. Kadıköy's 4,871 buildings are rendered from
+              OpenStreetMap data with our own 3D model. Start with your
+              grandmother's flat; buy, renovate, rent out, take over the building
+              and outpace rival investors.
+            </p>
+            <div class="store-row">
+              <span class="store-pill store-pill--ios store-pill--soon">
+                <span class="store-kicker">Coming soon on the</span><span class="store-name">App Store</span>
+              </span>
+            </div>
+            <p class="g-hero-meta" style="color: var(--w-muted);">
+              For iPhone, Turkish only for now. <strong>Coming soon to the App Store.</strong>
+            </p>
+            <p class="bz-lang"><a href="#tr" hreflang="tr" lang="tr">Türkçe ↑</a></p>
+          </div>
+          <div class="w-hero-art" aria-hidden="true">
+            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/miras.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
+          </div>
+        </section>
+
+        <section class="w-feat">
+          <dl class="bz-rows">
+            <div class="bz-row"><dt>Building by building</dt><dd>Buy flats and shops one at a time; own more than half and you manage it, service fees flow to you; retrofit old buildings.</dd></div>
+            <div class="bz-row"><dt>Career</dt><dd>Five chapters, three rivals, then the titles of the Kadıköy Career. Offline, pausable.</dd></div>
+            <div class="bz-row"><dt>Live Kadıköy</dt><dd>A new world every Monday, up to 60 players, a game month every two hours, 14-day seasons.</dd></div>
+            <div class="bz-row"><dt>Every week</dt><dd>The Weekly Race and six leagues from Haydarpaşa to Fenerbahçe; the Kadıköy Album; Game Center achievements.</dd></div>
+            <div class="bz-row"><dt>Fair</dt><dd>Free. No gameplay advantage is sold, no energy timers, no third-party ads. Optional billboard rental gives no power in the game.</dd></div>
+          </dl>
+          <div class="bz-shots">
+            <figure><img src="assets/emlak-krali/miras.webp" alt="Chapter 1: a gold arrow over the Moda building where the player's grandmother left three flats" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/panolar.webp" alt="Moda from above, with rooftop billboards for invented Kadıköy shops and Sugar Tiles" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/deger.webp" alt="A building card on Lütfübey Sokağı with the &quot;Değer neden bu?&quot; value breakdown" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/firsat.webp" alt="Günün Fırsatı: one building of the day offered 12 percent below its value" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/album.webp" alt="Kadıköy Albümü: landmark cards such as Moda İskelesi and Haydarpaşa Camii" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+          </div>
+        </section>
+
+        <section class="w-cta bz-soon">
+          <img class="bz-icon" src="assets/emlak-krali/ikon.webp" alt="Emlak Kralı app icon: the Moda pier from above" width="264" height="264" loading="lazy" decoding="async" />
+          <p class="bz-note"><a class="bz-link" href="emlak-krali-privacy">Privacy</a> · <a class="bz-link" href="emlak-krali-support">Support</a></p>
+          <p class="bz-credit">Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, ODbL. Estate King is a Hawk &amp; Mason Studios game.</p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="emlak-krali-support"><span lang="tr">Destek</span> / <span lang="en">Support</span></a>
+        <a href="emlak-krali-privacy"><span lang="tr">Gizlilik</span> / <span lang="en">Privacy</span></a>
+        <a href="mailto:hello@hawkmason.com"><span lang="tr">İletişim</span> / <span lang="en">Contact</span></a>
+        <a href="/">Studio</a>
+      </nav>
+      <p class="foot-legal"><span lang="tr">Harita verisi</span> / <span lang="en">Map data</span> © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, ODbL 1.0</p>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. <span lang="tr">Tüm hakları saklıdır.</span> / <span lang="en">All rights reserved.</span></p>
+    </footer>
+  </body>
+</html>
