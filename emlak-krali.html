@@ -4,11 +4,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason</title>
-    <meta name="description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı oynanır, satın alma yok." />
+    <meta name="description" content="Kadıköy'ün gerçek binalarında daire al, kiraya ver, binayı yönet. Canlı Kadıköy'de iki haftalık sezonlarda 60 oyuncuya kadar gerçek rakip." />
     <link rel="canonical" href="https://hawkmason.com/emlak-krali" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
     <meta property="og:title" content="Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason" />
-    <meta property="og:description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı oynanır, satın alma yok." />
+    <meta property="og:description" content="Kadıköy'ün gerçek binalarında daire al, kiraya ver, binayı yönet. Canlı Kadıköy'de iki haftalık sezonlarda 60 oyuncuya kadar gerçek rakip." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/emlak-krali" />
     <meta property="og:locale" content="tr_TR" />
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="iPhone'da Emlak Kralı: izometrik bir şehir olarak çizilmiş Kadıköy" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Emlak Kralı: İstanbul Emlak Oyunu · Hawk &amp; Mason" />
-    <meta name="twitter:description" content="Veriden çizilmiş izometrik Kadıköy'de gerçek binaları al, yenile, kiraya ver. Çevrimdışı oynanır, satın alma yok." />
+    <meta name="twitter:description" content="Kadıköy'ün gerçek binalarında daire al, kiraya ver, binayı yönet. Canlı Kadıköy'de iki haftalık sezonlarda 60 oyuncuya kadar gerçek rakip." />
     <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-emlak-krali.png" />
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
@@ -65,6 +65,25 @@
       .bz-lang { margin: 14px 0 0; font-size: 0.95rem; }
       .bz-lang a { color: var(--w-azure); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
       .bz-divider { max-width: 1112px; margin: 0 auto; border: 0; border-top: 1px solid var(--w-line); }
+      .bz-section { max-width: 1160px; margin: 0 auto; padding: 24px 24px 72px; }
+      .bz-h2 { color: #fff; font: 700 clamp(1.7rem, 3.6vw, 2.5rem)/1.15 var(--display); text-align: center; margin: 0 0 12px; }
+      .bz-intro { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 0 auto; text-align: center; }
+      .bz-shots figcaption { color: var(--w-muted); font-size: 0.9rem; line-height: 1.5; margin-top: 12px; }
+      .bz-shots figcaption b { color: var(--w-ink); font-weight: 600; display: block; }
+      .bz-wide { max-width: 980px; margin: 40px auto 0; }
+      .bz-wide img { display: block; width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--w-line); box-shadow: 0 26px 60px -26px rgba(0, 0, 0, 0.9); }
+      .bz-wide figcaption { color: var(--w-muted); font-size: 0.9rem; line-height: 1.5; margin-top: 12px; text-align: center; }
+      .bz-live { max-width: 860px; margin: 0 auto; padding: 8px 24px 72px; }
+      .bz-steps { list-style: none; counter-reset: bz; padding: 0; margin: 30px 0 0; }
+      .bz-steps li { counter-increment: bz; position: relative; padding: 14px 0 14px 52px; border-top: 1px solid var(--w-line); color: var(--w-ink); line-height: 1.65; }
+      .bz-steps li:last-child { border-bottom: 1px solid var(--w-line); }
+      .bz-steps li::before { content: counter(bz); position: absolute; left: 0; top: 13px; width: 34px; height: 34px; border-radius: 50%; background: rgba(233, 185, 73, 0.15); color: var(--w-azure); font: 700 1rem/34px var(--display); text-align: center; }
+      .bz-steps strong { color: #fff; }
+      .bz-podium { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(8px, 2vw, 14px); margin: 28px 0 0; }
+      .bz-podium div { background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 18px; padding: 18px 6px; text-align: center; }
+      .bz-podium b { display: block; color: var(--w-azure); font: 700 clamp(1.3rem, 5vw, 1.9rem)/1.1 var(--display); }
+      .bz-podium span { color: var(--w-muted); font-size: 0.9rem; }
+      .bz-small { color: var(--w-muted); font-size: 0.92rem; line-height: 1.6; margin: 16px 0 0; }
       @media (max-width: 640px) {
         .bz-row { grid-template-columns: 1fr; gap: 4px; }
       }
@@ -82,19 +101,21 @@
           "@id": "https://hawkmason.com/emlak-krali#game",
           "name": "Emlak Kralı: İstanbul",
           "alternateName": ["Emlak Kralı", "Estate King: Istanbul"],
-          "description": "A real-estate game set in an isometric Istanbul drawn from data. Kadıköy's 4,871 buildings are rendered from OpenStreetMap data with our own 3D model: buy, renovate and rent out flats and shops, take over the building and outpace rival investors. Free: no purchases, no energy timers, no third-party ads.",
+          "description": "A real-estate game set in an isometric Istanbul drawn from data. Kadıköy's 4,871 buildings are rendered from OpenStreetMap data with our own 3D model: buy flats and shops, rent them out, take over the building. Play a five-chapter offline career, or join Live Kadıköy, a shared 14-day online season with up to 60 players. Free: no energy timers, no ad networks, no power for sale; the only paid item is renting a billboard on the map.",
           "url": "https://hawkmason.com/emlak-krali",
           "image": "https://hawkmason.com/assets/og/og-emlak-krali.png",
           "screenshot": [
-            "https://hawkmason.com/assets/emlak-krali/miras.webp",
-            "https://hawkmason.com/assets/emlak-krali/panolar.webp",
-            "https://hawkmason.com/assets/emlak-krali/deger.webp",
-            "https://hawkmason.com/assets/emlak-krali/firsat.webp",
-            "https://hawkmason.com/assets/emlak-krali/album.webp"
+            "https://hawkmason.com/assets/emlak-krali/giris-canli.webp",
+            "https://hawkmason.com/assets/emlak-krali/semt.webp",
+            "https://hawkmason.com/assets/emlak-krali/katman-ulasim.webp",
+            "https://hawkmason.com/assets/emlak-krali/bulten.webp",
+            "https://hawkmason.com/assets/emlak-krali/pano-kirala.webp",
+            "https://hawkmason.com/assets/emlak-krali/altin-saat.webp",
+            "https://hawkmason.com/assets/emlak-krali/ipad.webp"
           ],
           "genre": ["Simulation", "Strategy", "Tycoon"],
-          "gamePlatform": ["iPhone"],
-          "operatingSystem": "iOS",
+          "gamePlatform": ["iPhone", "iPad"],
+          "operatingSystem": "iOS, iPadOS",
           "applicationCategory": "GameApplication",
           "playMode": ["SinglePlayer", "MultiPlayer"],
           "inLanguage": "tr",
@@ -135,12 +156,14 @@
           <div>
             <span class="w-badge">Yakında</span>
             <h1 class="w-title">Emlak Kralı<span class="w-tag">İstanbul</span></h1>
-            <p class="w-lede">Kadıköy'deki her bina gerçek ve satılık.</p>
+            <p class="w-lede">Kadıköy'deki her bina gerçek ve satılık. Artık rakiplerin de gerçek.</p>
             <p class="w-sub">
               Emlak Kralı, veriden çizilmiş izometrik bir İstanbul'da geçen bir emlak
               oyunu. Kadıköy'ün 4.871 binası OpenStreetMap verisinden kendi 3B
-              modelimizle çizildi. Babaannenin dairesiyle başla; al, yenile,
-              kiraya ver, binanın yönetimini kap, rakip yatırımcıları geç.
+              modelimizle çizildi: kiremit çatılar, balkonlar, iskeleler, vapurlar.
+              Babaannenden kalan daireyle başla; daire daire al, kiraya ver,
+              binanın yönetimini kap. Kariyerde Mehpare Yapı'yla, Canlı Kadıköy'de
+              gerçek oyuncularla yarış.
             </p>
             <div class="store-row">
               <span class="store-pill store-pill--ios store-pill--soon">
@@ -148,30 +171,62 @@
               </span>
             </div>
             <p class="g-hero-meta" style="color: var(--w-muted);">
-              iPhone için, şimdilik yalnız Türkçe. <strong>Yakında App Store'da.</strong>
+              iPhone ve iPad için, şimdilik yalnız Türkçe. <strong>Yakında App Store'da.</strong>
             </p>
             <p class="bz-lang"><a href="#en" hreflang="en" lang="en">English ↓</a></p>
           </div>
           <div class="w-hero-art" aria-hidden="true">
-            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/miras.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
-            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/semt.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris-canli.webp" alt="" width="644" height="1400" decoding="async" style="height:auto" /></div>
           </div>
         </section>
 
         <section class="w-feat">
+          <h2 class="bz-h2">Daire daire al, binayı yönet</h2>
+          <p class="bz-intro">Semtten sokağa, sokaktan binaya in. Her binanın kartında katı, yaşı, değeri, kirası ve "Değer neden bu?" dökümü var: deniz, park, cadde, iskele, gürültü.</p>
           <dl class="bz-rows">
-            <div class="bz-row"><dt>Bina bina</dt><dd>Daire ve dükkânları tek tek al; yarıdan fazlası seninse yönetim sende, aidat sana akar; eski binaları güçlendir.</dd></div>
-            <div class="bz-row"><dt>Kariyer</dt><dd>Beş bölüm, üç rakip, sonra Kadıköy Kariyeri'nin unvanları. Çevrimdışı, duraklatılabilir.</dd></div>
-            <div class="bz-row"><dt>Her hafta</dt><dd>Haftalık Yarış ve Haydarpaşa'dan Fenerbahçe'ye altı lig; Kadıköy Albümü; Game Center başarıları.</dd></div>
-            <div class="bz-row"><dt>Adil</dt><dd>Ücretsiz. Satın alma yok, enerji yok, reklam yok.</dd></div>
+            <div class="bz-row"><dt>Bina bina</dt><dd>Daireleri ve dükkânları tek tek satın al. Bir binadaki dairelerin yarısından fazlası seninse yönetim sende, öteki ev sahipleri sana aidat öder. Yenile, cepheyi elden geçir, eski binayı depreme karşı güçlendir, kiracını sen seç.</dd></div>
+            <div class="bz-row"><dt>Canlı Kadıköy</dt><dd>Gerçek oyuncularla aynı haritada, iki haftalık sezonlar. Bir dünyada 60 oyuncuya kadar ve üç yatırım fonu. Oyuncular listesinde kimin bu sezonda, kimin şu an bağlı olduğunu görürsün.</dd></div>
+            <div class="bz-row"><dt>Kariyer</dt><dd>Beş bölüm, Moda'dan Kadıköy'ün tamamına. Her bölümde tek bir açık hedef ve seni geçmeye çalışan bir rakip; kentsel dönüşümcü Mehpare Yapı bunların en inatçısı. Sonra Kadıköy Kariyeri'nin unvanları. Çevrimdışı oynanır, duraklatılır.</dd></div>
+            <div class="bz-row"><dt>Haritayı oku</dt><dd>Dört katman: Sahipler, Kira, Değer, Ulaşım. Kimin nerede güçlü olduğunu, kiranın nerede yüksek olduğunu, iskeleye ve raya en yakın binaları tek bakışta gör.</dd></div>
+            <div class="bz-row"><dt>Piyasa Bülteni</dt><dd>Sen yokken rakipler ne aldı, ay ay oku. Bir satıra dokun, harita oraya gitsin. Duyurulan olaylar da kısa görevler getirir.</dd></div>
+            <div class="bz-row"><dt>Panonu kirala</dt><dd>Haritadaki bir reklam panosuna adını ve sloganını yaz; yazdıkça pano haritada değişir. Ödeme Apple ile, 30 gün, kendiliğinden yenilenmez. Pano oyunda güç vermez.</dd></div>
+            <div class="bz-row"><dt>Yaşayan şehir</dt><dd>Sokaklarda arabalar ve insanlar, iskelelerde vapurlar, rayda Marmaray treni, şantiyelerde vinçler. Hava değişir, bir sokak kedisi dolaşır, akşamüstü şehir altın saate döner, gece pencereler yanar.</dd></div>
+            <div class="bz-row"><dt>Her hafta</dt><dd>Haftalık Yarış ve Haydarpaşa'dan Fenerbahçe'ye altı lig; Günün Fırsatı; Kadıköy Albümü; Game Center başarıları.</dd></div>
+            <div class="bz-row"><dt>Adil</dt><dd>Ücretsiz. Enerji yok, bekleme süresi yok, oyunda güç satılmaz; tek ücretli şey pano kiralamak. Reklam ağı yok, geçiş reklamı yok, takip yok.</dd></div>
           </dl>
           <div class="bz-shots">
-            <figure><img src="assets/emlak-krali/miras.webp" alt="Bölüm 1: babaannenin üç daire bıraktığı Moda'daki binanın üzerinde altın bir ok" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/panolar.webp" alt="Yukarıdan Moda: çatılarda uydurma Kadıköy dükkânlarının ve Sugar Tiles'ın reklam panoları" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/deger.webp" alt="Lütfübey Sokağı'nda bir bina kartı ve &quot;Değer neden bu?&quot; dökümü" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/firsat.webp" alt="Günün Fırsatı: günün binası değerinin yüzde 12 altında satışta" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/album.webp" alt="Kadıköy Albümü: Moda İskelesi ve Haydarpaşa Camii gibi simge yapı kartları" width="644" height="1400" loading="lazy" decoding="async" /></figure>
+            <figure><img src="assets/emlak-krali/giris-canli.webp" alt="Başlık ekranı: Moda kıyısı üzerinde Emlak Kralı İstanbul logosu, Devam et düğmesi ve Canlı Kadıköy kartı" width="644" height="1400" loading="lazy" decoding="async" /><figcaption><b>Kariyer ya da canlı</b>Başlık ekranından ikisine de tek dokunuşla.</figcaption></figure>
+            <figure><img src="assets/emlak-krali/semt.webp" alt="Yukarıdan Moda koyu ve Kadıköy: Caferağa ve Osmanağa mahallelerinin kiremit çatıları, koyda vapurlar" width="644" height="1400" loading="lazy" decoding="async" /><figcaption><b>4.871 gerçek bina</b>Moda koyundan Osmanağa'ya, hepsi veriden.</figcaption></figure>
+            <figure><img src="assets/emlak-krali/katman-ulasim.webp" alt="Ulaşım katmanı: iskeleye ve raya yakın binalar kırmızı, uzak olanlar mavi" width="644" height="1400" loading="lazy" decoding="async" /><figcaption><b>Harita katmanları</b>Ulaşım katmanında iskeleye ve raya en yakın binalar kırmızı.</figcaption></figure>
+            <figure><img src="assets/emlak-krali/bulten.webp" alt="Piyasa Bülteni: Fehmi Bey, Firuze Hanım ve Mehpare Yapı'nın ay ay aldığı mülkler" width="644" height="1400" loading="lazy" decoding="async" /><figcaption><b>Piyasa Bülteni</b>Rakiplerin ay ay ne aldığı; satıra dokun, harita oraya gitsin.</figcaption></figure>
+            <figure><img src="assets/emlak-krali/pano-kirala.webp" alt="Panoyu kirala formu: Moda Simit adı ve slogan yazılınca haritadaki pano da aynı anda değişiyor" width="644" height="1350" loading="lazy" decoding="async" /><figcaption><b>Canlı önizleme</b>Yazdıkça hem formdaki hem haritadaki pano değişir.</figcaption></figure>
+            <figure><img src="assets/emlak-krali/altin-saat.webp" alt="Altın saatte Moda sokakları; Nevin Teyze oyuncuyu karşılıyor, altın ok babaannenin binasını gösteriyor" width="644" height="1400" loading="lazy" decoding="async" /><figcaption><b>Bölüm 1: Miras</b>Babaannenin binası, komşu Nevin Teyze ve altın saat ışığı.</figcaption></figure>
           </div>
+          <figure class="bz-wide">
+            <img src="assets/emlak-krali/ipad.webp" alt="iPad'de yatay ekran: Moda'nın geniş bir görünümü, solda bölüm hedefi ve alt menü, çatılarda kurmaca dükkân panoları" width="1200" height="900" loading="lazy" decoding="async" />
+            <figcaption>iPad'de büyük ekran: harita kenardan kenara, paneller yanda.</figcaption>
+          </figure>
+        </section>
+
+        <section class="bz-live" id="canli">
+          <h2 class="bz-h2">Canlı Kadıköy nasıl işler</h2>
+          <p class="bz-intro">Herkes aynı Kadıköy'de, aynı ilanlar için yarışır. Kurallar sunucuda işler; sen yokken de dünya akar.</p>
+          <ol class="bz-steps">
+            <li><strong>Tek ortak sezon, 14 gün.</strong> Yeni sezon iki haftada bir pazartesi saat 10:00'da (İstanbul) açılır. Sezonun her günü katılabilirsin.</li>
+            <li><strong>Game Center ile gir.</strong> Adın Game Center takma adındır.</li>
+            <li><strong>60 oyuncu ve 3 fon.</strong> Bir dünyada 60 oyuncuya kadar gerçek rakip ve "Fon" etiketli üç yatırım şirketi var. Dünya dolarsa aynı sezonun ikinci dünyası açılır.</li>
+            <li><strong>Kim burada, görürsün.</strong> Oyuncular listesi bu sezonda kimin oynadığını ve kimin şu an bağlı olduğunu gösterir. Uygunsuz bir adı uzun basıp gizleyebilir ya da şikâyet edebilirsin.</li>
+            <li><strong>Sezon sonunda sıralama donar.</strong> Net serveti en yüksek üç oyuncu Onur listesine yazılır ve kalıcı bir unvan alır. İlk üçün özel bir rozeti olur.</li>
+            <li><strong>Şampiyona küçük bir avantaj.</strong> İlk üç, bir sonraki sezona biraz daha fazla başlangıç akçesiyle girer. Avantaj yalnız o bir sezon içindir; sonra herkes yine eşit başlar.</li>
+            <li><strong>Kariyerin bekler.</strong> "Kariyere dön" seni kariyerinde kaldığın yere götürür; canlı dünya kariyerine dokunmaz.</li>
+          </ol>
+          <div class="bz-podium" aria-label="Bir sonraki sezonun başlangıç akçesi">
+            <div><b>+%10</b><span>1. sıra</span></div>
+            <div><b>+%6</b><span>2. sıra</span></div>
+            <div><b>+%3</b><span>3. sıra</span></div>
+          </div>
+          <p class="bz-small">Başlangıç akçesine eklenir, yalnız bir sonraki sezonda geçerlidir. Canlı Kadıköy verilerini istediğin an Ayarlar → "Canlı Kadıköy verilerimi sil" ile silebilirsin.</p>
         </section>
 
         <section class="w-cta bz-soon" id="soon">
@@ -189,13 +244,14 @@
           <div>
             <span class="w-badge">Coming soon</span>
             <h1 class="w-title w-title--en">Estate King<span class="w-tag">Istanbul</span></h1>
-            <p class="w-lede">Every building in Kadıköy is real, and for sale.</p>
+            <p class="w-lede">Every building in Kadıköy is real, and for sale. Now your rivals are real too.</p>
             <p class="w-sub">
               Estate King is a real-estate game set in an isometric Istanbul drawn
               from data. Kadıköy's 4,871 buildings are rendered from
               OpenStreetMap data with our own 3D model. Start with your
-              grandmother's flat; buy, renovate, rent out, take over the building
-              and outpace rival investors.
+              grandmother's flat; buy flat by flat, rent out, take over the
+              building. Race the developer Mehpare Yapı in the career, or real
+              players in Live Kadıköy.
             </p>
             <div class="store-row">
               <span class="store-pill store-pill--ios store-pill--soon">
@@ -203,30 +259,36 @@
               </span>
             </div>
             <p class="g-hero-meta" style="color: var(--w-muted);">
-              For iPhone, Turkish only for now. <strong>Coming soon to the App Store.</strong>
+              For iPhone and iPad, Turkish only for now. <strong>Coming soon to the App Store.</strong>
             </p>
             <p class="bz-lang"><a href="#tr" hreflang="tr" lang="tr">Türkçe ↑</a></p>
           </div>
           <div class="w-hero-art" aria-hidden="true">
-            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/miras.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
-            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-back"><img src="assets/emlak-krali/semt.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
+            <div class="w-phone w-phone-front"><img src="assets/emlak-krali/giris-canli.webp" alt="" width="644" height="1400" loading="lazy" decoding="async" style="height:auto" /></div>
           </div>
         </section>
 
         <section class="w-feat">
           <dl class="bz-rows">
-            <div class="bz-row"><dt>Building by building</dt><dd>Buy flats and shops one at a time; own more than half and you manage it, service fees flow to you; retrofit old buildings.</dd></div>
-            <div class="bz-row"><dt>Career</dt><dd>Five chapters, three rivals, then the titles of the Kadıköy Career. Offline, pausable.</dd></div>
-            <div class="bz-row"><dt>Every week</dt><dd>The Weekly Race and six leagues from Haydarpaşa to Fenerbahçe; the Kadıköy Album; Game Center achievements.</dd></div>
-            <div class="bz-row"><dt>Fair</dt><dd>Free. No purchases, no energy timers, no ads.</dd></div>
+            <div class="bz-row"><dt>Building by building</dt><dd>Buy flats and shops one at a time; own more than half and you manage the building, service fees flow to you. Renovate, retrofit old buildings, choose your tenants.</dd></div>
+            <div class="bz-row"><dt>Live Kadıköy</dt><dd>Real players on the same map in two-week seasons: up to 60 players and three investment funds per world, with a list of who is playing and who is online now.</dd></div>
+            <div class="bz-row"><dt>Career</dt><dd>Five chapters from Moda to all of Kadıköy, each with one clear goal and a rival, then the titles of the Kadıköy Career. Offline, pausable.</dd></div>
+            <div class="bz-row"><dt>Read the map</dt><dd>Four layers (owners, rent, value, transport), a market bulletin of what rivals bought while you were away, and short goals from announced events.</dd></div>
+            <div class="bz-row"><dt>Rent a billboard</dt><dd>Write your name and slogan on a billboard on the map and watch it change as you type. Paid through Apple, 30 days, no auto-renewal, no gameplay advantage.</dd></div>
+            <div class="bz-row"><dt>A living city</dt><dd>Cars and people, ferries, the Marmaray train, cranes, changing weather, a street cat, golden hour and lit windows at night. iPad layout included.</dd></div>
+            <div class="bz-row"><dt>Fair</dt><dd>Free. No energy timers, no power for sale; the only paid item is a billboard. No ad networks, no tracking.</dd></div>
           </dl>
-          <div class="bz-shots">
-            <figure><img src="assets/emlak-krali/miras.webp" alt="Chapter 1: a gold arrow over the Moda building where the player's grandmother left three flats" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/panolar.webp" alt="Moda from above, with rooftop billboards for invented Kadıköy shops and Sugar Tiles" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/deger.webp" alt="A building card on Lütfübey Sokağı with the &quot;Değer neden bu?&quot; value breakdown" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/firsat.webp" alt="Günün Fırsatı: one building of the day offered 12 percent below its value" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-            <figure><img src="assets/emlak-krali/album.webp" alt="Kadıköy Albümü: landmark cards such as Moda İskelesi and Haydarpaşa Camii" width="644" height="1400" loading="lazy" decoding="async" /></figure>
-          </div>
+        </section>
+
+        <section class="bz-live">
+          <h2 class="bz-h2">How Live Kadıköy works</h2>
+          <ol class="bz-steps">
+            <li><strong>One shared 14-day season.</strong> A new one opens every second Monday at 10:00 Istanbul time; you can join on any day.</li>
+            <li><strong>Sign in with Game Center.</strong> Up to 60 players and 3 funds share one world; a second world opens when it is full.</li>
+            <li><strong>Hall of honours.</strong> At the end the top three by net wealth go on the Onur listesi, earn a permanent title and a special badge.</li>
+            <li><strong>A small head start.</strong> Next season only, the top three start with extra akçe: 1st +10%, 2nd +6%, 3rd +3%.</li>
+          </ol>
         </section>
 
         <section class="w-cta bz-soon">
