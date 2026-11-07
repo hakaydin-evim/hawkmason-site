@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>EASA FTL calculator: maximum FDP and minimum rest</title>
+    <meta name="description" content="Free EASA FTL calculator: maximum daily flight duty period by report time and sectors (ORO.FTL.205), minimum rest (ORO.FTL.235) and the cumulative limits, in your browser." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://hawkmason.com/crewops/ftl-calculator" />
+    <meta name="apple-itunes-app" content="app-id=6811512361" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="EASA FTL calculator: maximum FDP and minimum rest" />
+    <meta property="og:description" content="Pick a report time and a sector count: the maximum FDP, the latest on-blocks and the minimum rest after it, from the EASA ORO.FTL tables." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/ftl-calculator" />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/bugun.png?v=2" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebApplication",
+   "@id": "https://hawkmason.com/crewops/ftl-calculator#tool",
+   "name": "EASA FTL calculator",
+   "url": "https://hawkmason.com/crewops/ftl-calculator",
+   "applicationCategory": "UtilitiesApplication",
+   "operatingSystem": "Any (web browser)",
+   "description": "Maximum daily flight duty period by local report time and number of sectors, for acclimatised crew and crew in an unknown state of acclimatisation, plus minimum rest, from the EASA ORO.FTL tables.",
+   "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+   "inLanguage": "en",
+   "dateModified": "2026-11-07",
+   "publisher": { "@id": "https://hawkmason.com/#studio" }
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    { "@type": "Question", "name": "What is the maximum FDP under EASA rules?",
+      "acceptedAnswer": { "@type": "Answer", "text": "For an acclimatised crew member the basic maximum daily FDP is 13 hours for 1 or 2 sectors reporting between 06:00 and 13:29 local time. It falls by 30 minutes for each sector from the third, down to 9 hours, and is shorter for reports in the afternoon, evening and night. For an unknown state of acclimatisation it starts at 11 hours." } },
+    { "@type": "Question", "name": "What is the minimum rest under EASA FTL?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Before an FDP starting at home base, at least as long as the preceding duty period or 12 hours, whichever is greater. Away from home base, at least as long as the preceding duty period or 10 hours, whichever is greater, including an 8-hour sleep opportunity." } },
+    { "@type": "Question", "name": "Do UK CAA and Turkish SHGM use the same FDP table?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The UK kept the EASA ORO.FTL structure after leaving the EU, and the Turkish SHT-FTL follows the same model. Operators can hold approved variations, so the operations manual of your airline is the reference that applies to you." } },
+    { "@type": "Question", "name": "What is the WOCL?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The window of circadian low, 02:00 to 05:59 in the time zone the crew member is acclimatised to. Duties that touch it carry tighter limits on extensions and on disruptive schedules." } }
+   ]
+  }
+ ]
+}
+    </script>
+    <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="stylesheet" href="/styles.css?v=33" />
+    <script src="/app.js?v=25" defer></script>
+    <style>
+      .calc { max-width: 760px; margin: 0 auto; padding: 0 20px; }
+      .calc-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 18px; padding: 20px; }
+      .calc-form label { display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--w-muted); }
+      .calc-form input, .calc-form select { font: inherit; font-size: 1rem; text-transform: none; letter-spacing: 0; color: var(--w-ink); background: rgba(0, 0, 0, 0.25); border: 1px solid var(--w-line); border-radius: 10px; padding: 10px 12px; }
+      .calc-out { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 16px; }
+      .calc-out div { background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 16px; padding: 16px; }
+      .calc-out b { display: block; font-size: 1.9rem; color: var(--w-ink); font-variant-numeric: tabular-nums; }
+      .calc-out span { font-size: 0.8rem; color: var(--w-muted); }
+      .calc-note { font-size: 0.85rem; color: var(--w-muted); margin-top: 14px; }
+      .prose { max-width: 760px; margin: 0 auto; padding: 0 20px; color: var(--w-ink); line-height: 1.6; }
+      .prose h2 { color: #fff; margin-top: 2.2em; }
+      .prose p, .prose li { color: var(--w-ink); }
+      .prose a { color: var(--w-azure); }
+      .tbl-wrap { overflow-x: auto; }
+      .tbl { border-collapse: collapse; font-size: 0.85rem; font-variant-numeric: tabular-nums; min-width: 640px; }
+      .tbl th, .tbl td { border-bottom: 1px solid var(--w-line); padding: 6px 8px; text-align: right; white-space: nowrap; }
+      .tbl th:first-child, .tbl td:first-child { text-align: left; }
+      .tbl tr.hit td { background: rgba(63, 182, 245, 0.16); }
+    </style>
+  </head>
+  <body class="crew" data-page="crewops">
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="/crewops" aria-label="Back to Crewops">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--azure" href="https://apps.apple.com/app/id6811512361" target="_blank" rel="noopener">Get Crewops</a>
+      </div>
+    </header>
+    <main>
+      <section class="w-hero" style="grid-template-columns: 1fr;">
+        <div class="calc" style="padding: 0;">
+          <span class="w-badge">Free tool · EASA ORO.FTL</span>
+          <h1 class="w-title" style="font-size: clamp(2rem, 6vw, 3.2rem);">EASA FTL calculator</h1>
+          <p class="w-sub">Enter your local report time and the number of sectors. You get the maximum daily flight duty period, the latest time it allows and the minimum rest after it. Nothing you type leaves this page.</p>
+        </div>
+      </section>
+
+      <section class="calc" aria-label="Calculator">
+        <form class="calc-form" id="calc" onsubmit="return false">
+          <label>Report time (local)
+            <input type="time" id="report" value="06:30" required />
+          </label>
+          <label>Sectors
+            <select id="sectors">
+              <option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option>
+              <option>6</option><option>7</option><option>8</option><option>9</option><option value="10">10 or more</option>
+            </select>
+          </label>
+          <label>Acclimatisation
+            <select id="state">
+              <option value="B">Acclimatised (home time or local)</option>
+              <option value="X">Unknown state</option>
+            </select>
+          </label>
+          <label>Next duty starts
+            <select id="base">
+              <option value="home">At home base</option>
+              <option value="away">Away from home base</option>
+            </select>
+          </label>
+        </form>
+        <div class="calc-out" aria-live="polite">
+          <div><b id="o-fdp">13:00</b><span>Maximum FDP</span></div>
+          <div><b id="o-end">19:30</b><span>Latest end of FDP, local</span></div>
+          <div><b id="o-rest">12:00</b><span>Minimum rest after a duty of that length</span></div>
+        </div>
+        <p class="calc-note" id="o-wocl"></p>
+        <p class="calc-note">Basic maximum without extensions, in-flight rest or split duty. Your airline's operations manual may hold approved variations, and the authority that oversees your airline (EASA, UK CAA, SHGM) is the one that counts. Check it before you rely on a number; this page is a reference, not an operational tool.</p>
+      </section>
+
+      <section class="prose">
+        <h2>How the maximum FDP is set</h2>
+        <p>Under ORO.FTL.205(b) the basic maximum daily FDP depends on two things: the local time you report, in the time zone you are acclimatised to, and how many sectors you fly. The best case is 13 hours for one or two sectors reporting between 06:00 and 13:29. Each sector from the third takes 30 minutes off, down to a floor of 9 hours. Afternoon and evening reports shorten the day in 15-minute steps; reports from 17:00 to 04:59 start at 11 hours.</p>
+        <p>If you are in an unknown state of acclimatisation, a separate table applies. It starts at 11 hours whatever the report time.</p>
+
+        <h2>Maximum daily FDP, acclimatised crew</h2>
+        <p>Hours:minutes by local report time (rows) and sectors (columns). The row for the time you entered is highlighted.</p>
+        <div class="tbl-wrap"><table class="tbl" id="tbl"></table></div>
+
+        <h2>Minimum rest</h2>
+        <p>ORO.FTL.235 sets the minimum rest before an FDP. At home base it is at least as long as the preceding duty period, or 12 hours, whichever is greater. Away from home base it is at least as long as the preceding duty, or 10 hours, whichever is greater, and must include an 8-hour sleep opportunity. A recurrent extended recovery rest of at least 36 hours, including two local nights, is due at least every 168 hours.</p>
+
+        <h2>Cumulative limits</h2>
+        <ul>
+          <li>Duty: 60 hours in any 7 days, 110 hours in any 14 days, 190 hours in any 28 days.</li>
+          <li>Flight time: 100 hours in any 28 days, 900 hours in a calendar year, 1,000 hours in any 12 consecutive months.</li>
+        </ul>
+        <p>These are the limits people miss most often. A single duty can be legal while the week around it is not.</p>
+
+        <h2>Doing this for every duty</h2>
+        <p>Working it out by hand for one duty is fine. For a whole month you would have to track acclimatisation, the WOCL, rest after every sector and the rolling windows, and do it all again whenever the roster changes. <a href="/crewops">Crewops</a> reads the roster your airline already sends you (from the crew portal, a calendar link or a PDF) and does this for every duty, with the same tables as this page. For airlines that publish through NetLine/CrewLink or JetXBit, see <a href="/crewops/jetxbit-netline-roster">how the roster reaches your phone</a>.</p>
+
+        <h2>Questions</h2>
+        <h3>Do UK CAA and SHGM use the same table?</h3>
+        <p>The UK kept the EASA ORO.FTL structure after leaving the EU, and the Turkish SHT-FTL follows the same model. Operators can hold approved variations, so your airline's operations manual is the reference that applies to you.</p>
+        <h3>What is the WOCL?</h3>
+        <p>The window of circadian low: 02:00 to 05:59 in the time zone you are acclimatised to. Duties that touch it face tighter rules on extensions and count as disruptive schedules.</p>
+        <h3>Does this cover FAA Part 117?</h3>
+        <p>Not on this page. The Crewops app handles Part 117 as well.</p>
+
+        <h2>Sources</h2>
+        <ul>
+          <li><a href="https://www.easa.europa.eu/en/document-library/easy-access-rules/online-publications/easy-access-rules-air-operations" rel="noopener">EASA Easy Access Rules for Air Operations</a>: ORO.FTL.105, .205, .210, .235</li>
+          <li><a href="https://regulatorylibrary.caa.co.uk/965-2012/Content/Document%20Structure/03%20ORO/2%20Regs/05130_ORO.FTL.205_Flight_duty_period_FDP.htm" rel="noopener">UK CAA regulatory library: ORO.FTL.205</a></li>
+        </ul>
+        <p class="calc-note">Hawk &amp; Mason Studios · updated 7 November 2026 · <a href="mailto:hello@hawkmason.com">report an error</a></p>
+      </section>
+    </main>
+    <footer class="foot" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/crewops">Crewops</a>
+        <a href="/crewops/jetxbit-netline-roster">JetXBit and NetLine roster</a>
+        <a href="/crewops/faq">Questions</a>
+        <a href="/crewops-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+    <script>
+      // ORO.FTL.205(b) tables, the same values as the Crewops FTL engine (src/lib/ftl-engine/rulesets/easa.ts).
+      const m = (...hm) => hm.reduce((a, v, i) => (i % 2 ? (a[a.length - 1] += v, a) : (a.push(v * 60), a)), []);
+      const ROWS = [
+        ['06:00', '13:29', m(13,0,12,30,12,0,11,30,11,0,10,30,10,0,9,30,9,0)],
+        ['13:30', '13:59', m(12,45,12,15,11,45,11,15,10,45,10,15,9,45,9,15,9,0)],
+        ['14:00', '14:29', m(12,30,12,0,11,30,11,0,10,30,10,0,9,30,9,0,9,0)],
+        ['14:30', '14:59', m(12,15,11,45,11,15,10,45,10,15,9,45,9,15,9,0,9,0)],
+        ['15:00', '15:29', m(12,0,11,30,11,0,10,30,10,0,9,30,9,0,9,0,9,0)],
+        ['15:30', '15:59', m(11,45,11,15,10,45,10,15,9,45,9,15,9,0,9,0,9,0)],
+        ['16:00', '16:29', m(11,30,11,0,10,30,10,0,9,30,9,0,9,0,9,0,9,0)],
+        ['16:30', '16:59', m(11,15,10,45,10,15,9,45,9,15,9,0,9,0,9,0,9,0)],
+        ['17:00', '04:59', m(11,0,10,30,10,0,9,30,9,0,9,0,9,0,9,0,9,0)],
+        ['05:00', '05:14', m(12,0,11,30,11,0,10,30,10,0,9,30,9,0,9,0,9,0)],
+        ['05:15', '05:29', m(12,15,11,45,11,15,10,45,10,15,9,45,9,15,9,0,9,0)],
+        ['05:30', '05:44', m(12,30,12,0,11,30,11,0,10,30,10,0,9,30,9,0,9,0)],
+        ['05:45', '05:59', m(12,45,12,15,11,45,11,15,10,45,10,15,9,45,9,15,9,0)],
+      ];
+      const UNKNOWN = m(11,0,10,30,10,0,9,30,9,0,9,0,9,0,9,0,9,0);
+      const toMin = (s) => { const [h, mm] = s.split(':').map(Number); return h * 60 + mm; };
+      const hhmm = (n) => { n = ((n % 1440) + 1440) % 1440; return String(Math.floor(n / 60)).padStart(2, '0') + ':' + String(n % 60).padStart(2, '0'); };
+      const dur = (n) => Math.floor(n / 60) + ':' + String(n % 60).padStart(2, '0');
+      const inBand = (t, [from, to]) => { const f = toMin(from), e = toMin(to); return f <= e ? t >= f && t <= e : t >= f || t <= e; };
+      const $ = (id) => document.getElementById(id);
+
+      const head = '<tr><th>Report</th>' + ['1–2', '3', '4', '5', '6', '7', '8', '9', '10+'].map((s) => `<th>${s}</th>`).join('') + '</tr>';
+      $('tbl').innerHTML = head + ROWS.map((r, i) => `<tr data-i="${i}"><td>${r[0]}–${r[1]}</td>${r[2].map((v) => `<td>${dur(v)}</td>`).join('')}</tr>`).join('');
+
+      function run() {
+        const t = toMin($('report').value || '06:00');
+        const col = Math.min(8, Math.max(0, Number($('sectors').value) - 2));
+        const known = $('state').value === 'B';
+        const i = ROWS.findIndex((r) => inBand(t, r));
+        const fdp = known ? ROWS[i][2][col] : UNKNOWN[col];
+        const rest = Math.max(fdp, $('base').value === 'home' ? 720 : 600);
+        $('o-fdp').textContent = dur(fdp);
+        $('o-end').textContent = hhmm(t + fdp);
+        $('o-rest').textContent = dur(rest);
+        const end = t + fdp, wocl = [120, 360];
+        const touches = [0, 1440].some((d) => t < wocl[1] + d && end > wocl[0] + d);
+        $('o-wocl').textContent = touches ? 'This duty would touch the WOCL (02:00–05:59): extensions are restricted and it counts as a disruptive schedule.' : '';
+        document.querySelectorAll('#tbl tr[data-i]').forEach((tr) => tr.classList.toggle('hit', known && Number(tr.dataset.i) === i));
+      }
+      ['report', 'sectors', 'state', 'base'].forEach((id) => $(id).addEventListener('input', run));
+      run();
+    </script>
+  </body>
+</html>

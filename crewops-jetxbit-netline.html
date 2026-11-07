@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JetXBit and NetLine/CrewLink roster on your iPhone</title>
+    <meta name="description" content="How to get your JetXBit or NetLine/CrewLink crew roster onto your iPhone: one sign-in, automatic refresh, roster changes shown, duty limits and rest worked out on the phone." />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="https://hawkmason.com/crewops/jetxbit-netline-roster" />
+    <meta name="apple-itunes-app" content="app-id=6811512361" />
+    <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
+    <meta property="og:title" content="JetXBit and NetLine/CrewLink roster on your iPhone" />
+    <meta property="og:description" content="One sign-in, then the roster refreshes on its own. Changes are shown old beside new, and duty limits and rest are worked out on the phone." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://hawkmason.com/crewops/jetxbit-netline-roster" />
+    <meta property="og:image" content="https://hawkmason.com/assets/crewops/roster.png?v=3" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "HowTo",
+   "@id": "https://hawkmason.com/crewops/jetxbit-netline-roster#howto",
+   "name": "Get your JetXBit or NetLine/CrewLink roster onto your iPhone",
+   "inLanguage": "en",
+   "dateModified": "2026-11-07",
+   "publisher": { "@id": "https://hawkmason.com/#studio" },
+   "tool": [{ "@type": "HowToTool", "name": "Crewops for iPhone and iPad" }],
+   "step": [
+    { "@type": "HowToStep", "name": "Install Crewops", "text": "Install Crewops from the App Store. There is no account to create." },
+    { "@type": "HowToStep", "name": "Open Roster sync", "text": "Open Profile, then Roster sync, and pick your airline. If it is not listed, type your portal address." },
+    { "@type": "HowToStep", "name": "Sign in once", "text": "Enter the user name or crew code and the password your airline issued. On JetXBit, enter the code the portal e-mails you on the first sign-in." },
+    { "@type": "HowToStep", "name": "Let it refresh", "text": "The app downloads the roster, reads it and refreshes it when you open the app, at most every 6 hours. Changes show the old time struck through beside the new one." }
+   ]
+  },
+  {
+   "@type": "FAQPage",
+   "mainEntity": [
+    { "@type": "Question", "name": "Does Crewops see my portal password?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. The password stays in the iPhone Keychain and is sent only to your own airline's portal. There is no Crewops server and no account." } },
+    { "@type": "Question", "name": "Why does JetXBit ask for an e-mailed code?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The portal sends a code when you sign in with a password. Crewops keeps the portal session on the device, so the code is asked on the first sign-in and when the session ends, not on every refresh." } },
+    { "@type": "Question", "name": "What happens when NetLine holds my roster behind a change notification?",
+      "acceptedAnswer": { "@type": "Answer", "text": "CrewLink does not release the duty plan until you acknowledge the change. Crewops shows you the notification report and you confirm it yourself inside the app, the same acknowledgement you would give on the portal. The app never confirms on your behalf." } },
+    { "@type": "Question", "name": "My airline uses another system. Can I still use Crewops?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP rosters are read from their roster pages, PDFs or calendar links." } }
+   ]
+  }
+ ]
+}
+    </script>
+    <link rel="icon" href="/assets/crewops/icon.png?v=2" type="image/png" sizes="64x64" />
+    <link rel="stylesheet" href="/styles.css?v=33" />
+    <script src="/app.js?v=25" defer></script>
+    <style>
+      .prose { max-width: 760px; margin: 0 auto; padding: 0 20px; color: var(--w-ink); line-height: 1.6; }
+      .prose h2 { color: #fff; margin-top: 2.2em; }
+      .prose p, .prose li { color: var(--w-ink); }
+      .prose a { color: var(--w-azure); }
+      .steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 12px; }
+      .steps li { counter-increment: s; background: var(--w-panel); border: 1px solid var(--w-line); border-radius: 16px; padding: 16px 16px 16px 58px; position: relative; }
+      .steps li::before { content: counter(s); position: absolute; left: 16px; top: 14px; width: 28px; height: 28px; border-radius: 50%; background: var(--w-azure); color: #071019; font-weight: 700; display: grid; place-items: center; }
+      .shot { display: block; max-width: 280px; width: 100%; margin: 20px auto; border-radius: 28px; border: 1px solid var(--w-line); }
+      .note { font-size: 0.85rem; color: var(--w-muted); }
+    </style>
+  </head>
+  <body class="crew" data-page="crewops">
+    <header class="nav nav--crew" data-nav>
+      <a class="brand" href="/crewops" aria-label="Back to Crewops">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--azure" href="https://apps.apple.com/app/id6811512361" target="_blank" rel="noopener">Get Crewops</a>
+      </div>
+    </header>
+    <main>
+      <section class="w-hero" style="grid-template-columns: 1fr;">
+        <div class="prose" style="padding: 0;">
+          <span class="w-badge">Guide · crew portals</span>
+          <h1 class="w-title" style="font-size: clamp(2rem, 6vw, 3.2rem);">Your JetXBit or NetLine roster on your iPhone</h1>
+          <p class="w-sub">If your airline publishes the roster on a JetXBit or NetLine/CrewLink crew portal, you can stop opening it in the browser. Sign in once in Crewops: the roster comes to the phone, refreshes on its own and shows you what changed.</p>
+        </div>
+      </section>
+
+      <section class="prose">
+        <h2>In four steps</h2>
+        <ol class="steps">
+          <li><strong>Install Crewops</strong> from the App Store, on iPhone or iPad. There is no account to create.</li>
+          <li><strong>Open Profile → Roster sync</strong> and pick your airline. If it is not in the list, type the portal address you normally open in the browser.</li>
+          <li><strong>Sign in once.</strong> NetLine/CrewLink takes your crew code and password. JetXBit takes your portal user name and password, and on the first sign-in the code the portal sends to your e-mail.</li>
+          <li><strong>Let it refresh.</strong> Crewops downloads the roster and reads it. With automatic update on, it refreshes when you open the app, at most every 6 hours.</li>
+        </ol>
+        <img class="shot" src="/assets/crewops/roster.webp?v=3" alt="Crewops roster screen with a month of duties read from a crew portal" width="552" height="1199" loading="lazy" />
+
+        <h2>What you get once it is in</h2>
+        <ul>
+          <li><strong>Changes, old beside new.</strong> When the airline moves a duty, the old time is struck through beside the new one, so you see what changed and when.</li>
+          <li><strong>Your limits for every duty.</strong> Maximum FDP, minimum rest, cumulative duty and flight time, from the EASA ORO.FTL tables (also applied for UK CAA and SHGM) or FAA Part 117. To check a single duty by hand, use the <a href="/crewops/ftl-calculator">EASA FTL calculator</a>.</li>
+          <li><strong>Fatigue and coaching.</strong> A fatigue estimate for each duty, with coaching on sleep, light and caffeine built from your own roster.</li>
+          <li><strong>Logbook.</strong> Confirm a sector and it becomes a logbook row, with EASA and FAA CSV export.</li>
+          <li><strong>Widgets.</strong> A countdown to report on the Home and Lock Screen, and a Live Activity on the day.</li>
+        </ul>
+
+        <h2>NetLine change notifications</h2>
+        <p>CrewLink can hold the duty plan until you acknowledge a roster change. When that happens Crewops does not guess: it shows you the notification report, and you confirm it yourself inside the app. It is the same acknowledgement you would give on the portal, and the app never gives it for you. Once you confirm, the new roster comes in.</p>
+
+        <h2>The JetXBit e-mailed code</h2>
+        <p>JetXBit e-mails a code every time someone signs in with a password. Crewops keeps the portal session on the device, so you enter the code on the first sign-in and again only when the portal ends the session, not on every refresh.</p>
+
+        <h2>Your password and your data</h2>
+        <p>Your portal password stays in the iPhone Keychain and goes only to your own airline's portal, from your phone. There is no Crewops server holding your roster and no account. Your airline sees nothing from the app unless you choose to share it. If your operator does not allow third-party apps to sign in, download the roster PDF from the portal instead: Crewops reads that too.</p>
+
+        <h2>Other crew systems</h2>
+        <p>Crewops also reads AIMS eCrew, CrewConnex, FLiCA, Leon, CAE Crew Access, RAIDO and Sabre CWP from their roster pages, PDFs or calendar links. If your file does not read, the app lets you send us a sample with one tap.</p>
+
+        <h2>Questions</h2>
+        <h3>Is it free?</h3>
+        <p>Crewops is free to use. Automatic roster refresh is part of Crewops Pro, which comes with a one-month free trial.</p>
+        <h3>Does it work for cabin crew?</h3>
+        <p>Yes. Cabin crew get the same roster, limits, rest and fatigue views.</p>
+        <h3>Is there an Android version?</h3>
+        <p>It is on its way to Google Play. Until then, Crewops runs on iPhone and iPad.</p>
+
+        <p class="note" style="margin-top: 2.4em;">Hawk &amp; Mason Studios · updated 7 November 2026 · JetXBit, NetLine and CrewLink are the names of their owners' products; Crewops is not affiliated with them. <a href="mailto:hello@hawkmason.com">hello@hawkmason.com</a></p>
+        <p style="text-align: center; margin: 2em 0;">
+          <a class="store-pill store-pill--ios" href="https://apps.apple.com/app/id6811512361" target="_blank" rel="noopener"><span class="store-kicker">Download on the</span><span class="store-name">App Store</span></a>
+        </p>
+      </section>
+    </main>
+    <footer class="foot" style="border-top: 1px solid var(--w-line);">
+      <div class="foot-brand">
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="/crewops">Crewops</a>
+        <a href="/crewops/ftl-calculator">EASA FTL calculator</a>
+        <a href="/crewops/faq">Questions</a>
+        <a href="/crewops-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
