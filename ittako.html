@@ -10,7 +10,12 @@
     <meta property="og:description" content="A small toy fell off the bed. It has all night to climb back. One finger. Free to play. By Hawk & Mason Studios." />
     <meta property="og:type" content="website" />
     <link rel="canonical" href="https://hawkmason.com/ittako" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/ittako" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/ittako" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/ittako" />
     <meta property="og:url" content="https://hawkmason.com/ittako" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
     <meta property="og:image" content="https://hawkmason.com/assets/og/og-ittako.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-ittako.png" />
@@ -56,8 +61,8 @@
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/ittako/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=27" />
-    <script src="app.js?v=25" defer></script>
+    <link rel="stylesheet" href="styles.css?v=32" />
+    <script src="app.js?v=26" defer></script>
     <style>
       .i-watch { max-width: 1080px; margin: 0 auto; padding: clamp(2rem, 5vw, 3.5rem) clamp(1.1rem, 4vw, 3.5rem); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: clamp(1.5rem, 4vw, 3.5rem); align-items: center; }
       .i-watch-copy h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin: 0.6rem 0 0.8rem; }
@@ -78,7 +83,11 @@
         <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
-      <div class="nav-store">
+      <div class="nav-store nav-store--lang">
+        <nav class="lang-switch" aria-label="Language / Dil">
+          <a href="/tr/ittako" hreflang="tr" lang="tr" data-set-lang="tr" aria-label="Türkçe">TR</a>
+          <a href="/ittako" hreflang="en" lang="en" data-set-lang="en" aria-current="page" aria-label="English">EN</a>
+        </nav>
         <a class="store-btn store-btn--cream" href="#download">Get the game</a>
       </div>
     </header>

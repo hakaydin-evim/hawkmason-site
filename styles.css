@@ -1269,3 +1269,28 @@ body.crew .w-flow--faq .w-flow-row b { color: #fff; font: 700 1.02rem/1.35 var(-
 @media (max-width: 600px) {
   body.crew .w-hero, body.crew .w-feat, body.crew .w-cta, body.crew .w-strip, body.crew .w-prodbar, body.crew .w-fine, body.crew .studio-inner, body.crew .api-sec, body.crew .api-toc, body.crew .faq-toc, body.crew #systems > p { padding-left: 16px; padding-right: 16px; }
 }
+
+/* ============================================================
+   LANGUAGE SWITCH (TR | EN). Home, Sugar Tiles, Ittako, Wirelit, Pondr, Emlak Kralı.
+   Crewops stays English and has no switch. Colours follow the nav's own text
+   colour (currentColor), so one rule fits the light home and every dark page.
+   The choice is saved by app.js (localStorage "hm-lang"); "/" sends a saved TR
+   visitor to /tr/ from an inline script in index.html.
+   ============================================================ */
+.lang-switch { display: inline-flex; align-items: center; flex-shrink: 0; padding: 2px; border-radius: 999px; border: 1px solid color-mix(in srgb, currentColor 26%, transparent); font: 700 0.78rem/1 var(--text); letter-spacing: 0.06em; }
+.lang-switch a { display: inline-flex; align-items: center; justify-content: center; min-width: 38px; min-height: 32px; padding: 0 8px; border-radius: 999px; color: inherit; opacity: 0.62; transition: opacity 0.15s ease, background 0.15s ease; }
+.lang-switch a:hover, .lang-switch a:focus-visible { opacity: 1; }
+.lang-switch a[aria-current] { opacity: 1; background: color-mix(in srgb, currentColor 14%, transparent); }
+.nav-end { display: flex; align-items: center; gap: 0.9rem; }
+.nav-store--lang { display: flex; align-items: center; gap: 0.6rem; }
+.nav--game .lang-switch { color: var(--g-ink); }
+.nav--ittako .lang-switch { color: var(--i-text); }
+.nav--wirelit .lang-switch, .nav--bogaz .lang-switch, .nav--pondr .lang-switch { color: var(--w-ink); }
+@media (max-width: 860px) {
+  .nav-end { margin-left: auto; }
+  .nav.is-open .nav-links { order: 5; }
+}
+@media (max-width: 420px) {
+  .lang-switch a { min-width: 34px; padding: 0 6px; }
+  .nav-store--lang { gap: 0.4rem; }
+}

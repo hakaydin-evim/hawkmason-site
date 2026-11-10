@@ -5,22 +5,32 @@
     <meta name="google-site-verification" content="rnTJU4HD9IMe2Pc9-MGG0rwVdvZdFmJyDGwAh2kpxiY" />
     <meta name="google-site-verification" content="7oxJQPjW_r61_QdAdALvXxGSTGjUknyr0GTsvJydcFo" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script>
+      /* A visitor who chose Türkçe on the language switch lands on /tr/. Default is English;
+         ?lang=en always shows this page. Storage can be blocked: then nothing happens. */
+      try { if (localStorage.getItem('hm-lang') === 'tr' && !/[?&]lang=en\b/.test(location.search)) location.replace('/tr/' + location.hash); } catch (e) {}
+    </script>
     <title>Hawk &amp; Mason Studios — Mobile games &amp; apps</title>
     <meta name="description" content="Hawk & Mason Studios is an independent maker of polished mobile games and apps — Sugar Tiles, Ittako, Wirelit, Crewops and Pondr — and of the Crewops Aviation Platform for airlines." />
     <link rel="canonical" href="https://hawkmason.com/" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/" />
     <meta property="og:title" content="Hawk & Mason Studios" />
     <meta property="og:description" content="Mobile games & apps, crafted to keep. Makers of Sugar Tiles, Ittako, Crewops, Pondr and the Crewops Aviation Platform for airlines." />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Hawk & Mason Studios" />
     <meta property="og:url" content="https://hawkmason.com/" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
     <meta property="og:image" content="https://hawkmason.com/assets/og/og-studio.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-studio.png" />
     <link rel="icon" href="assets/favicon-64.png" type="image/png" sizes="64x64" />
     <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32" />
     <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
-    <link rel="stylesheet" href="styles.css?v=31" />
-    <script src="app.js?v=25" defer></script>
+    <link rel="stylesheet" href="styles.css?v=32" />
+    <script src="app.js?v=26" defer></script>
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -91,7 +101,13 @@
         <a href="#studio">Studio</a>
         <a href="#contact">Contact</a>
       </nav>
-      <a class="nav-cta" href="#games">Our work</a>
+      <div class="nav-end">
+        <nav class="lang-switch" aria-label="Language / Dil">
+          <a href="/tr/" hreflang="tr" lang="tr" data-set-lang="tr" aria-label="Türkçe">TR</a>
+          <a href="/" hreflang="en" lang="en" data-set-lang="en" aria-current="page" aria-label="English">EN</a>
+        </nav>
+        <a class="nav-cta" href="#games">Our work</a>
+      </div>
       <button class="nav-burger" data-burger aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -215,7 +231,7 @@
             </div>
           </a>
 
-          <a class="game-card game-card--bogaz" href="emlak-krali"
+          <a class="game-card game-card--bogaz" href="emlak-krali#en"
              data-portal data-veil="#0E1B33" data-enter="bogaz">
             <div class="card-media card-media--bogaz">
               <img src="assets/emlak-krali/panolar.webp" alt="Emlak Kralı — Moda drawn from OpenStreetMap, with the chapter goal strip and rooftop billboards" width="644" height="1400" loading="lazy" decoding="async" />

@@ -6,10 +6,15 @@
     <title>Wirelit · Turn the rings, light the city</title>
     <meta name="description" content="Wirelit is a calm circuit puzzle by Hawk &amp; Mason Studios. The city’s power is out: turn the rings and bring 12 neighbourhoods back to light. Coming in 2027 to iPhone, iPad, Mac, Apple TV and Apple Watch." />
     <link rel="canonical" href="https://hawkmason.com/wirelit" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/wirelit" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/wirelit" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/wirelit" />
     <meta property="og:title" content="Wirelit · Turn the rings, light the city" />
     <meta property="og:description" content="A calm circuit puzzle. The city’s power is out and you are the night watchman: 12 neighbourhoods, 288 boxes and a new box every night." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/wirelit" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
     <meta property="og:image" content="https://hawkmason.com/assets/og/og-wirelit.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -20,7 +25,7 @@
     <link rel="apple-touch-icon" href="assets/wirelit/icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" />
-    <link rel="stylesheet" href="styles.css?v=28" />
+    <link rel="stylesheet" href="styles.css?v=32" />
     <style>
       /* Page-only theme for Wirelit: the game's night (ground #0D1320) and its sodium lamp. Everything else comes from
          the shared w-* product classes in styles.css. */
@@ -66,7 +71,7 @@
         .wl-row { grid-template-columns: 1fr; gap: 4px; }
       }
     </style>
-    <script src="app.js?v=25" defer></script>
+    <script src="app.js?v=26" defer></script>
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -91,7 +96,11 @@
         <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
-      <div class="nav-store">
+      <div class="nav-store nav-store--lang">
+        <nav class="lang-switch" aria-label="Language / Dil">
+          <a href="/tr/wirelit" hreflang="tr" lang="tr" data-set-lang="tr" aria-label="Türkçe">TR</a>
+          <a href="/wirelit" hreflang="en" lang="en" data-set-lang="en" aria-current="page" aria-label="English">EN</a>
+        </nav>
         <a class="store-btn store-btn--sodium" href="#soon">Coming 2027</a>
       </div>
     </header>

@@ -26,14 +26,12 @@
     <link rel="apple-touch-icon" href="../assets/pondr/icon.png?v=2" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&display=swap" />
-    <link rel="stylesheet" href="../styles.css?v=27" />
+    <link rel="stylesheet" href="../styles.css?v=32" />
     <style>
       /* Page-only additions for the Pondr catalog (index.html and tr.html carry
          the same block). Everything else comes from styles.css: body.pondr,
          the w-* product classes and the p-* Pondr classes. */
       body.pondr .nav-store { display: flex; align-items: center; gap: 6px; }
-      body.pondr .p-lang { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; padding: 0 8px; color: var(--w-muted); font: 700 0.8rem/1 var(--text); letter-spacing: 0.06em; border-radius: 8px; }
-      body.pondr .p-lang:hover, body.pondr .p-lang:focus-visible { color: var(--w-ink); }
       body.pondr .w-sub + .w-sub { margin-top: -0.6rem; }
       body.pondr .p-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
       /* Plain rows: a name on the left, one or two short lines on the right. */
@@ -84,7 +82,7 @@
         body.pondr .p-row, body.pondr .p-distance .d-row { grid-template-columns: 1fr; gap: 4px; }
       }
     </style>
-    <script src="../app.js?v=25" defer></script>
+    <script src="../app.js?v=26" defer></script>
   </head>
   <body class="pondr" data-page="pondr">
     <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#131211"></div>
@@ -96,7 +94,10 @@
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
       <div class="nav-store">
-        <a class="p-lang" href="tr" hreflang="tr" lang="tr" aria-label="TR, Bu sayfayı Türkçe oku">TR</a>
+        <nav class="lang-switch" aria-label="Language / Dil">
+          <a href="/pondr/tr" hreflang="tr" lang="tr" data-set-lang="tr" aria-label="Türkçe">TR</a>
+          <a href="/pondr/" hreflang="en" lang="en" data-set-lang="en" aria-current="page" aria-label="English">EN</a>
+        </nav>
         <a class="store-btn store-btn--amber" href="#download">Coming soon</a>
       </div>
     </header>

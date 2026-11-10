@@ -74,6 +74,8 @@
       [64, 'world-64-candy-cosmos-castle-background.png', 'Candy Cosmos Castle'],
     ];
     // Real 8 story chapters (8 worlds each) from world-theme-bible.md
+    // World and chapter names are the game's own (English in-game); only the word "World" follows the page.
+    const worldWord = document.documentElement.lang === 'tr' ? 'Dünya' : 'World';
     const chapters = ['Launch Journey', 'Coastal Candy Trail', 'Sky & Bakery Run', 'City Sweets',
       'Crafted Candy Route', 'Cosmic Candy Route', 'Arcade & Fair Route', 'Final Candy Cosmos'];
     worlds.forEach(([n, file, name], i) => {
@@ -82,8 +84,8 @@
       fig.style.setProperty('--i', i);
       const chapter = chapters[Math.floor((n - 1) / 8)] || '';
       fig.innerHTML =
-        `<img loading="lazy" src="assets/world-art/${file.replace('.png', '.webp')}" alt="${name}" />` +
-        `<figcaption><span class="world-n">World ${n} · ${chapter}</span>${name}</figcaption>`;
+        `<img loading="lazy" src="/assets/world-art/${file.replace('.png', '.webp')}" alt="${name}" />` +
+        `<figcaption><span class="world-n">${worldWord} ${n} · <span lang="en">${chapter}</span></span><span lang="en">${name}</span></figcaption>`;
       strip.appendChild(fig);
     });
   }
@@ -166,6 +168,15 @@
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+
+  /* ---- 6b. Language switch (TR | EN): remember the choice. "/" reads it in an
+         inline script in index.html and sends a saved TR visitor to /tr/.
+         Storage can be blocked (private mode); the links work without it. ---- */
+  document.querySelectorAll('[data-set-lang]').forEach((a) =>
+    a.addEventListener('click', () => {
+      try { localStorage.setItem('hm-lang', a.dataset.setLang); } catch (e) { /* no storage: the link still goes */ }
+    })
+  );
 
   /* ---- 7. Onizleme videosu: gorunur olunca sessiz oynar, cikinca durur; azaltilmis hareket tercihinde otomatik oynamaz ---- */
   const watchVideo = document.querySelector('[data-watch]');

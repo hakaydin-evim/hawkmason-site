@@ -2,7 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hawkmason.com/</loc>
-    <lastmod>2026-11-01</lastmod>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/" />
+  </url>
+  <url>
+    <loc>https://hawkmason.com/tr/</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/" />
   </url>
   <url>
     <loc>https://hawkmason.com/sugar-tiles</loc>
@@ -16,9 +26,29 @@
       <video:publication_date>2026-09-25</video:publication_date>
       <video:family_friendly>yes</video:family_friendly>
     </video:video>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/sugar-tiles" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sugar-tiles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sugar-tiles" />
+  </url>
+  <url>
+    <loc>https://hawkmason.com/tr/sugar-tiles</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/sugar-tiles" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sugar-tiles" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sugar-tiles" />
   </url>
   <url>
     <loc>https://hawkmason.com/ittako</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/ittako" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/ittako" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/ittako" />
+  </url>
+  <url>
+    <loc>https://hawkmason.com/tr/ittako</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/ittako" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/ittako" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/ittako" />
   </url>
   <url>
     <loc>https://hawkmason.com/ittako-privacy</loc>
@@ -33,6 +63,16 @@
   <url>
     <loc>https://hawkmason.com/wirelit</loc>
     <lastmod>2026-10-28</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/wirelit" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/wirelit" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/wirelit" />
+  </url>
+  <url>
+    <loc>https://hawkmason.com/tr/wirelit</loc>
+    <lastmod>2026-11-10</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/wirelit" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/wirelit" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/wirelit" />
   </url>
   <url>
     <loc>https://hawkmason.com/emlak-krali</loc>

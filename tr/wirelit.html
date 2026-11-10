@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Wirelit · Halkaları çevir, şehri aydınlat</title>
+    <meta name="description" content="Wirelit, Hawk &amp; Mason Studios'tan huzurlu bir devre bulmacası. Şehrin elektriği kesik: halkaları çevir, 12 mahalleyi yeniden aydınlat. 2027'de iPhone, iPad, Mac, Apple TV ve Apple Watch'ta." />
+    <link rel="canonical" href="https://hawkmason.com/tr/wirelit" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/wirelit" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/wirelit" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/wirelit" />
+    <meta property="og:title" content="Wirelit · Halkaları çevir, şehri aydınlat" />
+    <meta property="og:description" content="Huzurlu bir devre bulmacası. Şehrin elektriği kesik ve gece bekçisi sensin: 12 mahalle, 288 kutu ve her gece yeni bir kutu." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/tr/wirelit" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-wirelit.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Mac'te Wirelit: solda yanan bir devre kutusu, sağda şehrin silueti" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-wirelit.png" />
+    <link rel="icon" href="/assets/wirelit/icon.png" type="image/png" sizes="128x128" />
+    <link rel="apple-touch-icon" href="/assets/wirelit/icon.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&display=swap" />
+    <link rel="stylesheet" href="/styles.css?v=32" />
+    <style>
+      /* Page-only theme for Wirelit: the game's night (ground #0D1320) and its sodium lamp. Everything else comes from
+         the shared w-* product classes in styles.css. */
+      body.wirelit {
+        --w-bg: #0D1320;
+        --w-panel: rgba(22, 30, 46, 0.82);
+        --w-azure: #FF8A3D;
+        --w-azure-soft: #F3D2B4;
+        --w-ink: #E2E8F2;
+        --w-muted: #8C97AA;
+        --w-line: rgba(226, 232, 242, 0.13);
+        background: radial-gradient(1200px 600px at 70% -10%, rgba(255, 124, 44, 0.12), transparent 60%), var(--w-bg);
+        color: var(--w-ink);
+        font-family: var(--text);
+      }
+      body.wirelit .w-badge { background: rgba(255, 124, 44, 0.14); color: var(--w-azure); }
+      body.wirelit .w-title, body.wirelit h2 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; font-weight: 700; letter-spacing: 0.01em; text-transform: uppercase; }
+      body.wirelit .w-title { font-size: clamp(3.4rem, 8vw, 6rem); text-shadow: 0 0 40px rgba(255, 124, 44, 0.35); }
+      body.wirelit .w-lede { font-size: clamp(1.25rem, 2vw, 1.6rem); color: var(--w-azure-soft); }
+      body.wirelit .w-phone { border-radius: 26px; }
+      body.wirelit .w-card h3 { font-size: 1.1rem; }
+      .nav--wirelit { background: rgba(13, 19, 32, 0.86); backdrop-filter: blur(16px); }
+      .nav--wirelit.is-scrolled { border-bottom: 1px solid var(--w-line); }
+      .nav--wirelit .brand-name { color: #fff; }
+      .store-btn--sodium { background: #FF8A3D; color: #0D1320; font-weight: 600; border-radius: 10px; }
+      .wl-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
+      .wl-shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 22px; margin-top: 34px; }
+      .wl-shots figure { margin: 0; }
+      .wl-shots img { width: 100%; height: auto; border-radius: 22px; border: 1px solid var(--w-line); box-shadow: 0 26px 60px -26px rgba(0, 0, 0, 0.9); }
+      .wl-shots figcaption { color: var(--w-muted); font-size: 0.92rem; line-height: 1.55; margin-top: 12px; }
+      .wl-shots figcaption b { color: #fff; font-weight: 600; display: block; }
+      .wl-hoods { list-style: none; padding: 0; margin: 26px auto 0; max-width: 900px; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+      .wl-hoods li { padding: 9px 14px; border-radius: 999px; border: 1px solid var(--w-line); background: var(--w-panel); font: 600 0.82rem/1 var(--text); letter-spacing: 0.04em; }
+      .wl-hoods li span { color: var(--w-azure); margin-right: 6px; }
+      .wl-rows { max-width: 860px; margin: 30px auto 0; }
+      .wl-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      .wl-row:last-child { border-bottom: 1px solid var(--w-line); }
+      .wl-row dt { color: #fff; font: 700 1.15rem/1.4 'Barlow Condensed', 'Arial Narrow', sans-serif; letter-spacing: 0.02em; text-transform: uppercase; }
+      .wl-row dd { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      .wl-mac { max-width: 980px; margin: 34px auto 0; }
+      .wl-mac img { width: 100%; height: auto; border-radius: 18px; border: 1px solid var(--w-line); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9); }
+      @media (max-width: 640px) {
+        .wl-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+    </style>
+    <script src="/app.js?v=26" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Wirelit",
+        "url": "https://hawkmason.com/tr/wirelit",
+        "description": "Huzurlu bir devre bulmacası: halkaları çevir, 12 mahalleyi yeniden aydınlat.",
+        "genre": ["Puzzle", "Brain puzzle"],
+        "gamePlatform": ["iPhone", "iPad", "Mac", "Apple TV", "Apple Watch"],
+        "inLanguage": ["en", "tr", "fr", "de", "es", "it", "ja", "ko", "zh-Hans", "pt-BR"],
+        "image": "https://hawkmason.com/assets/og/og-wirelit.png",
+        "publisher": { "@id": "https://hawkmason.com/#organization" }
+      }
+    </script>
+  </head>
+  <body class="wirelit" data-page="wirelit">
+    <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#0D1320"></div>
+
+    <header class="nav nav--wirelit" data-nav>
+      <a class="brand" href="/tr/" data-back data-veil="#14161B" aria-label="Hawk &amp; Mason Studios ana sayfasına dön">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store nav-store--lang">
+        <nav class="lang-switch" aria-label="Dil / Language">
+          <a href="/tr/wirelit" hreflang="tr" lang="tr" data-set-lang="tr" aria-current="page" aria-label="Türkçe">TR</a>
+          <a href="/wirelit" hreflang="en" lang="en" data-set-lang="en" aria-label="English">EN</a>
+        </nav>
+        <a class="store-btn store-btn--sodium" href="#soon">2027'de</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">Huzurlu bir devre bulmacası</span>
+          <h1 class="w-title" lang="en">Wirelit</h1>
+          <p class="w-lede">Halkaları çevir. Şehri aydınlat.</p>
+          <p class="w-sub">
+            Şehrin elektriği kesik ve bütün sigorta kutularının anahtarları sende:
+            gece bekçisi sensin. Her kutu, bir trafonun çevresine dizilmiş tellerden
+            oluşan küçük bir tahta. Bir parçaya dokun, bütün halkası çeyrek tur dönsün.
+          </p>
+          <p class="w-sub">
+            Akım her pencere lambasına ulaşana kadar halkaları çevir. Sonuncusu da
+            yanınca kutuda “Bütün lambalar yanıyor” yazar, telefonun tek, uzun ve
+            sıcak bir titreşim verir ve siluetteki bir pencere kalıcı olarak yanar.
+          </p>
+          <div class="store-row" id="soon">
+            <span class="store-pill store-pill--ios" style="opacity:.85; cursor:default;">
+              <span class="store-kicker">2027'de</span><span class="store-name">App Store'da</span>
+            </span>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            iPhone · iPad · Mac · Apple TV · Apple Watch · 10 dil ·
+            <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
+          </p>
+        </div>
+        <div class="w-hero-art" aria-hidden="true">
+          <div class="w-phone w-phone-back"><img src="/assets/wirelit/city.webp" alt="" width="600" height="1004" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-front"><img src="/assets/wirelit/harbor.webp" alt="" width="600" height="1004" decoding="async" style="height:auto" /></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="how">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Bir kutu nasıl işler</h2>
+          <p class="wl-lead">Tek bir kural ve onun üstüne kurulmuş bir düzine fikir. Puan yok, süre yok, hamle sayacı yok: sadece ışık.</p>
+        </div>
+        <div class="w-grid">
+          <div class="w-card"><span class="w-ic" aria-hidden="true">↻</span><h3>Dokun, halka dönsün</h3><p>Hangi parçaya dokunursan dokun, bütün halkası çeyrek tur döner. Parmağın ekrandayken dönecek halka yanar, bir ok da hangi yöne döneceğini gösterir.</p></div>
+          <div class="w-card"><span class="w-ic" aria-hidden="true">⚡</span><h3>Her pencereyi yak</h3><p>Akım ortadaki trafodan çıkar. Onu her lambaya ulaştır; kesik çizgiyle çizilmiş uyuyan pencere ise karanlık kalmalı.</p></div>
+          <div class="w-card"><span class="w-ic" aria-hidden="true">◎</span><h3>Tek çözüm, hiçbir zaman bir dokunuş ötede değil</h3><p>Her kutunun tam olarak bir çözümü var ve hiçbiri çözüme tek tur uzaklıkta başlamaz. Takıldın mı? İpucu her seferinde biraz daha fazlasını söyler.</p></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="city">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">12 mahalle, 288 kutu</h2>
+          <p class="wl-lead">Her mahallenin kendi ışığı, lamba biçimi, silueti ve müzik tonu var; her biri yeni bir fikir getirir: uyuyan pencereler, zincir ve dişli halkalar, çivili parçalar, yarım ve ters halkalar, 9×9 kareler.</p>
+        </div>
+        <ul class="wl-hoods">
+          <li><span>1</span>Sokak lambası</li><li><span>2</span>Mahalle</li><li><span>3</span>Apartmanlar</li><li><span>4</span>Çarşı</li>
+          <li><span>5</span>Liman</li><li><span>6</span>Saat kulesi</li><li><span>7</span>Meydan</li><li><span>8</span>Fabrika</li>
+          <li><span>9</span>Gar</li><li><span>10</span>Köprü</li><li><span>11</span>Santral</li><li><span>12</span>Gece yarısı</li>
+        </ul>
+        <div class="wl-shots">
+          <figure><img src="/assets/wirelit/gear.webp" alt="Dişli halkaları olan bir Saat kulesi kutusu" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>Saat kulesi</b>Dokunduğun halka bir yöne, hemen dışındaki öteki yöne döner.</figcaption></figure>
+          <figure><img src="/assets/wirelit/midnight.webp" alt="9×9 bir Gece yarısı kutusu" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>Gece yarısı</b>Şehrin son kutuları: öğrendiğin her şey, 9×9 bir tahtada.</figcaption></figure>
+          <figure><img src="/assets/wirelit/logbook.webp" alt="Bekçinin defteri" width="600" height="1004" loading="lazy" decoding="async" /><figcaption><b>Bekçinin defteri</b>Çözdüğün her kutu için kısa bir not, geri getirdiğin her mahalle için bir kayıt.</figcaption></figure>
+        </div>
+      </section>
+
+      <section class="w-feat" id="tonight">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Bu gecenin kutusu, her yerde</h2>
+          <p class="wl-lead">Her gece herkese aynı yeni bir kutu. Yanan pencereler iCloud ile seninle gelir.</p>
+        </div>
+        <dl class="wl-rows">
+          <div class="wl-row"><dt><span lang="en">iPhone</span> ve <span lang="en">iPad</span></dt><dd>Bu gecenin kutusunu büyük widget ile doğrudan Ana Ekran'da oyna ya da Siri'ye nasıl gittiğini sor. iPhone Duo'yu açınca iki sayfa: birinde kutu, ötekinde şehir.</dd></div>
+          <div class="wl-row"><dt>Mac</dt><dd>Bir parçaya tıkla ya da halkaları rakam tuşlarıyla çevir; önce imlecin altındaki halka yanar.</dd></div>
+          <div class="wl-row"><dt>Apple TV</dt><dd>Bütün siluet büyük ekranda. Halka seçmek için kaydır, çevirmek için bas.</dd></div>
+          <div class="wl-row"><dt>Apple Watch</dt><dd>Bütün 5×5 kutular bileğinde, Digital Crown ile; bu gecenin kutusu da bir komplikasyonda.</dd></div>
+          <div class="wl-row"><dt>Oyun kumandası</dt><dd>Yön tuşları halka seçer, A çevirir, Y ipucu ister.</dd></div>
+        </dl>
+        <div class="wl-mac"><img src="/assets/wirelit/mac.webp" alt="Mac'te Wirelit: solda kutu, sağda şehir" width="1200" height="750" loading="lazy" decoding="async" /></div>
+      </section>
+
+      <section class="w-feat" id="quiet">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Sessiz olsun diye tasarlandı</h2>
+        </div>
+        <dl class="wl-rows">
+          <div class="wl-row"><dt>Kovalanacak bir şey yok</dt><dd>Puan yok, süre yok, hamle sayacı yok, liderlik tablosu yok. Her mahalle, gece kutuları ve bütün şehir için Game Center başarıları var.</dd></div>
+          <div class="wl-row"><dt>Senin hakkında hiçbir şey</dt><dd>Reklam yok, hesap yok, takip yok; oynamak için internet gerekmez. Ayrıntılar <a href="/wirelit-privacy" hreflang="en" style="color: var(--w-azure);">gizlilik politikasında</a> (İngilizce).</dd></div>
+          <div class="wl-row"><dt>Ses ve dokunuş</dt><dd>Halkalar bir müzik dizisinde şarkı söyler, lambalar yandıkça bir melodi yükselir; her dönüşü titreşimle hissedersin.</dd></div>
+          <div class="wl-row"><dt>Herkes için</dt><dd>Her halka VoiceOver ile çevrilebilir, yazılar Dynamic Type ile büyür, Hareketi Azalt akan akımı durdurur.</dd></div>
+          <div class="wl-row"><dt>Diller</dt><dd>English, Türkçe, Français, Deutsch, Español, Italiano, 日本語, 한국어, 简体中文 ve Português (Brasil).</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="/assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Alt menü">
+        <a href="/wirelit-support" hreflang="en">Destek</a>
+        <a href="/wirelit-privacy" hreflang="en">Gizlilik</a>
+        <a href="mailto:hello@hawkmason.com">İletişim</a>
+        <a href="/tr/">Stüdyo</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. Tüm hakları saklıdır.</p>
+    </footer>
+  </body>
+</html>
