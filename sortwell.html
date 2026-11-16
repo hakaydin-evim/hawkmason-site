@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sortwell · Clean your photo library, keep it on your PC</title>
+    <meta name="description" content="Sortwell is a photo cleaner for iPhone by Hawk &amp; Mason Studios. Clear duplicates, similar shots, large videos and screenshots, and send photos to your Windows PC in folders by year and month before you delete them." />
+    <link rel="canonical" href="https://hawkmason.com/sortwell" />
+    <meta property="og:title" content="Sortwell · Clean your photo library, keep it on your PC" />
+    <meta property="og:description" content="A photo cleaner for iPhone that sends your photos to your Windows PC, in folders by year and month, before you delete them." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hawkmason.com/sortwell" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="robots" content="index,follow" />
+    <link rel="icon" href="assets/sortwell/icon.png" type="image/png" sizes="256x256" />
+    <link rel="apple-touch-icon" href="assets/sortwell/icon.png" />
+    <link rel="stylesheet" href="styles.css?v=32" />
+    <style>
+      /* Page-only theme for Sortwell: the app's dark ground and its green. Everything else comes from the shared
+         w-* product classes in styles.css. */
+      body.sortwell {
+        --w-bg: #0B1210;
+        --w-panel: rgba(20, 30, 26, 0.82);
+        --w-azure: #2BB590;
+        --w-azure-soft: #BFE6D8;
+        --w-ink: #E6EEEA;
+        --w-muted: #93A39C;
+        --w-line: rgba(230, 238, 234, 0.13);
+        background: radial-gradient(1100px 560px at 72% -10%, rgba(43, 181, 144, 0.14), transparent 60%), var(--w-bg);
+        color: var(--w-ink);
+        font-family: var(--text);
+      }
+      body.sortwell .w-badge { background: rgba(43, 181, 144, 0.14); color: var(--w-azure); }
+      body.sortwell a.sw-link { color: var(--w-azure); }
+      .nav--sortwell { background: rgba(11, 18, 16, 0.86); backdrop-filter: blur(16px); }
+      .nav--sortwell.is-scrolled { border-bottom: 1px solid var(--w-line); }
+      .nav--sortwell .brand-name { color: #fff; }
+      .store-btn--green { background: #2BB590; color: #06231B; font-weight: 700; border-radius: 10px; }
+      .sw-download { display: inline-flex; flex-direction: column; gap: 2px; padding: 12px 22px; border-radius: 14px; background: #2BB590; color: #06231B; text-decoration: none; transition: transform 0.2s ease; }
+      .sw-download:hover { transform: translateY(-3px); }
+      .sw-download small { font: 600 0.72rem/1.2 var(--text); letter-spacing: 0.04em; opacity: 0.8; }
+      .sw-download b { font: 700 1.12rem/1.2 var(--text); }
+      .sw-meta { color: var(--w-muted); font-size: 0.9rem; line-height: 1.6; margin: 14px 0 0; max-width: 52ch; }
+      .sw-lead { color: var(--w-muted); line-height: 1.7; max-width: 62ch; margin: 12px auto 0; text-align: center; }
+      .sw-steps { list-style: none; counter-reset: step; padding: 0; margin: 30px auto 0; max-width: 860px; }
+      .sw-steps li { counter-increment: step; display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 18px 0; border-top: 1px solid var(--w-line); line-height: 1.65; }
+      .sw-steps li:last-child { border-bottom: 1px solid var(--w-line); }
+      .sw-steps li::before { content: counter(step); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(43, 181, 144, 0.16); color: var(--w-azure); font: 700 0.95rem/1 var(--text); }
+      .sw-steps b { color: #fff; font-weight: 600; display: block; }
+      .sw-rows { max-width: 860px; margin: 30px auto 0; }
+      .sw-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
+      .sw-row:last-child { border-bottom: 1px solid var(--w-line); }
+      .sw-row dt { color: #fff; font-weight: 600; }
+      .sw-row dd { margin: 0; color: var(--w-ink); line-height: 1.65; }
+      @media (max-width: 640px) {
+        .sw-row { grid-template-columns: 1fr; gap: 4px; }
+      }
+    </style>
+    <script src="app.js?v=26" defer></script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Sortwell",
+        "url": "https://hawkmason.com/sortwell",
+        "description": "A photo cleaner for iPhone that sends photos to your Windows PC, in folders by year and month, before you delete them.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "iOS, Windows",
+        "inLanguage": ["en"],
+        "publisher": { "@id": "https://hawkmason.com/#organization" }
+      }
+    </script>
+  </head>
+  <body class="sortwell" data-page="sortwell">
+    <div class="veil veil--dark" data-veil aria-hidden="true" style="background:#0B1210"></div>
+
+    <header class="nav nav--sortwell" data-nav>
+      <a class="brand" href="/" data-back data-veil="#14161B" aria-label="Back to Hawk &amp; Mason Studios">
+        <span class="back-arrow" aria-hidden="true">←</span>
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
+      </a>
+      <div class="nav-store">
+        <a class="store-btn store-btn--green" href="#windows">Get it for Windows</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="w-hero">
+        <div>
+          <span class="w-badge">Photo cleaner for iPhone</span>
+          <h1 class="w-title">Sortwell</h1>
+          <p class="w-lede">Clear your photo library. Keep what matters on your PC.</p>
+          <p class="w-sub">
+            Sortwell finds the photos and videos that are easy to let go of:
+            exact duplicates, similar shots, large videos and screenshots. You
+            decide on each one with a swipe.
+          </p>
+          <p class="w-sub">
+            Not ready to lose them? Send them to your Windows PC first. They
+            arrive in folders by year and month, and only then do you delete
+            them from the iPhone.
+          </p>
+          <div class="store-row">
+            <span class="store-pill store-pill--ios" style="opacity:.85; cursor:default;">
+              <span class="store-kicker">Coming soon on the</span><span class="store-name">App Store</span>
+            </span>
+            <a class="sw-download" href="https://download.hawkmason.com/Sortwell-Setup-0.2.0.exe">
+              <small>Free companion</small><b>Download for Windows</b>
+            </a>
+          </div>
+          <p class="g-hero-meta" style="color: var(--w-muted);">
+            iPhone · Windows 10 and 11 · English ·
+            <a class="sw-link" href="mailto:hello@hawkmason.com">hello@hawkmason.com</a>
+          </p>
+        </div>
+        <div class="w-hero-art" aria-hidden="true">
+          <div class="w-phone w-phone-back"><img src="assets/sortwell/welcome.webp" alt="" width="600" height="1304" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-front"><img src="assets/sortwell/overview.webp" alt="" width="600" height="1304" decoding="async" style="height:auto" /></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="iphone">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">On your iPhone</h2>
+          <p class="sw-lead">The scan runs on the iPhone and nothing is deleted until you confirm. Deleted items stay in Recently Deleted for 30 days.</p>
+        </div>
+        <div class="w-grid">
+          <div class="w-card"><h3>Exact duplicates and similar shots</h3><p>Copies are found and one original is kept. Shots taken seconds apart are grouped and the best one is suggested; look at the others before you decide.</p></div>
+          <div class="w-card"><h3>Large videos and screenshots</h3><p>The two things that fill a phone quietly, each in its own list with the space it would give back.</p></div>
+          <div class="w-card"><h3>Swipe to decide, delete together</h3><p>Left to delete, right to keep, undo if you change your mind. Everything you marked is removed in one confirmed step.</p></div>
+          <div class="w-card"><h3>Ask in your own words</h3><p>Type “videos over 200 MB from 2023” and review just those. On iPhones with Apple Intelligence the sentence is read on the device.</p></div>
+          <div class="w-card"><h3>Month by month</h3><p>Walk through any month of your library, newest first or largest first.</p></div>
+          <div class="w-card"><h3>Send to your PC first</h3><p>Mark photos, send them to Sortwell for Windows over your Wi-Fi, then delete them from the iPhone when you are ready.</p></div>
+        </div>
+      </section>
+
+      <section class="w-feat" id="windows">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Sortwell for Windows</h2>
+          <p class="sw-lead">A free companion that shows any photo folder by year and month, receives photos from your iPhone and can sort a messy folder into date folders, with undo.</p>
+        </div>
+        <ol class="sw-steps">
+          <li><div><b>Install it and choose your photo folder</b>Sortwell reads when each photo and video was taken and shows them month by month. Nothing is moved.</div></li>
+          <li><div><b>Click Connect iPhone</b>A QR code appears. In Sortwell on your iPhone, tap Send photos to your PC and point the camera at it.</div></li>
+          <li><div><b>Send from any review</b>Photos go straight from the iPhone to the PC over your own Wi-Fi, encrypted, and land in folders like 2023\2023-06.</div></li>
+        </ol>
+        <div style="text-align:center; margin-top: 34px;">
+          <a class="sw-download" href="https://download.hawkmason.com/Sortwell-Setup-0.2.0.exe">
+            <small>Version 0.2.0 · 97 MB</small><b>Download for Windows</b>
+          </a>
+          <p class="sw-meta" style="margin-left:auto; margin-right:auto;">
+            Windows 10 and 11, 64-bit. The installer is not yet signed with a
+            publisher certificate, so Windows may show “Windows protected your
+            PC”: choose More info, then Run anyway.
+          </p>
+        </div>
+      </section>
+
+      <section class="w-feat" id="plain">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">In plain terms</h2>
+        </div>
+        <dl class="sw-rows">
+          <div class="sw-row"><dt>What is free</dt><dd>Scanning and looking through the results on iPhone, deleting up to 50 items, and browsing a folder by date on Windows.</dd></div>
+          <div class="sw-row"><dt>What Pro adds</dt><dd>Unlimited deleting on iPhone, sending photos to your PC and sorting folders on Windows. Pro is bought once, in the iPhone app, as a weekly or yearly subscription or a one-time purchase. Scanning the code from an iPhone with Pro unlocks the PC; there is no licence key and no second purchase.</dd></div>
+          <div class="sw-row"><dt>Your photos</dt><dd>They leave the iPhone only when you send them to your own PC, and they go straight there. No account, no ads, no tracking, and no server of ours in between. Details in the <a class="sw-link" href="sortwell-privacy">privacy policy</a>.</dd></div>
+          <div class="sw-row"><dt>Nothing is lost by accident</dt><dd>iOS asks you to confirm every deletion and keeps deleted items for 30 days. Sorting on Windows never deletes or overwrites a file and can be undone.</dd></div>
+        </dl>
+      </section>
+    </main>
+
+    <footer class="foot">
+      <div class="foot-brand">
+        <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
+        <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason Studios</span>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="sortwell-support">Support</a>
+        <a href="sortwell-privacy">Privacy</a>
+        <a href="mailto:hello@hawkmason.com">Contact</a>
+        <a href="/">Studio</a>
+      </nav>
+      <p class="foot-legal">© 2026 Hawk &amp; Mason Studios. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
