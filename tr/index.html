@@ -49,6 +49,13 @@
     </script>
     <style>
       /* Wirelit and Emlak Kralı cards: same block as index.html. */
+      /* Sortwell card: same block as index.html. */
+      .game-card--sortwell { cursor: pointer; background: linear-gradient(165deg, #14261F, #0B1210); border-color: rgba(230, 238, 234, 0.13); }
+      .game-card--sortwell h3, .game-card--sortwell p { color: #E6EEEA; }
+      .game-card--sortwell .card-sub { color: #93A39C; }
+      .card-media--sortwell img { border: 1px solid rgba(230, 238, 234, 0.13); border-radius: 22px; box-shadow: 0 24px 50px -20px rgba(0,0,0,.8), 0 0 60px -20px rgba(43, 181, 144, 0.35); }
+      .card-go--green { color: #2BB590; }
+      .pill--green { background: rgba(43, 181, 144, 0.15); color: #2BB590; }
       .game-card--wirelit { cursor: pointer; background: linear-gradient(165deg, #182136, #0D1320); border-color: rgba(226, 232, 242, 0.13); }
       .game-card--wirelit h3, .game-card--wirelit p { color: #E2E8F2; }
       .game-card--wirelit .card-sub { color: #8C97AA; }
@@ -206,6 +213,20 @@
             </div>
           </a>
 
+          <a class="game-card game-card--sortwell" href="/tr/sortwell"
+             data-portal data-veil="#0B1210" data-enter="sortwell">
+            <div class="card-media card-media--sortwell">
+              <img src="/assets/sortwell/overview.webp" alt="iPhone'da Sortwell: boşaltılmaya hazır 39,51 GB" width="600" height="1304" loading="lazy" decoding="async" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--green">Uygulama · Yakında</span>
+              <h3>Sortwell</h3>
+              <p class="card-sub">Photo Cleaner: Sortwell</p>
+              <p>Silmeye kıyamadıklarını saklamana izin veren bir iPhone fotoğraf temizleyicisi. Birebir kopyaları, benzer çekimleri, büyük videoları ve ekran görüntülerini bulur; her biri için kararı tek kaydırmayla sen verirsin. Silmeden önce fotoğrafları Windows bilgisayarına gönder: bir kod okut, kendi Wi-Fi ağın üzerinden yıl ve ay klasörlerine yerleşsinler. Tarama iPhone'da yapılır; hesap, reklam ve izleme yok. Windows eşlikçisi bugün ücretsiz indirilebiliyor, iPhone uygulaması App Store yolunda.</p>
+              <span class="card-go card-go--green">Uygulamaya bak <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
           <a class="game-card game-card--bogaz" href="/emlak-krali"
              data-portal data-veil="#0E1B33" data-enter="bogaz">
             <div class="card-media card-media--bogaz">
@@ -278,6 +299,7 @@
           <a href="/tr/ittako">Ittako</a>
           <a href="/pondr/tr">Pondr</a>
           <a href="/tr/wirelit">Wirelit</a>
+          <a href="/tr/sortwell">Sortwell</a>
           <a href="/emlak-krali">Emlak Kralı</a>
         </div>
         <div class="foot-col">

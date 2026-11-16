@@ -6,11 +6,21 @@
     <title>Sortwell · Clean your photo library, keep it on your PC</title>
     <meta name="description" content="Sortwell is a photo cleaner for iPhone by Hawk &amp; Mason Studios. Clear duplicates, similar shots, large videos and screenshots, and send photos to your Windows PC in folders by year and month before you delete them." />
     <link rel="canonical" href="https://hawkmason.com/sortwell" />
+    <link rel="alternate" hreflang="en" href="https://hawkmason.com/sortwell" />
+    <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sortwell" />
+    <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sortwell" />
     <meta property="og:title" content="Sortwell · Clean your photo library, keep it on your PC" />
     <meta property="og:description" content="A photo cleaner for iPhone that sends your photos to your Windows PC, in folders by year and month, before you delete them." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/sortwell" />
     <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="tr_TR" />
+    <meta property="og:image" content="https://hawkmason.com/assets/og/og-sortwell.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Sortwell on an iPhone: 39.51 GB ready to free up, with duplicates, similar shots, large videos and screenshots listed" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://hawkmason.com/assets/og/og-sortwell.png" />
     <meta name="robots" content="index,follow" />
     <link rel="icon" href="assets/sortwell/icon.png" type="image/png" sizes="256x256" />
     <link rel="apple-touch-icon" href="assets/sortwell/icon.png" />
@@ -47,6 +57,8 @@
       .sw-steps li:last-child { border-bottom: 1px solid var(--w-line); }
       .sw-steps li::before { content: counter(step); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: rgba(43, 181, 144, 0.16); color: var(--w-azure); font: 700 0.95rem/1 var(--text); }
       .sw-steps b { color: #fff; font-weight: 600; display: block; }
+      .sw-shot { max-width: 980px; margin: 34px auto 0; }
+      .sw-shot img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--w-line); box-shadow: 0 30px 70px -30px rgba(0, 0, 0, 0.9); }
       .sw-rows { max-width: 860px; margin: 30px auto 0; }
       .sw-row { display: grid; grid-template-columns: 190px 1fr; gap: 20px; padding: 16px 0; border-top: 1px solid var(--w-line); }
       .sw-row:last-child { border-bottom: 1px solid var(--w-line); }
@@ -54,6 +66,8 @@
       .sw-row dd { margin: 0; color: var(--w-ink); line-height: 1.65; }
       @media (max-width: 640px) {
         .sw-row { grid-template-columns: 1fr; gap: 4px; }
+        /* The language switch and the download button do not both fit beside the brand on a phone. */
+        .nav--sortwell .store-btn { display: none; }
       }
     </style>
     <script src="app.js?v=26" defer></script>
@@ -80,7 +94,11 @@
         <img class="brand-mark" src="assets/hawk-mason-mark.webp" alt="" width="477" height="621" />
         <span class="brand-name">Hawk <span class="amp">&amp;</span> Mason</span>
       </a>
-      <div class="nav-store">
+      <div class="nav-store nav-store--lang">
+        <nav class="lang-switch" aria-label="Language / Dil">
+          <a href="/tr/sortwell" hreflang="tr" lang="tr" data-set-lang="tr" aria-label="Türkçe">TR</a>
+          <a href="/sortwell" hreflang="en" lang="en" data-set-lang="en" aria-current="page" aria-label="English">EN</a>
+        </nav>
         <a class="store-btn store-btn--green" href="#windows">Get it for Windows</a>
       </div>
     </header>
@@ -115,7 +133,7 @@
           </p>
         </div>
         <div class="w-hero-art" aria-hidden="true">
-          <div class="w-phone w-phone-back"><img src="assets/sortwell/welcome.webp" alt="" width="600" height="1304" decoding="async" style="height:auto" /></div>
+          <div class="w-phone w-phone-back"><img src="assets/sortwell/similar.webp" alt="" width="600" height="1304" decoding="async" style="height:auto" /></div>
           <div class="w-phone w-phone-front"><img src="assets/sortwell/overview.webp" alt="" width="600" height="1304" decoding="async" style="height:auto" /></div>
         </div>
       </section>
@@ -145,6 +163,9 @@
           <li><div><b>Click Connect iPhone</b>A QR code appears. In Sortwell on your iPhone, tap Send photos to your PC and point the camera at it.</div></li>
           <li><div><b>Send from any review</b>Photos go straight from the iPhone to the PC over your own Wi-Fi, encrypted, and land in folders like 2023\2023-06.</div></li>
         </ol>
+        <figure class="sw-shot">
+          <img src="assets/sortwell/windows.webp" alt="Sortwell for Windows showing a photo folder by year and month, with October 2026 open" width="1008" height="729" loading="lazy" decoding="async" />
+        </figure>
         <div style="text-align:center; margin-top: 34px;">
           <a class="sw-download" href="https://download.hawkmason.com/Sortwell-Setup-0.2.0.exe">
             <small>Version 0.2.0 · 97 MB</small><b>Download for Windows</b>

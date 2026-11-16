@@ -58,7 +58,8 @@
             { "@type": "ListItem", "position": 4, "name": "Ittako", "url": "https://hawkmason.com/ittako" },
             { "@type": "ListItem", "position": 5, "name": "Pondr", "url": "https://hawkmason.com/pondr/" },
           { "@type": "ListItem", "position": 6, "name": "Wirelit", "url": "https://hawkmason.com/wirelit" },
-            { "@type": "ListItem", "position": 7, "name": "Estate King: Istanbul", "url": "https://hawkmason.com/emlak-krali" }
+            { "@type": "ListItem", "position": 7, "name": "Estate King: Istanbul", "url": "https://hawkmason.com/emlak-krali" },
+            { "@type": "ListItem", "position": 8, "name": "Sortwell", "url": "https://hawkmason.com/sortwell" }
           ]
         },
         {
@@ -72,6 +73,13 @@
     }
     </script>
     <style>
+      /* Sortwell card: the app's dark ground and its green (product page: sortwell.html). */
+      .game-card--sortwell { cursor: pointer; background: linear-gradient(165deg, #14261F, #0B1210); border-color: rgba(230, 238, 234, 0.13); }
+      .game-card--sortwell h3, .game-card--sortwell p { color: #E6EEEA; }
+      .game-card--sortwell .card-sub { color: #93A39C; }
+      .card-media--sortwell img { border: 1px solid rgba(230, 238, 234, 0.13); border-radius: 22px; box-shadow: 0 24px 50px -20px rgba(0,0,0,.8), 0 0 60px -20px rgba(43, 181, 144, 0.35); }
+      .card-go--green { color: #2BB590; }
+      .pill--green { background: rgba(43, 181, 144, 0.15); color: #2BB590; }
       /* Wirelit card: the game's night ground and sodium lamp (product page: wirelit.html). */
       .game-card--wirelit { cursor: pointer; background: linear-gradient(165deg, #182136, #0D1320); border-color: rgba(226, 232, 242, 0.13); }
       .game-card--wirelit h3, .game-card--wirelit p { color: #E2E8F2; }
@@ -231,6 +239,20 @@
             </div>
           </a>
 
+          <a class="game-card game-card--sortwell" href="sortwell"
+             data-portal data-veil="#0B1210" data-enter="sortwell">
+            <div class="card-media card-media--sortwell">
+              <img src="assets/sortwell/overview.webp" alt="Sortwell on an iPhone: 39.51 GB ready to free up" width="600" height="1304" loading="lazy" decoding="async" />
+            </div>
+            <div class="card-body">
+              <span class="pill pill--green">App · Coming soon</span>
+              <h3>Sortwell</h3>
+              <p class="card-sub">Photo Cleaner: Sortwell</p>
+              <p>A photo cleaner for iPhone that lets you keep what you are not ready to lose. It finds exact duplicates, similar shots, large videos and screenshots, and you decide on each with a swipe. Before you delete, send the photos to your Windows PC: scan a code, and they arrive over your own Wi-Fi in folders by year and month. The scan runs on the iPhone, with no account, no ads and no tracking. The Windows companion is free to download today; the iPhone app is on its way to the App Store.</p>
+              <span class="card-go card-go--green">See the app <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
           <a class="game-card game-card--bogaz" href="emlak-krali#en"
              data-portal data-veil="#0E1B33" data-enter="bogaz">
             <div class="card-media card-media--bogaz">
@@ -300,6 +322,7 @@
           <a href="ittako">Ittako</a>
           <a href="pondr/">Pondr</a>
           <a href="wirelit">Wirelit</a>
+          <a href="sortwell">Sortwell</a>
           <a href="emlak-krali#en">Estate King</a>
         </div>
         <div class="foot-col">

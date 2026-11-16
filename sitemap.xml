@@ -58,6 +58,17 @@
   </url>
   <url>
     <loc>https://hawkmason.com/sortwell</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/sortwell" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sortwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sortwell" />
+  </url>
+  <url>
+    <loc>https://hawkmason.com/tr/sortwell</loc>
+    <lastmod>2026-11-17</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hawkmason.com/sortwell" />
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sortwell" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sortwell" />
   </url>
   <url>
     <loc>https://hawkmason.com/sortwell-privacy</loc>
