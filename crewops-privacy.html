@@ -117,7 +117,8 @@
       <ul>
         <li><strong>Weather</strong> — when you open a duty briefing, the app asks a public aviation weather service for the METAR and TAF of an airport. The request carries an airport code and nothing about you.</li>
         <li><strong>Space weather</strong> — the app reads NOAA's public space-weather scales. The request carries nothing about you.</li>
-        <li><strong>Purchase state</strong> — if you subscribe, RevenueCat, Inc. processes your subscription status on our behalf so the app knows whether Crewops Pro is active and can restore it. RevenueCat receives an app-generated identifier and the purchase information the App Store returns. It does not receive your roster, your logbook, your documents or your health entries.</li>
+        <li><strong>Purchase state</strong> — if you subscribe, RevenueCat, Inc. processes your subscription status on our behalf so the app knows whether Crewops Pro is active and can restore it. RevenueCat receives an app-generated identifier and the purchase information the App Store or Google Play returns. It does not receive your roster, your logbook, your documents or your health entries.</li>
+        <li><strong>Text recognition on Android</strong> — when you import a roster from a photo or a scanned PDF on Android, the text is read on the device by Google's ML Kit. The image and the text stay on the phone; ML Kit may send Google anonymous diagnostics about its own performance, together with device identifiers, as Google describes for that library.</li>
         <li><strong>Your airline's crew portal</strong> — only when you choose that import method. See the next section.</li>
         <li><strong>A calendar link you paste</strong> — if your crew system publishes your roster as a calendar link and you paste it into the app, the app downloads the calendar from that address when you refresh. The request goes only to the address you gave and carries nothing else about you; the link stays on your device.</li>
         <li><strong>Your post-flight rating, to your airline</strong> — only if you switch it on, and only where your airline runs a Crewops Insight programme. See the section below.</li>
@@ -313,8 +314,8 @@
 
       <h2 id="purchases">Purchases</h2>
       <p>
-        Crewops Pro is an auto-renewable subscription sold through the App Store.
-        Apple processes the payment; we never receive your payment card details.
+        Crewops Pro is an auto-renewable subscription sold through the App Store or Google Play.
+        Apple or Google processes the payment; we never receive your payment card details.
         RevenueCat, Inc. processes the resulting subscription state on our behalf
         under its own privacy policy so that Pro can be restored on a device you
         sign into with the same Apple Account.
@@ -432,7 +433,7 @@
         agreement with RevenueCat and on your explicit consent to use a paid
         subscription from a developer based in Türkiye, which you give by
         subscribing. The data transferred is an app-generated identifier and
-        the purchase information the App Store returns — never your roster,
+        the purchase information the App Store or Google Play returns — never your roster,
         your logbook, your documents or your health entries. If you are in
         Türkiye, the same transfer to the United States rests on your explicit
         consent under KVKK Art. 9.

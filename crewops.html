@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Crewops: crew roster app with duty limits, fatigue, logbook</title>
-    <meta name="description" content="Crewops reads your airline roster: duty limits, rest, fatigue, logbook. EASA tables, also applied for UK CAA and SHGM; FAA Part 117. Free to use on iPhone." />
+    <meta name="description" content="Crewops reads your airline roster: duty limits, rest, fatigue, logbook. EASA tables, also applied for UK CAA and SHGM; FAA Part 117. Free to use on iPhone and Android." />
     <link rel="canonical" href="https://hawkmason.com/crewops" />
     <meta name="apple-itunes-app" content="app-id=6811512361" />
     <meta property="og:site_name" content="Hawk &amp; Mason Studios" />
@@ -28,14 +28,14 @@
           "@id": "https://hawkmason.com/crewops#app",
           "name": "Crewops",
           "alternateName": "Crewops crew roster app",
-          "operatingSystem": "iOS 16.4 or later",
+          "operatingSystem": "iOS 16.4 or later, Android 7.0 or later",
           "applicationCategory": "BusinessApplication",
           "applicationSubCategory": "Airline crew roster, flight time limitations and logbook",
           "description": "Reads the roster an airline already sends its crew and shows what it leaves them: flight duty period limits, minimum rest, cumulative duty, a fatigue indicator with sourced coaching, a logbook with EASA and FAA CSV export and a flight map, widgets and a Live Activity, and Crewmates roster sharing. Rule sets: EASA tables, also applied for UK CAA and SHGM; FAA Part 117.",
           "url": "https://hawkmason.com/crewops",
           "downloadUrl": "https://apps.apple.com/app/id6811512361",
           "installUrl": "https://apps.apple.com/app/id6811512361",
-          "sameAs": ["https://apps.apple.com/app/id6811512361"],
+          "sameAs": ["https://apps.apple.com/app/id6811512361", "https://play.google.com/store/apps/details?id=com.hakanaydin.roster"],
           "image": "https://hawkmason.com/assets/crewops/icon.png?v=2",
           "screenshot": [
             "https://hawkmason.com/assets/crewops/bugun.png?v=2",
@@ -82,7 +82,7 @@
             { "@type": "Question", "name": "Can I export my logbook?",
               "acceptedAnswer": { "@type": "Answer", "text": "Yes, as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time." } },
             { "@type": "Question", "name": "What does Crewops cost?",
-              "acceptedAnswer": { "@type": "Answer", "text": "Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the App Store shows the price." } }
+              "acceptedAnswer": { "@type": "Answer", "text": "Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the store shows the price." } }
           ]
         }
       ]
@@ -123,9 +123,10 @@
             <a class="store-pill store-pill--ios" href="https://apps.apple.com/app/id6811512361" target="_blank" rel="noopener">
               <span class="store-kicker">Download on the</span><span class="store-name">App Store</span>
             </a>
+            <a class="store-pill store-pill--play" href="https://play.google.com/store/apps/details?id=com.hakanaydin.roster" target="_blank" rel="noopener"><span class="store-kicker">Get it on</span><span class="store-name">Google Play</span></a>
           </div>
           <p class="g-hero-meta" style="color: var(--w-muted);">
-            iPhone and iPad · 7 languages · free, with a one-month free trial on Pro ·
+            iPhone, iPad and Android · 7 languages · free, with a one-month free trial on Pro ·
             <a href="mailto:hello@hawkmason.com" style="color: var(--w-azure);">hello@hawkmason.com</a>
           </p>
         </div>
@@ -208,7 +209,7 @@
           <div>
             <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">App information</h3>
             <ul class="w-spec">
-              <li><b>Platform:</b> iPhone · iPad</li>
+              <li><b>Platform:</b> iPhone · iPad · Android</li>
               <li><b>Category:</b> Business · Health &amp; Fitness</li>
               <li><b>Age rating:</b> 12+</li>
               <li><b>Developer:</b> Hawk &amp; Mason Studios</li>
@@ -217,8 +218,9 @@
           <div>
             <h3 style="color: #fff; font-size: 1.06rem; margin-bottom: 12px;">Compatibility &amp; languages</h3>
             <ul class="w-spec">
-              <li><b>Requires:</b> iOS 16.4 or later</li>
-              <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR</li>
+              <li><b>Requires:</b> iOS 16.4 or later · Android 7.0 or later</li>
+              <li><b>Languages:</b> TR, EN, DE, ES, FR, IT, PT-BR (Android: TR, EN)</li>
+              <li><b>On Android:</b> everything except Crewmates, widgets, the Live Activity and iCloud sync</li>
               <li><b>Privacy:</b> iCloud sync and sharing with your airline are opt-in</li>
               <li><b>Pricing:</b> Free to use · Crewops Pro $6.99/month or $49.99/year (USD), one-month free trial</li>
             </ul>
@@ -264,7 +266,7 @@
           <article class="w-card"><h3>Which flight time limitation rules does it use?</h3><p>EASA ORO.FTL tables, also applied for UK CAA and SHGM, and FAA Part 117, give the flight duty period ceiling, minimum rest, cumulative duty and the margin your roster leaves you.</p></article>
           <article class="w-card"><h3>Does Crewops work for cabin crew?</h3><p>Yes. Cabin crew get the same duty limits, rest and fatigue views, plus a flight-and-duty record with block time, duty time and night stops.</p></article>
           <article class="w-card"><h3>Can I export my logbook?</h3><p>Yes, as EASA or FAA CSV at any time. Deadhead sectors count as duty, never as flight time.</p></article>
-          <article class="w-card"><h3>What does Crewops cost?</h3><p>Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the App Store shows the price.</p></article>
+          <article class="w-card"><h3>What does Crewops cost?</h3><p>Free to use. Crewops Pro adds the limit board, Rhythm, Health, the full coaching library, post-flight summaries and automatic roster refresh, with a one-month free trial; the store shows the price.</p></article>
         </div>
       </section>
 
