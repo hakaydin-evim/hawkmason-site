@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sortwell · Clean your photo library, keep it on your PC</title>
+    <title>Sortwell · iPhone photo cleaner that sorts your photos on your PC</title>
     <meta name="description" content="Sortwell is a photo cleaner for iPhone by Hawk &amp; Mason Studios. Clear duplicates, similar shots, large videos and screenshots, and send photos to your Windows PC in folders by year and month before you delete them." />
     <link rel="canonical" href="https://hawkmason.com/sortwell" />
     <link rel="alternate" hreflang="en" href="https://hawkmason.com/sortwell" />
     <link rel="alternate" hreflang="tr" href="https://hawkmason.com/tr/sortwell" />
     <link rel="alternate" hreflang="x-default" href="https://hawkmason.com/sortwell" />
-    <meta property="og:title" content="Sortwell · Clean your photo library, keep it on your PC" />
+    <meta property="og:title" content="Sortwell · iPhone photo cleaner that sorts your photos on your PC" />
     <meta property="og:description" content="A photo cleaner for iPhone that sends your photos to your Windows PC, in folders by year and month, before you delete them." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://hawkmason.com/sortwell" />
@@ -72,17 +72,98 @@
     </style>
     <script src="app.js?v=26" defer></script>
     <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareApplication",
-        "name": "Sortwell",
-        "url": "https://hawkmason.com/sortwell",
-        "description": "A photo cleaner for iPhone that sends photos to your Windows PC, in folders by year and month, before you delete them.",
-        "applicationCategory": "UtilitiesApplication",
-        "operatingSystem": "iOS, Windows",
-        "inLanguage": ["en"],
-        "publisher": { "@id": "https://hawkmason.com/#organization" }
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Sortwell",
+  "alternateName": "Photo Cleaner: Sortwell",
+  "url": "https://hawkmason.com/sortwell",
+  "description": "A photo cleaner for iPhone that sends photos to your Windows PC, in folders by year and month, before you delete them.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "iOS, Windows 10, Windows 11",
+  "inLanguage": [
+    "en"
+  ],
+  "image": "https://hawkmason.com/assets/sortwell/icon.png",
+  "screenshot": [
+    "https://hawkmason.com/assets/sortwell/overview.webp",
+    "https://hawkmason.com/assets/sortwell/windows.webp"
+  ],
+  "downloadUrl": "https://download.hawkmason.com/Sortwell-Setup-0.2.0.exe",
+  "featureList": [
+    "Find exact duplicate photos",
+    "Group similar shots and suggest the best one",
+    "List large videos and screenshots",
+    "Send photos from iPhone to a Windows PC over Wi-Fi",
+    "Sort photo folders by year and month on Windows, with undo",
+    "Browse a photo folder by date"
+  ],
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD",
+    "description": "Free to download. Sortwell Pro is an in-app purchase in the iPhone app."
+  },
+  "publisher": {
+    "@id": "https://hawkmason.com/#organization"
+  }
+}
+    </script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How do I move photos from my iPhone to a Windows PC in folders by date?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Install Sortwell for Windows and choose your photo folder, click Connect iPhone, and scan the code with Sortwell on your iPhone. Photos you send land in folders by year and month, such as 2023\\2023-06, named from the date each photo was taken."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Can Sortwell sort a photo folder that is already on my PC?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Point Sortwell for Windows at any folder of photos and videos. It reads the date each one was taken and shows them month by month without moving anything. With Pro it can move them into year and month folders, and Undo last sort puts every file back."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Sortwell for Windows free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It is free to download, and browsing a folder by year and month is free. Receiving photos from the iPhone and sorting into date folders are part of Sortwell Pro."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do I buy Sortwell Pro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "In the iPhone app only, as a weekly or yearly subscription or a one-time purchase. Scanning the code on your PC from an iPhone with Pro unlocks the PC. There is no licence key and no second purchase."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do my photos go through a server or the cloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. They go straight from the iPhone to your PC over your own Wi-Fi, encrypted. There is no account and no server of ours in between."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it need a cable, iTunes or iCloud?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Both devices only need to be on the same Wi-Fi network."
+      }
+    }
+  ]
+}
     </script>
   </head>
   <body class="sortwell" data-page="sortwell">
@@ -187,6 +268,20 @@
           <div class="sw-row"><dt>What Pro adds</dt><dd>Unlimited deleting on iPhone, sending photos to your PC and sorting folders on Windows. Pro is bought once, in the iPhone app, as a weekly or yearly subscription or a one-time purchase. Scanning the code from an iPhone with Pro unlocks the PC; there is no licence key and no second purchase.</dd></div>
           <div class="sw-row"><dt>Your photos</dt><dd>They leave the iPhone only when you send them to your own PC, and they go straight there. No account, no ads, no tracking, and no server of ours in between. Details in the <a class="sw-link" href="sortwell-privacy">privacy policy</a>.</dd></div>
           <div class="sw-row"><dt>Nothing is lost by accident</dt><dd>iOS asks you to confirm every deletion and keeps deleted items for 30 days. Sorting on Windows never deletes or overwrites a file and can be undone.</dd></div>
+        </dl>
+      </section>
+      <section class="w-feat" id="questions">
+        <div class="section-head section-head--center">
+          <h2 style="color: #fff;">Questions people ask</h2>
+          <p class="sw-lead">Step by step: <a class="sw-link" href="iphone-photos-to-pc-by-date">how to move iPhone photos to a Windows PC and keep them in date order</a>.</p>
+        </div>
+        <dl class="sw-rows">
+          <div class="sw-row"><dt>How do I move photos from my iPhone to a Windows PC in folders by date?</dt><dd>Install Sortwell for Windows and choose your photo folder, click Connect iPhone, and scan the code with Sortwell on your iPhone. Photos you send land in folders by year and month, such as 2023\2023-06, named from the date each photo was taken.</dd></div>
+          <div class="sw-row"><dt>Can Sortwell sort a photo folder that is already on my PC?</dt><dd>Yes. Point Sortwell for Windows at any folder of photos and videos. It reads the date each one was taken and shows them month by month without moving anything. With Pro it can move them into year and month folders, and Undo last sort puts every file back.</dd></div>
+          <div class="sw-row"><dt>Is Sortwell for Windows free?</dt><dd>It is free to download, and browsing a folder by year and month is free. Receiving photos from the iPhone and sorting into date folders are part of Sortwell Pro.</dd></div>
+          <div class="sw-row"><dt>Where do I buy Sortwell Pro?</dt><dd>In the iPhone app only, as a weekly or yearly subscription or a one-time purchase. Scanning the code on your PC from an iPhone with Pro unlocks the PC. There is no licence key and no second purchase.</dd></div>
+          <div class="sw-row"><dt>Do my photos go through a server or the cloud?</dt><dd>No. They go straight from the iPhone to your PC over your own Wi-Fi, encrypted. There is no account and no server of ours in between.</dd></div>
+          <div class="sw-row"><dt>Does it need a cable, iTunes or iCloud?</dt><dd>No. Both devices only need to be on the same Wi-Fi network.</dd></div>
         </dl>
       </section>
     </main>
