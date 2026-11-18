@@ -77,8 +77,9 @@
         the answers you gave when you first opened it (your level, why you are
         learning, the topics you picked and your daily goal), the lessons you
         finished, your points and streak, the days you practiced, the phrases
-        you saved, and your settings. None of this leaves your device, and
-        deleting the app deletes it.
+        you saved, and your settings. Its Home Screen widgets read your
+        streak and today’s goal from that storage. None of this leaves your
+        device, and deleting the app deletes it.
       </p>
 
       <h2 id="network">What it downloads</h2>
@@ -117,8 +118,10 @@
       <h2 id="apis">Required-reason APIs</h2>
       <p>
         Apple requires a declared reason for certain system APIs. Merhaba
-        declares one: User defaults (<code>CA92.1</code>), used only to
-        remember its own settings and your progress.
+        declares User defaults for two reasons: <code>CA92.1</code>, to
+        remember its own settings and your progress, and <code>1C8F.1</code>,
+        to pass your streak and today’s goal to its Home Screen widget on the
+        same device.
       </p>
 
       <h2 id="children">Children</h2>
