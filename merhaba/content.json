@@ -1,0 +1,2880 @@
+{
+  "extraDecks" : [
+    {
+      "emoji" : "🌦️",
+      "id" : "x-weather",
+      "phrases" : [
+        {
+          "en" : "How's the weather?",
+          "say" : "hah-VAH NAH-suhl",
+          "tr" : "Hava nasıl?"
+        },
+        {
+          "en" : "It's very hot",
+          "say" : "hah-VAH chok suh-JAHK",
+          "tr" : "Hava çok sıcak"
+        },
+        {
+          "en" : "It's cold",
+          "say" : "hah-VAH so-OOK",
+          "tr" : "Hava soğuk"
+        },
+        {
+          "en" : "It's raining",
+          "say" : "yaa-MOOR yaa-uh-YOR",
+          "tr" : "Yağmur yağıyor"
+        },
+        {
+          "en" : "It's snowing",
+          "say" : "kahr yaa-uh-YOR",
+          "tr" : "Kar yağıyor"
+        },
+        {
+          "en" : "It's sunny today",
+          "say" : "boo-GEWN gew-nesh-LEE",
+          "tr" : "Bugün güneşli"
+        }
+      ],
+      "title" : "Weather"
+    },
+    {
+      "emoji" : "💼",
+      "id" : "x-work",
+      "phrases" : [
+        {
+          "en" : "I have a meeting",
+          "say" : "top-lahn-TUHM vahr",
+          "tr" : "Toplantım var"
+        },
+        {
+          "en" : "I'm very busy today",
+          "say" : "boo-GEWN chok mesh-GOO-lewm",
+          "tr" : "Bugün çok meşgulüm"
+        },
+        {
+          "en" : "I'm off tomorrow",
+          "say" : "YAH-ruhn ee-zeen-LEE-yeem",
+          "tr" : "Yarın izinliyim"
+        },
+        {
+          "en" : "I'm late for work",
+          "say" : "ee-SHEH getch kahl-DUHM",
+          "tr" : "İşe geç kaldım"
+        },
+        {
+          "en" : "I sent an email",
+          "say" : "eh-pos-TAH gurn-dehr-DEEM",
+          "tr" : "E-posta gönderdim"
+        },
+        {
+          "en" : "The workday is over",
+          "say" : "meh-sah-EE beet-TEE",
+          "tr" : "Mesai bitti"
+        }
+      ],
+      "title" : "Work"
+    },
+    {
+      "emoji" : "📱",
+      "id" : "x-texting",
+      "phrases" : [
+        {
+          "en" : "What's up? Texted as: nbr",
+          "say" : "neh hah-BEHR",
+          "tr" : "Ne haber?"
+        },
+        {
+          "en" : "Hi. Texted as: slm",
+          "say" : "seh-LAHM",
+          "tr" : "Selam"
+        },
+        {
+          "en" : "Take care. Texted as: kib",
+          "say" : "ken-dee-NEH ee-YEE bahk",
+          "tr" : "Kendine iyi bak"
+        },
+        {
+          "en" : "Okay, see you. Texted as: grşrz",
+          "say" : "HAH-dee gur-rew-shew-REWZ",
+          "tr" : "Hadi görüşürüz"
+        },
+        {
+          "en" : "Where are you? Texted as: nrdsn",
+          "say" : "NEH-reh-deh-seen",
+          "tr" : "Neredesin?"
+        },
+        {
+          "en" : "I'm on my way",
+          "say" : "yol-DAH-yuhm",
+          "tr" : "Yoldayım"
+        }
+      ],
+      "title" : "Texting Like a Local"
+    },
+    {
+      "emoji" : "💬",
+      "id" : "x-smalltalk",
+      "phrases" : [
+        {
+          "en" : "What are you doing?",
+          "say" : "neh yah-puh-YOR-soon",
+          "tr" : "Ne yapıyorsun?"
+        },
+        {
+          "en" : "How's it going?",
+          "say" : "NAH-suhl gee-dee-YOR",
+          "tr" : "Nasıl gidiyor?"
+        },
+        {
+          "en" : "Not bad",
+          "say" : "feh-NAH deh-EEL",
+          "tr" : "Fena değil"
+        },
+        {
+          "en" : "And how are you?",
+          "say" : "sen NAH-suhl-suhn",
+          "tr" : "Sen nasılsın?"
+        },
+        {
+          "en" : "Really?",
+          "say" : "gehr-chek-TEN mee",
+          "tr" : "Gerçekten mi?"
+        },
+        {
+          "en" : "I think so too",
+          "say" : "ben-JEH deh",
+          "tr" : "Bence de"
+        }
+      ],
+      "title" : "Small Talk"
+    }
+  ],
+  "heardIn" : {
+    "argue" : "Yargı and Ezel",
+    "famdrama" : "Yaprak Dökümü and Kızılcık Şerbeti",
+    "flirt" : "Erkenci Kuş and Sen Çal Kapımı",
+    "heartbreak" : "Kara Sevda and Fatmagül'ün Suçu Ne?",
+    "honour" : "Diriliş: Ertuğrul and Muhteşem Yüzyıl",
+    "love" : "Kara Sevda and Aşk-ı Memnu",
+    "palace" : "Muhteşem Yüzyıl",
+    "tough" : "Çukur and Ezel",
+    "warriors" : "Diriliş: Ertuğrul and Kuruluş: Osman"
+  },
+  "scenarios" : [
+    {
+      "blurb" : "Order a tea like a local",
+      "emoji" : "☕️",
+      "free" : true,
+      "id" : "cafe",
+      "title" : "At a Café",
+      "turns" : [
+        {
+          "en" : "Welcome! What would you like?",
+          "say" : "",
+          "tr" : "Hoş geldiniz! Ne alırsınız?",
+          "you" : false
+        },
+        {
+          "en" : "One tea, please",
+          "say" : "beer CHAI lewt-fen",
+          "tr" : "Bir çay lütfen",
+          "you" : true
+        },
+        {
+          "en" : "With sugar?",
+          "say" : "",
+          "tr" : "Şekerli mi?",
+          "you" : false
+        },
+        {
+          "en" : "No sugar, please",
+          "say" : "sheh-kehr-SEEZ lewt-fen",
+          "tr" : "Şekersiz lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Here you go, your tea.",
+          "say" : "",
+          "tr" : "Buyurun, çayınız.",
+          "you" : false
+        },
+        {
+          "en" : "Thank you",
+          "say" : "teh-shek-KEWR eh-deh-reem",
+          "tr" : "Teşekkür ederim",
+          "you" : true
+        },
+        {
+          "en" : "Enjoy!",
+          "say" : "",
+          "tr" : "Afiyet olsun!",
+          "you" : false
+        },
+        {
+          "en" : "The bill, please",
+          "say" : "heh-SAHP lewt-fen",
+          "tr" : "Hesap lütfen",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Your first small talk",
+      "emoji" : "🤝",
+      "free" : false,
+      "id" : "meet",
+      "title" : "Meeting Someone",
+      "turns" : [
+        {
+          "en" : "Hello! How are you?",
+          "say" : "",
+          "tr" : "Merhaba! Nasılsın?",
+          "you" : false
+        },
+        {
+          "en" : "I'm fine, thanks",
+          "say" : "ee-YEE-yeem, teh-shek-kewr-LEHR",
+          "tr" : "İyiyim, teşekkürler",
+          "you" : true
+        },
+        {
+          "en" : "Do you speak Turkish?",
+          "say" : "",
+          "tr" : "Türkçe biliyor musun?",
+          "you" : false
+        },
+        {
+          "en" : "I know a little Turkish",
+          "say" : "bee-RAHZ TEWRK-cheh bee-lee-YO-room",
+          "tr" : "Biraz Türkçe biliyorum",
+          "you" : true
+        },
+        {
+          "en" : "You speak very well!",
+          "say" : "",
+          "tr" : "Çok güzel konuşuyorsun!",
+          "you" : false
+        },
+        {
+          "en" : "Thank you",
+          "say" : "teh-shek-KEWR eh-deh-reem",
+          "tr" : "Teşekkür ederim",
+          "you" : true
+        },
+        {
+          "en" : "See you!",
+          "say" : "",
+          "tr" : "Görüşürüz!",
+          "you" : false
+        },
+        {
+          "en" : "See you",
+          "say" : "gur-rew-shew-REWZ",
+          "tr" : "Görüşürüz",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Ask the price and bargain",
+      "emoji" : "🛍️",
+      "free" : false,
+      "id" : "bazaar",
+      "title" : "At the Bazaar",
+      "turns" : [
+        {
+          "en" : "Come in, welcome!",
+          "say" : "",
+          "tr" : "Buyurun, hoş geldiniz!",
+          "you" : false
+        },
+        {
+          "en" : "How much is this?",
+          "say" : "boo neh kah-DAHR",
+          "tr" : "Bu ne kadar?",
+          "you" : true
+        },
+        {
+          "en" : "Five hundred lira.",
+          "say" : "",
+          "tr" : "Beş yüz lira.",
+          "you" : false
+        },
+        {
+          "en" : "Very expensive",
+          "say" : "chok pah-hah-LUH",
+          "tr" : "Çok pahalı",
+          "you" : true
+        },
+        {
+          "en" : "For you, let's say four hundred.",
+          "say" : "",
+          "tr" : "Sizin için dört yüz olsun.",
+          "you" : false
+        },
+        {
+          "en" : "Can I pay by card?",
+          "say" : "kahrt-LAH ur-deh-yeh-bee-LEER mee-yeem",
+          "tr" : "Kartla ödeyebilir miyim?",
+          "you" : true
+        },
+        {
+          "en" : "Of course, go ahead.",
+          "say" : "",
+          "tr" : "Tabii, buyurun.",
+          "you" : false
+        },
+        {
+          "en" : "I'll take this",
+          "say" : "boo-NOO ah-luh-YO-room",
+          "tr" : "Bunu alıyorum",
+          "you" : true
+        },
+        {
+          "en" : "Enjoy it!",
+          "say" : "",
+          "tr" : "Hayırlı olsun!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Find your hotel",
+      "emoji" : "🧭",
+      "free" : false,
+      "id" : "street",
+      "title" : "Asking the Way",
+      "turns" : [
+        {
+          "en" : "Hello, can I help?",
+          "say" : "",
+          "tr" : "Merhaba, yardım edebilir miyim?",
+          "you" : false
+        },
+        {
+          "en" : "Where is the hotel?",
+          "say" : "oh-TEL NEH-reh-deh",
+          "tr" : "Otel nerede?",
+          "you" : true
+        },
+        {
+          "en" : "Go straight, then turn right.",
+          "say" : "",
+          "tr" : "Düz gidin, sonra sağa dönün.",
+          "you" : false
+        },
+        {
+          "en" : "Is it close?",
+          "say" : "yah-KUHN muh",
+          "tr" : "Yakın mı?",
+          "you" : true
+        },
+        {
+          "en" : "Yes, very close.",
+          "say" : "",
+          "tr" : "Evet, çok yakın.",
+          "you" : false
+        },
+        {
+          "en" : "Thank you",
+          "say" : "teh-shek-KEWR eh-deh-reem",
+          "tr" : "Teşekkür ederim",
+          "you" : true
+        },
+        {
+          "en" : "You're welcome, have a nice day!",
+          "say" : "",
+          "tr" : "Rica ederim, iyi günler!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Order a full meal",
+      "emoji" : "🍽️",
+      "free" : false,
+      "id" : "restaurant",
+      "title" : "At a Restaurant",
+      "turns" : [
+        {
+          "en" : "Welcome! Here is the menu.",
+          "say" : "",
+          "tr" : "Hoş geldiniz! Buyurun, menü.",
+          "you" : false
+        },
+        {
+          "en" : "What do you recommend?",
+          "say" : "neh ur-neh-reer-see-NEEZ",
+          "tr" : "Ne önerirsiniz?",
+          "you" : true
+        },
+        {
+          "en" : "Our kebab is very good.",
+          "say" : "",
+          "tr" : "Kebabımız çok güzel.",
+          "you" : false
+        },
+        {
+          "en" : "I'd like kebab",
+          "say" : "ben keh-BAHP ees-tee-YO-room",
+          "tr" : "Ben kebap istiyorum",
+          "you" : true
+        },
+        {
+          "en" : "And to drink?",
+          "say" : "",
+          "tr" : "İçecek olarak?",
+          "you" : false
+        },
+        {
+          "en" : "A water, please",
+          "say" : "beer SOO lewt-fen",
+          "tr" : "Bir su lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Enjoy your meal!",
+          "say" : "",
+          "tr" : "Afiyet olsun!",
+          "you" : false
+        },
+        {
+          "en" : "Everything was very nice",
+          "say" : "hehr shey chok gew-zel-DEE",
+          "tr" : "Her şey çok güzeldi",
+          "you" : true
+        },
+        {
+          "en" : "Thank you very much!",
+          "say" : "",
+          "tr" : "Çok teşekkürler!",
+          "you" : false
+        },
+        {
+          "en" : "Can I have the bill?",
+          "say" : "heh-sah-BUH ah-lah-bee-LEER mee-yeem",
+          "tr" : "Hesabı alabilir miyim?",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Arrive at your hotel",
+      "emoji" : "🏨",
+      "free" : false,
+      "id" : "hotel",
+      "title" : "Checking In",
+      "turns" : [
+        {
+          "en" : "Good evening, welcome.",
+          "say" : "",
+          "tr" : "İyi akşamlar, hoş geldiniz.",
+          "you" : false
+        },
+        {
+          "en" : "I have a reservation",
+          "say" : "reh-zehr-vahs-yo-NOOM vahr",
+          "tr" : "Rezervasyonum var",
+          "you" : true
+        },
+        {
+          "en" : "How many nights will you stay?",
+          "say" : "",
+          "tr" : "Kaç gece kalacaksınız?",
+          "you" : false
+        },
+        {
+          "en" : "Two nights",
+          "say" : "ee-KEE geh-JEH",
+          "tr" : "İki gece",
+          "you" : true
+        },
+        {
+          "en" : "Okay. Your room is ready.",
+          "say" : "",
+          "tr" : "Tamam. Odanız hazır.",
+          "you" : false
+        },
+        {
+          "en" : "Is breakfast included?",
+          "say" : "kah-vahl-TUH dah-HEEL mee",
+          "tr" : "Kahvaltı dahil mi?",
+          "you" : true
+        },
+        {
+          "en" : "Yes, it is included.",
+          "say" : "",
+          "tr" : "Evet, dahil.",
+          "you" : false
+        },
+        {
+          "en" : "The key, please",
+          "say" : "ah-nah-TAHR lewt-fen",
+          "tr" : "Anahtar lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Here you go, good night!",
+          "say" : "",
+          "tr" : "Buyurun, iyi geceler!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Get across the city",
+      "emoji" : "🚕",
+      "free" : false,
+      "id" : "taxi",
+      "title" : "Taxi Ride",
+      "turns" : [
+        {
+          "en" : "Hello, where to?",
+          "say" : "",
+          "tr" : "Merhaba, nereye?",
+          "you" : false
+        },
+        {
+          "en" : "I'm going here",
+          "say" : "boo-rah-YAH gee-dee-YO-room",
+          "tr" : "Buraya gidiyorum",
+          "you" : true
+        },
+        {
+          "en" : "Okay, hop in.",
+          "say" : "",
+          "tr" : "Tamam, buyurun.",
+          "you" : false
+        },
+        {
+          "en" : "How long does it take?",
+          "say" : "neh kah-DAHR sew-REHR",
+          "tr" : "Ne kadar sürer?",
+          "you" : true
+        },
+        {
+          "en" : "Twenty minutes.",
+          "say" : "",
+          "tr" : "Yirmi dakika.",
+          "you" : false
+        },
+        {
+          "en" : "Can I get off here?",
+          "say" : "boo-rah-DAH ee-neh-bee-LEER mee-yeem",
+          "tr" : "Burada inebilir miyim?",
+          "you" : true
+        },
+        {
+          "en" : "Sure. Four hundred lira.",
+          "say" : "",
+          "tr" : "Tabii. Dört yüz lira.",
+          "you" : false
+        },
+        {
+          "en" : "Keep the change",
+          "say" : "ews-TEW kahl-SUHN",
+          "tr" : "Üstü kalsın",
+          "you" : true
+        },
+        {
+          "en" : "Thanks, have a nice day!",
+          "say" : "",
+          "tr" : "Teşekkürler, iyi günler!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Ride a shared minibus like a local",
+      "emoji" : "🚐",
+      "free" : true,
+      "id" : "dolmus",
+      "title" : "On the Dolmuş",
+      "turns" : [
+        {
+          "en" : "Where are you going?",
+          "say" : "",
+          "tr" : "Nereye gidiyorsun?",
+          "you" : false
+        },
+        {
+          "en" : "I'm going to Taksim",
+          "say" : "tahk-SEE-meh gee-dee-YO-room",
+          "tr" : "Taksim'e gidiyorum",
+          "you" : true
+        },
+        {
+          "en" : "Okay, take a seat.",
+          "say" : "",
+          "tr" : "Tamam, otur.",
+          "you" : false
+        },
+        {
+          "en" : "How much?",
+          "say" : "neh kah-DAHR",
+          "tr" : "Ne kadar?",
+          "you" : true
+        },
+        {
+          "en" : "Twenty lira.",
+          "say" : "",
+          "tr" : "Yirmi lira.",
+          "you" : false
+        },
+        {
+          "en" : "Here you go",
+          "say" : "boo-yoo-ROON",
+          "tr" : "Buyurun",
+          "you" : true
+        },
+        {
+          "en" : "Thanks.",
+          "say" : "",
+          "tr" : "Sağ ol.",
+          "you" : false
+        },
+        {
+          "en" : "Somewhere convenient, please (how you ask to get off)",
+          "say" : "mew-sah-EET beer yehr-DEH lewt-fen",
+          "tr" : "Müsait bir yerde lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Okay, have a nice day!",
+          "say" : "",
+          "tr" : "Tamam, iyi günler!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Explain what hurts",
+      "emoji" : "💊",
+      "free" : false,
+      "id" : "pharmacy",
+      "title" : "At the Pharmacy",
+      "turns" : [
+        {
+          "en" : "Get well soon, how can I help?",
+          "say" : "",
+          "tr" : "Geçmiş olsun, nasıl yardımcı olabilirim?",
+          "you" : false
+        },
+        {
+          "en" : "I have a headache",
+          "say" : "bah-SHUHM aa-ruh-YOR",
+          "tr" : "Başım ağrıyor",
+          "you" : true
+        },
+        {
+          "en" : "Do you have a fever?",
+          "say" : "",
+          "tr" : "Ateşiniz var mı?",
+          "you" : false
+        },
+        {
+          "en" : "No, I don't",
+          "say" : "HAH-yuhr yok",
+          "tr" : "Hayır, yok",
+          "you" : true
+        },
+        {
+          "en" : "Take this medicine twice a day.",
+          "say" : "",
+          "tr" : "Bu ilacı günde iki kez alın.",
+          "you" : false
+        },
+        {
+          "en" : "How much?",
+          "say" : "neh kah-DAHR",
+          "tr" : "Ne kadar?",
+          "you" : true
+        },
+        {
+          "en" : "One hundred and fifty lira.",
+          "say" : "",
+          "tr" : "Yüz elli lira.",
+          "you" : false
+        },
+        {
+          "en" : "Thank you",
+          "say" : "teh-shek-KEWR eh-deh-reem",
+          "tr" : "Teşekkür ederim",
+          "you" : true
+        },
+        {
+          "en" : "Get well soon!",
+          "say" : "",
+          "tr" : "Geçmiş olsun!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "A scene straight out of a dizi",
+      "emoji" : "🫖",
+      "free" : false,
+      "id" : "inlaws",
+      "title" : "Meeting the Family",
+      "turns" : [
+        {
+          "en" : "Welcome, my child, come and sit.",
+          "say" : "",
+          "tr" : "Hoş geldin evladım, geç otur.",
+          "you" : false
+        },
+        {
+          "en" : "Glad to be here (the reply to hoş geldin)",
+          "say" : "hosh bool-DOOK",
+          "tr" : "Hoş bulduk",
+          "you" : true
+        },
+        {
+          "en" : "Would you like some tea?",
+          "say" : "",
+          "tr" : "Çay içer misin?",
+          "you" : false
+        },
+        {
+          "en" : "Yes, please",
+          "say" : "eh-VET lewt-fen",
+          "tr" : "Evet, lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Are you hungry? The food is ready.",
+          "say" : "",
+          "tr" : "Aç mısın? Yemek hazır.",
+          "you" : false
+        },
+        {
+          "en" : "Thank you for cooking",
+          "say" : "eh-lee-nee-ZEH sah-LUHK",
+          "tr" : "Elinize sağlık",
+          "you" : true
+        },
+        {
+          "en" : "Enjoy! Come again.",
+          "say" : "",
+          "tr" : "Afiyet olsun! Yine gel.",
+          "you" : false
+        },
+        {
+          "en" : "Thank you very much",
+          "say" : "chok teh-shek-kewr-LEHR",
+          "tr" : "Çok teşekkürler",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Plan a dinner together",
+      "emoji" : "💘",
+      "free" : false,
+      "id" : "date",
+      "title" : "Asking Someone Out",
+      "turns" : [
+        {
+          "en" : "What are you doing tonight?",
+          "say" : "",
+          "tr" : "Bu akşam ne yapıyorsun?",
+          "you" : false
+        },
+        {
+          "en" : "I have no plans",
+          "say" : "beer plah-NUHM yok",
+          "tr" : "Bir planım yok",
+          "you" : true
+        },
+        {
+          "en" : "Shall we have dinner together?",
+          "say" : "",
+          "tr" : "Birlikte yemek yiyelim mi?",
+          "you" : false
+        },
+        {
+          "en" : "I'd love to",
+          "say" : "chok ees-teh-REEM",
+          "tr" : "Çok isterim",
+          "you" : true
+        },
+        {
+          "en" : "Let's meet at eight.",
+          "say" : "",
+          "tr" : "Saat sekizde buluşalım.",
+          "you" : false
+        },
+        {
+          "en" : "Okay, see you",
+          "say" : "tah-MAHM gur-rew-shew-REWZ",
+          "tr" : "Tamam, görüşürüz",
+          "you" : true
+        },
+        {
+          "en" : "See you!",
+          "say" : "",
+          "tr" : "Görüşürüz!",
+          "you" : false
+        }
+      ]
+    },
+    {
+      "blurb" : "Buy fresh food by the kilo",
+      "emoji" : "🍅",
+      "free" : false,
+      "id" : "market",
+      "title" : "At the Market",
+      "turns" : [
+        {
+          "en" : "Come on over, the tomatoes are very fresh!",
+          "say" : "",
+          "tr" : "Buyurun, domatesler çok taze!",
+          "you" : false
+        },
+        {
+          "en" : "A kilo of tomatoes, please",
+          "say" : "beer kee-LO do-mah-TES lewt-fen",
+          "tr" : "Bir kilo domates lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Anything else?",
+          "say" : "",
+          "tr" : "Başka bir şey?",
+          "you" : false
+        },
+        {
+          "en" : "Half a kilo of cheese",
+          "say" : "yah-RUHM kee-LO pey-NEER",
+          "tr" : "Yarım kilo peynir",
+          "you" : true
+        },
+        {
+          "en" : "Sure. One hundred and twenty lira.",
+          "say" : "",
+          "tr" : "Tabii. Yüz yirmi lira.",
+          "you" : false
+        },
+        {
+          "en" : "Can I have a bag?",
+          "say" : "po-SHET ah-lah-bee-LEER mee-yeem",
+          "tr" : "Poşet alabilir miyim?",
+          "you" : true
+        },
+        {
+          "en" : "Here you go, enjoy!",
+          "say" : "",
+          "tr" : "Buyurun, afiyet olsun!",
+          "you" : false
+        },
+        {
+          "en" : "May your work go easily",
+          "say" : "ko-LYE gel-SEEN",
+          "tr" : "Kolay gelsin",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Leave a message for a friend",
+      "emoji" : "📞",
+      "free" : false,
+      "id" : "phone",
+      "title" : "Phone Call",
+      "turns" : [
+        {
+          "en" : "Hello?",
+          "say" : "",
+          "tr" : "Alo?",
+          "you" : false
+        },
+        {
+          "en" : "Hello, hi",
+          "say" : "ah-LO MEHR-hah-bah",
+          "tr" : "Alo, merhaba",
+          "you" : true
+        },
+        {
+          "en" : "Who am I speaking with?",
+          "say" : "",
+          "tr" : "Kiminle görüşüyorum?",
+          "you" : false
+        },
+        {
+          "en" : "I'm Ayşe's friend",
+          "say" : "ben eye-sheh-NEEN ahr-kah-dah-SHUH-yuhm",
+          "tr" : "Ben Ayşe'nin arkadaşıyım",
+          "you" : true
+        },
+        {
+          "en" : "Ayşe isn't here right now.",
+          "say" : "",
+          "tr" : "Ayşe şu an burada değil.",
+          "you" : false
+        },
+        {
+          "en" : "I'll call again later",
+          "say" : "son-RAH tek-RAHR ah-rah-RUHM",
+          "tr" : "Sonra tekrar ararım",
+          "you" : true
+        },
+        {
+          "en" : "Okay, I'll tell her.",
+          "say" : "",
+          "tr" : "Tamam, söylerim.",
+          "you" : false
+        },
+        {
+          "en" : "Thanks, have a nice day",
+          "say" : "teh-shek-kewr-LEHR ee-YEE gewn-LEHR",
+          "tr" : "Teşekkürler, iyi günler",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Get a haircut and a glass of tea",
+      "emoji" : "💈",
+      "free" : false,
+      "id" : "barber",
+      "title" : "At the Barber",
+      "turns" : [
+        {
+          "en" : "Welcome, how would you like it?",
+          "say" : "",
+          "tr" : "Hoş geldin, nasıl olsun?",
+          "you" : false
+        },
+        {
+          "en" : "A little shorter, please",
+          "say" : "bee-RAHZ kuh-sahl-TUHN lewt-fen",
+          "tr" : "Biraz kısaltın lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Would you like tea?",
+          "say" : "",
+          "tr" : "Çay ister misin?",
+          "you" : false
+        },
+        {
+          "en" : "Yes, please",
+          "say" : "eh-VET lewt-fen",
+          "tr" : "Evet, lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Is it good like this?",
+          "say" : "",
+          "tr" : "Böyle iyi mi?",
+          "you" : false
+        },
+        {
+          "en" : "It turned out great",
+          "say" : "chok gew-ZEL ol-DOO",
+          "tr" : "Çok güzel oldu",
+          "you" : true
+        },
+        {
+          "en" : "Enjoy your fresh cut! (said after a haircut)",
+          "say" : "",
+          "tr" : "Sıhhatler olsun!",
+          "you" : false
+        },
+        {
+          "en" : "Thanks",
+          "say" : "SAA ol",
+          "tr" : "Sağ ol",
+          "you" : true
+        }
+      ]
+    },
+    {
+      "blurb" : "Order the famous breakfast spread",
+      "emoji" : "🍳",
+      "free" : false,
+      "id" : "breakfast",
+      "title" : "Turkish Breakfast",
+      "turns" : [
+        {
+          "en" : "Good morning! Would you like the breakfast spread?",
+          "say" : "",
+          "tr" : "Günaydın! Serpme kahvaltı ister misiniz?",
+          "you" : false
+        },
+        {
+          "en" : "Yes, for two",
+          "say" : "eh-VET ee-KEE kee-shee-LEEK",
+          "tr" : "Evet, iki kişilik",
+          "you" : true
+        },
+        {
+          "en" : "Tea or coffee?",
+          "say" : "",
+          "tr" : "Çay mı, kahve mi?",
+          "you" : false
+        },
+        {
+          "en" : "Tea, please",
+          "say" : "CHAI lewt-fen",
+          "tr" : "Çay lütfen",
+          "you" : true
+        },
+        {
+          "en" : "How would you like your eggs?",
+          "say" : "",
+          "tr" : "Yumurta nasıl olsun?",
+          "you" : false
+        },
+        {
+          "en" : "Menemen, please (eggs with tomato and pepper)",
+          "say" : "meh-neh-MEN lewt-fen",
+          "tr" : "Menemen lütfen",
+          "you" : true
+        },
+        {
+          "en" : "Coming right up!",
+          "say" : "",
+          "tr" : "Hemen geliyor!",
+          "you" : false
+        },
+        {
+          "en" : "Thank you very much",
+          "say" : "chok teh-shek-kewr-LEHR",
+          "tr" : "Çok teşekkürler",
+          "you" : true
+        }
+      ]
+    }
+  ],
+  "tags" : {
+    "u0" : "START HERE",
+    "u1" : "STARTER",
+    "u10" : "DIZI",
+    "u2" : "STARTER",
+    "u3" : "DIZI",
+    "u4" : "LEVEL A1",
+    "u5" : "LEVEL A1",
+    "u6" : "LEVEL A1",
+    "u7" : "LEVEL A1",
+    "u8" : "DIZI",
+    "u9" : "DIZI"
+  },
+  "tips" : {
+    "aboutme" : {
+      "body" : "Turkish has no separate \"am\". You add an ending to the word instead.",
+      "examples" : [
+        {
+          "en" : "student → I'm a student",
+          "say" : "",
+          "tr" : "öğrenci → öğrenciyim"
+        },
+        {
+          "en" : "doctor → I'm a doctor",
+          "say" : "",
+          "tr" : "doktor → doktorum"
+        }
+      ],
+      "title" : "No word for \"am\""
+    },
+    "argue" : {
+      "body" : "The bare verb is a command to one person. Add -me or -ma to say \"don't\".",
+      "examples" : [
+        {
+          "en" : "listen",
+          "say" : "",
+          "tr" : "dinle"
+        },
+        {
+          "en" : "don't say",
+          "say" : "",
+          "tr" : "söyleme"
+        }
+      ],
+      "title" : "Giving orders"
+    },
+    "around" : {
+      "body" : "The ending -de or -da means in or at. The question word nerede is simply \"at where\".",
+      "examples" : [
+        {
+          "en" : "hotel → at the hotel",
+          "say" : "",
+          "tr" : "otel → otelde"
+        },
+        {
+          "en" : "in Istanbul",
+          "say" : "",
+          "tr" : "İstanbul'da"
+        }
+      ],
+      "title" : "Where: nerede"
+    },
+    "bazaar" : {
+      "body" : "Add mı, mi, mu or mü after the word you're asking about. It is written separately and its vowel follows vowel harmony.",
+      "examples" : [
+        {
+          "en" : "there is → is there?",
+          "say" : "",
+          "tr" : "var → var mı?"
+        },
+        {
+          "en" : "nice → is it nice?",
+          "say" : "",
+          "tr" : "güzel → güzel mi?"
+        }
+      ],
+      "title" : "Asking yes/no questions"
+    },
+    "cafe" : {
+      "body" : "There is no separate word for a or an. Bir does both jobs, and lütfen usually comes last.",
+      "examples" : [
+        {
+          "en" : "A tea, please",
+          "say" : "",
+          "tr" : "Bir çay lütfen"
+        }
+      ],
+      "title" : "Bir means one, and a"
+    },
+    "drama" : {
+      "body" : "Drama characters live on short reactions. Tone does the work: the same tamam can be calm, annoyed or heartbroken.",
+      "examples" : [
+        {
+          "en" : "Okay",
+          "say" : "",
+          "tr" : "Tamam"
+        },
+        {
+          "en" : "Come on!",
+          "say" : "",
+          "tr" : "Hadi!"
+        }
+      ],
+      "title" : "Tiny words, big feelings"
+    },
+    "famdrama" : {
+      "body" : "Turks call older people by family titles even when they are not related. It is warm and respectful.",
+      "examples" : [
+        {
+          "en" : "older brother / sister",
+          "say" : "",
+          "tr" : "abi / abla"
+        },
+        {
+          "en" : "any older man / woman",
+          "say" : "",
+          "tr" : "amca / teyze"
+        }
+      ],
+      "title" : "Everyone is family"
+    },
+    "family" : {
+      "body" : "The same -m ending from before: add it to a family word to make it yours.",
+      "examples" : [
+        {
+          "en" : "mother → my mother",
+          "say" : "",
+          "tr" : "anne → annem"
+        },
+        {
+          "en" : "father → my father",
+          "say" : "",
+          "tr" : "baba → babam"
+        }
+      ],
+      "title" : "My family"
+    },
+    "feelings" : {
+      "body" : "The same \"I am\" ending works on feelings. Its vowel follows vowel harmony.",
+      "examples" : [
+        {
+          "en" : "happy → I'm happy",
+          "say" : "",
+          "tr" : "mutlu → mutluyum"
+        },
+        {
+          "en" : "tired → I'm tired",
+          "say" : "",
+          "tr" : "yorgun → yorgunum"
+        }
+      ],
+      "title" : "I am + feeling"
+    },
+    "flirt" : {
+      "body" : "Add -sın, -sin, -sun or -sün to an adjective to say \"you are\".",
+      "examples" : [
+        {
+          "en" : "sweet → you're sweet",
+          "say" : "",
+          "tr" : "tatlı → tatlısın"
+        },
+        {
+          "en" : "beautiful → you're beautiful",
+          "say" : "",
+          "tr" : "güzel → güzelsin"
+        }
+      ],
+      "title" : "You are: -sın"
+    },
+    "greet" : {
+      "body" : "Turkish spelling is regular: every letter has one sound and no letter is silent, except ğ. If you can read it, you can say it.",
+      "examples" : [
+        {
+          "en" : "mer-ha-ba",
+          "say" : "",
+          "tr" : "merhaba"
+        }
+      ],
+      "title" : "Read it as it's written"
+    },
+    "heartbreak" : {
+      "body" : "Add -ma or -me to a command and it becomes \"don't\".",
+      "examples" : [
+        {
+          "en" : "leave → don't leave",
+          "say" : "",
+          "tr" : "bırak → bırakma"
+        },
+        {
+          "en" : "go → don't go",
+          "say" : "",
+          "tr" : "git → gitme"
+        }
+      ],
+      "title" : "Don't: -ma and -me"
+    },
+    "help" : {
+      "body" : "End a request with misiniz or musunuz to make it a polite \"could you\".",
+      "examples" : [
+        {
+          "en" : "Could you help?",
+          "say" : "",
+          "tr" : "Yardım eder misiniz?"
+        }
+      ],
+      "title" : "Asking politely"
+    },
+    "honour" : {
+      "body" : "-meyeceğim or -mayacağım on a verb means \"I will not\". It is long, but you will hear it in every oath.",
+      "examples" : [
+        {
+          "en" : "I will not forgive",
+          "say" : "",
+          "tr" : "affetmeyeceğim"
+        },
+        {
+          "en" : "I will not forget",
+          "say" : "",
+          "tr" : "unutmayacağım"
+        }
+      ],
+      "title" : "I will not"
+    },
+    "hotel" : {
+      "body" : "Var means there is, or I have. Yok is the opposite. Two tiny words you will use every day.",
+      "examples" : [
+        {
+          "en" : "I have a reservation",
+          "say" : "",
+          "tr" : "Rezervasyonum var"
+        },
+        {
+          "en" : "There's no problem",
+          "say" : "",
+          "tr" : "Sorun yok"
+        }
+      ],
+      "title" : "Var and yok"
+    },
+    "hungry" : {
+      "body" : "-yorum means \"I am doing\". Slip -m- in before it and it becomes \"I am not doing\".",
+      "examples" : [
+        {
+          "en" : "I'm eating",
+          "say" : "",
+          "tr" : "yiyorum"
+        },
+        {
+          "en" : "I'm not eating",
+          "say" : "",
+          "tr" : "yemiyorum"
+        }
+      ],
+      "title" : "Saying no inside the verb"
+    },
+    "love" : {
+      "body" : "Pet names use the \"my\" ending: can (soul) becomes canım, aşk (love) becomes aşkım. Friends and family use canım too, not only couples.",
+      "examples" : [
+        {
+          "en" : "soul → my dear",
+          "say" : "",
+          "tr" : "can → canım"
+        }
+      ],
+      "title" : "My dear, my love"
+    },
+    "magic" : {
+      "body" : "Teşekkür ederim is polite and safe everywhere. With friends you'll hear teşekkürler or sağ ol.",
+      "examples" : [
+        {
+          "en" : "Thank you",
+          "say" : "",
+          "tr" : "Teşekkür ederim"
+        },
+        {
+          "en" : "Thanks",
+          "say" : "",
+          "tr" : "Sağ ol"
+        }
+      ],
+      "title" : "Formal or casual"
+    },
+    "makeup" : {
+      "body" : "Özür dilerim is a real apology. Pardon is for bumping into someone or squeezing past.",
+      "examples" : [
+        {
+          "en" : "I apologize",
+          "say" : "",
+          "tr" : "Özür dilerim"
+        },
+        {
+          "en" : "Excuse me",
+          "say" : "",
+          "tr" : "Pardon"
+        }
+      ],
+      "title" : "Two kinds of sorry"
+    },
+    "meet" : {
+      "body" : "Turkish adds endings instead of separate words. Add -m (with a helping vowel) to say \"my\". The vowel copies the last vowel of the word: this is vowel harmony.",
+      "examples" : [
+        {
+          "en" : "name → my name",
+          "say" : "",
+          "tr" : "ad → adım"
+        },
+        {
+          "en" : "house → my house",
+          "say" : "",
+          "tr" : "ev → evim"
+        }
+      ],
+      "title" : "\"My\" is an ending"
+    },
+    "num1" : {
+      "body" : "After a number the noun stays singular. The number already says how many.",
+      "examples" : [
+        {
+          "en" : "two teas (not iki çaylar)",
+          "say" : "",
+          "tr" : "iki çay"
+        }
+      ],
+      "title" : "No plural after numbers"
+    },
+    "order" : {
+      "body" : "Put the thing you want first and the verb last. Turkish verbs like to come at the end.",
+      "examples" : [
+        {
+          "en" : "I want tea",
+          "say" : "",
+          "tr" : "Çay istiyorum"
+        },
+        {
+          "en" : "I want water",
+          "say" : "",
+          "tr" : "Su istiyorum"
+        }
+      ],
+      "title" : "I want: istiyorum"
+    },
+    "palace" : {
+      "body" : "At court nobody is addressed by name. You add the \"my\" ending to the title, which is why you hear sultanım and hünkârım all the time.",
+      "examples" : [
+        {
+          "en" : "sultan → my sultan",
+          "say" : "",
+          "tr" : "sultan → sultanım"
+        },
+        {
+          "en" : "lord → my lord",
+          "say" : "",
+          "tr" : "bey → beyim"
+        }
+      ],
+      "title" : "Titles carry \"my\""
+    },
+    "snd1" : {
+      "body" : "The little tail changes the sound. C on its own sounds like the j in jam.",
+      "examples" : [
+        {
+          "en" : "ch, as in chair",
+          "say" : "",
+          "tr" : "ç → çay"
+        },
+        {
+          "en" : "sh, as in shop",
+          "say" : "",
+          "tr" : "ş → şeker"
+        },
+        {
+          "en" : "j, as in jam",
+          "say" : "",
+          "tr" : "c → cam"
+        }
+      ],
+      "title" : "Ç is \"ch\", Ş is \"sh\""
+    },
+    "snd2" : {
+      "body" : "İ with a dot is the ee in see. I without a dot is a short \"uh\", like the e in open. They are different letters, and the capitals keep the dot too: İ and I.",
+      "examples" : [
+        {
+          "en" : "ee",
+          "say" : "",
+          "tr" : "i → iyi"
+        },
+        {
+          "en" : "uh",
+          "say" : "",
+          "tr" : "ı → kız"
+        }
+      ],
+      "title" : "Two different i's"
+    },
+    "snd3" : {
+      "body" : "Say \"e\" with rounded lips and you get Ö. Say \"ee\" with rounded lips and you get Ü.",
+      "examples" : [
+        {
+          "en" : "like the u in burn",
+          "say" : "",
+          "tr" : "ö → göz"
+        },
+        {
+          "en" : "like the u in French tu",
+          "say" : "",
+          "tr" : "ü → süt"
+        }
+      ],
+      "title" : "Round your lips"
+    },
+    "snd4" : {
+      "body" : "Ğ never makes a sound of its own. It just stretches the vowel before it.",
+      "examples" : [
+        {
+          "en" : "daa",
+          "say" : "",
+          "tr" : "dağ"
+        },
+        {
+          "en" : "yaa-moor",
+          "say" : "",
+          "tr" : "yağmur"
+        }
+      ],
+      "title" : "Ğ is silent"
+    },
+    "time" : {
+      "body" : "Say saat, then the number. Asking is just saat kaç: \"hour how many\".",
+      "examples" : [
+        {
+          "en" : "It's five o'clock",
+          "say" : "",
+          "tr" : "Saat beş"
+        }
+      ],
+      "title" : "Telling the time"
+    },
+    "tough" : {
+      "body" : "-eceksin or -acaksın on a verb means \"you will\". Short, final, and a favorite of every tough guy.",
+      "examples" : [
+        {
+          "en" : "you will pay",
+          "say" : "",
+          "tr" : "ödeyeceksin"
+        },
+        {
+          "en" : "you will see",
+          "say" : "",
+          "tr" : "göreceksin"
+        }
+      ],
+      "title" : "You will"
+    },
+    "warriors" : {
+      "body" : "One word with many jobs: thanks, okay, goodbye, so be it. It is often said with a hand on the heart.",
+      "examples" : [
+        {
+          "en" : "thank you / so be it",
+          "say" : "",
+          "tr" : "Eyvallah"
+        }
+      ],
+      "title" : "Eyvallah"
+    },
+    "wishes" : {
+      "body" : "Turkish has a ready phrase for eating, working, being ill, even getting a haircut. Using them is simply good manners.",
+      "examples" : [
+        {
+          "en" : "to someone eating",
+          "say" : "",
+          "tr" : "Afiyet olsun"
+        },
+        {
+          "en" : "to someone working",
+          "say" : "",
+          "tr" : "Kolay gelsin"
+        }
+      ],
+      "title" : "A wish for every moment"
+    }
+  },
+  "units" : [
+    {
+      "colorHex" : 16096779,
+      "id" : "u0",
+      "lessons" : [
+        {
+          "emoji" : "🔤",
+          "id" : "snd1",
+          "phrases" : [
+            {
+              "en" : "Tea",
+              "say" : "chai",
+              "tr" : "Çay"
+            },
+            {
+              "en" : "Child",
+              "say" : "cho-JOOK",
+              "tr" : "Çocuk"
+            },
+            {
+              "en" : "Flower",
+              "say" : "chee-CHEK",
+              "tr" : "Çiçek"
+            },
+            {
+              "en" : "Sugar",
+              "say" : "sheh-KEHR",
+              "tr" : "Şeker"
+            },
+            {
+              "en" : "City",
+              "say" : "sheh-HEER",
+              "tr" : "Şehir"
+            },
+            {
+              "en" : "Thanks",
+              "say" : "teh-shek-kewr-LEHR",
+              "tr" : "Teşekkürler"
+            }
+          ],
+          "title" : "Ç and Ş"
+        },
+        {
+          "emoji" : "👁️",
+          "id" : "snd2",
+          "phrases" : [
+            {
+              "en" : "Girl",
+              "say" : "kuhz",
+              "tr" : "Kız"
+            },
+            {
+              "en" : "Winter",
+              "say" : "kuhsh",
+              "tr" : "Kış"
+            },
+            {
+              "en" : "Hot",
+              "say" : "suh-JAHK",
+              "tr" : "Sıcak"
+            },
+            {
+              "en" : "Good",
+              "say" : "ee-YEE",
+              "tr" : "İyi"
+            },
+            {
+              "en" : "Who",
+              "say" : "keem",
+              "tr" : "Kim"
+            },
+            {
+              "en" : "Istanbul",
+              "say" : "ees-TAHN-bool",
+              "tr" : "İstanbul"
+            }
+          ],
+          "title" : "I and İ"
+        },
+        {
+          "emoji" : "👄",
+          "id" : "snd3",
+          "phrases" : [
+            {
+              "en" : "Eye",
+              "say" : "gurz",
+              "tr" : "Göz"
+            },
+            {
+              "en" : "Village",
+              "say" : "kur-y",
+              "tr" : "Köy"
+            },
+            {
+              "en" : "Milk",
+              "say" : "sewt",
+              "tr" : "Süt"
+            },
+            {
+              "en" : "Rose",
+              "say" : "gewl",
+              "tr" : "Gül"
+            },
+            {
+              "en" : "Day",
+              "say" : "gewn",
+              "tr" : "Gün"
+            },
+            {
+              "en" : "Beautiful",
+              "say" : "gew-ZEL",
+              "tr" : "Güzel"
+            }
+          ],
+          "title" : "Ö and Ü"
+        },
+        {
+          "emoji" : "🌬️",
+          "id" : "snd4",
+          "phrases" : [
+            {
+              "en" : "Mountain",
+              "say" : "daa",
+              "tr" : "Dağ"
+            },
+            {
+              "en" : "Tree",
+              "say" : "aa-ACH",
+              "tr" : "Ağaç"
+            },
+            {
+              "en" : "Rain",
+              "say" : "yaa-MOOR",
+              "tr" : "Yağmur"
+            },
+            {
+              "en" : "Not",
+              "say" : "deh-EEL",
+              "tr" : "Değil"
+            },
+            {
+              "en" : "Teacher",
+              "say" : "ur-ret-MEN",
+              "tr" : "Öğretmen"
+            },
+            {
+              "en" : "Thanks (casual)",
+              "say" : "SAA ol",
+              "tr" : "Sağ ol"
+            }
+          ],
+          "title" : "The Soft Ğ"
+        }
+      ],
+      "subtitle" : "Six letters English doesn't have",
+      "title" : "Turkish Sounds"
+    },
+    {
+      "colorHex" : 1226150,
+      "id" : "u1",
+      "lessons" : [
+        {
+          "emoji" : "👋",
+          "id" : "greet",
+          "phrases" : [
+            {
+              "en" : "Hello",
+              "say" : "MEHR-hah-bah",
+              "tr" : "Merhaba"
+            },
+            {
+              "en" : "Good morning",
+              "say" : "gewn-eye-DUHN",
+              "tr" : "Günaydın"
+            },
+            {
+              "en" : "Good evening",
+              "say" : "ee-YEE ahk-shahm-LAHR",
+              "tr" : "İyi akşamlar"
+            },
+            {
+              "en" : "How are you?",
+              "say" : "NAH-suhl-suhn",
+              "tr" : "Nasılsın?"
+            },
+            {
+              "en" : "I'm fine, thanks",
+              "say" : "ee-YEE-yeem, teh-shek-kewr-LEHR",
+              "tr" : "İyiyim, teşekkürler"
+            },
+            {
+              "en" : "See you",
+              "say" : "gur-rew-shew-REWZ",
+              "tr" : "Görüşürüz"
+            }
+          ],
+          "title" : "Hello!"
+        },
+        {
+          "emoji" : "✨",
+          "id" : "magic",
+          "phrases" : [
+            {
+              "en" : "Yes",
+              "say" : "eh-VET",
+              "tr" : "Evet"
+            },
+            {
+              "en" : "No",
+              "say" : "HAH-yuhr",
+              "tr" : "Hayır"
+            },
+            {
+              "en" : "Please",
+              "say" : "LEWT-fen",
+              "tr" : "Lütfen"
+            },
+            {
+              "en" : "Thank you",
+              "say" : "teh-shek-KEWR eh-deh-reem",
+              "tr" : "Teşekkür ederim"
+            },
+            {
+              "en" : "You're welcome",
+              "say" : "ree-JAH eh-deh-reem",
+              "tr" : "Rica ederim"
+            },
+            {
+              "en" : "Excuse me",
+              "say" : "ahf-feh-DEHR-see-neez",
+              "tr" : "Affedersiniz"
+            }
+          ],
+          "title" : "Magic Words"
+        },
+        {
+          "emoji" : "🤝",
+          "id" : "meet",
+          "phrases" : [
+            {
+              "en" : "What's your name?",
+              "say" : "ah-DUHN neh",
+              "tr" : "Adın ne?"
+            },
+            {
+              "en" : "My name is Tako",
+              "say" : "beh-NEEM ah-DUHM tah-ko",
+              "tr" : "Benim adım Tako"
+            },
+            {
+              "en" : "Nice to meet you",
+              "say" : "mem-NOON ol-DOOM",
+              "tr" : "Memnun oldum"
+            },
+            {
+              "en" : "Where are you from?",
+              "say" : "NEH-reh-lee-seen",
+              "tr" : "Nerelisin?"
+            },
+            {
+              "en" : "I'm learning Turkish",
+              "say" : "TEWRK-cheh ur-reh-nee-YO-room",
+              "tr" : "Türkçe öğreniyorum"
+            },
+            {
+              "en" : "I know a little Turkish",
+              "say" : "bee-RAHZ TEWRK-cheh bee-lee-YO-room",
+              "tr" : "Biraz Türkçe biliyorum"
+            }
+          ],
+          "title" : "Nice to Meet You"
+        }
+      ],
+      "subtitle" : "Say hello and be polite",
+      "title" : "First Words"
+    },
+    {
+      "colorHex" : 8154354,
+      "id" : "u2",
+      "lessons" : [
+        {
+          "emoji" : "☕️",
+          "id" : "cafe",
+          "phrases" : [
+            {
+              "en" : "One tea, please",
+              "say" : "beer CHAI lewt-fen",
+              "tr" : "Bir çay lütfen"
+            },
+            {
+              "en" : "A Turkish coffee, please",
+              "say" : "beer TEWRK kah-veh-see lewt-fen",
+              "tr" : "Bir Türk kahvesi lütfen"
+            },
+            {
+              "en" : "With sugar?",
+              "say" : "sheh-kehr-LEE mee",
+              "tr" : "Şekerli mi?"
+            },
+            {
+              "en" : "No sugar, please",
+              "say" : "sheh-kehr-SEEZ lewt-fen",
+              "tr" : "Şekersiz lütfen"
+            },
+            {
+              "en" : "Delicious",
+              "say" : "chok lez-zet-LEE",
+              "tr" : "Çok lezzetli"
+            },
+            {
+              "en" : "The bill, please",
+              "say" : "heh-SAHP lewt-fen",
+              "tr" : "Hesap lütfen"
+            }
+          ],
+          "title" : "At the Café"
+        },
+        {
+          "emoji" : "🛍️",
+          "id" : "bazaar",
+          "phrases" : [
+            {
+              "en" : "How much is this?",
+              "say" : "boo neh kah-DAHR",
+              "tr" : "Bu ne kadar?"
+            },
+            {
+              "en" : "Very expensive",
+              "say" : "chok pah-hah-LUH",
+              "tr" : "Çok pahalı"
+            },
+            {
+              "en" : "Is there a discount?",
+              "say" : "een-dee-REEM vahr muh",
+              "tr" : "İndirim var mı?"
+            },
+            {
+              "en" : "Can I pay by card?",
+              "say" : "kahrt-LAH ur-deh-yeh-bee-LEER mee-yeem",
+              "tr" : "Kartla ödeyebilir miyim?"
+            },
+            {
+              "en" : "I'll take this",
+              "say" : "boo-NOO ah-luh-YO-room",
+              "tr" : "Bunu alıyorum"
+            },
+            {
+              "en" : "Enjoy it (said after a purchase)",
+              "say" : "hah-yuhr-LUH ol-SOON",
+              "tr" : "Hayırlı olsun"
+            }
+          ],
+          "title" : "At the Bazaar"
+        },
+        {
+          "emoji" : "🧭",
+          "id" : "around",
+          "phrases" : [
+            {
+              "en" : "Where is the restroom?",
+              "say" : "too-vah-LET NEH-reh-deh",
+              "tr" : "Tuvalet nerede?"
+            },
+            {
+              "en" : "Where is the hotel?",
+              "say" : "oh-TEL NEH-reh-deh",
+              "tr" : "Otel nerede?"
+            },
+            {
+              "en" : "Turn right",
+              "say" : "sah-AH durn",
+              "tr" : "Sağa dön"
+            },
+            {
+              "en" : "Turn left",
+              "say" : "so-LAH durn",
+              "tr" : "Sola dön"
+            },
+            {
+              "en" : "Go straight",
+              "say" : "dewz geet",
+              "tr" : "Düz git"
+            },
+            {
+              "en" : "Is it close?",
+              "say" : "yah-KUHN muh",
+              "tr" : "Yakın mı?"
+            }
+          ],
+          "title" : "Getting Around"
+        }
+      ],
+      "subtitle" : "Cafés, bazaars and finding your way",
+      "title" : "Out and About"
+    },
+    {
+      "colorHex" : 15233866,
+      "id" : "u3",
+      "lessons" : [
+        {
+          "emoji" : "🎬",
+          "id" : "drama",
+          "phrases" : [
+            {
+              "en" : "Okay",
+              "say" : "tah-MAHM",
+              "tr" : "Tamam"
+            },
+            {
+              "en" : "Come on!",
+              "say" : "HAH-dee",
+              "tr" : "Hadi!"
+            },
+            {
+              "en" : "Oh my! (surprise)",
+              "say" : "ahl-LAH ahl-LAH",
+              "tr" : "Allah Allah!"
+            },
+            {
+              "en" : "No way!",
+              "say" : "yok ahr-TUHK",
+              "tr" : "Yok artık!"
+            },
+            {
+              "en" : "Don't worry",
+              "say" : "meh-RAHK et-meh",
+              "tr" : "Merak etme"
+            },
+            {
+              "en" : "Hopefully (God willing)",
+              "say" : "een-SHAHL-lah",
+              "tr" : "İnşallah"
+            }
+          ],
+          "title" : "Drama Essentials"
+        },
+        {
+          "emoji" : "❤️",
+          "id" : "love",
+          "phrases" : [
+            {
+              "en" : "My dear",
+              "say" : "jah-NUHM",
+              "tr" : "Canım"
+            },
+            {
+              "en" : "My love",
+              "say" : "ahsh-KUHM",
+              "tr" : "Aşkım"
+            },
+            {
+              "en" : "I love you",
+              "say" : "seh-NEE seh-vee-YO-room",
+              "tr" : "Seni seviyorum"
+            },
+            {
+              "en" : "I missed you",
+              "say" : "seh-NEE urz-leh-DEEM",
+              "tr" : "Seni özledim"
+            },
+            {
+              "en" : "You are very beautiful",
+              "say" : "chok gew-zel-SEEN",
+              "tr" : "Çok güzelsin"
+            },
+            {
+              "en" : "My darling (literally: my life)",
+              "say" : "hah-yah-TUHM",
+              "tr" : "Hayatım"
+            }
+          ],
+          "title" : "Words of Love"
+        },
+        {
+          "emoji" : "🌿",
+          "id" : "wishes",
+          "phrases" : [
+            {
+              "en" : "Enjoy your meal",
+              "say" : "ah-fee-YET ol-SOON",
+              "tr" : "Afiyet olsun"
+            },
+            {
+              "en" : "May your work go easily",
+              "say" : "ko-LYE gel-SEEN",
+              "tr" : "Kolay gelsin"
+            },
+            {
+              "en" : "Get well soon",
+              "say" : "getch-MEESH ol-SOON",
+              "tr" : "Geçmiş olsun"
+            },
+            {
+              "en" : "Thank you for cooking (literally: health to your hands)",
+              "say" : "eh-lee-nee-ZEH sah-LUHK",
+              "tr" : "Elinize sağlık"
+            },
+            {
+              "en" : "How wonderful",
+              "say" : "MAH-shahl-lah",
+              "tr" : "Maşallah"
+            },
+            {
+              "en" : "Welcome",
+              "say" : "hosh gel-dee-NEEZ",
+              "tr" : "Hoş geldiniz"
+            }
+          ],
+          "title" : "Everyday Wishes"
+        }
+      ],
+      "subtitle" : "Lines you hear in every Turkish drama",
+      "title" : "Dizi Talk"
+    },
+    {
+      "colorHex" : 3900150,
+      "id" : "u4",
+      "lessons" : [
+        {
+          "emoji" : "🖐️",
+          "id" : "num1",
+          "phrases" : [
+            {
+              "en" : "One",
+              "say" : "beer",
+              "tr" : "Bir"
+            },
+            {
+              "en" : "Two",
+              "say" : "ee-KEE",
+              "tr" : "İki"
+            },
+            {
+              "en" : "Three",
+              "say" : "ewch",
+              "tr" : "Üç"
+            },
+            {
+              "en" : "Four",
+              "say" : "durt",
+              "tr" : "Dört"
+            },
+            {
+              "en" : "Five",
+              "say" : "besh",
+              "tr" : "Beş"
+            },
+            {
+              "en" : "Two teas, please",
+              "say" : "ee-KEE chai lewt-fen",
+              "tr" : "İki çay lütfen"
+            }
+          ],
+          "title" : "One to Five"
+        },
+        {
+          "emoji" : "🔟",
+          "id" : "num2",
+          "phrases" : [
+            {
+              "en" : "Six",
+              "say" : "ahl-TUH",
+              "tr" : "Altı"
+            },
+            {
+              "en" : "Seven",
+              "say" : "yeh-DEE",
+              "tr" : "Yedi"
+            },
+            {
+              "en" : "Eight",
+              "say" : "seh-KEEZ",
+              "tr" : "Sekiz"
+            },
+            {
+              "en" : "Nine",
+              "say" : "doh-KOOZ",
+              "tr" : "Dokuz"
+            },
+            {
+              "en" : "Ten",
+              "say" : "ohn",
+              "tr" : "On"
+            },
+            {
+              "en" : "Ten lira",
+              "say" : "ohn LEE-rah",
+              "tr" : "On lira"
+            }
+          ],
+          "title" : "Six to Ten"
+        },
+        {
+          "emoji" : "⏰",
+          "id" : "time",
+          "phrases" : [
+            {
+              "en" : "What time is it?",
+              "say" : "sah-AHT kahch",
+              "tr" : "Saat kaç?"
+            },
+            {
+              "en" : "It's three o'clock",
+              "say" : "sah-AHT ewch",
+              "tr" : "Saat üç"
+            },
+            {
+              "en" : "Today",
+              "say" : "boo-GEWN",
+              "tr" : "Bugün"
+            },
+            {
+              "en" : "Tomorrow",
+              "say" : "YAH-ruhn",
+              "tr" : "Yarın"
+            },
+            {
+              "en" : "Now",
+              "say" : "SHEEM-dee",
+              "tr" : "Şimdi"
+            },
+            {
+              "en" : "See you later",
+              "say" : "son-RAH gur-rew-shew-REWZ",
+              "tr" : "Sonra görüşürüz"
+            }
+          ],
+          "title" : "What Time?"
+        }
+      ],
+      "subtitle" : "Count, pay and make plans",
+      "title" : "Numbers & Time"
+    },
+    {
+      "colorHex" : 3519339,
+      "id" : "u5",
+      "lessons" : [
+        {
+          "emoji" : "😋",
+          "id" : "hungry",
+          "phrases" : [
+            {
+              "en" : "I'm hungry",
+              "say" : "ah-CHUHM",
+              "tr" : "Açım"
+            },
+            {
+              "en" : "I'm thirsty",
+              "say" : "soo-sah-DUHM",
+              "tr" : "Susadım"
+            },
+            {
+              "en" : "The menu, please",
+              "say" : "meh-NEW lewt-fen",
+              "tr" : "Menü lütfen"
+            },
+            {
+              "en" : "What do you recommend?",
+              "say" : "neh ur-neh-reer-see-NEEZ",
+              "tr" : "Ne önerirsiniz?"
+            },
+            {
+              "en" : "I don't eat meat",
+              "say" : "et yeh-mee-YO-room",
+              "tr" : "Et yemiyorum"
+            },
+            {
+              "en" : "Very spicy",
+              "say" : "chok ah-JUH",
+              "tr" : "Çok acı"
+            }
+          ],
+          "title" : "I'm Hungry"
+        },
+        {
+          "emoji" : "🥖",
+          "id" : "table",
+          "phrases" : [
+            {
+              "en" : "Breakfast",
+              "say" : "kah-vahl-TUH",
+              "tr" : "Kahvaltı"
+            },
+            {
+              "en" : "Bread",
+              "say" : "ek-MEK",
+              "tr" : "Ekmek"
+            },
+            {
+              "en" : "Cheese",
+              "say" : "pey-NEER",
+              "tr" : "Peynir"
+            },
+            {
+              "en" : "Water",
+              "say" : "soo",
+              "tr" : "Su"
+            },
+            {
+              "en" : "Dessert",
+              "say" : "taht-LUH",
+              "tr" : "Tatlı"
+            },
+            {
+              "en" : "A water, please",
+              "say" : "beer SOO lewt-fen",
+              "tr" : "Bir su lütfen"
+            }
+          ],
+          "title" : "Turkish Table"
+        },
+        {
+          "emoji" : "🍽️",
+          "id" : "order",
+          "phrases" : [
+            {
+              "en" : "I'd like kebab",
+              "say" : "ben keh-BAHP ees-tee-YO-room",
+              "tr" : "Ben kebap istiyorum"
+            },
+            {
+              "en" : "One more",
+              "say" : "beer tah-NEH dah-HAH",
+              "tr" : "Bir tane daha"
+            },
+            {
+              "en" : "To go, please",
+              "say" : "pah-KET lewt-fen",
+              "tr" : "Paket lütfen"
+            },
+            {
+              "en" : "Can I have the bill?",
+              "say" : "heh-sah-BUH ah-lah-bee-LEER mee-yeem",
+              "tr" : "Hesabı alabilir miyim?"
+            },
+            {
+              "en" : "Keep the change",
+              "say" : "ews-TEW kahl-SUHN",
+              "tr" : "Üstü kalsın"
+            },
+            {
+              "en" : "Everything was very nice",
+              "say" : "hehr shey chok gew-zel-DEE",
+              "tr" : "Her şey çok güzeldi"
+            }
+          ],
+          "title" : "Ordering"
+        }
+      ],
+      "subtitle" : "Eat your way through Türkiye",
+      "title" : "Food & Drink"
+    },
+    {
+      "colorHex" : 15485081,
+      "id" : "u6",
+      "lessons" : [
+        {
+          "emoji" : "👨‍👩‍👧",
+          "id" : "family",
+          "phrases" : [
+            {
+              "en" : "My mother",
+              "say" : "ahn-NEM",
+              "tr" : "Annem"
+            },
+            {
+              "en" : "My father",
+              "say" : "bah-BAHM",
+              "tr" : "Babam"
+            },
+            {
+              "en" : "My sibling",
+              "say" : "kahr-deh-SHEEM",
+              "tr" : "Kardeşim"
+            },
+            {
+              "en" : "My friend",
+              "say" : "ahr-kah-dah-SHUHM",
+              "tr" : "Arkadaşım"
+            },
+            {
+              "en" : "This is my mother",
+              "say" : "boo beh-NEEM ahn-NEM",
+              "tr" : "Bu benim annem"
+            },
+            {
+              "en" : "Are you married?",
+              "say" : "ev-LEE mee-seen",
+              "tr" : "Evli misin?"
+            }
+          ],
+          "title" : "My Family"
+        },
+        {
+          "emoji" : "🙋",
+          "id" : "aboutme",
+          "phrases" : [
+            {
+              "en" : "I'm a student",
+              "say" : "ben ur-ren-JEE-yeem",
+              "tr" : "Ben öğrenciyim"
+            },
+            {
+              "en" : "I work",
+              "say" : "chah-luh-shuh-YO-room",
+              "tr" : "Çalışıyorum"
+            },
+            {
+              "en" : "How old are you?",
+              "say" : "kahch yah-shuhn-dah-SUHN",
+              "tr" : "Kaç yaşındasın?"
+            },
+            {
+              "en" : "I'm twenty-five years old",
+              "say" : "yeer-MEE besh yah-shuhn-DAH-yuhm",
+              "tr" : "Yirmi beş yaşındayım"
+            },
+            {
+              "en" : "I live in Istanbul",
+              "say" : "ees-TAHN-bool-dah yah-shuh-YO-room",
+              "tr" : "İstanbul'da yaşıyorum"
+            },
+            {
+              "en" : "I love Türkiye",
+              "say" : "TEWR-kee-yeh-yee seh-vee-YO-room",
+              "tr" : "Türkiye'yi seviyorum"
+            }
+          ],
+          "title" : "About Me"
+        },
+        {
+          "emoji" : "😊",
+          "id" : "feelings",
+          "phrases" : [
+            {
+              "en" : "I'm happy",
+              "say" : "moot-LOO-yoom",
+              "tr" : "Mutluyum"
+            },
+            {
+              "en" : "I'm tired",
+              "say" : "yor-GOO-noom",
+              "tr" : "Yorgunum"
+            },
+            {
+              "en" : "I'm sorry",
+              "say" : "ewz-GEW-newm",
+              "tr" : "Üzgünüm"
+            },
+            {
+              "en" : "I'm very excited",
+              "say" : "chok heh-yeh-jahn-LUH-yuhm",
+              "tr" : "Çok heyecanlıyım"
+            },
+            {
+              "en" : "No problem",
+              "say" : "so-ROON deh-EEL",
+              "tr" : "Sorun değil"
+            },
+            {
+              "en" : "Great!",
+              "say" : "HAH-ree-kah",
+              "tr" : "Harika!"
+            }
+          ],
+          "title" : "Feelings"
+        }
+      ],
+      "subtitle" : "Talk about yourself and the people you love",
+      "title" : "People & Family"
+    },
+    {
+      "colorHex" : 959977,
+      "id" : "u7",
+      "lessons" : [
+        {
+          "emoji" : "🏨",
+          "id" : "hotel",
+          "phrases" : [
+            {
+              "en" : "I have a reservation",
+              "say" : "reh-zehr-vahs-yo-NOOM vahr",
+              "tr" : "Rezervasyonum var"
+            },
+            {
+              "en" : "One room, please",
+              "say" : "beer oh-DAH lewt-fen",
+              "tr" : "Bir oda lütfen"
+            },
+            {
+              "en" : "How many nights?",
+              "say" : "kahch geh-JEH",
+              "tr" : "Kaç gece?"
+            },
+            {
+              "en" : "Two nights",
+              "say" : "ee-KEE geh-JEH",
+              "tr" : "İki gece"
+            },
+            {
+              "en" : "Is breakfast included?",
+              "say" : "kah-vahl-TUH dah-HEEL mee",
+              "tr" : "Kahvaltı dahil mi?"
+            },
+            {
+              "en" : "The key, please",
+              "say" : "ah-nah-TAHR lewt-fen",
+              "tr" : "Anahtar lütfen"
+            }
+          ],
+          "title" : "At the Hotel"
+        },
+        {
+          "emoji" : "🚕",
+          "id" : "transport",
+          "phrases" : [
+            {
+              "en" : "Where is the airport?",
+              "say" : "hah-vah-lee-mah-NUH NEH-reh-deh",
+              "tr" : "Havalimanı nerede?"
+            },
+            {
+              "en" : "A taxi, please",
+              "say" : "tahk-SEE lewt-fen",
+              "tr" : "Taksi lütfen"
+            },
+            {
+              "en" : "I'm going here",
+              "say" : "boo-rah-YAH gee-dee-YO-room",
+              "tr" : "Buraya gidiyorum"
+            },
+            {
+              "en" : "How long does it take?",
+              "say" : "neh kah-DAHR sew-REHR",
+              "tr" : "Ne kadar sürer?"
+            },
+            {
+              "en" : "Can I get off here?",
+              "say" : "boo-rah-DAH ee-neh-bee-LEER mee-yeem",
+              "tr" : "Burada inebilir miyim?"
+            },
+            {
+              "en" : "How much is the ticket?",
+              "say" : "bee-LET neh kah-DAHR",
+              "tr" : "Bilet ne kadar?"
+            }
+          ],
+          "title" : "Getting There"
+        },
+        {
+          "emoji" : "🆘",
+          "id" : "help",
+          "phrases" : [
+            {
+              "en" : "Could you help me?",
+              "say" : "yahr-DUHM eh-dehr mee-see-neez",
+              "tr" : "Yardım eder misiniz?"
+            },
+            {
+              "en" : "I didn't understand",
+              "say" : "ahn-lah-mah-DUHM",
+              "tr" : "Anlamadım"
+            },
+            {
+              "en" : "Could you repeat that?",
+              "say" : "tek-RAHR eh-dehr mee-see-neez",
+              "tr" : "Tekrar eder misiniz?"
+            },
+            {
+              "en" : "Could you speak slowly?",
+              "say" : "yah-VAHSH ko-noo-SHOOR moo-soo-nooz",
+              "tr" : "Yavaş konuşur musunuz?"
+            },
+            {
+              "en" : "Do you speak English?",
+              "say" : "een-gee-LEEZ-jeh bee-lee-YOR moo-soo-nooz",
+              "tr" : "İngilizce biliyor musunuz?"
+            },
+            {
+              "en" : "I'm lost",
+              "say" : "kai-bol-DOOM",
+              "tr" : "Kayboldum"
+            }
+          ],
+          "title" : "Help!"
+        }
+      ],
+      "subtitle" : "Hotels, taxis and asking for help",
+      "title" : "Travel"
+    },
+    {
+      "colorHex" : 14239839,
+      "id" : "u8",
+      "lessons" : [
+        {
+          "emoji" : "⚡️",
+          "id" : "argue",
+          "phrases" : [
+            {
+              "en" : "What's going on?",
+              "say" : "neh oh-loo-YOR",
+              "tr" : "Ne oluyor?"
+            },
+            {
+              "en" : "Look at me!",
+              "say" : "bah-NAH bahk",
+              "tr" : "Bana bak!"
+            },
+            {
+              "en" : "Enough already!",
+              "say" : "yeh-TEHR ahr-TUHK",
+              "tr" : "Yeter artık!"
+            },
+            {
+              "en" : "Don't lie",
+              "say" : "yah-LAHN sur-leh-MEH",
+              "tr" : "Yalan söyleme"
+            },
+            {
+              "en" : "Listen to me",
+              "say" : "beh-NEE deen-LEH",
+              "tr" : "Beni dinle"
+            },
+            {
+              "en" : "I don't believe you",
+              "say" : "sah-NAH ee-nahn-muh-YO-room",
+              "tr" : "Sana inanmıyorum"
+            }
+          ],
+          "title" : "Arguments"
+        },
+        {
+          "emoji" : "🕊️",
+          "id" : "makeup",
+          "phrases" : [
+            {
+              "en" : "I apologize",
+              "say" : "ur-ZEWR dee-leh-reem",
+              "tr" : "Özür dilerim"
+            },
+            {
+              "en" : "Forgive me",
+              "say" : "beh-NEE ahf-FET",
+              "tr" : "Beni affet"
+            },
+            {
+              "en" : "You're right",
+              "say" : "hahk-luh-SUHN",
+              "tr" : "Haklısın"
+            },
+            {
+              "en" : "I promise you",
+              "say" : "sah-NAH surz veh-ree-YO-room",
+              "tr" : "Sana söz veriyorum"
+            },
+            {
+              "en" : "Everything will be fine",
+              "say" : "hehr shey yo-loo-NAH gee-reh-JEK",
+              "tr" : "Her şey yoluna girecek"
+            },
+            {
+              "en" : "I'll never leave you",
+              "say" : "seh-NEE ahs-LAH buh-rahk-MAHM",
+              "tr" : "Seni asla bırakmam"
+            }
+          ],
+          "title" : "Making Up"
+        },
+        {
+          "emoji" : "🏠",
+          "id" : "famdrama",
+          "phrases" : [
+            {
+              "en" : "Older brother",
+              "say" : "ah-BEE",
+              "tr" : "Abi"
+            },
+            {
+              "en" : "Older sister",
+              "say" : "ahb-LAH",
+              "tr" : "Abla"
+            },
+            {
+              "en" : "My child",
+              "say" : "ev-lah-DUHM",
+              "tr" : "Evladım"
+            },
+            {
+              "en" : "God forbid",
+              "say" : "ahl-LAH ko-roo-SOON",
+              "tr" : "Allah korusun"
+            },
+            {
+              "en" : "What's up? Is everything okay?",
+              "say" : "hah-yuhr-DUHR",
+              "tr" : "Hayırdır?"
+            },
+            {
+              "en" : "I swear I don't know",
+              "say" : "VAHL-lah-hee beel-mee-YO-room",
+              "tr" : "Vallahi bilmiyorum"
+            }
+          ],
+          "title" : "Family Drama"
+        }
+      ],
+      "subtitle" : "Fights, apologies and family drama",
+      "title" : "Dizi Talk: Big Scenes"
+    },
+    {
+      "colorHex" : 9133620,
+      "id" : "u9",
+      "lessons" : [
+        {
+          "emoji" : "👑",
+          "id" : "palace",
+          "phrases" : [
+            {
+              "en" : "My Sultan",
+              "say" : "sool-tah-NUHM",
+              "tr" : "Sultanım"
+            },
+            {
+              "en" : "My sovereign",
+              "say" : "hewn-kyah-RUHM",
+              "tr" : "Hünkârım"
+            },
+            {
+              "en" : "As you command",
+              "say" : "em-reh-DEHR-see-neez",
+              "tr" : "Emredersiniz"
+            },
+            {
+              "en" : "Make way!",
+              "say" : "des-TOOR",
+              "tr" : "Destur!"
+            },
+            {
+              "en" : "Prince",
+              "say" : "sheh-zah-DEH",
+              "tr" : "Şehzade"
+            },
+            {
+              "en" : "The Sultan's mother",
+              "say" : "vah-lee-DEH sool-TAHN",
+              "tr" : "Valide Sultan"
+            }
+          ],
+          "title" : "At the Palace"
+        },
+        {
+          "emoji" : "⚔️",
+          "id" : "warriors",
+          "phrases" : [
+            {
+              "en" : "My lord",
+              "say" : "beh-YEEM",
+              "tr" : "Beyim"
+            },
+            {
+              "en" : "So be it / thank you",
+              "say" : "ey-VAHL-lah",
+              "tr" : "Eyvallah"
+            },
+            {
+              "en" : "Sword",
+              "say" : "kuh-LUHCH",
+              "tr" : "Kılıç"
+            },
+            {
+              "en" : "The battle begins",
+              "say" : "sah-VAHSH bahsh-luh-YOR",
+              "tr" : "Savaş başlıyor"
+            },
+            {
+              "en" : "Victory is ours",
+              "say" : "zah-FEHR bee-ZEEM-deer",
+              "tr" : "Zafer bizimdir"
+            },
+            {
+              "en" : "Let's begin, in God's name",
+              "say" : "HAI-dee bees-meel-LAH",
+              "tr" : "Haydi bismillah"
+            }
+          ],
+          "title" : "Warriors"
+        },
+        {
+          "emoji" : "🛡️",
+          "id" : "honour",
+          "phrases" : [
+            {
+              "en" : "I swear",
+              "say" : "yeh-MEEN eh-deh-reem",
+              "tr" : "Yemin ederim"
+            },
+            {
+              "en" : "On my honor",
+              "say" : "sheh-reh-FEEM ew-zeh-ree-NEH",
+              "tr" : "Şerefim üzerine"
+            },
+            {
+              "en" : "Revenge",
+              "say" : "een-tee-KAHM",
+              "tr" : "İntikam"
+            },
+            {
+              "en" : "Traitor!",
+              "say" : "hah-EEN",
+              "tr" : "Hain!"
+            },
+            {
+              "en" : "I will not forgive",
+              "say" : "ahf-fet-meh-yeh-JEH-eem",
+              "tr" : "Affetmeyeceğim"
+            },
+            {
+              "en" : "I don't go back on my word",
+              "say" : "sur-zewm-DEN durn-MEM",
+              "tr" : "Sözümden dönmem"
+            }
+          ],
+          "title" : "Oaths & Honor"
+        }
+      ],
+      "subtitle" : "The language of historical dramas",
+      "title" : "Dizi Talk: Palace & Sword"
+    },
+    {
+      "colorHex" : 12592851,
+      "id" : "u10",
+      "lessons" : [
+        {
+          "emoji" : "😍",
+          "id" : "flirt",
+          "phrases" : [
+            {
+              "en" : "You're so sweet",
+              "say" : "chok taht-luh-SUHN",
+              "tr" : "Çok tatlısın"
+            },
+            {
+              "en" : "Your eyes are beautiful",
+              "say" : "gurz-leh-REEN chok gew-ZEL",
+              "tr" : "Gözlerin çok güzel"
+            },
+            {
+              "en" : "I'm thinking of you",
+              "say" : "seh-NEE dew-shew-new-YO-room",
+              "tr" : "Seni düşünüyorum"
+            },
+            {
+              "en" : "Did you get jealous?",
+              "say" : "kuhs-kahn-DUHN muh",
+              "tr" : "Kıskandın mı?"
+            },
+            {
+              "en" : "Not without you",
+              "say" : "sen-SEEZ ol-MAHZ",
+              "tr" : "Sensiz olmaz"
+            },
+            {
+              "en" : "Will you marry me?",
+              "say" : "beh-neem-LEH ev-leh-NEER mee-seen",
+              "tr" : "Benimle evlenir misin?"
+            }
+          ],
+          "title" : "Flirting"
+        },
+        {
+          "emoji" : "💔",
+          "id" : "heartbreak",
+          "phrases" : [
+            {
+              "en" : "Don't leave me",
+              "say" : "beh-NEE buh-rahk-MAH",
+              "tr" : "Beni bırakma"
+            },
+            {
+              "en" : "It's over",
+              "say" : "beet-TEE",
+              "tr" : "Bitti"
+            },
+            {
+              "en" : "My heart is broken",
+              "say" : "kahl-BEEM kuh-ruhl-DUH",
+              "tr" : "Kalbim kırıldı"
+            },
+            {
+              "en" : "Why did you do it?",
+              "say" : "neh-DEN yahp-TUHN",
+              "tr" : "Neden yaptın?"
+            },
+            {
+              "en" : "I can't forget you",
+              "say" : "seh-NEE oo-noo-tah-muh-YO-room",
+              "tr" : "Seni unutamıyorum"
+            },
+            {
+              "en" : "Farewell",
+              "say" : "el-veh-DAH",
+              "tr" : "Elveda"
+            }
+          ],
+          "title" : "Heartbreak"
+        },
+        {
+          "emoji" : "🕶️",
+          "id" : "tough",
+          "phrases" : [
+            {
+              "en" : "This ends here",
+              "say" : "boo eesh boo-rah-DAH bee-TEHR",
+              "tr" : "Bu iş burada biter"
+            },
+            {
+              "en" : "Nobody move",
+              "say" : "keem-SEH kuh-puhr-dah-mah-SUHN",
+              "tr" : "Kimse kıpırdamasın"
+            },
+            {
+              "en" : "Family is everything",
+              "say" : "ah-ee-LEH hehr SHEY-deer",
+              "tr" : "Aile her şeydir"
+            },
+            {
+              "en" : "You will pay for this",
+              "say" : "beh-deh-lee-NEE ur-deh-yeh-JEK-seen",
+              "tr" : "Bedelini ödeyeceksin"
+            },
+            {
+              "en" : "I owe you",
+              "say" : "sah-NAH bor-JOOM vahr",
+              "tr" : "Sana borcum var"
+            },
+            {
+              "en" : "The matter is closed",
+              "say" : "meh-seh-LEH kah-pahn-DUH",
+              "tr" : "Mesele kapandı"
+            }
+          ],
+          "title" : "Tough Guys"
+        }
+      ],
+      "subtitle" : "Rom-coms, heartbreak and tough guys",
+      "title" : "Dizi Talk: Hearts & Trouble"
+    }
+  ],
+  "version" : 1
+}
