@@ -1051,7 +1051,17 @@
     "u0" : "START HERE",
     "u1" : "STARTER",
     "u10" : "DIZI",
+    "u11" : "LEVEL A1",
+    "u12" : "LEVEL A1",
+    "u13" : "LEVEL A1",
+    "u14" : "LEVEL A1",
+    "u15" : "LEVEL A1",
+    "u16" : "LEVEL A1",
+    "u17" : "LEVEL A1",
+    "u18" : "LEVEL A1",
+    "u19" : "LEVEL A1",
     "u2" : "STARTER",
+    "u20" : "LEVEL A1",
     "u3" : "DIZI",
     "u4" : "LEVEL A1",
     "u5" : "LEVEL A1",
@@ -1109,6 +1119,22 @@
       ],
       "title" : "Where: nerede"
     },
+    "athome" : {
+      "body" : "Put the describing word before the noun, as in English. Put it after, and it becomes a sentence: there is no word for \"is\".",
+      "examples" : [
+        {
+          "en" : "a small house",
+          "say" : "",
+          "tr" : "küçük ev"
+        },
+        {
+          "en" : "The house is small",
+          "say" : "",
+          "tr" : "Ev küçük"
+        }
+      ],
+      "title" : "Describing things"
+    },
     "bazaar" : {
       "body" : "Add mı, mi, mu or mü after the word you're asking about. It is written separately and its vowel follows vowel harmony.",
       "examples" : [
@@ -1125,6 +1151,27 @@
       ],
       "title" : "Asking yes/no questions"
     },
+    "bignum" : {
+      "body" : "Say the big part first, then the small part, with nothing in between.",
+      "examples" : [
+        {
+          "en" : "25",
+          "say" : "",
+          "tr" : "yirmi beş"
+        },
+        {
+          "en" : "150",
+          "say" : "",
+          "tr" : "yüz elli"
+        },
+        {
+          "en" : "1,900",
+          "say" : "",
+          "tr" : "bin dokuz yüz"
+        }
+      ],
+      "title" : "Building numbers"
+    },
     "cafe" : {
       "body" : "There is no separate word for a or an. Bir does both jobs, and lütfen usually comes last.",
       "examples" : [
@@ -1135,6 +1182,70 @@
         }
       ],
       "title" : "Bir means one, and a"
+    },
+    "can" : {
+      "body" : "Slip -ebil or -abil into a verb for \"can\". For \"can't\", the short form uses -eme or -ama.",
+      "examples" : [
+        {
+          "en" : "do → I can do",
+          "say" : "",
+          "tr" : "yap → yapabilirim"
+        },
+        {
+          "en" : "do → I can't do",
+          "say" : "",
+          "tr" : "yap → yapamam"
+        }
+      ],
+      "title" : "Can and can't"
+    },
+    "celebrate" : {
+      "body" : "Olsun means \"may it be\". It turns a noun or adjective into a wish, which is why so many set phrases end with it.",
+      "examples" : [
+        {
+          "en" : "may it be blessed (happy…)",
+          "say" : "",
+          "tr" : "kutlu olsun"
+        },
+        {
+          "en" : "may it be past (get well soon)",
+          "say" : "",
+          "tr" : "geçmiş olsun"
+        }
+      ],
+      "title" : "May it be: olsun"
+    },
+    "colors" : {
+      "body" : "Olan means \"the one that is\". Add the object ending -ı when it is the thing you want.",
+      "examples" : [
+        {
+          "en" : "the blue one",
+          "say" : "",
+          "tr" : "mavi olan"
+        },
+        {
+          "en" : "I want the blue one",
+          "say" : "",
+          "tr" : "Mavi olanı istiyorum"
+        }
+      ],
+      "title" : "The blue one"
+    },
+    "days" : {
+      "body" : "Add günü, \"its day\", to say on a day. Without it you are just naming the day.",
+      "examples" : [
+        {
+          "en" : "on Monday",
+          "say" : "",
+          "tr" : "Pazartesi günü"
+        },
+        {
+          "en" : "See you on Friday",
+          "say" : "",
+          "tr" : "Cuma günü görüşürüz"
+        }
+      ],
+      "title" : "On Monday"
     },
     "drama" : {
       "body" : "Drama characters live on short reactions. Tone does the work: the same tamam can be calm, annoyed or heartbroken.",
@@ -1216,6 +1327,22 @@
       ],
       "title" : "You are: -sın"
     },
+    "goodbyes" : {
+      "body" : "Who says what depends on who is leaving. The one who leaves says hoşça kal, \"stay well\". The one who stays answers güle güle, \"go smiling\".",
+      "examples" : [
+        {
+          "en" : "said by the one leaving",
+          "say" : "",
+          "tr" : "Hoşça kal"
+        },
+        {
+          "en" : "said to the one leaving",
+          "say" : "",
+          "tr" : "Güle güle"
+        }
+      ],
+      "title" : "Two goodbyes"
+    },
     "greet" : {
       "body" : "Turkish spelling is regular: every letter has one sound and no letter is silent, except ğ. If you can read it, you can say it.",
       "examples" : [
@@ -1226,6 +1353,22 @@
         }
       ],
       "title" : "Read it as it's written"
+    },
+    "have" : {
+      "body" : "There is no verb \"to have\". Say \"my thing exists\": the my-ending, then var or yok.",
+      "examples" : [
+        {
+          "en" : "I have money",
+          "say" : "",
+          "tr" : "param var"
+        },
+        {
+          "en" : "I have no time",
+          "say" : "",
+          "tr" : "zamanım yok"
+        }
+      ],
+      "title" : "I have: my + var"
     },
     "heartbreak" : {
       "body" : "Add -ma or -me to a command and it becomes \"don't\".",
@@ -1253,6 +1396,22 @@
         }
       ],
       "title" : "Asking politely"
+    },
+    "here" : {
+      "body" : "One ending covers in, on and at. It follows vowel harmony: -da after a, ı, o, u and -de after e, i, ö, ü.",
+      "examples" : [
+        {
+          "en" : "left → on the left",
+          "say" : "",
+          "tr" : "sol → solda"
+        },
+        {
+          "en" : "corner → at the corner",
+          "say" : "",
+          "tr" : "köşe → köşede"
+        }
+      ],
+      "title" : "In, on, at: -da and -de"
     },
     "honour" : {
       "body" : "-meyeceğim or -mayacağım on a verb means \"I will not\". It is long, but you will hear it in every oath.",
@@ -1301,6 +1460,38 @@
         }
       ],
       "title" : "Saying no inside the verb"
+    },
+    "jobs" : {
+      "body" : "Add the I-am ending straight onto the job. No word for \"a\" and no word for \"am\".",
+      "examples" : [
+        {
+          "en" : "teacher → I'm a teacher",
+          "say" : "",
+          "tr" : "öğretmen → öğretmenim"
+        },
+        {
+          "en" : "engineer → I'm an engineer",
+          "say" : "",
+          "tr" : "mühendis → mühendisim"
+        }
+      ],
+      "title" : "I am a…"
+    },
+    "likes" : {
+      "body" : "When you like or want one particular thing, it takes -ı, -i, -u or -ü. After a vowel a y slips in.",
+      "examples" : [
+        {
+          "en" : "I like tea",
+          "say" : "",
+          "tr" : "çay → çayı seviyorum"
+        },
+        {
+          "en" : "coffee (as the thing liked)",
+          "say" : "",
+          "tr" : "kahve → kahveyi"
+        }
+      ],
+      "title" : "Liking a specific thing"
     },
     "love" : {
       "body" : "Pet names use the \"my\" ending: can (soul) becomes canım, aşk (love) becomes aşkım. Friends and family use canım too, not only couples.",
@@ -1361,6 +1552,22 @@
       ],
       "title" : "\"My\" is an ending"
     },
+    "myday" : {
+      "body" : "The -yorum ending you met for \"I'm eating\" covers habits too. Turkish uses it for what you do every day.",
+      "examples" : [
+        {
+          "en" : "come → I come / I'm coming",
+          "say" : "",
+          "tr" : "gel → geliyorum"
+        },
+        {
+          "en" : "do → I do / I'm doing",
+          "say" : "",
+          "tr" : "yap → yapıyorum"
+        }
+      ],
+      "title" : "Everyday actions"
+    },
     "num1" : {
       "body" : "After a number the noun stays singular. The number already says how many.",
       "examples" : [
@@ -1403,6 +1610,38 @@
         }
       ],
       "title" : "Titles carry \"my\""
+    },
+    "plans" : {
+      "body" : "Add -alım or -elim to a verb to say \"let's\". Add mı or mi to turn it into \"shall we?\".",
+      "examples" : [
+        {
+          "en" : "meet → let's meet",
+          "say" : "",
+          "tr" : "buluş → buluşalım"
+        },
+        {
+          "en" : "drink → shall we drink?",
+          "say" : "",
+          "tr" : "iç → içelim mi?"
+        }
+      ],
+      "title" : "Let's: -alım and -elim"
+    },
+    "qwords" : {
+      "body" : "A question word sits where the answer would go, and you do not add mı. The word itself makes it a question.",
+      "examples" : [
+        {
+          "en" : "Where is the hotel?",
+          "say" : "",
+          "tr" : "Otel nerede?"
+        },
+        {
+          "en" : "When are you coming?",
+          "say" : "",
+          "tr" : "Ne zaman geliyorsun?"
+        }
+      ],
+      "title" : "Question words"
     },
     "snd1" : {
       "body" : "The little tail changes the sound. C on its own sounds like the j in jam.",
@@ -1473,6 +1712,22 @@
       ],
       "title" : "Ğ is silent"
     },
+    "teatime" : {
+      "body" : "Elinize sağlık is the polite form. To a friend or family member you say ellerine sağlık. Both thank someone for what their hands made.",
+      "examples" : [
+        {
+          "en" : "polite",
+          "say" : "",
+          "tr" : "Elinize sağlık"
+        },
+        {
+          "en" : "to someone close",
+          "say" : "",
+          "tr" : "Ellerine sağlık"
+        }
+      ],
+      "title" : "Health to your hands"
+    },
     "time" : {
       "body" : "Say saat, then the number. Asking is just saat kaç: \"hour how many\".",
       "examples" : [
@@ -1483,6 +1738,22 @@
         }
       ],
       "title" : "Telling the time"
+    },
+    "tomorrow" : {
+      "body" : "Add -eceğim or -acağım for \"I will\". The ğ is silent, so it sounds like a long vowel.",
+      "examples" : [
+        {
+          "en" : "go → I will go",
+          "say" : "",
+          "tr" : "git → gideceğim"
+        },
+        {
+          "en" : "call → I will call",
+          "say" : "",
+          "tr" : "ara → arayacağım"
+        }
+      ],
+      "title" : "The future: -eceğim"
     },
     "tough" : {
       "body" : "-eceksin or -acaksın on a verb means \"you will\". Short, final, and a favorite of every tough guy.",
@@ -1499,6 +1770,22 @@
         }
       ],
       "title" : "You will"
+    },
+    "unwell" : {
+      "body" : "Name the body part with the my-ending, then ağrıyor, \"is hurting\".",
+      "examples" : [
+        {
+          "en" : "my head hurts",
+          "say" : "",
+          "tr" : "baş → başım ağrıyor"
+        },
+        {
+          "en" : "my tooth hurts",
+          "say" : "",
+          "tr" : "diş → dişim ağrıyor"
+        }
+      ],
+      "title" : "My head hurts"
     },
     "warriors" : {
       "body" : "One word with many jobs: thanks, okay, goodbye, so be it. It is often said with a hand on the heart.",
@@ -1526,6 +1813,22 @@
         }
       ],
       "title" : "A wish for every moment"
+    },
+    "yesterday" : {
+      "body" : "Add -dim, -dım, -dum or -düm for \"I did\". After p, ç, t, k, s, ş, h, f the d hardens to t.",
+      "examples" : [
+        {
+          "en" : "stay → I stayed",
+          "say" : "",
+          "tr" : "kal → kaldım"
+        },
+        {
+          "en" : "go → I went",
+          "say" : "",
+          "tr" : "git → gittim"
+        }
+      ],
+      "title" : "The past: -dim"
     }
   },
   "units" : [
@@ -2874,7 +3177,1197 @@
       ],
       "subtitle" : "Rom-coms, heartbreak and tough guys",
       "title" : "Dizi Talk: Hearts & Trouble"
+    },
+    {
+      "colorHex" : 889992,
+      "id" : "u11",
+      "lessons" : [
+        {
+          "emoji" : "🌅",
+          "id" : "myday",
+          "phrases" : [
+            {
+              "en" : "I wake up",
+              "say" : "oo-yah-nuh-YO-room",
+              "tr" : "Uyanıyorum"
+            },
+            {
+              "en" : "I have breakfast",
+              "say" : "kah-vahl-TUH yah-puh-YO-room",
+              "tr" : "Kahvaltı yapıyorum"
+            },
+            {
+              "en" : "I go to work",
+              "say" : "ee-SHEH gee-dee-YO-room",
+              "tr" : "İşe gidiyorum"
+            },
+            {
+              "en" : "I come home",
+              "say" : "eh-VEH geh-lee-YO-room",
+              "tr" : "Eve geliyorum"
+            },
+            {
+              "en" : "I cook",
+              "say" : "yeh-MEK yah-puh-YO-room",
+              "tr" : "Yemek yapıyorum"
+            },
+            {
+              "en" : "I sleep",
+              "say" : "oo-yoo-YO-room",
+              "tr" : "Uyuyorum"
+            }
+          ],
+          "title" : "My Day"
+        },
+        {
+          "emoji" : "📅",
+          "id" : "days",
+          "phrases" : [
+            {
+              "en" : "Monday",
+              "say" : "pah-ZAHR-teh-see",
+              "tr" : "Pazartesi"
+            },
+            {
+              "en" : "Tuesday",
+              "say" : "sah-LUH",
+              "tr" : "Salı"
+            },
+            {
+              "en" : "Wednesday",
+              "say" : "chahr-shahm-BAH",
+              "tr" : "Çarşamba"
+            },
+            {
+              "en" : "Thursday",
+              "say" : "pehr-shem-BEH",
+              "tr" : "Perşembe"
+            },
+            {
+              "en" : "Friday",
+              "say" : "joo-MAH",
+              "tr" : "Cuma"
+            },
+            {
+              "en" : "Saturday and Sunday",
+              "say" : "joo-MAHR-teh-see veh pah-ZAHR",
+              "tr" : "Cumartesi ve Pazar"
+            }
+          ],
+          "title" : "Days of the Week"
+        },
+        {
+          "emoji" : "🌙",
+          "id" : "when",
+          "phrases" : [
+            {
+              "en" : "Morning",
+              "say" : "sah-BAHH",
+              "tr" : "Sabah"
+            },
+            {
+              "en" : "Noon",
+              "say" : "ur-LEN",
+              "tr" : "Öğlen"
+            },
+            {
+              "en" : "Evening",
+              "say" : "ahk-SHAHM",
+              "tr" : "Akşam"
+            },
+            {
+              "en" : "Night",
+              "say" : "geh-JEH",
+              "tr" : "Gece"
+            },
+            {
+              "en" : "Every day",
+              "say" : "hehr gewn",
+              "tr" : "Her gün"
+            },
+            {
+              "en" : "Sometimes",
+              "say" : "BAH-zen",
+              "tr" : "Bazen"
+            }
+          ],
+          "title" : "Morning to Night"
+        }
+      ],
+      "subtitle" : "Your day, the week and when things happen",
+      "title" : "Daily Life"
+    },
+    {
+      "colorHex" : 6514417,
+      "id" : "u12",
+      "lessons" : [
+        {
+          "emoji" : "🏡",
+          "id" : "athome",
+          "phrases" : [
+            {
+              "en" : "House",
+              "say" : "ev",
+              "tr" : "Ev"
+            },
+            {
+              "en" : "Room",
+              "say" : "oh-DAH",
+              "tr" : "Oda"
+            },
+            {
+              "en" : "Kitchen",
+              "say" : "moot-FAHK",
+              "tr" : "Mutfak"
+            },
+            {
+              "en" : "Bathroom",
+              "say" : "BAHN-yo",
+              "tr" : "Banyo"
+            },
+            {
+              "en" : "My house is small",
+              "say" : "eh-VEEM kew-CHEWK",
+              "tr" : "Evim küçük"
+            },
+            {
+              "en" : "It's very nice here",
+              "say" : "boo-rah-SUH chok gew-ZEL",
+              "tr" : "Burası çok güzel"
+            }
+          ],
+          "title" : "At Home"
+        },
+        {
+          "emoji" : "🏙️",
+          "id" : "city",
+          "phrases" : [
+            {
+              "en" : "Grocery store",
+              "say" : "mahr-KET",
+              "tr" : "Market"
+            },
+            {
+              "en" : "Pharmacy",
+              "say" : "ej-zah-NEH",
+              "tr" : "Eczane"
+            },
+            {
+              "en" : "Hospital",
+              "say" : "hahs-tah-NEH",
+              "tr" : "Hastane"
+            },
+            {
+              "en" : "Bank",
+              "say" : "BAHN-kah",
+              "tr" : "Banka"
+            },
+            {
+              "en" : "Where is the pharmacy?",
+              "say" : "ej-zah-NEH NEH-reh-deh",
+              "tr" : "Eczane nerede?"
+            },
+            {
+              "en" : "It's close to here",
+              "say" : "boo-rah-YAH yah-KUHN",
+              "tr" : "Buraya yakın"
+            }
+          ],
+          "title" : "In the City"
+        },
+        {
+          "emoji" : "📍",
+          "id" : "here",
+          "phrases" : [
+            {
+              "en" : "Here",
+              "say" : "BOO-rah-dah",
+              "tr" : "Burada"
+            },
+            {
+              "en" : "There",
+              "say" : "OH-rah-dah",
+              "tr" : "Orada"
+            },
+            {
+              "en" : "On the left",
+              "say" : "sol-DAH",
+              "tr" : "Solda"
+            },
+            {
+              "en" : "On the right",
+              "say" : "saa-DAH",
+              "tr" : "Sağda"
+            },
+            {
+              "en" : "Across the street",
+              "say" : "kahr-shuh-DAH",
+              "tr" : "Karşıda"
+            },
+            {
+              "en" : "At the corner",
+              "say" : "kur-sheh-DEH",
+              "tr" : "Köşede"
+            }
+          ],
+          "title" : "Here and There"
+        }
+      ],
+      "subtitle" : "Rooms, places and where things are",
+      "title" : "Home & City"
+    },
+    {
+      "colorHex" : 16347926,
+      "id" : "u13",
+      "lessons" : [
+        {
+          "emoji" : "💯",
+          "id" : "bignum",
+          "phrases" : [
+            {
+              "en" : "Twenty",
+              "say" : "yeer-MEE",
+              "tr" : "Yirmi"
+            },
+            {
+              "en" : "Thirty",
+              "say" : "oh-TOOZ",
+              "tr" : "Otuz"
+            },
+            {
+              "en" : "Fifty",
+              "say" : "el-LEE",
+              "tr" : "Elli"
+            },
+            {
+              "en" : "One hundred",
+              "say" : "yewz",
+              "tr" : "Yüz"
+            },
+            {
+              "en" : "One thousand",
+              "say" : "been",
+              "tr" : "Bin"
+            },
+            {
+              "en" : "One hundred and fifty lira",
+              "say" : "yewz el-LEE LEE-rah",
+              "tr" : "Yüz elli lira"
+            }
+          ],
+          "title" : "Bigger Numbers"
+        },
+        {
+          "emoji" : "👕",
+          "id" : "clothes",
+          "phrases" : [
+            {
+              "en" : "Shirt",
+              "say" : "gurm-LEK",
+              "tr" : "Gömlek"
+            },
+            {
+              "en" : "Shoes",
+              "say" : "ah-yahk-kah-BUH",
+              "tr" : "Ayakkabı"
+            },
+            {
+              "en" : "Jacket",
+              "say" : "jeh-KET",
+              "tr" : "Ceket"
+            },
+            {
+              "en" : "Can I try this on?",
+              "say" : "boo-NOO deh-neh-yeh-bee-LEER mee-yeem",
+              "tr" : "Bunu deneyebilir miyim?"
+            },
+            {
+              "en" : "Do you have a bigger one?",
+              "say" : "dah-HAH bew-YEWK vahr muh",
+              "tr" : "Daha büyük var mı?"
+            },
+            {
+              "en" : "It suits you",
+              "say" : "chok yah-kuhsh-TUH",
+              "tr" : "Çok yakıştı"
+            }
+          ],
+          "title" : "Clothes"
+        },
+        {
+          "emoji" : "🎨",
+          "id" : "colors",
+          "phrases" : [
+            {
+              "en" : "Red",
+              "say" : "kuhr-muh-ZUH",
+              "tr" : "Kırmızı"
+            },
+            {
+              "en" : "Blue",
+              "say" : "mah-VEE",
+              "tr" : "Mavi"
+            },
+            {
+              "en" : "Green",
+              "say" : "yeh-SHEEL",
+              "tr" : "Yeşil"
+            },
+            {
+              "en" : "Black",
+              "say" : "see-YAHH",
+              "tr" : "Siyah"
+            },
+            {
+              "en" : "White",
+              "say" : "beh-YAHZ",
+              "tr" : "Beyaz"
+            },
+            {
+              "en" : "I want the blue one",
+              "say" : "mah-VEE oh-lah-NUH ees-tee-YO-room",
+              "tr" : "Mavi olanı istiyorum"
+            }
+          ],
+          "title" : "Colors"
+        }
+      ],
+      "subtitle" : "Bigger numbers, clothes and colors",
+      "title" : "Shopping & Money"
+    },
+    {
+      "colorHex" : 9133302,
+      "id" : "u14",
+      "lessons" : [
+        {
+          "emoji" : "❓",
+          "id" : "qwords",
+          "phrases" : [
+            {
+              "en" : "What?",
+              "say" : "neh",
+              "tr" : "Ne?"
+            },
+            {
+              "en" : "Where?",
+              "say" : "NEH-reh-deh",
+              "tr" : "Nerede?"
+            },
+            {
+              "en" : "When?",
+              "say" : "neh zah-MAHN",
+              "tr" : "Ne zaman?"
+            },
+            {
+              "en" : "Why?",
+              "say" : "neh-DEN",
+              "tr" : "Neden?"
+            },
+            {
+              "en" : "How?",
+              "say" : "NAH-suhl",
+              "tr" : "Nasıl?"
+            },
+            {
+              "en" : "How many?",
+              "say" : "kahch tah-NEH",
+              "tr" : "Kaç tane?"
+            }
+          ],
+          "title" : "Question Words"
+        },
+        {
+          "emoji" : "🫙",
+          "id" : "have",
+          "phrases" : [
+            {
+              "en" : "Is there any?",
+              "say" : "vahr muh",
+              "tr" : "Var mı?"
+            },
+            {
+              "en" : "There isn't",
+              "say" : "yok",
+              "tr" : "Yok"
+            },
+            {
+              "en" : "Is there any tea?",
+              "say" : "chai vahr muh",
+              "tr" : "Çay var mı?"
+            },
+            {
+              "en" : "Do you have time?",
+              "say" : "zah-mah-NUHN vahr muh",
+              "tr" : "Zamanın var mı?"
+            },
+            {
+              "en" : "I have no money",
+              "say" : "pah-RAHM yok",
+              "tr" : "Param yok"
+            },
+            {
+              "en" : "No problem",
+              "say" : "so-ROON yok",
+              "tr" : "Sorun yok"
+            }
+          ],
+          "title" : "Is There Any?"
+        },
+        {
+          "emoji" : "👍",
+          "id" : "likes",
+          "phrases" : [
+            {
+              "en" : "I like tea",
+              "say" : "chah-YUH seh-vee-YO-room",
+              "tr" : "Çayı seviyorum"
+            },
+            {
+              "en" : "I don't like coffee",
+              "say" : "kah-veh-YEE sev-mee-YO-room",
+              "tr" : "Kahveyi sevmiyorum"
+            },
+            {
+              "en" : "I like listening to music",
+              "say" : "mew-ZEEK deen-leh-meh-YEE seh-vee-YO-room",
+              "tr" : "Müzik dinlemeyi seviyorum"
+            },
+            {
+              "en" : "I liked it",
+              "say" : "ho-shoo-MAH geet-TEE",
+              "tr" : "Hoşuma gitti"
+            },
+            {
+              "en" : "My favorite food",
+              "say" : "en sev-dee-EEM yeh-MEK",
+              "tr" : "En sevdiğim yemek"
+            },
+            {
+              "en" : "What do you like?",
+              "say" : "sen neh seh-vee-YOR-soon",
+              "tr" : "Sen ne seviyorsun?"
+            }
+          ],
+          "title" : "Likes"
+        }
+      ],
+      "subtitle" : "Question words, having and liking",
+      "title" : "Asking & Liking"
+    },
+    {
+      "colorHex" : 1096065,
+      "id" : "u15",
+      "lessons" : [
+        {
+          "emoji" : "⚽️",
+          "id" : "hobbies",
+          "phrases" : [
+            {
+              "en" : "I read books",
+              "say" : "kee-TAHP oh-koo-YO-room",
+              "tr" : "Kitap okuyorum"
+            },
+            {
+              "en" : "I watch films",
+              "say" : "feelm eez-lee-YO-room",
+              "tr" : "Film izliyorum"
+            },
+            {
+              "en" : "I like swimming",
+              "say" : "yewz-meh-YEE seh-vee-YO-room",
+              "tr" : "Yüzmeyi seviyorum"
+            },
+            {
+              "en" : "I play football",
+              "say" : "foot-BOL oy-noo-YO-room",
+              "tr" : "Futbol oynuyorum"
+            },
+            {
+              "en" : "I go for walks",
+              "say" : "yew-rew-YEWSH yah-puh-YO-room",
+              "tr" : "Yürüyüş yapıyorum"
+            },
+            {
+              "en" : "I have no free time",
+              "say" : "bosh zah-mah-NUHM yok",
+              "tr" : "Boş zamanım yok"
+            }
+          ],
+          "title" : "Hobbies"
+        },
+        {
+          "emoji" : "🗓️",
+          "id" : "plans",
+          "phrases" : [
+            {
+              "en" : "Are you free tomorrow?",
+              "say" : "YAH-ruhn mew-sah-EET mee-seen",
+              "tr" : "Yarın müsait misin?"
+            },
+            {
+              "en" : "Shall we meet?",
+              "say" : "boo-loo-shah-LUHM muh",
+              "tr" : "Buluşalım mı?"
+            },
+            {
+              "en" : "At what time?",
+              "say" : "sah-AHT kahch-TAH",
+              "tr" : "Saat kaçta?"
+            },
+            {
+              "en" : "Where shall we meet?",
+              "say" : "NEH-reh-deh boo-loo-shah-LUHM",
+              "tr" : "Nerede buluşalım?"
+            },
+            {
+              "en" : "Sure",
+              "say" : "oh-LOOR",
+              "tr" : "Olur"
+            },
+            {
+              "en" : "Unfortunately I can't come",
+              "say" : "MAH-leh-sef geh-leh-MEM",
+              "tr" : "Maalesef gelemem"
+            }
+          ],
+          "title" : "Making Plans"
+        },
+        {
+          "emoji" : "💌",
+          "id" : "invite",
+          "phrases" : [
+            {
+              "en" : "Come over to our place",
+              "say" : "bee-ZEH gel",
+              "tr" : "Bize gel"
+            },
+            {
+              "en" : "Shall we have tea?",
+              "say" : "chai ee-cheh-LEEM mee",
+              "tr" : "Çay içelim mi?"
+            },
+            {
+              "en" : "I'd love to",
+              "say" : "chok ees-teh-REEM",
+              "tr" : "Çok isterim"
+            },
+            {
+              "en" : "Maybe later",
+              "say" : "BEL-kee son-RAH",
+              "tr" : "Belki sonra"
+            },
+            {
+              "en" : "Great idea",
+              "say" : "HAH-ree-kah fee-KEER",
+              "tr" : "Harika fikir"
+            },
+            {
+              "en" : "See you soon",
+              "say" : "gur-rewsh-MEK ew-zeh-REH",
+              "tr" : "Görüşmek üzere"
+            }
+          ],
+          "title" : "Invitations"
+        }
+      ],
+      "subtitle" : "Hobbies, plans and invitations",
+      "title" : "Free Time"
+    },
+    {
+      "colorHex" : 15680580,
+      "id" : "u16",
+      "lessons" : [
+        {
+          "emoji" : "🧍",
+          "id" : "body",
+          "phrases" : [
+            {
+              "en" : "Head",
+              "say" : "bahsh",
+              "tr" : "Baş"
+            },
+            {
+              "en" : "Stomach",
+              "say" : "kah-RUHN",
+              "tr" : "Karın"
+            },
+            {
+              "en" : "Hand",
+              "say" : "el",
+              "tr" : "El"
+            },
+            {
+              "en" : "Foot",
+              "say" : "ah-YAHK",
+              "tr" : "Ayak"
+            },
+            {
+              "en" : "Tooth",
+              "say" : "deesh",
+              "tr" : "Diş"
+            },
+            {
+              "en" : "Back",
+              "say" : "suhrt",
+              "tr" : "Sırt"
+            }
+          ],
+          "title" : "My Body"
+        },
+        {
+          "emoji" : "🤒",
+          "id" : "unwell",
+          "phrases" : [
+            {
+              "en" : "I'm sick",
+              "say" : "hahs-TAH-yuhm",
+              "tr" : "Hastayım"
+            },
+            {
+              "en" : "I have a headache",
+              "say" : "bah-SHUHM aa-ruh-YOR",
+              "tr" : "Başım ağrıyor"
+            },
+            {
+              "en" : "My stomach hurts",
+              "say" : "kahr-NUHM aa-ruh-YOR",
+              "tr" : "Karnım ağrıyor"
+            },
+            {
+              "en" : "I have a fever",
+              "say" : "ah-teh-SHEEM vahr",
+              "tr" : "Ateşim var"
+            },
+            {
+              "en" : "I need a doctor",
+              "say" : "dok-to-RAH eeh-tee-yah-JUHM vahr",
+              "tr" : "Doktora ihtiyacım var"
+            },
+            {
+              "en" : "I don't feel well",
+              "say" : "ken-dee-MEE ee-YEE hees-set-mee-YO-room",
+              "tr" : "Kendimi iyi hissetmiyorum"
+            }
+          ],
+          "title" : "I Don't Feel Well"
+        },
+        {
+          "emoji" : "🩺",
+          "id" : "doctor",
+          "phrases" : [
+            {
+              "en" : "What's wrong?",
+              "say" : "neh-yee-NEEZ vahr",
+              "tr" : "Neyiniz var?"
+            },
+            {
+              "en" : "Since when?",
+              "say" : "neh zah-mahn-DAHN beh-REE",
+              "tr" : "Ne zamandan beri?"
+            },
+            {
+              "en" : "For two days",
+              "say" : "ee-KEE gewn-DEWR",
+              "tr" : "İki gündür"
+            },
+            {
+              "en" : "Are you taking any medicine?",
+              "say" : "ee-LAHCH kool-lah-nuh-YOR moo-soo-nooz",
+              "tr" : "İlaç kullanıyor musunuz?"
+            },
+            {
+              "en" : "I have an allergy",
+              "say" : "ah-lehr-ZHEEM vahr",
+              "tr" : "Alerjim var"
+            },
+            {
+              "en" : "You need to rest",
+              "say" : "deen-len-meh-NEEZ lah-ZUHM",
+              "tr" : "Dinlenmeniz lazım"
+            }
+          ],
+          "title" : "At the Doctor"
+        }
+      ],
+      "subtitle" : "Your body and feeling unwell",
+      "title" : "Health"
+    },
+    {
+      "colorHex" : 165063,
+      "id" : "u17",
+      "lessons" : [
+        {
+          "emoji" : "⏪",
+          "id" : "yesterday",
+          "phrases" : [
+            {
+              "en" : "Yesterday",
+              "say" : "dewn",
+              "tr" : "Dün"
+            },
+            {
+              "en" : "What did you do yesterday?",
+              "say" : "dewn neh yahp-TUHN",
+              "tr" : "Dün ne yaptın?"
+            },
+            {
+              "en" : "I stayed home",
+              "say" : "ev-DEH kahl-DUHM",
+              "tr" : "Evde kaldım"
+            },
+            {
+              "en" : "I went to the movies",
+              "say" : "see-neh-mah-YAH geet-TEEM",
+              "tr" : "Sinemaya gittim"
+            },
+            {
+              "en" : "I got very tired",
+              "say" : "chok yo-rool-DOOM",
+              "tr" : "Çok yoruldum"
+            },
+            {
+              "en" : "It was a nice day",
+              "say" : "gew-ZEL beer gewn-DEW",
+              "tr" : "Güzel bir gündü"
+            }
+          ],
+          "title" : "Yesterday"
+        },
+        {
+          "emoji" : "⏩",
+          "id" : "tomorrow",
+          "phrases" : [
+            {
+              "en" : "What will you do tomorrow?",
+              "say" : "YAH-ruhn neh yah-pah-jahk-SUHN",
+              "tr" : "Yarın ne yapacaksın?"
+            },
+            {
+              "en" : "I will work",
+              "say" : "chah-luh-shah-JAH-uhm",
+              "tr" : "Çalışacağım"
+            },
+            {
+              "en" : "I will call you",
+              "say" : "seh-NEE ah-rah-yah-JAH-uhm",
+              "tr" : "Seni arayacağım"
+            },
+            {
+              "en" : "I'll go on vacation",
+              "say" : "tah-tee-LEH gee-deh-JEH-eem",
+              "tr" : "Tatile gideceğim"
+            },
+            {
+              "en" : "I'll be late",
+              "say" : "getch kah-lah-JAH-uhm",
+              "tr" : "Geç kalacağım"
+            },
+            {
+              "en" : "We'll see each other",
+              "say" : "gur-rew-sheh-JEH-eez",
+              "tr" : "Görüşeceğiz"
+            }
+          ],
+          "title" : "Tomorrow"
+        },
+        {
+          "emoji" : "💪",
+          "id" : "can",
+          "phrases" : [
+            {
+              "en" : "I can do it",
+              "say" : "yah-pah-bee-lee-REEM",
+              "tr" : "Yapabilirim"
+            },
+            {
+              "en" : "I can't do it",
+              "say" : "yah-pah-MAHM",
+              "tr" : "Yapamam"
+            },
+            {
+              "en" : "Can you swim?",
+              "say" : "yew-zeh-bee-LEER mee-seen",
+              "tr" : "Yüzebilir misin?"
+            },
+            {
+              "en" : "I can speak Turkish",
+              "say" : "TEWRK-cheh ko-noo-shah-bee-lee-YO-room",
+              "tr" : "Türkçe konuşabiliyorum"
+            },
+            {
+              "en" : "I can't understand",
+              "say" : "ahn-lah-yah-muh-YO-room",
+              "tr" : "Anlayamıyorum"
+            },
+            {
+              "en" : "Can you help?",
+              "say" : "yahr-DUHM eh-deh-bee-LEER mee-seen",
+              "tr" : "Yardım edebilir misin?"
+            }
+          ],
+          "title" : "Can and Can't"
+        }
+      ],
+      "subtitle" : "Talking about yesterday, tomorrow and what you can do",
+      "title" : "Then & Later"
+    },
+    {
+      "colorHex" : 14362487,
+      "id" : "u18",
+      "lessons" : [
+        {
+          "emoji" : "🫖",
+          "id" : "teatime",
+          "phrases" : [
+            {
+              "en" : "Let's brew some tea",
+              "say" : "chai dem-leh-yeh-LEEM",
+              "tr" : "Çay demleyelim"
+            },
+            {
+              "en" : "Another glass?",
+              "say" : "beer bahr-DAHK dah-HAH",
+              "tr" : "Bir bardak daha?"
+            },
+            {
+              "en" : "That's enough, thanks",
+              "say" : "yeh-TEHR, teh-shek-kewr-LEHR",
+              "tr" : "Yeter, teşekkürler"
+            },
+            {
+              "en" : "Would you like sugar?",
+              "say" : "sheh-KEHR ees-TEHR mee-seen",
+              "tr" : "Şeker ister misin?"
+            },
+            {
+              "en" : "Very hot",
+              "say" : "chok suh-JAHK",
+              "tr" : "Çok sıcak"
+            },
+            {
+              "en" : "Thank you for making it",
+              "say" : "el-leh-ree-NEH saa-LUHK",
+              "tr" : "Ellerine sağlık"
+            }
+          ],
+          "title" : "Tea Time"
+        },
+        {
+          "emoji" : "🌟",
+          "id" : "compliments",
+          "phrases" : [
+            {
+              "en" : "It turned out great",
+              "say" : "chok gew-ZEL ol-MOOSH",
+              "tr" : "Çok güzel olmuş"
+            },
+            {
+              "en" : "You're very kind",
+              "say" : "chok nah-ZEEK-see-neez",
+              "tr" : "Çok naziksiniz"
+            },
+            {
+              "en" : "Your Turkish is very good",
+              "say" : "TEWRK-chen chok ee-YEE",
+              "tr" : "Türkçen çok iyi"
+            },
+            {
+              "en" : "Congratulations",
+              "say" : "teb-reek-LEHR",
+              "tr" : "Tebrikler"
+            },
+            {
+              "en" : "I'm glad you're in my life",
+              "say" : "ee-YEE kee vahr-SUHN",
+              "tr" : "İyi ki varsın"
+            },
+            {
+              "en" : "It really suits you",
+              "say" : "sah-NAH chok yah-kuhsh-MUHSH",
+              "tr" : "Sana çok yakışmış"
+            }
+          ],
+          "title" : "Compliments"
+        },
+        {
+          "emoji" : "👋",
+          "id" : "goodbyes",
+          "phrases" : [
+            {
+              "en" : "Goodbye (said by the one leaving)",
+              "say" : "HOSH-chah kahl",
+              "tr" : "Hoşça kal"
+            },
+            {
+              "en" : "Goodbye (said to the one leaving)",
+              "say" : "gew-LEH gew-LEH",
+              "tr" : "Güle güle"
+            },
+            {
+              "en" : "Good night",
+              "say" : "ee-YEE geh-jeh-LEHR",
+              "tr" : "İyi geceler"
+            },
+            {
+              "en" : "Come again",
+              "say" : "yee-NEH bek-leh-REEZ",
+              "tr" : "Yine bekleriz"
+            },
+            {
+              "en" : "Say hi for me",
+              "say" : "seh-LAHM sur-LEH",
+              "tr" : "Selam söyle"
+            },
+            {
+              "en" : "Have a good trip",
+              "say" : "ee-YEE yol-joo-look-LAHR",
+              "tr" : "İyi yolculuklar"
+            }
+          ],
+          "title" : "Goodbyes"
+        }
+      ],
+      "subtitle" : "Tea, compliments and goodbyes",
+      "title" : "Being a Guest"
+    },
+    {
+      "colorHex" : 4674921,
+      "id" : "u19",
+      "lessons" : [
+        {
+          "emoji" : "🧑‍💼",
+          "id" : "jobs",
+          "phrases" : [
+            {
+              "en" : "What do you do?",
+              "say" : "neh eesh yah-puh-YOR-soon",
+              "tr" : "Ne iş yapıyorsun?"
+            },
+            {
+              "en" : "I'm a teacher",
+              "say" : "ur-ret-MEH-neem",
+              "tr" : "Öğretmenim"
+            },
+            {
+              "en" : "I'm an engineer",
+              "say" : "mew-hen-DEE-seem",
+              "tr" : "Mühendisim"
+            },
+            {
+              "en" : "I'm a doctor",
+              "say" : "dok-TO-room",
+              "tr" : "Doktorum"
+            },
+            {
+              "en" : "I work at a company",
+              "say" : "beer sheer-ket-TEH chah-luh-shuh-YO-room",
+              "tr" : "Bir şirkette çalışıyorum"
+            },
+            {
+              "en" : "I'm retired",
+              "say" : "eh-mek-LEE-yeem",
+              "tr" : "Emekliyim"
+            }
+          ],
+          "title" : "Jobs"
+        },
+        {
+          "emoji" : "🎒",
+          "id" : "school",
+          "phrases" : [
+            {
+              "en" : "Class",
+              "say" : "dehrs",
+              "tr" : "Ders"
+            },
+            {
+              "en" : "Exam",
+              "say" : "suh-NAHV",
+              "tr" : "Sınav"
+            },
+            {
+              "en" : "Homework",
+              "say" : "ur-DEV",
+              "tr" : "Ödev"
+            },
+            {
+              "en" : "I have a question",
+              "say" : "so-ROOM vahr",
+              "tr" : "Sorum var"
+            },
+            {
+              "en" : "What does this mean?",
+              "say" : "boo neh deh-MEK",
+              "tr" : "Bu ne demek?"
+            },
+            {
+              "en" : "How is it spelled?",
+              "say" : "NAH-suhl yah-zuh-LUHR",
+              "tr" : "Nasıl yazılır?"
+            }
+          ],
+          "title" : "In Class"
+        },
+        {
+          "emoji" : "🗣️",
+          "id" : "langs",
+          "phrases" : [
+            {
+              "en" : "Which languages do you speak?",
+              "say" : "HAHN-gee deel-leh-REE ko-noo-shoo-YOR-soon",
+              "tr" : "Hangi dilleri konuşuyorsun?"
+            },
+            {
+              "en" : "I speak English",
+              "say" : "een-gee-LEEZ-jeh ko-noo-shoo-YO-room",
+              "tr" : "İngilizce konuşuyorum"
+            },
+            {
+              "en" : "Is Turkish hard?",
+              "say" : "TEWRK-cheh zor moo",
+              "tr" : "Türkçe zor mu?"
+            },
+            {
+              "en" : "A bit hard but beautiful",
+              "say" : "bee-RAHZ zor AH-mah gew-ZEL",
+              "tr" : "Biraz zor ama güzel"
+            },
+            {
+              "en" : "I study every day",
+              "say" : "hehr gewn chah-luh-shuh-YO-room",
+              "tr" : "Her gün çalışıyorum"
+            },
+            {
+              "en" : "I'm learning little by little",
+              "say" : "yah-VAHSH yah-VAHSH ur-reh-nee-YO-room",
+              "tr" : "Yavaş yavaş öğreniyorum"
+            }
+          ],
+          "title" : "Languages"
+        }
+      ],
+      "subtitle" : "Jobs, classes and languages",
+      "title" : "Work & Study"
+    },
+    {
+      "colorHex" : 11817737,
+      "id" : "u20",
+      "lessons" : [
+        {
+          "emoji" : "🗺️",
+          "id" : "places",
+          "phrases" : [
+            {
+              "en" : "I want to go to Istanbul",
+              "say" : "ees-TAHN-boo-lah geet-MEK ees-tee-YO-room",
+              "tr" : "İstanbul'a gitmek istiyorum"
+            },
+            {
+              "en" : "Cappadocia is very beautiful",
+              "say" : "kah-pah-DOK-yah chok gew-ZEL",
+              "tr" : "Kapadokya çok güzel"
+            },
+            {
+              "en" : "Sea",
+              "say" : "deh-NEEZ",
+              "tr" : "Deniz"
+            },
+            {
+              "en" : "The Bosphorus",
+              "say" : "bo-AHZ",
+              "tr" : "Boğaz"
+            },
+            {
+              "en" : "Mosque",
+              "say" : "jah-MEE",
+              "tr" : "Cami"
+            },
+            {
+              "en" : "Museum",
+              "say" : "mew-ZEH",
+              "tr" : "Müze"
+            }
+          ],
+          "title" : "Places"
+        },
+        {
+          "emoji" : "🎉",
+          "id" : "celebrate",
+          "phrases" : [
+            {
+              "en" : "Happy holidays",
+              "say" : "ee-YEE bai-rahm-LAHR",
+              "tr" : "İyi bayramlar"
+            },
+            {
+              "en" : "Happy birthday",
+              "say" : "do-OOM gew-NEWN koot-LOO ol-SOON",
+              "tr" : "Doğum günün kutlu olsun"
+            },
+            {
+              "en" : "Happy New Year",
+              "say" : "moot-LOO yuhl-LAHR",
+              "tr" : "Mutlu yıllar"
+            },
+            {
+              "en" : "Many happy returns",
+              "say" : "NEE-jeh yuhl-lah-RAH",
+              "tr" : "Nice yıllara"
+            },
+            {
+              "en" : "I congratulate you",
+              "say" : "teb-REEK eh-deh-reem",
+              "tr" : "Tebrik ederim"
+            },
+            {
+              "en" : "Cheers!",
+              "say" : "sheh-reh-FEH",
+              "tr" : "Şerefe!"
+            }
+          ],
+          "title" : "Celebrations"
+        },
+        {
+          "emoji" : "🧿",
+          "id" : "culture",
+          "phrases" : [
+            {
+              "en" : "Turkish coffee",
+              "say" : "tewrk kah-veh-SEE",
+              "tr" : "Türk kahvesi"
+            },
+            {
+              "en" : "Baklava",
+              "say" : "bahk-lah-VAH",
+              "tr" : "Baklava"
+            },
+            {
+              "en" : "Simit (sesame bread ring)",
+              "say" : "see-MEET",
+              "tr" : "Simit"
+            },
+            {
+              "en" : "Turkish bath",
+              "say" : "hah-MAHM",
+              "tr" : "Hamam"
+            },
+            {
+              "en" : "Evil eye bead",
+              "say" : "nah-ZAHR bon-joo-OO",
+              "tr" : "Nazar boncuğu"
+            },
+            {
+              "en" : "Guest",
+              "say" : "mee-sah-FEER",
+              "tr" : "Misafir"
+            }
+          ],
+          "title" : "A Taste of Türkiye"
+        }
+      ],
+      "subtitle" : "Places, celebrations and culture",
+      "title" : "Around Türkiye"
     }
   ],
-  "version" : 1
+  "version" : 2
 }
