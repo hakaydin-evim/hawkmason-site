@@ -1921,7 +1921,7 @@
             },
             {
               "en" : "Village",
-              "say" : "kur-y",
+              "say" : "kury",
               "tr" : "Köy"
             },
             {
@@ -2211,7 +2211,7 @@
             },
             {
               "en" : "Go straight",
-              "say" : "dewz geet",
+              "say" : "DEWZ geet",
               "tr" : "Düz git"
             },
             {
@@ -3266,7 +3266,7 @@
               "tr" : "Sabah"
             },
             {
-              "en" : "Noon",
+              "en" : "At noon",
               "say" : "ur-LEN",
               "tr" : "Öğlen"
             },
@@ -3282,7 +3282,7 @@
             },
             {
               "en" : "Every day",
-              "say" : "hehr gewn",
+              "say" : "hehr GEWN",
               "tr" : "Her gün"
             },
             {
@@ -3582,7 +3582,7 @@
           "phrases" : [
             {
               "en" : "Is there any?",
-              "say" : "vahr muh",
+              "say" : "VAHR muh",
               "tr" : "Var mı?"
             },
             {
@@ -3592,7 +3592,7 @@
             },
             {
               "en" : "Is there any tea?",
-              "say" : "chai vahr muh",
+              "say" : "chai VAHR muh",
               "tr" : "Çay var mı?"
             },
             {
@@ -3726,7 +3726,7 @@
             },
             {
               "en" : "Unfortunately I can't come",
-              "say" : "MAH-leh-sef geh-leh-MEM",
+              "say" : "mah-ah-leh-SEF geh-leh-MEM",
               "tr" : "Maalesef gelemem"
             }
           ],
@@ -4369,5 +4369,5 @@
       "title" : "Around Türkiye"
     }
   ],
-  "version" : 2
+  "version" : 3
 }
